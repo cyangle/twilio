@@ -44,7 +44,7 @@ First you need to require it.
 require "twilio"
 ```
 
-### Configure client with google Oauth2 access token
+### Configure client with twilio credentials
 
 ```crystal
 Twilio.configure do |config|
