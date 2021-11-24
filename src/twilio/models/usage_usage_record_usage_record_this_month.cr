@@ -61,8 +61,9 @@ module Twilio
     @[NASON::Field(key: "start_date", type: Time? | Null, nillable: true)]
     property start_date : Time? | Null
 
-    @[NASON::Field(key: "subresource_uris", type: SubresourceUris? | Null, nillable: true)]
-    property subresource_uris : SubresourceUris? | Null
+    # Account Instance Subresources
+    @[NASON::Field(key: "subresource_uris", type: Hash(String, String)? | Null, nillable: true)]
+    property subresource_uris : Hash(String, String)? | Null
 
     # The URI of the resource, relative to `https://api.twilio.com`
     @[NASON::Field(key: "uri", type: String? | Null, nillable: true)]
@@ -101,7 +102,7 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @as_of : String? | Null = nil, @category : String? | Null = nil, @count : String? | Null = nil, @count_unit : String? | Null = nil, @description : String? | Null = nil, @end_date : Time? | Null = nil, @price : Float64? | Null = nil, @price_unit : String? | Null = nil, @start_date : Time? | Null = nil, @subresource_uris : SubresourceUris? | Null = nil, @uri : String? | Null = nil, @usage : String? | Null = nil, @usage_unit : String? | Null = nil)
+    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @as_of : String? | Null = nil, @category : String? | Null = nil, @count : String? | Null = nil, @count_unit : String? | Null = nil, @description : String? | Null = nil, @end_date : Time? | Null = nil, @price : Float64? | Null = nil, @price_unit : String? | Null = nil, @start_date : Time? | Null = nil, @subresource_uris : Hash(String, String)? | Null = nil, @uri : String? | Null = nil, @usage : String? | Null = nil, @usage_unit : String? | Null = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

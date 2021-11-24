@@ -29,8 +29,9 @@ module Twilio
     @[NASON::Field(key: "country_code", type: String? | Null, nillable: true)]
     property country_code : String? | Null
 
-    @[NASON::Field(key: "subresource_uris", type: SubresourceUris? | Null, nillable: true)]
-    property subresource_uris : SubresourceUris? | Null
+    # Account Instance Subresources
+    @[NASON::Field(key: "subresource_uris", type: Hash(String, String)? | Null, nillable: true)]
+    property subresource_uris : Hash(String, String)? | Null
 
     # The URI of the Country resource, relative to `https://api.twilio.com`
     @[NASON::Field(key: "uri", type: String? | Null, nillable: true)]
@@ -38,7 +39,7 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @beta : Bool? | Null = nil, @country : String? | Null = nil, @country_code : String? | Null = nil, @subresource_uris : SubresourceUris? | Null = nil, @uri : String? | Null = nil)
+    def initialize(*, @beta : Bool? | Null = nil, @country : String? | Null = nil, @country_code : String? | Null = nil, @subresource_uris : Hash(String, String)? | Null = nil, @uri : String? | Null = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

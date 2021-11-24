@@ -3,11 +3,9 @@
     "schemas": {
       "subresource_uris": {
         "description": "Account Instance Subresources",
-        "properties": {
-          "usage": {
-            "nullable": true,
-            "type": "string"
-          }
+        "additionalProperties": {
+          "type": "string",
+          "nullable": true
         },
         "nullable": true,
         "type": "object"
@@ -1477,6 +1475,13 @@
               "url": {
                 "type": "string",
                 "nullable": true
+              },
+              "parameters": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string",
+                  "nullable": true
+                }
               }
             },
             "type": "object"
@@ -1500,6 +1505,9 @@
               "date_created": {
                 "type": "string",
                 "nullable": true
+              },
+              "response_body": {
+                "type": "string"
               }
             },
             "type": "object"

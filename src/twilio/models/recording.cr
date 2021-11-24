@@ -80,8 +80,9 @@ module Twilio
     @[NASON::Field(key: "status", type: String? | Null, nillable: true)]
     property status : String? | Null
 
-    @[NASON::Field(key: "subresource_uris", type: SubresourceUris? | Null, nillable: true)]
-    property subresource_uris : SubresourceUris? | Null
+    # Account Instance Subresources
+    @[NASON::Field(key: "subresource_uris", type: Hash(String, String)? | Null, nillable: true)]
+    property subresource_uris : Hash(String, String)? | Null
 
     # The URI of the resource, relative to `https://api.twilio.com`
     @[NASON::Field(key: "uri", type: String? | Null, nillable: true)]
@@ -112,7 +113,7 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @call_sid : String? | Null = nil, @channels : Int32? | Null = nil, @conference_sid : String? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @duration : String? | Null = nil, @encryption_details : EncryptionDetails? | Null = nil, @error_code : Int32? | Null = nil, @price : String? | Null = nil, @price_unit : String? | Null = nil, @sid : String? | Null = nil, @source : String? | Null = nil, @start_time : String? | Null = nil, @status : String? | Null = nil, @subresource_uris : SubresourceUris? | Null = nil, @uri : String? | Null = nil)
+    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @call_sid : String? | Null = nil, @channels : Int32? | Null = nil, @conference_sid : String? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @duration : String? | Null = nil, @encryption_details : EncryptionDetails? | Null = nil, @error_code : Int32? | Null = nil, @price : String? | Null = nil, @price_unit : String? | Null = nil, @sid : String? | Null = nil, @source : String? | Null = nil, @start_time : String? | Null = nil, @status : String? | Null = nil, @subresource_uris : Hash(String, String)? | Null = nil, @uri : String? | Null = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

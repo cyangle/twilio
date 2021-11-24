@@ -24,9 +24,12 @@ module Twilio
     @[NASON::Field(key: "url", type: String? | Null, nillable: true)]
     property url : String? | Null
 
+    @[NASON::Field(key: "parameters", type: Hash(String, String)?, nillable: true)]
+    property parameters : Hash(String, String)?
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @method : String? | Null = nil, @url : String? | Null = nil)
+    def initialize(*, @method : String? | Null = nil, @url : String? | Null = nil, @parameters : Hash(String, String)? = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -48,7 +51,8 @@ module Twilio
       return true if self.same?(o)
       self.class == o.class &&
         method == o.method &&
-        url == o.url
+        url == o.url &&
+        parameters == o.parameters
     end
 
     # @see the `==` method
@@ -60,7 +64,7 @@ module Twilio
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [method, url].hash
+      [method, url, parameters].hash
     end
 
     # Builds the object from hash

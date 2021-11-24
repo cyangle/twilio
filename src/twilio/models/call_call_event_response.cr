@@ -30,9 +30,12 @@ module Twilio
     @[NASON::Field(key: "date_created", type: String? | Null, nillable: true)]
     property date_created : String? | Null
 
+    @[NASON::Field(key: "response_body", type: String?, nillable: true)]
+    property response_body : String?
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @response_code : Int32? | Null = nil, @request_duration : Int32? | Null = nil, @content_type : String? | Null = nil, @date_created : String? | Null = nil)
+    def initialize(*, @response_code : Int32? | Null = nil, @request_duration : Int32? | Null = nil, @content_type : String? | Null = nil, @date_created : String? | Null = nil, @response_body : String? = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -56,7 +59,8 @@ module Twilio
         response_code == o.response_code &&
         request_duration == o.request_duration &&
         content_type == o.content_type &&
-        date_created == o.date_created
+        date_created == o.date_created &&
+        response_body == o.response_body
     end
 
     # @see the `==` method
@@ -68,7 +72,7 @@ module Twilio
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [response_code, request_duration, content_type, date_created].hash
+      [response_code, request_duration, content_type, date_created, response_body].hash
     end
 
     # Builds the object from hash

@@ -57,12 +57,13 @@ module Twilio
     @[NASON::Field(key: "sid", type: String? | Null, nillable: true)]
     property sid : String? | Null
 
-    @[NASON::Field(key: "subresource_uris", type: SubresourceUris? | Null, nillable: true)]
-    property subresource_uris : SubresourceUris? | Null
+    # Account Instance Subresources
+    @[NASON::Field(key: "subresource_uris", type: Hash(String, String)? | Null, nillable: true)]
+    property subresource_uris : Hash(String, String)? | Null
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? | Null = nil, @add_on_configuration_sid : String? | Null = nil, @add_on_result_sid : String? | Null = nil, @add_on_sid : String? | Null = nil, @content_type : String? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @label : String? | Null = nil, @reference_sid : String? | Null = nil, @sid : String? | Null = nil, @subresource_uris : SubresourceUris? | Null = nil)
+    def initialize(*, @account_sid : String? | Null = nil, @add_on_configuration_sid : String? | Null = nil, @add_on_result_sid : String? | Null = nil, @add_on_sid : String? | Null = nil, @content_type : String? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @label : String? | Null = nil, @reference_sid : String? | Null = nil, @sid : String? | Null = nil, @subresource_uris : Hash(String, String)? | Null = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

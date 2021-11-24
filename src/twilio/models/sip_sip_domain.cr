@@ -69,8 +69,9 @@ module Twilio
     @[NASON::Field(key: "sip_registration", type: Bool? | Null, nillable: true)]
     property sip_registration : Bool? | Null
 
-    @[NASON::Field(key: "subresource_uris", type: SubresourceUris? | Null, nillable: true)]
-    property subresource_uris : SubresourceUris? | Null
+    # Account Instance Subresources
+    @[NASON::Field(key: "subresource_uris", type: Hash(String, String)? | Null, nillable: true)]
+    property subresource_uris : Hash(String, String)? | Null
 
     # The URI of the resource, relative to `https://api.twilio.com`
     @[NASON::Field(key: "uri", type: String? | Null, nillable: true)]
@@ -125,7 +126,7 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @auth_type : String? | Null = nil, @byoc_trunk_sid : String? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @domain_name : String? | Null = nil, @emergency_caller_sid : String? | Null = nil, @emergency_calling_enabled : Bool? | Null = nil, @friendly_name : String? | Null = nil, @secure : Bool? | Null = nil, @sid : String? | Null = nil, @sip_registration : Bool? | Null = nil, @subresource_uris : SubresourceUris? | Null = nil, @uri : String? | Null = nil, @voice_fallback_method : String? | Null = nil, @voice_fallback_url : String? | Null = nil, @voice_method : String? | Null = nil, @voice_status_callback_method : String? | Null = nil, @voice_status_callback_url : String? | Null = nil, @voice_url : String? | Null = nil)
+    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @auth_type : String? | Null = nil, @byoc_trunk_sid : String? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @domain_name : String? | Null = nil, @emergency_caller_sid : String? | Null = nil, @emergency_calling_enabled : Bool? | Null = nil, @friendly_name : String? | Null = nil, @secure : Bool? | Null = nil, @sid : String? | Null = nil, @sip_registration : Bool? | Null = nil, @subresource_uris : Hash(String, String)? | Null = nil, @uri : String? | Null = nil, @voice_fallback_method : String? | Null = nil, @voice_fallback_url : String? | Null = nil, @voice_method : String? | Null = nil, @voice_status_callback_method : String? | Null = nil, @voice_status_callback_url : String? | Null = nil, @voice_url : String? | Null = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
