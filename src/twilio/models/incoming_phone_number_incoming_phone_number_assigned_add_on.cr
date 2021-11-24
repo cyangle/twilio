@@ -21,6 +21,10 @@ module Twilio
     @[NASON::Field(key: "account_sid", type: String? | Null, nillable: true)]
     property account_sid : String? | Null
 
+    # A JSON string that represents the current configuration
+    @[NASON::Field(key: "configuration", type: Hash(String, String)? | Null, nillable: true)]
+    property configuration : Hash(String, String)? | Null
+
     # The RFC 2822 date and time in GMT that the resource was created
     @[NASON::Field(key: "date_created", type: String? | Null, nillable: true)]
     property date_created : String? | Null
@@ -59,7 +63,7 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @description : String? | Null = nil, @friendly_name : String? | Null = nil, @resource_sid : String? | Null = nil, @sid : String? | Null = nil, @subresource_uris : Hash(String, String)? | Null = nil, @unique_name : String? | Null = nil, @uri : String? | Null = nil)
+    def initialize(*, @account_sid : String? | Null = nil, @configuration : Hash(String, String)? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @description : String? | Null = nil, @friendly_name : String? | Null = nil, @resource_sid : String? | Null = nil, @sid : String? | Null = nil, @subresource_uris : Hash(String, String)? | Null = nil, @unique_name : String? | Null = nil, @uri : String? | Null = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -186,6 +190,7 @@ module Twilio
       return true if self.same?(o)
       self.class == o.class &&
         account_sid == o.account_sid &&
+        configuration == o.configuration &&
         date_created == o.date_created &&
         date_updated == o.date_updated &&
         description == o.description &&
@@ -206,7 +211,7 @@ module Twilio
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_sid, date_created, date_updated, description, friendly_name, resource_sid, sid, subresource_uris, unique_name, uri].hash
+      [account_sid, configuration, date_created, date_updated, description, friendly_name, resource_sid, sid, subresource_uris, unique_name, uri].hash
     end
 
     # Builds the object from hash

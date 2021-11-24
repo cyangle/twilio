@@ -2786,6 +2786,15 @@
             "pattern": "^AC[0-9a-fA-F]{32}$",
             "type": "string"
           },
+          "configuration": {
+            "description": "A JSON string that represents the current configuration",
+            "nullable": true,
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "nullable": true
+            }
+          },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
             "format": "date-time-rfc-2822",
