@@ -1,2 +1,7 @@
+Excluded:
+  - src/twilio/api/default_api.cr
+  - bin
+  - lib
+  - local
 Metrics/CyclomaticComplexity:
   Enabled: false
