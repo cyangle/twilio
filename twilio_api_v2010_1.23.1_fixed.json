@@ -42,13 +42,13 @@
           },
           "date_created": {
             "description": "The date this account was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The date this account was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -126,13 +126,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -240,13 +240,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -435,13 +435,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -620,13 +620,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1323,13 +1323,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that this resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1345,7 +1345,7 @@
           },
           "end_time": {
             "description": "The end time of the call. Null if the call did not complete successfully.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1413,7 +1413,7 @@
           },
           "start_time": {
             "description": "The start time of the call. Null if the call has not yet been dialed.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1527,13 +1527,13 @@
           },
           "date_created": {
             "description": "The date this resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The date this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1593,13 +1593,13 @@
           },
           "date_created": {
             "description": "The date this resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The date this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1617,7 +1617,7 @@
           "issues": {
             "description": "Issues experienced during the call",
             "items": {
-              "type": "object"
+              "type": "string"
             },
             "nullable": true,
             "type": "array"
@@ -1690,13 +1690,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1712,7 +1712,7 @@
           },
           "message_date": {
             "description": "The date the notification was generated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1788,13 +1788,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1810,7 +1810,7 @@
           },
           "message_date": {
             "description": "The date the notification was generated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1914,13 +1914,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -1930,9 +1930,6 @@
             "type": "string"
           },
           "encryption_details": {
-            "description": "How to decrypt the recording.",
-            "nullable": true,
-            "type": "object",
             "$ref": "#/components/schemas/encryption_details"
           },
           "error_code": {
@@ -1974,7 +1971,7 @@
           },
           "start_time": {
             "description": "The start time of the recording, given in RFC 2822 format",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -2025,13 +2022,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -2072,7 +2069,7 @@
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -2126,13 +2123,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that this resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -2225,13 +2222,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -2241,9 +2238,6 @@
             "type": "string"
           },
           "encryption_details": {
-            "description": "How to decrypt the recording.",
-            "nullable": true,
-            "type": "object",
             "$ref": "#/components/schemas/encryption_details"
           },
           "error_code": {
@@ -2285,7 +2279,7 @@
           },
           "start_time": {
             "description": "The start time of the recording, given in RFC 2822 format",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -2351,13 +2345,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -2560,13 +2554,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -2797,13 +2791,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -2981,13 +2975,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -3265,13 +3259,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -3549,13 +3543,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -3769,13 +3763,13 @@
         "properties": {
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -3817,19 +3811,19 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_sent": {
             "description": "The RFC 2822 date and time in GMT when the message was sent",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -3948,13 +3942,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that this resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -3995,13 +3989,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4034,13 +4028,13 @@
         "properties": {
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4069,13 +4063,13 @@
         "properties": {
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4125,13 +4119,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4147,7 +4141,7 @@
           },
           "message_date": {
             "description": "The date the notification was generated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4223,13 +4217,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4245,7 +4239,7 @@
           },
           "message_date": {
             "description": "The date the notification was generated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4323,13 +4317,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4382,13 +4376,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that this resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4431,7 +4425,7 @@
           },
           "date_enqueued": {
             "description": "The date the member was enqueued",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4500,13 +4494,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4516,9 +4510,6 @@
             "type": "string"
           },
           "encryption_details": {
-            "description": "How to decrypt the recording.",
-            "nullable": true,
-            "type": "object",
             "$ref": "#/components/schemas/encryption_details"
           },
           "error_code": {
@@ -4560,7 +4551,7 @@
           },
           "start_time": {
             "description": "The start time of the recording, given in RFC 2822 format",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4617,19 +4608,19 @@
           },
           "date_completed": {
             "description": "The date and time in GMT that the result was completed",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4711,13 +4702,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4765,13 +4756,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4852,13 +4843,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that this resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4930,12 +4921,12 @@
       "signing_key": {
         "properties": {
           "date_created": {
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -4953,10 +4944,6 @@
         },
         "type": "object"
       },
-      "sip": {
-        "properties": {},
-        "type": "object"
-      },
       "sip.sip_credential_list": {
         "properties": {
           "account_sid": {
@@ -4969,13 +4956,13 @@
           },
           "date_created": {
             "description": "The date this resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The date this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5024,13 +5011,13 @@
           },
           "date_created": {
             "description": "The date that this resource was created, given as GMT in RFC 2822 format.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The date that this resource was last updated, given as GMT in RFC 2822 format.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5086,13 +5073,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5206,14 +5193,6 @@
         },
         "type": "object"
       },
-      "sip.sip_domain.sip_auth": {
-        "properties": {},
-        "type": "object"
-      },
-      "sip.sip_domain.sip_auth.sip_auth_calls": {
-        "properties": {},
-        "type": "object"
-      },
       "sip.sip_domain.sip_auth.sip_auth_calls.sip_auth_calls_credential_list_mapping": {
         "properties": {
           "account_sid": {
@@ -5226,13 +5205,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5264,13 +5243,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5290,10 +5269,6 @@
         },
         "type": "object"
       },
-      "sip.sip_domain.sip_auth.sip_auth_registrations": {
-        "properties": {},
-        "type": "object"
-      },
       "sip.sip_domain.sip_auth.sip_auth_registrations.sip_auth_registrations_credential_list_mapping": {
         "properties": {
           "account_sid": {
@@ -5306,13 +5281,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5344,13 +5319,13 @@
           },
           "date_created": {
             "description": "The date that this resource was created, given as GMT in RFC 2822 format.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The date that this resource was last updated, given as GMT in RFC 2822 format.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5396,13 +5371,13 @@
           },
           "date_created": {
             "description": "The date that this resource was created, given as GMT in RFC 2822 format.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The date that this resource was last updated, given as GMT in RFC 2822 format.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5448,13 +5423,13 @@
           },
           "date_created": {
             "description": "The date this resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The date this resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5500,13 +5475,13 @@
           },
           "date_created": {
             "description": "The date that this resource was created, given as GMT in RFC 2822 format.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The date that this resource was last updated, given as GMT in RFC 2822 format.",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5557,13 +5532,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5624,13 +5599,13 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -5692,10 +5667,6 @@
             "type": "string"
           }
         },
-        "type": "object"
-      },
-      "usage": {
-        "properties": {},
         "type": "object"
       },
       "usage.usage_record": {
@@ -8673,19 +8644,19 @@
           },
           "date_created": {
             "description": "The RFC 2822 date and time in GMT that the resource was created",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_fired": {
             "description": "The RFC 2822 date and time in GMT that the trigger was last fired",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
           "date_updated": {
             "description": "The RFC 2822 date and time in GMT that the resource was last updated",
-            "format": "date-time-rfc-2822",
+            "format": "date-time",
             "nullable": true,
             "type": "string"
           },
@@ -13695,7 +13666,7 @@
                   },
                   "Parameter": {
                     "description": "A single level JSON string that is required when accepting certain information specific only to ACH payments. The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors).",
-                    "type": "object"
+                    "type": "string"
                   },
                   "PaymentConnector": {
                     "description": "This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.",
