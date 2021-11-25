@@ -46,19 +46,19 @@ module Twilio
     property description : String? | Null
 
     # The last date for which usage is included in the UsageRecord
-    @[NASON::Field(key: "end_date", type: Time? | Null, nillable: true)]
+    @[NASON::Field(key: "end_date", type: Time? | Null, converter: Time::Format.new("%Y-%m-%d"), nillable: true)]
     property end_date : Time? | Null
 
     # The total price of the usage
-    @[NASON::Field(key: "price", type: Float64? | Null, nillable: true)]
-    property price : Float64? | Null
+    @[NASON::Field(key: "price", type: String? | Null, nillable: true)]
+    property price : String? | Null
 
     # The currency in which `price` is measured
     @[NASON::Field(key: "price_unit", type: String? | Null, nillable: true)]
     property price_unit : String? | Null
 
     # The first date for which usage is included in this UsageRecord
-    @[NASON::Field(key: "start_date", type: Time? | Null, nillable: true)]
+    @[NASON::Field(key: "start_date", type: Time? | Null, converter: Time::Format.new("%Y-%m-%d"), nillable: true)]
     property start_date : Time? | Null
 
     # Account Instance Subresources
@@ -102,7 +102,7 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @as_of : String? | Null = nil, @category : String? | Null = nil, @count : String? | Null = nil, @count_unit : String? | Null = nil, @description : String? | Null = nil, @end_date : Time? | Null = nil, @price : Float64? | Null = nil, @price_unit : String? | Null = nil, @start_date : Time? | Null = nil, @subresource_uris : Hash(String, String)? | Null = nil, @uri : String? | Null = nil, @usage : String? | Null = nil, @usage_unit : String? | Null = nil)
+    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @as_of : String? | Null = nil, @category : String? | Null = nil, @count : String? | Null = nil, @count_unit : String? | Null = nil, @description : String? | Null = nil, @end_date : Time? | Null = nil, @price : String? | Null = nil, @price_unit : String? | Null = nil, @start_date : Time? | Null = nil, @subresource_uris : Hash(String, String)? | Null = nil, @uri : String? | Null = nil, @usage : String? | Null = nil, @usage_unit : String? | Null = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?

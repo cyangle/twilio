@@ -1943,7 +1943,7 @@
           "price": {
             "description": "The one-time cost of creating the recording.",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency used in the price property.",
@@ -4783,7 +4783,7 @@
           "price": {
             "description": "The charge for the transcription",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which price is measured",
@@ -5642,7 +5642,7 @@
           "price": {
             "description": "The charge for the transcription",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which price is measured",
@@ -5989,7 +5989,7 @@
           "price": {
             "description": "The total price of the usage",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
@@ -6315,7 +6315,7 @@
           "price": {
             "description": "The total price of the usage",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
@@ -6641,7 +6641,7 @@
           "price": {
             "description": "The total price of the usage",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
@@ -6967,7 +6967,7 @@
           "price": {
             "description": "The total price of the usage",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
@@ -7293,7 +7293,7 @@
           "price": {
             "description": "The total price of the usage",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
@@ -7619,7 +7619,7 @@
           "price": {
             "description": "The total price of the usage",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
@@ -7945,7 +7945,7 @@
           "price": {
             "description": "The total price of the usage",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
@@ -8271,7 +8271,7 @@
           "price": {
             "description": "The total price of the usage",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",
@@ -8597,7 +8597,7 @@
           "price": {
             "description": "The total price of the usage",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency in which `price` is measured",

@@ -76,22 +76,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Account"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_account",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_account",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -190,22 +186,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Address"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -315,22 +307,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Application"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_application",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_application",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -492,22 +480,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Call"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_call",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_call",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -588,31 +572,27 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      form_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       form_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      form_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
+      form_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
       form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
 
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallCallFeedbackSummary"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_call_feedback_summary",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_call_feedback_summary",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -713,22 +693,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallCallRecording"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_call_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_call_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -946,22 +922,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "IncomingPhoneNumber"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_incoming_phone_number",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_incoming_phone_number",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -1069,22 +1041,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_incoming_phone_number_assigned_add_on",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_incoming_phone_number_assigned_add_on",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -1301,22 +1269,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "IncomingPhoneNumberIncomingPhoneNumberLocal"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_incoming_phone_number_local",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_incoming_phone_number_local",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -1533,22 +1497,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "IncomingPhoneNumberIncomingPhoneNumberMobile"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_incoming_phone_number_mobile",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_incoming_phone_number_mobile",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -1765,22 +1725,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "IncomingPhoneNumberIncomingPhoneNumberTollFree"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_incoming_phone_number_toll_free",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_incoming_phone_number_toll_free",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -1908,22 +1864,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Message"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_message",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_message",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -2016,22 +1968,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "MessageMessageFeedback"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_message_feedback",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_message_feedback",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -2104,22 +2052,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "NewKey"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_new_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_new_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -2195,22 +2139,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "NewSigningKey"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_new_signing_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_new_signing_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -2376,22 +2316,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ConferenceParticipant"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_participant",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_participant",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -2516,22 +2452,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallPayments"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_payments",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_payments",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -2611,22 +2543,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Queue"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_queue",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_queue",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -2734,22 +2662,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_auth_calls_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_auth_calls_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -2857,22 +2781,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_auth_calls_ip_access_control_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_auth_calls_ip_access_control_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -2980,22 +2900,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_auth_registrations_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_auth_registrations_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -3094,22 +3010,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipCredentialListSipCredential"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_credential",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_credential",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -3188,22 +3100,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipCredentialList"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_credential_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_credential_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -3311,22 +3219,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipCredentialListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -3455,22 +3359,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomain"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_domain",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_domain",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -3549,22 +3449,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipIpAccessControlList"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_ip_access_control_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_ip_access_control_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -3672,22 +3568,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipIpAccessControlListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_ip_access_control_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_ip_access_control_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -3787,22 +3679,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipIpAccessControlListSipIpAddress"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_sip_ip_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_sip_ip_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -4104,22 +3992,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallSiprec"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_siprec",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_siprec",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -4195,22 +4079,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Token"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_token",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_token",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -4318,22 +4198,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "UsageUsageTrigger"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_usage_trigger",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_usage_trigger",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -4418,22 +4294,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ValidationRequest"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.create_validation_request",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.create_validation_request",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -4517,22 +4389,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -4619,22 +4487,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_application",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_application",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -4721,22 +4585,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_call",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_call",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -4823,22 +4683,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_call_feedback_summary",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_call_feedback_summary",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -4941,22 +4797,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_call_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_call_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -5059,22 +4911,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_conference_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_conference_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -5161,22 +5009,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_connect_app",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_connect_app",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -5263,22 +5107,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_incoming_phone_number",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_incoming_phone_number",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -5381,22 +5221,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_incoming_phone_number_assigned_add_on",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_incoming_phone_number_assigned_add_on",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -5480,22 +5316,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -5598,22 +5430,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_media",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_media",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -5700,22 +5528,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_message",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_message",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -5802,22 +5626,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_outgoing_caller_id",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_outgoing_caller_id",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -5907,22 +5727,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_participant",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_participant",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -6009,22 +5825,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_queue",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_queue",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -6111,22 +5923,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -6229,22 +6037,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_recording_add_on_result",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_recording_add_on_result",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -6363,22 +6167,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_recording_add_on_result_payload",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_recording_add_on_result_payload",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -6478,35 +6278,31 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_recording_transcription",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_recording_transcription",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
-    # @param account_sid [String]
-    # @param sid [String]
+    # @param account_sid [String] 
+    # @param sid [String] 
     # @return [nil]
     def delete_signing_key(*, account_sid : String = @account_sid, sid : String)
       delete_signing_key_with_http_info(account_sid: account_sid, sid: sid)
       nil
     end
 
-    # @param account_sid [String]
-    # @param sid [String]
+    # @param account_sid [String] 
+    # @param sid [String] 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_signing_key_with_http_info(*, account_sid : String = @account_sid, sid : String)
       request = build_delete_signing_key_request(account_sid: account_sid, sid: sid)
@@ -6520,8 +6316,8 @@ module Twilio
       return nil, status_code, headers
     end
 
-    # @param account_sid [String]
-    # @param sid [String]
+    # @param account_sid [String] 
+    # @param sid [String] 
     # @return nil
     def delete_signing_key(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
       request = build_delete_signing_key_request(account_sid: account_sid, sid: sid)
@@ -6577,22 +6373,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_signing_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_signing_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -6695,22 +6487,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_auth_calls_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_auth_calls_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -6813,22 +6601,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_auth_calls_ip_access_control_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_auth_calls_ip_access_control_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -6931,22 +6715,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_auth_registrations_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_auth_registrations_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7049,22 +6829,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_credential",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_credential",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7151,22 +6927,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_credential_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_credential_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7269,22 +7041,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7371,22 +7139,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_domain",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_domain",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7473,22 +7237,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_ip_access_control_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_ip_access_control_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7591,22 +7351,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_ip_access_control_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_ip_access_control_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7709,22 +7465,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_sip_ip_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_sip_ip_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7811,22 +7563,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_transcription",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_transcription",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7910,22 +7658,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = nil
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"DELETE",
-        local_var_path,
-        "DefaultApi.delete_usage_trigger",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"DELETE",
+        path: local_var_path,
+        operation: "DefaultApi.delete_usage_trigger",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -7998,22 +7742,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Account"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_account",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_account",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -8099,22 +7839,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Address"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -8203,22 +7939,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Application"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_application",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_application",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -8307,22 +8039,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "AuthorizedConnectApp"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_authorized_connect_app",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_authorized_connect_app",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -8395,22 +8123,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "AvailablePhoneNumberCountry"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_available_phone_number_country",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_available_phone_number_country",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -8483,22 +8207,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Balance"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_balance",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_balance",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -8587,22 +8307,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Call"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_call",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_call",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -8691,22 +8407,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallCallFeedback"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_call_feedback",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_call_feedback",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -8795,22 +8507,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallCallFeedbackSummary"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_call_feedback_summary",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_call_feedback_summary",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -8912,22 +8620,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallCallNotificationInstance"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_call_notification",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_call_notification",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -9032,22 +8736,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallCallRecording"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_call_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_call_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -9136,22 +8836,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Conference"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_conference",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_conference",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -9256,22 +8952,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ConferenceConferenceRecording"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_conference_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_conference_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -9360,22 +9052,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ConnectApp"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_connect_app",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_connect_app",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -9464,22 +9152,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "IncomingPhoneNumber"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_incoming_phone_number",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_incoming_phone_number",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -9584,22 +9268,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_incoming_phone_number_assigned_add_on",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_incoming_phone_number_assigned_add_on",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -9720,22 +9400,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_incoming_phone_number_assigned_add_on_extension",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_incoming_phone_number_assigned_add_on_extension",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -9821,22 +9497,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Key"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -9941,22 +9613,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "MessageMedia"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_media",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_media",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -10048,22 +9716,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "QueueMember"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_member",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_member",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -10152,22 +9816,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Message"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_message",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_message",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -10256,22 +9916,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "NotificationInstance"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_notification",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_notification",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -10360,22 +10016,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "OutgoingCallerId"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_outgoing_caller_id",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_outgoing_caller_id",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -10467,22 +10119,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ConferenceParticipant"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_participant",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_participant",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -10571,22 +10219,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Queue"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_queue",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_queue",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -10675,22 +10319,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Recording"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -10795,22 +10435,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "RecordingRecordingAddOnResult"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_recording_add_on_result",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_recording_add_on_result",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -10931,22 +10567,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "RecordingRecordingAddOnResultRecordingAddOnResultPayload"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_recording_add_on_result_payload",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_recording_add_on_result_payload",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -11048,22 +10680,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "RecordingRecordingTranscription"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_recording_transcription",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_recording_transcription",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -11152,35 +10780,31 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ShortCode"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_short_code",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_short_code",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
-    # @param account_sid [String]
-    # @param sid [String]
+    # @param account_sid [String] 
+    # @param sid [String] 
     # @return [SigningKey]
     def fetch_signing_key(*, account_sid : String = @account_sid, sid : String)
       data, _status_code, _headers = fetch_signing_key_with_http_info(account_sid: account_sid, sid: sid)
       data
     end
 
-    # @param account_sid [String]
-    # @param sid [String]
+    # @param account_sid [String] 
+    # @param sid [String] 
     # @return [Array<(SigningKey, Integer, Hash)>] SigningKey data, response status code and response headers
     def fetch_signing_key_with_http_info(*, account_sid : String = @account_sid, sid : String)
       request = build_fetch_signing_key_request(account_sid: account_sid, sid: sid)
@@ -11194,8 +10818,8 @@ module Twilio
       return SigningKey.from_nason(data), status_code, headers
     end
 
-    # @param account_sid [String]
-    # @param sid [String]
+    # @param account_sid [String] 
+    # @param sid [String] 
     # @return nil
     def fetch_signing_key(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
       request = build_fetch_signing_key_request(account_sid: account_sid, sid: sid)
@@ -11253,22 +10877,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SigningKey"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_signing_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_signing_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -11373,22 +10993,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_auth_calls_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_auth_calls_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -11493,22 +11109,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_auth_calls_ip_access_control_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_auth_calls_ip_access_control_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -11613,22 +11225,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_auth_registrations_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_auth_registrations_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -11733,22 +11341,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipCredentialListSipCredential"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_credential",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_credential",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -11837,22 +11441,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipCredentialList"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_credential_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_credential_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -11957,22 +11557,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipCredentialListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12061,22 +11657,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomain"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_domain",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_domain",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12165,22 +11757,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipIpAccessControlList"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_ip_access_control_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_ip_access_control_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12285,22 +11873,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomainSipIpAccessControlListMapping"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_ip_access_control_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_ip_access_control_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12405,22 +11989,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipIpAccessControlListSipIpAddress"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_sip_ip_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_sip_ip_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12509,22 +12089,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Transcription"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_transcription",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_transcription",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12613,22 +12189,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "UsageUsageTrigger"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.fetch_usage_trigger",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.fetch_usage_trigger",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12700,22 +12272,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAccountResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_account",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_account",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12797,22 +12365,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAddressResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12895,22 +12459,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListApplicationResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_application",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_application",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -12992,22 +12552,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAuthorizedConnectAppResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_authorized_connect_app",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_authorized_connect_app",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -13086,22 +12642,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAvailablePhoneNumberCountryResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_available_phone_number_country",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_available_phone_number_country",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -13201,22 +12753,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAvailablePhoneNumberLocalResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_available_phone_number_local",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_available_phone_number_local",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -13316,22 +12864,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAvailablePhoneNumberMachineToMachineResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_available_phone_number_machine_to_machine",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_available_phone_number_machine_to_machine",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -13431,22 +12975,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAvailablePhoneNumberMobileResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_available_phone_number_mobile",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_available_phone_number_mobile",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -13546,22 +13086,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAvailablePhoneNumberNationalResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_available_phone_number_national",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_available_phone_number_national",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -13661,22 +13197,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAvailablePhoneNumberSharedCostResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_available_phone_number_shared_cost",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_available_phone_number_shared_cost",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -13776,22 +13308,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAvailablePhoneNumberTollFreeResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_available_phone_number_toll_free",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_available_phone_number_toll_free",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -13891,22 +13419,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListAvailablePhoneNumberVoipResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_available_phone_number_voip",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_available_phone_number_voip",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -13996,12 +13520,12 @@ module Twilio
       query_params["From"] = from.to_s if !from.nil? && !from.null?
       query_params["ParentCallSid"] = parent_call_sid.to_s if !parent_call_sid.nil? && !parent_call_sid.null?
       query_params["Status"] = status.to_s if !status.nil? && !status.null?
-      query_params["StartTime"] = start_time.to_s if !start_time.nil? && !start_time.null?
-      query_params["StartTime<"] = start_time2.to_s if !start_time2.nil? && !start_time2.null?
-      query_params["StartTime>"] = start_time3.to_s if !start_time3.nil? && !start_time3.null?
-      query_params["EndTime"] = end_time.to_s if !end_time.nil? && !end_time.null?
-      query_params["EndTime<"] = end_time2.to_s if !end_time2.nil? && !end_time2.null?
-      query_params["EndTime>"] = end_time3.to_s if !end_time3.nil? && !end_time3.null?
+      query_params["StartTime"] = Time::Format::ISO_8601_DATE_TIME.format(start_time) if !start_time.nil? && !start_time.null?
+      query_params["StartTime<"] = Time::Format::ISO_8601_DATE_TIME.format(start_time2) if !start_time2.nil? && !start_time2.null?
+      query_params["StartTime>"] = Time::Format::ISO_8601_DATE_TIME.format(start_time3) if !start_time3.nil? && !start_time3.null?
+      query_params["EndTime"] = Time::Format::ISO_8601_DATE_TIME.format(end_time) if !end_time.nil? && !end_time.null?
+      query_params["EndTime<"] = Time::Format::ISO_8601_DATE_TIME.format(end_time2) if !end_time2.nil? && !end_time2.null?
+      query_params["EndTime>"] = Time::Format::ISO_8601_DATE_TIME.format(end_time3) if !end_time3.nil? && !end_time3.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -14015,22 +13539,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListCallResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_call",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_call",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -14128,22 +13648,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListCallEventResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_call_event",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_call_event",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -14226,9 +13742,9 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Log"] = log.to_s if !log.nil? && !log.null?
-      query_params["MessageDate"] = message_date.to_s if !message_date.nil? && !message_date.null?
-      query_params["MessageDate<"] = message_date2.to_s if !message_date2.nil? && !message_date2.null?
-      query_params["MessageDate>"] = message_date3.to_s if !message_date3.nil? && !message_date3.null?
+      query_params["MessageDate"] = Time::Format::ISO_8601_DATE.format(message_date) if !message_date.nil? && !message_date.null?
+      query_params["MessageDate<"] = Time::Format::ISO_8601_DATE.format(message_date2) if !message_date2.nil? && !message_date2.null?
+      query_params["MessageDate>"] = Time::Format::ISO_8601_DATE.format(message_date3) if !message_date3.nil? && !message_date3.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -14242,22 +13758,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListCallNotificationResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_call_notification",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_call_notification",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -14342,9 +13854,9 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, String).new
-      query_params["DateCreated"] = date_created.to_s if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = date_created2.to_s if !date_created2.nil? && !date_created2.null?
-      query_params["DateCreated>"] = date_created3.to_s if !date_created3.nil? && !date_created3.null?
+      query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil? && !date_created.null?
+      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created2) if !date_created2.nil? && !date_created2.null?
+      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created3) if !date_created3.nil? && !date_created3.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -14358,22 +13870,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListCallRecordingResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_call_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_call_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -14446,12 +13954,12 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, String).new
-      query_params["DateCreated"] = date_created.to_s if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = date_created2.to_s if !date_created2.nil? && !date_created2.null?
-      query_params["DateCreated>"] = date_created3.to_s if !date_created3.nil? && !date_created3.null?
-      query_params["DateUpdated"] = date_updated.to_s if !date_updated.nil? && !date_updated.null?
-      query_params["DateUpdated<"] = date_updated2.to_s if !date_updated2.nil? && !date_updated2.null?
-      query_params["DateUpdated>"] = date_updated3.to_s if !date_updated3.nil? && !date_updated3.null?
+      query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil? && !date_created.null?
+      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created2) if !date_created2.nil? && !date_created2.null?
+      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created3) if !date_created3.nil? && !date_created3.null?
+      query_params["DateUpdated"] = Time::Format::ISO_8601_DATE.format(date_updated) if !date_updated.nil? && !date_updated.null?
+      query_params["DateUpdated<"] = Time::Format::ISO_8601_DATE.format(date_updated2) if !date_updated2.nil? && !date_updated2.null?
+      query_params["DateUpdated>"] = Time::Format::ISO_8601_DATE.format(date_updated3) if !date_updated3.nil? && !date_updated3.null?
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["Status"] = status.to_s if !status.nil? && !status.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
@@ -14467,22 +13975,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListConferenceResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_conference",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_conference",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -14567,9 +14071,9 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, String).new
-      query_params["DateCreated"] = date_created.to_s if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = date_created2.to_s if !date_created2.nil? && !date_created2.null?
-      query_params["DateCreated>"] = date_created3.to_s if !date_created3.nil? && !date_created3.null?
+      query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil? && !date_created.null?
+      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created2) if !date_created2.nil? && !date_created2.null?
+      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created3) if !date_created3.nil? && !date_created3.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -14583,22 +14087,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListConferenceRecordingResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_conference_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_conference_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -14680,22 +14180,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListConnectAppResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_connect_app",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_connect_app",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -14790,22 +14286,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListDependentPhoneNumberResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_dependent_phone_number",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_dependent_phone_number",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -14891,22 +14383,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListIncomingPhoneNumberResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_incoming_phone_number",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_incoming_phone_number",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15004,22 +14492,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListIncomingPhoneNumberAssignedAddOnResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_incoming_phone_number_assigned_add_on",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_incoming_phone_number_assigned_add_on",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15133,22 +14617,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListIncomingPhoneNumberAssignedAddOnExtensionResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_incoming_phone_number_assigned_add_on_extension",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_incoming_phone_number_assigned_add_on_extension",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15231,22 +14711,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListIncomingPhoneNumberLocalResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_incoming_phone_number_local",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_incoming_phone_number_local",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15329,22 +14805,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListIncomingPhoneNumberMobileResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_incoming_phone_number_mobile",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_incoming_phone_number_mobile",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15427,22 +14899,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListIncomingPhoneNumberTollFreeResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_incoming_phone_number_toll_free",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_incoming_phone_number_toll_free",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15521,22 +14989,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListKeyResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15621,9 +15085,9 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, String).new
-      query_params["DateCreated"] = date_created.to_s if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = date_created2.to_s if !date_created2.nil? && !date_created2.null?
-      query_params["DateCreated>"] = date_created3.to_s if !date_created3.nil? && !date_created3.null?
+      query_params["DateCreated"] = Time::Format::ISO_8601_DATE_TIME.format(date_created) if !date_created.nil? && !date_created.null?
+      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE_TIME.format(date_created2) if !date_created2.nil? && !date_created2.null?
+      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE_TIME.format(date_created3) if !date_created3.nil? && !date_created3.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -15637,22 +15101,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListMediaResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_media",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_media",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15750,22 +15210,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListMemberResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_member",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_member",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15836,9 +15292,9 @@ module Twilio
       query_params = Hash(String, String).new
       query_params["To"] = to.to_s if !to.nil? && !to.null?
       query_params["From"] = from.to_s if !from.nil? && !from.null?
-      query_params["DateSent"] = date_sent.to_s if !date_sent.nil? && !date_sent.null?
-      query_params["DateSent<"] = date_sent2.to_s if !date_sent2.nil? && !date_sent2.null?
-      query_params["DateSent>"] = date_sent3.to_s if !date_sent3.nil? && !date_sent3.null?
+      query_params["DateSent"] = Time::Format::ISO_8601_DATE_TIME.format(date_sent) if !date_sent.nil? && !date_sent.null?
+      query_params["DateSent<"] = Time::Format::ISO_8601_DATE_TIME.format(date_sent2) if !date_sent2.nil? && !date_sent2.null?
+      query_params["DateSent>"] = Time::Format::ISO_8601_DATE_TIME.format(date_sent3) if !date_sent3.nil? && !date_sent3.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -15852,22 +15308,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListMessageResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_message",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_message",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -15937,9 +15389,9 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Log"] = log.to_s if !log.nil? && !log.null?
-      query_params["MessageDate"] = message_date.to_s if !message_date.nil? && !message_date.null?
-      query_params["MessageDate<"] = message_date2.to_s if !message_date2.nil? && !message_date2.null?
-      query_params["MessageDate>"] = message_date3.to_s if !message_date3.nil? && !message_date3.null?
+      query_params["MessageDate"] = Time::Format::ISO_8601_DATE.format(message_date) if !message_date.nil? && !message_date.null?
+      query_params["MessageDate<"] = Time::Format::ISO_8601_DATE.format(message_date2) if !message_date2.nil? && !message_date2.null?
+      query_params["MessageDate>"] = Time::Format::ISO_8601_DATE.format(message_date3) if !message_date3.nil? && !message_date3.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -15953,22 +15405,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListNotificationResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_notification",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_notification",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -16052,22 +15500,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListOutgoingCallerIdResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_outgoing_caller_id",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_outgoing_caller_id",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -16168,22 +15612,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListParticipantResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_participant",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_participant",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -16265,22 +15705,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListQueueResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_queue",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_queue",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -16375,9 +15811,9 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, String).new
-      query_params["DateCreated"] = date_created.to_s if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = date_created2.to_s if !date_created2.nil? && !date_created2.null?
-      query_params["DateCreated>"] = date_created3.to_s if !date_created3.nil? && !date_created3.null?
+      query_params["DateCreated"] = Time::Format::ISO_8601_DATE_TIME.format(date_created) if !date_created.nil? && !date_created.null?
+      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE_TIME.format(date_created2) if !date_created2.nil? && !date_created2.null?
+      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE_TIME.format(date_created3) if !date_created3.nil? && !date_created3.null?
       query_params["CallSid"] = call_sid.to_s if !call_sid.nil? && !call_sid.null?
       query_params["ConferenceSid"] = conference_sid.to_s if !conference_sid.nil? && !conference_sid.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
@@ -16393,22 +15829,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListRecordingResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -16506,22 +15938,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListRecordingAddOnResultResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_recording_add_on_result",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_recording_add_on_result",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -16635,22 +16063,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListRecordingAddOnResultPayloadResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_recording_add_on_result_payload",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_recording_add_on_result_payload",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -16745,22 +16169,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListRecordingTranscriptionResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_recording_transcription",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_recording_transcription",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -16844,33 +16264,29 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListShortCodeResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_short_code",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_short_code",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
-    # @param account_sid [String]
+    # @param account_sid [String] 
     # @return [ListSigningKeyResponse]
     def list_signing_key(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_signing_key_with_http_info(account_sid: account_sid, page_size: page_size)
       data
     end
 
-    # @param account_sid [String]
+    # @param account_sid [String] 
     # @return [Array<(ListSigningKeyResponse, Integer, Hash)>] ListSigningKeyResponse data, response status code and response headers
     def list_signing_key_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_list_signing_key_request(account_sid: account_sid, page_size: page_size)
@@ -16884,7 +16300,7 @@ module Twilio
       return ListSigningKeyResponse.from_nason(data), status_code, headers
     end
 
-    # @param account_sid [String]
+    # @param account_sid [String] 
     # @return nil
     def list_signing_key(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       request = build_list_signing_key_request(account_sid: account_sid, page_size: page_size)
@@ -16938,22 +16354,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSigningKeyResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_signing_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_signing_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -17051,22 +16463,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipAuthCallsCredentialListMappingResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_auth_calls_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_auth_calls_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -17164,22 +16572,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipAuthCallsIpAccessControlListMappingResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_auth_calls_ip_access_control_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_auth_calls_ip_access_control_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -17277,22 +16681,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipAuthRegistrationsCredentialListMappingResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_auth_registrations_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_auth_registrations_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -17390,22 +16790,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipCredentialResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_credential",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_credential",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -17487,22 +16883,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipCredentialListResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_credential_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_credential_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -17600,22 +16992,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipCredentialListMappingResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_credential_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_credential_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -17697,22 +17085,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipDomainResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_domain",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_domain",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -17794,22 +17178,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipIpAccessControlListResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_ip_access_control_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_ip_access_control_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -17907,22 +17287,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipIpAccessControlListMappingResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_ip_access_control_list_mapping",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_ip_access_control_list_mapping",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18020,22 +17396,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListSipIpAddressResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_sip_ip_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_sip_ip_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18117,22 +17489,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListTranscriptionResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_transcription",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_transcription",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18206,8 +17574,8 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -18222,22 +17590,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageRecordResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_record",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_record",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18308,8 +17672,8 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -18324,22 +17688,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageRecordAllTimeResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_record_all_time",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_record_all_time",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18410,8 +17770,8 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -18426,22 +17786,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageRecordDailyResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_record_daily",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_record_daily",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18512,8 +17868,8 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -18528,22 +17884,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageRecordLastMonthResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_record_last_month",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_record_last_month",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18614,8 +17966,8 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -18630,22 +17982,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageRecordMonthlyResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_record_monthly",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_record_monthly",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18716,8 +18064,8 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -18732,22 +18080,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageRecordThisMonthResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_record_this_month",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_record_this_month",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18818,8 +18162,8 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -18834,22 +18178,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageRecordTodayResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_record_today",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_record_today",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -18920,8 +18260,8 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -18936,22 +18276,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageRecordYearlyResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_record_yearly",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_record_yearly",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -19022,8 +18358,8 @@ module Twilio
       # query parameters
       query_params = Hash(String, String).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = start_date.to_s if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = end_date.to_s if !end_date.nil? && !end_date.null?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
       query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -19038,22 +18374,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageRecordYesterdayResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_record_yesterday",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_record_yesterday",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -19150,22 +18482,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ListUsageTriggerResponse"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"GET",
-        local_var_path,
-        "DefaultApi.list_usage_trigger",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"GET",
+        path: local_var_path,
+        operation: "DefaultApi.list_usage_trigger",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -19246,22 +18574,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Account"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_account",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_account",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -19357,22 +18681,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Address"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -19498,22 +18818,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Application"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_application",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_application",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -19629,22 +18945,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Call"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_call",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_call",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -19728,22 +19040,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallCallFeedback"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_call_feedback",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_call_feedback",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -19847,22 +19155,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallCallRecording"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_call_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_call_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -19948,22 +19252,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Conference"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_conference",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_conference",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -20067,22 +19367,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ConferenceConferenceRecording"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_conference_recording",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_conference_recording",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -20189,22 +19485,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ConnectApp"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_connect_app",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_connect_app",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -20450,22 +19742,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "IncomingPhoneNumber"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_incoming_phone_number",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_incoming_phone_number",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -20554,22 +19842,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Key"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -20672,22 +19956,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "QueueMember"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_member",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_member",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -20779,22 +20059,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Message"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_message",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_message",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -20886,22 +20162,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "OutgoingCallerId"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_outgoing_caller_id",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_outgoing_caller_id",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -21032,22 +20304,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ConferenceParticipant"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_participant",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_participant",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -21172,22 +20440,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallPayments"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_payments",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_payments",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -21280,22 +20544,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "Queue"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_queue",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_queue",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -21400,35 +20660,31 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "ShortCode"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_short_code",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_short_code",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
-    # @param account_sid [String]
-    # @param sid [String]
+    # @param account_sid [String] 
+    # @param sid [String] 
     # @return [SigningKey]
     def update_signing_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
       data, _status_code, _headers = update_signing_key_with_http_info(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
       data
     end
 
-    # @param account_sid [String]
-    # @param sid [String]
+    # @param account_sid [String] 
+    # @param sid [String] 
     # @return [Array<(SigningKey, Integer, Hash)>] SigningKey data, response status code and response headers
     def update_signing_key_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
       request = build_update_signing_key_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
@@ -21442,8 +20698,8 @@ module Twilio
       return SigningKey.from_nason(data), status_code, headers
     end
 
-    # @param account_sid [String]
-    # @param sid [String]
+    # @param account_sid [String] 
+    # @param sid [String] 
     # @return nil
     def update_signing_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, &block : Crest::Response ->)
       request = build_update_signing_key_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
@@ -21504,22 +20760,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SigningKey"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_signing_key",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_signing_key",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -21627,22 +20879,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipCredentialListSipCredential"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_sip_credential",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_sip_credential",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -21737,22 +20985,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipCredentialList"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_sip_credential_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_sip_credential_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -21894,22 +21138,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipDomain"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_sip_domain",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_sip_domain",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -22004,22 +21244,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipIpAccessControlList"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_sip_ip_access_control_list",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_sip_ip_access_control_list",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -22129,22 +21365,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "SipSipIpAccessControlListSipIpAddress"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_sip_ip_address",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_sip_ip_address",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -22247,22 +21479,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "CallSiprec"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_siprec",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_siprec",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
 
@@ -22360,22 +21588,18 @@ module Twilio
       # http body (model)
       post_body = nil
 
-      # return_type
-      return_type = "UsageUsageTrigger"
-
       # auth_names
       auth_names = ["accountSid_authToken"]
 
       @api_client.build_api_request(
-        :"POST",
-        local_var_path,
-        "DefaultApi.update_usage_trigger",
-        return_type,
-        post_body,
-        auth_names,
-        header_params,
-        query_params,
-        form_params
+        http_method: :"POST",
+        path: local_var_path,
+        operation: "DefaultApi.update_usage_trigger",
+        post_body: post_body,
+        auth_names: auth_names,
+        header_params: header_params,
+        query_params: query_params,
+        form_params: form_params
       )
     end
   end

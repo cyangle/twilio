@@ -38,7 +38,7 @@ module Twilio
     property date_updated : String? | Null
 
     # The latest feedback entry date in the summary
-    @[NASON::Field(key: "end_date", type: Time? | Null, nillable: true)]
+    @[NASON::Field(key: "end_date", type: Time? | Null, converter: Time::Format.new("%Y-%m-%d"), nillable: true)]
     property end_date : Time? | Null
 
     # Whether the feedback summary includes subaccounts
@@ -66,7 +66,7 @@ module Twilio
     property sid : String? | Null
 
     # The earliest feedback entry date in the summary
-    @[NASON::Field(key: "start_date", type: Time? | Null, nillable: true)]
+    @[NASON::Field(key: "start_date", type: Time? | Null, converter: Time::Format.new("%Y-%m-%d"), nillable: true)]
     property start_date : Time? | Null
 
     # The status of the feedback summary

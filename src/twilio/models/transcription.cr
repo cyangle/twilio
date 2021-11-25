@@ -38,8 +38,8 @@ module Twilio
     property duration : String? | Null
 
     # The charge for the transcription
-    @[NASON::Field(key: "price", type: Float64? | Null, nillable: true)]
-    property price : Float64? | Null
+    @[NASON::Field(key: "price", type: String? | Null, nillable: true)]
+    property price : String? | Null
 
     # The currency in which price is measured
     @[NASON::Field(key: "price_unit", type: String? | Null, nillable: true)]
@@ -94,7 +94,7 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @duration : String? | Null = nil, @price : Float64? | Null = nil, @price_unit : String? | Null = nil, @recording_sid : String? | Null = nil, @sid : String? | Null = nil, @status : String? | Null = nil, @transcription_text : String? | Null = nil, @_type : String? | Null = nil, @uri : String? | Null = nil)
+    def initialize(*, @account_sid : String? | Null = nil, @api_version : String? | Null = nil, @date_created : String? | Null = nil, @date_updated : String? | Null = nil, @duration : String? | Null = nil, @price : String? | Null = nil, @price_unit : String? | Null = nil, @recording_sid : String? | Null = nil, @sid : String? | Null = nil, @status : String? | Null = nil, @transcription_text : String? | Null = nil, @_type : String? | Null = nil, @uri : String? | Null = nil)
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
