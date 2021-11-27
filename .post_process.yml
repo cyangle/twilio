@@ -14,6 +14,10 @@ tasks:
         pattern: '\*, account_sid : String'
         new_value: '*, account_sid : String = @account_sid'
       -
+        name: 'Update account_sid2 param'
+        pattern: ', account_sid2 : String\? = nil,'
+        new_value: ', account_sid2 : String? = @account_sid,'
+      -
         name: 'Correct datetime formatting'
         pattern: 'Time::Format::RFC_3339'
         new_value: 'Time::Format::RFC_2822'
@@ -26,3 +30,75 @@ tasks:
           \     @api_client = api_client\n
           \     @account_sid = api_client.config.username.not_nil!"
         multi_line: true
+      -
+        name: 'Update start_time2'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'start_time2'
+        new_value: 'start_time_before'
+      -
+        name: 'Update start_time3'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'start_time3'
+        new_value: 'start_time_after'
+      -
+        name: 'Update end_time2'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'end_time2'
+        new_value: 'end_time_before'
+      -
+        name: 'Update end_time3'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'end_time3'
+        new_value: 'end_time_after'
+      -
+        name: 'Update message_date2'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'message_date2'
+        new_value: 'message_date_before'
+      -
+        name: 'Update message_date3'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'message_date3'
+        new_value: 'message_date_after'
+      -
+        name: 'Update date_sent2'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'date_sent2'
+        new_value: 'date_sent_before'
+      -
+        name: 'Update date_sent3'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'date_sent3'
+        new_value: 'date_sent_after'
+      -
+        name: 'Update date_created2'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'date_created2'
+        new_value: 'date_created_before'
+      -
+        name: 'Update date_created3'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'date_created3'
+        new_value: 'date_created_after'
+      -
+        name: 'Update date_updated2'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'date_updated2'
+        new_value: 'date_updated_before'
+      -
+        name: 'Update date_updated3'
+        file_glob: './src/twilio/api/*cr'
+        pattern: 'date_updated3'
+        new_value: 'date_updated_after'
+  - name: 'Update default_api_spec.cr'
+    file_glob: './spec/api/default_api_spec.cr'
+    changes:
+      -
+        name: 'Correct instance test case'
+        pattern: '    it "should create an instance of DefaultApi" do'
+        new_value: "
+          \   it \"should create an instance of DefaultApi\" do\n
+          \     Twilio.configure do |config|\n
+          \       config.username = \"TWILIO_ACCOUNT_SID\"\n
+          \       config.password = \"TWILIO_AUTH_TOKEN\"\n
+          \     end\n"

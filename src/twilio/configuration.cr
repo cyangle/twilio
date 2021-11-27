@@ -241,1553 +241,1553 @@ module Twilio
       {
         "DefaultApi.create_account" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_application" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_call" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_call_feedback_summary" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_call_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_incoming_phone_number" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_incoming_phone_number_assigned_add_on" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_incoming_phone_number_local" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_incoming_phone_number_mobile" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_incoming_phone_number_toll_free" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_message" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_message_feedback" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_new_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_new_signing_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_participant" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_payments" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_queue" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_auth_calls_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_auth_calls_ip_access_control_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_auth_registrations_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_credential" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_credential_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_domain" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_ip_access_control_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_ip_access_control_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_sip_ip_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_siprec" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_token" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_usage_trigger" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.create_validation_request" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_application" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_call" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_call_feedback_summary" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_call_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_conference_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_connect_app" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_incoming_phone_number" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_incoming_phone_number_assigned_add_on" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_media" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_message" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_outgoing_caller_id" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_participant" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_queue" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_recording_add_on_result" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_recording_add_on_result_payload" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_recording_transcription" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_signing_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_auth_calls_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_auth_calls_ip_access_control_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_auth_registrations_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_credential" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_credential_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_domain" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_ip_access_control_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_ip_access_control_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_sip_ip_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_transcription" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.delete_usage_trigger" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_account" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_application" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_authorized_connect_app" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_available_phone_number_country" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_balance" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_call" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_call_feedback" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_call_feedback_summary" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_call_notification" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_call_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_conference" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_conference_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_connect_app" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_incoming_phone_number" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_incoming_phone_number_assigned_add_on" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_incoming_phone_number_assigned_add_on_extension" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_media" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_member" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_message" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_notification" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_outgoing_caller_id" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_participant" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_queue" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_recording_add_on_result" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_recording_add_on_result_payload" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_recording_transcription" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_short_code" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_signing_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_auth_calls_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_auth_calls_ip_access_control_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_auth_registrations_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_credential" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_credential_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_domain" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_ip_access_control_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_ip_access_control_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_sip_ip_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_transcription" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.fetch_usage_trigger" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_account" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_application" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_authorized_connect_app" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_available_phone_number_country" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_available_phone_number_local" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_available_phone_number_machine_to_machine" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_available_phone_number_mobile" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_available_phone_number_national" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_available_phone_number_shared_cost" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_available_phone_number_toll_free" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_available_phone_number_voip" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_call" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_call_event" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_call_notification" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_call_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_conference" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_conference_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_connect_app" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_dependent_phone_number" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_incoming_phone_number" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_incoming_phone_number_assigned_add_on" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_incoming_phone_number_assigned_add_on_extension" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_incoming_phone_number_local" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_incoming_phone_number_mobile" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_incoming_phone_number_toll_free" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_media" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_member" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_message" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_notification" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_outgoing_caller_id" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_participant" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_queue" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_recording_add_on_result" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_recording_add_on_result_payload" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_recording_transcription" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_short_code" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_signing_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_auth_calls_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_auth_calls_ip_access_control_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_auth_registrations_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_credential" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_credential_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_credential_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_domain" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_ip_access_control_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_ip_access_control_list_mapping" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_sip_ip_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_transcription" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_record" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_record_all_time" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_record_daily" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_record_last_month" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_record_monthly" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_record_this_month" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_record_today" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_record_yearly" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_record_yesterday" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.list_usage_trigger" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_account" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_application" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_call" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_call_feedback" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_call_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_conference" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_conference_recording" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_connect_app" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_incoming_phone_number" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_member" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_message" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_outgoing_caller_id" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_participant" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_payments" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_queue" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_short_code" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_signing_key" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_sip_credential" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_sip_credential_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_sip_domain" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_sip_ip_access_control_list" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_sip_ip_address" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_siprec" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
       {
         "DefaultApi.update_usage_trigger" => [
           {
-          "url" => "https://api.twilio.com",
-          "description" => "No description provided",
-          }
+            "url"         => "https://api.twilio.com",
+            "description" => "No description provided",
+          },
         ],
       }
     end
