@@ -61,26 +61,62 @@ api = Twilio::DefaultApi.new
 
 #### List phone calls
 
+List all phone calls
 ```crystal
 api.list_call
 ```
 
+List phone calls with filters
+```crystal
+api.list_call(
+  to: "+12345678901",
+  from: "+19876543210",
+  start_time_before: 2.days.ago,
+  end_time_after: 50.days.ago,
+  page_size: 50
+)
+```
+
 #### List text messages
 
+List all messages
 ```crystal
 api.list_message
+```
+
+List messages with filters
+```crystal
+api.list_message(
+  to: "+12345678901",
+  from: "+19876543210",
+  date_sent_before: 2.days.ago
+  date_sent_after: 15.days.ago,
+  page_size: 50
+)
 ```
 
 #### Send text messages
 
 ```crystal
-api.create_message(to: "+12345678901", from: "+19876543210", body: "Hello from Twilio!")
+api.create_message(
+  to: "+12345678901",
+  from: "+19876543210",
+  body: "Hello from Twilio!",
+  status_callback: "https://myapp.example/message/status_update"
+)
 ```
 
 #### Make outbound phone calls
 
 ```crystal
-api.create_call(to: "+12345678901", from: "+19876543210", twiml: "<Response><Say>Hello from Twilio!</Say></Response>")
+api.create_call(
+  to: "+12345678901",
+  from: "+19876543210",
+  status_callback: "https://myapp.example/phone_call/status_update",
+  status_callback_method: "GET",
+  status_callback_event: ["initiated", "ringing", "completed", "answered"],
+  twiml: "<Response><Say>Hello from Twilio!</Say></Response>"
+)
 ```
 
 ## Development
