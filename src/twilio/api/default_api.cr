@@ -30,7 +30,7 @@ module Twilio
     # Create a new Twilio Subaccount from the account making the request
     # @return [Array<(Account, Integer, Hash)>] Account data, response status code and response headers
     def create_account_with_http_info(*, friendly_name : String? = nil)
-      request = build_create_account_request(friendly_name: friendly_name)
+      request = build_api_request_for_create_account(friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -44,7 +44,7 @@ module Twilio
     # Create a new Twilio Subaccount from the account making the request
     # @return nil
     def create_account(*, friendly_name : String? = nil, &block : Crest::Response ->)
-      request = build_create_account_request(friendly_name: friendly_name)
+      request = build_api_request_for_create_account(friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -52,7 +52,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_account_request(*, friendly_name : String? = nil) : Crest::Request
+    def build_api_request_for_create_account(*, friendly_name : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_account ..." }
       end
@@ -113,7 +113,7 @@ module Twilio
     # @param street [String] The number and street address of the new address.
     # @return [Array<(Address, Integer, Hash)>] Address data, response status code and response headers
     def create_address_with_http_info(*, account_sid : String = @account_sid, city : String, customer_name : String, iso_country : String, postal_code : String, region : String, street : String, auto_correct_address : Bool? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil)
-      request = build_create_address_request(account_sid: account_sid, city: city, customer_name: customer_name, iso_country: iso_country, postal_code: postal_code, region: region, street: street, auto_correct_address: auto_correct_address, emergency_enabled: emergency_enabled, friendly_name: friendly_name)
+      request = build_api_request_for_create_address(account_sid: account_sid, city: city, customer_name: customer_name, iso_country: iso_country, postal_code: postal_code, region: region, street: street, auto_correct_address: auto_correct_address, emergency_enabled: emergency_enabled, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -133,7 +133,7 @@ module Twilio
     # @param street [String] The number and street address of the new address.
     # @return nil
     def create_address(*, account_sid : String = @account_sid, city : String, customer_name : String, iso_country : String, postal_code : String, region : String, street : String, auto_correct_address : Bool? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil, &block : Crest::Response ->)
-      request = build_create_address_request(account_sid: account_sid, city: city, customer_name: customer_name, iso_country: iso_country, postal_code: postal_code, region: region, street: street, auto_correct_address: auto_correct_address, emergency_enabled: emergency_enabled, friendly_name: friendly_name)
+      request = build_api_request_for_create_address(account_sid: account_sid, city: city, customer_name: customer_name, iso_country: iso_country, postal_code: postal_code, region: region, street: street, auto_correct_address: auto_correct_address, emergency_enabled: emergency_enabled, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -141,7 +141,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_address_request(*, account_sid : String = @account_sid, city : String, customer_name : String, iso_country : String, postal_code : String, region : String, street : String, auto_correct_address : Bool? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil) : Crest::Request
+    def build_api_request_for_create_address(*, account_sid : String = @account_sid, city : String, customer_name : String, iso_country : String, postal_code : String, region : String, street : String, auto_correct_address : Bool? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_address ..." }
       end
@@ -213,7 +213,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @return [Array<(Application, Integer, Hash)>] Application data, response status code and response headers
     def create_application_with_http_info(*, account_sid : String = @account_sid, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil)
-      request = build_create_application_request(account_sid: account_sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
+      request = build_api_request_for_create_application(account_sid: account_sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -228,7 +228,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @return nil
     def create_application(*, account_sid : String = @account_sid, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
-      request = build_create_application_request(account_sid: account_sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
+      request = build_api_request_for_create_application(account_sid: account_sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
 
       request.execute do |response|
         block.call(response)
@@ -236,7 +236,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_application_request(*, account_sid : String = @account_sid, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil) : Crest::Request
+    def build_api_request_for_create_application(*, account_sid : String = @account_sid, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_application ..." }
       end
@@ -338,7 +338,7 @@ module Twilio
     # @param to [String] The phone number, SIP address, or client identifier to call.
     # @return [Array<(Call, Integer, Hash)>] Call data, response status code and response headers
     def create_call_with_http_info(*, account_sid : String = @account_sid, from : String, to : String, application_sid : String? = nil, async_amd : String? = nil, async_amd_status_callback : String? = nil, async_amd_status_callback_method : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_token : String? = nil, caller_id : String? = nil, fallback_method : String? = nil, fallback_url : String? = nil, machine_detection : String? = nil, machine_detection_silence_timeout : Int32? = nil, machine_detection_speech_end_threshold : Int32? = nil, machine_detection_speech_threshold : Int32? = nil, machine_detection_timeout : Int32? = nil, method : String? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, send_digits : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, trim : String? = nil, twiml : String? = nil, url : String? = nil)
-      request = build_create_call_request(account_sid: account_sid, from: from, to: to, application_sid: application_sid, async_amd: async_amd, async_amd_status_callback: async_amd_status_callback, async_amd_status_callback_method: async_amd_status_callback_method, byoc: byoc, call_reason: call_reason, call_token: call_token, caller_id: caller_id, fallback_method: fallback_method, fallback_url: fallback_url, machine_detection: machine_detection, machine_detection_silence_timeout: machine_detection_silence_timeout, machine_detection_speech_end_threshold: machine_detection_speech_end_threshold, machine_detection_speech_threshold: machine_detection_speech_threshold, machine_detection_timeout: machine_detection_timeout, method: method, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, send_digits: send_digits, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, trim: trim, twiml: twiml, url: url)
+      request = build_api_request_for_create_call(account_sid: account_sid, from: from, to: to, application_sid: application_sid, async_amd: async_amd, async_amd_status_callback: async_amd_status_callback, async_amd_status_callback_method: async_amd_status_callback_method, byoc: byoc, call_reason: call_reason, call_token: call_token, caller_id: caller_id, fallback_method: fallback_method, fallback_url: fallback_url, machine_detection: machine_detection, machine_detection_silence_timeout: machine_detection_silence_timeout, machine_detection_speech_end_threshold: machine_detection_speech_end_threshold, machine_detection_speech_threshold: machine_detection_speech_threshold, machine_detection_timeout: machine_detection_timeout, method: method, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, send_digits: send_digits, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, trim: trim, twiml: twiml, url: url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -355,7 +355,7 @@ module Twilio
     # @param to [String] The phone number, SIP address, or client identifier to call.
     # @return nil
     def create_call(*, account_sid : String = @account_sid, from : String, to : String, application_sid : String? = nil, async_amd : String? = nil, async_amd_status_callback : String? = nil, async_amd_status_callback_method : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_token : String? = nil, caller_id : String? = nil, fallback_method : String? = nil, fallback_url : String? = nil, machine_detection : String? = nil, machine_detection_silence_timeout : Int32? = nil, machine_detection_speech_end_threshold : Int32? = nil, machine_detection_speech_threshold : Int32? = nil, machine_detection_timeout : Int32? = nil, method : String? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, send_digits : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, trim : String? = nil, twiml : String? = nil, url : String? = nil, &block : Crest::Response ->)
-      request = build_create_call_request(account_sid: account_sid, from: from, to: to, application_sid: application_sid, async_amd: async_amd, async_amd_status_callback: async_amd_status_callback, async_amd_status_callback_method: async_amd_status_callback_method, byoc: byoc, call_reason: call_reason, call_token: call_token, caller_id: caller_id, fallback_method: fallback_method, fallback_url: fallback_url, machine_detection: machine_detection, machine_detection_silence_timeout: machine_detection_silence_timeout, machine_detection_speech_end_threshold: machine_detection_speech_end_threshold, machine_detection_speech_threshold: machine_detection_speech_threshold, machine_detection_timeout: machine_detection_timeout, method: method, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, send_digits: send_digits, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, trim: trim, twiml: twiml, url: url)
+      request = build_api_request_for_create_call(account_sid: account_sid, from: from, to: to, application_sid: application_sid, async_amd: async_amd, async_amd_status_callback: async_amd_status_callback, async_amd_status_callback_method: async_amd_status_callback_method, byoc: byoc, call_reason: call_reason, call_token: call_token, caller_id: caller_id, fallback_method: fallback_method, fallback_url: fallback_url, machine_detection: machine_detection, machine_detection_silence_timeout: machine_detection_silence_timeout, machine_detection_speech_end_threshold: machine_detection_speech_end_threshold, machine_detection_speech_threshold: machine_detection_speech_threshold, machine_detection_timeout: machine_detection_timeout, method: method, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, send_digits: send_digits, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, trim: trim, twiml: twiml, url: url)
 
       request.execute do |response|
         block.call(response)
@@ -363,7 +363,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_call_request(*, account_sid : String = @account_sid, from : String, to : String, application_sid : String? = nil, async_amd : String? = nil, async_amd_status_callback : String? = nil, async_amd_status_callback_method : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_token : String? = nil, caller_id : String? = nil, fallback_method : String? = nil, fallback_url : String? = nil, machine_detection : String? = nil, machine_detection_silence_timeout : Int32? = nil, machine_detection_speech_end_threshold : Int32? = nil, machine_detection_speech_threshold : Int32? = nil, machine_detection_timeout : Int32? = nil, method : String? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, send_digits : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, trim : String? = nil, twiml : String? = nil, url : String? = nil) : Crest::Request
+    def build_api_request_for_create_call(*, account_sid : String = @account_sid, from : String, to : String, application_sid : String? = nil, async_amd : String? = nil, async_amd_status_callback : String? = nil, async_amd_status_callback_method : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_token : String? = nil, caller_id : String? = nil, fallback_method : String? = nil, fallback_url : String? = nil, machine_detection : String? = nil, machine_detection_silence_timeout : Int32? = nil, machine_detection_speech_end_threshold : Int32? = nil, machine_detection_speech_threshold : Int32? = nil, machine_detection_timeout : Int32? = nil, method : String? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, send_digits : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, trim : String? = nil, twiml : String? = nil, url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_call ..." }
       end
@@ -511,7 +511,7 @@ module Twilio
     # @param start_date [Time] Only include feedback given on or after this date. Format is `YYYY-MM-DD` and specified in UTC.
     # @return [Array<(CallCallFeedbackSummary, Integer, Hash)>] CallCallFeedbackSummary data, response status code and response headers
     def create_call_feedback_summary_with_http_info(*, account_sid : String = @account_sid, end_date : Time, start_date : Time, include_subaccounts : Bool? = nil, status_callback : String? = nil, status_callback_method : String? = nil)
-      request = build_create_call_feedback_summary_request(account_sid: account_sid, end_date: end_date, start_date: start_date, include_subaccounts: include_subaccounts, status_callback: status_callback, status_callback_method: status_callback_method)
+      request = build_api_request_for_create_call_feedback_summary(account_sid: account_sid, end_date: end_date, start_date: start_date, include_subaccounts: include_subaccounts, status_callback: status_callback, status_callback_method: status_callback_method)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -528,7 +528,7 @@ module Twilio
     # @param start_date [Time] Only include feedback given on or after this date. Format is `YYYY-MM-DD` and specified in UTC.
     # @return nil
     def create_call_feedback_summary(*, account_sid : String = @account_sid, end_date : Time, start_date : Time, include_subaccounts : Bool? = nil, status_callback : String? = nil, status_callback_method : String? = nil, &block : Crest::Response ->)
-      request = build_create_call_feedback_summary_request(account_sid: account_sid, end_date: end_date, start_date: start_date, include_subaccounts: include_subaccounts, status_callback: status_callback, status_callback_method: status_callback_method)
+      request = build_api_request_for_create_call_feedback_summary(account_sid: account_sid, end_date: end_date, start_date: start_date, include_subaccounts: include_subaccounts, status_callback: status_callback, status_callback_method: status_callback_method)
 
       request.execute do |response|
         block.call(response)
@@ -536,7 +536,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_call_feedback_summary_request(*, account_sid : String = @account_sid, end_date : Time, start_date : Time, include_subaccounts : Bool? = nil, status_callback : String? = nil, status_callback_method : String? = nil) : Crest::Request
+    def build_api_request_for_create_call_feedback_summary(*, account_sid : String = @account_sid, end_date : Time, start_date : Time, include_subaccounts : Bool? = nil, status_callback : String? = nil, status_callback_method : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_call_feedback_summary ..." }
       end
@@ -610,7 +610,7 @@ module Twilio
     # @param call_sid [String] The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) to associate the resource with.
     # @return [Array<(CallCallRecording, Integer, Hash)>] CallCallRecording data, response status code and response headers
     def create_call_recording_with_http_info(*, account_sid : String = @account_sid, call_sid : String, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, trim : String? = nil)
-      request = build_create_call_recording_request(account_sid: account_sid, call_sid: call_sid, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, trim: trim)
+      request = build_api_request_for_create_call_recording(account_sid: account_sid, call_sid: call_sid, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, trim: trim)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -626,7 +626,7 @@ module Twilio
     # @param call_sid [String] The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) to associate the resource with.
     # @return nil
     def create_call_recording(*, account_sid : String = @account_sid, call_sid : String, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, trim : String? = nil, &block : Crest::Response ->)
-      request = build_create_call_recording_request(account_sid: account_sid, call_sid: call_sid, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, trim: trim)
+      request = build_api_request_for_create_call_recording(account_sid: account_sid, call_sid: call_sid, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, trim: trim)
 
       request.execute do |response|
         block.call(response)
@@ -634,7 +634,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_call_recording_request(*, account_sid : String = @account_sid, call_sid : String, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, trim : String? = nil) : Crest::Request
+    def build_api_request_for_create_call_recording(*, account_sid : String = @account_sid, call_sid : String, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, trim : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_call_recording ..." }
       end
@@ -720,7 +720,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @return [Array<(IncomingPhoneNumber, Integer, Hash)>] IncomingPhoneNumber data, response status code and response headers
     def create_incoming_phone_number_with_http_info(*, account_sid : String = @account_sid, address_sid : String? = nil, api_version : String? = nil, area_code : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, phone_number : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
-      request = build_create_incoming_phone_number_request(account_sid: account_sid, address_sid: address_sid, api_version: api_version, area_code: area_code, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, phone_number: phone_number, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_create_incoming_phone_number(account_sid: account_sid, address_sid: address_sid, api_version: api_version, area_code: area_code, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, phone_number: phone_number, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -735,7 +735,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @return nil
     def create_incoming_phone_number(*, account_sid : String = @account_sid, address_sid : String? = nil, api_version : String? = nil, area_code : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, phone_number : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
-      request = build_create_incoming_phone_number_request(account_sid: account_sid, address_sid: address_sid, api_version: api_version, area_code: area_code, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, phone_number: phone_number, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_create_incoming_phone_number(account_sid: account_sid, address_sid: address_sid, api_version: api_version, area_code: area_code, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, phone_number: phone_number, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       request.execute do |response|
         block.call(response)
@@ -743,7 +743,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_incoming_phone_number_request(*, account_sid : String = @account_sid, address_sid : String? = nil, api_version : String? = nil, area_code : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, phone_number : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
+    def build_api_request_for_create_incoming_phone_number(*, account_sid : String = @account_sid, address_sid : String? = nil, api_version : String? = nil, area_code : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, phone_number : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_incoming_phone_number ..." }
       end
@@ -953,7 +953,7 @@ module Twilio
     # @param installed_add_on_sid [String] The SID that identifies the Add-on installation.
     # @return [Array<(IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn, Integer, Hash)>] IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn data, response status code and response headers
     def create_incoming_phone_number_assigned_add_on_with_http_info(*, account_sid : String = @account_sid, resource_sid : String, installed_add_on_sid : String)
-      request = build_create_incoming_phone_number_assigned_add_on_request(account_sid: account_sid, resource_sid: resource_sid, installed_add_on_sid: installed_add_on_sid)
+      request = build_api_request_for_create_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, installed_add_on_sid: installed_add_on_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -970,7 +970,7 @@ module Twilio
     # @param installed_add_on_sid [String] The SID that identifies the Add-on installation.
     # @return nil
     def create_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, installed_add_on_sid : String, &block : Crest::Response ->)
-      request = build_create_incoming_phone_number_assigned_add_on_request(account_sid: account_sid, resource_sid: resource_sid, installed_add_on_sid: installed_add_on_sid)
+      request = build_api_request_for_create_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, installed_add_on_sid: installed_add_on_sid)
 
       request.execute do |response|
         block.call(response)
@@ -978,7 +978,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_incoming_phone_number_assigned_add_on_request(*, account_sid : String = @account_sid, resource_sid : String, installed_add_on_sid : String) : Crest::Request
+    def build_api_request_for_create_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, installed_add_on_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_incoming_phone_number_assigned_add_on ..." }
       end
@@ -1068,7 +1068,7 @@ module Twilio
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
     # @return [Array<(IncomingPhoneNumberIncomingPhoneNumberLocal, Integer, Hash)>] IncomingPhoneNumberIncomingPhoneNumberLocal data, response status code and response headers
     def create_incoming_phone_number_local_with_http_info(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
-      request = build_create_incoming_phone_number_local_request(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_create_incoming_phone_number_local(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -1083,7 +1083,7 @@ module Twilio
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
     # @return nil
     def create_incoming_phone_number_local(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
-      request = build_create_incoming_phone_number_local_request(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_create_incoming_phone_number_local(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       request.execute do |response|
         block.call(response)
@@ -1091,7 +1091,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_incoming_phone_number_local_request(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
+    def build_api_request_for_create_incoming_phone_number_local(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_incoming_phone_number_local ..." }
       end
@@ -1296,7 +1296,7 @@ module Twilio
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
     # @return [Array<(IncomingPhoneNumberIncomingPhoneNumberMobile, Integer, Hash)>] IncomingPhoneNumberIncomingPhoneNumberMobile data, response status code and response headers
     def create_incoming_phone_number_mobile_with_http_info(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
-      request = build_create_incoming_phone_number_mobile_request(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_create_incoming_phone_number_mobile(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -1311,7 +1311,7 @@ module Twilio
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
     # @return nil
     def create_incoming_phone_number_mobile(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
-      request = build_create_incoming_phone_number_mobile_request(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_create_incoming_phone_number_mobile(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       request.execute do |response|
         block.call(response)
@@ -1319,7 +1319,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_incoming_phone_number_mobile_request(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
+    def build_api_request_for_create_incoming_phone_number_mobile(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_incoming_phone_number_mobile ..." }
       end
@@ -1524,7 +1524,7 @@ module Twilio
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
     # @return [Array<(IncomingPhoneNumberIncomingPhoneNumberTollFree, Integer, Hash)>] IncomingPhoneNumberIncomingPhoneNumberTollFree data, response status code and response headers
     def create_incoming_phone_number_toll_free_with_http_info(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
-      request = build_create_incoming_phone_number_toll_free_request(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_create_incoming_phone_number_toll_free(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -1539,7 +1539,7 @@ module Twilio
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
     # @return nil
     def create_incoming_phone_number_toll_free(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
-      request = build_create_incoming_phone_number_toll_free_request(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_create_incoming_phone_number_toll_free(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       request.execute do |response|
         block.call(response)
@@ -1547,7 +1547,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_incoming_phone_number_toll_free_request(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
+    def build_api_request_for_create_incoming_phone_number_toll_free(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_incoming_phone_number_toll_free ..." }
       end
@@ -1754,7 +1754,7 @@ module Twilio
     # @param to [String] The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels.
     # @return [Array<(Message, Integer, Hash)>] Message data, response status code and response headers
     def create_message_with_http_info(*, account_sid : String = @account_sid, to : String, address_retention : String? = nil, application_sid : String? = nil, attempt : Int32? = nil, body : String? = nil, content_retention : String? = nil, force_delivery : Bool? = nil, from : String? = nil, max_price : Float64? = nil, media_url : Array(String)? = nil, messaging_service_sid : String? = nil, persistent_action : Array(String)? = nil, provide_feedback : Bool? = nil, smart_encoded : Bool? = nil, status_callback : String? = nil, validity_period : Int32? = nil)
-      request = build_create_message_request(account_sid: account_sid, to: to, address_retention: address_retention, application_sid: application_sid, attempt: attempt, body: body, content_retention: content_retention, force_delivery: force_delivery, from: from, max_price: max_price, media_url: media_url, messaging_service_sid: messaging_service_sid, persistent_action: persistent_action, provide_feedback: provide_feedback, smart_encoded: smart_encoded, status_callback: status_callback, validity_period: validity_period)
+      request = build_api_request_for_create_message(account_sid: account_sid, to: to, address_retention: address_retention, application_sid: application_sid, attempt: attempt, body: body, content_retention: content_retention, force_delivery: force_delivery, from: from, max_price: max_price, media_url: media_url, messaging_service_sid: messaging_service_sid, persistent_action: persistent_action, provide_feedback: provide_feedback, smart_encoded: smart_encoded, status_callback: status_callback, validity_period: validity_period)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -1770,7 +1770,7 @@ module Twilio
     # @param to [String] The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels.
     # @return nil
     def create_message(*, account_sid : String = @account_sid, to : String, address_retention : String? = nil, application_sid : String? = nil, attempt : Int32? = nil, body : String? = nil, content_retention : String? = nil, force_delivery : Bool? = nil, from : String? = nil, max_price : Float64? = nil, media_url : Array(String)? = nil, messaging_service_sid : String? = nil, persistent_action : Array(String)? = nil, provide_feedback : Bool? = nil, smart_encoded : Bool? = nil, status_callback : String? = nil, validity_period : Int32? = nil, &block : Crest::Response ->)
-      request = build_create_message_request(account_sid: account_sid, to: to, address_retention: address_retention, application_sid: application_sid, attempt: attempt, body: body, content_retention: content_retention, force_delivery: force_delivery, from: from, max_price: max_price, media_url: media_url, messaging_service_sid: messaging_service_sid, persistent_action: persistent_action, provide_feedback: provide_feedback, smart_encoded: smart_encoded, status_callback: status_callback, validity_period: validity_period)
+      request = build_api_request_for_create_message(account_sid: account_sid, to: to, address_retention: address_retention, application_sid: application_sid, attempt: attempt, body: body, content_retention: content_retention, force_delivery: force_delivery, from: from, max_price: max_price, media_url: media_url, messaging_service_sid: messaging_service_sid, persistent_action: persistent_action, provide_feedback: provide_feedback, smart_encoded: smart_encoded, status_callback: status_callback, validity_period: validity_period)
 
       request.execute do |response|
         block.call(response)
@@ -1778,7 +1778,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_message_request(*, account_sid : String = @account_sid, to : String, address_retention : String? = nil, application_sid : String? = nil, attempt : Int32? = nil, body : String? = nil, content_retention : String? = nil, force_delivery : Bool? = nil, from : String? = nil, max_price : Float64? = nil, media_url : Array(String)? = nil, messaging_service_sid : String? = nil, persistent_action : Array(String)? = nil, provide_feedback : Bool? = nil, smart_encoded : Bool? = nil, status_callback : String? = nil, validity_period : Int32? = nil) : Crest::Request
+    def build_api_request_for_create_message(*, account_sid : String = @account_sid, to : String, address_retention : String? = nil, application_sid : String? = nil, attempt : Int32? = nil, body : String? = nil, content_retention : String? = nil, force_delivery : Bool? = nil, from : String? = nil, max_price : Float64? = nil, media_url : Array(String)? = nil, messaging_service_sid : String? = nil, persistent_action : Array(String)? = nil, provide_feedback : Bool? = nil, smart_encoded : Bool? = nil, status_callback : String? = nil, validity_period : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_message ..." }
       end
@@ -1891,7 +1891,7 @@ module Twilio
     # @param message_sid [String] The SID of the Message resource for which the feedback was provided.
     # @return [Array<(MessageMessageFeedback, Integer, Hash)>] MessageMessageFeedback data, response status code and response headers
     def create_message_feedback_with_http_info(*, account_sid : String = @account_sid, message_sid : String, outcome : String? = nil)
-      request = build_create_message_feedback_request(account_sid: account_sid, message_sid: message_sid, outcome: outcome)
+      request = build_api_request_for_create_message_feedback(account_sid: account_sid, message_sid: message_sid, outcome: outcome)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -1906,7 +1906,7 @@ module Twilio
     # @param message_sid [String] The SID of the Message resource for which the feedback was provided.
     # @return nil
     def create_message_feedback(*, account_sid : String = @account_sid, message_sid : String, outcome : String? = nil, &block : Crest::Response ->)
-      request = build_create_message_feedback_request(account_sid: account_sid, message_sid: message_sid, outcome: outcome)
+      request = build_api_request_for_create_message_feedback(account_sid: account_sid, message_sid: message_sid, outcome: outcome)
 
       request.execute do |response|
         block.call(response)
@@ -1914,7 +1914,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_message_feedback_request(*, account_sid : String = @account_sid, message_sid : String, outcome : String? = nil) : Crest::Request
+    def build_api_request_for_create_message_feedback(*, account_sid : String = @account_sid, message_sid : String, outcome : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_message_feedback ..." }
       end
@@ -1993,7 +1993,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
     # @return [Array<(NewKey, Integer, Hash)>] NewKey data, response status code and response headers
     def create_new_key_with_http_info(*, account_sid : String = @account_sid, friendly_name : String? = nil)
-      request = build_create_new_key_request(account_sid: account_sid, friendly_name: friendly_name)
+      request = build_api_request_for_create_new_key(account_sid: account_sid, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -2007,7 +2007,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
     # @return nil
     def create_new_key(*, account_sid : String = @account_sid, friendly_name : String? = nil, &block : Crest::Response ->)
-      request = build_create_new_key_request(account_sid: account_sid, friendly_name: friendly_name)
+      request = build_api_request_for_create_new_key(account_sid: account_sid, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -2015,7 +2015,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_new_key_request(*, account_sid : String = @account_sid, friendly_name : String? = nil) : Crest::Request
+    def build_api_request_for_create_new_key(*, account_sid : String = @account_sid, friendly_name : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_new_key ..." }
       end
@@ -2079,7 +2079,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
     # @return [Array<(NewSigningKey, Integer, Hash)>] NewSigningKey data, response status code and response headers
     def create_new_signing_key_with_http_info(*, account_sid : String = @account_sid, friendly_name : String? = nil)
-      request = build_create_new_signing_key_request(account_sid: account_sid, friendly_name: friendly_name)
+      request = build_api_request_for_create_new_signing_key(account_sid: account_sid, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -2094,7 +2094,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
     # @return nil
     def create_new_signing_key(*, account_sid : String = @account_sid, friendly_name : String? = nil, &block : Crest::Response ->)
-      request = build_create_new_signing_key_request(account_sid: account_sid, friendly_name: friendly_name)
+      request = build_api_request_for_create_new_signing_key(account_sid: account_sid, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -2102,7 +2102,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_new_signing_key_request(*, account_sid : String = @account_sid, friendly_name : String? = nil) : Crest::Request
+    def build_api_request_for_create_new_signing_key(*, account_sid : String = @account_sid, friendly_name : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_new_signing_key ..." }
       end
@@ -2170,7 +2170,7 @@ module Twilio
     # @param to [String] The phone number, SIP address, or Client identifier that received this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). SIP addresses are formatted as `sip:name@company.com`. Client identifiers are formatted `client:name`. [Custom parameters](https://www.twilio.com/docs/voice/api/conference-participant-resource#custom-parameters) may also be specified.
     # @return [Array<(ConferenceParticipant, Integer, Hash)>] ConferenceParticipant data, response status code and response headers
     def create_participant_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, from : String, to : String, beep : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_sid_to_coach : String? = nil, caller_id : String? = nil, coaching : Bool? = nil, conference_record : String? = nil, conference_recording_status_callback : String? = nil, conference_recording_status_callback_event : Array(String)? = nil, conference_recording_status_callback_method : String? = nil, conference_status_callback : String? = nil, conference_status_callback_event : Array(String)? = nil, conference_status_callback_method : String? = nil, conference_trim : String? = nil, early_media : Bool? = nil, end_conference_on_exit : Bool? = nil, jitter_buffer_size : String? = nil, label : String? = nil, max_participants : Int32? = nil, muted : Bool? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, region : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, start_conference_on_enter : Bool? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, wait_method : String? = nil, wait_url : String? = nil)
-      request = build_create_participant_request(account_sid: account_sid, conference_sid: conference_sid, from: from, to: to, beep: beep, byoc: byoc, call_reason: call_reason, call_sid_to_coach: call_sid_to_coach, caller_id: caller_id, coaching: coaching, conference_record: conference_record, conference_recording_status_callback: conference_recording_status_callback, conference_recording_status_callback_event: conference_recording_status_callback_event, conference_recording_status_callback_method: conference_recording_status_callback_method, conference_status_callback: conference_status_callback, conference_status_callback_event: conference_status_callback_event, conference_status_callback_method: conference_status_callback_method, conference_trim: conference_trim, early_media: early_media, end_conference_on_exit: end_conference_on_exit, jitter_buffer_size: jitter_buffer_size, label: label, max_participants: max_participants, muted: muted, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, region: region, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, start_conference_on_enter: start_conference_on_enter, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, wait_method: wait_method, wait_url: wait_url)
+      request = build_api_request_for_create_participant(account_sid: account_sid, conference_sid: conference_sid, from: from, to: to, beep: beep, byoc: byoc, call_reason: call_reason, call_sid_to_coach: call_sid_to_coach, caller_id: caller_id, coaching: coaching, conference_record: conference_record, conference_recording_status_callback: conference_recording_status_callback, conference_recording_status_callback_event: conference_recording_status_callback_event, conference_recording_status_callback_method: conference_recording_status_callback_method, conference_status_callback: conference_status_callback, conference_status_callback_event: conference_status_callback_event, conference_status_callback_method: conference_status_callback_method, conference_trim: conference_trim, early_media: early_media, end_conference_on_exit: end_conference_on_exit, jitter_buffer_size: jitter_buffer_size, label: label, max_participants: max_participants, muted: muted, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, region: region, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, start_conference_on_enter: start_conference_on_enter, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, wait_method: wait_method, wait_url: wait_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -2187,7 +2187,7 @@ module Twilio
     # @param to [String] The phone number, SIP address, or Client identifier that received this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). SIP addresses are formatted as `sip:name@company.com`. Client identifiers are formatted `client:name`. [Custom parameters](https://www.twilio.com/docs/voice/api/conference-participant-resource#custom-parameters) may also be specified.
     # @return nil
     def create_participant(*, account_sid : String = @account_sid, conference_sid : String, from : String, to : String, beep : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_sid_to_coach : String? = nil, caller_id : String? = nil, coaching : Bool? = nil, conference_record : String? = nil, conference_recording_status_callback : String? = nil, conference_recording_status_callback_event : Array(String)? = nil, conference_recording_status_callback_method : String? = nil, conference_status_callback : String? = nil, conference_status_callback_event : Array(String)? = nil, conference_status_callback_method : String? = nil, conference_trim : String? = nil, early_media : Bool? = nil, end_conference_on_exit : Bool? = nil, jitter_buffer_size : String? = nil, label : String? = nil, max_participants : Int32? = nil, muted : Bool? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, region : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, start_conference_on_enter : Bool? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, wait_method : String? = nil, wait_url : String? = nil, &block : Crest::Response ->)
-      request = build_create_participant_request(account_sid: account_sid, conference_sid: conference_sid, from: from, to: to, beep: beep, byoc: byoc, call_reason: call_reason, call_sid_to_coach: call_sid_to_coach, caller_id: caller_id, coaching: coaching, conference_record: conference_record, conference_recording_status_callback: conference_recording_status_callback, conference_recording_status_callback_event: conference_recording_status_callback_event, conference_recording_status_callback_method: conference_recording_status_callback_method, conference_status_callback: conference_status_callback, conference_status_callback_event: conference_status_callback_event, conference_status_callback_method: conference_status_callback_method, conference_trim: conference_trim, early_media: early_media, end_conference_on_exit: end_conference_on_exit, jitter_buffer_size: jitter_buffer_size, label: label, max_participants: max_participants, muted: muted, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, region: region, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, start_conference_on_enter: start_conference_on_enter, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, wait_method: wait_method, wait_url: wait_url)
+      request = build_api_request_for_create_participant(account_sid: account_sid, conference_sid: conference_sid, from: from, to: to, beep: beep, byoc: byoc, call_reason: call_reason, call_sid_to_coach: call_sid_to_coach, caller_id: caller_id, coaching: coaching, conference_record: conference_record, conference_recording_status_callback: conference_recording_status_callback, conference_recording_status_callback_event: conference_recording_status_callback_event, conference_recording_status_callback_method: conference_recording_status_callback_method, conference_status_callback: conference_status_callback, conference_status_callback_event: conference_status_callback_event, conference_status_callback_method: conference_status_callback_method, conference_trim: conference_trim, early_media: early_media, end_conference_on_exit: end_conference_on_exit, jitter_buffer_size: jitter_buffer_size, label: label, max_participants: max_participants, muted: muted, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, region: region, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, start_conference_on_enter: start_conference_on_enter, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, wait_method: wait_method, wait_url: wait_url)
 
       request.execute do |response|
         block.call(response)
@@ -2195,7 +2195,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_participant_request(*, account_sid : String = @account_sid, conference_sid : String, from : String, to : String, beep : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_sid_to_coach : String? = nil, caller_id : String? = nil, coaching : Bool? = nil, conference_record : String? = nil, conference_recording_status_callback : String? = nil, conference_recording_status_callback_event : Array(String)? = nil, conference_recording_status_callback_method : String? = nil, conference_status_callback : String? = nil, conference_status_callback_event : Array(String)? = nil, conference_status_callback_method : String? = nil, conference_trim : String? = nil, early_media : Bool? = nil, end_conference_on_exit : Bool? = nil, jitter_buffer_size : String? = nil, label : String? = nil, max_participants : Int32? = nil, muted : Bool? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, region : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, start_conference_on_enter : Bool? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, wait_method : String? = nil, wait_url : String? = nil) : Crest::Request
+    def build_api_request_for_create_participant(*, account_sid : String = @account_sid, conference_sid : String, from : String, to : String, beep : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_sid_to_coach : String? = nil, caller_id : String? = nil, coaching : Bool? = nil, conference_record : String? = nil, conference_recording_status_callback : String? = nil, conference_recording_status_callback_event : Array(String)? = nil, conference_recording_status_callback_method : String? = nil, conference_status_callback : String? = nil, conference_status_callback_event : Array(String)? = nil, conference_status_callback_method : String? = nil, conference_trim : String? = nil, early_media : Bool? = nil, end_conference_on_exit : Bool? = nil, jitter_buffer_size : String? = nil, label : String? = nil, max_participants : Int32? = nil, muted : Bool? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, region : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, start_conference_on_enter : Bool? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, wait_method : String? = nil, wait_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_participant ..." }
       end
@@ -2349,7 +2349,7 @@ module Twilio
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback)
     # @return [Array<(CallPayments, Integer, Hash)>] CallPayments data, response status code and response headers
     def create_payments_with_http_info(*, account_sid : String = @account_sid, call_sid : String, idempotency_key : String, status_callback : String, bank_account_type : String? = nil, charge_amount : Float64? = nil, currency : String? = nil, description : String? = nil, input : String? = nil, min_postal_code_length : Int32? = nil, parameter : String? = nil, payment_connector : String? = nil, payment_method : String? = nil, postal_code : Bool? = nil, security_code : Bool? = nil, timeout : Int32? = nil, token_type : String? = nil, valid_card_types : String? = nil)
-      request = build_create_payments_request(account_sid: account_sid, call_sid: call_sid, idempotency_key: idempotency_key, status_callback: status_callback, bank_account_type: bank_account_type, charge_amount: charge_amount, currency: currency, description: description, input: input, min_postal_code_length: min_postal_code_length, parameter: parameter, payment_connector: payment_connector, payment_method: payment_method, postal_code: postal_code, security_code: security_code, timeout: timeout, token_type: token_type, valid_card_types: valid_card_types)
+      request = build_api_request_for_create_payments(account_sid: account_sid, call_sid: call_sid, idempotency_key: idempotency_key, status_callback: status_callback, bank_account_type: bank_account_type, charge_amount: charge_amount, currency: currency, description: description, input: input, min_postal_code_length: min_postal_code_length, parameter: parameter, payment_connector: payment_connector, payment_method: payment_method, postal_code: postal_code, security_code: security_code, timeout: timeout, token_type: token_type, valid_card_types: valid_card_types)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -2367,7 +2367,7 @@ module Twilio
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback)
     # @return nil
     def create_payments(*, account_sid : String = @account_sid, call_sid : String, idempotency_key : String, status_callback : String, bank_account_type : String? = nil, charge_amount : Float64? = nil, currency : String? = nil, description : String? = nil, input : String? = nil, min_postal_code_length : Int32? = nil, parameter : String? = nil, payment_connector : String? = nil, payment_method : String? = nil, postal_code : Bool? = nil, security_code : Bool? = nil, timeout : Int32? = nil, token_type : String? = nil, valid_card_types : String? = nil, &block : Crest::Response ->)
-      request = build_create_payments_request(account_sid: account_sid, call_sid: call_sid, idempotency_key: idempotency_key, status_callback: status_callback, bank_account_type: bank_account_type, charge_amount: charge_amount, currency: currency, description: description, input: input, min_postal_code_length: min_postal_code_length, parameter: parameter, payment_connector: payment_connector, payment_method: payment_method, postal_code: postal_code, security_code: security_code, timeout: timeout, token_type: token_type, valid_card_types: valid_card_types)
+      request = build_api_request_for_create_payments(account_sid: account_sid, call_sid: call_sid, idempotency_key: idempotency_key, status_callback: status_callback, bank_account_type: bank_account_type, charge_amount: charge_amount, currency: currency, description: description, input: input, min_postal_code_length: min_postal_code_length, parameter: parameter, payment_connector: payment_connector, payment_method: payment_method, postal_code: postal_code, security_code: security_code, timeout: timeout, token_type: token_type, valid_card_types: valid_card_types)
 
       request.execute do |response|
         block.call(response)
@@ -2375,7 +2375,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_payments_request(*, account_sid : String = @account_sid, call_sid : String, idempotency_key : String, status_callback : String, bank_account_type : String? = nil, charge_amount : Float64? = nil, currency : String? = nil, description : String? = nil, input : String? = nil, min_postal_code_length : Int32? = nil, parameter : String? = nil, payment_connector : String? = nil, payment_method : String? = nil, postal_code : Bool? = nil, security_code : Bool? = nil, timeout : Int32? = nil, token_type : String? = nil, valid_card_types : String? = nil) : Crest::Request
+    def build_api_request_for_create_payments(*, account_sid : String = @account_sid, call_sid : String, idempotency_key : String, status_callback : String, bank_account_type : String? = nil, charge_amount : Float64? = nil, currency : String? = nil, description : String? = nil, input : String? = nil, min_postal_code_length : Int32? = nil, parameter : String? = nil, payment_connector : String? = nil, payment_method : String? = nil, postal_code : Bool? = nil, security_code : Bool? = nil, timeout : Int32? = nil, token_type : String? = nil, valid_card_types : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_payments ..." }
       end
@@ -2481,7 +2481,7 @@ module Twilio
     # @param friendly_name [String] A descriptive string that you created to describe this resource. It can be up to 64 characters long.
     # @return [Array<(Queue, Integer, Hash)>] Queue data, response status code and response headers
     def create_queue_with_http_info(*, account_sid : String = @account_sid, friendly_name : String, max_size : Int32? = nil)
-      request = build_create_queue_request(account_sid: account_sid, friendly_name: friendly_name, max_size: max_size)
+      request = build_api_request_for_create_queue(account_sid: account_sid, friendly_name: friendly_name, max_size: max_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -2497,7 +2497,7 @@ module Twilio
     # @param friendly_name [String] A descriptive string that you created to describe this resource. It can be up to 64 characters long.
     # @return nil
     def create_queue(*, account_sid : String = @account_sid, friendly_name : String, max_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_create_queue_request(account_sid: account_sid, friendly_name: friendly_name, max_size: max_size)
+      request = build_api_request_for_create_queue(account_sid: account_sid, friendly_name: friendly_name, max_size: max_size)
 
       request.execute do |response|
         block.call(response)
@@ -2505,7 +2505,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_queue_request(*, account_sid : String = @account_sid, friendly_name : String, max_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_create_queue(*, account_sid : String = @account_sid, friendly_name : String, max_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_queue ..." }
       end
@@ -2574,7 +2574,7 @@ module Twilio
     # @param credential_list_sid [String] The SID of the CredentialList resource to map to the SIP domain.
     # @return [Array<(SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping, Integer, Hash)>] SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping data, response status code and response headers
     def create_sip_auth_calls_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String)
-      request = build_create_sip_auth_calls_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
+      request = build_api_request_for_create_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -2591,7 +2591,7 @@ module Twilio
     # @param credential_list_sid [String] The SID of the CredentialList resource to map to the SIP domain.
     # @return nil
     def create_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String, &block : Crest::Response ->)
-      request = build_create_sip_auth_calls_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
+      request = build_api_request_for_create_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
 
       request.execute do |response|
         block.call(response)
@@ -2599,7 +2599,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_auth_calls_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String) : Crest::Request
+    def build_api_request_for_create_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_auth_calls_credential_list_mapping ..." }
       end
@@ -2693,7 +2693,7 @@ module Twilio
     # @param ip_access_control_list_sid [String] The SID of the IpAccessControlList resource to map to the SIP domain.
     # @return [Array<(SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping, Integer, Hash)>] SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping data, response status code and response headers
     def create_sip_auth_calls_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, ip_access_control_list_sid : String)
-      request = build_create_sip_auth_calls_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, ip_access_control_list_sid: ip_access_control_list_sid)
+      request = build_api_request_for_create_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, ip_access_control_list_sid: ip_access_control_list_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -2710,7 +2710,7 @@ module Twilio
     # @param ip_access_control_list_sid [String] The SID of the IpAccessControlList resource to map to the SIP domain.
     # @return nil
     def create_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, ip_access_control_list_sid : String, &block : Crest::Response ->)
-      request = build_create_sip_auth_calls_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, ip_access_control_list_sid: ip_access_control_list_sid)
+      request = build_api_request_for_create_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, ip_access_control_list_sid: ip_access_control_list_sid)
 
       request.execute do |response|
         block.call(response)
@@ -2718,7 +2718,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_auth_calls_ip_access_control_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, ip_access_control_list_sid : String) : Crest::Request
+    def build_api_request_for_create_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, ip_access_control_list_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_auth_calls_ip_access_control_list_mapping ..." }
       end
@@ -2812,7 +2812,7 @@ module Twilio
     # @param credential_list_sid [String] The SID of the CredentialList resource to map to the SIP domain.
     # @return [Array<(SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping, Integer, Hash)>] SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping data, response status code and response headers
     def create_sip_auth_registrations_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String)
-      request = build_create_sip_auth_registrations_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
+      request = build_api_request_for_create_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -2829,7 +2829,7 @@ module Twilio
     # @param credential_list_sid [String] The SID of the CredentialList resource to map to the SIP domain.
     # @return nil
     def create_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String, &block : Crest::Response ->)
-      request = build_create_sip_auth_registrations_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
+      request = build_api_request_for_create_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
 
       request.execute do |response|
         block.call(response)
@@ -2837,7 +2837,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_auth_registrations_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String) : Crest::Request
+    def build_api_request_for_create_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_auth_registrations_credential_list_mapping ..." }
       end
@@ -2933,7 +2933,7 @@ module Twilio
     # @param username [String] The username that will be passed when authenticating SIP requests. The username should be sent in response to Twilio's challenge of the initial INVITE. It can be up to 32 characters long.
     # @return [Array<(SipSipCredentialListSipCredential, Integer, Hash)>] SipSipCredentialListSipCredential data, response status code and response headers
     def create_sip_credential_with_http_info(*, account_sid : String = @account_sid, credential_list_sid : String, password : String, username : String)
-      request = build_create_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, password: password, username: username)
+      request = build_api_request_for_create_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, password: password, username: username)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -2951,7 +2951,7 @@ module Twilio
     # @param username [String] The username that will be passed when authenticating SIP requests. The username should be sent in response to Twilio's challenge of the initial INVITE. It can be up to 32 characters long.
     # @return nil
     def create_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, password : String, username : String, &block : Crest::Response ->)
-      request = build_create_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, password: password, username: username)
+      request = build_api_request_for_create_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, password: password, username: username)
 
       request.execute do |response|
         block.call(response)
@@ -2959,7 +2959,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_credential_request(*, account_sid : String = @account_sid, credential_list_sid : String, password : String, username : String) : Crest::Request
+    def build_api_request_for_create_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, password : String, username : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_credential ..." }
       end
@@ -3039,7 +3039,7 @@ module Twilio
     # @param friendly_name [String] A human readable descriptive text that describes the CredentialList, up to 64 characters long.
     # @return [Array<(SipSipCredentialList, Integer, Hash)>] SipSipCredentialList data, response status code and response headers
     def create_sip_credential_list_with_http_info(*, account_sid : String = @account_sid, friendly_name : String)
-      request = build_create_sip_credential_list_request(account_sid: account_sid, friendly_name: friendly_name)
+      request = build_api_request_for_create_sip_credential_list(account_sid: account_sid, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -3055,7 +3055,7 @@ module Twilio
     # @param friendly_name [String] A human readable descriptive text that describes the CredentialList, up to 64 characters long.
     # @return nil
     def create_sip_credential_list(*, account_sid : String = @account_sid, friendly_name : String, &block : Crest::Response ->)
-      request = build_create_sip_credential_list_request(account_sid: account_sid, friendly_name: friendly_name)
+      request = build_api_request_for_create_sip_credential_list(account_sid: account_sid, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -3063,7 +3063,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_credential_list_request(*, account_sid : String = @account_sid, friendly_name : String) : Crest::Request
+    def build_api_request_for_create_sip_credential_list(*, account_sid : String = @account_sid, friendly_name : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_credential_list ..." }
       end
@@ -3131,7 +3131,7 @@ module Twilio
     # @param credential_list_sid [String] A 34 character string that uniquely identifies the CredentialList resource to map to the SIP domain.
     # @return [Array<(SipSipDomainSipCredentialListMapping, Integer, Hash)>] SipSipDomainSipCredentialListMapping data, response status code and response headers
     def create_sip_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String)
-      request = build_create_sip_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
+      request = build_api_request_for_create_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -3148,7 +3148,7 @@ module Twilio
     # @param credential_list_sid [String] A 34 character string that uniquely identifies the CredentialList resource to map to the SIP domain.
     # @return nil
     def create_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String, &block : Crest::Response ->)
-      request = build_create_sip_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
+      request = build_api_request_for_create_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, credential_list_sid: credential_list_sid)
 
       request.execute do |response|
         block.call(response)
@@ -3156,7 +3156,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String) : Crest::Request
+    def build_api_request_for_create_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, credential_list_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_credential_list_mapping ..." }
       end
@@ -3248,7 +3248,7 @@ module Twilio
     # @param domain_name [String] The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
     # @return [Array<(SipSipDomain, Integer, Hash)>] SipSipDomain data, response status code and response headers
     def create_sip_domain_with_http_info(*, account_sid : String = @account_sid, domain_name : String, byoc_trunk_sid : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil)
-      request = build_create_sip_domain_request(account_sid: account_sid, domain_name: domain_name, byoc_trunk_sid: byoc_trunk_sid, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
+      request = build_api_request_for_create_sip_domain(account_sid: account_sid, domain_name: domain_name, byoc_trunk_sid: byoc_trunk_sid, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -3264,7 +3264,7 @@ module Twilio
     # @param domain_name [String] The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
     # @return nil
     def create_sip_domain(*, account_sid : String = @account_sid, domain_name : String, byoc_trunk_sid : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
-      request = build_create_sip_domain_request(account_sid: account_sid, domain_name: domain_name, byoc_trunk_sid: byoc_trunk_sid, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
+      request = build_api_request_for_create_sip_domain(account_sid: account_sid, domain_name: domain_name, byoc_trunk_sid: byoc_trunk_sid, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
 
       request.execute do |response|
         block.call(response)
@@ -3272,7 +3272,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_domain_request(*, account_sid : String = @account_sid, domain_name : String, byoc_trunk_sid : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil) : Crest::Request
+    def build_api_request_for_create_sip_domain(*, account_sid : String = @account_sid, domain_name : String, byoc_trunk_sid : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_domain ..." }
       end
@@ -3388,7 +3388,7 @@ module Twilio
     # @param friendly_name [String] A human readable descriptive text that describes the IpAccessControlList, up to 64 characters long.
     # @return [Array<(SipSipIpAccessControlList, Integer, Hash)>] SipSipIpAccessControlList data, response status code and response headers
     def create_sip_ip_access_control_list_with_http_info(*, account_sid : String = @account_sid, friendly_name : String)
-      request = build_create_sip_ip_access_control_list_request(account_sid: account_sid, friendly_name: friendly_name)
+      request = build_api_request_for_create_sip_ip_access_control_list(account_sid: account_sid, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -3404,7 +3404,7 @@ module Twilio
     # @param friendly_name [String] A human readable descriptive text that describes the IpAccessControlList, up to 64 characters long.
     # @return nil
     def create_sip_ip_access_control_list(*, account_sid : String = @account_sid, friendly_name : String, &block : Crest::Response ->)
-      request = build_create_sip_ip_access_control_list_request(account_sid: account_sid, friendly_name: friendly_name)
+      request = build_api_request_for_create_sip_ip_access_control_list(account_sid: account_sid, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -3412,7 +3412,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_ip_access_control_list_request(*, account_sid : String = @account_sid, friendly_name : String) : Crest::Request
+    def build_api_request_for_create_sip_ip_access_control_list(*, account_sid : String = @account_sid, friendly_name : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_ip_access_control_list ..." }
       end
@@ -3480,7 +3480,7 @@ module Twilio
     # @param ip_access_control_list_sid [String] The unique id of the IP access control list to map to the SIP domain.
     # @return [Array<(SipSipDomainSipIpAccessControlListMapping, Integer, Hash)>] SipSipDomainSipIpAccessControlListMapping data, response status code and response headers
     def create_sip_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, ip_access_control_list_sid : String)
-      request = build_create_sip_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, ip_access_control_list_sid: ip_access_control_list_sid)
+      request = build_api_request_for_create_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, ip_access_control_list_sid: ip_access_control_list_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -3497,7 +3497,7 @@ module Twilio
     # @param ip_access_control_list_sid [String] The unique id of the IP access control list to map to the SIP domain.
     # @return nil
     def create_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, ip_access_control_list_sid : String, &block : Crest::Response ->)
-      request = build_create_sip_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, ip_access_control_list_sid: ip_access_control_list_sid)
+      request = build_api_request_for_create_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, ip_access_control_list_sid: ip_access_control_list_sid)
 
       request.execute do |response|
         block.call(response)
@@ -3505,7 +3505,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_ip_access_control_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, ip_access_control_list_sid : String) : Crest::Request
+    def build_api_request_for_create_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, ip_access_control_list_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_ip_access_control_list_mapping ..." }
       end
@@ -3601,7 +3601,7 @@ module Twilio
     # @param ip_address [String] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
     # @return [Array<(SipSipIpAccessControlListSipIpAddress, Integer, Hash)>] SipSipIpAccessControlListSipIpAddress data, response status code and response headers
     def create_sip_ip_address_with_http_info(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, friendly_name : String, ip_address : String, cidr_prefix_length : Int32? = nil)
-      request = build_create_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, friendly_name: friendly_name, ip_address: ip_address, cidr_prefix_length: cidr_prefix_length)
+      request = build_api_request_for_create_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, friendly_name: friendly_name, ip_address: ip_address, cidr_prefix_length: cidr_prefix_length)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -3619,7 +3619,7 @@ module Twilio
     # @param ip_address [String] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
     # @return nil
     def create_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, friendly_name : String, ip_address : String, cidr_prefix_length : Int32? = nil, &block : Crest::Response ->)
-      request = build_create_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, friendly_name: friendly_name, ip_address: ip_address, cidr_prefix_length: cidr_prefix_length)
+      request = build_api_request_for_create_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, friendly_name: friendly_name, ip_address: ip_address, cidr_prefix_length: cidr_prefix_length)
 
       request.execute do |response|
         block.call(response)
@@ -3627,7 +3627,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_sip_ip_address_request(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, friendly_name : String, ip_address : String, cidr_prefix_length : Int32? = nil) : Crest::Request
+    def build_api_request_for_create_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, friendly_name : String, ip_address : String, cidr_prefix_length : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_sip_ip_address ..." }
       end
@@ -3708,7 +3708,7 @@ module Twilio
     # @param call_sid [String] The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Siprec resource is associated with.
     # @return [Array<(CallSiprec, Integer, Hash)>] CallSiprec data, response status code and response headers
     def create_siprec_with_http_info(*, account_sid : String = @account_sid, call_sid : String, connector_name : String? = nil, name : String? = nil, parameter1_name : String? = nil, parameter1_value : String? = nil, parameter10_name : String? = nil, parameter10_value : String? = nil, parameter11_name : String? = nil, parameter11_value : String? = nil, parameter12_name : String? = nil, parameter12_value : String? = nil, parameter13_name : String? = nil, parameter13_value : String? = nil, parameter14_name : String? = nil, parameter14_value : String? = nil, parameter15_name : String? = nil, parameter15_value : String? = nil, parameter16_name : String? = nil, parameter16_value : String? = nil, parameter17_name : String? = nil, parameter17_value : String? = nil, parameter18_name : String? = nil, parameter18_value : String? = nil, parameter19_name : String? = nil, parameter19_value : String? = nil, parameter2_name : String? = nil, parameter2_value : String? = nil, parameter20_name : String? = nil, parameter20_value : String? = nil, parameter21_name : String? = nil, parameter21_value : String? = nil, parameter22_name : String? = nil, parameter22_value : String? = nil, parameter23_name : String? = nil, parameter23_value : String? = nil, parameter24_name : String? = nil, parameter24_value : String? = nil, parameter25_name : String? = nil, parameter25_value : String? = nil, parameter26_name : String? = nil, parameter26_value : String? = nil, parameter27_name : String? = nil, parameter27_value : String? = nil, parameter28_name : String? = nil, parameter28_value : String? = nil, parameter29_name : String? = nil, parameter29_value : String? = nil, parameter3_name : String? = nil, parameter3_value : String? = nil, parameter30_name : String? = nil, parameter30_value : String? = nil, parameter31_name : String? = nil, parameter31_value : String? = nil, parameter32_name : String? = nil, parameter32_value : String? = nil, parameter33_name : String? = nil, parameter33_value : String? = nil, parameter34_name : String? = nil, parameter34_value : String? = nil, parameter35_name : String? = nil, parameter35_value : String? = nil, parameter36_name : String? = nil, parameter36_value : String? = nil, parameter37_name : String? = nil, parameter37_value : String? = nil, parameter38_name : String? = nil, parameter38_value : String? = nil, parameter39_name : String? = nil, parameter39_value : String? = nil, parameter4_name : String? = nil, parameter4_value : String? = nil, parameter40_name : String? = nil, parameter40_value : String? = nil, parameter41_name : String? = nil, parameter41_value : String? = nil, parameter42_name : String? = nil, parameter42_value : String? = nil, parameter43_name : String? = nil, parameter43_value : String? = nil, parameter44_name : String? = nil, parameter44_value : String? = nil, parameter45_name : String? = nil, parameter45_value : String? = nil, parameter46_name : String? = nil, parameter46_value : String? = nil, parameter47_name : String? = nil, parameter47_value : String? = nil, parameter48_name : String? = nil, parameter48_value : String? = nil, parameter49_name : String? = nil, parameter49_value : String? = nil, parameter5_name : String? = nil, parameter5_value : String? = nil, parameter50_name : String? = nil, parameter50_value : String? = nil, parameter51_name : String? = nil, parameter51_value : String? = nil, parameter52_name : String? = nil, parameter52_value : String? = nil, parameter53_name : String? = nil, parameter53_value : String? = nil, parameter54_name : String? = nil, parameter54_value : String? = nil, parameter55_name : String? = nil, parameter55_value : String? = nil, parameter56_name : String? = nil, parameter56_value : String? = nil, parameter57_name : String? = nil, parameter57_value : String? = nil, parameter58_name : String? = nil, parameter58_value : String? = nil, parameter59_name : String? = nil, parameter59_value : String? = nil, parameter6_name : String? = nil, parameter6_value : String? = nil, parameter60_name : String? = nil, parameter60_value : String? = nil, parameter61_name : String? = nil, parameter61_value : String? = nil, parameter62_name : String? = nil, parameter62_value : String? = nil, parameter63_name : String? = nil, parameter63_value : String? = nil, parameter64_name : String? = nil, parameter64_value : String? = nil, parameter65_name : String? = nil, parameter65_value : String? = nil, parameter66_name : String? = nil, parameter66_value : String? = nil, parameter67_name : String? = nil, parameter67_value : String? = nil, parameter68_name : String? = nil, parameter68_value : String? = nil, parameter69_name : String? = nil, parameter69_value : String? = nil, parameter7_name : String? = nil, parameter7_value : String? = nil, parameter70_name : String? = nil, parameter70_value : String? = nil, parameter71_name : String? = nil, parameter71_value : String? = nil, parameter72_name : String? = nil, parameter72_value : String? = nil, parameter73_name : String? = nil, parameter73_value : String? = nil, parameter74_name : String? = nil, parameter74_value : String? = nil, parameter75_name : String? = nil, parameter75_value : String? = nil, parameter76_name : String? = nil, parameter76_value : String? = nil, parameter77_name : String? = nil, parameter77_value : String? = nil, parameter78_name : String? = nil, parameter78_value : String? = nil, parameter79_name : String? = nil, parameter79_value : String? = nil, parameter8_name : String? = nil, parameter8_value : String? = nil, parameter80_name : String? = nil, parameter80_value : String? = nil, parameter81_name : String? = nil, parameter81_value : String? = nil, parameter82_name : String? = nil, parameter82_value : String? = nil, parameter83_name : String? = nil, parameter83_value : String? = nil, parameter84_name : String? = nil, parameter84_value : String? = nil, parameter85_name : String? = nil, parameter85_value : String? = nil, parameter86_name : String? = nil, parameter86_value : String? = nil, parameter87_name : String? = nil, parameter87_value : String? = nil, parameter88_name : String? = nil, parameter88_value : String? = nil, parameter89_name : String? = nil, parameter89_value : String? = nil, parameter9_name : String? = nil, parameter9_value : String? = nil, parameter90_name : String? = nil, parameter90_value : String? = nil, parameter91_name : String? = nil, parameter91_value : String? = nil, parameter92_name : String? = nil, parameter92_value : String? = nil, parameter93_name : String? = nil, parameter93_value : String? = nil, parameter94_name : String? = nil, parameter94_value : String? = nil, parameter95_name : String? = nil, parameter95_value : String? = nil, parameter96_name : String? = nil, parameter96_value : String? = nil, parameter97_name : String? = nil, parameter97_value : String? = nil, parameter98_name : String? = nil, parameter98_value : String? = nil, parameter99_name : String? = nil, parameter99_value : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, track : String? = nil)
-      request = build_create_siprec_request(account_sid: account_sid, call_sid: call_sid, connector_name: connector_name, name: name, parameter1_name: parameter1_name, parameter1_value: parameter1_value, parameter10_name: parameter10_name, parameter10_value: parameter10_value, parameter11_name: parameter11_name, parameter11_value: parameter11_value, parameter12_name: parameter12_name, parameter12_value: parameter12_value, parameter13_name: parameter13_name, parameter13_value: parameter13_value, parameter14_name: parameter14_name, parameter14_value: parameter14_value, parameter15_name: parameter15_name, parameter15_value: parameter15_value, parameter16_name: parameter16_name, parameter16_value: parameter16_value, parameter17_name: parameter17_name, parameter17_value: parameter17_value, parameter18_name: parameter18_name, parameter18_value: parameter18_value, parameter19_name: parameter19_name, parameter19_value: parameter19_value, parameter2_name: parameter2_name, parameter2_value: parameter2_value, parameter20_name: parameter20_name, parameter20_value: parameter20_value, parameter21_name: parameter21_name, parameter21_value: parameter21_value, parameter22_name: parameter22_name, parameter22_value: parameter22_value, parameter23_name: parameter23_name, parameter23_value: parameter23_value, parameter24_name: parameter24_name, parameter24_value: parameter24_value, parameter25_name: parameter25_name, parameter25_value: parameter25_value, parameter26_name: parameter26_name, parameter26_value: parameter26_value, parameter27_name: parameter27_name, parameter27_value: parameter27_value, parameter28_name: parameter28_name, parameter28_value: parameter28_value, parameter29_name: parameter29_name, parameter29_value: parameter29_value, parameter3_name: parameter3_name, parameter3_value: parameter3_value, parameter30_name: parameter30_name, parameter30_value: parameter30_value, parameter31_name: parameter31_name, parameter31_value: parameter31_value, parameter32_name: parameter32_name, parameter32_value: parameter32_value, parameter33_name: parameter33_name, parameter33_value: parameter33_value, parameter34_name: parameter34_name, parameter34_value: parameter34_value, parameter35_name: parameter35_name, parameter35_value: parameter35_value, parameter36_name: parameter36_name, parameter36_value: parameter36_value, parameter37_name: parameter37_name, parameter37_value: parameter37_value, parameter38_name: parameter38_name, parameter38_value: parameter38_value, parameter39_name: parameter39_name, parameter39_value: parameter39_value, parameter4_name: parameter4_name, parameter4_value: parameter4_value, parameter40_name: parameter40_name, parameter40_value: parameter40_value, parameter41_name: parameter41_name, parameter41_value: parameter41_value, parameter42_name: parameter42_name, parameter42_value: parameter42_value, parameter43_name: parameter43_name, parameter43_value: parameter43_value, parameter44_name: parameter44_name, parameter44_value: parameter44_value, parameter45_name: parameter45_name, parameter45_value: parameter45_value, parameter46_name: parameter46_name, parameter46_value: parameter46_value, parameter47_name: parameter47_name, parameter47_value: parameter47_value, parameter48_name: parameter48_name, parameter48_value: parameter48_value, parameter49_name: parameter49_name, parameter49_value: parameter49_value, parameter5_name: parameter5_name, parameter5_value: parameter5_value, parameter50_name: parameter50_name, parameter50_value: parameter50_value, parameter51_name: parameter51_name, parameter51_value: parameter51_value, parameter52_name: parameter52_name, parameter52_value: parameter52_value, parameter53_name: parameter53_name, parameter53_value: parameter53_value, parameter54_name: parameter54_name, parameter54_value: parameter54_value, parameter55_name: parameter55_name, parameter55_value: parameter55_value, parameter56_name: parameter56_name, parameter56_value: parameter56_value, parameter57_name: parameter57_name, parameter57_value: parameter57_value, parameter58_name: parameter58_name, parameter58_value: parameter58_value, parameter59_name: parameter59_name, parameter59_value: parameter59_value, parameter6_name: parameter6_name, parameter6_value: parameter6_value, parameter60_name: parameter60_name, parameter60_value: parameter60_value, parameter61_name: parameter61_name, parameter61_value: parameter61_value, parameter62_name: parameter62_name, parameter62_value: parameter62_value, parameter63_name: parameter63_name, parameter63_value: parameter63_value, parameter64_name: parameter64_name, parameter64_value: parameter64_value, parameter65_name: parameter65_name, parameter65_value: parameter65_value, parameter66_name: parameter66_name, parameter66_value: parameter66_value, parameter67_name: parameter67_name, parameter67_value: parameter67_value, parameter68_name: parameter68_name, parameter68_value: parameter68_value, parameter69_name: parameter69_name, parameter69_value: parameter69_value, parameter7_name: parameter7_name, parameter7_value: parameter7_value, parameter70_name: parameter70_name, parameter70_value: parameter70_value, parameter71_name: parameter71_name, parameter71_value: parameter71_value, parameter72_name: parameter72_name, parameter72_value: parameter72_value, parameter73_name: parameter73_name, parameter73_value: parameter73_value, parameter74_name: parameter74_name, parameter74_value: parameter74_value, parameter75_name: parameter75_name, parameter75_value: parameter75_value, parameter76_name: parameter76_name, parameter76_value: parameter76_value, parameter77_name: parameter77_name, parameter77_value: parameter77_value, parameter78_name: parameter78_name, parameter78_value: parameter78_value, parameter79_name: parameter79_name, parameter79_value: parameter79_value, parameter8_name: parameter8_name, parameter8_value: parameter8_value, parameter80_name: parameter80_name, parameter80_value: parameter80_value, parameter81_name: parameter81_name, parameter81_value: parameter81_value, parameter82_name: parameter82_name, parameter82_value: parameter82_value, parameter83_name: parameter83_name, parameter83_value: parameter83_value, parameter84_name: parameter84_name, parameter84_value: parameter84_value, parameter85_name: parameter85_name, parameter85_value: parameter85_value, parameter86_name: parameter86_name, parameter86_value: parameter86_value, parameter87_name: parameter87_name, parameter87_value: parameter87_value, parameter88_name: parameter88_name, parameter88_value: parameter88_value, parameter89_name: parameter89_name, parameter89_value: parameter89_value, parameter9_name: parameter9_name, parameter9_value: parameter9_value, parameter90_name: parameter90_name, parameter90_value: parameter90_value, parameter91_name: parameter91_name, parameter91_value: parameter91_value, parameter92_name: parameter92_name, parameter92_value: parameter92_value, parameter93_name: parameter93_name, parameter93_value: parameter93_value, parameter94_name: parameter94_name, parameter94_value: parameter94_value, parameter95_name: parameter95_name, parameter95_value: parameter95_value, parameter96_name: parameter96_name, parameter96_value: parameter96_value, parameter97_name: parameter97_name, parameter97_value: parameter97_value, parameter98_name: parameter98_name, parameter98_value: parameter98_value, parameter99_name: parameter99_name, parameter99_value: parameter99_value, status_callback: status_callback, status_callback_method: status_callback_method, track: track)
+      request = build_api_request_for_create_siprec(account_sid: account_sid, call_sid: call_sid, connector_name: connector_name, name: name, parameter1_name: parameter1_name, parameter1_value: parameter1_value, parameter10_name: parameter10_name, parameter10_value: parameter10_value, parameter11_name: parameter11_name, parameter11_value: parameter11_value, parameter12_name: parameter12_name, parameter12_value: parameter12_value, parameter13_name: parameter13_name, parameter13_value: parameter13_value, parameter14_name: parameter14_name, parameter14_value: parameter14_value, parameter15_name: parameter15_name, parameter15_value: parameter15_value, parameter16_name: parameter16_name, parameter16_value: parameter16_value, parameter17_name: parameter17_name, parameter17_value: parameter17_value, parameter18_name: parameter18_name, parameter18_value: parameter18_value, parameter19_name: parameter19_name, parameter19_value: parameter19_value, parameter2_name: parameter2_name, parameter2_value: parameter2_value, parameter20_name: parameter20_name, parameter20_value: parameter20_value, parameter21_name: parameter21_name, parameter21_value: parameter21_value, parameter22_name: parameter22_name, parameter22_value: parameter22_value, parameter23_name: parameter23_name, parameter23_value: parameter23_value, parameter24_name: parameter24_name, parameter24_value: parameter24_value, parameter25_name: parameter25_name, parameter25_value: parameter25_value, parameter26_name: parameter26_name, parameter26_value: parameter26_value, parameter27_name: parameter27_name, parameter27_value: parameter27_value, parameter28_name: parameter28_name, parameter28_value: parameter28_value, parameter29_name: parameter29_name, parameter29_value: parameter29_value, parameter3_name: parameter3_name, parameter3_value: parameter3_value, parameter30_name: parameter30_name, parameter30_value: parameter30_value, parameter31_name: parameter31_name, parameter31_value: parameter31_value, parameter32_name: parameter32_name, parameter32_value: parameter32_value, parameter33_name: parameter33_name, parameter33_value: parameter33_value, parameter34_name: parameter34_name, parameter34_value: parameter34_value, parameter35_name: parameter35_name, parameter35_value: parameter35_value, parameter36_name: parameter36_name, parameter36_value: parameter36_value, parameter37_name: parameter37_name, parameter37_value: parameter37_value, parameter38_name: parameter38_name, parameter38_value: parameter38_value, parameter39_name: parameter39_name, parameter39_value: parameter39_value, parameter4_name: parameter4_name, parameter4_value: parameter4_value, parameter40_name: parameter40_name, parameter40_value: parameter40_value, parameter41_name: parameter41_name, parameter41_value: parameter41_value, parameter42_name: parameter42_name, parameter42_value: parameter42_value, parameter43_name: parameter43_name, parameter43_value: parameter43_value, parameter44_name: parameter44_name, parameter44_value: parameter44_value, parameter45_name: parameter45_name, parameter45_value: parameter45_value, parameter46_name: parameter46_name, parameter46_value: parameter46_value, parameter47_name: parameter47_name, parameter47_value: parameter47_value, parameter48_name: parameter48_name, parameter48_value: parameter48_value, parameter49_name: parameter49_name, parameter49_value: parameter49_value, parameter5_name: parameter5_name, parameter5_value: parameter5_value, parameter50_name: parameter50_name, parameter50_value: parameter50_value, parameter51_name: parameter51_name, parameter51_value: parameter51_value, parameter52_name: parameter52_name, parameter52_value: parameter52_value, parameter53_name: parameter53_name, parameter53_value: parameter53_value, parameter54_name: parameter54_name, parameter54_value: parameter54_value, parameter55_name: parameter55_name, parameter55_value: parameter55_value, parameter56_name: parameter56_name, parameter56_value: parameter56_value, parameter57_name: parameter57_name, parameter57_value: parameter57_value, parameter58_name: parameter58_name, parameter58_value: parameter58_value, parameter59_name: parameter59_name, parameter59_value: parameter59_value, parameter6_name: parameter6_name, parameter6_value: parameter6_value, parameter60_name: parameter60_name, parameter60_value: parameter60_value, parameter61_name: parameter61_name, parameter61_value: parameter61_value, parameter62_name: parameter62_name, parameter62_value: parameter62_value, parameter63_name: parameter63_name, parameter63_value: parameter63_value, parameter64_name: parameter64_name, parameter64_value: parameter64_value, parameter65_name: parameter65_name, parameter65_value: parameter65_value, parameter66_name: parameter66_name, parameter66_value: parameter66_value, parameter67_name: parameter67_name, parameter67_value: parameter67_value, parameter68_name: parameter68_name, parameter68_value: parameter68_value, parameter69_name: parameter69_name, parameter69_value: parameter69_value, parameter7_name: parameter7_name, parameter7_value: parameter7_value, parameter70_name: parameter70_name, parameter70_value: parameter70_value, parameter71_name: parameter71_name, parameter71_value: parameter71_value, parameter72_name: parameter72_name, parameter72_value: parameter72_value, parameter73_name: parameter73_name, parameter73_value: parameter73_value, parameter74_name: parameter74_name, parameter74_value: parameter74_value, parameter75_name: parameter75_name, parameter75_value: parameter75_value, parameter76_name: parameter76_name, parameter76_value: parameter76_value, parameter77_name: parameter77_name, parameter77_value: parameter77_value, parameter78_name: parameter78_name, parameter78_value: parameter78_value, parameter79_name: parameter79_name, parameter79_value: parameter79_value, parameter8_name: parameter8_name, parameter8_value: parameter8_value, parameter80_name: parameter80_name, parameter80_value: parameter80_value, parameter81_name: parameter81_name, parameter81_value: parameter81_value, parameter82_name: parameter82_name, parameter82_value: parameter82_value, parameter83_name: parameter83_name, parameter83_value: parameter83_value, parameter84_name: parameter84_name, parameter84_value: parameter84_value, parameter85_name: parameter85_name, parameter85_value: parameter85_value, parameter86_name: parameter86_name, parameter86_value: parameter86_value, parameter87_name: parameter87_name, parameter87_value: parameter87_value, parameter88_name: parameter88_name, parameter88_value: parameter88_value, parameter89_name: parameter89_name, parameter89_value: parameter89_value, parameter9_name: parameter9_name, parameter9_value: parameter9_value, parameter90_name: parameter90_name, parameter90_value: parameter90_value, parameter91_name: parameter91_name, parameter91_value: parameter91_value, parameter92_name: parameter92_name, parameter92_value: parameter92_value, parameter93_name: parameter93_name, parameter93_value: parameter93_value, parameter94_name: parameter94_name, parameter94_value: parameter94_value, parameter95_name: parameter95_name, parameter95_value: parameter95_value, parameter96_name: parameter96_name, parameter96_value: parameter96_value, parameter97_name: parameter97_name, parameter97_value: parameter97_value, parameter98_name: parameter98_name, parameter98_value: parameter98_value, parameter99_name: parameter99_name, parameter99_value: parameter99_value, status_callback: status_callback, status_callback_method: status_callback_method, track: track)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -3724,7 +3724,7 @@ module Twilio
     # @param call_sid [String] The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) the Siprec resource is associated with.
     # @return nil
     def create_siprec(*, account_sid : String = @account_sid, call_sid : String, connector_name : String? = nil, name : String? = nil, parameter1_name : String? = nil, parameter1_value : String? = nil, parameter10_name : String? = nil, parameter10_value : String? = nil, parameter11_name : String? = nil, parameter11_value : String? = nil, parameter12_name : String? = nil, parameter12_value : String? = nil, parameter13_name : String? = nil, parameter13_value : String? = nil, parameter14_name : String? = nil, parameter14_value : String? = nil, parameter15_name : String? = nil, parameter15_value : String? = nil, parameter16_name : String? = nil, parameter16_value : String? = nil, parameter17_name : String? = nil, parameter17_value : String? = nil, parameter18_name : String? = nil, parameter18_value : String? = nil, parameter19_name : String? = nil, parameter19_value : String? = nil, parameter2_name : String? = nil, parameter2_value : String? = nil, parameter20_name : String? = nil, parameter20_value : String? = nil, parameter21_name : String? = nil, parameter21_value : String? = nil, parameter22_name : String? = nil, parameter22_value : String? = nil, parameter23_name : String? = nil, parameter23_value : String? = nil, parameter24_name : String? = nil, parameter24_value : String? = nil, parameter25_name : String? = nil, parameter25_value : String? = nil, parameter26_name : String? = nil, parameter26_value : String? = nil, parameter27_name : String? = nil, parameter27_value : String? = nil, parameter28_name : String? = nil, parameter28_value : String? = nil, parameter29_name : String? = nil, parameter29_value : String? = nil, parameter3_name : String? = nil, parameter3_value : String? = nil, parameter30_name : String? = nil, parameter30_value : String? = nil, parameter31_name : String? = nil, parameter31_value : String? = nil, parameter32_name : String? = nil, parameter32_value : String? = nil, parameter33_name : String? = nil, parameter33_value : String? = nil, parameter34_name : String? = nil, parameter34_value : String? = nil, parameter35_name : String? = nil, parameter35_value : String? = nil, parameter36_name : String? = nil, parameter36_value : String? = nil, parameter37_name : String? = nil, parameter37_value : String? = nil, parameter38_name : String? = nil, parameter38_value : String? = nil, parameter39_name : String? = nil, parameter39_value : String? = nil, parameter4_name : String? = nil, parameter4_value : String? = nil, parameter40_name : String? = nil, parameter40_value : String? = nil, parameter41_name : String? = nil, parameter41_value : String? = nil, parameter42_name : String? = nil, parameter42_value : String? = nil, parameter43_name : String? = nil, parameter43_value : String? = nil, parameter44_name : String? = nil, parameter44_value : String? = nil, parameter45_name : String? = nil, parameter45_value : String? = nil, parameter46_name : String? = nil, parameter46_value : String? = nil, parameter47_name : String? = nil, parameter47_value : String? = nil, parameter48_name : String? = nil, parameter48_value : String? = nil, parameter49_name : String? = nil, parameter49_value : String? = nil, parameter5_name : String? = nil, parameter5_value : String? = nil, parameter50_name : String? = nil, parameter50_value : String? = nil, parameter51_name : String? = nil, parameter51_value : String? = nil, parameter52_name : String? = nil, parameter52_value : String? = nil, parameter53_name : String? = nil, parameter53_value : String? = nil, parameter54_name : String? = nil, parameter54_value : String? = nil, parameter55_name : String? = nil, parameter55_value : String? = nil, parameter56_name : String? = nil, parameter56_value : String? = nil, parameter57_name : String? = nil, parameter57_value : String? = nil, parameter58_name : String? = nil, parameter58_value : String? = nil, parameter59_name : String? = nil, parameter59_value : String? = nil, parameter6_name : String? = nil, parameter6_value : String? = nil, parameter60_name : String? = nil, parameter60_value : String? = nil, parameter61_name : String? = nil, parameter61_value : String? = nil, parameter62_name : String? = nil, parameter62_value : String? = nil, parameter63_name : String? = nil, parameter63_value : String? = nil, parameter64_name : String? = nil, parameter64_value : String? = nil, parameter65_name : String? = nil, parameter65_value : String? = nil, parameter66_name : String? = nil, parameter66_value : String? = nil, parameter67_name : String? = nil, parameter67_value : String? = nil, parameter68_name : String? = nil, parameter68_value : String? = nil, parameter69_name : String? = nil, parameter69_value : String? = nil, parameter7_name : String? = nil, parameter7_value : String? = nil, parameter70_name : String? = nil, parameter70_value : String? = nil, parameter71_name : String? = nil, parameter71_value : String? = nil, parameter72_name : String? = nil, parameter72_value : String? = nil, parameter73_name : String? = nil, parameter73_value : String? = nil, parameter74_name : String? = nil, parameter74_value : String? = nil, parameter75_name : String? = nil, parameter75_value : String? = nil, parameter76_name : String? = nil, parameter76_value : String? = nil, parameter77_name : String? = nil, parameter77_value : String? = nil, parameter78_name : String? = nil, parameter78_value : String? = nil, parameter79_name : String? = nil, parameter79_value : String? = nil, parameter8_name : String? = nil, parameter8_value : String? = nil, parameter80_name : String? = nil, parameter80_value : String? = nil, parameter81_name : String? = nil, parameter81_value : String? = nil, parameter82_name : String? = nil, parameter82_value : String? = nil, parameter83_name : String? = nil, parameter83_value : String? = nil, parameter84_name : String? = nil, parameter84_value : String? = nil, parameter85_name : String? = nil, parameter85_value : String? = nil, parameter86_name : String? = nil, parameter86_value : String? = nil, parameter87_name : String? = nil, parameter87_value : String? = nil, parameter88_name : String? = nil, parameter88_value : String? = nil, parameter89_name : String? = nil, parameter89_value : String? = nil, parameter9_name : String? = nil, parameter9_value : String? = nil, parameter90_name : String? = nil, parameter90_value : String? = nil, parameter91_name : String? = nil, parameter91_value : String? = nil, parameter92_name : String? = nil, parameter92_value : String? = nil, parameter93_name : String? = nil, parameter93_value : String? = nil, parameter94_name : String? = nil, parameter94_value : String? = nil, parameter95_name : String? = nil, parameter95_value : String? = nil, parameter96_name : String? = nil, parameter96_value : String? = nil, parameter97_name : String? = nil, parameter97_value : String? = nil, parameter98_name : String? = nil, parameter98_value : String? = nil, parameter99_name : String? = nil, parameter99_value : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, track : String? = nil, &block : Crest::Response ->)
-      request = build_create_siprec_request(account_sid: account_sid, call_sid: call_sid, connector_name: connector_name, name: name, parameter1_name: parameter1_name, parameter1_value: parameter1_value, parameter10_name: parameter10_name, parameter10_value: parameter10_value, parameter11_name: parameter11_name, parameter11_value: parameter11_value, parameter12_name: parameter12_name, parameter12_value: parameter12_value, parameter13_name: parameter13_name, parameter13_value: parameter13_value, parameter14_name: parameter14_name, parameter14_value: parameter14_value, parameter15_name: parameter15_name, parameter15_value: parameter15_value, parameter16_name: parameter16_name, parameter16_value: parameter16_value, parameter17_name: parameter17_name, parameter17_value: parameter17_value, parameter18_name: parameter18_name, parameter18_value: parameter18_value, parameter19_name: parameter19_name, parameter19_value: parameter19_value, parameter2_name: parameter2_name, parameter2_value: parameter2_value, parameter20_name: parameter20_name, parameter20_value: parameter20_value, parameter21_name: parameter21_name, parameter21_value: parameter21_value, parameter22_name: parameter22_name, parameter22_value: parameter22_value, parameter23_name: parameter23_name, parameter23_value: parameter23_value, parameter24_name: parameter24_name, parameter24_value: parameter24_value, parameter25_name: parameter25_name, parameter25_value: parameter25_value, parameter26_name: parameter26_name, parameter26_value: parameter26_value, parameter27_name: parameter27_name, parameter27_value: parameter27_value, parameter28_name: parameter28_name, parameter28_value: parameter28_value, parameter29_name: parameter29_name, parameter29_value: parameter29_value, parameter3_name: parameter3_name, parameter3_value: parameter3_value, parameter30_name: parameter30_name, parameter30_value: parameter30_value, parameter31_name: parameter31_name, parameter31_value: parameter31_value, parameter32_name: parameter32_name, parameter32_value: parameter32_value, parameter33_name: parameter33_name, parameter33_value: parameter33_value, parameter34_name: parameter34_name, parameter34_value: parameter34_value, parameter35_name: parameter35_name, parameter35_value: parameter35_value, parameter36_name: parameter36_name, parameter36_value: parameter36_value, parameter37_name: parameter37_name, parameter37_value: parameter37_value, parameter38_name: parameter38_name, parameter38_value: parameter38_value, parameter39_name: parameter39_name, parameter39_value: parameter39_value, parameter4_name: parameter4_name, parameter4_value: parameter4_value, parameter40_name: parameter40_name, parameter40_value: parameter40_value, parameter41_name: parameter41_name, parameter41_value: parameter41_value, parameter42_name: parameter42_name, parameter42_value: parameter42_value, parameter43_name: parameter43_name, parameter43_value: parameter43_value, parameter44_name: parameter44_name, parameter44_value: parameter44_value, parameter45_name: parameter45_name, parameter45_value: parameter45_value, parameter46_name: parameter46_name, parameter46_value: parameter46_value, parameter47_name: parameter47_name, parameter47_value: parameter47_value, parameter48_name: parameter48_name, parameter48_value: parameter48_value, parameter49_name: parameter49_name, parameter49_value: parameter49_value, parameter5_name: parameter5_name, parameter5_value: parameter5_value, parameter50_name: parameter50_name, parameter50_value: parameter50_value, parameter51_name: parameter51_name, parameter51_value: parameter51_value, parameter52_name: parameter52_name, parameter52_value: parameter52_value, parameter53_name: parameter53_name, parameter53_value: parameter53_value, parameter54_name: parameter54_name, parameter54_value: parameter54_value, parameter55_name: parameter55_name, parameter55_value: parameter55_value, parameter56_name: parameter56_name, parameter56_value: parameter56_value, parameter57_name: parameter57_name, parameter57_value: parameter57_value, parameter58_name: parameter58_name, parameter58_value: parameter58_value, parameter59_name: parameter59_name, parameter59_value: parameter59_value, parameter6_name: parameter6_name, parameter6_value: parameter6_value, parameter60_name: parameter60_name, parameter60_value: parameter60_value, parameter61_name: parameter61_name, parameter61_value: parameter61_value, parameter62_name: parameter62_name, parameter62_value: parameter62_value, parameter63_name: parameter63_name, parameter63_value: parameter63_value, parameter64_name: parameter64_name, parameter64_value: parameter64_value, parameter65_name: parameter65_name, parameter65_value: parameter65_value, parameter66_name: parameter66_name, parameter66_value: parameter66_value, parameter67_name: parameter67_name, parameter67_value: parameter67_value, parameter68_name: parameter68_name, parameter68_value: parameter68_value, parameter69_name: parameter69_name, parameter69_value: parameter69_value, parameter7_name: parameter7_name, parameter7_value: parameter7_value, parameter70_name: parameter70_name, parameter70_value: parameter70_value, parameter71_name: parameter71_name, parameter71_value: parameter71_value, parameter72_name: parameter72_name, parameter72_value: parameter72_value, parameter73_name: parameter73_name, parameter73_value: parameter73_value, parameter74_name: parameter74_name, parameter74_value: parameter74_value, parameter75_name: parameter75_name, parameter75_value: parameter75_value, parameter76_name: parameter76_name, parameter76_value: parameter76_value, parameter77_name: parameter77_name, parameter77_value: parameter77_value, parameter78_name: parameter78_name, parameter78_value: parameter78_value, parameter79_name: parameter79_name, parameter79_value: parameter79_value, parameter8_name: parameter8_name, parameter8_value: parameter8_value, parameter80_name: parameter80_name, parameter80_value: parameter80_value, parameter81_name: parameter81_name, parameter81_value: parameter81_value, parameter82_name: parameter82_name, parameter82_value: parameter82_value, parameter83_name: parameter83_name, parameter83_value: parameter83_value, parameter84_name: parameter84_name, parameter84_value: parameter84_value, parameter85_name: parameter85_name, parameter85_value: parameter85_value, parameter86_name: parameter86_name, parameter86_value: parameter86_value, parameter87_name: parameter87_name, parameter87_value: parameter87_value, parameter88_name: parameter88_name, parameter88_value: parameter88_value, parameter89_name: parameter89_name, parameter89_value: parameter89_value, parameter9_name: parameter9_name, parameter9_value: parameter9_value, parameter90_name: parameter90_name, parameter90_value: parameter90_value, parameter91_name: parameter91_name, parameter91_value: parameter91_value, parameter92_name: parameter92_name, parameter92_value: parameter92_value, parameter93_name: parameter93_name, parameter93_value: parameter93_value, parameter94_name: parameter94_name, parameter94_value: parameter94_value, parameter95_name: parameter95_name, parameter95_value: parameter95_value, parameter96_name: parameter96_name, parameter96_value: parameter96_value, parameter97_name: parameter97_name, parameter97_value: parameter97_value, parameter98_name: parameter98_name, parameter98_value: parameter98_value, parameter99_name: parameter99_name, parameter99_value: parameter99_value, status_callback: status_callback, status_callback_method: status_callback_method, track: track)
+      request = build_api_request_for_create_siprec(account_sid: account_sid, call_sid: call_sid, connector_name: connector_name, name: name, parameter1_name: parameter1_name, parameter1_value: parameter1_value, parameter10_name: parameter10_name, parameter10_value: parameter10_value, parameter11_name: parameter11_name, parameter11_value: parameter11_value, parameter12_name: parameter12_name, parameter12_value: parameter12_value, parameter13_name: parameter13_name, parameter13_value: parameter13_value, parameter14_name: parameter14_name, parameter14_value: parameter14_value, parameter15_name: parameter15_name, parameter15_value: parameter15_value, parameter16_name: parameter16_name, parameter16_value: parameter16_value, parameter17_name: parameter17_name, parameter17_value: parameter17_value, parameter18_name: parameter18_name, parameter18_value: parameter18_value, parameter19_name: parameter19_name, parameter19_value: parameter19_value, parameter2_name: parameter2_name, parameter2_value: parameter2_value, parameter20_name: parameter20_name, parameter20_value: parameter20_value, parameter21_name: parameter21_name, parameter21_value: parameter21_value, parameter22_name: parameter22_name, parameter22_value: parameter22_value, parameter23_name: parameter23_name, parameter23_value: parameter23_value, parameter24_name: parameter24_name, parameter24_value: parameter24_value, parameter25_name: parameter25_name, parameter25_value: parameter25_value, parameter26_name: parameter26_name, parameter26_value: parameter26_value, parameter27_name: parameter27_name, parameter27_value: parameter27_value, parameter28_name: parameter28_name, parameter28_value: parameter28_value, parameter29_name: parameter29_name, parameter29_value: parameter29_value, parameter3_name: parameter3_name, parameter3_value: parameter3_value, parameter30_name: parameter30_name, parameter30_value: parameter30_value, parameter31_name: parameter31_name, parameter31_value: parameter31_value, parameter32_name: parameter32_name, parameter32_value: parameter32_value, parameter33_name: parameter33_name, parameter33_value: parameter33_value, parameter34_name: parameter34_name, parameter34_value: parameter34_value, parameter35_name: parameter35_name, parameter35_value: parameter35_value, parameter36_name: parameter36_name, parameter36_value: parameter36_value, parameter37_name: parameter37_name, parameter37_value: parameter37_value, parameter38_name: parameter38_name, parameter38_value: parameter38_value, parameter39_name: parameter39_name, parameter39_value: parameter39_value, parameter4_name: parameter4_name, parameter4_value: parameter4_value, parameter40_name: parameter40_name, parameter40_value: parameter40_value, parameter41_name: parameter41_name, parameter41_value: parameter41_value, parameter42_name: parameter42_name, parameter42_value: parameter42_value, parameter43_name: parameter43_name, parameter43_value: parameter43_value, parameter44_name: parameter44_name, parameter44_value: parameter44_value, parameter45_name: parameter45_name, parameter45_value: parameter45_value, parameter46_name: parameter46_name, parameter46_value: parameter46_value, parameter47_name: parameter47_name, parameter47_value: parameter47_value, parameter48_name: parameter48_name, parameter48_value: parameter48_value, parameter49_name: parameter49_name, parameter49_value: parameter49_value, parameter5_name: parameter5_name, parameter5_value: parameter5_value, parameter50_name: parameter50_name, parameter50_value: parameter50_value, parameter51_name: parameter51_name, parameter51_value: parameter51_value, parameter52_name: parameter52_name, parameter52_value: parameter52_value, parameter53_name: parameter53_name, parameter53_value: parameter53_value, parameter54_name: parameter54_name, parameter54_value: parameter54_value, parameter55_name: parameter55_name, parameter55_value: parameter55_value, parameter56_name: parameter56_name, parameter56_value: parameter56_value, parameter57_name: parameter57_name, parameter57_value: parameter57_value, parameter58_name: parameter58_name, parameter58_value: parameter58_value, parameter59_name: parameter59_name, parameter59_value: parameter59_value, parameter6_name: parameter6_name, parameter6_value: parameter6_value, parameter60_name: parameter60_name, parameter60_value: parameter60_value, parameter61_name: parameter61_name, parameter61_value: parameter61_value, parameter62_name: parameter62_name, parameter62_value: parameter62_value, parameter63_name: parameter63_name, parameter63_value: parameter63_value, parameter64_name: parameter64_name, parameter64_value: parameter64_value, parameter65_name: parameter65_name, parameter65_value: parameter65_value, parameter66_name: parameter66_name, parameter66_value: parameter66_value, parameter67_name: parameter67_name, parameter67_value: parameter67_value, parameter68_name: parameter68_name, parameter68_value: parameter68_value, parameter69_name: parameter69_name, parameter69_value: parameter69_value, parameter7_name: parameter7_name, parameter7_value: parameter7_value, parameter70_name: parameter70_name, parameter70_value: parameter70_value, parameter71_name: parameter71_name, parameter71_value: parameter71_value, parameter72_name: parameter72_name, parameter72_value: parameter72_value, parameter73_name: parameter73_name, parameter73_value: parameter73_value, parameter74_name: parameter74_name, parameter74_value: parameter74_value, parameter75_name: parameter75_name, parameter75_value: parameter75_value, parameter76_name: parameter76_name, parameter76_value: parameter76_value, parameter77_name: parameter77_name, parameter77_value: parameter77_value, parameter78_name: parameter78_name, parameter78_value: parameter78_value, parameter79_name: parameter79_name, parameter79_value: parameter79_value, parameter8_name: parameter8_name, parameter8_value: parameter8_value, parameter80_name: parameter80_name, parameter80_value: parameter80_value, parameter81_name: parameter81_name, parameter81_value: parameter81_value, parameter82_name: parameter82_name, parameter82_value: parameter82_value, parameter83_name: parameter83_name, parameter83_value: parameter83_value, parameter84_name: parameter84_name, parameter84_value: parameter84_value, parameter85_name: parameter85_name, parameter85_value: parameter85_value, parameter86_name: parameter86_name, parameter86_value: parameter86_value, parameter87_name: parameter87_name, parameter87_value: parameter87_value, parameter88_name: parameter88_name, parameter88_value: parameter88_value, parameter89_name: parameter89_name, parameter89_value: parameter89_value, parameter9_name: parameter9_name, parameter9_value: parameter9_value, parameter90_name: parameter90_name, parameter90_value: parameter90_value, parameter91_name: parameter91_name, parameter91_value: parameter91_value, parameter92_name: parameter92_name, parameter92_value: parameter92_value, parameter93_name: parameter93_name, parameter93_value: parameter93_value, parameter94_name: parameter94_name, parameter94_value: parameter94_value, parameter95_name: parameter95_name, parameter95_value: parameter95_value, parameter96_name: parameter96_name, parameter96_value: parameter96_value, parameter97_name: parameter97_name, parameter97_value: parameter97_value, parameter98_name: parameter98_name, parameter98_value: parameter98_value, parameter99_name: parameter99_name, parameter99_value: parameter99_value, status_callback: status_callback, status_callback_method: status_callback_method, track: track)
 
       request.execute do |response|
         block.call(response)
@@ -3732,7 +3732,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_siprec_request(*, account_sid : String = @account_sid, call_sid : String, connector_name : String? = nil, name : String? = nil, parameter1_name : String? = nil, parameter1_value : String? = nil, parameter10_name : String? = nil, parameter10_value : String? = nil, parameter11_name : String? = nil, parameter11_value : String? = nil, parameter12_name : String? = nil, parameter12_value : String? = nil, parameter13_name : String? = nil, parameter13_value : String? = nil, parameter14_name : String? = nil, parameter14_value : String? = nil, parameter15_name : String? = nil, parameter15_value : String? = nil, parameter16_name : String? = nil, parameter16_value : String? = nil, parameter17_name : String? = nil, parameter17_value : String? = nil, parameter18_name : String? = nil, parameter18_value : String? = nil, parameter19_name : String? = nil, parameter19_value : String? = nil, parameter2_name : String? = nil, parameter2_value : String? = nil, parameter20_name : String? = nil, parameter20_value : String? = nil, parameter21_name : String? = nil, parameter21_value : String? = nil, parameter22_name : String? = nil, parameter22_value : String? = nil, parameter23_name : String? = nil, parameter23_value : String? = nil, parameter24_name : String? = nil, parameter24_value : String? = nil, parameter25_name : String? = nil, parameter25_value : String? = nil, parameter26_name : String? = nil, parameter26_value : String? = nil, parameter27_name : String? = nil, parameter27_value : String? = nil, parameter28_name : String? = nil, parameter28_value : String? = nil, parameter29_name : String? = nil, parameter29_value : String? = nil, parameter3_name : String? = nil, parameter3_value : String? = nil, parameter30_name : String? = nil, parameter30_value : String? = nil, parameter31_name : String? = nil, parameter31_value : String? = nil, parameter32_name : String? = nil, parameter32_value : String? = nil, parameter33_name : String? = nil, parameter33_value : String? = nil, parameter34_name : String? = nil, parameter34_value : String? = nil, parameter35_name : String? = nil, parameter35_value : String? = nil, parameter36_name : String? = nil, parameter36_value : String? = nil, parameter37_name : String? = nil, parameter37_value : String? = nil, parameter38_name : String? = nil, parameter38_value : String? = nil, parameter39_name : String? = nil, parameter39_value : String? = nil, parameter4_name : String? = nil, parameter4_value : String? = nil, parameter40_name : String? = nil, parameter40_value : String? = nil, parameter41_name : String? = nil, parameter41_value : String? = nil, parameter42_name : String? = nil, parameter42_value : String? = nil, parameter43_name : String? = nil, parameter43_value : String? = nil, parameter44_name : String? = nil, parameter44_value : String? = nil, parameter45_name : String? = nil, parameter45_value : String? = nil, parameter46_name : String? = nil, parameter46_value : String? = nil, parameter47_name : String? = nil, parameter47_value : String? = nil, parameter48_name : String? = nil, parameter48_value : String? = nil, parameter49_name : String? = nil, parameter49_value : String? = nil, parameter5_name : String? = nil, parameter5_value : String? = nil, parameter50_name : String? = nil, parameter50_value : String? = nil, parameter51_name : String? = nil, parameter51_value : String? = nil, parameter52_name : String? = nil, parameter52_value : String? = nil, parameter53_name : String? = nil, parameter53_value : String? = nil, parameter54_name : String? = nil, parameter54_value : String? = nil, parameter55_name : String? = nil, parameter55_value : String? = nil, parameter56_name : String? = nil, parameter56_value : String? = nil, parameter57_name : String? = nil, parameter57_value : String? = nil, parameter58_name : String? = nil, parameter58_value : String? = nil, parameter59_name : String? = nil, parameter59_value : String? = nil, parameter6_name : String? = nil, parameter6_value : String? = nil, parameter60_name : String? = nil, parameter60_value : String? = nil, parameter61_name : String? = nil, parameter61_value : String? = nil, parameter62_name : String? = nil, parameter62_value : String? = nil, parameter63_name : String? = nil, parameter63_value : String? = nil, parameter64_name : String? = nil, parameter64_value : String? = nil, parameter65_name : String? = nil, parameter65_value : String? = nil, parameter66_name : String? = nil, parameter66_value : String? = nil, parameter67_name : String? = nil, parameter67_value : String? = nil, parameter68_name : String? = nil, parameter68_value : String? = nil, parameter69_name : String? = nil, parameter69_value : String? = nil, parameter7_name : String? = nil, parameter7_value : String? = nil, parameter70_name : String? = nil, parameter70_value : String? = nil, parameter71_name : String? = nil, parameter71_value : String? = nil, parameter72_name : String? = nil, parameter72_value : String? = nil, parameter73_name : String? = nil, parameter73_value : String? = nil, parameter74_name : String? = nil, parameter74_value : String? = nil, parameter75_name : String? = nil, parameter75_value : String? = nil, parameter76_name : String? = nil, parameter76_value : String? = nil, parameter77_name : String? = nil, parameter77_value : String? = nil, parameter78_name : String? = nil, parameter78_value : String? = nil, parameter79_name : String? = nil, parameter79_value : String? = nil, parameter8_name : String? = nil, parameter8_value : String? = nil, parameter80_name : String? = nil, parameter80_value : String? = nil, parameter81_name : String? = nil, parameter81_value : String? = nil, parameter82_name : String? = nil, parameter82_value : String? = nil, parameter83_name : String? = nil, parameter83_value : String? = nil, parameter84_name : String? = nil, parameter84_value : String? = nil, parameter85_name : String? = nil, parameter85_value : String? = nil, parameter86_name : String? = nil, parameter86_value : String? = nil, parameter87_name : String? = nil, parameter87_value : String? = nil, parameter88_name : String? = nil, parameter88_value : String? = nil, parameter89_name : String? = nil, parameter89_value : String? = nil, parameter9_name : String? = nil, parameter9_value : String? = nil, parameter90_name : String? = nil, parameter90_value : String? = nil, parameter91_name : String? = nil, parameter91_value : String? = nil, parameter92_name : String? = nil, parameter92_value : String? = nil, parameter93_name : String? = nil, parameter93_value : String? = nil, parameter94_name : String? = nil, parameter94_value : String? = nil, parameter95_name : String? = nil, parameter95_value : String? = nil, parameter96_name : String? = nil, parameter96_value : String? = nil, parameter97_name : String? = nil, parameter97_value : String? = nil, parameter98_name : String? = nil, parameter98_value : String? = nil, parameter99_name : String? = nil, parameter99_value : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, track : String? = nil) : Crest::Request
+    def build_api_request_for_create_siprec(*, account_sid : String = @account_sid, call_sid : String, connector_name : String? = nil, name : String? = nil, parameter1_name : String? = nil, parameter1_value : String? = nil, parameter10_name : String? = nil, parameter10_value : String? = nil, parameter11_name : String? = nil, parameter11_value : String? = nil, parameter12_name : String? = nil, parameter12_value : String? = nil, parameter13_name : String? = nil, parameter13_value : String? = nil, parameter14_name : String? = nil, parameter14_value : String? = nil, parameter15_name : String? = nil, parameter15_value : String? = nil, parameter16_name : String? = nil, parameter16_value : String? = nil, parameter17_name : String? = nil, parameter17_value : String? = nil, parameter18_name : String? = nil, parameter18_value : String? = nil, parameter19_name : String? = nil, parameter19_value : String? = nil, parameter2_name : String? = nil, parameter2_value : String? = nil, parameter20_name : String? = nil, parameter20_value : String? = nil, parameter21_name : String? = nil, parameter21_value : String? = nil, parameter22_name : String? = nil, parameter22_value : String? = nil, parameter23_name : String? = nil, parameter23_value : String? = nil, parameter24_name : String? = nil, parameter24_value : String? = nil, parameter25_name : String? = nil, parameter25_value : String? = nil, parameter26_name : String? = nil, parameter26_value : String? = nil, parameter27_name : String? = nil, parameter27_value : String? = nil, parameter28_name : String? = nil, parameter28_value : String? = nil, parameter29_name : String? = nil, parameter29_value : String? = nil, parameter3_name : String? = nil, parameter3_value : String? = nil, parameter30_name : String? = nil, parameter30_value : String? = nil, parameter31_name : String? = nil, parameter31_value : String? = nil, parameter32_name : String? = nil, parameter32_value : String? = nil, parameter33_name : String? = nil, parameter33_value : String? = nil, parameter34_name : String? = nil, parameter34_value : String? = nil, parameter35_name : String? = nil, parameter35_value : String? = nil, parameter36_name : String? = nil, parameter36_value : String? = nil, parameter37_name : String? = nil, parameter37_value : String? = nil, parameter38_name : String? = nil, parameter38_value : String? = nil, parameter39_name : String? = nil, parameter39_value : String? = nil, parameter4_name : String? = nil, parameter4_value : String? = nil, parameter40_name : String? = nil, parameter40_value : String? = nil, parameter41_name : String? = nil, parameter41_value : String? = nil, parameter42_name : String? = nil, parameter42_value : String? = nil, parameter43_name : String? = nil, parameter43_value : String? = nil, parameter44_name : String? = nil, parameter44_value : String? = nil, parameter45_name : String? = nil, parameter45_value : String? = nil, parameter46_name : String? = nil, parameter46_value : String? = nil, parameter47_name : String? = nil, parameter47_value : String? = nil, parameter48_name : String? = nil, parameter48_value : String? = nil, parameter49_name : String? = nil, parameter49_value : String? = nil, parameter5_name : String? = nil, parameter5_value : String? = nil, parameter50_name : String? = nil, parameter50_value : String? = nil, parameter51_name : String? = nil, parameter51_value : String? = nil, parameter52_name : String? = nil, parameter52_value : String? = nil, parameter53_name : String? = nil, parameter53_value : String? = nil, parameter54_name : String? = nil, parameter54_value : String? = nil, parameter55_name : String? = nil, parameter55_value : String? = nil, parameter56_name : String? = nil, parameter56_value : String? = nil, parameter57_name : String? = nil, parameter57_value : String? = nil, parameter58_name : String? = nil, parameter58_value : String? = nil, parameter59_name : String? = nil, parameter59_value : String? = nil, parameter6_name : String? = nil, parameter6_value : String? = nil, parameter60_name : String? = nil, parameter60_value : String? = nil, parameter61_name : String? = nil, parameter61_value : String? = nil, parameter62_name : String? = nil, parameter62_value : String? = nil, parameter63_name : String? = nil, parameter63_value : String? = nil, parameter64_name : String? = nil, parameter64_value : String? = nil, parameter65_name : String? = nil, parameter65_value : String? = nil, parameter66_name : String? = nil, parameter66_value : String? = nil, parameter67_name : String? = nil, parameter67_value : String? = nil, parameter68_name : String? = nil, parameter68_value : String? = nil, parameter69_name : String? = nil, parameter69_value : String? = nil, parameter7_name : String? = nil, parameter7_value : String? = nil, parameter70_name : String? = nil, parameter70_value : String? = nil, parameter71_name : String? = nil, parameter71_value : String? = nil, parameter72_name : String? = nil, parameter72_value : String? = nil, parameter73_name : String? = nil, parameter73_value : String? = nil, parameter74_name : String? = nil, parameter74_value : String? = nil, parameter75_name : String? = nil, parameter75_value : String? = nil, parameter76_name : String? = nil, parameter76_value : String? = nil, parameter77_name : String? = nil, parameter77_value : String? = nil, parameter78_name : String? = nil, parameter78_value : String? = nil, parameter79_name : String? = nil, parameter79_value : String? = nil, parameter8_name : String? = nil, parameter8_value : String? = nil, parameter80_name : String? = nil, parameter80_value : String? = nil, parameter81_name : String? = nil, parameter81_value : String? = nil, parameter82_name : String? = nil, parameter82_value : String? = nil, parameter83_name : String? = nil, parameter83_value : String? = nil, parameter84_name : String? = nil, parameter84_value : String? = nil, parameter85_name : String? = nil, parameter85_value : String? = nil, parameter86_name : String? = nil, parameter86_value : String? = nil, parameter87_name : String? = nil, parameter87_value : String? = nil, parameter88_name : String? = nil, parameter88_value : String? = nil, parameter89_name : String? = nil, parameter89_value : String? = nil, parameter9_name : String? = nil, parameter9_value : String? = nil, parameter90_name : String? = nil, parameter90_value : String? = nil, parameter91_name : String? = nil, parameter91_value : String? = nil, parameter92_name : String? = nil, parameter92_value : String? = nil, parameter93_name : String? = nil, parameter93_value : String? = nil, parameter94_name : String? = nil, parameter94_value : String? = nil, parameter95_name : String? = nil, parameter95_value : String? = nil, parameter96_name : String? = nil, parameter96_value : String? = nil, parameter97_name : String? = nil, parameter97_value : String? = nil, parameter98_name : String? = nil, parameter98_value : String? = nil, parameter99_name : String? = nil, parameter99_value : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, track : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_siprec ..." }
       end
@@ -4019,7 +4019,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @return [Array<(Token, Integer, Hash)>] Token data, response status code and response headers
     def create_token_with_http_info(*, account_sid : String = @account_sid, ttl : Int32? = nil)
-      request = build_create_token_request(account_sid: account_sid, ttl: ttl)
+      request = build_api_request_for_create_token(account_sid: account_sid, ttl: ttl)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4034,7 +4034,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @return nil
     def create_token(*, account_sid : String = @account_sid, ttl : Int32? = nil, &block : Crest::Response ->)
-      request = build_create_token_request(account_sid: account_sid, ttl: ttl)
+      request = build_api_request_for_create_token(account_sid: account_sid, ttl: ttl)
 
       request.execute do |response|
         block.call(response)
@@ -4042,7 +4042,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_token_request(*, account_sid : String = @account_sid, ttl : Int32? = nil) : Crest::Request
+    def build_api_request_for_create_token(*, account_sid : String = @account_sid, ttl : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_token ..." }
       end
@@ -4112,7 +4112,7 @@ module Twilio
     # @param usage_category [String] The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.
     # @return [Array<(UsageUsageTrigger, Integer, Hash)>] UsageUsageTrigger data, response status code and response headers
     def create_usage_trigger_with_http_info(*, account_sid : String = @account_sid, callback_url : String, trigger_value : String, usage_category : String, callback_method : String? = nil, friendly_name : String? = nil, recurring : String? = nil, trigger_by : String? = nil)
-      request = build_create_usage_trigger_request(account_sid: account_sid, callback_url: callback_url, trigger_value: trigger_value, usage_category: usage_category, callback_method: callback_method, friendly_name: friendly_name, recurring: recurring, trigger_by: trigger_by)
+      request = build_api_request_for_create_usage_trigger(account_sid: account_sid, callback_url: callback_url, trigger_value: trigger_value, usage_category: usage_category, callback_method: callback_method, friendly_name: friendly_name, recurring: recurring, trigger_by: trigger_by)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4130,7 +4130,7 @@ module Twilio
     # @param usage_category [String] The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.
     # @return nil
     def create_usage_trigger(*, account_sid : String = @account_sid, callback_url : String, trigger_value : String, usage_category : String, callback_method : String? = nil, friendly_name : String? = nil, recurring : String? = nil, trigger_by : String? = nil, &block : Crest::Response ->)
-      request = build_create_usage_trigger_request(account_sid: account_sid, callback_url: callback_url, trigger_value: trigger_value, usage_category: usage_category, callback_method: callback_method, friendly_name: friendly_name, recurring: recurring, trigger_by: trigger_by)
+      request = build_api_request_for_create_usage_trigger(account_sid: account_sid, callback_url: callback_url, trigger_value: trigger_value, usage_category: usage_category, callback_method: callback_method, friendly_name: friendly_name, recurring: recurring, trigger_by: trigger_by)
 
       request.execute do |response|
         block.call(response)
@@ -4138,7 +4138,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_usage_trigger_request(*, account_sid : String = @account_sid, callback_url : String, trigger_value : String, usage_category : String, callback_method : String? = nil, friendly_name : String? = nil, recurring : String? = nil, trigger_by : String? = nil) : Crest::Request
+    def build_api_request_for_create_usage_trigger(*, account_sid : String = @account_sid, callback_url : String, trigger_value : String, usage_category : String, callback_method : String? = nil, friendly_name : String? = nil, recurring : String? = nil, trigger_by : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_usage_trigger ..." }
       end
@@ -4225,7 +4225,7 @@ module Twilio
     # @param phone_number [String] The phone number to verify in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
     # @return [Array<(ValidationRequest, Integer, Hash)>] ValidationRequest data, response status code and response headers
     def create_validation_request_with_http_info(*, account_sid : String = @account_sid, phone_number : String, call_delay : Int32? = nil, extension : String? = nil, friendly_name : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil)
-      request = build_create_validation_request_request(account_sid: account_sid, phone_number: phone_number, call_delay: call_delay, extension: extension, friendly_name: friendly_name, status_callback: status_callback, status_callback_method: status_callback_method)
+      request = build_api_request_for_create_validation_request(account_sid: account_sid, phone_number: phone_number, call_delay: call_delay, extension: extension, friendly_name: friendly_name, status_callback: status_callback, status_callback_method: status_callback_method)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4240,7 +4240,7 @@ module Twilio
     # @param phone_number [String] The phone number to verify in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
     # @return nil
     def create_validation_request(*, account_sid : String = @account_sid, phone_number : String, call_delay : Int32? = nil, extension : String? = nil, friendly_name : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, &block : Crest::Response ->)
-      request = build_create_validation_request_request(account_sid: account_sid, phone_number: phone_number, call_delay: call_delay, extension: extension, friendly_name: friendly_name, status_callback: status_callback, status_callback_method: status_callback_method)
+      request = build_api_request_for_create_validation_request(account_sid: account_sid, phone_number: phone_number, call_delay: call_delay, extension: extension, friendly_name: friendly_name, status_callback: status_callback, status_callback_method: status_callback_method)
 
       request.execute do |response|
         block.call(response)
@@ -4248,7 +4248,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_create_validation_request_request(*, account_sid : String = @account_sid, phone_number : String, call_delay : Int32? = nil, extension : String? = nil, friendly_name : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil) : Crest::Request
+    def build_api_request_for_create_validation_request(*, account_sid : String = @account_sid, phone_number : String, call_delay : Int32? = nil, extension : String? = nil, friendly_name : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.create_validation_request ..." }
       end
@@ -4321,7 +4321,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Address resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_address_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_address_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_address(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4336,7 +4336,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Address resource to delete.
     # @return nil
     def delete_address(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_address_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_address(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -4344,7 +4344,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_address_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_address(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_address ..." }
       end
@@ -4418,7 +4418,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Application resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_application_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_application_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_application(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4434,7 +4434,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Application resource to delete.
     # @return nil
     def delete_application(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_application_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_application(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -4442,7 +4442,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_application_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_application(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_application ..." }
       end
@@ -4516,7 +4516,7 @@ module Twilio
     # @param sid [String] The Twilio-provided Call SID that uniquely identifies the Call resource to delete
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_call_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_call_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_call(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4532,7 +4532,7 @@ module Twilio
     # @param sid [String] The Twilio-provided Call SID that uniquely identifies the Call resource to delete
     # @return nil
     def delete_call(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_call_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_call(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -4540,7 +4540,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_call_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_call(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_call ..." }
       end
@@ -4614,7 +4614,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies this resource.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_call_feedback_summary_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_call_feedback_summary_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_call_feedback_summary(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4630,7 +4630,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies this resource.
     # @return nil
     def delete_call_feedback_summary(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_call_feedback_summary_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_call_feedback_summary(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -4638,7 +4638,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_call_feedback_summary_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_call_feedback_summary(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_call_feedback_summary ..." }
       end
@@ -4714,7 +4714,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_call_recording_with_http_info(*, account_sid : String = @account_sid, call_sid : String, sid : String)
-      request = build_delete_call_recording_request(account_sid: account_sid, call_sid: call_sid, sid: sid)
+      request = build_api_request_for_delete_call_recording(account_sid: account_sid, call_sid: call_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4731,7 +4731,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to delete.
     # @return nil
     def delete_call_recording(*, account_sid : String = @account_sid, call_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_call_recording_request(account_sid: account_sid, call_sid: call_sid, sid: sid)
+      request = build_api_request_for_delete_call_recording(account_sid: account_sid, call_sid: call_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -4739,7 +4739,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_call_recording_request(*, account_sid : String = @account_sid, call_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_call_recording(*, account_sid : String = @account_sid, call_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_call_recording ..." }
       end
@@ -4828,7 +4828,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference Recording resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_conference_recording_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, sid : String)
-      request = build_delete_conference_recording_request(account_sid: account_sid, conference_sid: conference_sid, sid: sid)
+      request = build_api_request_for_delete_conference_recording(account_sid: account_sid, conference_sid: conference_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4845,7 +4845,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference Recording resource to delete.
     # @return nil
     def delete_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_conference_recording_request(account_sid: account_sid, conference_sid: conference_sid, sid: sid)
+      request = build_api_request_for_delete_conference_recording(account_sid: account_sid, conference_sid: conference_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -4853,7 +4853,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_conference_recording_request(*, account_sid : String = @account_sid, conference_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_conference_recording ..." }
       end
@@ -4940,7 +4940,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_connect_app_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_connect_app_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_connect_app(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -4956,7 +4956,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch.
     # @return nil
     def delete_connect_app(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_connect_app_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_connect_app(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -4964,7 +4964,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_connect_app_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_connect_app(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_connect_app ..." }
       end
@@ -5038,7 +5038,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_incoming_phone_number_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_incoming_phone_number_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_incoming_phone_number(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5054,7 +5054,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to delete.
     # @return nil
     def delete_incoming_phone_number(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_incoming_phone_number_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_incoming_phone_number(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -5062,7 +5062,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_incoming_phone_number_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_incoming_phone_number(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_incoming_phone_number ..." }
       end
@@ -5138,7 +5138,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_incoming_phone_number_assigned_add_on_with_http_info(*, account_sid : String = @account_sid, resource_sid : String, sid : String)
-      request = build_delete_incoming_phone_number_assigned_add_on_request(account_sid: account_sid, resource_sid: resource_sid, sid: sid)
+      request = build_api_request_for_delete_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5155,7 +5155,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the resource to delete.
     # @return nil
     def delete_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_incoming_phone_number_assigned_add_on_request(account_sid: account_sid, resource_sid: resource_sid, sid: sid)
+      request = build_api_request_for_delete_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -5163,7 +5163,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_incoming_phone_number_assigned_add_on_request(*, account_sid : String = @account_sid, resource_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_incoming_phone_number_assigned_add_on ..." }
       end
@@ -5248,7 +5248,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Key resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_key_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_key_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_key(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5263,7 +5263,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Key resource to delete.
     # @return nil
     def delete_key(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_key_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_key(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -5271,7 +5271,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_key_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_key(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_key ..." }
       end
@@ -5347,7 +5347,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Media resource to delete
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_media_with_http_info(*, account_sid : String = @account_sid, message_sid : String, sid : String)
-      request = build_delete_media_request(account_sid: account_sid, message_sid: message_sid, sid: sid)
+      request = build_api_request_for_delete_media(account_sid: account_sid, message_sid: message_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5364,7 +5364,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Media resource to delete
     # @return nil
     def delete_media(*, account_sid : String = @account_sid, message_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_media_request(account_sid: account_sid, message_sid: message_sid, sid: sid)
+      request = build_api_request_for_delete_media(account_sid: account_sid, message_sid: message_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -5372,7 +5372,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_media_request(*, account_sid : String = @account_sid, message_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_media(*, account_sid : String = @account_sid, message_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_media ..." }
       end
@@ -5459,7 +5459,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Message resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_message_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_message_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_message(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5475,7 +5475,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Message resource to delete.
     # @return nil
     def delete_message(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_message_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_message(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -5483,7 +5483,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_message_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_message(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_message ..." }
       end
@@ -5557,7 +5557,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_outgoing_caller_id_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_outgoing_caller_id_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_outgoing_caller_id(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5573,7 +5573,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to delete.
     # @return nil
     def delete_outgoing_caller_id(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_outgoing_caller_id_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_outgoing_caller_id(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -5581,7 +5581,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_outgoing_caller_id_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_outgoing_caller_id(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_outgoing_caller_id ..." }
       end
@@ -5657,7 +5657,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to delete. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_participant_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String)
-      request = build_delete_participant_request(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid)
+      request = build_api_request_for_delete_participant(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5674,7 +5674,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to delete. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
     # @return nil
     def delete_participant(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String, &block : Crest::Response ->)
-      request = build_delete_participant_request(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid)
+      request = build_api_request_for_delete_participant(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid)
 
       request.execute do |response|
         block.call(response)
@@ -5682,7 +5682,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_participant_request(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String) : Crest::Request
+    def build_api_request_for_delete_participant(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_participant ..." }
       end
@@ -5756,7 +5756,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Queue resource to delete
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_queue_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_queue_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_queue(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5772,7 +5772,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Queue resource to delete
     # @return nil
     def delete_queue(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_queue_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_queue(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -5780,7 +5780,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_queue_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_queue(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_queue ..." }
       end
@@ -5854,7 +5854,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_recording_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_recording_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_recording(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5870,7 +5870,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to delete.
     # @return nil
     def delete_recording(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_recording_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_recording(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -5878,7 +5878,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_recording_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_recording(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_recording ..." }
       end
@@ -5954,7 +5954,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_recording_add_on_result_with_http_info(*, account_sid : String = @account_sid, reference_sid : String, sid : String)
-      request = build_delete_recording_add_on_result_request(account_sid: account_sid, reference_sid: reference_sid, sid: sid)
+      request = build_api_request_for_delete_recording_add_on_result(account_sid: account_sid, reference_sid: reference_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -5971,7 +5971,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to delete.
     # @return nil
     def delete_recording_add_on_result(*, account_sid : String = @account_sid, reference_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_recording_add_on_result_request(account_sid: account_sid, reference_sid: reference_sid, sid: sid)
+      request = build_api_request_for_delete_recording_add_on_result(account_sid: account_sid, reference_sid: reference_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -5979,7 +5979,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_recording_add_on_result_request(*, account_sid : String = @account_sid, reference_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_recording_add_on_result(*, account_sid : String = @account_sid, reference_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_recording_add_on_result ..." }
       end
@@ -6070,7 +6070,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_recording_add_on_result_payload_with_http_info(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, sid : String)
-      request = build_delete_recording_add_on_result_payload_request(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, sid: sid)
+      request = build_api_request_for_delete_recording_add_on_result_payload(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -6088,7 +6088,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to delete.
     # @return nil
     def delete_recording_add_on_result_payload(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_recording_add_on_result_payload_request(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, sid: sid)
+      request = build_api_request_for_delete_recording_add_on_result_payload(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -6096,7 +6096,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_recording_add_on_result_payload_request(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_recording_add_on_result_payload(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_recording_add_on_result_payload ..." }
       end
@@ -6196,7 +6196,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Transcription resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_recording_transcription_with_http_info(*, account_sid : String = @account_sid, recording_sid : String, sid : String)
-      request = build_delete_recording_transcription_request(account_sid: account_sid, recording_sid: recording_sid, sid: sid)
+      request = build_api_request_for_delete_recording_transcription(account_sid: account_sid, recording_sid: recording_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -6212,7 +6212,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Transcription resource to delete.
     # @return nil
     def delete_recording_transcription(*, account_sid : String = @account_sid, recording_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_recording_transcription_request(account_sid: account_sid, recording_sid: recording_sid, sid: sid)
+      request = build_api_request_for_delete_recording_transcription(account_sid: account_sid, recording_sid: recording_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -6220,7 +6220,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_recording_transcription_request(*, account_sid : String = @account_sid, recording_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_recording_transcription(*, account_sid : String = @account_sid, recording_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_recording_transcription ..." }
       end
@@ -6305,7 +6305,7 @@ module Twilio
     # @param sid [String]
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_signing_key_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_signing_key_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_signing_key(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -6320,7 +6320,7 @@ module Twilio
     # @param sid [String]
     # @return nil
     def delete_signing_key(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_signing_key_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_signing_key(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -6328,7 +6328,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_signing_key_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_signing_key(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_signing_key ..." }
       end
@@ -6404,7 +6404,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the CredentialListMapping resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_auth_calls_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_delete_sip_auth_calls_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -6421,7 +6421,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the CredentialListMapping resource to delete.
     # @return nil
     def delete_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_auth_calls_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -6429,7 +6429,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_auth_calls_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_auth_calls_credential_list_mapping ..." }
       end
@@ -6518,7 +6518,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_auth_calls_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_delete_sip_auth_calls_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -6535,7 +6535,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to delete.
     # @return nil
     def delete_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_auth_calls_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -6543,7 +6543,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_auth_calls_ip_access_control_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_auth_calls_ip_access_control_list_mapping ..." }
       end
@@ -6632,7 +6632,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the CredentialListMapping resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_auth_registrations_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_delete_sip_auth_registrations_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -6649,7 +6649,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the CredentialListMapping resource to delete.
     # @return nil
     def delete_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_auth_registrations_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -6657,7 +6657,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_auth_registrations_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_auth_registrations_credential_list_mapping ..." }
       end
@@ -6746,7 +6746,7 @@ module Twilio
     # @param sid [String] The unique id that identifies the resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_credential_with_http_info(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String)
-      request = build_delete_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid)
+      request = build_api_request_for_delete_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -6763,7 +6763,7 @@ module Twilio
     # @param sid [String] The unique id that identifies the resource to delete.
     # @return nil
     def delete_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid)
+      request = build_api_request_for_delete_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -6771,7 +6771,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_credential_request(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_credential ..." }
       end
@@ -6858,7 +6858,7 @@ module Twilio
     # @param sid [String] The credential list Sid that uniquely identifies this resource
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_credential_list_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_sip_credential_list_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_sip_credential_list(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -6874,7 +6874,7 @@ module Twilio
     # @param sid [String] The credential list Sid that uniquely identifies this resource
     # @return nil
     def delete_sip_credential_list(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_credential_list_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_sip_credential_list(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -6882,7 +6882,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_credential_list_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_credential_list(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_credential_list ..." }
       end
@@ -6958,7 +6958,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_delete_sip_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -6975,7 +6975,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to delete.
     # @return nil
     def delete_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -6983,7 +6983,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_credential_list_mapping ..." }
       end
@@ -7070,7 +7070,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the SipDomain resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_domain_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_sip_domain_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_sip_domain(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7086,7 +7086,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the SipDomain resource to delete.
     # @return nil
     def delete_sip_domain(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_domain_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_sip_domain(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -7094,7 +7094,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_domain_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_domain(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_domain ..." }
       end
@@ -7168,7 +7168,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_ip_access_control_list_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_sip_ip_access_control_list_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_sip_ip_access_control_list(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7184,7 +7184,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to delete.
     # @return nil
     def delete_sip_ip_access_control_list(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_ip_access_control_list_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_sip_ip_access_control_list(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -7192,7 +7192,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_ip_access_control_list_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_ip_access_control_list(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_ip_access_control_list ..." }
       end
@@ -7268,7 +7268,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_delete_sip_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7285,7 +7285,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to delete.
     # @return nil
     def delete_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_delete_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -7293,7 +7293,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_ip_access_control_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_ip_access_control_list_mapping ..." }
       end
@@ -7382,7 +7382,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sip_ip_address_with_http_info(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String)
-      request = build_delete_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid)
+      request = build_api_request_for_delete_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7399,7 +7399,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to delete.
     # @return nil
     def delete_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_delete_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid)
+      request = build_api_request_for_delete_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -7407,7 +7407,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_sip_ip_address_request(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_delete_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_sip_ip_address ..." }
       end
@@ -7494,7 +7494,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Transcription resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_transcription_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_transcription_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_transcription(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7510,7 +7510,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Transcription resource to delete.
     # @return nil
     def delete_transcription(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_transcription_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_transcription(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -7518,7 +7518,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_transcription_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_transcription(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_transcription ..." }
       end
@@ -7590,7 +7590,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the UsageTrigger resource to delete.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_usage_trigger_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_delete_usage_trigger_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_usage_trigger(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7605,7 +7605,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the UsageTrigger resource to delete.
     # @return nil
     def delete_usage_trigger(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_delete_usage_trigger_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_delete_usage_trigger(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -7613,7 +7613,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_delete_usage_trigger_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_delete_usage_trigger(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.delete_usage_trigger ..." }
       end
@@ -7685,7 +7685,7 @@ module Twilio
     # @param sid [String] The Account Sid that uniquely identifies the account to fetch
     # @return [Array<(Account, Integer, Hash)>] Account data, response status code and response headers
     def fetch_account_with_http_info(*, sid : String)
-      request = build_fetch_account_request(sid: sid)
+      request = build_api_request_for_fetch_account(sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7700,7 +7700,7 @@ module Twilio
     # @param sid [String] The Account Sid that uniquely identifies the account to fetch
     # @return nil
     def fetch_account(*, sid : String, &block : Crest::Response ->)
-      request = build_fetch_account_request(sid: sid)
+      request = build_api_request_for_fetch_account(sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -7708,7 +7708,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_account_request(*, sid : String) : Crest::Request
+    def build_api_request_for_fetch_account(*, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_account ..." }
       end
@@ -7769,7 +7769,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Address resource to fetch.
     # @return [Array<(Address, Integer, Hash)>] Address data, response status code and response headers
     def fetch_address_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_address_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_address(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7784,7 +7784,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Address resource to fetch.
     # @return nil
     def fetch_address(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_address_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_address(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -7792,7 +7792,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_address_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_address(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_address ..." }
       end
@@ -7868,7 +7868,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Application resource to fetch.
     # @return [Array<(Application, Integer, Hash)>] Application data, response status code and response headers
     def fetch_application_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_application_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_application(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7884,7 +7884,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Application resource to fetch.
     # @return nil
     def fetch_application(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_application_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_application(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -7892,7 +7892,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_application_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_application(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_application ..." }
       end
@@ -7968,7 +7968,7 @@ module Twilio
     # @param connect_app_sid [String] The SID of the Connect App to fetch.
     # @return [Array<(AuthorizedConnectApp, Integer, Hash)>] AuthorizedConnectApp data, response status code and response headers
     def fetch_authorized_connect_app_with_http_info(*, account_sid : String = @account_sid, connect_app_sid : String)
-      request = build_fetch_authorized_connect_app_request(account_sid: account_sid, connect_app_sid: connect_app_sid)
+      request = build_api_request_for_fetch_authorized_connect_app(account_sid: account_sid, connect_app_sid: connect_app_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -7984,7 +7984,7 @@ module Twilio
     # @param connect_app_sid [String] The SID of the Connect App to fetch.
     # @return nil
     def fetch_authorized_connect_app(*, account_sid : String = @account_sid, connect_app_sid : String, &block : Crest::Response ->)
-      request = build_fetch_authorized_connect_app_request(account_sid: account_sid, connect_app_sid: connect_app_sid)
+      request = build_api_request_for_fetch_authorized_connect_app(account_sid: account_sid, connect_app_sid: connect_app_sid)
 
       request.execute do |response|
         block.call(response)
@@ -7992,7 +7992,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_authorized_connect_app_request(*, account_sid : String = @account_sid, connect_app_sid : String) : Crest::Request
+    def build_api_request_for_fetch_authorized_connect_app(*, account_sid : String = @account_sid, connect_app_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_authorized_connect_app ..." }
       end
@@ -8066,7 +8066,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country to fetch available phone number information about.
     # @return [Array<(AvailablePhoneNumberCountry, Integer, Hash)>] AvailablePhoneNumberCountry data, response status code and response headers
     def fetch_available_phone_number_country_with_http_info(*, account_sid : String = @account_sid, country_code : String)
-      request = build_fetch_available_phone_number_country_request(account_sid: account_sid, country_code: country_code)
+      request = build_api_request_for_fetch_available_phone_number_country(account_sid: account_sid, country_code: country_code)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8081,7 +8081,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country to fetch available phone number information about.
     # @return nil
     def fetch_available_phone_number_country(*, account_sid : String = @account_sid, country_code : String, &block : Crest::Response ->)
-      request = build_fetch_available_phone_number_country_request(account_sid: account_sid, country_code: country_code)
+      request = build_api_request_for_fetch_available_phone_number_country(account_sid: account_sid, country_code: country_code)
 
       request.execute do |response|
         block.call(response)
@@ -8089,7 +8089,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_available_phone_number_country_request(*, account_sid : String = @account_sid, country_code : String) : Crest::Request
+    def build_api_request_for_fetch_available_phone_number_country(*, account_sid : String = @account_sid, country_code : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_available_phone_number_country ..." }
       end
@@ -8150,7 +8150,7 @@ module Twilio
     # @param account_sid [String] The unique SID identifier of the Account.
     # @return [Array<(Balance, Integer, Hash)>] Balance data, response status code and response headers
     def fetch_balance_with_http_info(*, account_sid : String = @account_sid)
-      request = build_fetch_balance_request(account_sid: account_sid)
+      request = build_api_request_for_fetch_balance(account_sid: account_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8165,7 +8165,7 @@ module Twilio
     # @param account_sid [String] The unique SID identifier of the Account.
     # @return nil
     def fetch_balance(*, account_sid : String = @account_sid, &block : Crest::Response ->)
-      request = build_fetch_balance_request(account_sid: account_sid)
+      request = build_api_request_for_fetch_balance(account_sid: account_sid)
 
       request.execute do |response|
         block.call(response)
@@ -8173,7 +8173,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_balance_request(*, account_sid : String = @account_sid) : Crest::Request
+    def build_api_request_for_fetch_balance(*, account_sid : String = @account_sid) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_balance ..." }
       end
@@ -8236,7 +8236,7 @@ module Twilio
     # @param sid [String] The SID of the Call resource to fetch.
     # @return [Array<(Call, Integer, Hash)>] Call data, response status code and response headers
     def fetch_call_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_call_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_call(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8252,7 +8252,7 @@ module Twilio
     # @param sid [String] The SID of the Call resource to fetch.
     # @return nil
     def fetch_call(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_call_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_call(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -8260,7 +8260,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_call_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_call(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_call ..." }
       end
@@ -8336,7 +8336,7 @@ module Twilio
     # @param call_sid [String] The call sid that uniquely identifies the call
     # @return [Array<(CallCallFeedback, Integer, Hash)>] CallCallFeedback data, response status code and response headers
     def fetch_call_feedback_with_http_info(*, account_sid : String = @account_sid, call_sid : String)
-      request = build_fetch_call_feedback_request(account_sid: account_sid, call_sid: call_sid)
+      request = build_api_request_for_fetch_call_feedback(account_sid: account_sid, call_sid: call_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8352,7 +8352,7 @@ module Twilio
     # @param call_sid [String] The call sid that uniquely identifies the call
     # @return nil
     def fetch_call_feedback(*, account_sid : String = @account_sid, call_sid : String, &block : Crest::Response ->)
-      request = build_fetch_call_feedback_request(account_sid: account_sid, call_sid: call_sid)
+      request = build_api_request_for_fetch_call_feedback(account_sid: account_sid, call_sid: call_sid)
 
       request.execute do |response|
         block.call(response)
@@ -8360,7 +8360,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_call_feedback_request(*, account_sid : String = @account_sid, call_sid : String) : Crest::Request
+    def build_api_request_for_fetch_call_feedback(*, account_sid : String = @account_sid, call_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_call_feedback ..." }
       end
@@ -8436,7 +8436,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies this resource.
     # @return [Array<(CallCallFeedbackSummary, Integer, Hash)>] CallCallFeedbackSummary data, response status code and response headers
     def fetch_call_feedback_summary_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_call_feedback_summary_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_call_feedback_summary(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8452,7 +8452,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies this resource.
     # @return nil
     def fetch_call_feedback_summary(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_call_feedback_summary_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_call_feedback_summary(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -8460,7 +8460,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_call_feedback_summary_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_call_feedback_summary(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_call_feedback_summary ..." }
       end
@@ -8536,7 +8536,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Call Notification resource to fetch.
     # @return [Array<(CallCallNotificationInstance, Integer, Hash)>] CallCallNotificationInstance data, response status code and response headers
     def fetch_call_notification_with_http_info(*, account_sid : String = @account_sid, call_sid : String, sid : String)
-      request = build_fetch_call_notification_request(account_sid: account_sid, call_sid: call_sid, sid: sid)
+      request = build_api_request_for_fetch_call_notification(account_sid: account_sid, call_sid: call_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8552,7 +8552,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Call Notification resource to fetch.
     # @return nil
     def fetch_call_notification(*, account_sid : String = @account_sid, call_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_call_notification_request(account_sid: account_sid, call_sid: call_sid, sid: sid)
+      request = build_api_request_for_fetch_call_notification(account_sid: account_sid, call_sid: call_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -8560,7 +8560,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_call_notification_request(*, account_sid : String = @account_sid, call_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_call_notification(*, account_sid : String = @account_sid, call_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_call_notification ..." }
       end
@@ -8651,7 +8651,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to fetch.
     # @return [Array<(CallCallRecording, Integer, Hash)>] CallCallRecording data, response status code and response headers
     def fetch_call_recording_with_http_info(*, account_sid : String = @account_sid, call_sid : String, sid : String)
-      request = build_fetch_call_recording_request(account_sid: account_sid, call_sid: call_sid, sid: sid)
+      request = build_api_request_for_fetch_call_recording(account_sid: account_sid, call_sid: call_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8668,7 +8668,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to fetch.
     # @return nil
     def fetch_call_recording(*, account_sid : String = @account_sid, call_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_call_recording_request(account_sid: account_sid, call_sid: call_sid, sid: sid)
+      request = build_api_request_for_fetch_call_recording(account_sid: account_sid, call_sid: call_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -8676,7 +8676,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_call_recording_request(*, account_sid : String = @account_sid, call_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_call_recording(*, account_sid : String = @account_sid, call_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_call_recording ..." }
       end
@@ -8765,7 +8765,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference resource to fetch
     # @return [Array<(Conference, Integer, Hash)>] Conference data, response status code and response headers
     def fetch_conference_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_conference_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_conference(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8781,7 +8781,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference resource to fetch
     # @return nil
     def fetch_conference(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_conference_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_conference(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -8789,7 +8789,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_conference_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_conference(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_conference ..." }
       end
@@ -8867,7 +8867,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference Recording resource to fetch.
     # @return [Array<(ConferenceConferenceRecording, Integer, Hash)>] ConferenceConferenceRecording data, response status code and response headers
     def fetch_conference_recording_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, sid : String)
-      request = build_fetch_conference_recording_request(account_sid: account_sid, conference_sid: conference_sid, sid: sid)
+      request = build_api_request_for_fetch_conference_recording(account_sid: account_sid, conference_sid: conference_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8884,7 +8884,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference Recording resource to fetch.
     # @return nil
     def fetch_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_conference_recording_request(account_sid: account_sid, conference_sid: conference_sid, sid: sid)
+      request = build_api_request_for_fetch_conference_recording(account_sid: account_sid, conference_sid: conference_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -8892,7 +8892,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_conference_recording_request(*, account_sid : String = @account_sid, conference_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_conference_recording ..." }
       end
@@ -8981,7 +8981,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch.
     # @return [Array<(ConnectApp, Integer, Hash)>] ConnectApp data, response status code and response headers
     def fetch_connect_app_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_connect_app_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_connect_app(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -8997,7 +8997,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ConnectApp resource to fetch.
     # @return nil
     def fetch_connect_app(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_connect_app_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_connect_app(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -9005,7 +9005,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_connect_app_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_connect_app(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_connect_app ..." }
       end
@@ -9081,7 +9081,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to fetch.
     # @return [Array<(IncomingPhoneNumber, Integer, Hash)>] IncomingPhoneNumber data, response status code and response headers
     def fetch_incoming_phone_number_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_incoming_phone_number_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_incoming_phone_number(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -9097,7 +9097,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to fetch.
     # @return nil
     def fetch_incoming_phone_number(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_incoming_phone_number_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_incoming_phone_number(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -9105,7 +9105,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_incoming_phone_number_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_incoming_phone_number(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_incoming_phone_number ..." }
       end
@@ -9183,7 +9183,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the resource to fetch.
     # @return [Array<(IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn, Integer, Hash)>] IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn data, response status code and response headers
     def fetch_incoming_phone_number_assigned_add_on_with_http_info(*, account_sid : String = @account_sid, resource_sid : String, sid : String)
-      request = build_fetch_incoming_phone_number_assigned_add_on_request(account_sid: account_sid, resource_sid: resource_sid, sid: sid)
+      request = build_api_request_for_fetch_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -9200,7 +9200,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the resource to fetch.
     # @return nil
     def fetch_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_incoming_phone_number_assigned_add_on_request(account_sid: account_sid, resource_sid: resource_sid, sid: sid)
+      request = build_api_request_for_fetch_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -9208,7 +9208,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_incoming_phone_number_assigned_add_on_request(*, account_sid : String = @account_sid, resource_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_incoming_phone_number_assigned_add_on ..." }
       end
@@ -9301,7 +9301,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the resource to fetch.
     # @return [Array<(IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension, Integer, Hash)>] IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension data, response status code and response headers
     def fetch_incoming_phone_number_assigned_add_on_extension_with_http_info(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, sid : String)
-      request = build_fetch_incoming_phone_number_assigned_add_on_extension_request(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, sid: sid)
+      request = build_api_request_for_fetch_incoming_phone_number_assigned_add_on_extension(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -9319,7 +9319,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the resource to fetch.
     # @return nil
     def fetch_incoming_phone_number_assigned_add_on_extension(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_incoming_phone_number_assigned_add_on_extension_request(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, sid: sid)
+      request = build_api_request_for_fetch_incoming_phone_number_assigned_add_on_extension(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -9327,7 +9327,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_incoming_phone_number_assigned_add_on_extension_request(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_incoming_phone_number_assigned_add_on_extension(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_incoming_phone_number_assigned_add_on_extension ..." }
       end
@@ -9427,7 +9427,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Key resource to fetch.
     # @return [Array<(Key, Integer, Hash)>] Key data, response status code and response headers
     def fetch_key_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_key_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_key(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -9442,7 +9442,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Key resource to fetch.
     # @return nil
     def fetch_key(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_key_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_key(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -9450,7 +9450,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_key_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_key(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_key ..." }
       end
@@ -9528,7 +9528,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Media resource to fetch
     # @return [Array<(MessageMedia, Integer, Hash)>] MessageMedia data, response status code and response headers
     def fetch_media_with_http_info(*, account_sid : String = @account_sid, message_sid : String, sid : String)
-      request = build_fetch_media_request(account_sid: account_sid, message_sid: message_sid, sid: sid)
+      request = build_api_request_for_fetch_media(account_sid: account_sid, message_sid: message_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -9545,7 +9545,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Media resource to fetch
     # @return nil
     def fetch_media(*, account_sid : String = @account_sid, message_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_media_request(account_sid: account_sid, message_sid: message_sid, sid: sid)
+      request = build_api_request_for_fetch_media(account_sid: account_sid, message_sid: message_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -9553,7 +9553,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_media_request(*, account_sid : String = @account_sid, message_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_media(*, account_sid : String = @account_sid, message_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_media ..." }
       end
@@ -9644,7 +9644,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch.
     # @return [Array<(QueueMember, Integer, Hash)>] QueueMember data, response status code and response headers
     def fetch_member_with_http_info(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String)
-      request = build_fetch_member_request(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid)
+      request = build_api_request_for_fetch_member(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -9661,7 +9661,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to fetch.
     # @return nil
     def fetch_member(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String, &block : Crest::Response ->)
-      request = build_fetch_member_request(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid)
+      request = build_api_request_for_fetch_member(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid)
 
       request.execute do |response|
         block.call(response)
@@ -9669,7 +9669,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_member_request(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String) : Crest::Request
+    def build_api_request_for_fetch_member(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_member ..." }
       end
@@ -9745,7 +9745,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Message resource to fetch.
     # @return [Array<(Message, Integer, Hash)>] Message data, response status code and response headers
     def fetch_message_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_message_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_message(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -9761,7 +9761,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Message resource to fetch.
     # @return nil
     def fetch_message(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_message_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_message(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -9769,7 +9769,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_message_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_message(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_message ..." }
       end
@@ -9845,7 +9845,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Notification resource to fetch.
     # @return [Array<(NotificationInstance, Integer, Hash)>] NotificationInstance data, response status code and response headers
     def fetch_notification_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_notification_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_notification(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -9861,7 +9861,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Notification resource to fetch.
     # @return nil
     def fetch_notification(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_notification_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_notification(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -9869,7 +9869,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_notification_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_notification(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_notification ..." }
       end
@@ -9945,7 +9945,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to fetch.
     # @return [Array<(OutgoingCallerId, Integer, Hash)>] OutgoingCallerId data, response status code and response headers
     def fetch_outgoing_caller_id_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_outgoing_caller_id_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_outgoing_caller_id(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -9961,7 +9961,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to fetch.
     # @return nil
     def fetch_outgoing_caller_id(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_outgoing_caller_id_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_outgoing_caller_id(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -9969,7 +9969,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_outgoing_caller_id_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_outgoing_caller_id(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_outgoing_caller_id ..." }
       end
@@ -10047,7 +10047,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to fetch. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
     # @return [Array<(ConferenceParticipant, Integer, Hash)>] ConferenceParticipant data, response status code and response headers
     def fetch_participant_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String)
-      request = build_fetch_participant_request(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid)
+      request = build_api_request_for_fetch_participant(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -10064,7 +10064,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to fetch. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
     # @return nil
     def fetch_participant(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String, &block : Crest::Response ->)
-      request = build_fetch_participant_request(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid)
+      request = build_api_request_for_fetch_participant(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid)
 
       request.execute do |response|
         block.call(response)
@@ -10072,7 +10072,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_participant_request(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String) : Crest::Request
+    def build_api_request_for_fetch_participant(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_participant ..." }
       end
@@ -10148,7 +10148,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Queue resource to fetch
     # @return [Array<(Queue, Integer, Hash)>] Queue data, response status code and response headers
     def fetch_queue_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_queue_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_queue(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -10164,7 +10164,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Queue resource to fetch
     # @return nil
     def fetch_queue(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_queue_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_queue(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -10172,7 +10172,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_queue_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_queue(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_queue ..." }
       end
@@ -10248,7 +10248,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to fetch.
     # @return [Array<(Recording, Integer, Hash)>] Recording data, response status code and response headers
     def fetch_recording_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_recording_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_recording(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -10264,7 +10264,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to fetch.
     # @return nil
     def fetch_recording(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_recording_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_recording(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -10272,7 +10272,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_recording_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_recording(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_recording ..." }
       end
@@ -10350,7 +10350,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to fetch.
     # @return [Array<(RecordingRecordingAddOnResult, Integer, Hash)>] RecordingRecordingAddOnResult data, response status code and response headers
     def fetch_recording_add_on_result_with_http_info(*, account_sid : String = @account_sid, reference_sid : String, sid : String)
-      request = build_fetch_recording_add_on_result_request(account_sid: account_sid, reference_sid: reference_sid, sid: sid)
+      request = build_api_request_for_fetch_recording_add_on_result(account_sid: account_sid, reference_sid: reference_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -10367,7 +10367,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording AddOnResult resource to fetch.
     # @return nil
     def fetch_recording_add_on_result(*, account_sid : String = @account_sid, reference_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_recording_add_on_result_request(account_sid: account_sid, reference_sid: reference_sid, sid: sid)
+      request = build_api_request_for_fetch_recording_add_on_result(account_sid: account_sid, reference_sid: reference_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -10375,7 +10375,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_recording_add_on_result_request(*, account_sid : String = @account_sid, reference_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_recording_add_on_result(*, account_sid : String = @account_sid, reference_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_recording_add_on_result ..." }
       end
@@ -10468,7 +10468,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to fetch.
     # @return [Array<(RecordingRecordingAddOnResultRecordingAddOnResultPayload, Integer, Hash)>] RecordingRecordingAddOnResultRecordingAddOnResultPayload data, response status code and response headers
     def fetch_recording_add_on_result_payload_with_http_info(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, sid : String)
-      request = build_fetch_recording_add_on_result_payload_request(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, sid: sid)
+      request = build_api_request_for_fetch_recording_add_on_result_payload(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -10486,7 +10486,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording AddOnResult Payload resource to fetch.
     # @return nil
     def fetch_recording_add_on_result_payload(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_recording_add_on_result_payload_request(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, sid: sid)
+      request = build_api_request_for_fetch_recording_add_on_result_payload(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -10494,7 +10494,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_recording_add_on_result_payload_request(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_recording_add_on_result_payload(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_recording_add_on_result_payload ..." }
       end
@@ -10596,7 +10596,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Transcription resource to fetch.
     # @return [Array<(RecordingRecordingTranscription, Integer, Hash)>] RecordingRecordingTranscription data, response status code and response headers
     def fetch_recording_transcription_with_http_info(*, account_sid : String = @account_sid, recording_sid : String, sid : String)
-      request = build_fetch_recording_transcription_request(account_sid: account_sid, recording_sid: recording_sid, sid: sid)
+      request = build_api_request_for_fetch_recording_transcription(account_sid: account_sid, recording_sid: recording_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -10612,7 +10612,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Transcription resource to fetch.
     # @return nil
     def fetch_recording_transcription(*, account_sid : String = @account_sid, recording_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_recording_transcription_request(account_sid: account_sid, recording_sid: recording_sid, sid: sid)
+      request = build_api_request_for_fetch_recording_transcription(account_sid: account_sid, recording_sid: recording_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -10620,7 +10620,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_recording_transcription_request(*, account_sid : String = @account_sid, recording_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_recording_transcription(*, account_sid : String = @account_sid, recording_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_recording_transcription ..." }
       end
@@ -10709,7 +10709,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ShortCode resource to fetch
     # @return [Array<(ShortCode, Integer, Hash)>] ShortCode data, response status code and response headers
     def fetch_short_code_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_short_code_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_short_code(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -10725,7 +10725,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ShortCode resource to fetch
     # @return nil
     def fetch_short_code(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_short_code_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_short_code(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -10733,7 +10733,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_short_code_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_short_code(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_short_code ..." }
       end
@@ -10807,7 +10807,7 @@ module Twilio
     # @param sid [String]
     # @return [Array<(SigningKey, Integer, Hash)>] SigningKey data, response status code and response headers
     def fetch_signing_key_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_signing_key_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_signing_key(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -10822,7 +10822,7 @@ module Twilio
     # @param sid [String]
     # @return nil
     def fetch_signing_key(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_signing_key_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_signing_key(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -10830,7 +10830,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_signing_key_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_signing_key(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_signing_key ..." }
       end
@@ -10908,7 +10908,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the CredentialListMapping resource to fetch.
     # @return [Array<(SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping, Integer, Hash)>] SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping data, response status code and response headers
     def fetch_sip_auth_calls_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_fetch_sip_auth_calls_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -10925,7 +10925,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the CredentialListMapping resource to fetch.
     # @return nil
     def fetch_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_auth_calls_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -10933,7 +10933,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_auth_calls_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_auth_calls_credential_list_mapping ..." }
       end
@@ -11024,7 +11024,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to fetch.
     # @return [Array<(SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping, Integer, Hash)>] SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping data, response status code and response headers
     def fetch_sip_auth_calls_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_fetch_sip_auth_calls_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -11041,7 +11041,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IpAccessControlListMapping resource to fetch.
     # @return nil
     def fetch_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_auth_calls_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -11049,7 +11049,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_auth_calls_ip_access_control_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_auth_calls_ip_access_control_list_mapping ..." }
       end
@@ -11140,7 +11140,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the CredentialListMapping resource to fetch.
     # @return [Array<(SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping, Integer, Hash)>] SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping data, response status code and response headers
     def fetch_sip_auth_registrations_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_fetch_sip_auth_registrations_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -11157,7 +11157,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the CredentialListMapping resource to fetch.
     # @return nil
     def fetch_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_auth_registrations_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -11165,7 +11165,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_auth_registrations_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_auth_registrations_credential_list_mapping ..." }
       end
@@ -11256,7 +11256,7 @@ module Twilio
     # @param sid [String] The unique id that identifies the resource to fetch.
     # @return [Array<(SipSipCredentialListSipCredential, Integer, Hash)>] SipSipCredentialListSipCredential data, response status code and response headers
     def fetch_sip_credential_with_http_info(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String)
-      request = build_fetch_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -11273,7 +11273,7 @@ module Twilio
     # @param sid [String] The unique id that identifies the resource to fetch.
     # @return nil
     def fetch_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -11281,7 +11281,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_credential_request(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_credential ..." }
       end
@@ -11370,7 +11370,7 @@ module Twilio
     # @param sid [String] The credential list Sid that uniquely identifies this resource
     # @return [Array<(SipSipCredentialList, Integer, Hash)>] SipSipCredentialList data, response status code and response headers
     def fetch_sip_credential_list_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_sip_credential_list_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_credential_list(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -11386,7 +11386,7 @@ module Twilio
     # @param sid [String] The credential list Sid that uniquely identifies this resource
     # @return nil
     def fetch_sip_credential_list(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_credential_list_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_credential_list(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -11394,7 +11394,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_credential_list_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_credential_list(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_credential_list ..." }
       end
@@ -11472,7 +11472,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to fetch.
     # @return [Array<(SipSipDomainSipCredentialListMapping, Integer, Hash)>] SipSipDomainSipCredentialListMapping data, response status code and response headers
     def fetch_sip_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_fetch_sip_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -11489,7 +11489,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to fetch.
     # @return nil
     def fetch_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -11497,7 +11497,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_credential_list_mapping ..." }
       end
@@ -11586,7 +11586,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the SipDomain resource to fetch.
     # @return [Array<(SipSipDomain, Integer, Hash)>] SipSipDomain data, response status code and response headers
     def fetch_sip_domain_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_sip_domain_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_domain(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -11602,7 +11602,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the SipDomain resource to fetch.
     # @return nil
     def fetch_sip_domain(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_domain_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_domain(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -11610,7 +11610,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_domain_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_domain(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_domain ..." }
       end
@@ -11686,7 +11686,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to fetch.
     # @return [Array<(SipSipIpAccessControlList, Integer, Hash)>] SipSipIpAccessControlList data, response status code and response headers
     def fetch_sip_ip_access_control_list_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_sip_ip_access_control_list_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_ip_access_control_list(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -11702,7 +11702,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to fetch.
     # @return nil
     def fetch_sip_ip_access_control_list(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_ip_access_control_list_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_ip_access_control_list(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -11710,7 +11710,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_ip_access_control_list_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_ip_access_control_list(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_ip_access_control_list ..." }
       end
@@ -11788,7 +11788,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to fetch.
     # @return [Array<(SipSipDomainSipIpAccessControlListMapping, Integer, Hash)>] SipSipDomainSipIpAccessControlListMapping data, response status code and response headers
     def fetch_sip_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, sid : String)
-      request = build_fetch_sip_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -11805,7 +11805,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the resource to fetch.
     # @return nil
     def fetch_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -11813,7 +11813,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_ip_access_control_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_ip_access_control_list_mapping ..." }
       end
@@ -11904,7 +11904,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the IpAddress resource to fetch.
     # @return [Array<(SipSipIpAccessControlListSipIpAddress, Integer, Hash)>] SipSipIpAccessControlListSipIpAddress data, response status code and response headers
     def fetch_sip_ip_address_with_http_info(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String)
-      request = build_fetch_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -11921,7 +11921,7 @@ module Twilio
     # @param sid [String] A 34 character string that uniquely identifies the IpAddress resource to fetch.
     # @return nil
     def fetch_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String, &block : Crest::Response ->)
-      request = build_fetch_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid)
+      request = build_api_request_for_fetch_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -11929,7 +11929,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_sip_ip_address_request(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String) : Crest::Request
+    def build_api_request_for_fetch_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_sip_ip_address ..." }
       end
@@ -12018,7 +12018,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Transcription resource to fetch.
     # @return [Array<(Transcription, Integer, Hash)>] Transcription data, response status code and response headers
     def fetch_transcription_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_transcription_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_transcription(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12034,7 +12034,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Transcription resource to fetch.
     # @return nil
     def fetch_transcription(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_transcription_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_transcription(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -12042,7 +12042,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_transcription_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_transcription(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_transcription ..." }
       end
@@ -12118,7 +12118,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the UsageTrigger resource to fetch.
     # @return [Array<(UsageUsageTrigger, Integer, Hash)>] UsageUsageTrigger data, response status code and response headers
     def fetch_usage_trigger_with_http_info(*, account_sid : String = @account_sid, sid : String)
-      request = build_fetch_usage_trigger_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_usage_trigger(account_sid: account_sid, sid: sid)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12134,7 +12134,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the UsageTrigger resource to fetch.
     # @return nil
     def fetch_usage_trigger(*, account_sid : String = @account_sid, sid : String, &block : Crest::Response ->)
-      request = build_fetch_usage_trigger_request(account_sid: account_sid, sid: sid)
+      request = build_api_request_for_fetch_usage_trigger(account_sid: account_sid, sid: sid)
 
       request.execute do |response|
         block.call(response)
@@ -12142,7 +12142,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_fetch_usage_trigger_request(*, account_sid : String = @account_sid, sid : String) : Crest::Request
+    def build_api_request_for_fetch_usage_trigger(*, account_sid : String = @account_sid, sid : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.fetch_usage_trigger ..." }
       end
@@ -12214,7 +12214,7 @@ module Twilio
     # Retrieves a collection of Accounts belonging to the account used to make the request
     # @return [Array<(ListAccountResponse, Integer, Hash)>] ListAccountResponse data, response status code and response headers
     def list_account_with_http_info(*, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil)
-      request = build_list_account_request(friendly_name: friendly_name, status: status, page_size: page_size)
+      request = build_api_request_for_list_account(friendly_name: friendly_name, status: status, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12228,7 +12228,7 @@ module Twilio
     # Retrieves a collection of Accounts belonging to the account used to make the request
     # @return nil
     def list_account(*, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_account_request(friendly_name: friendly_name, status: status, page_size: page_size)
+      request = build_api_request_for_list_account(friendly_name: friendly_name, status: status, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -12236,7 +12236,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_account_request(*, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_account(*, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_account ..." }
       end
@@ -12297,7 +12297,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to read.
     # @return [Array<(ListAddressResponse, Integer, Hash)>] ListAddressResponse data, response status code and response headers
     def list_address_with_http_info(*, account_sid : String = @account_sid, customer_name : String? = nil, friendly_name : String? = nil, iso_country : String? = nil, page_size : Int32? = nil)
-      request = build_list_address_request(account_sid: account_sid, customer_name: customer_name, friendly_name: friendly_name, iso_country: iso_country, page_size: page_size)
+      request = build_api_request_for_list_address(account_sid: account_sid, customer_name: customer_name, friendly_name: friendly_name, iso_country: iso_country, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12311,7 +12311,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to read.
     # @return nil
     def list_address(*, account_sid : String = @account_sid, customer_name : String? = nil, friendly_name : String? = nil, iso_country : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_address_request(account_sid: account_sid, customer_name: customer_name, friendly_name: friendly_name, iso_country: iso_country, page_size: page_size)
+      request = build_api_request_for_list_address(account_sid: account_sid, customer_name: customer_name, friendly_name: friendly_name, iso_country: iso_country, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -12319,7 +12319,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_address_request(*, account_sid : String = @account_sid, customer_name : String? = nil, friendly_name : String? = nil, iso_country : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_address(*, account_sid : String = @account_sid, customer_name : String? = nil, friendly_name : String? = nil, iso_country : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_address ..." }
       end
@@ -12392,7 +12392,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to read.
     # @return [Array<(ListApplicationResponse, Integer, Hash)>] ListApplicationResponse data, response status code and response headers
     def list_application_with_http_info(*, account_sid : String = @account_sid, friendly_name : String? = nil, page_size : Int32? = nil)
-      request = build_list_application_request(account_sid: account_sid, friendly_name: friendly_name, page_size: page_size)
+      request = build_api_request_for_list_application(account_sid: account_sid, friendly_name: friendly_name, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12407,7 +12407,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to read.
     # @return nil
     def list_application(*, account_sid : String = @account_sid, friendly_name : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_application_request(account_sid: account_sid, friendly_name: friendly_name, page_size: page_size)
+      request = build_api_request_for_list_application(account_sid: account_sid, friendly_name: friendly_name, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -12415,7 +12415,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_application_request(*, account_sid : String = @account_sid, friendly_name : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_application(*, account_sid : String = @account_sid, friendly_name : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_application ..." }
       end
@@ -12486,7 +12486,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resources to read.
     # @return [Array<(ListAuthorizedConnectAppResponse, Integer, Hash)>] ListAuthorizedConnectAppResponse data, response status code and response headers
     def list_authorized_connect_app_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_authorized_connect_app_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_authorized_connect_app(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12501,7 +12501,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resources to read.
     # @return nil
     def list_authorized_connect_app(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_authorized_connect_app_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_authorized_connect_app(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -12509,7 +12509,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_authorized_connect_app_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_authorized_connect_app(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_authorized_connect_app ..." }
       end
@@ -12577,7 +12577,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the available phone number Country resources.
     # @return [Array<(ListAvailablePhoneNumberCountryResponse, Integer, Hash)>] ListAvailablePhoneNumberCountryResponse data, response status code and response headers
     def list_available_phone_number_country_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_available_phone_number_country_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_country(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12591,7 +12591,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the available phone number Country resources.
     # @return nil
     def list_available_phone_number_country(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_available_phone_number_country_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_country(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -12599,7 +12599,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_available_phone_number_country_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_available_phone_number_country(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_available_phone_number_country ..." }
       end
@@ -12669,7 +12669,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return [Array<(ListAvailablePhoneNumberLocalResponse, Integer, Hash)>] ListAvailablePhoneNumberLocalResponse data, response status code and response headers
     def list_available_phone_number_local_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_available_phone_number_local_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_local(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12684,7 +12684,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return nil
     def list_available_phone_number_local(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_available_phone_number_local_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_local(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -12692,7 +12692,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_available_phone_number_local_request(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_available_phone_number_local(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_available_phone_number_local ..." }
       end
@@ -12780,7 +12780,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return [Array<(ListAvailablePhoneNumberMachineToMachineResponse, Integer, Hash)>] ListAvailablePhoneNumberMachineToMachineResponse data, response status code and response headers
     def list_available_phone_number_machine_to_machine_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_available_phone_number_machine_to_machine_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_machine_to_machine(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12795,7 +12795,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return nil
     def list_available_phone_number_machine_to_machine(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_available_phone_number_machine_to_machine_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_machine_to_machine(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -12803,7 +12803,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_available_phone_number_machine_to_machine_request(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_available_phone_number_machine_to_machine(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_available_phone_number_machine_to_machine ..." }
       end
@@ -12891,7 +12891,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return [Array<(ListAvailablePhoneNumberMobileResponse, Integer, Hash)>] ListAvailablePhoneNumberMobileResponse data, response status code and response headers
     def list_available_phone_number_mobile_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_available_phone_number_mobile_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_mobile(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -12906,7 +12906,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return nil
     def list_available_phone_number_mobile(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_available_phone_number_mobile_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_mobile(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -12914,7 +12914,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_available_phone_number_mobile_request(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_available_phone_number_mobile(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_available_phone_number_mobile ..." }
       end
@@ -13002,7 +13002,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return [Array<(ListAvailablePhoneNumberNationalResponse, Integer, Hash)>] ListAvailablePhoneNumberNationalResponse data, response status code and response headers
     def list_available_phone_number_national_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_available_phone_number_national_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_national(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -13017,7 +13017,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return nil
     def list_available_phone_number_national(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_available_phone_number_national_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_national(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -13025,7 +13025,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_available_phone_number_national_request(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_available_phone_number_national(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_available_phone_number_national ..." }
       end
@@ -13113,7 +13113,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return [Array<(ListAvailablePhoneNumberSharedCostResponse, Integer, Hash)>] ListAvailablePhoneNumberSharedCostResponse data, response status code and response headers
     def list_available_phone_number_shared_cost_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_available_phone_number_shared_cost_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_shared_cost(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -13128,7 +13128,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return nil
     def list_available_phone_number_shared_cost(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_available_phone_number_shared_cost_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_shared_cost(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -13136,7 +13136,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_available_phone_number_shared_cost_request(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_available_phone_number_shared_cost(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_available_phone_number_shared_cost ..." }
       end
@@ -13224,7 +13224,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return [Array<(ListAvailablePhoneNumberTollFreeResponse, Integer, Hash)>] ListAvailablePhoneNumberTollFreeResponse data, response status code and response headers
     def list_available_phone_number_toll_free_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_available_phone_number_toll_free_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_toll_free(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -13239,7 +13239,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return nil
     def list_available_phone_number_toll_free(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_available_phone_number_toll_free_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_toll_free(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -13247,7 +13247,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_available_phone_number_toll_free_request(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_available_phone_number_toll_free(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_available_phone_number_toll_free ..." }
       end
@@ -13335,7 +13335,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return [Array<(ListAvailablePhoneNumberVoipResponse, Integer, Hash)>] ListAvailablePhoneNumberVoipResponse data, response status code and response headers
     def list_available_phone_number_voip_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_available_phone_number_voip_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_voip(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -13350,7 +13350,7 @@ module Twilio
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
     # @return nil
     def list_available_phone_number_voip(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_available_phone_number_voip_request(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
+      request = build_api_request_for_list_available_phone_number_voip(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -13358,7 +13358,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_available_phone_number_voip_request(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_available_phone_number_voip(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_available_phone_number_voip ..." }
       end
@@ -13446,7 +13446,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to read.
     # @return [Array<(ListCallResponse, Integer, Hash)>] ListCallResponse data, response status code and response headers
     def list_call_with_http_info(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, parent_call_sid : String? = nil, status : String? = nil, start_time : Time? = nil, start_time_before : Time? = nil, start_time_after : Time? = nil, end_time : Time? = nil, end_time_before : Time? = nil, end_time_after : Time? = nil, page_size : Int32? = nil)
-      request = build_list_call_request(account_sid: account_sid, to: to, from: from, parent_call_sid: parent_call_sid, status: status, start_time: start_time, start_time_before: start_time_before, start_time_after: start_time_after, end_time: end_time, end_time_before: end_time_before, end_time_after: end_time_after, page_size: page_size)
+      request = build_api_request_for_list_call(account_sid: account_sid, to: to, from: from, parent_call_sid: parent_call_sid, status: status, start_time: start_time, start_time_before: start_time_before, start_time_after: start_time_after, end_time: end_time, end_time_before: end_time_before, end_time_after: end_time_after, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -13461,7 +13461,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to read.
     # @return nil
     def list_call(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, parent_call_sid : String? = nil, status : String? = nil, start_time : Time? = nil, start_time_before : Time? = nil, start_time_after : Time? = nil, end_time : Time? = nil, end_time_before : Time? = nil, end_time_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_call_request(account_sid: account_sid, to: to, from: from, parent_call_sid: parent_call_sid, status: status, start_time: start_time, start_time_before: start_time_before, start_time_after: start_time_after, end_time: end_time, end_time_before: end_time_before, end_time_after: end_time_after, page_size: page_size)
+      request = build_api_request_for_list_call(account_sid: account_sid, to: to, from: from, parent_call_sid: parent_call_sid, status: status, start_time: start_time, start_time_before: start_time_before, start_time_after: start_time_after, end_time: end_time, end_time_before: end_time_before, end_time_after: end_time_after, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -13469,7 +13469,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_call_request(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, parent_call_sid : String? = nil, status : String? = nil, start_time : Time? = nil, start_time_before : Time? = nil, start_time_after : Time? = nil, end_time : Time? = nil, end_time_before : Time? = nil, end_time_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_call(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, parent_call_sid : String? = nil, status : String? = nil, start_time : Time? = nil, start_time_before : Time? = nil, start_time_after : Time? = nil, end_time : Time? = nil, end_time_before : Time? = nil, end_time_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_call ..." }
       end
@@ -13568,7 +13568,7 @@ module Twilio
     # @param call_sid [String] The unique SID identifier of the Call.
     # @return [Array<(ListCallEventResponse, Integer, Hash)>] ListCallEventResponse data, response status code and response headers
     def list_call_event_with_http_info(*, account_sid : String = @account_sid, call_sid : String, page_size : Int32? = nil)
-      request = build_list_call_event_request(account_sid: account_sid, call_sid: call_sid, page_size: page_size)
+      request = build_api_request_for_list_call_event(account_sid: account_sid, call_sid: call_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -13584,7 +13584,7 @@ module Twilio
     # @param call_sid [String] The unique SID identifier of the Call.
     # @return nil
     def list_call_event(*, account_sid : String = @account_sid, call_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_call_event_request(account_sid: account_sid, call_sid: call_sid, page_size: page_size)
+      request = build_api_request_for_list_call_event(account_sid: account_sid, call_sid: call_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -13592,7 +13592,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_call_event_request(*, account_sid : String = @account_sid, call_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_call_event(*, account_sid : String = @account_sid, call_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_call_event ..." }
       end
@@ -13675,7 +13675,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resources to read.
     # @return [Array<(ListCallNotificationResponse, Integer, Hash)>] ListCallNotificationResponse data, response status code and response headers
     def list_call_notification_with_http_info(*, account_sid : String = @account_sid, call_sid : String, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil)
-      request = build_list_call_notification_request(account_sid: account_sid, call_sid: call_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
+      request = build_api_request_for_list_call_notification(account_sid: account_sid, call_sid: call_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -13690,7 +13690,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resources to read.
     # @return nil
     def list_call_notification(*, account_sid : String = @account_sid, call_sid : String, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_call_notification_request(account_sid: account_sid, call_sid: call_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
+      request = build_api_request_for_list_call_notification(account_sid: account_sid, call_sid: call_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -13698,7 +13698,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_call_notification_request(*, account_sid : String = @account_sid, call_sid : String, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_call_notification(*, account_sid : String = @account_sid, call_sid : String, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_call_notification ..." }
       end
@@ -13787,7 +13787,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.
     # @return [Array<(ListCallRecordingResponse, Integer, Hash)>] ListCallRecordingResponse data, response status code and response headers
     def list_call_recording_with_http_info(*, account_sid : String = @account_sid, call_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil)
-      request = build_list_call_recording_request(account_sid: account_sid, call_sid: call_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
+      request = build_api_request_for_list_call_recording(account_sid: account_sid, call_sid: call_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -13803,7 +13803,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.
     # @return nil
     def list_call_recording(*, account_sid : String = @account_sid, call_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_call_recording_request(account_sid: account_sid, call_sid: call_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
+      request = build_api_request_for_list_call_recording(account_sid: account_sid, call_sid: call_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -13811,7 +13811,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_call_recording_request(*, account_sid : String = @account_sid, call_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_call_recording(*, account_sid : String = @account_sid, call_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_call_recording ..." }
       end
@@ -13897,7 +13897,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to read.
     # @return [Array<(ListConferenceResponse, Integer, Hash)>] ListConferenceResponse data, response status code and response headers
     def list_conference_with_http_info(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, date_updated : Time? = nil, date_updated_before : Time? = nil, date_updated_after : Time? = nil, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil)
-      request = build_list_conference_request(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, date_updated: date_updated, date_updated_before: date_updated_before, date_updated_after: date_updated_after, friendly_name: friendly_name, status: status, page_size: page_size)
+      request = build_api_request_for_list_conference(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, date_updated: date_updated, date_updated_before: date_updated_before, date_updated_after: date_updated_after, friendly_name: friendly_name, status: status, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -13912,7 +13912,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to read.
     # @return nil
     def list_conference(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, date_updated : Time? = nil, date_updated_before : Time? = nil, date_updated_after : Time? = nil, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_conference_request(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, date_updated: date_updated, date_updated_before: date_updated_before, date_updated_after: date_updated_after, friendly_name: friendly_name, status: status, page_size: page_size)
+      request = build_api_request_for_list_conference(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, date_updated: date_updated, date_updated_before: date_updated_before, date_updated_after: date_updated_after, friendly_name: friendly_name, status: status, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -13920,7 +13920,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_conference_request(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, date_updated : Time? = nil, date_updated_before : Time? = nil, date_updated_after : Time? = nil, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_conference(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, date_updated : Time? = nil, date_updated_before : Time? = nil, date_updated_after : Time? = nil, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_conference ..." }
       end
@@ -14004,7 +14004,7 @@ module Twilio
     # @param conference_sid [String] The Conference SID that identifies the conference associated with the recording to read.
     # @return [Array<(ListConferenceRecordingResponse, Integer, Hash)>] ListConferenceRecordingResponse data, response status code and response headers
     def list_conference_recording_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil)
-      request = build_list_conference_recording_request(account_sid: account_sid, conference_sid: conference_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
+      request = build_api_request_for_list_conference_recording(account_sid: account_sid, conference_sid: conference_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14020,7 +14020,7 @@ module Twilio
     # @param conference_sid [String] The Conference SID that identifies the conference associated with the recording to read.
     # @return nil
     def list_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_conference_recording_request(account_sid: account_sid, conference_sid: conference_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
+      request = build_api_request_for_list_conference_recording(account_sid: account_sid, conference_sid: conference_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14028,7 +14028,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_conference_recording_request(*, account_sid : String = @account_sid, conference_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_conference_recording ..." }
       end
@@ -14114,7 +14114,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to read.
     # @return [Array<(ListConnectAppResponse, Integer, Hash)>] ListConnectAppResponse data, response status code and response headers
     def list_connect_app_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_connect_app_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_connect_app(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14129,7 +14129,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to read.
     # @return nil
     def list_connect_app(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_connect_app_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_connect_app(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14137,7 +14137,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_connect_app_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_connect_app(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_connect_app ..." }
       end
@@ -14207,7 +14207,7 @@ module Twilio
     # @param address_sid [String] The SID of the Address resource associated with the phone number.
     # @return [Array<(ListDependentPhoneNumberResponse, Integer, Hash)>] ListDependentPhoneNumberResponse data, response status code and response headers
     def list_dependent_phone_number_with_http_info(*, account_sid : String = @account_sid, address_sid : String, page_size : Int32? = nil)
-      request = build_list_dependent_phone_number_request(account_sid: account_sid, address_sid: address_sid, page_size: page_size)
+      request = build_api_request_for_list_dependent_phone_number(account_sid: account_sid, address_sid: address_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14222,7 +14222,7 @@ module Twilio
     # @param address_sid [String] The SID of the Address resource associated with the phone number.
     # @return nil
     def list_dependent_phone_number(*, account_sid : String = @account_sid, address_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_dependent_phone_number_request(account_sid: account_sid, address_sid: address_sid, page_size: page_size)
+      request = build_api_request_for_list_dependent_phone_number(account_sid: account_sid, address_sid: address_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14230,7 +14230,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_dependent_phone_number_request(*, account_sid : String = @account_sid, address_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_dependent_phone_number(*, account_sid : String = @account_sid, address_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_dependent_phone_number ..." }
       end
@@ -14313,7 +14313,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resources to read.
     # @return [Array<(ListIncomingPhoneNumberResponse, Integer, Hash)>] ListIncomingPhoneNumberResponse data, response status code and response headers
     def list_incoming_phone_number_with_http_info(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
-      request = build_list_incoming_phone_number_request(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14328,7 +14328,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resources to read.
     # @return nil
     def list_incoming_phone_number(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_incoming_phone_number_request(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14336,7 +14336,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_incoming_phone_number_request(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_incoming_phone_number(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_incoming_phone_number ..." }
       end
@@ -14412,7 +14412,7 @@ module Twilio
     # @param resource_sid [String] The SID of the Phone Number to which the Add-on is assigned.
     # @return [Array<(ListIncomingPhoneNumberAssignedAddOnResponse, Integer, Hash)>] ListIncomingPhoneNumberAssignedAddOnResponse data, response status code and response headers
     def list_incoming_phone_number_assigned_add_on_with_http_info(*, account_sid : String = @account_sid, resource_sid : String, page_size : Int32? = nil)
-      request = build_list_incoming_phone_number_assigned_add_on_request(account_sid: account_sid, resource_sid: resource_sid, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14428,7 +14428,7 @@ module Twilio
     # @param resource_sid [String] The SID of the Phone Number to which the Add-on is assigned.
     # @return nil
     def list_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_incoming_phone_number_assigned_add_on_request(account_sid: account_sid, resource_sid: resource_sid, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14436,7 +14436,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_incoming_phone_number_assigned_add_on_request(*, account_sid : String = @account_sid, resource_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_incoming_phone_number_assigned_add_on ..." }
       end
@@ -14523,7 +14523,7 @@ module Twilio
     # @param assigned_add_on_sid [String] The SID that uniquely identifies the assigned Add-on installation.
     # @return [Array<(ListIncomingPhoneNumberAssignedAddOnExtensionResponse, Integer, Hash)>] ListIncomingPhoneNumberAssignedAddOnExtensionResponse data, response status code and response headers
     def list_incoming_phone_number_assigned_add_on_extension_with_http_info(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, page_size : Int32? = nil)
-      request = build_list_incoming_phone_number_assigned_add_on_extension_request(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_assigned_add_on_extension(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14540,7 +14540,7 @@ module Twilio
     # @param assigned_add_on_sid [String] The SID that uniquely identifies the assigned Add-on installation.
     # @return nil
     def list_incoming_phone_number_assigned_add_on_extension(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_incoming_phone_number_assigned_add_on_extension_request(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_assigned_add_on_extension(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14548,7 +14548,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_incoming_phone_number_assigned_add_on_extension_request(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_incoming_phone_number_assigned_add_on_extension(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_incoming_phone_number_assigned_add_on_extension ..." }
       end
@@ -14642,7 +14642,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @return [Array<(ListIncomingPhoneNumberLocalResponse, Integer, Hash)>] ListIncomingPhoneNumberLocalResponse data, response status code and response headers
     def list_incoming_phone_number_local_with_http_info(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
-      request = build_list_incoming_phone_number_local_request(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_local(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14656,7 +14656,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @return nil
     def list_incoming_phone_number_local(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_incoming_phone_number_local_request(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_local(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14664,7 +14664,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_incoming_phone_number_local_request(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_incoming_phone_number_local(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_incoming_phone_number_local ..." }
       end
@@ -14736,7 +14736,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @return [Array<(ListIncomingPhoneNumberMobileResponse, Integer, Hash)>] ListIncomingPhoneNumberMobileResponse data, response status code and response headers
     def list_incoming_phone_number_mobile_with_http_info(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
-      request = build_list_incoming_phone_number_mobile_request(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_mobile(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14750,7 +14750,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @return nil
     def list_incoming_phone_number_mobile(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_incoming_phone_number_mobile_request(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_mobile(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14758,7 +14758,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_incoming_phone_number_mobile_request(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_incoming_phone_number_mobile(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_incoming_phone_number_mobile ..." }
       end
@@ -14830,7 +14830,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @return [Array<(ListIncomingPhoneNumberTollFreeResponse, Integer, Hash)>] ListIncomingPhoneNumberTollFreeResponse data, response status code and response headers
     def list_incoming_phone_number_toll_free_with_http_info(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
-      request = build_list_incoming_phone_number_toll_free_request(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_toll_free(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14844,7 +14844,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @return nil
     def list_incoming_phone_number_toll_free(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_incoming_phone_number_toll_free_request(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
+      request = build_api_request_for_list_incoming_phone_number_toll_free(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14852,7 +14852,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_incoming_phone_number_toll_free_request(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_incoming_phone_number_toll_free(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_incoming_phone_number_toll_free ..." }
       end
@@ -14924,7 +14924,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to read.
     # @return [Array<(ListKeyResponse, Integer, Hash)>] ListKeyResponse data, response status code and response headers
     def list_key_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_key_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_key(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -14938,7 +14938,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to read.
     # @return nil
     def list_key(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_key_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_key(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -14946,7 +14946,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_key_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_key(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_key ..." }
       end
@@ -15018,7 +15018,7 @@ module Twilio
     # @param message_sid [String] The SID of the Message resource that this Media resource belongs to.
     # @return [Array<(ListMediaResponse, Integer, Hash)>] ListMediaResponse data, response status code and response headers
     def list_media_with_http_info(*, account_sid : String = @account_sid, message_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil)
-      request = build_list_media_request(account_sid: account_sid, message_sid: message_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
+      request = build_api_request_for_list_media(account_sid: account_sid, message_sid: message_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15034,7 +15034,7 @@ module Twilio
     # @param message_sid [String] The SID of the Message resource that this Media resource belongs to.
     # @return nil
     def list_media(*, account_sid : String = @account_sid, message_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_media_request(account_sid: account_sid, message_sid: message_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
+      request = build_api_request_for_list_media(account_sid: account_sid, message_sid: message_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15042,7 +15042,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_media_request(*, account_sid : String = @account_sid, message_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_media(*, account_sid : String = @account_sid, message_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_media ..." }
       end
@@ -15130,7 +15130,7 @@ module Twilio
     # @param queue_sid [String] The SID of the Queue in which to find the members
     # @return [Array<(ListMemberResponse, Integer, Hash)>] ListMemberResponse data, response status code and response headers
     def list_member_with_http_info(*, account_sid : String = @account_sid, queue_sid : String, page_size : Int32? = nil)
-      request = build_list_member_request(account_sid: account_sid, queue_sid: queue_sid, page_size: page_size)
+      request = build_api_request_for_list_member(account_sid: account_sid, queue_sid: queue_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15146,7 +15146,7 @@ module Twilio
     # @param queue_sid [String] The SID of the Queue in which to find the members
     # @return nil
     def list_member(*, account_sid : String = @account_sid, queue_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_member_request(account_sid: account_sid, queue_sid: queue_sid, page_size: page_size)
+      request = build_api_request_for_list_member(account_sid: account_sid, queue_sid: queue_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15154,7 +15154,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_member_request(*, account_sid : String = @account_sid, queue_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_member(*, account_sid : String = @account_sid, queue_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_member ..." }
       end
@@ -15237,7 +15237,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to read.
     # @return [Array<(ListMessageResponse, Integer, Hash)>] ListMessageResponse data, response status code and response headers
     def list_message_with_http_info(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, date_sent : Time? = nil, date_sent_before : Time? = nil, date_sent_after : Time? = nil, page_size : Int32? = nil)
-      request = build_list_message_request(account_sid: account_sid, to: to, from: from, date_sent: date_sent, date_sent_before: date_sent_before, date_sent_after: date_sent_after, page_size: page_size)
+      request = build_api_request_for_list_message(account_sid: account_sid, to: to, from: from, date_sent: date_sent, date_sent_before: date_sent_before, date_sent_after: date_sent_after, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15252,7 +15252,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to read.
     # @return nil
     def list_message(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, date_sent : Time? = nil, date_sent_before : Time? = nil, date_sent_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_message_request(account_sid: account_sid, to: to, from: from, date_sent: date_sent, date_sent_before: date_sent_before, date_sent_after: date_sent_after, page_size: page_size)
+      request = build_api_request_for_list_message(account_sid: account_sid, to: to, from: from, date_sent: date_sent, date_sent_before: date_sent_before, date_sent_after: date_sent_after, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15260,7 +15260,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_message_request(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, date_sent : Time? = nil, date_sent_before : Time? = nil, date_sent_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_message(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, date_sent : Time? = nil, date_sent_before : Time? = nil, date_sent_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_message ..." }
       end
@@ -15335,7 +15335,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resources to read.
     # @return [Array<(ListNotificationResponse, Integer, Hash)>] ListNotificationResponse data, response status code and response headers
     def list_notification_with_http_info(*, account_sid : String = @account_sid, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil)
-      request = build_list_notification_request(account_sid: account_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
+      request = build_api_request_for_list_notification(account_sid: account_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15350,7 +15350,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resources to read.
     # @return nil
     def list_notification(*, account_sid : String = @account_sid, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_notification_request(account_sid: account_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
+      request = build_api_request_for_list_notification(account_sid: account_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15358,7 +15358,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_notification_request(*, account_sid : String = @account_sid, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_notification(*, account_sid : String = @account_sid, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_notification ..." }
       end
@@ -15432,7 +15432,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to read.
     # @return [Array<(ListOutgoingCallerIdResponse, Integer, Hash)>] ListOutgoingCallerIdResponse data, response status code and response headers
     def list_outgoing_caller_id_with_http_info(*, account_sid : String = @account_sid, phone_number : String? = nil, friendly_name : String? = nil, page_size : Int32? = nil)
-      request = build_list_outgoing_caller_id_request(account_sid: account_sid, phone_number: phone_number, friendly_name: friendly_name, page_size: page_size)
+      request = build_api_request_for_list_outgoing_caller_id(account_sid: account_sid, phone_number: phone_number, friendly_name: friendly_name, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15447,7 +15447,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to read.
     # @return nil
     def list_outgoing_caller_id(*, account_sid : String = @account_sid, phone_number : String? = nil, friendly_name : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_outgoing_caller_id_request(account_sid: account_sid, phone_number: phone_number, friendly_name: friendly_name, page_size: page_size)
+      request = build_api_request_for_list_outgoing_caller_id(account_sid: account_sid, phone_number: phone_number, friendly_name: friendly_name, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15455,7 +15455,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_outgoing_caller_id_request(*, account_sid : String = @account_sid, phone_number : String? = nil, friendly_name : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_outgoing_caller_id(*, account_sid : String = @account_sid, phone_number : String? = nil, friendly_name : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_outgoing_caller_id ..." }
       end
@@ -15529,7 +15529,7 @@ module Twilio
     # @param conference_sid [String] The SID of the conference with the participants to read.
     # @return [Array<(ListParticipantResponse, Integer, Hash)>] ListParticipantResponse data, response status code and response headers
     def list_participant_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, muted : Bool? = nil, hold : Bool? = nil, coaching : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_participant_request(account_sid: account_sid, conference_sid: conference_sid, muted: muted, hold: hold, coaching: coaching, page_size: page_size)
+      request = build_api_request_for_list_participant(account_sid: account_sid, conference_sid: conference_sid, muted: muted, hold: hold, coaching: coaching, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15545,7 +15545,7 @@ module Twilio
     # @param conference_sid [String] The SID of the conference with the participants to read.
     # @return nil
     def list_participant(*, account_sid : String = @account_sid, conference_sid : String, muted : Bool? = nil, hold : Bool? = nil, coaching : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_participant_request(account_sid: account_sid, conference_sid: conference_sid, muted: muted, hold: hold, coaching: coaching, page_size: page_size)
+      request = build_api_request_for_list_participant(account_sid: account_sid, conference_sid: conference_sid, muted: muted, hold: hold, coaching: coaching, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15553,7 +15553,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_participant_request(*, account_sid : String = @account_sid, conference_sid : String, muted : Bool? = nil, hold : Bool? = nil, coaching : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_participant(*, account_sid : String = @account_sid, conference_sid : String, muted : Bool? = nil, hold : Bool? = nil, coaching : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_participant ..." }
       end
@@ -15639,7 +15639,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resources to read.
     # @return [Array<(ListQueueResponse, Integer, Hash)>] ListQueueResponse data, response status code and response headers
     def list_queue_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_queue_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_queue(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15654,7 +15654,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resources to read.
     # @return nil
     def list_queue(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_queue_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_queue(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15662,7 +15662,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_queue_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_queue(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_queue ..." }
       end
@@ -15732,7 +15732,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.
     # @return [Array<(ListRecordingResponse, Integer, Hash)>] ListRecordingResponse data, response status code and response headers
     def list_recording_with_http_info(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, call_sid : String? = nil, conference_sid : String? = nil, page_size : Int32? = nil)
-      request = build_list_recording_request(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, call_sid: call_sid, conference_sid: conference_sid, page_size: page_size)
+      request = build_api_request_for_list_recording(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, call_sid: call_sid, conference_sid: conference_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15747,7 +15747,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.
     # @return nil
     def list_recording(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, call_sid : String? = nil, conference_sid : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_recording_request(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, call_sid: call_sid, conference_sid: conference_sid, page_size: page_size)
+      request = build_api_request_for_list_recording(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, call_sid: call_sid, conference_sid: conference_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15755,7 +15755,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_recording_request(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, call_sid : String? = nil, conference_sid : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_recording(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, call_sid : String? = nil, conference_sid : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_recording ..." }
       end
@@ -15858,7 +15858,7 @@ module Twilio
     # @param reference_sid [String] The SID of the recording to which the result to read belongs.
     # @return [Array<(ListRecordingAddOnResultResponse, Integer, Hash)>] ListRecordingAddOnResultResponse data, response status code and response headers
     def list_recording_add_on_result_with_http_info(*, account_sid : String = @account_sid, reference_sid : String, page_size : Int32? = nil)
-      request = build_list_recording_add_on_result_request(account_sid: account_sid, reference_sid: reference_sid, page_size: page_size)
+      request = build_api_request_for_list_recording_add_on_result(account_sid: account_sid, reference_sid: reference_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15874,7 +15874,7 @@ module Twilio
     # @param reference_sid [String] The SID of the recording to which the result to read belongs.
     # @return nil
     def list_recording_add_on_result(*, account_sid : String = @account_sid, reference_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_recording_add_on_result_request(account_sid: account_sid, reference_sid: reference_sid, page_size: page_size)
+      request = build_api_request_for_list_recording_add_on_result(account_sid: account_sid, reference_sid: reference_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15882,7 +15882,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_recording_add_on_result_request(*, account_sid : String = @account_sid, reference_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_recording_add_on_result(*, account_sid : String = @account_sid, reference_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_recording_add_on_result ..." }
       end
@@ -15969,7 +15969,7 @@ module Twilio
     # @param add_on_result_sid [String] The SID of the AddOnResult to which the payloads to read belongs.
     # @return [Array<(ListRecordingAddOnResultPayloadResponse, Integer, Hash)>] ListRecordingAddOnResultPayloadResponse data, response status code and response headers
     def list_recording_add_on_result_payload_with_http_info(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, page_size : Int32? = nil)
-      request = build_list_recording_add_on_result_payload_request(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, page_size: page_size)
+      request = build_api_request_for_list_recording_add_on_result_payload(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -15986,7 +15986,7 @@ module Twilio
     # @param add_on_result_sid [String] The SID of the AddOnResult to which the payloads to read belongs.
     # @return nil
     def list_recording_add_on_result_payload(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_recording_add_on_result_payload_request(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, page_size: page_size)
+      request = build_api_request_for_list_recording_add_on_result_payload(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -15994,7 +15994,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_recording_add_on_result_payload_request(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_recording_add_on_result_payload(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_recording_add_on_result_payload ..." }
       end
@@ -16090,7 +16090,7 @@ module Twilio
     # @param recording_sid [String] The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcriptions to read.
     # @return [Array<(ListRecordingTranscriptionResponse, Integer, Hash)>] ListRecordingTranscriptionResponse data, response status code and response headers
     def list_recording_transcription_with_http_info(*, account_sid : String = @account_sid, recording_sid : String, page_size : Int32? = nil)
-      request = build_list_recording_transcription_request(account_sid: account_sid, recording_sid: recording_sid, page_size: page_size)
+      request = build_api_request_for_list_recording_transcription(account_sid: account_sid, recording_sid: recording_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -16105,7 +16105,7 @@ module Twilio
     # @param recording_sid [String] The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcriptions to read.
     # @return nil
     def list_recording_transcription(*, account_sid : String = @account_sid, recording_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_recording_transcription_request(account_sid: account_sid, recording_sid: recording_sid, page_size: page_size)
+      request = build_api_request_for_list_recording_transcription(account_sid: account_sid, recording_sid: recording_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -16113,7 +16113,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_recording_transcription_request(*, account_sid : String = @account_sid, recording_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_recording_transcription(*, account_sid : String = @account_sid, recording_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_recording_transcription ..." }
       end
@@ -16196,7 +16196,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to read.
     # @return [Array<(ListShortCodeResponse, Integer, Hash)>] ListShortCodeResponse data, response status code and response headers
     def list_short_code_with_http_info(*, account_sid : String = @account_sid, friendly_name : String? = nil, short_code : String? = nil, page_size : Int32? = nil)
-      request = build_list_short_code_request(account_sid: account_sid, friendly_name: friendly_name, short_code: short_code, page_size: page_size)
+      request = build_api_request_for_list_short_code(account_sid: account_sid, friendly_name: friendly_name, short_code: short_code, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -16211,7 +16211,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to read.
     # @return nil
     def list_short_code(*, account_sid : String = @account_sid, friendly_name : String? = nil, short_code : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_short_code_request(account_sid: account_sid, friendly_name: friendly_name, short_code: short_code, page_size: page_size)
+      request = build_api_request_for_list_short_code(account_sid: account_sid, friendly_name: friendly_name, short_code: short_code, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -16219,7 +16219,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_short_code_request(*, account_sid : String = @account_sid, friendly_name : String? = nil, short_code : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_short_code(*, account_sid : String = @account_sid, friendly_name : String? = nil, short_code : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_short_code ..." }
       end
@@ -16289,7 +16289,7 @@ module Twilio
     # @param account_sid [String]
     # @return [Array<(ListSigningKeyResponse, Integer, Hash)>] ListSigningKeyResponse data, response status code and response headers
     def list_signing_key_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_signing_key_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_signing_key(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -16303,7 +16303,7 @@ module Twilio
     # @param account_sid [String]
     # @return nil
     def list_signing_key(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_signing_key_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_signing_key(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -16311,7 +16311,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_signing_key_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_signing_key(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_signing_key ..." }
       end
@@ -16383,7 +16383,7 @@ module Twilio
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
     # @return [Array<(ListSipAuthCallsCredentialListMappingResponse, Integer, Hash)>] ListSipAuthCallsCredentialListMappingResponse data, response status code and response headers
     def list_sip_auth_calls_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
-      request = build_list_sip_auth_calls_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -16399,7 +16399,7 @@ module Twilio
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
     # @return nil
     def list_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_auth_calls_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -16407,7 +16407,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_auth_calls_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_auth_calls_credential_list_mapping ..." }
       end
@@ -16492,7 +16492,7 @@ module Twilio
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
     # @return [Array<(ListSipAuthCallsIpAccessControlListMappingResponse, Integer, Hash)>] ListSipAuthCallsIpAccessControlListMappingResponse data, response status code and response headers
     def list_sip_auth_calls_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
-      request = build_list_sip_auth_calls_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -16508,7 +16508,7 @@ module Twilio
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
     # @return nil
     def list_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_auth_calls_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -16516,7 +16516,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_auth_calls_ip_access_control_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_auth_calls_ip_access_control_list_mapping ..." }
       end
@@ -16601,7 +16601,7 @@ module Twilio
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
     # @return [Array<(ListSipAuthRegistrationsCredentialListMappingResponse, Integer, Hash)>] ListSipAuthRegistrationsCredentialListMappingResponse data, response status code and response headers
     def list_sip_auth_registrations_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
-      request = build_list_sip_auth_registrations_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -16617,7 +16617,7 @@ module Twilio
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
     # @return nil
     def list_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_auth_registrations_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -16625,7 +16625,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_auth_registrations_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_auth_registrations_credential_list_mapping ..." }
       end
@@ -16710,7 +16710,7 @@ module Twilio
     # @param credential_list_sid [String] The unique id that identifies the credential list that contains the desired credentials.
     # @return [Array<(ListSipCredentialResponse, Integer, Hash)>] ListSipCredentialResponse data, response status code and response headers
     def list_sip_credential_with_http_info(*, account_sid : String = @account_sid, credential_list_sid : String, page_size : Int32? = nil)
-      request = build_list_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -16726,7 +16726,7 @@ module Twilio
     # @param credential_list_sid [String] The unique id that identifies the credential list that contains the desired credentials.
     # @return nil
     def list_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -16734,7 +16734,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_credential_request(*, account_sid : String = @account_sid, credential_list_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_credential ..." }
       end
@@ -16817,7 +16817,7 @@ module Twilio
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @return [Array<(ListSipCredentialListResponse, Integer, Hash)>] ListSipCredentialListResponse data, response status code and response headers
     def list_sip_credential_list_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_sip_credential_list_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_credential_list(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -16832,7 +16832,7 @@ module Twilio
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @return nil
     def list_sip_credential_list(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_credential_list_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_credential_list(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -16840,7 +16840,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_credential_list_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_credential_list(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_credential_list ..." }
       end
@@ -16912,7 +16912,7 @@ module Twilio
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP Domain that includes the resource to read.
     # @return [Array<(ListSipCredentialListMappingResponse, Integer, Hash)>] ListSipCredentialListMappingResponse data, response status code and response headers
     def list_sip_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
-      request = build_list_sip_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -16928,7 +16928,7 @@ module Twilio
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP Domain that includes the resource to read.
     # @return nil
     def list_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_credential_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -16936,7 +16936,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_credential_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_credential_list_mapping ..." }
       end
@@ -17019,7 +17019,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resources to read.
     # @return [Array<(ListSipDomainResponse, Integer, Hash)>] ListSipDomainResponse data, response status code and response headers
     def list_sip_domain_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_sip_domain_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_domain(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17034,7 +17034,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resources to read.
     # @return nil
     def list_sip_domain(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_domain_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_domain(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17042,7 +17042,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_domain_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_domain(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_domain ..." }
       end
@@ -17112,7 +17112,7 @@ module Twilio
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @return [Array<(ListSipIpAccessControlListResponse, Integer, Hash)>] ListSipIpAccessControlListResponse data, response status code and response headers
     def list_sip_ip_access_control_list_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_sip_ip_access_control_list_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_ip_access_control_list(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17127,7 +17127,7 @@ module Twilio
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @return nil
     def list_sip_ip_access_control_list(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_ip_access_control_list_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_ip_access_control_list(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17135,7 +17135,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_ip_access_control_list_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_ip_access_control_list(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_ip_access_control_list ..." }
       end
@@ -17207,7 +17207,7 @@ module Twilio
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP domain.
     # @return [Array<(ListSipIpAccessControlListMappingResponse, Integer, Hash)>] ListSipIpAccessControlListMappingResponse data, response status code and response headers
     def list_sip_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
-      request = build_list_sip_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17223,7 +17223,7 @@ module Twilio
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP domain.
     # @return nil
     def list_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_ip_access_control_list_mapping_request(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17231,7 +17231,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_ip_access_control_list_mapping_request(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_ip_access_control_list_mapping ..." }
       end
@@ -17316,7 +17316,7 @@ module Twilio
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid that identifies the IpAddress resources to read.
     # @return [Array<(ListSipIpAddressResponse, Integer, Hash)>] ListSipIpAddressResponse data, response status code and response headers
     def list_sip_ip_address_with_http_info(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, page_size : Int32? = nil)
-      request = build_list_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17332,7 +17332,7 @@ module Twilio
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid that identifies the IpAddress resources to read.
     # @return nil
     def list_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, page_size: page_size)
+      request = build_api_request_for_list_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17340,7 +17340,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_sip_ip_address_request(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_sip_ip_address ..." }
       end
@@ -17423,7 +17423,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.
     # @return [Array<(ListTranscriptionResponse, Integer, Hash)>] ListTranscriptionResponse data, response status code and response headers
     def list_transcription_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
-      request = build_list_transcription_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_transcription(account_sid: account_sid, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17438,7 +17438,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.
     # @return nil
     def list_transcription(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_transcription_request(account_sid: account_sid, page_size: page_size)
+      request = build_api_request_for_list_transcription(account_sid: account_sid, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17446,7 +17446,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_transcription_request(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_transcription(*, account_sid : String = @account_sid, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_transcription ..." }
       end
@@ -17516,7 +17516,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return [Array<(ListUsageRecordResponse, Integer, Hash)>] ListUsageRecordResponse data, response status code and response headers
     def list_usage_record_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_usage_record_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17531,7 +17531,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return nil
     def list_usage_record(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_record_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17539,7 +17539,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_record_request(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_record(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_record ..." }
       end
@@ -17615,7 +17615,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return [Array<(ListUsageRecordAllTimeResponse, Integer, Hash)>] ListUsageRecordAllTimeResponse data, response status code and response headers
     def list_usage_record_all_time_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_usage_record_all_time_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_all_time(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17629,7 +17629,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return nil
     def list_usage_record_all_time(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_record_all_time_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_all_time(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17637,7 +17637,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_record_all_time_request(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_record_all_time(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_record_all_time ..." }
       end
@@ -17713,7 +17713,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return [Array<(ListUsageRecordDailyResponse, Integer, Hash)>] ListUsageRecordDailyResponse data, response status code and response headers
     def list_usage_record_daily_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_usage_record_daily_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_daily(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17727,7 +17727,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return nil
     def list_usage_record_daily(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_record_daily_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_daily(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17735,7 +17735,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_record_daily_request(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_record_daily(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_record_daily ..." }
       end
@@ -17811,7 +17811,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return [Array<(ListUsageRecordLastMonthResponse, Integer, Hash)>] ListUsageRecordLastMonthResponse data, response status code and response headers
     def list_usage_record_last_month_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_usage_record_last_month_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_last_month(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17825,7 +17825,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return nil
     def list_usage_record_last_month(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_record_last_month_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_last_month(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17833,7 +17833,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_record_last_month_request(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_record_last_month(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_record_last_month ..." }
       end
@@ -17909,7 +17909,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return [Array<(ListUsageRecordMonthlyResponse, Integer, Hash)>] ListUsageRecordMonthlyResponse data, response status code and response headers
     def list_usage_record_monthly_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_usage_record_monthly_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_monthly(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -17923,7 +17923,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return nil
     def list_usage_record_monthly(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_record_monthly_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_monthly(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -17931,7 +17931,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_record_monthly_request(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_record_monthly(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_record_monthly ..." }
       end
@@ -18007,7 +18007,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return [Array<(ListUsageRecordThisMonthResponse, Integer, Hash)>] ListUsageRecordThisMonthResponse data, response status code and response headers
     def list_usage_record_this_month_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_usage_record_this_month_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_this_month(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18021,7 +18021,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return nil
     def list_usage_record_this_month(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_record_this_month_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_this_month(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -18029,7 +18029,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_record_this_month_request(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_record_this_month(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_record_this_month ..." }
       end
@@ -18105,7 +18105,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return [Array<(ListUsageRecordTodayResponse, Integer, Hash)>] ListUsageRecordTodayResponse data, response status code and response headers
     def list_usage_record_today_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_usage_record_today_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_today(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18119,7 +18119,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return nil
     def list_usage_record_today(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_record_today_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_today(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -18127,7 +18127,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_record_today_request(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_record_today(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_record_today ..." }
       end
@@ -18203,7 +18203,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return [Array<(ListUsageRecordYearlyResponse, Integer, Hash)>] ListUsageRecordYearlyResponse data, response status code and response headers
     def list_usage_record_yearly_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_usage_record_yearly_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_yearly(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18217,7 +18217,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return nil
     def list_usage_record_yearly(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_record_yearly_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_yearly(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -18225,7 +18225,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_record_yearly_request(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_record_yearly(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_record_yearly ..." }
       end
@@ -18301,7 +18301,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return [Array<(ListUsageRecordYesterdayResponse, Integer, Hash)>] ListUsageRecordYesterdayResponse data, response status code and response headers
     def list_usage_record_yesterday_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
-      request = build_list_usage_record_yesterday_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_yesterday(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18315,7 +18315,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
     # @return nil
     def list_usage_record_yesterday(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_record_yesterday_request(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
+      request = build_api_request_for_list_usage_record_yesterday(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -18323,7 +18323,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_record_yesterday_request(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_record_yesterday(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_record_yesterday ..." }
       end
@@ -18401,7 +18401,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to read.
     # @return [Array<(ListUsageTriggerResponse, Integer, Hash)>] ListUsageTriggerResponse data, response status code and response headers
     def list_usage_trigger_with_http_info(*, account_sid : String = @account_sid, recurring : String? = nil, trigger_by : String? = nil, usage_category : String? = nil, page_size : Int32? = nil)
-      request = build_list_usage_trigger_request(account_sid: account_sid, recurring: recurring, trigger_by: trigger_by, usage_category: usage_category, page_size: page_size)
+      request = build_api_request_for_list_usage_trigger(account_sid: account_sid, recurring: recurring, trigger_by: trigger_by, usage_category: usage_category, page_size: page_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18416,7 +18416,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to read.
     # @return nil
     def list_usage_trigger(*, account_sid : String = @account_sid, recurring : String? = nil, trigger_by : String? = nil, usage_category : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_list_usage_trigger_request(account_sid: account_sid, recurring: recurring, trigger_by: trigger_by, usage_category: usage_category, page_size: page_size)
+      request = build_api_request_for_list_usage_trigger(account_sid: account_sid, recurring: recurring, trigger_by: trigger_by, usage_category: usage_category, page_size: page_size)
 
       request.execute do |response|
         block.call(response)
@@ -18424,7 +18424,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_list_usage_trigger_request(*, account_sid : String = @account_sid, recurring : String? = nil, trigger_by : String? = nil, usage_category : String? = nil, page_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_list_usage_trigger(*, account_sid : String = @account_sid, recurring : String? = nil, trigger_by : String? = nil, usage_category : String? = nil, page_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.list_usage_trigger ..." }
       end
@@ -18509,7 +18509,7 @@ module Twilio
     # @param sid [String] The Account Sid that uniquely identifies the account to update
     # @return [Array<(Account, Integer, Hash)>] Account data, response status code and response headers
     def update_account_with_http_info(*, sid : String, friendly_name : String? = nil, status : String? = nil)
-      request = build_update_account_request(sid: sid, friendly_name: friendly_name, status: status)
+      request = build_api_request_for_update_account(sid: sid, friendly_name: friendly_name, status: status)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18524,7 +18524,7 @@ module Twilio
     # @param sid [String] The Account Sid that uniquely identifies the account to update
     # @return nil
     def update_account(*, sid : String, friendly_name : String? = nil, status : String? = nil, &block : Crest::Response ->)
-      request = build_update_account_request(sid: sid, friendly_name: friendly_name, status: status)
+      request = build_api_request_for_update_account(sid: sid, friendly_name: friendly_name, status: status)
 
       request.execute do |response|
         block.call(response)
@@ -18532,7 +18532,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_account_request(*, sid : String, friendly_name : String? = nil, status : String? = nil) : Crest::Request
+    def build_api_request_for_update_account(*, sid : String, friendly_name : String? = nil, status : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_account ..." }
       end
@@ -18601,7 +18601,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Address resource to update.
     # @return [Array<(Address, Integer, Hash)>] Address data, response status code and response headers
     def update_address_with_http_info(*, account_sid : String = @account_sid, sid : String, auto_correct_address : Bool? = nil, city : String? = nil, customer_name : String? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil, postal_code : String? = nil, region : String? = nil, street : String? = nil)
-      request = build_update_address_request(account_sid: account_sid, sid: sid, auto_correct_address: auto_correct_address, city: city, customer_name: customer_name, emergency_enabled: emergency_enabled, friendly_name: friendly_name, postal_code: postal_code, region: region, street: street)
+      request = build_api_request_for_update_address(account_sid: account_sid, sid: sid, auto_correct_address: auto_correct_address, city: city, customer_name: customer_name, emergency_enabled: emergency_enabled, friendly_name: friendly_name, postal_code: postal_code, region: region, street: street)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18616,7 +18616,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Address resource to update.
     # @return nil
     def update_address(*, account_sid : String = @account_sid, sid : String, auto_correct_address : Bool? = nil, city : String? = nil, customer_name : String? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil, postal_code : String? = nil, region : String? = nil, street : String? = nil, &block : Crest::Response ->)
-      request = build_update_address_request(account_sid: account_sid, sid: sid, auto_correct_address: auto_correct_address, city: city, customer_name: customer_name, emergency_enabled: emergency_enabled, friendly_name: friendly_name, postal_code: postal_code, region: region, street: street)
+      request = build_api_request_for_update_address(account_sid: account_sid, sid: sid, auto_correct_address: auto_correct_address, city: city, customer_name: customer_name, emergency_enabled: emergency_enabled, friendly_name: friendly_name, postal_code: postal_code, region: region, street: street)
 
       request.execute do |response|
         block.call(response)
@@ -18624,7 +18624,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_address_request(*, account_sid : String = @account_sid, sid : String, auto_correct_address : Bool? = nil, city : String? = nil, customer_name : String? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil, postal_code : String? = nil, region : String? = nil, street : String? = nil) : Crest::Request
+    def build_api_request_for_update_address(*, account_sid : String = @account_sid, sid : String, auto_correct_address : Bool? = nil, city : String? = nil, customer_name : String? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil, postal_code : String? = nil, region : String? = nil, street : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_address ..." }
       end
@@ -18710,7 +18710,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Application resource to update.
     # @return [Array<(Application, Integer, Hash)>] Application data, response status code and response headers
     def update_application_with_http_info(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil)
-      request = build_update_application_request(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
+      request = build_api_request_for_update_application(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18726,7 +18726,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Application resource to update.
     # @return nil
     def update_application(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
-      request = build_update_application_request(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
+      request = build_api_request_for_update_application(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
 
       request.execute do |response|
         block.call(response)
@@ -18734,7 +18734,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_application_request(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil) : Crest::Request
+    def build_api_request_for_update_application(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_application ..." }
       end
@@ -18847,7 +18847,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Call resource to update
     # @return [Array<(Call, Integer, Hash)>] Call data, response status code and response headers
     def update_call_with_http_info(*, account_sid : String = @account_sid, sid : String, fallback_method : String? = nil, fallback_url : String? = nil, method : String? = nil, status : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, twiml : String? = nil, url : String? = nil)
-      request = build_update_call_request(account_sid: account_sid, sid: sid, fallback_method: fallback_method, fallback_url: fallback_url, method: method, status: status, status_callback: status_callback, status_callback_method: status_callback_method, time_limit: time_limit, twiml: twiml, url: url)
+      request = build_api_request_for_update_call(account_sid: account_sid, sid: sid, fallback_method: fallback_method, fallback_url: fallback_url, method: method, status: status, status_callback: status_callback, status_callback_method: status_callback_method, time_limit: time_limit, twiml: twiml, url: url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18863,7 +18863,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Call resource to update
     # @return nil
     def update_call(*, account_sid : String = @account_sid, sid : String, fallback_method : String? = nil, fallback_url : String? = nil, method : String? = nil, status : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, twiml : String? = nil, url : String? = nil, &block : Crest::Response ->)
-      request = build_update_call_request(account_sid: account_sid, sid: sid, fallback_method: fallback_method, fallback_url: fallback_url, method: method, status: status, status_callback: status_callback, status_callback_method: status_callback_method, time_limit: time_limit, twiml: twiml, url: url)
+      request = build_api_request_for_update_call(account_sid: account_sid, sid: sid, fallback_method: fallback_method, fallback_url: fallback_url, method: method, status: status, status_callback: status_callback, status_callback_method: status_callback_method, time_limit: time_limit, twiml: twiml, url: url)
 
       request.execute do |response|
         block.call(response)
@@ -18871,7 +18871,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_call_request(*, account_sid : String = @account_sid, sid : String, fallback_method : String? = nil, fallback_url : String? = nil, method : String? = nil, status : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, twiml : String? = nil, url : String? = nil) : Crest::Request
+    def build_api_request_for_update_call(*, account_sid : String = @account_sid, sid : String, fallback_method : String? = nil, fallback_url : String? = nil, method : String? = nil, status : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, twiml : String? = nil, url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_call ..." }
       end
@@ -18974,7 +18974,7 @@ module Twilio
     # @param call_sid [String] The call sid that uniquely identifies the call
     # @return [Array<(CallCallFeedback, Integer, Hash)>] CallCallFeedback data, response status code and response headers
     def update_call_feedback_with_http_info(*, account_sid : String = @account_sid, call_sid : String, issue : Array(String)? = nil, quality_score : Int32? = nil)
-      request = build_update_call_feedback_request(account_sid: account_sid, call_sid: call_sid, issue: issue, quality_score: quality_score)
+      request = build_api_request_for_update_call_feedback(account_sid: account_sid, call_sid: call_sid, issue: issue, quality_score: quality_score)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -18990,7 +18990,7 @@ module Twilio
     # @param call_sid [String] The call sid that uniquely identifies the call
     # @return nil
     def update_call_feedback(*, account_sid : String = @account_sid, call_sid : String, issue : Array(String)? = nil, quality_score : Int32? = nil, &block : Crest::Response ->)
-      request = build_update_call_feedback_request(account_sid: account_sid, call_sid: call_sid, issue: issue, quality_score: quality_score)
+      request = build_api_request_for_update_call_feedback(account_sid: account_sid, call_sid: call_sid, issue: issue, quality_score: quality_score)
 
       request.execute do |response|
         block.call(response)
@@ -18998,7 +18998,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_call_feedback_request(*, account_sid : String = @account_sid, call_sid : String, issue : Array(String)? = nil, quality_score : Int32? = nil) : Crest::Request
+    def build_api_request_for_update_call_feedback(*, account_sid : String = @account_sid, call_sid : String, issue : Array(String)? = nil, quality_score : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_call_feedback ..." }
       end
@@ -19073,7 +19073,7 @@ module Twilio
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
     # @return [Array<(CallCallRecording, Integer, Hash)>] CallCallRecording data, response status code and response headers
     def update_call_recording_with_http_info(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String, pause_behavior : String? = nil)
-      request = build_update_call_recording_request(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status, pause_behavior: pause_behavior)
+      request = build_api_request_for_update_call_recording(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status, pause_behavior: pause_behavior)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -19091,7 +19091,7 @@ module Twilio
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
     # @return nil
     def update_call_recording(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String, pause_behavior : String? = nil, &block : Crest::Response ->)
-      request = build_update_call_recording_request(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status, pause_behavior: pause_behavior)
+      request = build_api_request_for_update_call_recording(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status, pause_behavior: pause_behavior)
 
       request.execute do |response|
         block.call(response)
@@ -19099,7 +19099,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_call_recording_request(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String, pause_behavior : String? = nil) : Crest::Request
+    def build_api_request_for_update_call_recording(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String, pause_behavior : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_call_recording ..." }
       end
@@ -19182,7 +19182,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference resource to update
     # @return [Array<(Conference, Integer, Hash)>] Conference data, response status code and response headers
     def update_conference_with_http_info(*, account_sid : String = @account_sid, sid : String, announce_method : String? = nil, announce_url : String? = nil, status : String? = nil)
-      request = build_update_conference_request(account_sid: account_sid, sid: sid, announce_method: announce_method, announce_url: announce_url, status: status)
+      request = build_api_request_for_update_conference(account_sid: account_sid, sid: sid, announce_method: announce_method, announce_url: announce_url, status: status)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -19197,7 +19197,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference resource to update
     # @return nil
     def update_conference(*, account_sid : String = @account_sid, sid : String, announce_method : String? = nil, announce_url : String? = nil, status : String? = nil, &block : Crest::Response ->)
-      request = build_update_conference_request(account_sid: account_sid, sid: sid, announce_method: announce_method, announce_url: announce_url, status: status)
+      request = build_api_request_for_update_conference(account_sid: account_sid, sid: sid, announce_method: announce_method, announce_url: announce_url, status: status)
 
       request.execute do |response|
         block.call(response)
@@ -19205,7 +19205,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_conference_request(*, account_sid : String = @account_sid, sid : String, announce_method : String? = nil, announce_url : String? = nil, status : String? = nil) : Crest::Request
+    def build_api_request_for_update_conference(*, account_sid : String = @account_sid, sid : String, announce_method : String? = nil, announce_url : String? = nil, status : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_conference ..." }
       end
@@ -19285,7 +19285,7 @@ module Twilio
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
     # @return [Array<(ConferenceConferenceRecording, Integer, Hash)>] ConferenceConferenceRecording data, response status code and response headers
     def update_conference_recording_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, sid : String, status : String, pause_behavior : String? = nil)
-      request = build_update_conference_recording_request(account_sid: account_sid, conference_sid: conference_sid, sid: sid, status: status, pause_behavior: pause_behavior)
+      request = build_api_request_for_update_conference_recording(account_sid: account_sid, conference_sid: conference_sid, sid: sid, status: status, pause_behavior: pause_behavior)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -19303,7 +19303,7 @@ module Twilio
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
     # @return nil
     def update_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, sid : String, status : String, pause_behavior : String? = nil, &block : Crest::Response ->)
-      request = build_update_conference_recording_request(account_sid: account_sid, conference_sid: conference_sid, sid: sid, status: status, pause_behavior: pause_behavior)
+      request = build_api_request_for_update_conference_recording(account_sid: account_sid, conference_sid: conference_sid, sid: sid, status: status, pause_behavior: pause_behavior)
 
       request.execute do |response|
         block.call(response)
@@ -19311,7 +19311,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_conference_recording_request(*, account_sid : String = @account_sid, conference_sid : String, sid : String, status : String, pause_behavior : String? = nil) : Crest::Request
+    def build_api_request_for_update_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, sid : String, status : String, pause_behavior : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_conference_recording ..." }
       end
@@ -19396,7 +19396,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ConnectApp resource to update.
     # @return [Array<(ConnectApp, Integer, Hash)>] ConnectApp data, response status code and response headers
     def update_connect_app_with_http_info(*, account_sid : String = @account_sid, sid : String, authorize_redirect_url : String? = nil, company_name : String? = nil, deauthorize_callback_method : String? = nil, deauthorize_callback_url : String? = nil, description : String? = nil, friendly_name : String? = nil, homepage_url : String? = nil, permissions : Array(String)? = nil)
-      request = build_update_connect_app_request(account_sid: account_sid, sid: sid, authorize_redirect_url: authorize_redirect_url, company_name: company_name, deauthorize_callback_method: deauthorize_callback_method, deauthorize_callback_url: deauthorize_callback_url, description: description, friendly_name: friendly_name, homepage_url: homepage_url, permissions: permissions)
+      request = build_api_request_for_update_connect_app(account_sid: account_sid, sid: sid, authorize_redirect_url: authorize_redirect_url, company_name: company_name, deauthorize_callback_method: deauthorize_callback_method, deauthorize_callback_url: deauthorize_callback_url, description: description, friendly_name: friendly_name, homepage_url: homepage_url, permissions: permissions)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -19412,7 +19412,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ConnectApp resource to update.
     # @return nil
     def update_connect_app(*, account_sid : String = @account_sid, sid : String, authorize_redirect_url : String? = nil, company_name : String? = nil, deauthorize_callback_method : String? = nil, deauthorize_callback_url : String? = nil, description : String? = nil, friendly_name : String? = nil, homepage_url : String? = nil, permissions : Array(String)? = nil, &block : Crest::Response ->)
-      request = build_update_connect_app_request(account_sid: account_sid, sid: sid, authorize_redirect_url: authorize_redirect_url, company_name: company_name, deauthorize_callback_method: deauthorize_callback_method, deauthorize_callback_url: deauthorize_callback_url, description: description, friendly_name: friendly_name, homepage_url: homepage_url, permissions: permissions)
+      request = build_api_request_for_update_connect_app(account_sid: account_sid, sid: sid, authorize_redirect_url: authorize_redirect_url, company_name: company_name, deauthorize_callback_method: deauthorize_callback_method, deauthorize_callback_url: deauthorize_callback_url, description: description, friendly_name: friendly_name, homepage_url: homepage_url, permissions: permissions)
 
       request.execute do |response|
         block.call(response)
@@ -19420,7 +19420,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_connect_app_request(*, account_sid : String = @account_sid, sid : String, authorize_redirect_url : String? = nil, company_name : String? = nil, deauthorize_callback_method : String? = nil, deauthorize_callback_url : String? = nil, description : String? = nil, friendly_name : String? = nil, homepage_url : String? = nil, permissions : Array(String)? = nil) : Crest::Request
+    def build_api_request_for_update_connect_app(*, account_sid : String = @account_sid, sid : String, authorize_redirect_url : String? = nil, company_name : String? = nil, deauthorize_callback_method : String? = nil, deauthorize_callback_url : String? = nil, description : String? = nil, friendly_name : String? = nil, homepage_url : String? = nil, permissions : Array(String)? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_connect_app ..." }
       end
@@ -19514,7 +19514,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to update.
     # @return [Array<(IncomingPhoneNumber, Integer, Hash)>] IncomingPhoneNumber data, response status code and response headers
     def update_incoming_phone_number_with_http_info(*, account_sid : String = @account_sid, sid : String, account_sid2 : String? = @account_sid, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
-      request = build_update_incoming_phone_number_request(account_sid: account_sid, sid: sid, account_sid2: account_sid2, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_update_incoming_phone_number(account_sid: account_sid, sid: sid, account_sid2: account_sid2, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -19530,7 +19530,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to update.
     # @return nil
     def update_incoming_phone_number(*, account_sid : String = @account_sid, sid : String, account_sid2 : String? = @account_sid, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
-      request = build_update_incoming_phone_number_request(account_sid: account_sid, sid: sid, account_sid2: account_sid2, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
+      request = build_api_request_for_update_incoming_phone_number(account_sid: account_sid, sid: sid, account_sid2: account_sid2, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
 
       request.execute do |response|
         block.call(response)
@@ -19538,7 +19538,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_incoming_phone_number_request(*, account_sid : String = @account_sid, sid : String, account_sid2 : String? = @account_sid, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
+    def build_api_request_for_update_incoming_phone_number(*, account_sid : String = @account_sid, sid : String, account_sid2 : String? = @account_sid, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_incoming_phone_number ..." }
       end
@@ -19769,7 +19769,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Key resource to update.
     # @return [Array<(Key, Integer, Hash)>] Key data, response status code and response headers
     def update_key_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
-      request = build_update_key_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_key(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -19784,7 +19784,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Key resource to update.
     # @return nil
     def update_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, &block : Crest::Response ->)
-      request = build_update_key_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_key(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -19792,7 +19792,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_key_request(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil) : Crest::Request
+    def build_api_request_for_update_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_key ..." }
       end
@@ -19875,7 +19875,7 @@ module Twilio
     # @param url [String] The absolute URL of the Queue resource.
     # @return [Array<(QueueMember, Integer, Hash)>] QueueMember data, response status code and response headers
     def update_member_with_http_info(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String, url : String, method : String? = nil)
-      request = build_update_member_request(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid, url: url, method: method)
+      request = build_api_request_for_update_member(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid, url: url, method: method)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -19893,7 +19893,7 @@ module Twilio
     # @param url [String] The absolute URL of the Queue resource.
     # @return nil
     def update_member(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String, url : String, method : String? = nil, &block : Crest::Response ->)
-      request = build_update_member_request(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid, url: url, method: method)
+      request = build_api_request_for_update_member(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid, url: url, method: method)
 
       request.execute do |response|
         block.call(response)
@@ -19901,7 +19901,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_member_request(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String, url : String, method : String? = nil) : Crest::Request
+    def build_api_request_for_update_member(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String, url : String, method : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_member ..." }
       end
@@ -19985,7 +19985,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Message resource to update.
     # @return [Array<(Message, Integer, Hash)>] Message data, response status code and response headers
     def update_message_with_http_info(*, account_sid : String = @account_sid, sid : String, body : String? = nil)
-      request = build_update_message_request(account_sid: account_sid, sid: sid, body: body)
+      request = build_api_request_for_update_message(account_sid: account_sid, sid: sid, body: body)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -20001,7 +20001,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Message resource to update.
     # @return nil
     def update_message(*, account_sid : String = @account_sid, sid : String, body : String? = nil, &block : Crest::Response ->)
-      request = build_update_message_request(account_sid: account_sid, sid: sid, body: body)
+      request = build_api_request_for_update_message(account_sid: account_sid, sid: sid, body: body)
 
       request.execute do |response|
         block.call(response)
@@ -20009,7 +20009,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_message_request(*, account_sid : String = @account_sid, sid : String, body : String? = nil) : Crest::Request
+    def build_api_request_for_update_message(*, account_sid : String = @account_sid, sid : String, body : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_message ..." }
       end
@@ -20088,7 +20088,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to update.
     # @return [Array<(OutgoingCallerId, Integer, Hash)>] OutgoingCallerId data, response status code and response headers
     def update_outgoing_caller_id_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
-      request = build_update_outgoing_caller_id_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_outgoing_caller_id(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -20104,7 +20104,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to update.
     # @return nil
     def update_outgoing_caller_id(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, &block : Crest::Response ->)
-      request = build_update_outgoing_caller_id_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_outgoing_caller_id(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -20112,7 +20112,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_outgoing_caller_id_request(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil) : Crest::Request
+    def build_api_request_for_update_outgoing_caller_id(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_outgoing_caller_id ..." }
       end
@@ -20193,7 +20193,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to update. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
     # @return [Array<(ConferenceParticipant, Integer, Hash)>] ConferenceParticipant data, response status code and response headers
     def update_participant_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String, announce_method : String? = nil, announce_url : String? = nil, beep_on_exit : Bool? = nil, call_sid_to_coach : String? = nil, coaching : Bool? = nil, end_conference_on_exit : Bool? = nil, hold : Bool? = nil, hold_method : String? = nil, hold_url : String? = nil, muted : Bool? = nil, wait_method : String? = nil, wait_url : String? = nil)
-      request = build_update_participant_request(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid, announce_method: announce_method, announce_url: announce_url, beep_on_exit: beep_on_exit, call_sid_to_coach: call_sid_to_coach, coaching: coaching, end_conference_on_exit: end_conference_on_exit, hold: hold, hold_method: hold_method, hold_url: hold_url, muted: muted, wait_method: wait_method, wait_url: wait_url)
+      request = build_api_request_for_update_participant(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid, announce_method: announce_method, announce_url: announce_url, beep_on_exit: beep_on_exit, call_sid_to_coach: call_sid_to_coach, coaching: coaching, end_conference_on_exit: end_conference_on_exit, hold: hold, hold_method: hold_method, hold_url: hold_url, muted: muted, wait_method: wait_method, wait_url: wait_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -20210,7 +20210,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to update. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
     # @return nil
     def update_participant(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String, announce_method : String? = nil, announce_url : String? = nil, beep_on_exit : Bool? = nil, call_sid_to_coach : String? = nil, coaching : Bool? = nil, end_conference_on_exit : Bool? = nil, hold : Bool? = nil, hold_method : String? = nil, hold_url : String? = nil, muted : Bool? = nil, wait_method : String? = nil, wait_url : String? = nil, &block : Crest::Response ->)
-      request = build_update_participant_request(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid, announce_method: announce_method, announce_url: announce_url, beep_on_exit: beep_on_exit, call_sid_to_coach: call_sid_to_coach, coaching: coaching, end_conference_on_exit: end_conference_on_exit, hold: hold, hold_method: hold_method, hold_url: hold_url, muted: muted, wait_method: wait_method, wait_url: wait_url)
+      request = build_api_request_for_update_participant(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid, announce_method: announce_method, announce_url: announce_url, beep_on_exit: beep_on_exit, call_sid_to_coach: call_sid_to_coach, coaching: coaching, end_conference_on_exit: end_conference_on_exit, hold: hold, hold_method: hold_method, hold_url: hold_url, muted: muted, wait_method: wait_method, wait_url: wait_url)
 
       request.execute do |response|
         block.call(response)
@@ -20218,7 +20218,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_participant_request(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String, announce_method : String? = nil, announce_url : String? = nil, beep_on_exit : Bool? = nil, call_sid_to_coach : String? = nil, coaching : Bool? = nil, end_conference_on_exit : Bool? = nil, hold : Bool? = nil, hold_method : String? = nil, hold_url : String? = nil, muted : Bool? = nil, wait_method : String? = nil, wait_url : String? = nil) : Crest::Request
+    def build_api_request_for_update_participant(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String, announce_method : String? = nil, announce_url : String? = nil, beep_on_exit : Bool? = nil, call_sid_to_coach : String? = nil, coaching : Bool? = nil, end_conference_on_exit : Bool? = nil, hold : Bool? = nil, hold_method : String? = nil, hold_url : String? = nil, muted : Bool? = nil, wait_method : String? = nil, wait_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_participant ..." }
       end
@@ -20339,7 +20339,7 @@ module Twilio
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [Update](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-update) and [Complete/Cancel](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-cancelcomplete) POST requests.
     # @return [Array<(CallPayments, Integer, Hash)>] CallPayments data, response status code and response headers
     def update_payments_with_http_info(*, account_sid : String = @account_sid, call_sid : String, sid : String, idempotency_key : String, status_callback : String, capture : String? = nil, status : String? = nil)
-      request = build_update_payments_request(account_sid: account_sid, call_sid: call_sid, sid: sid, idempotency_key: idempotency_key, status_callback: status_callback, capture: capture, status: status)
+      request = build_api_request_for_update_payments(account_sid: account_sid, call_sid: call_sid, sid: sid, idempotency_key: idempotency_key, status_callback: status_callback, capture: capture, status: status)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -20358,7 +20358,7 @@ module Twilio
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [Update](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-update) and [Complete/Cancel](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-cancelcomplete) POST requests.
     # @return nil
     def update_payments(*, account_sid : String = @account_sid, call_sid : String, sid : String, idempotency_key : String, status_callback : String, capture : String? = nil, status : String? = nil, &block : Crest::Response ->)
-      request = build_update_payments_request(account_sid: account_sid, call_sid: call_sid, sid: sid, idempotency_key: idempotency_key, status_callback: status_callback, capture: capture, status: status)
+      request = build_api_request_for_update_payments(account_sid: account_sid, call_sid: call_sid, sid: sid, idempotency_key: idempotency_key, status_callback: status_callback, capture: capture, status: status)
 
       request.execute do |response|
         block.call(response)
@@ -20366,7 +20366,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_payments_request(*, account_sid : String = @account_sid, call_sid : String, sid : String, idempotency_key : String, status_callback : String, capture : String? = nil, status : String? = nil) : Crest::Request
+    def build_api_request_for_update_payments(*, account_sid : String = @account_sid, call_sid : String, sid : String, idempotency_key : String, status_callback : String, capture : String? = nil, status : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_payments ..." }
       end
@@ -20469,7 +20469,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Queue resource to update
     # @return [Array<(Queue, Integer, Hash)>] Queue data, response status code and response headers
     def update_queue_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, max_size : Int32? = nil)
-      request = build_update_queue_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name, max_size: max_size)
+      request = build_api_request_for_update_queue(account_sid: account_sid, sid: sid, friendly_name: friendly_name, max_size: max_size)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -20485,7 +20485,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the Queue resource to update
     # @return nil
     def update_queue(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, max_size : Int32? = nil, &block : Crest::Response ->)
-      request = build_update_queue_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name, max_size: max_size)
+      request = build_api_request_for_update_queue(account_sid: account_sid, sid: sid, friendly_name: friendly_name, max_size: max_size)
 
       request.execute do |response|
         block.call(response)
@@ -20493,7 +20493,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_queue_request(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, max_size : Int32? = nil) : Crest::Request
+    def build_api_request_for_update_queue(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, max_size : Int32? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_queue ..." }
       end
@@ -20573,7 +20573,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ShortCode resource to update
     # @return [Array<(ShortCode, Integer, Hash)>] ShortCode data, response status code and response headers
     def update_short_code_with_http_info(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil)
-      request = build_update_short_code_request(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url)
+      request = build_api_request_for_update_short_code(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -20589,7 +20589,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the ShortCode resource to update
     # @return nil
     def update_short_code(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, &block : Crest::Response ->)
-      request = build_update_short_code_request(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url)
+      request = build_api_request_for_update_short_code(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url)
 
       request.execute do |response|
         block.call(response)
@@ -20597,7 +20597,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_short_code_request(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil) : Crest::Request
+    def build_api_request_for_update_short_code(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_short_code ..." }
       end
@@ -20687,7 +20687,7 @@ module Twilio
     # @param sid [String]
     # @return [Array<(SigningKey, Integer, Hash)>] SigningKey data, response status code and response headers
     def update_signing_key_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
-      request = build_update_signing_key_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_signing_key(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -20702,7 +20702,7 @@ module Twilio
     # @param sid [String]
     # @return nil
     def update_signing_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, &block : Crest::Response ->)
-      request = build_update_signing_key_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_signing_key(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -20710,7 +20710,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_signing_key_request(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil) : Crest::Request
+    def build_api_request_for_update_signing_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_signing_key ..." }
       end
@@ -20791,7 +20791,7 @@ module Twilio
     # @param sid [String] The unique id that identifies the resource to update.
     # @return [Array<(SipSipCredentialListSipCredential, Integer, Hash)>] SipSipCredentialListSipCredential data, response status code and response headers
     def update_sip_credential_with_http_info(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String, password : String? = nil)
-      request = build_update_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid, password: password)
+      request = build_api_request_for_update_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid, password: password)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -20808,7 +20808,7 @@ module Twilio
     # @param sid [String] The unique id that identifies the resource to update.
     # @return nil
     def update_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String, password : String? = nil, &block : Crest::Response ->)
-      request = build_update_sip_credential_request(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid, password: password)
+      request = build_api_request_for_update_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid, password: password)
 
       request.execute do |response|
         block.call(response)
@@ -20816,7 +20816,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_sip_credential_request(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String, password : String? = nil) : Crest::Request
+    def build_api_request_for_update_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String, password : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_sip_credential ..." }
       end
@@ -20910,7 +20910,7 @@ module Twilio
     # @param friendly_name [String] A human readable descriptive text for a CredentialList, up to 64 characters long.
     # @return [Array<(SipSipCredentialList, Integer, Hash)>] SipSipCredentialList data, response status code and response headers
     def update_sip_credential_list_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String)
-      request = build_update_sip_credential_list_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_sip_credential_list(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -20927,7 +20927,7 @@ module Twilio
     # @param friendly_name [String] A human readable descriptive text for a CredentialList, up to 64 characters long.
     # @return nil
     def update_sip_credential_list(*, account_sid : String = @account_sid, sid : String, friendly_name : String, &block : Crest::Response ->)
-      request = build_update_sip_credential_list_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_sip_credential_list(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -20935,7 +20935,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_sip_credential_list_request(*, account_sid : String = @account_sid, sid : String, friendly_name : String) : Crest::Request
+    def build_api_request_for_update_sip_credential_list(*, account_sid : String = @account_sid, sid : String, friendly_name : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_sip_credential_list ..." }
       end
@@ -21014,7 +21014,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the SipDomain resource to update.
     # @return [Array<(SipSipDomain, Integer, Hash)>] SipSipDomain data, response status code and response headers
     def update_sip_domain_with_http_info(*, account_sid : String = @account_sid, sid : String, byoc_trunk_sid : String? = nil, domain_name : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil)
-      request = build_update_sip_domain_request(account_sid: account_sid, sid: sid, byoc_trunk_sid: byoc_trunk_sid, domain_name: domain_name, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
+      request = build_api_request_for_update_sip_domain(account_sid: account_sid, sid: sid, byoc_trunk_sid: byoc_trunk_sid, domain_name: domain_name, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -21030,7 +21030,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the SipDomain resource to update.
     # @return nil
     def update_sip_domain(*, account_sid : String = @account_sid, sid : String, byoc_trunk_sid : String? = nil, domain_name : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
-      request = build_update_sip_domain_request(account_sid: account_sid, sid: sid, byoc_trunk_sid: byoc_trunk_sid, domain_name: domain_name, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
+      request = build_api_request_for_update_sip_domain(account_sid: account_sid, sid: sid, byoc_trunk_sid: byoc_trunk_sid, domain_name: domain_name, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
 
       request.execute do |response|
         block.call(response)
@@ -21038,7 +21038,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_sip_domain_request(*, account_sid : String = @account_sid, sid : String, byoc_trunk_sid : String? = nil, domain_name : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil) : Crest::Request
+    def build_api_request_for_update_sip_domain(*, account_sid : String = @account_sid, sid : String, byoc_trunk_sid : String? = nil, domain_name : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_sip_domain ..." }
       end
@@ -21169,7 +21169,7 @@ module Twilio
     # @param friendly_name [String] A human readable descriptive text, up to 64 characters long.
     # @return [Array<(SipSipIpAccessControlList, Integer, Hash)>] SipSipIpAccessControlList data, response status code and response headers
     def update_sip_ip_access_control_list_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String)
-      request = build_update_sip_ip_access_control_list_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_sip_ip_access_control_list(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -21186,7 +21186,7 @@ module Twilio
     # @param friendly_name [String] A human readable descriptive text, up to 64 characters long.
     # @return nil
     def update_sip_ip_access_control_list(*, account_sid : String = @account_sid, sid : String, friendly_name : String, &block : Crest::Response ->)
-      request = build_update_sip_ip_access_control_list_request(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
+      request = build_api_request_for_update_sip_ip_access_control_list(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -21194,7 +21194,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_sip_ip_access_control_list_request(*, account_sid : String = @account_sid, sid : String, friendly_name : String) : Crest::Request
+    def build_api_request_for_update_sip_ip_access_control_list(*, account_sid : String = @account_sid, sid : String, friendly_name : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_sip_ip_access_control_list ..." }
       end
@@ -21275,7 +21275,7 @@ module Twilio
     # @param sid [String] A 34 character string that identifies the IpAddress resource to update.
     # @return [Array<(SipSipIpAccessControlListSipIpAddress, Integer, Hash)>] SipSipIpAccessControlListSipIpAddress data, response status code and response headers
     def update_sip_ip_address_with_http_info(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String, cidr_prefix_length : Int32? = nil, friendly_name : String? = nil, ip_address : String? = nil)
-      request = build_update_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid, cidr_prefix_length: cidr_prefix_length, friendly_name: friendly_name, ip_address: ip_address)
+      request = build_api_request_for_update_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid, cidr_prefix_length: cidr_prefix_length, friendly_name: friendly_name, ip_address: ip_address)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -21292,7 +21292,7 @@ module Twilio
     # @param sid [String] A 34 character string that identifies the IpAddress resource to update.
     # @return nil
     def update_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String, cidr_prefix_length : Int32? = nil, friendly_name : String? = nil, ip_address : String? = nil, &block : Crest::Response ->)
-      request = build_update_sip_ip_address_request(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid, cidr_prefix_length: cidr_prefix_length, friendly_name: friendly_name, ip_address: ip_address)
+      request = build_api_request_for_update_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid, cidr_prefix_length: cidr_prefix_length, friendly_name: friendly_name, ip_address: ip_address)
 
       request.execute do |response|
         block.call(response)
@@ -21300,7 +21300,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_sip_ip_address_request(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String, cidr_prefix_length : Int32? = nil, friendly_name : String? = nil, ip_address : String? = nil) : Crest::Request
+    def build_api_request_for_update_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String, cidr_prefix_length : Int32? = nil, friendly_name : String? = nil, ip_address : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_sip_ip_address ..." }
       end
@@ -21398,7 +21398,7 @@ module Twilio
     # @param status [String] The status. Must have the value `stopped`
     # @return [Array<(CallSiprec, Integer, Hash)>] CallSiprec data, response status code and response headers
     def update_siprec_with_http_info(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String)
-      request = build_update_siprec_request(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status)
+      request = build_api_request_for_update_siprec(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -21416,7 +21416,7 @@ module Twilio
     # @param status [String] The status. Must have the value `stopped`
     # @return nil
     def update_siprec(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String, &block : Crest::Response ->)
-      request = build_update_siprec_request(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status)
+      request = build_api_request_for_update_siprec(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status)
 
       request.execute do |response|
         block.call(response)
@@ -21424,7 +21424,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_siprec_request(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String) : Crest::Request
+    def build_api_request_for_update_siprec(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_siprec ..." }
       end
@@ -21508,7 +21508,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the UsageTrigger resource to update.
     # @return [Array<(UsageUsageTrigger, Integer, Hash)>] UsageUsageTrigger data, response status code and response headers
     def update_usage_trigger_with_http_info(*, account_sid : String = @account_sid, sid : String, callback_method : String? = nil, callback_url : String? = nil, friendly_name : String? = nil)
-      request = build_update_usage_trigger_request(account_sid: account_sid, sid: sid, callback_method: callback_method, callback_url: callback_url, friendly_name: friendly_name)
+      request = build_api_request_for_update_usage_trigger(account_sid: account_sid, sid: sid, callback_method: callback_method, callback_url: callback_url, friendly_name: friendly_name)
 
       data, status_code, headers = @api_client.execute_api_request(request)
 
@@ -21524,7 +21524,7 @@ module Twilio
     # @param sid [String] The Twilio-provided string that uniquely identifies the UsageTrigger resource to update.
     # @return nil
     def update_usage_trigger(*, account_sid : String = @account_sid, sid : String, callback_method : String? = nil, callback_url : String? = nil, friendly_name : String? = nil, &block : Crest::Response ->)
-      request = build_update_usage_trigger_request(account_sid: account_sid, sid: sid, callback_method: callback_method, callback_url: callback_url, friendly_name: friendly_name)
+      request = build_api_request_for_update_usage_trigger(account_sid: account_sid, sid: sid, callback_method: callback_method, callback_url: callback_url, friendly_name: friendly_name)
 
       request.execute do |response|
         block.call(response)
@@ -21532,7 +21532,7 @@ module Twilio
     end
 
     # @return Crest::Request
-    def build_update_usage_trigger_request(*, account_sid : String = @account_sid, sid : String, callback_method : String? = nil, callback_url : String? = nil, friendly_name : String? = nil) : Crest::Request
+    def build_api_request_for_update_usage_trigger(*, account_sid : String = @account_sid, sid : String, callback_method : String? = nil, callback_url : String? = nil, friendly_name : String? = nil) : Crest::Request
       if @api_client.config.debugging
         Log.debug { "Calling API: DefaultApi.update_usage_trigger ..." }
       end
