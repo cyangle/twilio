@@ -461,14 +461,14 @@ module Twilio
       form_params["Record"] = record.to_s if !record.nil? && !record.null?
       form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil? && !recording_channels.null?
       form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil? && !recording_status_callback.null?
-      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "csv") if !recording_status_callback_event.nil? && !recording_status_callback_event.null? && !recording_status_callback_event.empty?
+      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.null? && !recording_status_callback_event.empty?
       form_params["RecordingStatusCallbackMethod"] = recording_status_callback_method.to_s if !recording_status_callback_method.nil? && !recording_status_callback_method.null?
       form_params["RecordingTrack"] = recording_track.to_s if !recording_track.nil? && !recording_track.null?
       form_params["SendDigits"] = send_digits.to_s if !send_digits.nil? && !send_digits.null?
       form_params["SipAuthPassword"] = sip_auth_password.to_s if !sip_auth_password.nil? && !sip_auth_password.null?
       form_params["SipAuthUsername"] = sip_auth_username.to_s if !sip_auth_username.nil? && !sip_auth_username.null?
       form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackEvent"] = @api_client.build_collection_param(status_callback_event, "csv") if !status_callback_event.nil? && !status_callback_event.null? && !status_callback_event.empty?
+      form_params["StatusCallbackEvent"] = @api_client.build_collection_param(status_callback_event, "multi") if !status_callback_event.nil? && !status_callback_event.null? && !status_callback_event.empty?
       form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
       form_params["TimeLimit"] = time_limit.to_s if !time_limit.nil? && !time_limit.null?
       form_params["Timeout"] = timeout.to_s if !timeout.nil? && !timeout.null?
@@ -685,7 +685,7 @@ module Twilio
       form_params = Hash(String, (String | Array(String) | ::File)).new
       form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil? && !recording_channels.null?
       form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil? && !recording_status_callback.null?
-      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "csv") if !recording_status_callback_event.nil? && !recording_status_callback_event.null? && !recording_status_callback_event.empty?
+      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.null? && !recording_status_callback_event.empty?
       form_params["RecordingStatusCallbackMethod"] = recording_status_callback_method.to_s if !recording_status_callback_method.nil? && !recording_status_callback_method.null?
       form_params["RecordingTrack"] = recording_track.to_s if !recording_track.nil? && !recording_track.null?
       form_params["Trim"] = trim.to_s if !trim.nil? && !trim.null?
@@ -1852,9 +1852,9 @@ module Twilio
       form_params["ForceDelivery"] = force_delivery.to_s if !force_delivery.nil? && !force_delivery.null?
       form_params["From"] = from.to_s if !from.nil? && !from.null?
       form_params["MaxPrice"] = max_price.to_s if !max_price.nil? && !max_price.null?
-      form_params["MediaUrl"] = @api_client.build_collection_param(media_url, "csv") if !media_url.nil? && !media_url.null? && !media_url.empty?
+      form_params["MediaUrl"] = @api_client.build_collection_param(media_url, "multi") if !media_url.nil? && !media_url.null? && !media_url.empty?
       form_params["MessagingServiceSid"] = messaging_service_sid.to_s if !messaging_service_sid.nil? && !messaging_service_sid.null?
-      form_params["PersistentAction"] = @api_client.build_collection_param(persistent_action, "csv") if !persistent_action.nil? && !persistent_action.null? && !persistent_action.empty?
+      form_params["PersistentAction"] = @api_client.build_collection_param(persistent_action, "multi") if !persistent_action.nil? && !persistent_action.null? && !persistent_action.empty?
       form_params["ProvideFeedback"] = provide_feedback.to_s if !provide_feedback.nil? && !provide_feedback.null?
       form_params["SmartEncoded"] = smart_encoded.to_s if !smart_encoded.nil? && !smart_encoded.null?
       form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
@@ -2281,10 +2281,10 @@ module Twilio
       form_params["Coaching"] = coaching.to_s if !coaching.nil? && !coaching.null?
       form_params["ConferenceRecord"] = conference_record.to_s if !conference_record.nil? && !conference_record.null?
       form_params["ConferenceRecordingStatusCallback"] = conference_recording_status_callback.to_s if !conference_recording_status_callback.nil? && !conference_recording_status_callback.null?
-      form_params["ConferenceRecordingStatusCallbackEvent"] = @api_client.build_collection_param(conference_recording_status_callback_event, "csv") if !conference_recording_status_callback_event.nil? && !conference_recording_status_callback_event.null? && !conference_recording_status_callback_event.empty?
+      form_params["ConferenceRecordingStatusCallbackEvent"] = @api_client.build_collection_param(conference_recording_status_callback_event, "multi") if !conference_recording_status_callback_event.nil? && !conference_recording_status_callback_event.null? && !conference_recording_status_callback_event.empty?
       form_params["ConferenceRecordingStatusCallbackMethod"] = conference_recording_status_callback_method.to_s if !conference_recording_status_callback_method.nil? && !conference_recording_status_callback_method.null?
       form_params["ConferenceStatusCallback"] = conference_status_callback.to_s if !conference_status_callback.nil? && !conference_status_callback.null?
-      form_params["ConferenceStatusCallbackEvent"] = @api_client.build_collection_param(conference_status_callback_event, "csv") if !conference_status_callback_event.nil? && !conference_status_callback_event.null? && !conference_status_callback_event.empty?
+      form_params["ConferenceStatusCallbackEvent"] = @api_client.build_collection_param(conference_status_callback_event, "multi") if !conference_status_callback_event.nil? && !conference_status_callback_event.null? && !conference_status_callback_event.empty?
       form_params["ConferenceStatusCallbackMethod"] = conference_status_callback_method.to_s if !conference_status_callback_method.nil? && !conference_status_callback_method.null?
       form_params["ConferenceTrim"] = conference_trim.to_s if !conference_trim.nil? && !conference_trim.null?
       form_params["EarlyMedia"] = early_media.to_s if !early_media.nil? && !early_media.null?
@@ -2297,7 +2297,7 @@ module Twilio
       form_params["Record"] = record.to_s if !record.nil? && !record.null?
       form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil? && !recording_channels.null?
       form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil? && !recording_status_callback.null?
-      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "csv") if !recording_status_callback_event.nil? && !recording_status_callback_event.null? && !recording_status_callback_event.empty?
+      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.null? && !recording_status_callback_event.empty?
       form_params["RecordingStatusCallbackMethod"] = recording_status_callback_method.to_s if !recording_status_callback_method.nil? && !recording_status_callback_method.null?
       form_params["RecordingTrack"] = recording_track.to_s if !recording_track.nil? && !recording_track.null?
       form_params["Region"] = region.to_s if !region.nil? && !region.null?
@@ -2305,7 +2305,7 @@ module Twilio
       form_params["SipAuthUsername"] = sip_auth_username.to_s if !sip_auth_username.nil? && !sip_auth_username.null?
       form_params["StartConferenceOnEnter"] = start_conference_on_enter.to_s if !start_conference_on_enter.nil? && !start_conference_on_enter.null?
       form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackEvent"] = @api_client.build_collection_param(status_callback_event, "csv") if !status_callback_event.nil? && !status_callback_event.null? && !status_callback_event.empty?
+      form_params["StatusCallbackEvent"] = @api_client.build_collection_param(status_callback_event, "multi") if !status_callback_event.nil? && !status_callback_event.null? && !status_callback_event.empty?
       form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
       form_params["TimeLimit"] = time_limit.to_s if !time_limit.nil? && !time_limit.null?
       form_params["Timeout"] = timeout.to_s if !timeout.nil? && !timeout.null?
@@ -19034,7 +19034,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Issue"] = @api_client.build_collection_param(issue, "csv") if !issue.nil? && !issue.null? && !issue.empty?
+      form_params["Issue"] = @api_client.build_collection_param(issue, "multi") if !issue.nil? && !issue.null? && !issue.empty?
       form_params["QualityScore"] = quality_score.to_s if !quality_score.nil? && !quality_score.null?
 
       # http body (model)
@@ -19480,7 +19480,7 @@ module Twilio
       form_params["Description"] = description.to_s if !description.nil? && !description.null?
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       form_params["HomepageUrl"] = homepage_url.to_s if !homepage_url.nil? && !homepage_url.null?
-      form_params["Permissions"] = @api_client.build_collection_param(permissions, "csv") if !permissions.nil? && !permissions.null? && !permissions.empty?
+      form_params["Permissions"] = @api_client.build_collection_param(permissions, "multi") if !permissions.nil? && !permissions.null? && !permissions.empty?
 
       # http body (model)
       post_body = nil

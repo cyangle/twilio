@@ -31,6 +31,10 @@ tasks:
           \     @account_sid = api_client.config.username.not_nil!"
         multi_line: true
       -
+        name: 'Update collection format'
+        pattern: ', \"csv\"\)'
+        new_value: ', "multi")'
+      -
         name: 'Update start_time2'
         pattern: 'start_time2'
         new_value: 'start_time_before'
