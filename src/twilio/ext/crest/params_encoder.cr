@@ -1,6 +1,7 @@
 module Crest
   module ParamsEncoder
     extend self
+
     # Transform deeply nested params containers into a flat hash of `key => value`.
     #
     # ```
