@@ -87,7 +87,7 @@ module Twilio
 
     class EnumAttributeValidator
       getter datatype : String
-      getter allowable_values : Array(String)
+      getter allowable_values : Array(String | Int32 | Float64)
 
       def initialize(datatype, allowable_values)
         @datatype = datatype
@@ -104,7 +104,7 @@ module Twilio
       end
 
       def valid?(value)
-        !value || allowable_values.includes?(value)
+        value.nil? || value.null? || allowable_values.includes?(value)
       end
     end
 
