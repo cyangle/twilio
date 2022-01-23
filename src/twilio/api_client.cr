@@ -159,7 +159,8 @@ module Twilio
         # cookies: cookie_params, # TODO add cookies support
         form: form_or_body,
         logging: @config.debugging,
-        handle_errors: false
+        handle_errors: false,
+        params_encoder: Crest::NestedParamsEncoder
       )
     end
 
