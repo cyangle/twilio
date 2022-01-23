@@ -55,7 +55,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts.json"
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -153,7 +153,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Addresses.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -264,7 +264,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Applications.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -413,7 +413,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -540,7 +540,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/FeedbackSummary.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -647,7 +647,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -854,7 +854,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -992,7 +992,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ResourceSid" + "}", URI.encode_path(resource_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -1194,7 +1194,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -1418,7 +1418,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -1642,7 +1642,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -1784,7 +1784,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Messages.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -1899,7 +1899,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Feedback.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "MessageSid" + "}", URI.encode_path(message_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -1979,7 +1979,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Keys.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -2062,7 +2062,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SigningKeys.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -2197,7 +2197,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConferenceSid" + "}", URI.encode_path(conference_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -2352,7 +2352,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Payments.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -2453,7 +2453,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Queues.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -2569,7 +2569,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -2684,7 +2684,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -2799,7 +2799,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -2904,7 +2904,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CredentialListSid" + "}", URI.encode_path(credential_list_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -2991,7 +2991,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -3106,7 +3106,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -3230,7 +3230,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -3328,7 +3328,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -3443,7 +3443,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -3548,7 +3548,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "IpAccessControlListSid" + "}", URI.encode_path(ip_access_control_list_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -3657,7 +3657,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Siprec.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -3942,7 +3942,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Tokens.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4051,7 +4051,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4144,7 +4144,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4245,7 +4245,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4339,7 +4339,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4433,7 +4433,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4527,7 +4527,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/FeedbackSummary/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4637,7 +4637,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4747,7 +4747,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConferenceSid" + "}", URI.encode_path(conference_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4841,7 +4841,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/ConnectApps/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -4935,7 +4935,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5045,7 +5045,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ResourceSid" + "}", URI.encode_path(resource_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5136,7 +5136,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Keys/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5246,7 +5246,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "MessageSid" + "}", URI.encode_path(message_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5340,7 +5340,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Messages/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5434,7 +5434,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5531,7 +5531,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConferenceSid" + "}", URI.encode_path(conference_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5625,7 +5625,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Queues/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5719,7 +5719,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5829,7 +5829,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ReferenceSid" + "}", URI.encode_path(reference_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -5955,7 +5955,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ReferenceSid" + "}", URI.encode_path(reference_sid.to_s)).sub("{" + "AddOnResultSid" + "}", URI.encode_path(add_on_result_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6062,7 +6062,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "RecordingSid" + "}", URI.encode_path(recording_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6153,7 +6153,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SigningKeys/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6263,7 +6263,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6373,7 +6373,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6483,7 +6483,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6593,7 +6593,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CredentialListSid" + "}", URI.encode_path(credential_list_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6687,7 +6687,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6797,7 +6797,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6891,7 +6891,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -6985,7 +6985,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7095,7 +7095,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7205,7 +7205,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "IpAccessControlListSid" + "}", URI.encode_path(ip_access_control_list_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7299,7 +7299,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Transcriptions/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7390,7 +7390,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7468,7 +7468,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{Sid}.json".sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7561,7 +7561,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7657,7 +7657,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7753,7 +7753,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps/{ConnectAppSid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConnectAppSid" + "}", URI.encode_path(connect_app_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7833,7 +7833,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CountryCode" + "}", URI.encode_path(country_code.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -7913,7 +7913,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Balance.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8009,7 +8009,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8105,7 +8105,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Feedback.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8201,7 +8201,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/FeedbackSummary/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8310,7 +8310,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8422,7 +8422,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8518,7 +8518,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8630,7 +8630,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConferenceSid" + "}", URI.encode_path(conference_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8726,7 +8726,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/ConnectApps/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8822,7 +8822,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -8934,7 +8934,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ResourceSid" + "}", URI.encode_path(resource_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9062,7 +9062,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ResourceSid" + "}", URI.encode_path(resource_sid.to_s)).sub("{" + "AssignedAddOnSid" + "}", URI.encode_path(assigned_add_on_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9155,7 +9155,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Keys/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9267,7 +9267,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "MessageSid" + "}", URI.encode_path(message_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9366,7 +9366,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "QueueSid" + "}", URI.encode_path(queue_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9462,7 +9462,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Messages/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9558,7 +9558,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Notifications/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9654,7 +9654,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9753,7 +9753,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConferenceSid" + "}", URI.encode_path(conference_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9849,7 +9849,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Queues/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9945,7 +9945,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -10057,7 +10057,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ReferenceSid" + "}", URI.encode_path(reference_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -10185,7 +10185,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ReferenceSid" + "}", URI.encode_path(reference_sid.to_s)).sub("{" + "AddOnResultSid" + "}", URI.encode_path(add_on_result_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -10294,7 +10294,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "RecordingSid" + "}", URI.encode_path(recording_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -10390,7 +10390,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -10483,7 +10483,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SigningKeys/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -10595,7 +10595,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -10707,7 +10707,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -10819,7 +10819,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -10931,7 +10931,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CredentialListSid" + "}", URI.encode_path(credential_list_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11027,7 +11027,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11139,7 +11139,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11235,7 +11235,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11331,7 +11331,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11443,7 +11443,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11555,7 +11555,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "IpAccessControlListSid" + "}", URI.encode_path(ip_access_control_list_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11651,7 +11651,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Transcriptions/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11747,7 +11747,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11823,7 +11823,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts.json"
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["Status"] = status.to_s if !status.nil? && !status.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
@@ -11911,7 +11911,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Addresses.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["CustomerName"] = customer_name.to_s if !customer_name.nil? && !customer_name.null?
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["IsoCountry"] = iso_country.to_s if !iso_country.nil? && !iso_country.null?
@@ -12003,7 +12003,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Applications.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
@@ -12093,7 +12093,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -12179,7 +12179,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -12268,7 +12268,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Local.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CountryCode" + "}", URI.encode_path(country_code.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
       query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
       query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
@@ -12375,7 +12375,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/MachineToMachine.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CountryCode" + "}", URI.encode_path(country_code.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
       query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
       query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
@@ -12482,7 +12482,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Mobile.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CountryCode" + "}", URI.encode_path(country_code.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
       query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
       query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
@@ -12589,7 +12589,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/National.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CountryCode" + "}", URI.encode_path(country_code.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
       query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
       query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
@@ -12696,7 +12696,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/SharedCost.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CountryCode" + "}", URI.encode_path(country_code.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
       query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
       query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
@@ -12803,7 +12803,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/TollFree.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CountryCode" + "}", URI.encode_path(country_code.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
       query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
       query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
@@ -12910,7 +12910,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Voip.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CountryCode" + "}", URI.encode_path(country_code.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
       query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
       query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
@@ -13034,7 +13034,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["To"] = to.to_s if !to.nil? && !to.null?
       query_params["From"] = from.to_s if !from.nil? && !from.null?
       query_params["ParentCallSid"] = parent_call_sid.to_s if !parent_call_sid.nil? && !parent_call_sid.null?
@@ -13149,7 +13149,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Events.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -13251,7 +13251,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Log"] = log.to_s if !log.nil? && !log.null?
       query_params["MessageDate"] = Time::Format::ISO_8601_DATE.format(message_date) if !message_date.nil? && !message_date.null?
       query_params["MessageDate<"] = Time::Format::ISO_8601_DATE.format(message_date_before) if !message_date_before.nil? && !message_date_before.null?
@@ -13360,7 +13360,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil? && !date_created.null?
       query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
       query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
@@ -13456,7 +13456,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil? && !date_created.null?
       query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
       query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
@@ -13569,7 +13569,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConferenceSid" + "}", URI.encode_path(conference_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil? && !date_created.null?
       query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
       query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
@@ -13661,7 +13661,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/ConnectApps.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -13763,7 +13763,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Addresses/{AddressSid}/DependentPhoneNumbers.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "AddressSid" + "}", URI.encode_path(address_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -13852,7 +13852,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
@@ -13961,7 +13961,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ResourceSid" + "}", URI.encode_path(resource_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -14082,7 +14082,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ResourceSid" + "}", URI.encode_path(resource_sid.to_s)).sub("{" + "AssignedAddOnSid" + "}", URI.encode_path(assigned_add_on_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -14168,7 +14168,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
@@ -14258,7 +14258,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
@@ -14348,7 +14348,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
@@ -14438,7 +14438,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Keys.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -14543,7 +14543,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "MessageSid" + "}", URI.encode_path(message_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["DateCreated"] = Time::Format::RFC_2822.format(date_created) if !date_created.nil? && !date_created.null?
       query_params["DateCreated<"] = Time::Format::RFC_2822.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
       query_params["DateCreated>"] = Time::Format::RFC_2822.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
@@ -14651,7 +14651,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "QueueSid" + "}", URI.encode_path(queue_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -14740,7 +14740,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Messages.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["To"] = to.to_s if !to.nil? && !to.null?
       query_params["From"] = from.to_s if !from.nil? && !from.null?
       query_params["DateSent"] = Time::Format::RFC_2822.format(date_sent) if !date_sent.nil? && !date_sent.null?
@@ -14834,7 +14834,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Notifications.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Log"] = log.to_s if !log.nil? && !log.null?
       query_params["MessageDate"] = Time::Format::ISO_8601_DATE.format(message_date) if !message_date.nil? && !message_date.null?
       query_params["MessageDate<"] = Time::Format::ISO_8601_DATE.format(message_date_before) if !message_date_before.nil? && !message_date_before.null?
@@ -14927,7 +14927,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
@@ -15034,7 +15034,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConferenceSid" + "}", URI.encode_path(conference_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Muted"] = muted.to_s if !muted.nil? && !muted.null?
       query_params["Hold"] = hold.to_s if !hold.nil? && !hold.null?
       query_params["Coaching"] = coaching.to_s if !coaching.nil? && !coaching.null?
@@ -15126,7 +15126,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Queues.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -15241,7 +15241,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["DateCreated"] = Time::Format::RFC_2822.format(date_created) if !date_created.nil? && !date_created.null?
       query_params["DateCreated<"] = Time::Format::RFC_2822.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
       query_params["DateCreated>"] = Time::Format::RFC_2822.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
@@ -15351,7 +15351,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ReferenceSid" + "}", URI.encode_path(reference_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -15472,7 +15472,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ReferenceSid" + "}", URI.encode_path(reference_sid.to_s)).sub("{" + "AddOnResultSid" + "}", URI.encode_path(add_on_result_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -15574,7 +15574,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "RecordingSid" + "}", URI.encode_path(recording_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -15663,7 +15663,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
       query_params["ShortCode"] = short_code.to_s if !short_code.nil? && !short_code.null?
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
@@ -15751,7 +15751,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SigningKeys.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -15856,7 +15856,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -15961,7 +15961,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16066,7 +16066,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16171,7 +16171,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CredentialListSid" + "}", URI.encode_path(credential_list_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16260,7 +16260,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16365,7 +16365,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16454,7 +16454,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16543,7 +16543,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16648,7 +16648,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "DomainSid" + "}", URI.encode_path(domain_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16753,7 +16753,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "IpAccessControlListSid" + "}", URI.encode_path(ip_access_control_list_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16842,7 +16842,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Transcriptions.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
 
       # header parameters
@@ -16935,7 +16935,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Records.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
       query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
@@ -17029,7 +17029,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Records/AllTime.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
       query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
@@ -17123,7 +17123,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Daily.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
       query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
@@ -17217,7 +17217,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Records/LastMonth.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
       query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
@@ -17311,7 +17311,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Monthly.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
       query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
@@ -17405,7 +17405,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Records/ThisMonth.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
       query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
@@ -17499,7 +17499,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Today.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
       query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
@@ -17593,7 +17593,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Yearly.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
       query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
@@ -17687,7 +17687,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Yesterday.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Category"] = category.to_s if !category.nil? && !category.null?
       query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
       query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
@@ -17792,7 +17792,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
       query_params["Recurring"] = recurring.to_s if !recurring.nil? && !recurring.null?
       query_params["TriggerBy"] = trigger_by.to_s if !trigger_by.nil? && !trigger_by.null?
       query_params["UsageCategory"] = usage_category.to_s if !usage_category.nil? && !usage_category.null?
@@ -17880,7 +17880,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{Sid}.json".sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -17977,7 +17977,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -18103,7 +18103,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -18232,7 +18232,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -18330,7 +18330,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Feedback.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -18441,7 +18441,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -18533,7 +18533,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -18645,7 +18645,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConferenceSid" + "}", URI.encode_path(conference_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -18753,7 +18753,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/ConnectApps/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -18991,7 +18991,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -19109,7 +19109,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Keys/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -19218,7 +19218,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "QueueSid" + "}", URI.encode_path(queue_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -19318,7 +19318,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Messages/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -19417,7 +19417,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -19544,7 +19544,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "ConferenceSid" + "}", URI.encode_path(conference_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -19684,7 +19684,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Payments/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -19786,7 +19786,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Queues/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -19894,7 +19894,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -19995,7 +19995,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SigningKeys/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -20110,7 +20110,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CredentialListSid" + "}", URI.encode_path(credential_list_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -20212,7 +20212,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -20349,7 +20349,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -20463,7 +20463,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -20578,7 +20578,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "IpAccessControlListSid" + "}", URI.encode_path(ip_access_control_list_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -20690,7 +20690,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Siprec/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "CallSid" + "}", URI.encode_path(call_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
@@ -20793,7 +20793,7 @@ module Twilio
       local_var_path = "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json".sub("{" + "AccountSid" + "}", URI.encode_path(account_sid.to_s)).sub("{" + "Sid" + "}", URI.encode_path(sid.to_s))
 
       # query parameters
-      query_params = Hash(String, String).new
+      query_params = Hash(String, (String | Array(String))).new
 
       # header parameters
       header_params = Hash(String, String).new
