@@ -30,7 +30,7 @@ dependencies:
 
 Check [here](https://www.twilio.com/docs/all) for more information about how to use twilio APIs.
 
-Below lists only a few examples of the most interesting APIs, the client should support APIs provided by the twilio OpenAPI specification file as it's generated from the OpenAPI v3 specification `./twilio_api_v2010_1.23.1_fixed.json`.
+Below lists only a few examples of the most interesting APIs, the client should support APIs provided by the twilio OpenAPI specification file as it's generated from the OpenAPI v3 specification `./twilio_api_v2010_1.29.1_fixed.json`.
 
 ### JSON serialization
 
