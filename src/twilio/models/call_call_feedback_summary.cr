@@ -12,92 +12,107 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class CallCallFeedbackSummary
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The unique sid that identifies this account
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The total number of calls
-    @[JSON::Field(key: "call_count", type: Int32?, presence: true, ignore_serialize: call_count.nil? && !call_count_present?, emit_null: true)]
+    @[JSON::Field(key: "call_count", type: Int32?, presence: true, ignore_serialize: call_count.nil? && !call_count_present?)]
     property call_count : Int32?
+
     @[JSON::Field(ignore: true)]
     property? call_count_present : Bool = false
 
     # The total number of calls with a feedback entry
-    @[JSON::Field(key: "call_feedback_count", type: Int32?, presence: true, ignore_serialize: call_feedback_count.nil? && !call_feedback_count_present?, emit_null: true)]
+    @[JSON::Field(key: "call_feedback_count", type: Int32?, presence: true, ignore_serialize: call_feedback_count.nil? && !call_feedback_count_present?)]
     property call_feedback_count : Int32?
+
     @[JSON::Field(ignore: true)]
     property? call_feedback_count_present : Bool = false
 
     # The date this resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The date this resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The latest feedback entry date in the summary
-    @[JSON::Field(key: "end_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: end_date.nil? && !end_date_present?, emit_null: true)]
+    @[JSON::Field(key: "end_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: end_date.nil? && !end_date_present?)]
     property end_date : Time?
+
     @[JSON::Field(ignore: true)]
     property? end_date_present : Bool = false
 
     # Whether the feedback summary includes subaccounts
-    @[JSON::Field(key: "include_subaccounts", type: Bool?, presence: true, ignore_serialize: include_subaccounts.nil? && !include_subaccounts_present?, emit_null: true)]
+    @[JSON::Field(key: "include_subaccounts", type: Bool?, presence: true, ignore_serialize: include_subaccounts.nil? && !include_subaccounts_present?)]
     property include_subaccounts : Bool?
+
     @[JSON::Field(ignore: true)]
     property? include_subaccounts_present : Bool = false
 
     # Issues experienced during the call
-    @[JSON::Field(key: "issues", type: Array(String)?, presence: true, ignore_serialize: issues.nil? && !issues_present?, emit_null: true)]
+    @[JSON::Field(key: "issues", type: Array(String)?, presence: true, ignore_serialize: issues.nil? && !issues_present?)]
     property issues : Array(String)?
+
     @[JSON::Field(ignore: true)]
     property? issues_present : Bool = false
 
     # The average QualityScore of the feedback entries
-    @[JSON::Field(key: "quality_score_average", type: Float64?, presence: true, ignore_serialize: quality_score_average.nil? && !quality_score_average_present?, emit_null: true)]
+    @[JSON::Field(key: "quality_score_average", type: Float64?, presence: true, ignore_serialize: quality_score_average.nil? && !quality_score_average_present?)]
     property quality_score_average : Float64?
+
     @[JSON::Field(ignore: true)]
     property? quality_score_average_present : Bool = false
 
     # The median QualityScore of the feedback entries
-    @[JSON::Field(key: "quality_score_median", type: Float64?, presence: true, ignore_serialize: quality_score_median.nil? && !quality_score_median_present?, emit_null: true)]
+    @[JSON::Field(key: "quality_score_median", type: Float64?, presence: true, ignore_serialize: quality_score_median.nil? && !quality_score_median_present?)]
     property quality_score_median : Float64?
+
     @[JSON::Field(ignore: true)]
     property? quality_score_median_present : Bool = false
 
     # The standard deviation of the quality scores
-    @[JSON::Field(key: "quality_score_standard_deviation", type: Float64?, presence: true, ignore_serialize: quality_score_standard_deviation.nil? && !quality_score_standard_deviation_present?, emit_null: true)]
+    @[JSON::Field(key: "quality_score_standard_deviation", type: Float64?, presence: true, ignore_serialize: quality_score_standard_deviation.nil? && !quality_score_standard_deviation_present?)]
     property quality_score_standard_deviation : Float64?
+
     @[JSON::Field(ignore: true)]
     property? quality_score_standard_deviation_present : Bool = false
 
     # A string that uniquely identifies this feedback entry
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The earliest feedback entry date in the summary
-    @[JSON::Field(key: "start_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: start_date.nil? && !start_date_present?, emit_null: true)]
+    @[JSON::Field(key: "start_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: start_date.nil? && !start_date_present?)]
     property start_date : Time?
+
     @[JSON::Field(ignore: true)]
     property? start_date_present : Bool = false
 
     # The status of the feedback summary
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?, emit_null: true)]
+    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
     property status : String?
+
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 

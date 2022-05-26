@@ -13,28 +13,33 @@ require "log"
 
 module Twilio
   # Call recording encryption details
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class EncryptionDetails
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
-    @[JSON::Field(key: "type", type: String?, presence: true, ignore_serialize: _type.nil? && !_type_present?, emit_null: true)]
+    @[JSON::Field(key: "type", type: String?, presence: true, ignore_serialize: _type.nil? && !_type_present?)]
     property _type : String?
+
     @[JSON::Field(ignore: true)]
     property? _type_present : Bool = false
 
-    @[JSON::Field(key: "public_key_sid", type: String?, presence: true, ignore_serialize: public_key_sid.nil? && !public_key_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "public_key_sid", type: String?, presence: true, ignore_serialize: public_key_sid.nil? && !public_key_sid_present?)]
     property public_key_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? public_key_sid_present : Bool = false
 
-    @[JSON::Field(key: "encrypted_cek", type: String?, presence: true, ignore_serialize: encrypted_cek.nil? && !encrypted_cek_present?, emit_null: true)]
+    @[JSON::Field(key: "encrypted_cek", type: String?, presence: true, ignore_serialize: encrypted_cek.nil? && !encrypted_cek_present?)]
     property encrypted_cek : String?
+
     @[JSON::Field(ignore: true)]
     property? encrypted_cek_present : Bool = false
 
-    @[JSON::Field(key: "iv", type: String?, presence: true, ignore_serialize: iv.nil? && !iv_present?, emit_null: true)]
+    @[JSON::Field(key: "iv", type: String?, presence: true, ignore_serialize: iv.nil? && !iv_present?)]
     property iv : String?
+
     @[JSON::Field(ignore: true)]
     property? iv_present : Bool = false
 

@@ -12,44 +12,51 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class CallCallFeedback
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The unique sid that identifies this account
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The date this resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The date this resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # Issues experienced during the call
-    @[JSON::Field(key: "issues", type: Array(String)?, presence: true, ignore_serialize: issues.nil? && !issues_present?, emit_null: true)]
+    @[JSON::Field(key: "issues", type: Array(String)?, presence: true, ignore_serialize: issues.nil? && !issues_present?)]
     property issues : Array(String)?
+
     @[JSON::Field(ignore: true)]
     property? issues_present : Bool = false
 
     # 1 to 5 quality score
-    @[JSON::Field(key: "quality_score", type: Int32?, presence: true, ignore_serialize: quality_score.nil? && !quality_score_present?, emit_null: true)]
+    @[JSON::Field(key: "quality_score", type: Int32?, presence: true, ignore_serialize: quality_score.nil? && !quality_score_present?)]
     property quality_score : Int32?
+
     @[JSON::Field(ignore: true)]
     property? quality_score_present : Bool = false
 
     # A string that uniquely identifies this feedback resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 

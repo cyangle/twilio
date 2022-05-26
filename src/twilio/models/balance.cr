@@ -12,26 +12,30 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class Balance
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # Account Sid.
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # Account balance
-    @[JSON::Field(key: "balance", type: String?, presence: true, ignore_serialize: balance.nil? && !balance_present?, emit_null: true)]
+    @[JSON::Field(key: "balance", type: String?, presence: true, ignore_serialize: balance.nil? && !balance_present?)]
     property balance : String?
+
     @[JSON::Field(ignore: true)]
     property? balance_present : Bool = false
 
     # Currency units
-    @[JSON::Field(key: "currency", type: String?, presence: true, ignore_serialize: currency.nil? && !currency_present?, emit_null: true)]
+    @[JSON::Field(key: "currency", type: String?, presence: true, ignore_serialize: currency.nil? && !currency_present?)]
     property currency : String?
+
     @[JSON::Field(ignore: true)]
     property? currency_present : Bool = false
 

@@ -12,68 +12,79 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class Account
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The authorization token for this account
-    @[JSON::Field(key: "auth_token", type: String?, presence: true, ignore_serialize: auth_token.nil? && !auth_token_present?, emit_null: true)]
+    @[JSON::Field(key: "auth_token", type: String?, presence: true, ignore_serialize: auth_token.nil? && !auth_token_present?)]
     property auth_token : String?
+
     @[JSON::Field(ignore: true)]
     property? auth_token_present : Bool = false
 
     # The date this account was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The date this account was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # A human readable description of this account
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The unique 34 character id representing the parent of this account
-    @[JSON::Field(key: "owner_account_sid", type: String?, presence: true, ignore_serialize: owner_account_sid.nil? && !owner_account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "owner_account_sid", type: String?, presence: true, ignore_serialize: owner_account_sid.nil? && !owner_account_sid_present?)]
     property owner_account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? owner_account_sid_present : Bool = false
 
     # A 34 character string that uniquely identifies this resource.
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The status of this account
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?, emit_null: true)]
+    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
     property status : String?
+
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?, emit_null: true)]
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
     property subresource_uris : Hash(String, String)?
+
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
     # The type of this account
-    @[JSON::Field(key: "type", type: String?, presence: true, ignore_serialize: _type.nil? && !_type_present?, emit_null: true)]
+    @[JSON::Field(key: "type", type: String?, presence: true, ignore_serialize: _type.nil? && !_type_present?)]
     property _type : String?
+
     @[JSON::Field(ignore: true)]
     property? _type_present : Bool = false
 
     # The URI for this resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 

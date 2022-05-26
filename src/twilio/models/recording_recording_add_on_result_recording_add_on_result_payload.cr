@@ -12,74 +12,86 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class RecordingRecordingAddOnResultRecordingAddOnResultPayload
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The SID of the Add-on configuration
-    @[JSON::Field(key: "add_on_configuration_sid", type: String?, presence: true, ignore_serialize: add_on_configuration_sid.nil? && !add_on_configuration_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "add_on_configuration_sid", type: String?, presence: true, ignore_serialize: add_on_configuration_sid.nil? && !add_on_configuration_sid_present?)]
     property add_on_configuration_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? add_on_configuration_sid_present : Bool = false
 
     # The SID of the AddOnResult to which the payload belongs
-    @[JSON::Field(key: "add_on_result_sid", type: String?, presence: true, ignore_serialize: add_on_result_sid.nil? && !add_on_result_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "add_on_result_sid", type: String?, presence: true, ignore_serialize: add_on_result_sid.nil? && !add_on_result_sid_present?)]
     property add_on_result_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? add_on_result_sid_present : Bool = false
 
     # The SID of the Add-on to which the result belongs
-    @[JSON::Field(key: "add_on_sid", type: String?, presence: true, ignore_serialize: add_on_sid.nil? && !add_on_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "add_on_sid", type: String?, presence: true, ignore_serialize: add_on_sid.nil? && !add_on_sid_present?)]
     property add_on_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? add_on_sid_present : Bool = false
 
     # The MIME type of the payload
-    @[JSON::Field(key: "content_type", type: String?, presence: true, ignore_serialize: content_type.nil? && !content_type_present?, emit_null: true)]
+    @[JSON::Field(key: "content_type", type: String?, presence: true, ignore_serialize: content_type.nil? && !content_type_present?)]
     property content_type : String?
+
     @[JSON::Field(ignore: true)]
     property? content_type_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The string that describes the payload
-    @[JSON::Field(key: "label", type: String?, presence: true, ignore_serialize: label.nil? && !label_present?, emit_null: true)]
+    @[JSON::Field(key: "label", type: String?, presence: true, ignore_serialize: label.nil? && !label_present?)]
     property label : String?
+
     @[JSON::Field(ignore: true)]
     property? label_present : Bool = false
 
     # The SID of the recording to which the AddOnResult resource that contains the payload belongs
-    @[JSON::Field(key: "reference_sid", type: String?, presence: true, ignore_serialize: reference_sid.nil? && !reference_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "reference_sid", type: String?, presence: true, ignore_serialize: reference_sid.nil? && !reference_sid_present?)]
     property reference_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? reference_sid_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?, emit_null: true)]
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
     property subresource_uris : Hash(String, String)?
+
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 

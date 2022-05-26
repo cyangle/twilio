@@ -12,74 +12,86 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class ConnectApp
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The URL to redirect the user to after authorization
-    @[JSON::Field(key: "authorize_redirect_url", type: String?, presence: true, ignore_serialize: authorize_redirect_url.nil? && !authorize_redirect_url_present?, emit_null: true)]
+    @[JSON::Field(key: "authorize_redirect_url", type: String?, presence: true, ignore_serialize: authorize_redirect_url.nil? && !authorize_redirect_url_present?)]
     property authorize_redirect_url : String?
+
     @[JSON::Field(ignore: true)]
     property? authorize_redirect_url_present : Bool = false
 
     # The company name set for the Connect App
-    @[JSON::Field(key: "company_name", type: String?, presence: true, ignore_serialize: company_name.nil? && !company_name_present?, emit_null: true)]
+    @[JSON::Field(key: "company_name", type: String?, presence: true, ignore_serialize: company_name.nil? && !company_name_present?)]
     property company_name : String?
+
     @[JSON::Field(ignore: true)]
     property? company_name_present : Bool = false
 
     # The HTTP method we use to call deauthorize_callback_url
-    @[JSON::Field(key: "deauthorize_callback_method", type: String?, presence: true, ignore_serialize: deauthorize_callback_method.nil? && !deauthorize_callback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "deauthorize_callback_method", type: String?, presence: true, ignore_serialize: deauthorize_callback_method.nil? && !deauthorize_callback_method_present?)]
     property deauthorize_callback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? deauthorize_callback_method_present : Bool = false
 
     # The URL we call to de-authorize the Connect App
-    @[JSON::Field(key: "deauthorize_callback_url", type: String?, presence: true, ignore_serialize: deauthorize_callback_url.nil? && !deauthorize_callback_url_present?, emit_null: true)]
+    @[JSON::Field(key: "deauthorize_callback_url", type: String?, presence: true, ignore_serialize: deauthorize_callback_url.nil? && !deauthorize_callback_url_present?)]
     property deauthorize_callback_url : String?
+
     @[JSON::Field(ignore: true)]
     property? deauthorize_callback_url_present : Bool = false
 
     # The description of the Connect App
-    @[JSON::Field(key: "description", type: String?, presence: true, ignore_serialize: description.nil? && !description_present?, emit_null: true)]
+    @[JSON::Field(key: "description", type: String?, presence: true, ignore_serialize: description.nil? && !description_present?)]
     property description : String?
+
     @[JSON::Field(ignore: true)]
     property? description_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The URL users can obtain more information
-    @[JSON::Field(key: "homepage_url", type: String?, presence: true, ignore_serialize: homepage_url.nil? && !homepage_url_present?, emit_null: true)]
+    @[JSON::Field(key: "homepage_url", type: String?, presence: true, ignore_serialize: homepage_url.nil? && !homepage_url_present?)]
     property homepage_url : String?
+
     @[JSON::Field(ignore: true)]
     property? homepage_url_present : Bool = false
 
     # The set of permissions that your ConnectApp requests
-    @[JSON::Field(key: "permissions", type: Array(String)?, presence: true, ignore_serialize: permissions.nil? && !permissions_present?, emit_null: true)]
+    @[JSON::Field(key: "permissions", type: Array(String)?, presence: true, ignore_serialize: permissions.nil? && !permissions_present?)]
     property permissions : Array(String)?
+
     @[JSON::Field(ignore: true)]
     property? permissions_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 

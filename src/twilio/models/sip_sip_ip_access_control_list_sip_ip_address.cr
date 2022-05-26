@@ -12,62 +12,72 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class SipSipIpAccessControlListSipIpAddress
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The unique id of the Account that is responsible for this resource.
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
-    @[JSON::Field(key: "cidr_prefix_length", type: Int32?, presence: true, ignore_serialize: cidr_prefix_length.nil? && !cidr_prefix_length_present?, emit_null: true)]
+    @[JSON::Field(key: "cidr_prefix_length", type: Int32?, presence: true, ignore_serialize: cidr_prefix_length.nil? && !cidr_prefix_length_present?)]
     property cidr_prefix_length : Int32?
+
     @[JSON::Field(ignore: true)]
     property? cidr_prefix_length_present : Bool = false
 
     # The date that this resource was created, given as GMT in RFC 2822 format.
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The date that this resource was last updated, given as GMT in RFC 2822 format.
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # A human readable descriptive text for this resource, up to 64 characters long.
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The unique id of the IpAccessControlList resource that includes this resource.
-    @[JSON::Field(key: "ip_access_control_list_sid", type: String?, presence: true, ignore_serialize: ip_access_control_list_sid.nil? && !ip_access_control_list_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "ip_access_control_list_sid", type: String?, presence: true, ignore_serialize: ip_access_control_list_sid.nil? && !ip_access_control_list_sid_present?)]
     property ip_access_control_list_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? ip_access_control_list_sid_present : Bool = false
 
     # An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
-    @[JSON::Field(key: "ip_address", type: String?, presence: true, ignore_serialize: ip_address.nil? && !ip_address_present?, emit_null: true)]
+    @[JSON::Field(key: "ip_address", type: String?, presence: true, ignore_serialize: ip_address.nil? && !ip_address_present?)]
     property ip_address : String?
+
     @[JSON::Field(ignore: true)]
     property? ip_address_present : Bool = false
 
     # A 34 character string that uniquely identifies this resource.
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The URI for this resource, relative to https://api.twilio.com
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 

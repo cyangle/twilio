@@ -12,209 +12,244 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class IncomingPhoneNumberIncomingPhoneNumberLocal
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # Whether the phone number requires an Address registered with Twilio.
-    @[JSON::Field(key: "address_requirements", type: String?, presence: true, ignore_serialize: address_requirements.nil? && !address_requirements_present?, emit_null: true)]
+    @[JSON::Field(key: "address_requirements", type: String?, presence: true, ignore_serialize: address_requirements.nil? && !address_requirements_present?)]
     property address_requirements : String?
+
     @[JSON::Field(ignore: true)]
     property? address_requirements_present : Bool = false
 
     # The SID of the Address resource associated with the phone number
-    @[JSON::Field(key: "address_sid", type: String?, presence: true, ignore_serialize: address_sid.nil? && !address_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "address_sid", type: String?, presence: true, ignore_serialize: address_sid.nil? && !address_sid_present?)]
     property address_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? address_sid_present : Bool = false
 
     # The API version used to start a new TwiML session
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?, emit_null: true)]
+    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
     property api_version : String?
+
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # Whether the phone number is new to the Twilio platform
-    @[JSON::Field(key: "beta", type: Bool?, presence: true, ignore_serialize: beta.nil? && !beta_present?, emit_null: true)]
+    @[JSON::Field(key: "beta", type: Bool?, presence: true, ignore_serialize: beta.nil? && !beta_present?)]
     property beta : Bool?
+
     @[JSON::Field(ignore: true)]
     property? beta_present : Bool = false
 
     # The SID of the Bundle resource associated with number
-    @[JSON::Field(key: "bundle_sid", type: String?, presence: true, ignore_serialize: bundle_sid.nil? && !bundle_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "bundle_sid", type: String?, presence: true, ignore_serialize: bundle_sid.nil? && !bundle_sid_present?)]
     property bundle_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? bundle_sid_present : Bool = false
 
-    @[JSON::Field(key: "capabilities", type: IncomingPhoneNumberCapabilities?, presence: true, ignore_serialize: capabilities.nil? && !capabilities_present?, emit_null: true)]
+    @[JSON::Field(key: "capabilities", type: IncomingPhoneNumberCapabilities?, presence: true, ignore_serialize: capabilities.nil? && !capabilities_present?)]
     property capabilities : IncomingPhoneNumberCapabilities?
+
     @[JSON::Field(ignore: true)]
     property? capabilities_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The emergency address configuration to use for emergency calling
-    @[JSON::Field(key: "emergency_address_sid", type: String?, presence: true, ignore_serialize: emergency_address_sid.nil? && !emergency_address_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "emergency_address_sid", type: String?, presence: true, ignore_serialize: emergency_address_sid.nil? && !emergency_address_sid_present?)]
     property emergency_address_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? emergency_address_sid_present : Bool = false
 
     # State of the emergency address configuration for the phone number
-    @[JSON::Field(key: "emergency_address_status", type: String?, presence: true, ignore_serialize: emergency_address_status.nil? && !emergency_address_status_present?, emit_null: true)]
+    @[JSON::Field(key: "emergency_address_status", type: String?, presence: true, ignore_serialize: emergency_address_status.nil? && !emergency_address_status_present?)]
     property emergency_address_status : String?
+
     @[JSON::Field(ignore: true)]
     property? emergency_address_status_present : Bool = false
 
     # Displays if emergency calling is enabled for this number.
-    @[JSON::Field(key: "emergency_status", type: String?, presence: true, ignore_serialize: emergency_status.nil? && !emergency_status_present?, emit_null: true)]
+    @[JSON::Field(key: "emergency_status", type: String?, presence: true, ignore_serialize: emergency_status.nil? && !emergency_status_present?)]
     property emergency_status : String?
+
     @[JSON::Field(ignore: true)]
     property? emergency_status_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The SID of the Identity resource associated with number
-    @[JSON::Field(key: "identity_sid", type: String?, presence: true, ignore_serialize: identity_sid.nil? && !identity_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "identity_sid", type: String?, presence: true, ignore_serialize: identity_sid.nil? && !identity_sid_present?)]
     property identity_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? identity_sid_present : Bool = false
 
     # The phone number's origin. Can be twilio or hosted.
-    @[JSON::Field(key: "origin", type: String?, presence: true, ignore_serialize: origin.nil? && !origin_present?, emit_null: true)]
+    @[JSON::Field(key: "origin", type: String?, presence: true, ignore_serialize: origin.nil? && !origin_present?)]
     property origin : String?
+
     @[JSON::Field(ignore: true)]
     property? origin_present : Bool = false
 
     # The phone number in E.164 format
-    @[JSON::Field(key: "phone_number", type: String?, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?, emit_null: true)]
+    @[JSON::Field(key: "phone_number", type: String?, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?)]
     property phone_number : String?
+
     @[JSON::Field(ignore: true)]
     property? phone_number_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The SID of the Application resource to handle SMS messages
-    @[JSON::Field(key: "sms_application_sid", type: String?, presence: true, ignore_serialize: sms_application_sid.nil? && !sms_application_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_application_sid", type: String?, presence: true, ignore_serialize: sms_application_sid.nil? && !sms_application_sid_present?)]
     property sms_application_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_application_sid_present : Bool = false
 
     # The HTTP method used with sms_fallback_url
-    @[JSON::Field(key: "sms_fallback_method", type: String?, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_fallback_method", type: String?, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
     property sms_fallback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_fallback_method_present : Bool = false
 
     # The URL that we call when an error occurs while retrieving or executing the TwiML
-    @[JSON::Field(key: "sms_fallback_url", type: String?, presence: true, ignore_serialize: sms_fallback_url.nil? && !sms_fallback_url_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_fallback_url", type: String?, presence: true, ignore_serialize: sms_fallback_url.nil? && !sms_fallback_url_present?)]
     property sms_fallback_url : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_fallback_url_present : Bool = false
 
     # The HTTP method to use with sms_url
-    @[JSON::Field(key: "sms_method", type: String?, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_method", type: String?, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
     property sms_method : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_method_present : Bool = false
 
     # The URL we call when the phone number receives an incoming SMS message
-    @[JSON::Field(key: "sms_url", type: String?, presence: true, ignore_serialize: sms_url.nil? && !sms_url_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_url", type: String?, presence: true, ignore_serialize: sms_url.nil? && !sms_url_present?)]
     property sms_url : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_url_present : Bool = false
 
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?, emit_null: true)]
+    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
     property status : String?
+
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
     # The URL to send status information to your application
-    @[JSON::Field(key: "status_callback", type: String?, presence: true, ignore_serialize: status_callback.nil? && !status_callback_present?, emit_null: true)]
+    @[JSON::Field(key: "status_callback", type: String?, presence: true, ignore_serialize: status_callback.nil? && !status_callback_present?)]
     property status_callback : String?
+
     @[JSON::Field(ignore: true)]
     property? status_callback_present : Bool = false
 
     # The HTTP method we use to call status_callback
-    @[JSON::Field(key: "status_callback_method", type: String?, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "status_callback_method", type: String?, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?)]
     property status_callback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? status_callback_method_present : Bool = false
 
     # The SID of the Trunk that handles calls to the phone number
-    @[JSON::Field(key: "trunk_sid", type: String?, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "trunk_sid", type: String?, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?)]
     property trunk_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? trunk_sid_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
     # The SID of the application that handles calls to the phone number
-    @[JSON::Field(key: "voice_application_sid", type: String?, presence: true, ignore_serialize: voice_application_sid.nil? && !voice_application_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_application_sid", type: String?, presence: true, ignore_serialize: voice_application_sid.nil? && !voice_application_sid_present?)]
     property voice_application_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_application_sid_present : Bool = false
 
     # Whether to lookup the caller's name
-    @[JSON::Field(key: "voice_caller_id_lookup", type: Bool?, presence: true, ignore_serialize: voice_caller_id_lookup.nil? && !voice_caller_id_lookup_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_caller_id_lookup", type: Bool?, presence: true, ignore_serialize: voice_caller_id_lookup.nil? && !voice_caller_id_lookup_present?)]
     property voice_caller_id_lookup : Bool?
+
     @[JSON::Field(ignore: true)]
     property? voice_caller_id_lookup_present : Bool = false
 
     # The HTTP method used with voice_fallback_url
-    @[JSON::Field(key: "voice_fallback_method", type: String?, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_fallback_method", type: String?, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
     property voice_fallback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_fallback_method_present : Bool = false
 
     # The URL we call when an error occurs in TwiML
-    @[JSON::Field(key: "voice_fallback_url", type: String?, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_fallback_url", type: String?, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?)]
     property voice_fallback_url : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_fallback_url_present : Bool = false
 
     # The HTTP method used with the voice_url
-    @[JSON::Field(key: "voice_method", type: String?, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_method", type: String?, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
     property voice_method : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_method_present : Bool = false
 
-    @[JSON::Field(key: "voice_receive_mode", type: String?, presence: true, ignore_serialize: voice_receive_mode.nil? && !voice_receive_mode_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_receive_mode", type: String?, presence: true, ignore_serialize: voice_receive_mode.nil? && !voice_receive_mode_present?)]
     property voice_receive_mode : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_receive_mode_present : Bool = false
 
     # The URL we call when this phone number receives a call
-    @[JSON::Field(key: "voice_url", type: String?, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_url", type: String?, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?)]
     property voice_url : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_url_present : Bool = false
 

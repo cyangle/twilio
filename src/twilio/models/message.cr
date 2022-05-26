@@ -12,128 +12,149 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class Message
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The API version used to process the message
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?, emit_null: true)]
+    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
     property api_version : String?
+
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # The message text
-    @[JSON::Field(key: "body", type: String?, presence: true, ignore_serialize: body.nil? && !body_present?, emit_null: true)]
+    @[JSON::Field(key: "body", type: String?, presence: true, ignore_serialize: body.nil? && !body_present?)]
     property body : String?
+
     @[JSON::Field(ignore: true)]
     property? body_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT when the message was sent
-    @[JSON::Field(key: "date_sent", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_sent.nil? && !date_sent_present?, emit_null: true)]
+    @[JSON::Field(key: "date_sent", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_sent.nil? && !date_sent_present?)]
     property date_sent : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_sent_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The direction of the message
-    @[JSON::Field(key: "direction", type: String?, presence: true, ignore_serialize: direction.nil? && !direction_present?, emit_null: true)]
+    @[JSON::Field(key: "direction", type: String?, presence: true, ignore_serialize: direction.nil? && !direction_present?)]
     property direction : String?
+
     @[JSON::Field(ignore: true)]
     property? direction_present : Bool = false
 
     # The error code associated with the message
-    @[JSON::Field(key: "error_code", type: Int32?, presence: true, ignore_serialize: error_code.nil? && !error_code_present?, emit_null: true)]
+    @[JSON::Field(key: "error_code", type: Int32?, presence: true, ignore_serialize: error_code.nil? && !error_code_present?)]
     property error_code : Int32?
+
     @[JSON::Field(ignore: true)]
     property? error_code_present : Bool = false
 
     # The description of the error_code
-    @[JSON::Field(key: "error_message", type: String?, presence: true, ignore_serialize: error_message.nil? && !error_message_present?, emit_null: true)]
+    @[JSON::Field(key: "error_message", type: String?, presence: true, ignore_serialize: error_message.nil? && !error_message_present?)]
     property error_message : String?
+
     @[JSON::Field(ignore: true)]
     property? error_message_present : Bool = false
 
     # The phone number that initiated the message
-    @[JSON::Field(key: "from", type: String?, presence: true, ignore_serialize: from.nil? && !from_present?, emit_null: true)]
+    @[JSON::Field(key: "from", type: String?, presence: true, ignore_serialize: from.nil? && !from_present?)]
     property from : String?
+
     @[JSON::Field(ignore: true)]
     property? from_present : Bool = false
 
     # The SID of the Messaging Service used with the message.
-    @[JSON::Field(key: "messaging_service_sid", type: String?, presence: true, ignore_serialize: messaging_service_sid.nil? && !messaging_service_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "messaging_service_sid", type: String?, presence: true, ignore_serialize: messaging_service_sid.nil? && !messaging_service_sid_present?)]
     property messaging_service_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? messaging_service_sid_present : Bool = false
 
     # The number of media files associated with the message
-    @[JSON::Field(key: "num_media", type: String?, presence: true, ignore_serialize: num_media.nil? && !num_media_present?, emit_null: true)]
+    @[JSON::Field(key: "num_media", type: String?, presence: true, ignore_serialize: num_media.nil? && !num_media_present?)]
     property num_media : String?
+
     @[JSON::Field(ignore: true)]
     property? num_media_present : Bool = false
 
     # The number of messages used to deliver the message body
-    @[JSON::Field(key: "num_segments", type: String?, presence: true, ignore_serialize: num_segments.nil? && !num_segments_present?, emit_null: true)]
+    @[JSON::Field(key: "num_segments", type: String?, presence: true, ignore_serialize: num_segments.nil? && !num_segments_present?)]
     property num_segments : String?
+
     @[JSON::Field(ignore: true)]
     property? num_segments_present : Bool = false
 
     # The amount billed for the message
-    @[JSON::Field(key: "price", type: String?, presence: true, ignore_serialize: price.nil? && !price_present?, emit_null: true)]
+    @[JSON::Field(key: "price", type: String?, presence: true, ignore_serialize: price.nil? && !price_present?)]
     property price : String?
+
     @[JSON::Field(ignore: true)]
     property? price_present : Bool = false
 
     # The currency in which price is measured
-    @[JSON::Field(key: "price_unit", type: String?, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?, emit_null: true)]
+    @[JSON::Field(key: "price_unit", type: String?, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?)]
     property price_unit : String?
+
     @[JSON::Field(ignore: true)]
     property? price_unit_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The status of the message
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?, emit_null: true)]
+    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
     property status : String?
+
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?, emit_null: true)]
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
     property subresource_uris : Hash(String, String)?
+
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
     # The phone number that received the message
-    @[JSON::Field(key: "to", type: String?, presence: true, ignore_serialize: to.nil? && !to_present?, emit_null: true)]
+    @[JSON::Field(key: "to", type: String?, presence: true, ignore_serialize: to.nil? && !to_present?)]
     property to : String?
+
     @[JSON::Field(ignore: true)]
     property? to_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 

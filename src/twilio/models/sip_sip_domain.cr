@@ -12,134 +12,156 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class SipSipDomain
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The API version used to process the call
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?, emit_null: true)]
+    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
     property api_version : String?
+
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # The types of authentication mapped to the domain
-    @[JSON::Field(key: "auth_type", type: String?, presence: true, ignore_serialize: auth_type.nil? && !auth_type_present?, emit_null: true)]
+    @[JSON::Field(key: "auth_type", type: String?, presence: true, ignore_serialize: auth_type.nil? && !auth_type_present?)]
     property auth_type : String?
+
     @[JSON::Field(ignore: true)]
     property? auth_type_present : Bool = false
 
     # The SID of the BYOC Trunk resource.
-    @[JSON::Field(key: "byoc_trunk_sid", type: String?, presence: true, ignore_serialize: byoc_trunk_sid.nil? && !byoc_trunk_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "byoc_trunk_sid", type: String?, presence: true, ignore_serialize: byoc_trunk_sid.nil? && !byoc_trunk_sid_present?)]
     property byoc_trunk_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? byoc_trunk_sid_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The unique address on Twilio to route SIP traffic
-    @[JSON::Field(key: "domain_name", type: String?, presence: true, ignore_serialize: domain_name.nil? && !domain_name_present?, emit_null: true)]
+    @[JSON::Field(key: "domain_name", type: String?, presence: true, ignore_serialize: domain_name.nil? && !domain_name_present?)]
     property domain_name : String?
+
     @[JSON::Field(ignore: true)]
     property? domain_name_present : Bool = false
 
     # Whether an emergency caller sid is configured for the domain.
-    @[JSON::Field(key: "emergency_caller_sid", type: String?, presence: true, ignore_serialize: emergency_caller_sid.nil? && !emergency_caller_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "emergency_caller_sid", type: String?, presence: true, ignore_serialize: emergency_caller_sid.nil? && !emergency_caller_sid_present?)]
     property emergency_caller_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? emergency_caller_sid_present : Bool = false
 
     # Whether emergency calling is enabled for the domain.
-    @[JSON::Field(key: "emergency_calling_enabled", type: Bool?, presence: true, ignore_serialize: emergency_calling_enabled.nil? && !emergency_calling_enabled_present?, emit_null: true)]
+    @[JSON::Field(key: "emergency_calling_enabled", type: Bool?, presence: true, ignore_serialize: emergency_calling_enabled.nil? && !emergency_calling_enabled_present?)]
     property emergency_calling_enabled : Bool?
+
     @[JSON::Field(ignore: true)]
     property? emergency_calling_enabled_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # Whether secure SIP is enabled for the domain
-    @[JSON::Field(key: "secure", type: Bool?, presence: true, ignore_serialize: secure.nil? && !secure_present?, emit_null: true)]
+    @[JSON::Field(key: "secure", type: Bool?, presence: true, ignore_serialize: secure.nil? && !secure_present?)]
     property secure : Bool?
+
     @[JSON::Field(ignore: true)]
     property? secure_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # Whether SIP registration is allowed
-    @[JSON::Field(key: "sip_registration", type: Bool?, presence: true, ignore_serialize: sip_registration.nil? && !sip_registration_present?, emit_null: true)]
+    @[JSON::Field(key: "sip_registration", type: Bool?, presence: true, ignore_serialize: sip_registration.nil? && !sip_registration_present?)]
     property sip_registration : Bool?
+
     @[JSON::Field(ignore: true)]
     property? sip_registration_present : Bool = false
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?, emit_null: true)]
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
     property subresource_uris : Hash(String, String)?
+
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
     # The HTTP method used with voice_fallback_url
-    @[JSON::Field(key: "voice_fallback_method", type: String?, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_fallback_method", type: String?, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
     property voice_fallback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_fallback_method_present : Bool = false
 
     # The URL we call when an error occurs while executing TwiML
-    @[JSON::Field(key: "voice_fallback_url", type: String?, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_fallback_url", type: String?, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?)]
     property voice_fallback_url : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_fallback_url_present : Bool = false
 
     # The HTTP method to use with voice_url
-    @[JSON::Field(key: "voice_method", type: String?, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_method", type: String?, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
     property voice_method : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_method_present : Bool = false
 
     # The HTTP method we use to call voice_status_callback_url
-    @[JSON::Field(key: "voice_status_callback_method", type: String?, presence: true, ignore_serialize: voice_status_callback_method.nil? && !voice_status_callback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_status_callback_method", type: String?, presence: true, ignore_serialize: voice_status_callback_method.nil? && !voice_status_callback_method_present?)]
     property voice_status_callback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_status_callback_method_present : Bool = false
 
     # The URL that we call with status updates
-    @[JSON::Field(key: "voice_status_callback_url", type: String?, presence: true, ignore_serialize: voice_status_callback_url.nil? && !voice_status_callback_url_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_status_callback_url", type: String?, presence: true, ignore_serialize: voice_status_callback_url.nil? && !voice_status_callback_url_present?)]
     property voice_status_callback_url : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_status_callback_url_present : Bool = false
 
     # The URL we call when receiving a call
-    @[JSON::Field(key: "voice_url", type: String?, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_url", type: String?, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?)]
     property voice_url : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_url_present : Bool = false
 

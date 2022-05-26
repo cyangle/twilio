@@ -12,104 +12,121 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class UsageUsageTrigger
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that this trigger monitors
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The API version used to create the resource
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?, emit_null: true)]
+    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
     property api_version : String?
+
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # The HTTP method we use to call callback_url
-    @[JSON::Field(key: "callback_method", type: String?, presence: true, ignore_serialize: callback_method.nil? && !callback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "callback_method", type: String?, presence: true, ignore_serialize: callback_method.nil? && !callback_method_present?)]
     property callback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? callback_method_present : Bool = false
 
     # he URL we call when the trigger fires
-    @[JSON::Field(key: "callback_url", type: String?, presence: true, ignore_serialize: callback_url.nil? && !callback_url_present?, emit_null: true)]
+    @[JSON::Field(key: "callback_url", type: String?, presence: true, ignore_serialize: callback_url.nil? && !callback_url_present?)]
     property callback_url : String?
+
     @[JSON::Field(ignore: true)]
     property? callback_url_present : Bool = false
 
     # The current value of the field the trigger is watching
-    @[JSON::Field(key: "current_value", type: String?, presence: true, ignore_serialize: current_value.nil? && !current_value_present?, emit_null: true)]
+    @[JSON::Field(key: "current_value", type: String?, presence: true, ignore_serialize: current_value.nil? && !current_value_present?)]
     property current_value : String?
+
     @[JSON::Field(ignore: true)]
     property? current_value_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the trigger was last fired
-    @[JSON::Field(key: "date_fired", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_fired.nil? && !date_fired_present?, emit_null: true)]
+    @[JSON::Field(key: "date_fired", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_fired.nil? && !date_fired_present?)]
     property date_fired : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_fired_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The string that you assigned to describe the trigger
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The frequency of a recurring UsageTrigger
-    @[JSON::Field(key: "recurring", type: String?, presence: true, ignore_serialize: recurring.nil? && !recurring_present?, emit_null: true)]
+    @[JSON::Field(key: "recurring", type: String?, presence: true, ignore_serialize: recurring.nil? && !recurring_present?)]
     property recurring : String?
+
     @[JSON::Field(ignore: true)]
     property? recurring_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The field in the UsageRecord resource that fires the trigger
-    @[JSON::Field(key: "trigger_by", type: String?, presence: true, ignore_serialize: trigger_by.nil? && !trigger_by_present?, emit_null: true)]
+    @[JSON::Field(key: "trigger_by", type: String?, presence: true, ignore_serialize: trigger_by.nil? && !trigger_by_present?)]
     property trigger_by : String?
+
     @[JSON::Field(ignore: true)]
     property? trigger_by_present : Bool = false
 
     # The value at which the trigger will fire
-    @[JSON::Field(key: "trigger_value", type: String?, presence: true, ignore_serialize: trigger_value.nil? && !trigger_value_present?, emit_null: true)]
+    @[JSON::Field(key: "trigger_value", type: String?, presence: true, ignore_serialize: trigger_value.nil? && !trigger_value_present?)]
     property trigger_value : String?
+
     @[JSON::Field(ignore: true)]
     property? trigger_value_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
     # The usage category the trigger watches
-    @[JSON::Field(key: "usage_category", type: String?, presence: true, ignore_serialize: usage_category.nil? && !usage_category_present?, emit_null: true)]
+    @[JSON::Field(key: "usage_category", type: String?, presence: true, ignore_serialize: usage_category.nil? && !usage_category_present?)]
     property usage_category : String?
+
     @[JSON::Field(ignore: true)]
     property? usage_category_present : Bool = false
 
     # The URI of the UsageRecord resource this trigger watches
-    @[JSON::Field(key: "usage_record_uri", type: String?, presence: true, ignore_serialize: usage_record_uri.nil? && !usage_record_uri_present?, emit_null: true)]
+    @[JSON::Field(key: "usage_record_uri", type: String?, presence: true, ignore_serialize: usage_record_uri.nil? && !usage_record_uri_present?)]
     property usage_record_uri : String?
+
     @[JSON::Field(ignore: true)]
     property? usage_record_uri_present : Bool = false
 

@@ -13,23 +13,27 @@ require "log"
 
 module Twilio
   # Call Request.
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class CallCallEventRequest
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
-    @[JSON::Field(key: "method", type: String?, presence: true, ignore_serialize: method.nil? && !method_present?, emit_null: true)]
+    @[JSON::Field(key: "method", type: String?, presence: true, ignore_serialize: method.nil? && !method_present?)]
     property method : String?
+
     @[JSON::Field(ignore: true)]
     property? method_present : Bool = false
 
-    @[JSON::Field(key: "url", type: String?, presence: true, ignore_serialize: url.nil? && !url_present?, emit_null: true)]
+    @[JSON::Field(key: "url", type: String?, presence: true, ignore_serialize: url.nil? && !url_present?)]
     property url : String?
+
     @[JSON::Field(ignore: true)]
     property? url_present : Bool = false
 
-    @[JSON::Field(key: "parameters", type: Hash(String, String)?, presence: true, ignore_serialize: parameters.nil? && !parameters_present?, emit_null: true)]
+    @[JSON::Field(key: "parameters", type: Hash(String, String)?, presence: true, ignore_serialize: parameters.nil? && !parameters_present?)]
     property parameters : Hash(String, String)?
+
     @[JSON::Field(ignore: true)]
     property? parameters_present : Bool = false
 

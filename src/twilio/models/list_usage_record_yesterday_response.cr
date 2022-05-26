@@ -12,53 +12,63 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class ListUsageRecordYesterdayResponse
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
-    @[JSON::Field(key: "end", type: Int32?, presence: true, ignore_serialize: _end.nil? && !_end_present?, emit_null: true)]
+    @[JSON::Field(key: "end", type: Int32?, presence: true, ignore_serialize: _end.nil? && !_end_present?)]
     property _end : Int32?
+
     @[JSON::Field(ignore: true)]
     property? _end_present : Bool = false
 
-    @[JSON::Field(key: "first_page_uri", type: String?, presence: true, ignore_serialize: first_page_uri.nil? && !first_page_uri_present?, emit_null: true)]
+    @[JSON::Field(key: "first_page_uri", type: String?, presence: true, ignore_serialize: first_page_uri.nil? && !first_page_uri_present?)]
     property first_page_uri : String?
+
     @[JSON::Field(ignore: true)]
     property? first_page_uri_present : Bool = false
 
-    @[JSON::Field(key: "next_page_uri", type: String?, presence: true, ignore_serialize: next_page_uri.nil? && !next_page_uri_present?, emit_null: true)]
+    @[JSON::Field(key: "next_page_uri", type: String?, presence: true, ignore_serialize: next_page_uri.nil? && !next_page_uri_present?)]
     property next_page_uri : String?
+
     @[JSON::Field(ignore: true)]
     property? next_page_uri_present : Bool = false
 
-    @[JSON::Field(key: "page", type: Int32?, presence: true, ignore_serialize: page.nil? && !page_present?, emit_null: true)]
+    @[JSON::Field(key: "page", type: Int32?, presence: true, ignore_serialize: page.nil? && !page_present?)]
     property page : Int32?
+
     @[JSON::Field(ignore: true)]
     property? page_present : Bool = false
 
-    @[JSON::Field(key: "page_size", type: Int32?, presence: true, ignore_serialize: page_size.nil? && !page_size_present?, emit_null: true)]
+    @[JSON::Field(key: "page_size", type: Int32?, presence: true, ignore_serialize: page_size.nil? && !page_size_present?)]
     property page_size : Int32?
+
     @[JSON::Field(ignore: true)]
     property? page_size_present : Bool = false
 
-    @[JSON::Field(key: "previous_page_uri", type: String?, presence: true, ignore_serialize: previous_page_uri.nil? && !previous_page_uri_present?, emit_null: true)]
+    @[JSON::Field(key: "previous_page_uri", type: String?, presence: true, ignore_serialize: previous_page_uri.nil? && !previous_page_uri_present?)]
     property previous_page_uri : String?
+
     @[JSON::Field(ignore: true)]
     property? previous_page_uri_present : Bool = false
 
-    @[JSON::Field(key: "start", type: Int32?, presence: true, ignore_serialize: start.nil? && !start_present?, emit_null: true)]
+    @[JSON::Field(key: "start", type: Int32?, presence: true, ignore_serialize: start.nil? && !start_present?)]
     property start : Int32?
+
     @[JSON::Field(ignore: true)]
     property? start_present : Bool = false
 
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    @[JSON::Field(key: "usage_records", type: Array(UsageUsageRecordUsageRecordYesterday)?, presence: true, ignore_serialize: usage_records.nil? && !usage_records_present?, emit_null: true)]
+    @[JSON::Field(key: "usage_records", type: Array(UsageUsageRecordUsageRecordYesterday)?, presence: true, ignore_serialize: usage_records.nil? && !usage_records_present?)]
     property usage_records : Array(UsageUsageRecordUsageRecordYesterday)?
+
     @[JSON::Field(ignore: true)]
     property? usage_records_present : Bool = false
 

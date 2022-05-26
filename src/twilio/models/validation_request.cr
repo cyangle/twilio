@@ -12,38 +12,44 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class ValidationRequest
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The SID of the Call the resource is associated with
-    @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
     property call_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The phone number to verify in E.164 format
-    @[JSON::Field(key: "phone_number", type: String?, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?, emit_null: true)]
+    @[JSON::Field(key: "phone_number", type: String?, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?)]
     property phone_number : String?
+
     @[JSON::Field(ignore: true)]
     property? phone_number_present : Bool = false
 
     # The 6 digit validation code that someone must enter to validate the Caller ID  when `phone_number` is called
-    @[JSON::Field(key: "validation_code", type: String?, presence: true, ignore_serialize: validation_code.nil? && !validation_code_present?, emit_null: true)]
+    @[JSON::Field(key: "validation_code", type: String?, presence: true, ignore_serialize: validation_code.nil? && !validation_code_present?)]
     property validation_code : String?
+
     @[JSON::Field(ignore: true)]
     property? validation_code_present : Bool = false
 

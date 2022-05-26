@@ -12,38 +12,44 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class AvailablePhoneNumberCountry
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # Whether all phone numbers available in the country are new to the Twilio platform.
-    @[JSON::Field(key: "beta", type: Bool?, presence: true, ignore_serialize: beta.nil? && !beta_present?, emit_null: true)]
+    @[JSON::Field(key: "beta", type: Bool?, presence: true, ignore_serialize: beta.nil? && !beta_present?)]
     property beta : Bool?
+
     @[JSON::Field(ignore: true)]
     property? beta_present : Bool = false
 
     # The name of the country
-    @[JSON::Field(key: "country", type: String?, presence: true, ignore_serialize: country.nil? && !country_present?, emit_null: true)]
+    @[JSON::Field(key: "country", type: String?, presence: true, ignore_serialize: country.nil? && !country_present?)]
     property country : String?
+
     @[JSON::Field(ignore: true)]
     property? country_present : Bool = false
 
     # The ISO-3166-1 country code of the country.
-    @[JSON::Field(key: "country_code", type: String?, presence: true, ignore_serialize: country_code.nil? && !country_code_present?, emit_null: true)]
+    @[JSON::Field(key: "country_code", type: String?, presence: true, ignore_serialize: country_code.nil? && !country_code_present?)]
     property country_code : String?
+
     @[JSON::Field(ignore: true)]
     property? country_code_present : Bool = false
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?, emit_null: true)]
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
     property subresource_uris : Hash(String, String)?
+
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
     # The URI of the Country resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 

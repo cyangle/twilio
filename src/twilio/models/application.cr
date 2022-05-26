@@ -12,128 +12,149 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class Application
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The API version used to start a new TwiML session
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?, emit_null: true)]
+    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
     property api_version : String?
+
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The URL to send message status information to your application
-    @[JSON::Field(key: "message_status_callback", type: String?, presence: true, ignore_serialize: message_status_callback.nil? && !message_status_callback_present?, emit_null: true)]
+    @[JSON::Field(key: "message_status_callback", type: String?, presence: true, ignore_serialize: message_status_callback.nil? && !message_status_callback_present?)]
     property message_status_callback : String?
+
     @[JSON::Field(ignore: true)]
     property? message_status_callback_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The HTTP method used with sms_fallback_url
-    @[JSON::Field(key: "sms_fallback_method", type: String?, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_fallback_method", type: String?, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
     property sms_fallback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_fallback_method_present : Bool = false
 
     # The URL that we call when an error occurs while retrieving or executing the TwiML
-    @[JSON::Field(key: "sms_fallback_url", type: String?, presence: true, ignore_serialize: sms_fallback_url.nil? && !sms_fallback_url_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_fallback_url", type: String?, presence: true, ignore_serialize: sms_fallback_url.nil? && !sms_fallback_url_present?)]
     property sms_fallback_url : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_fallback_url_present : Bool = false
 
     # The HTTP method to use with sms_url
-    @[JSON::Field(key: "sms_method", type: String?, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_method", type: String?, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
     property sms_method : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_method_present : Bool = false
 
     # The URL to send status information to your application
-    @[JSON::Field(key: "sms_status_callback", type: String?, presence: true, ignore_serialize: sms_status_callback.nil? && !sms_status_callback_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_status_callback", type: String?, presence: true, ignore_serialize: sms_status_callback.nil? && !sms_status_callback_present?)]
     property sms_status_callback : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_status_callback_present : Bool = false
 
     # The URL we call when the phone number receives an incoming SMS message
-    @[JSON::Field(key: "sms_url", type: String?, presence: true, ignore_serialize: sms_url.nil? && !sms_url_present?, emit_null: true)]
+    @[JSON::Field(key: "sms_url", type: String?, presence: true, ignore_serialize: sms_url.nil? && !sms_url_present?)]
     property sms_url : String?
+
     @[JSON::Field(ignore: true)]
     property? sms_url_present : Bool = false
 
     # The URL to send status information to your application
-    @[JSON::Field(key: "status_callback", type: String?, presence: true, ignore_serialize: status_callback.nil? && !status_callback_present?, emit_null: true)]
+    @[JSON::Field(key: "status_callback", type: String?, presence: true, ignore_serialize: status_callback.nil? && !status_callback_present?)]
     property status_callback : String?
+
     @[JSON::Field(ignore: true)]
     property? status_callback_present : Bool = false
 
     # The HTTP method we use to call status_callback
-    @[JSON::Field(key: "status_callback_method", type: String?, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "status_callback_method", type: String?, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?)]
     property status_callback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? status_callback_method_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
     # Whether to lookup the caller's name
-    @[JSON::Field(key: "voice_caller_id_lookup", type: Bool?, presence: true, ignore_serialize: voice_caller_id_lookup.nil? && !voice_caller_id_lookup_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_caller_id_lookup", type: Bool?, presence: true, ignore_serialize: voice_caller_id_lookup.nil? && !voice_caller_id_lookup_present?)]
     property voice_caller_id_lookup : Bool?
+
     @[JSON::Field(ignore: true)]
     property? voice_caller_id_lookup_present : Bool = false
 
     # The HTTP method used with voice_fallback_url
-    @[JSON::Field(key: "voice_fallback_method", type: String?, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_fallback_method", type: String?, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
     property voice_fallback_method : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_fallback_method_present : Bool = false
 
     # The URL we call when a TwiML error occurs
-    @[JSON::Field(key: "voice_fallback_url", type: String?, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_fallback_url", type: String?, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?)]
     property voice_fallback_url : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_fallback_url_present : Bool = false
 
     # The HTTP method used with the voice_url
-    @[JSON::Field(key: "voice_method", type: String?, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_method", type: String?, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
     property voice_method : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_method_present : Bool = false
 
     # The URL we call when the phone number receives a call
-    @[JSON::Field(key: "voice_url", type: String?, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?, emit_null: true)]
+    @[JSON::Field(key: "voice_url", type: String?, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?)]
     property voice_url : String?
+
     @[JSON::Field(ignore: true)]
     property? voice_url_present : Bool = false
 

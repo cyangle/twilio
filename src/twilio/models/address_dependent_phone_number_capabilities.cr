@@ -13,28 +13,33 @@ require "log"
 
 module Twilio
   # Indicate if a phone can receive calls or messages
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class AddressDependentPhoneNumberCapabilities
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
-    @[JSON::Field(key: "fax", type: Bool?, presence: true, ignore_serialize: fax.nil? && !fax_present?, emit_null: true)]
+    @[JSON::Field(key: "fax", type: Bool?, presence: true, ignore_serialize: fax.nil? && !fax_present?)]
     property fax : Bool?
+
     @[JSON::Field(ignore: true)]
     property? fax_present : Bool = false
 
-    @[JSON::Field(key: "mms", type: Bool?, presence: true, ignore_serialize: mms.nil? && !mms_present?, emit_null: true)]
+    @[JSON::Field(key: "mms", type: Bool?, presence: true, ignore_serialize: mms.nil? && !mms_present?)]
     property mms : Bool?
+
     @[JSON::Field(ignore: true)]
     property? mms_present : Bool = false
 
-    @[JSON::Field(key: "sms", type: Bool?, presence: true, ignore_serialize: sms.nil? && !sms_present?, emit_null: true)]
+    @[JSON::Field(key: "sms", type: Bool?, presence: true, ignore_serialize: sms.nil? && !sms_present?)]
     property sms : Bool?
+
     @[JSON::Field(ignore: true)]
     property? sms_present : Bool = false
 
-    @[JSON::Field(key: "voice", type: Bool?, presence: true, ignore_serialize: voice.nil? && !voice_present?, emit_null: true)]
+    @[JSON::Field(key: "voice", type: Bool?, presence: true, ignore_serialize: voice.nil? && !voice_present?)]
     property voice : Bool?
+
     @[JSON::Field(ignore: true)]
     property? voice_present : Bool = false
 

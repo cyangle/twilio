@@ -12,98 +12,114 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class UsageUsageRecordUsageRecordToday
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account accrued the usage
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The API version used to create the resource
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?, emit_null: true)]
+    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
     property api_version : String?
+
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # Usage records up to date as of this timestamp
-    @[JSON::Field(key: "as_of", type: String?, presence: true, ignore_serialize: as_of.nil? && !as_of_present?, emit_null: true)]
+    @[JSON::Field(key: "as_of", type: String?, presence: true, ignore_serialize: as_of.nil? && !as_of_present?)]
     property as_of : String?
+
     @[JSON::Field(ignore: true)]
     property? as_of_present : Bool = false
 
     # The category of usage
-    @[JSON::Field(key: "category", type: String?, presence: true, ignore_serialize: category.nil? && !category_present?, emit_null: true)]
+    @[JSON::Field(key: "category", type: String?, presence: true, ignore_serialize: category.nil? && !category_present?)]
     property category : String?
+
     @[JSON::Field(ignore: true)]
     property? category_present : Bool = false
 
     # The number of usage events
-    @[JSON::Field(key: "count", type: String?, presence: true, ignore_serialize: count.nil? && !count_present?, emit_null: true)]
+    @[JSON::Field(key: "count", type: String?, presence: true, ignore_serialize: count.nil? && !count_present?)]
     property count : String?
+
     @[JSON::Field(ignore: true)]
     property? count_present : Bool = false
 
     # The units in which count is measured
-    @[JSON::Field(key: "count_unit", type: String?, presence: true, ignore_serialize: count_unit.nil? && !count_unit_present?, emit_null: true)]
+    @[JSON::Field(key: "count_unit", type: String?, presence: true, ignore_serialize: count_unit.nil? && !count_unit_present?)]
     property count_unit : String?
+
     @[JSON::Field(ignore: true)]
     property? count_unit_present : Bool = false
 
     # A plain-language description of the usage category
-    @[JSON::Field(key: "description", type: String?, presence: true, ignore_serialize: description.nil? && !description_present?, emit_null: true)]
+    @[JSON::Field(key: "description", type: String?, presence: true, ignore_serialize: description.nil? && !description_present?)]
     property description : String?
+
     @[JSON::Field(ignore: true)]
     property? description_present : Bool = false
 
     # The last date for which usage is included in the UsageRecord
-    @[JSON::Field(key: "end_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: end_date.nil? && !end_date_present?, emit_null: true)]
+    @[JSON::Field(key: "end_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: end_date.nil? && !end_date_present?)]
     property end_date : Time?
+
     @[JSON::Field(ignore: true)]
     property? end_date_present : Bool = false
 
     # The total price of the usage
-    @[JSON::Field(key: "price", type: String?, presence: true, ignore_serialize: price.nil? && !price_present?, emit_null: true)]
+    @[JSON::Field(key: "price", type: String?, presence: true, ignore_serialize: price.nil? && !price_present?)]
     property price : String?
+
     @[JSON::Field(ignore: true)]
     property? price_present : Bool = false
 
     # The currency in which `price` is measured
-    @[JSON::Field(key: "price_unit", type: String?, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?, emit_null: true)]
+    @[JSON::Field(key: "price_unit", type: String?, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?)]
     property price_unit : String?
+
     @[JSON::Field(ignore: true)]
     property? price_unit_present : Bool = false
 
     # The first date for which usage is included in this UsageRecord
-    @[JSON::Field(key: "start_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: start_date.nil? && !start_date_present?, emit_null: true)]
+    @[JSON::Field(key: "start_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: start_date.nil? && !start_date_present?)]
     property start_date : Time?
+
     @[JSON::Field(ignore: true)]
     property? start_date_present : Bool = false
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?, emit_null: true)]
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
     property subresource_uris : Hash(String, String)?
+
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
     # The amount of usage
-    @[JSON::Field(key: "usage", type: String?, presence: true, ignore_serialize: usage.nil? && !usage_present?, emit_null: true)]
+    @[JSON::Field(key: "usage", type: String?, presence: true, ignore_serialize: usage.nil? && !usage_present?)]
     property usage : String?
+
     @[JSON::Field(ignore: true)]
     property? usage_present : Bool = false
 
     # The units in which usage is measured
-    @[JSON::Field(key: "usage_unit", type: String?, presence: true, ignore_serialize: usage_unit.nil? && !usage_unit_present?, emit_null: true)]
+    @[JSON::Field(key: "usage_unit", type: String?, presence: true, ignore_serialize: usage_unit.nil? && !usage_unit_present?)]
     property usage_unit : String?
+
     @[JSON::Field(ignore: true)]
     property? usage_unit_present : Bool = false
 

@@ -12,18 +12,21 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class CallCallEvent
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
-    @[JSON::Field(key: "request", type: CallCallEventRequest?, presence: true, ignore_serialize: request.nil? && !request_present?, emit_null: true)]
+    @[JSON::Field(key: "request", type: CallCallEventRequest?, presence: true, ignore_serialize: request.nil? && !request_present?)]
     property request : CallCallEventRequest?
+
     @[JSON::Field(ignore: true)]
     property? request_present : Bool = false
 
-    @[JSON::Field(key: "response", type: CallCallEventResponse?, presence: true, ignore_serialize: response.nil? && !response_present?, emit_null: true)]
+    @[JSON::Field(key: "response", type: CallCallEventResponse?, presence: true, ignore_serialize: response.nil? && !response_present?)]
     property response : CallCallEventResponse?
+
     @[JSON::Field(ignore: true)]
     property? response_present : Bool = false
 

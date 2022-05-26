@@ -13,33 +13,39 @@ require "log"
 
 module Twilio
   # Call Response with Events.
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class CallCallEventResponse
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
-    @[JSON::Field(key: "response_code", type: Int32?, presence: true, ignore_serialize: response_code.nil? && !response_code_present?, emit_null: true)]
+    @[JSON::Field(key: "response_code", type: Int32?, presence: true, ignore_serialize: response_code.nil? && !response_code_present?)]
     property response_code : Int32?
+
     @[JSON::Field(ignore: true)]
     property? response_code_present : Bool = false
 
-    @[JSON::Field(key: "request_duration", type: Int32?, presence: true, ignore_serialize: request_duration.nil? && !request_duration_present?, emit_null: true)]
+    @[JSON::Field(key: "request_duration", type: Int32?, presence: true, ignore_serialize: request_duration.nil? && !request_duration_present?)]
     property request_duration : Int32?
+
     @[JSON::Field(ignore: true)]
     property? request_duration_present : Bool = false
 
-    @[JSON::Field(key: "content_type", type: String?, presence: true, ignore_serialize: content_type.nil? && !content_type_present?, emit_null: true)]
+    @[JSON::Field(key: "content_type", type: String?, presence: true, ignore_serialize: content_type.nil? && !content_type_present?)]
     property content_type : String?
+
     @[JSON::Field(ignore: true)]
     property? content_type_present : Bool = false
 
-    @[JSON::Field(key: "date_created", type: String?, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: String?, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : String?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
-    @[JSON::Field(key: "response_body", type: String?, presence: true, ignore_serialize: response_body.nil? && !response_body_present?, emit_null: true)]
+    @[JSON::Field(key: "response_body", type: String?, presence: true, ignore_serialize: response_body.nil? && !response_body_present?)]
     property response_body : String?
+
     @[JSON::Field(ignore: true)]
     property? response_body_present : Bool = false
 

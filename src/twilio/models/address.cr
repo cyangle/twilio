@@ -12,98 +12,114 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class Address
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that is responsible for the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The city in which the address is located
-    @[JSON::Field(key: "city", type: String?, presence: true, ignore_serialize: city.nil? && !city_present?, emit_null: true)]
+    @[JSON::Field(key: "city", type: String?, presence: true, ignore_serialize: city.nil? && !city_present?)]
     property city : String?
+
     @[JSON::Field(ignore: true)]
     property? city_present : Bool = false
 
     # The name associated with the address
-    @[JSON::Field(key: "customer_name", type: String?, presence: true, ignore_serialize: customer_name.nil? && !customer_name_present?, emit_null: true)]
+    @[JSON::Field(key: "customer_name", type: String?, presence: true, ignore_serialize: customer_name.nil? && !customer_name_present?)]
     property customer_name : String?
+
     @[JSON::Field(ignore: true)]
     property? customer_name_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # Whether emergency calling has been enabled on this number
-    @[JSON::Field(key: "emergency_enabled", type: Bool?, presence: true, ignore_serialize: emergency_enabled.nil? && !emergency_enabled_present?, emit_null: true)]
+    @[JSON::Field(key: "emergency_enabled", type: Bool?, presence: true, ignore_serialize: emergency_enabled.nil? && !emergency_enabled_present?)]
     property emergency_enabled : Bool?
+
     @[JSON::Field(ignore: true)]
     property? emergency_enabled_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The ISO country code of the address
-    @[JSON::Field(key: "iso_country", type: String?, presence: true, ignore_serialize: iso_country.nil? && !iso_country_present?, emit_null: true)]
+    @[JSON::Field(key: "iso_country", type: String?, presence: true, ignore_serialize: iso_country.nil? && !iso_country_present?)]
     property iso_country : String?
+
     @[JSON::Field(ignore: true)]
     property? iso_country_present : Bool = false
 
     # The postal code of the address
-    @[JSON::Field(key: "postal_code", type: String?, presence: true, ignore_serialize: postal_code.nil? && !postal_code_present?, emit_null: true)]
+    @[JSON::Field(key: "postal_code", type: String?, presence: true, ignore_serialize: postal_code.nil? && !postal_code_present?)]
     property postal_code : String?
+
     @[JSON::Field(ignore: true)]
     property? postal_code_present : Bool = false
 
     # The state or region of the address
-    @[JSON::Field(key: "region", type: String?, presence: true, ignore_serialize: region.nil? && !region_present?, emit_null: true)]
+    @[JSON::Field(key: "region", type: String?, presence: true, ignore_serialize: region.nil? && !region_present?)]
     property region : String?
+
     @[JSON::Field(ignore: true)]
     property? region_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The number and street address of the address
-    @[JSON::Field(key: "street", type: String?, presence: true, ignore_serialize: street.nil? && !street_present?, emit_null: true)]
+    @[JSON::Field(key: "street", type: String?, presence: true, ignore_serialize: street.nil? && !street_present?)]
     property street : String?
+
     @[JSON::Field(ignore: true)]
     property? street_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
     # Whether the address has been validated to comply with local regulation
-    @[JSON::Field(key: "validated", type: Bool?, presence: true, ignore_serialize: validated.nil? && !validated_present?, emit_null: true)]
+    @[JSON::Field(key: "validated", type: Bool?, presence: true, ignore_serialize: validated.nil? && !validated_present?)]
     property validated : Bool?
+
     @[JSON::Field(ignore: true)]
     property? validated_present : Bool = false
 
     # Whether the address has been verified to comply with regulation
-    @[JSON::Field(key: "verified", type: Bool?, presence: true, ignore_serialize: verified.nil? && !verified_present?, emit_null: true)]
+    @[JSON::Field(key: "verified", type: Bool?, presence: true, ignore_serialize: verified.nil? && !verified_present?)]
     property verified : Bool?
+
     @[JSON::Field(ignore: true)]
     property? verified_present : Bool = false
 

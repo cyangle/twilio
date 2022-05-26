@@ -12,164 +12,191 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class Call
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created this resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # Either `human` or `machine` if this call was initiated with answering machine detection. Empty otherwise.
-    @[JSON::Field(key: "answered_by", type: String?, presence: true, ignore_serialize: answered_by.nil? && !answered_by_present?, emit_null: true)]
+    @[JSON::Field(key: "answered_by", type: String?, presence: true, ignore_serialize: answered_by.nil? && !answered_by_present?)]
     property answered_by : String?
+
     @[JSON::Field(ignore: true)]
     property? answered_by_present : Bool = false
 
     # The API Version used to create the call
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?, emit_null: true)]
+    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
     property api_version : String?
+
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # The caller's name if this call was an incoming call to a phone number with caller ID Lookup enabled. Otherwise, empty.
-    @[JSON::Field(key: "caller_name", type: String?, presence: true, ignore_serialize: caller_name.nil? && !caller_name_present?, emit_null: true)]
+    @[JSON::Field(key: "caller_name", type: String?, presence: true, ignore_serialize: caller_name.nil? && !caller_name_present?)]
     property caller_name : String?
+
     @[JSON::Field(ignore: true)]
     property? caller_name_present : Bool = false
 
     # The RFC 2822 date and time in GMT that this resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that this resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # A string describing the direction of the call. `inbound` for inbound calls, `outbound-api` for calls initiated via the REST API or `outbound-dial` for calls initiated by a `Dial` verb.
-    @[JSON::Field(key: "direction", type: String?, presence: true, ignore_serialize: direction.nil? && !direction_present?, emit_null: true)]
+    @[JSON::Field(key: "direction", type: String?, presence: true, ignore_serialize: direction.nil? && !direction_present?)]
     property direction : String?
+
     @[JSON::Field(ignore: true)]
     property? direction_present : Bool = false
 
     # The length of the call in seconds.
-    @[JSON::Field(key: "duration", type: String?, presence: true, ignore_serialize: duration.nil? && !duration_present?, emit_null: true)]
+    @[JSON::Field(key: "duration", type: String?, presence: true, ignore_serialize: duration.nil? && !duration_present?)]
     property duration : String?
+
     @[JSON::Field(ignore: true)]
     property? duration_present : Bool = false
 
     # The end time of the call. Null if the call did not complete successfully.
-    @[JSON::Field(key: "end_time", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: end_time.nil? && !end_time_present?, emit_null: true)]
+    @[JSON::Field(key: "end_time", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: end_time.nil? && !end_time_present?)]
     property end_time : Time?
+
     @[JSON::Field(ignore: true)]
     property? end_time_present : Bool = false
 
     # The forwarding phone number if this call was an incoming call forwarded from another number (depends on carrier supporting forwarding). Otherwise, empty.
-    @[JSON::Field(key: "forwarded_from", type: String?, presence: true, ignore_serialize: forwarded_from.nil? && !forwarded_from_present?, emit_null: true)]
+    @[JSON::Field(key: "forwarded_from", type: String?, presence: true, ignore_serialize: forwarded_from.nil? && !forwarded_from_present?)]
     property forwarded_from : String?
+
     @[JSON::Field(ignore: true)]
     property? forwarded_from_present : Bool = false
 
     # The phone number, SIP address or Client identifier that made this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
-    @[JSON::Field(key: "from", type: String?, presence: true, ignore_serialize: from.nil? && !from_present?, emit_null: true)]
+    @[JSON::Field(key: "from", type: String?, presence: true, ignore_serialize: from.nil? && !from_present?)]
     property from : String?
+
     @[JSON::Field(ignore: true)]
     property? from_present : Bool = false
 
     # The calling phone number, SIP address, or Client identifier formatted for display.
-    @[JSON::Field(key: "from_formatted", type: String?, presence: true, ignore_serialize: from_formatted.nil? && !from_formatted_present?, emit_null: true)]
+    @[JSON::Field(key: "from_formatted", type: String?, presence: true, ignore_serialize: from_formatted.nil? && !from_formatted_present?)]
     property from_formatted : String?
+
     @[JSON::Field(ignore: true)]
     property? from_formatted_present : Bool = false
 
     # The Group SID associated with this call. If no Group is associated with the call, the field is empty.
-    @[JSON::Field(key: "group_sid", type: String?, presence: true, ignore_serialize: group_sid.nil? && !group_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "group_sid", type: String?, presence: true, ignore_serialize: group_sid.nil? && !group_sid_present?)]
     property group_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? group_sid_present : Bool = false
 
     # The SID that identifies the call that created this leg.
-    @[JSON::Field(key: "parent_call_sid", type: String?, presence: true, ignore_serialize: parent_call_sid.nil? && !parent_call_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "parent_call_sid", type: String?, presence: true, ignore_serialize: parent_call_sid.nil? && !parent_call_sid_present?)]
     property parent_call_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? parent_call_sid_present : Bool = false
 
     # If the call was inbound, this is the SID of the IncomingPhoneNumber resource that received the call. If the call was outbound, it is the SID of the OutgoingCallerId resource from which the call was placed.
-    @[JSON::Field(key: "phone_number_sid", type: String?, presence: true, ignore_serialize: phone_number_sid.nil? && !phone_number_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "phone_number_sid", type: String?, presence: true, ignore_serialize: phone_number_sid.nil? && !phone_number_sid_present?)]
     property phone_number_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? phone_number_sid_present : Bool = false
 
     # The charge for this call, in the currency associated with the account. Populated after the call is completed. May not be immediately available.
-    @[JSON::Field(key: "price", type: String?, presence: true, ignore_serialize: price.nil? && !price_present?, emit_null: true)]
+    @[JSON::Field(key: "price", type: String?, presence: true, ignore_serialize: price.nil? && !price_present?)]
     property price : String?
+
     @[JSON::Field(ignore: true)]
     property? price_present : Bool = false
 
     # The currency in which `Price` is measured.
-    @[JSON::Field(key: "price_unit", type: String?, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?, emit_null: true)]
+    @[JSON::Field(key: "price_unit", type: String?, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?)]
     property price_unit : String?
+
     @[JSON::Field(ignore: true)]
     property? price_unit_present : Bool = false
 
     # The wait time in milliseconds before the call is placed.
-    @[JSON::Field(key: "queue_time", type: String?, presence: true, ignore_serialize: queue_time.nil? && !queue_time_present?, emit_null: true)]
+    @[JSON::Field(key: "queue_time", type: String?, presence: true, ignore_serialize: queue_time.nil? && !queue_time_present?)]
     property queue_time : String?
+
     @[JSON::Field(ignore: true)]
     property? queue_time_present : Bool = false
 
     # The unique string that identifies this resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The start time of the call. Null if the call has not yet been dialed.
-    @[JSON::Field(key: "start_time", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: start_time.nil? && !start_time_present?, emit_null: true)]
+    @[JSON::Field(key: "start_time", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: start_time.nil? && !start_time_present?)]
     property start_time : Time?
+
     @[JSON::Field(ignore: true)]
     property? start_time_present : Bool = false
 
     # The status of this call.
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?, emit_null: true)]
+    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
     property status : String?
+
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?, emit_null: true)]
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
     property subresource_uris : Hash(String, String)?
+
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
     # The phone number, SIP address or Client identifier that received this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
-    @[JSON::Field(key: "to", type: String?, presence: true, ignore_serialize: to.nil? && !to_present?, emit_null: true)]
+    @[JSON::Field(key: "to", type: String?, presence: true, ignore_serialize: to.nil? && !to_present?)]
     property to : String?
+
     @[JSON::Field(ignore: true)]
     property? to_present : Bool = false
 
     # The phone number, SIP address or Client identifier that received this call. Formatted for display.
-    @[JSON::Field(key: "to_formatted", type: String?, presence: true, ignore_serialize: to_formatted.nil? && !to_formatted_present?, emit_null: true)]
+    @[JSON::Field(key: "to_formatted", type: String?, presence: true, ignore_serialize: to_formatted.nil? && !to_formatted_present?)]
     property to_formatted : String?
+
     @[JSON::Field(ignore: true)]
     property? to_formatted_present : Bool = false
 
     # The (optional) unique identifier of the trunk resource that was used for this call.
-    @[JSON::Field(key: "trunk_sid", type: String?, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "trunk_sid", type: String?, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?)]
     property trunk_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? trunk_sid_present : Bool = false
 
     # The URI of this resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 

@@ -12,44 +12,51 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class QueueMember
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Call the resource is associated with
-    @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
     property call_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
 
     # The date the member was enqueued
-    @[JSON::Field(key: "date_enqueued", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_enqueued.nil? && !date_enqueued_present?, emit_null: true)]
+    @[JSON::Field(key: "date_enqueued", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_enqueued.nil? && !date_enqueued_present?)]
     property date_enqueued : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_enqueued_present : Bool = false
 
     # This member's current position in the queue.
-    @[JSON::Field(key: "position", type: Int32?, presence: true, ignore_serialize: position.nil? && !position_present?, emit_null: true)]
+    @[JSON::Field(key: "position", type: Int32?, presence: true, ignore_serialize: position.nil? && !position_present?)]
     property position : Int32?
+
     @[JSON::Field(ignore: true)]
     property? position_present : Bool = false
 
     # The SID of the Queue the member is in
-    @[JSON::Field(key: "queue_sid", type: String?, presence: true, ignore_serialize: queue_sid.nil? && !queue_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "queue_sid", type: String?, presence: true, ignore_serialize: queue_sid.nil? && !queue_sid_present?)]
     property queue_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? queue_sid_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
     # The number of seconds the member has been in the queue.
-    @[JSON::Field(key: "wait_time", type: Int32?, presence: true, ignore_serialize: wait_time.nil? && !wait_time_present?, emit_null: true)]
+    @[JSON::Field(key: "wait_time", type: Int32?, presence: true, ignore_serialize: wait_time.nil? && !wait_time_present?)]
     property wait_time : Int32?
+
     @[JSON::Field(ignore: true)]
     property? wait_time_present : Bool = false
 

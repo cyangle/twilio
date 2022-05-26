@@ -12,92 +12,107 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class ConferenceParticipant
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The SID of the Call the resource is associated with
-    @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
     property call_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
 
     # The SID of the participant who is being `coached`
-    @[JSON::Field(key: "call_sid_to_coach", type: String?, presence: true, ignore_serialize: call_sid_to_coach.nil? && !call_sid_to_coach_present?, emit_null: true)]
+    @[JSON::Field(key: "call_sid_to_coach", type: String?, presence: true, ignore_serialize: call_sid_to_coach.nil? && !call_sid_to_coach_present?)]
     property call_sid_to_coach : String?
+
     @[JSON::Field(ignore: true)]
     property? call_sid_to_coach_present : Bool = false
 
     # Indicates if the participant changed to coach
-    @[JSON::Field(key: "coaching", type: Bool?, presence: true, ignore_serialize: coaching.nil? && !coaching_present?, emit_null: true)]
+    @[JSON::Field(key: "coaching", type: Bool?, presence: true, ignore_serialize: coaching.nil? && !coaching_present?)]
     property coaching : Bool?
+
     @[JSON::Field(ignore: true)]
     property? coaching_present : Bool = false
 
     # The SID of the conference the participant is in
-    @[JSON::Field(key: "conference_sid", type: String?, presence: true, ignore_serialize: conference_sid.nil? && !conference_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "conference_sid", type: String?, presence: true, ignore_serialize: conference_sid.nil? && !conference_sid_present?)]
     property conference_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? conference_sid_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # Whether the conference ends when the participant leaves
-    @[JSON::Field(key: "end_conference_on_exit", type: Bool?, presence: true, ignore_serialize: end_conference_on_exit.nil? && !end_conference_on_exit_present?, emit_null: true)]
+    @[JSON::Field(key: "end_conference_on_exit", type: Bool?, presence: true, ignore_serialize: end_conference_on_exit.nil? && !end_conference_on_exit_present?)]
     property end_conference_on_exit : Bool?
+
     @[JSON::Field(ignore: true)]
     property? end_conference_on_exit_present : Bool = false
 
     # Whether the participant is on hold
-    @[JSON::Field(key: "hold", type: Bool?, presence: true, ignore_serialize: hold.nil? && !hold_present?, emit_null: true)]
+    @[JSON::Field(key: "hold", type: Bool?, presence: true, ignore_serialize: hold.nil? && !hold_present?)]
     property hold : Bool?
+
     @[JSON::Field(ignore: true)]
     property? hold_present : Bool = false
 
     # The label of this participant
-    @[JSON::Field(key: "label", type: String?, presence: true, ignore_serialize: label.nil? && !label_present?, emit_null: true)]
+    @[JSON::Field(key: "label", type: String?, presence: true, ignore_serialize: label.nil? && !label_present?)]
     property label : String?
+
     @[JSON::Field(ignore: true)]
     property? label_present : Bool = false
 
     # Whether the participant is muted
-    @[JSON::Field(key: "muted", type: Bool?, presence: true, ignore_serialize: muted.nil? && !muted_present?, emit_null: true)]
+    @[JSON::Field(key: "muted", type: Bool?, presence: true, ignore_serialize: muted.nil? && !muted_present?)]
     property muted : Bool?
+
     @[JSON::Field(ignore: true)]
     property? muted_present : Bool = false
 
     # Whether the conference starts when the participant joins the conference
-    @[JSON::Field(key: "start_conference_on_enter", type: Bool?, presence: true, ignore_serialize: start_conference_on_enter.nil? && !start_conference_on_enter_present?, emit_null: true)]
+    @[JSON::Field(key: "start_conference_on_enter", type: Bool?, presence: true, ignore_serialize: start_conference_on_enter.nil? && !start_conference_on_enter_present?)]
     property start_conference_on_enter : Bool?
+
     @[JSON::Field(ignore: true)]
     property? start_conference_on_enter_present : Bool = false
 
     # The status of the participant's call in a session
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?, emit_null: true)]
+    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
     property status : String?
+
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 

@@ -12,62 +12,72 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class Queue
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created this resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # Average wait time of members in the queue
-    @[JSON::Field(key: "average_wait_time", type: Int32?, presence: true, ignore_serialize: average_wait_time.nil? && !average_wait_time_present?, emit_null: true)]
+    @[JSON::Field(key: "average_wait_time", type: Int32?, presence: true, ignore_serialize: average_wait_time.nil? && !average_wait_time_present?)]
     property average_wait_time : Int32?
+
     @[JSON::Field(ignore: true)]
     property? average_wait_time_present : Bool = false
 
     # The number of calls currently in the queue.
-    @[JSON::Field(key: "current_size", type: Int32?, presence: true, ignore_serialize: current_size.nil? && !current_size_present?, emit_null: true)]
+    @[JSON::Field(key: "current_size", type: Int32?, presence: true, ignore_serialize: current_size.nil? && !current_size_present?)]
     property current_size : Int32?
+
     @[JSON::Field(ignore: true)]
     property? current_size_present : Bool = false
 
     # The RFC 2822 date and time in GMT that this resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, emit_null: true)]
+    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that this resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, emit_null: true)]
+    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
     property date_updated : Time?
+
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # A string that you assigned to describe this resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The max number of calls allowed in the queue
-    @[JSON::Field(key: "max_size", type: Int32?, presence: true, ignore_serialize: max_size.nil? && !max_size_present?, emit_null: true)]
+    @[JSON::Field(key: "max_size", type: Int32?, presence: true, ignore_serialize: max_size.nil? && !max_size_present?)]
     property max_size : Int32?
+
     @[JSON::Field(ignore: true)]
     property? max_size_present : Bool = false
 
     # The unique string that identifies this resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The URI of this resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 

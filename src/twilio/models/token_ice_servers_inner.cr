@@ -12,28 +12,33 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class TokenIceServersInner
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
-    @[JSON::Field(key: "credential", type: String?, presence: true, ignore_serialize: credential.nil? && !credential_present?, emit_null: true)]
+    @[JSON::Field(key: "credential", type: String?, presence: true, ignore_serialize: credential.nil? && !credential_present?)]
     property credential : String?
+
     @[JSON::Field(ignore: true)]
     property? credential_present : Bool = false
 
-    @[JSON::Field(key: "url", type: String?, presence: true, ignore_serialize: url.nil? && !url_present?, emit_null: true)]
+    @[JSON::Field(key: "url", type: String?, presence: true, ignore_serialize: url.nil? && !url_present?)]
     property url : String?
+
     @[JSON::Field(ignore: true)]
     property? url_present : Bool = false
 
-    @[JSON::Field(key: "urls", type: String?, presence: true, ignore_serialize: urls.nil? && !urls_present?, emit_null: true)]
+    @[JSON::Field(key: "urls", type: String?, presence: true, ignore_serialize: urls.nil? && !urls_present?)]
     property urls : String?
+
     @[JSON::Field(ignore: true)]
     property? urls_present : Bool = false
 
-    @[JSON::Field(key: "username", type: String?, presence: true, ignore_serialize: username.nil? && !username_present?, emit_null: true)]
+    @[JSON::Field(key: "username", type: String?, presence: true, ignore_serialize: username.nil? && !username_present?)]
     property username : String?
+
     @[JSON::Field(ignore: true)]
     property? username_present : Bool = false
 

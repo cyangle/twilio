@@ -12,62 +12,72 @@ require "time"
 require "log"
 
 module Twilio
+  @[JSON::Serializable::Options(emit_nulls: true)]
   class IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension
     include JSON::Serializable
     include JSON::Serializable::Unmapped
 
     # Optional properties
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     property account_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The SID that uniquely identifies the assigned Add-on installation
-    @[JSON::Field(key: "assigned_add_on_sid", type: String?, presence: true, ignore_serialize: assigned_add_on_sid.nil? && !assigned_add_on_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "assigned_add_on_sid", type: String?, presence: true, ignore_serialize: assigned_add_on_sid.nil? && !assigned_add_on_sid_present?)]
     property assigned_add_on_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? assigned_add_on_sid_present : Bool = false
 
     # Whether the Extension will be invoked
-    @[JSON::Field(key: "enabled", type: Bool?, presence: true, ignore_serialize: enabled.nil? && !enabled_present?, emit_null: true)]
+    @[JSON::Field(key: "enabled", type: Bool?, presence: true, ignore_serialize: enabled.nil? && !enabled_present?)]
     property enabled : Bool?
+
     @[JSON::Field(ignore: true)]
     property? enabled_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?, emit_null: true)]
+    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     property friendly_name : String?
+
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # A string that you assigned to describe the Product this Extension is used within
-    @[JSON::Field(key: "product_name", type: String?, presence: true, ignore_serialize: product_name.nil? && !product_name_present?, emit_null: true)]
+    @[JSON::Field(key: "product_name", type: String?, presence: true, ignore_serialize: product_name.nil? && !product_name_present?)]
     property product_name : String?
+
     @[JSON::Field(ignore: true)]
     property? product_name_present : Bool = false
 
     # The SID of the Phone Number to which the Add-on is assigned
-    @[JSON::Field(key: "resource_sid", type: String?, presence: true, ignore_serialize: resource_sid.nil? && !resource_sid_present?, emit_null: true)]
+    @[JSON::Field(key: "resource_sid", type: String?, presence: true, ignore_serialize: resource_sid.nil? && !resource_sid_present?)]
     property resource_sid : String?
+
     @[JSON::Field(ignore: true)]
     property? resource_sid_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?, emit_null: true)]
+    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     property sid : String?
+
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # An application-defined string that uniquely identifies the resource
-    @[JSON::Field(key: "unique_name", type: String?, presence: true, ignore_serialize: unique_name.nil? && !unique_name_present?, emit_null: true)]
+    @[JSON::Field(key: "unique_name", type: String?, presence: true, ignore_serialize: unique_name.nil? && !unique_name_present?)]
     property unique_name : String?
+
     @[JSON::Field(ignore: true)]
     property? unique_name_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?, emit_null: true)]
+    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     property uri : String?
+
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
