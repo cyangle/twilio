@@ -37,7 +37,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Account.from_nason(data), status_code, headers
+      return Account.from_json(data), status_code, headers
     end
 
     # Create a new Twilio Subaccount from the account making the request
@@ -66,7 +66,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -118,7 +118,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Address.from_nason(data), status_code, headers
+      return Address.from_json(data), status_code, headers
     end
 
     #
@@ -167,15 +167,15 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AutoCorrectAddress"] = auto_correct_address.to_s if !auto_correct_address.nil? && !auto_correct_address.null?
-      form_params["City"] = city.to_s if !city.nil? && !city.null?
-      form_params["CustomerName"] = customer_name.to_s if !customer_name.nil? && !customer_name.null?
-      form_params["EmergencyEnabled"] = emergency_enabled.to_s if !emergency_enabled.nil? && !emergency_enabled.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["IsoCountry"] = iso_country.to_s if !iso_country.nil? && !iso_country.null?
-      form_params["PostalCode"] = postal_code.to_s if !postal_code.nil? && !postal_code.null?
-      form_params["Region"] = region.to_s if !region.nil? && !region.null?
-      form_params["Street"] = street.to_s if !street.nil? && !street.null?
+      form_params["AutoCorrectAddress"] = auto_correct_address.to_s if !auto_correct_address.nil?
+      form_params["City"] = city.to_s if !city.nil?
+      form_params["CustomerName"] = customer_name.to_s if !customer_name.nil?
+      form_params["EmergencyEnabled"] = emergency_enabled.to_s if !emergency_enabled.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["IsoCountry"] = iso_country.to_s if !iso_country.nil?
+      form_params["PostalCode"] = postal_code.to_s if !postal_code.nil?
+      form_params["Region"] = region.to_s if !region.nil?
+      form_params["Street"] = street.to_s if !street.nil?
 
       # http body (model)
       post_body = nil
@@ -215,7 +215,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Application.from_nason(data), status_code, headers
+      return Application.from_json(data), status_code, headers
     end
 
     # Create a new application within your account
@@ -244,23 +244,23 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !sms_fallback_method.null? && !allowable_values.includes?(sms_fallback_method)
+      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !allowable_values.includes?(sms_fallback_method)
         raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_method.nil? && !sms_method.null? && !allowable_values.includes?(sms_method)
+      if @api_client.config.client_side_validation && !sms_method.nil? && !allowable_values.includes?(sms_method)
         raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !voice_fallback_method.null? && !allowable_values.includes?(voice_fallback_method)
+      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !allowable_values.includes?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_method.nil? && !voice_method.null? && !allowable_values.includes?(voice_method)
+      if @api_client.config.client_side_validation && !voice_method.nil? && !allowable_values.includes?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -278,21 +278,21 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["ApiVersion"] = api_version.to_s if !api_version.nil? && !api_version.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["MessageStatusCallback"] = message_status_callback.to_s if !message_status_callback.nil? && !message_status_callback.null?
-      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil? && !sms_fallback_method.null?
-      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil? && !sms_fallback_url.null?
-      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil? && !sms_method.null?
-      form_params["SmsStatusCallback"] = sms_status_callback.to_s if !sms_status_callback.nil? && !sms_status_callback.null?
-      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil? && !sms_url.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil? && !voice_caller_id_lookup.null?
-      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil? && !voice_fallback_method.null?
-      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil? && !voice_fallback_url.null?
-      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil? && !voice_method.null?
-      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil? && !voice_url.null?
+      form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["MessageStatusCallback"] = message_status_callback.to_s if !message_status_callback.nil?
+      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil?
+      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil?
+      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil?
+      form_params["SmsStatusCallback"] = sms_status_callback.to_s if !sms_status_callback.nil?
+      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil?
+      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil?
+      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil?
+      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil?
+      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil?
 
       # http body (model)
       post_body = nil
@@ -336,7 +336,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_call\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Call.from_nason(data), status_code, headers
+      return Call.from_json(data), status_code, headers
     end
 
     # Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
@@ -380,7 +380,7 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !async_amd_status_callback_method.nil? && !async_amd_status_callback_method.null? && !allowable_values.includes?(async_amd_status_callback_method)
+      if @api_client.config.client_side_validation && !async_amd_status_callback_method.nil? && !allowable_values.includes?(async_amd_status_callback_method)
         raise ArgumentError.new("invalid value for \"async_amd_status_callback_method\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !byoc.nil? && byoc.to_s.size > 34
@@ -397,19 +397,19 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !fallback_method.nil? && !fallback_method.null? && !allowable_values.includes?(fallback_method)
+      if @api_client.config.client_side_validation && !fallback_method.nil? && !allowable_values.includes?(fallback_method)
         raise ArgumentError.new("invalid value for \"fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !method.nil? && !method.null? && !allowable_values.includes?(method)
+      if @api_client.config.client_side_validation && !method.nil? && !allowable_values.includes?(method)
         raise ArgumentError.new("invalid value for \"method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !recording_status_callback_method.nil? && !recording_status_callback_method.null? && !allowable_values.includes?(recording_status_callback_method)
+      if @api_client.config.client_side_validation && !recording_status_callback_method.nil? && !allowable_values.includes?(recording_status_callback_method)
         raise ArgumentError.new("invalid value for \"recording_status_callback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -427,41 +427,41 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["ApplicationSid"] = application_sid.to_s if !application_sid.nil? && !application_sid.null?
-      form_params["AsyncAmd"] = async_amd.to_s if !async_amd.nil? && !async_amd.null?
-      form_params["AsyncAmdStatusCallback"] = async_amd_status_callback.to_s if !async_amd_status_callback.nil? && !async_amd_status_callback.null?
-      form_params["AsyncAmdStatusCallbackMethod"] = async_amd_status_callback_method.to_s if !async_amd_status_callback_method.nil? && !async_amd_status_callback_method.null?
-      form_params["Byoc"] = byoc.to_s if !byoc.nil? && !byoc.null?
-      form_params["CallReason"] = call_reason.to_s if !call_reason.nil? && !call_reason.null?
-      form_params["CallToken"] = call_token.to_s if !call_token.nil? && !call_token.null?
-      form_params["CallerId"] = caller_id.to_s if !caller_id.nil? && !caller_id.null?
-      form_params["FallbackMethod"] = fallback_method.to_s if !fallback_method.nil? && !fallback_method.null?
-      form_params["FallbackUrl"] = fallback_url.to_s if !fallback_url.nil? && !fallback_url.null?
-      form_params["From"] = from.to_s if !from.nil? && !from.null?
-      form_params["MachineDetection"] = machine_detection.to_s if !machine_detection.nil? && !machine_detection.null?
-      form_params["MachineDetectionSilenceTimeout"] = machine_detection_silence_timeout.to_s if !machine_detection_silence_timeout.nil? && !machine_detection_silence_timeout.null?
-      form_params["MachineDetectionSpeechEndThreshold"] = machine_detection_speech_end_threshold.to_s if !machine_detection_speech_end_threshold.nil? && !machine_detection_speech_end_threshold.null?
-      form_params["MachineDetectionSpeechThreshold"] = machine_detection_speech_threshold.to_s if !machine_detection_speech_threshold.nil? && !machine_detection_speech_threshold.null?
-      form_params["MachineDetectionTimeout"] = machine_detection_timeout.to_s if !machine_detection_timeout.nil? && !machine_detection_timeout.null?
-      form_params["Method"] = method.to_s if !method.nil? && !method.null?
-      form_params["Record"] = record.to_s if !record.nil? && !record.null?
-      form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil? && !recording_channels.null?
-      form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil? && !recording_status_callback.null?
-      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.null? && !recording_status_callback_event.empty?
-      form_params["RecordingStatusCallbackMethod"] = recording_status_callback_method.to_s if !recording_status_callback_method.nil? && !recording_status_callback_method.null?
-      form_params["RecordingTrack"] = recording_track.to_s if !recording_track.nil? && !recording_track.null?
-      form_params["SendDigits"] = send_digits.to_s if !send_digits.nil? && !send_digits.null?
-      form_params["SipAuthPassword"] = sip_auth_password.to_s if !sip_auth_password.nil? && !sip_auth_password.null?
-      form_params["SipAuthUsername"] = sip_auth_username.to_s if !sip_auth_username.nil? && !sip_auth_username.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackEvent"] = @api_client.build_collection_param(status_callback_event, "multi") if !status_callback_event.nil? && !status_callback_event.null? && !status_callback_event.empty?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["TimeLimit"] = time_limit.to_s if !time_limit.nil? && !time_limit.null?
-      form_params["Timeout"] = timeout.to_s if !timeout.nil? && !timeout.null?
-      form_params["To"] = to.to_s if !to.nil? && !to.null?
-      form_params["Trim"] = trim.to_s if !trim.nil? && !trim.null?
-      form_params["Twiml"] = twiml.to_s if !twiml.nil? && !twiml.null?
-      form_params["Url"] = url.to_s if !url.nil? && !url.null?
+      form_params["ApplicationSid"] = application_sid.to_s if !application_sid.nil?
+      form_params["AsyncAmd"] = async_amd.to_s if !async_amd.nil?
+      form_params["AsyncAmdStatusCallback"] = async_amd_status_callback.to_s if !async_amd_status_callback.nil?
+      form_params["AsyncAmdStatusCallbackMethod"] = async_amd_status_callback_method.to_s if !async_amd_status_callback_method.nil?
+      form_params["Byoc"] = byoc.to_s if !byoc.nil?
+      form_params["CallReason"] = call_reason.to_s if !call_reason.nil?
+      form_params["CallToken"] = call_token.to_s if !call_token.nil?
+      form_params["CallerId"] = caller_id.to_s if !caller_id.nil?
+      form_params["FallbackMethod"] = fallback_method.to_s if !fallback_method.nil?
+      form_params["FallbackUrl"] = fallback_url.to_s if !fallback_url.nil?
+      form_params["From"] = from.to_s if !from.nil?
+      form_params["MachineDetection"] = machine_detection.to_s if !machine_detection.nil?
+      form_params["MachineDetectionSilenceTimeout"] = machine_detection_silence_timeout.to_s if !machine_detection_silence_timeout.nil?
+      form_params["MachineDetectionSpeechEndThreshold"] = machine_detection_speech_end_threshold.to_s if !machine_detection_speech_end_threshold.nil?
+      form_params["MachineDetectionSpeechThreshold"] = machine_detection_speech_threshold.to_s if !machine_detection_speech_threshold.nil?
+      form_params["MachineDetectionTimeout"] = machine_detection_timeout.to_s if !machine_detection_timeout.nil?
+      form_params["Method"] = method.to_s if !method.nil?
+      form_params["Record"] = record.to_s if !record.nil?
+      form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil?
+      form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil?
+      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.empty?
+      form_params["RecordingStatusCallbackMethod"] = recording_status_callback_method.to_s if !recording_status_callback_method.nil?
+      form_params["RecordingTrack"] = recording_track.to_s if !recording_track.nil?
+      form_params["SendDigits"] = send_digits.to_s if !send_digits.nil?
+      form_params["SipAuthPassword"] = sip_auth_password.to_s if !sip_auth_password.nil?
+      form_params["SipAuthUsername"] = sip_auth_username.to_s if !sip_auth_username.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackEvent"] = @api_client.build_collection_param(status_callback_event, "multi") if !status_callback_event.nil? && !status_callback_event.empty?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["TimeLimit"] = time_limit.to_s if !time_limit.nil?
+      form_params["Timeout"] = timeout.to_s if !timeout.nil?
+      form_params["To"] = to.to_s if !to.nil?
+      form_params["Trim"] = trim.to_s if !trim.nil?
+      form_params["Twiml"] = twiml.to_s if !twiml.nil?
+      form_params["Url"] = url.to_s if !url.nil?
 
       # http body (model)
       post_body = nil
@@ -505,7 +505,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_call_feedback_summary\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallCallFeedbackSummary.from_nason(data), status_code, headers
+      return CallCallFeedbackSummary.from_json(data), status_code, headers
     end
 
     # Create a FeedbackSummary resource for a call
@@ -536,7 +536,7 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -554,11 +554,11 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      form_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      form_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
+      form_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      form_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      form_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
 
       # http body (model)
       post_body = nil
@@ -600,7 +600,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_call_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallCallRecording.from_nason(data), status_code, headers
+      return CallCallRecording.from_json(data), status_code, headers
     end
 
     # Create a recording for the call
@@ -643,7 +643,7 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !recording_status_callback_method.nil? && !recording_status_callback_method.null? && !allowable_values.includes?(recording_status_callback_method)
+      if @api_client.config.client_side_validation && !recording_status_callback_method.nil? && !allowable_values.includes?(recording_status_callback_method)
         raise ArgumentError.new("invalid value for \"recording_status_callback_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -661,12 +661,12 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil? && !recording_channels.null?
-      form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil? && !recording_status_callback.null?
-      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.null? && !recording_status_callback_event.empty?
-      form_params["RecordingStatusCallbackMethod"] = recording_status_callback_method.to_s if !recording_status_callback_method.nil? && !recording_status_callback_method.null?
-      form_params["RecordingTrack"] = recording_track.to_s if !recording_track.nil? && !recording_track.null?
-      form_params["Trim"] = trim.to_s if !trim.nil? && !trim.null?
+      form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil?
+      form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil?
+      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.empty?
+      form_params["RecordingStatusCallbackMethod"] = recording_status_callback_method.to_s if !recording_status_callback_method.nil?
+      form_params["RecordingTrack"] = recording_track.to_s if !recording_track.nil?
+      form_params["Trim"] = trim.to_s if !trim.nil?
 
       # http body (model)
       post_body = nil
@@ -706,7 +706,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_incoming_phone_number\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return IncomingPhoneNumber.from_nason(data), status_code, headers
+      return IncomingPhoneNumber.from_json(data), status_code, headers
     end
 
     # Purchase a phone-number for the account.
@@ -774,7 +774,7 @@ module Twilio
       end
 
       allowable_values = ["Active", "Inactive"]
-      if @api_client.config.client_side_validation && !emergency_status.nil? && !emergency_status.null? && !allowable_values.includes?(emergency_status)
+      if @api_client.config.client_side_validation && !emergency_status.nil? && !allowable_values.includes?(emergency_status)
         raise ArgumentError.new("invalid value for \"emergency_status\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !identity_sid.nil? && identity_sid.to_s.size > 34
@@ -804,15 +804,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !sms_fallback_method.null? && !allowable_values.includes?(sms_fallback_method)
+      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !allowable_values.includes?(sms_fallback_method)
         raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_method.nil? && !sms_method.null? && !allowable_values.includes?(sms_method)
+      if @api_client.config.client_side_validation && !sms_method.nil? && !allowable_values.includes?(sms_method)
         raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !trunk_sid.nil? && trunk_sid.to_s.size > 34
@@ -842,15 +842,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !voice_fallback_method.null? && !allowable_values.includes?(voice_fallback_method)
+      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !allowable_values.includes?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_method.nil? && !voice_method.null? && !allowable_values.includes?(voice_method)
+      if @api_client.config.client_side_validation && !voice_method.nil? && !allowable_values.includes?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["voice", "fax"]
-      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !voice_receive_mode.null? && !allowable_values.includes?(voice_receive_mode)
+      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !allowable_values.includes?(voice_receive_mode)
         raise ArgumentError.new("invalid value for \"voice_receive_mode\", must be one of #{allowable_values}")
       end
       # resource path
@@ -868,30 +868,30 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil? && !address_sid.null?
-      form_params["ApiVersion"] = api_version.to_s if !api_version.nil? && !api_version.null?
-      form_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
-      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil? && !bundle_sid.null?
-      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil? && !emergency_address_sid.null?
-      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil? && !emergency_status.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil? && !identity_sid.null?
-      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil? && !sms_application_sid.null?
-      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil? && !sms_fallback_method.null?
-      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil? && !sms_fallback_url.null?
-      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil? && !sms_method.null?
-      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil? && !sms_url.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil? && !trunk_sid.null?
-      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil? && !voice_application_sid.null?
-      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil? && !voice_caller_id_lookup.null?
-      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil? && !voice_fallback_method.null?
-      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil? && !voice_fallback_url.null?
-      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil? && !voice_method.null?
-      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil? && !voice_receive_mode.null?
-      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil? && !voice_url.null?
+      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
+      form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
+      form_params["AreaCode"] = area_code.to_s if !area_code.nil?
+      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil?
+      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil?
+      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil?
+      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil?
+      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil?
+      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil?
+      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil?
+      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil?
+      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil?
+      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil?
+      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil?
+      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil?
+      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil?
+      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil?
+      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil?
 
       # http body (model)
       post_body = nil
@@ -935,7 +935,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_incoming_phone_number_assigned_add_on\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.from_nason(data), status_code, headers
+      return IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.from_json(data), status_code, headers
     end
 
     # Assign an Add-on installation to the Number specified.
@@ -1006,7 +1006,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["InstalledAddOnSid"] = installed_add_on_sid.to_s if !installed_add_on_sid.nil? && !installed_add_on_sid.null?
+      form_params["InstalledAddOnSid"] = installed_add_on_sid.to_s if !installed_add_on_sid.nil?
 
       # http body (model)
       post_body = nil
@@ -1048,7 +1048,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_incoming_phone_number_local\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return IncomingPhoneNumberIncomingPhoneNumberLocal.from_nason(data), status_code, headers
+      return IncomingPhoneNumberIncomingPhoneNumberLocal.from_json(data), status_code, headers
     end
 
     #
@@ -1117,7 +1117,7 @@ module Twilio
       end
 
       allowable_values = ["Active", "Inactive"]
-      if @api_client.config.client_side_validation && !emergency_status.nil? && !emergency_status.null? && !allowable_values.includes?(emergency_status)
+      if @api_client.config.client_side_validation && !emergency_status.nil? && !allowable_values.includes?(emergency_status)
         raise ArgumentError.new("invalid value for \"emergency_status\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !identity_sid.nil? && identity_sid.to_s.size > 34
@@ -1147,15 +1147,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !sms_fallback_method.null? && !allowable_values.includes?(sms_fallback_method)
+      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !allowable_values.includes?(sms_fallback_method)
         raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_method.nil? && !sms_method.null? && !allowable_values.includes?(sms_method)
+      if @api_client.config.client_side_validation && !sms_method.nil? && !allowable_values.includes?(sms_method)
         raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !trunk_sid.nil? && trunk_sid.to_s.size > 34
@@ -1185,15 +1185,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !voice_fallback_method.null? && !allowable_values.includes?(voice_fallback_method)
+      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !allowable_values.includes?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_method.nil? && !voice_method.null? && !allowable_values.includes?(voice_method)
+      if @api_client.config.client_side_validation && !voice_method.nil? && !allowable_values.includes?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["voice", "fax"]
-      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !voice_receive_mode.null? && !allowable_values.includes?(voice_receive_mode)
+      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !allowable_values.includes?(voice_receive_mode)
         raise ArgumentError.new("invalid value for \"voice_receive_mode\", must be one of #{allowable_values}")
       end
       # resource path
@@ -1211,29 +1211,29 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil? && !address_sid.null?
-      form_params["ApiVersion"] = api_version.to_s if !api_version.nil? && !api_version.null?
-      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil? && !bundle_sid.null?
-      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil? && !emergency_address_sid.null?
-      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil? && !emergency_status.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil? && !identity_sid.null?
-      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil? && !sms_application_sid.null?
-      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil? && !sms_fallback_method.null?
-      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil? && !sms_fallback_url.null?
-      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil? && !sms_method.null?
-      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil? && !sms_url.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil? && !trunk_sid.null?
-      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil? && !voice_application_sid.null?
-      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil? && !voice_caller_id_lookup.null?
-      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil? && !voice_fallback_method.null?
-      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil? && !voice_fallback_url.null?
-      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil? && !voice_method.null?
-      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil? && !voice_receive_mode.null?
-      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil? && !voice_url.null?
+      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
+      form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
+      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil?
+      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil?
+      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil?
+      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil?
+      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil?
+      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil?
+      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil?
+      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil?
+      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil?
+      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil?
+      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil?
+      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil?
+      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil?
+      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil?
+      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil?
 
       # http body (model)
       post_body = nil
@@ -1275,7 +1275,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_incoming_phone_number_mobile\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return IncomingPhoneNumberIncomingPhoneNumberMobile.from_nason(data), status_code, headers
+      return IncomingPhoneNumberIncomingPhoneNumberMobile.from_json(data), status_code, headers
     end
 
     #
@@ -1344,7 +1344,7 @@ module Twilio
       end
 
       allowable_values = ["Active", "Inactive"]
-      if @api_client.config.client_side_validation && !emergency_status.nil? && !emergency_status.null? && !allowable_values.includes?(emergency_status)
+      if @api_client.config.client_side_validation && !emergency_status.nil? && !allowable_values.includes?(emergency_status)
         raise ArgumentError.new("invalid value for \"emergency_status\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !identity_sid.nil? && identity_sid.to_s.size > 34
@@ -1374,15 +1374,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !sms_fallback_method.null? && !allowable_values.includes?(sms_fallback_method)
+      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !allowable_values.includes?(sms_fallback_method)
         raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_method.nil? && !sms_method.null? && !allowable_values.includes?(sms_method)
+      if @api_client.config.client_side_validation && !sms_method.nil? && !allowable_values.includes?(sms_method)
         raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !trunk_sid.nil? && trunk_sid.to_s.size > 34
@@ -1412,15 +1412,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !voice_fallback_method.null? && !allowable_values.includes?(voice_fallback_method)
+      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !allowable_values.includes?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_method.nil? && !voice_method.null? && !allowable_values.includes?(voice_method)
+      if @api_client.config.client_side_validation && !voice_method.nil? && !allowable_values.includes?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["voice", "fax"]
-      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !voice_receive_mode.null? && !allowable_values.includes?(voice_receive_mode)
+      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !allowable_values.includes?(voice_receive_mode)
         raise ArgumentError.new("invalid value for \"voice_receive_mode\", must be one of #{allowable_values}")
       end
       # resource path
@@ -1438,29 +1438,29 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil? && !address_sid.null?
-      form_params["ApiVersion"] = api_version.to_s if !api_version.nil? && !api_version.null?
-      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil? && !bundle_sid.null?
-      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil? && !emergency_address_sid.null?
-      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil? && !emergency_status.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil? && !identity_sid.null?
-      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil? && !sms_application_sid.null?
-      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil? && !sms_fallback_method.null?
-      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil? && !sms_fallback_url.null?
-      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil? && !sms_method.null?
-      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil? && !sms_url.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil? && !trunk_sid.null?
-      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil? && !voice_application_sid.null?
-      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil? && !voice_caller_id_lookup.null?
-      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil? && !voice_fallback_method.null?
-      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil? && !voice_fallback_url.null?
-      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil? && !voice_method.null?
-      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil? && !voice_receive_mode.null?
-      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil? && !voice_url.null?
+      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
+      form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
+      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil?
+      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil?
+      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil?
+      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil?
+      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil?
+      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil?
+      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil?
+      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil?
+      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil?
+      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil?
+      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil?
+      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil?
+      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil?
+      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil?
+      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil?
 
       # http body (model)
       post_body = nil
@@ -1502,7 +1502,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_incoming_phone_number_toll_free\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return IncomingPhoneNumberIncomingPhoneNumberTollFree.from_nason(data), status_code, headers
+      return IncomingPhoneNumberIncomingPhoneNumberTollFree.from_json(data), status_code, headers
     end
 
     #
@@ -1571,7 +1571,7 @@ module Twilio
       end
 
       allowable_values = ["Active", "Inactive"]
-      if @api_client.config.client_side_validation && !emergency_status.nil? && !emergency_status.null? && !allowable_values.includes?(emergency_status)
+      if @api_client.config.client_side_validation && !emergency_status.nil? && !allowable_values.includes?(emergency_status)
         raise ArgumentError.new("invalid value for \"emergency_status\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !identity_sid.nil? && identity_sid.to_s.size > 34
@@ -1601,15 +1601,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !sms_fallback_method.null? && !allowable_values.includes?(sms_fallback_method)
+      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !allowable_values.includes?(sms_fallback_method)
         raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_method.nil? && !sms_method.null? && !allowable_values.includes?(sms_method)
+      if @api_client.config.client_side_validation && !sms_method.nil? && !allowable_values.includes?(sms_method)
         raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !trunk_sid.nil? && trunk_sid.to_s.size > 34
@@ -1639,15 +1639,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !voice_fallback_method.null? && !allowable_values.includes?(voice_fallback_method)
+      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !allowable_values.includes?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_method.nil? && !voice_method.null? && !allowable_values.includes?(voice_method)
+      if @api_client.config.client_side_validation && !voice_method.nil? && !allowable_values.includes?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["voice", "fax"]
-      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !voice_receive_mode.null? && !allowable_values.includes?(voice_receive_mode)
+      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !allowable_values.includes?(voice_receive_mode)
         raise ArgumentError.new("invalid value for \"voice_receive_mode\", must be one of #{allowable_values}")
       end
       # resource path
@@ -1665,29 +1665,29 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil? && !address_sid.null?
-      form_params["ApiVersion"] = api_version.to_s if !api_version.nil? && !api_version.null?
-      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil? && !bundle_sid.null?
-      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil? && !emergency_address_sid.null?
-      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil? && !emergency_status.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil? && !identity_sid.null?
-      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil? && !sms_application_sid.null?
-      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil? && !sms_fallback_method.null?
-      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil? && !sms_fallback_url.null?
-      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil? && !sms_method.null?
-      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil? && !sms_url.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil? && !trunk_sid.null?
-      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil? && !voice_application_sid.null?
-      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil? && !voice_caller_id_lookup.null?
-      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil? && !voice_fallback_method.null?
-      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil? && !voice_fallback_url.null?
-      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil? && !voice_method.null?
-      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil? && !voice_receive_mode.null?
-      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil? && !voice_url.null?
+      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
+      form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
+      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil?
+      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil?
+      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil?
+      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil?
+      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil?
+      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil?
+      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil?
+      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil?
+      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil?
+      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil?
+      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil?
+      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil?
+      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil?
+      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil?
+      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil?
 
       # http body (model)
       post_body = nil
@@ -1729,7 +1729,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Message.from_nason(data), status_code, headers
+      return Message.from_json(data), status_code, headers
     end
 
     # Send a message from the account used to make the request
@@ -1759,7 +1759,7 @@ module Twilio
       end
 
       allowable_values = ["retain"]
-      if @api_client.config.client_side_validation && !address_retention.nil? && !address_retention.null? && !allowable_values.includes?(address_retention)
+      if @api_client.config.client_side_validation && !address_retention.nil? && !allowable_values.includes?(address_retention)
         raise ArgumentError.new("invalid value for \"address_retention\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !application_sid.nil? && application_sid.to_s.size > 34
@@ -1776,7 +1776,7 @@ module Twilio
       end
 
       allowable_values = ["retain"]
-      if @api_client.config.client_side_validation && !content_retention.nil? && !content_retention.null? && !allowable_values.includes?(content_retention)
+      if @api_client.config.client_side_validation && !content_retention.nil? && !allowable_values.includes?(content_retention)
         raise ArgumentError.new("invalid value for \"content_retention\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !messaging_service_sid.nil? && messaging_service_sid.to_s.size > 34
@@ -1793,7 +1793,7 @@ module Twilio
       end
 
       allowable_values = ["fixed"]
-      if @api_client.config.client_side_validation && !schedule_type.nil? && !schedule_type.null? && !allowable_values.includes?(schedule_type)
+      if @api_client.config.client_side_validation && !schedule_type.nil? && !allowable_values.includes?(schedule_type)
         raise ArgumentError.new("invalid value for \"schedule_type\", must be one of #{allowable_values}")
       end
       # resource path
@@ -1811,25 +1811,25 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AddressRetention"] = address_retention.to_s if !address_retention.nil? && !address_retention.null?
-      form_params["ApplicationSid"] = application_sid.to_s if !application_sid.nil? && !application_sid.null?
-      form_params["Attempt"] = attempt.to_s if !attempt.nil? && !attempt.null?
-      form_params["Body"] = body.to_s if !body.nil? && !body.null?
-      form_params["ContentRetention"] = content_retention.to_s if !content_retention.nil? && !content_retention.null?
-      form_params["ForceDelivery"] = force_delivery.to_s if !force_delivery.nil? && !force_delivery.null?
-      form_params["From"] = from.to_s if !from.nil? && !from.null?
-      form_params["MaxPrice"] = max_price.to_s if !max_price.nil? && !max_price.null?
-      form_params["MediaUrl"] = @api_client.build_collection_param(media_url, "multi") if !media_url.nil? && !media_url.null? && !media_url.empty?
-      form_params["MessagingServiceSid"] = messaging_service_sid.to_s if !messaging_service_sid.nil? && !messaging_service_sid.null?
-      form_params["PersistentAction"] = @api_client.build_collection_param(persistent_action, "multi") if !persistent_action.nil? && !persistent_action.null? && !persistent_action.empty?
-      form_params["ProvideFeedback"] = provide_feedback.to_s if !provide_feedback.nil? && !provide_feedback.null?
-      form_params["ScheduleType"] = schedule_type.to_s if !schedule_type.nil? && !schedule_type.null?
-      form_params["SendAsMms"] = send_as_mms.to_s if !send_as_mms.nil? && !send_as_mms.null?
-      form_params["SendAt"] = Time::Format::RFC_2822.format(send_at) if !send_at.nil? && !send_at.null?
-      form_params["SmartEncoded"] = smart_encoded.to_s if !smart_encoded.nil? && !smart_encoded.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["To"] = to.to_s if !to.nil? && !to.null?
-      form_params["ValidityPeriod"] = validity_period.to_s if !validity_period.nil? && !validity_period.null?
+      form_params["AddressRetention"] = address_retention.to_s if !address_retention.nil?
+      form_params["ApplicationSid"] = application_sid.to_s if !application_sid.nil?
+      form_params["Attempt"] = attempt.to_s if !attempt.nil?
+      form_params["Body"] = body.to_s if !body.nil?
+      form_params["ContentRetention"] = content_retention.to_s if !content_retention.nil?
+      form_params["ForceDelivery"] = force_delivery.to_s if !force_delivery.nil?
+      form_params["From"] = from.to_s if !from.nil?
+      form_params["MaxPrice"] = max_price.to_s if !max_price.nil?
+      form_params["MediaUrl"] = @api_client.build_collection_param(media_url, "multi") if !media_url.nil? && !media_url.empty?
+      form_params["MessagingServiceSid"] = messaging_service_sid.to_s if !messaging_service_sid.nil?
+      form_params["PersistentAction"] = @api_client.build_collection_param(persistent_action, "multi") if !persistent_action.nil? && !persistent_action.empty?
+      form_params["ProvideFeedback"] = provide_feedback.to_s if !provide_feedback.nil?
+      form_params["ScheduleType"] = schedule_type.to_s if !schedule_type.nil?
+      form_params["SendAsMms"] = send_as_mms.to_s if !send_as_mms.nil?
+      form_params["SendAt"] = Time::Format::RFC_2822.format(send_at) if !send_at.nil?
+      form_params["SmartEncoded"] = smart_encoded.to_s if !smart_encoded.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["To"] = to.to_s if !to.nil?
+      form_params["ValidityPeriod"] = validity_period.to_s if !validity_period.nil?
 
       # http body (model)
       post_body = nil
@@ -1871,7 +1871,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_message_feedback\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return MessageMessageFeedback.from_nason(data), status_code, headers
+      return MessageMessageFeedback.from_json(data), status_code, headers
     end
 
     #
@@ -1914,7 +1914,7 @@ module Twilio
       end
 
       allowable_values = ["confirmed", "unconfirmed"]
-      if @api_client.config.client_side_validation && !outcome.nil? && !outcome.null? && !allowable_values.includes?(outcome)
+      if @api_client.config.client_side_validation && !outcome.nil? && !allowable_values.includes?(outcome)
         raise ArgumentError.new("invalid value for \"outcome\", must be one of #{allowable_values}")
       end
       # resource path
@@ -1932,7 +1932,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Outcome"] = outcome.to_s if !outcome.nil? && !outcome.null?
+      form_params["Outcome"] = outcome.to_s if !outcome.nil?
 
       # http body (model)
       post_body = nil
@@ -1972,7 +1972,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_new_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return NewKey.from_nason(data), status_code, headers
+      return NewKey.from_json(data), status_code, headers
     end
 
     #
@@ -2015,7 +2015,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -2055,7 +2055,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_new_signing_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return NewSigningKey.from_nason(data), status_code, headers
+      return NewSigningKey.from_json(data), status_code, headers
     end
 
     # Create a new Signing Key for the account making the request.
@@ -2098,7 +2098,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -2144,7 +2144,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_participant\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ConferenceParticipant.from_nason(data), status_code, headers
+      return ConferenceParticipant.from_json(data), status_code, headers
     end
 
     #
@@ -2202,23 +2202,23 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !conference_recording_status_callback_method.nil? && !conference_recording_status_callback_method.null? && !allowable_values.includes?(conference_recording_status_callback_method)
+      if @api_client.config.client_side_validation && !conference_recording_status_callback_method.nil? && !allowable_values.includes?(conference_recording_status_callback_method)
         raise ArgumentError.new("invalid value for \"conference_recording_status_callback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !conference_status_callback_method.nil? && !conference_status_callback_method.null? && !allowable_values.includes?(conference_status_callback_method)
+      if @api_client.config.client_side_validation && !conference_status_callback_method.nil? && !allowable_values.includes?(conference_status_callback_method)
         raise ArgumentError.new("invalid value for \"conference_status_callback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !recording_status_callback_method.nil? && !recording_status_callback_method.null? && !allowable_values.includes?(recording_status_callback_method)
+      if @api_client.config.client_side_validation && !recording_status_callback_method.nil? && !allowable_values.includes?(recording_status_callback_method)
         raise ArgumentError.new("invalid value for \"recording_status_callback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !wait_method.nil? && !wait_method.null? && !allowable_values.includes?(wait_method)
+      if @api_client.config.client_side_validation && !wait_method.nil? && !allowable_values.includes?(wait_method)
         raise ArgumentError.new("invalid value for \"wait_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -2236,45 +2236,45 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Beep"] = beep.to_s if !beep.nil? && !beep.null?
-      form_params["Byoc"] = byoc.to_s if !byoc.nil? && !byoc.null?
-      form_params["CallReason"] = call_reason.to_s if !call_reason.nil? && !call_reason.null?
-      form_params["CallSidToCoach"] = call_sid_to_coach.to_s if !call_sid_to_coach.nil? && !call_sid_to_coach.null?
-      form_params["CallerId"] = caller_id.to_s if !caller_id.nil? && !caller_id.null?
-      form_params["Coaching"] = coaching.to_s if !coaching.nil? && !coaching.null?
-      form_params["ConferenceRecord"] = conference_record.to_s if !conference_record.nil? && !conference_record.null?
-      form_params["ConferenceRecordingStatusCallback"] = conference_recording_status_callback.to_s if !conference_recording_status_callback.nil? && !conference_recording_status_callback.null?
-      form_params["ConferenceRecordingStatusCallbackEvent"] = @api_client.build_collection_param(conference_recording_status_callback_event, "multi") if !conference_recording_status_callback_event.nil? && !conference_recording_status_callback_event.null? && !conference_recording_status_callback_event.empty?
-      form_params["ConferenceRecordingStatusCallbackMethod"] = conference_recording_status_callback_method.to_s if !conference_recording_status_callback_method.nil? && !conference_recording_status_callback_method.null?
-      form_params["ConferenceStatusCallback"] = conference_status_callback.to_s if !conference_status_callback.nil? && !conference_status_callback.null?
-      form_params["ConferenceStatusCallbackEvent"] = @api_client.build_collection_param(conference_status_callback_event, "multi") if !conference_status_callback_event.nil? && !conference_status_callback_event.null? && !conference_status_callback_event.empty?
-      form_params["ConferenceStatusCallbackMethod"] = conference_status_callback_method.to_s if !conference_status_callback_method.nil? && !conference_status_callback_method.null?
-      form_params["ConferenceTrim"] = conference_trim.to_s if !conference_trim.nil? && !conference_trim.null?
-      form_params["EarlyMedia"] = early_media.to_s if !early_media.nil? && !early_media.null?
-      form_params["EndConferenceOnExit"] = end_conference_on_exit.to_s if !end_conference_on_exit.nil? && !end_conference_on_exit.null?
-      form_params["From"] = from.to_s if !from.nil? && !from.null?
-      form_params["JitterBufferSize"] = jitter_buffer_size.to_s if !jitter_buffer_size.nil? && !jitter_buffer_size.null?
-      form_params["Label"] = label.to_s if !label.nil? && !label.null?
-      form_params["MaxParticipants"] = max_participants.to_s if !max_participants.nil? && !max_participants.null?
-      form_params["Muted"] = muted.to_s if !muted.nil? && !muted.null?
-      form_params["Record"] = record.to_s if !record.nil? && !record.null?
-      form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil? && !recording_channels.null?
-      form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil? && !recording_status_callback.null?
-      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.null? && !recording_status_callback_event.empty?
-      form_params["RecordingStatusCallbackMethod"] = recording_status_callback_method.to_s if !recording_status_callback_method.nil? && !recording_status_callback_method.null?
-      form_params["RecordingTrack"] = recording_track.to_s if !recording_track.nil? && !recording_track.null?
-      form_params["Region"] = region.to_s if !region.nil? && !region.null?
-      form_params["SipAuthPassword"] = sip_auth_password.to_s if !sip_auth_password.nil? && !sip_auth_password.null?
-      form_params["SipAuthUsername"] = sip_auth_username.to_s if !sip_auth_username.nil? && !sip_auth_username.null?
-      form_params["StartConferenceOnEnter"] = start_conference_on_enter.to_s if !start_conference_on_enter.nil? && !start_conference_on_enter.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackEvent"] = @api_client.build_collection_param(status_callback_event, "multi") if !status_callback_event.nil? && !status_callback_event.null? && !status_callback_event.empty?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["TimeLimit"] = time_limit.to_s if !time_limit.nil? && !time_limit.null?
-      form_params["Timeout"] = timeout.to_s if !timeout.nil? && !timeout.null?
-      form_params["To"] = to.to_s if !to.nil? && !to.null?
-      form_params["WaitMethod"] = wait_method.to_s if !wait_method.nil? && !wait_method.null?
-      form_params["WaitUrl"] = wait_url.to_s if !wait_url.nil? && !wait_url.null?
+      form_params["Beep"] = beep.to_s if !beep.nil?
+      form_params["Byoc"] = byoc.to_s if !byoc.nil?
+      form_params["CallReason"] = call_reason.to_s if !call_reason.nil?
+      form_params["CallSidToCoach"] = call_sid_to_coach.to_s if !call_sid_to_coach.nil?
+      form_params["CallerId"] = caller_id.to_s if !caller_id.nil?
+      form_params["Coaching"] = coaching.to_s if !coaching.nil?
+      form_params["ConferenceRecord"] = conference_record.to_s if !conference_record.nil?
+      form_params["ConferenceRecordingStatusCallback"] = conference_recording_status_callback.to_s if !conference_recording_status_callback.nil?
+      form_params["ConferenceRecordingStatusCallbackEvent"] = @api_client.build_collection_param(conference_recording_status_callback_event, "multi") if !conference_recording_status_callback_event.nil? && !conference_recording_status_callback_event.empty?
+      form_params["ConferenceRecordingStatusCallbackMethod"] = conference_recording_status_callback_method.to_s if !conference_recording_status_callback_method.nil?
+      form_params["ConferenceStatusCallback"] = conference_status_callback.to_s if !conference_status_callback.nil?
+      form_params["ConferenceStatusCallbackEvent"] = @api_client.build_collection_param(conference_status_callback_event, "multi") if !conference_status_callback_event.nil? && !conference_status_callback_event.empty?
+      form_params["ConferenceStatusCallbackMethod"] = conference_status_callback_method.to_s if !conference_status_callback_method.nil?
+      form_params["ConferenceTrim"] = conference_trim.to_s if !conference_trim.nil?
+      form_params["EarlyMedia"] = early_media.to_s if !early_media.nil?
+      form_params["EndConferenceOnExit"] = end_conference_on_exit.to_s if !end_conference_on_exit.nil?
+      form_params["From"] = from.to_s if !from.nil?
+      form_params["JitterBufferSize"] = jitter_buffer_size.to_s if !jitter_buffer_size.nil?
+      form_params["Label"] = label.to_s if !label.nil?
+      form_params["MaxParticipants"] = max_participants.to_s if !max_participants.nil?
+      form_params["Muted"] = muted.to_s if !muted.nil?
+      form_params["Record"] = record.to_s if !record.nil?
+      form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil?
+      form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil?
+      form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.empty?
+      form_params["RecordingStatusCallbackMethod"] = recording_status_callback_method.to_s if !recording_status_callback_method.nil?
+      form_params["RecordingTrack"] = recording_track.to_s if !recording_track.nil?
+      form_params["Region"] = region.to_s if !region.nil?
+      form_params["SipAuthPassword"] = sip_auth_password.to_s if !sip_auth_password.nil?
+      form_params["SipAuthUsername"] = sip_auth_username.to_s if !sip_auth_username.nil?
+      form_params["StartConferenceOnEnter"] = start_conference_on_enter.to_s if !start_conference_on_enter.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackEvent"] = @api_client.build_collection_param(status_callback_event, "multi") if !status_callback_event.nil? && !status_callback_event.empty?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["TimeLimit"] = time_limit.to_s if !time_limit.nil?
+      form_params["Timeout"] = timeout.to_s if !timeout.nil?
+      form_params["To"] = to.to_s if !to.nil?
+      form_params["WaitMethod"] = wait_method.to_s if !wait_method.nil?
+      form_params["WaitUrl"] = wait_url.to_s if !wait_url.nil?
 
       # http body (model)
       post_body = nil
@@ -2320,7 +2320,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_payments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallPayments.from_nason(data), status_code, headers
+      return CallPayments.from_json(data), status_code, headers
     end
 
     # create an instance of payments. This will start a new payments session
@@ -2365,15 +2365,15 @@ module Twilio
       end
 
       allowable_values = ["consumer-checking", "consumer-savings", "commercial-checking"]
-      if @api_client.config.client_side_validation && !bank_account_type.nil? && !bank_account_type.null? && !allowable_values.includes?(bank_account_type)
+      if @api_client.config.client_side_validation && !bank_account_type.nil? && !allowable_values.includes?(bank_account_type)
         raise ArgumentError.new("invalid value for \"bank_account_type\", must be one of #{allowable_values}")
       end
       allowable_values = ["credit-card", "ach-debit"]
-      if @api_client.config.client_side_validation && !payment_method.nil? && !payment_method.null? && !allowable_values.includes?(payment_method)
+      if @api_client.config.client_side_validation && !payment_method.nil? && !allowable_values.includes?(payment_method)
         raise ArgumentError.new("invalid value for \"payment_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["one-time", "reusable"]
-      if @api_client.config.client_side_validation && !token_type.nil? && !token_type.null? && !allowable_values.includes?(token_type)
+      if @api_client.config.client_side_validation && !token_type.nil? && !allowable_values.includes?(token_type)
         raise ArgumentError.new("invalid value for \"token_type\", must be one of #{allowable_values}")
       end
       # resource path
@@ -2391,22 +2391,22 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["BankAccountType"] = bank_account_type.to_s if !bank_account_type.nil? && !bank_account_type.null?
-      form_params["ChargeAmount"] = charge_amount.to_s if !charge_amount.nil? && !charge_amount.null?
-      form_params["Currency"] = currency.to_s if !currency.nil? && !currency.null?
-      form_params["Description"] = description.to_s if !description.nil? && !description.null?
-      form_params["IdempotencyKey"] = idempotency_key.to_s if !idempotency_key.nil? && !idempotency_key.null?
-      form_params["Input"] = input.to_s if !input.nil? && !input.null?
-      form_params["MinPostalCodeLength"] = min_postal_code_length.to_s if !min_postal_code_length.nil? && !min_postal_code_length.null?
-      form_params["Parameter"] = parameter.to_s if !parameter.nil? && !parameter.null?
-      form_params["PaymentConnector"] = payment_connector.to_s if !payment_connector.nil? && !payment_connector.null?
-      form_params["PaymentMethod"] = payment_method.to_s if !payment_method.nil? && !payment_method.null?
-      form_params["PostalCode"] = postal_code.to_s if !postal_code.nil? && !postal_code.null?
-      form_params["SecurityCode"] = security_code.to_s if !security_code.nil? && !security_code.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["Timeout"] = timeout.to_s if !timeout.nil? && !timeout.null?
-      form_params["TokenType"] = token_type.to_s if !token_type.nil? && !token_type.null?
-      form_params["ValidCardTypes"] = valid_card_types.to_s if !valid_card_types.nil? && !valid_card_types.null?
+      form_params["BankAccountType"] = bank_account_type.to_s if !bank_account_type.nil?
+      form_params["ChargeAmount"] = charge_amount.to_s if !charge_amount.nil?
+      form_params["Currency"] = currency.to_s if !currency.nil?
+      form_params["Description"] = description.to_s if !description.nil?
+      form_params["IdempotencyKey"] = idempotency_key.to_s if !idempotency_key.nil?
+      form_params["Input"] = input.to_s if !input.nil?
+      form_params["MinPostalCodeLength"] = min_postal_code_length.to_s if !min_postal_code_length.nil?
+      form_params["Parameter"] = parameter.to_s if !parameter.nil?
+      form_params["PaymentConnector"] = payment_connector.to_s if !payment_connector.nil?
+      form_params["PaymentMethod"] = payment_method.to_s if !payment_method.nil?
+      form_params["PostalCode"] = postal_code.to_s if !postal_code.nil?
+      form_params["SecurityCode"] = security_code.to_s if !security_code.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["Timeout"] = timeout.to_s if !timeout.nil?
+      form_params["TokenType"] = token_type.to_s if !token_type.nil?
+      form_params["ValidCardTypes"] = valid_card_types.to_s if !valid_card_types.nil?
 
       # http body (model)
       post_body = nil
@@ -2448,7 +2448,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_queue\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Queue.from_nason(data), status_code, headers
+      return Queue.from_json(data), status_code, headers
     end
 
     # Create a queue
@@ -2492,8 +2492,8 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["MaxSize"] = max_size.to_s if !max_size.nil? && !max_size.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["MaxSize"] = max_size.to_s if !max_size.nil?
 
       # http body (model)
       post_body = nil
@@ -2537,7 +2537,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_auth_calls_credential_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping.from_json(data), status_code, headers
     end
 
     # Create a new credential list mapping resource
@@ -2608,7 +2608,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["CredentialListSid"] = credential_list_sid.to_s if !credential_list_sid.nil? && !credential_list_sid.null?
+      form_params["CredentialListSid"] = credential_list_sid.to_s if !credential_list_sid.nil?
 
       # http body (model)
       post_body = nil
@@ -2652,7 +2652,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_auth_calls_ip_access_control_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.from_json(data), status_code, headers
     end
 
     # Create a new IP Access Control List mapping
@@ -2723,7 +2723,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["IpAccessControlListSid"] = ip_access_control_list_sid.to_s if !ip_access_control_list_sid.nil? && !ip_access_control_list_sid.null?
+      form_params["IpAccessControlListSid"] = ip_access_control_list_sid.to_s if !ip_access_control_list_sid.nil?
 
       # http body (model)
       post_body = nil
@@ -2767,7 +2767,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_auth_registrations_credential_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping.from_json(data), status_code, headers
     end
 
     # Create a new credential list mapping resource
@@ -2838,7 +2838,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["CredentialListSid"] = credential_list_sid.to_s if !credential_list_sid.nil? && !credential_list_sid.null?
+      form_params["CredentialListSid"] = credential_list_sid.to_s if !credential_list_sid.nil?
 
       # http body (model)
       post_body = nil
@@ -2884,7 +2884,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_credential\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipCredentialListSipCredential.from_nason(data), status_code, headers
+      return SipSipCredentialListSipCredential.from_json(data), status_code, headers
     end
 
     # Create a new credential resource.
@@ -2943,8 +2943,8 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Password"] = password.to_s if !password.nil? && !password.null?
-      form_params["Username"] = username.to_s if !username.nil? && !username.null?
+      form_params["Password"] = password.to_s if !password.nil?
+      form_params["Username"] = username.to_s if !username.nil?
 
       # http body (model)
       post_body = nil
@@ -2986,7 +2986,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_credential_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipCredentialList.from_nason(data), status_code, headers
+      return SipSipCredentialList.from_json(data), status_code, headers
     end
 
     # Create a Credential List
@@ -3030,7 +3030,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -3074,7 +3074,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_credential_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipCredentialListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipCredentialListMapping.from_json(data), status_code, headers
     end
 
     # Create a CredentialListMapping resource for an account.
@@ -3145,7 +3145,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["CredentialListSid"] = credential_list_sid.to_s if !credential_list_sid.nil? && !credential_list_sid.null?
+      form_params["CredentialListSid"] = credential_list_sid.to_s if !credential_list_sid.nil?
 
       # http body (model)
       post_body = nil
@@ -3187,7 +3187,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomain.from_nason(data), status_code, headers
+      return SipSipDomain.from_json(data), status_code, headers
     end
 
     # Create a new Domain
@@ -3243,15 +3243,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !voice_fallback_method.null? && !allowable_values.includes?(voice_fallback_method)
+      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !allowable_values.includes?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_method.nil? && !voice_method.null? && !allowable_values.includes?(voice_method)
+      if @api_client.config.client_side_validation && !voice_method.nil? && !allowable_values.includes?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_status_callback_method.nil? && !voice_status_callback_method.null? && !allowable_values.includes?(voice_status_callback_method)
+      if @api_client.config.client_side_validation && !voice_status_callback_method.nil? && !allowable_values.includes?(voice_status_callback_method)
         raise ArgumentError.new("invalid value for \"voice_status_callback_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -3269,19 +3269,19 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["ByocTrunkSid"] = byoc_trunk_sid.to_s if !byoc_trunk_sid.nil? && !byoc_trunk_sid.null?
-      form_params["DomainName"] = domain_name.to_s if !domain_name.nil? && !domain_name.null?
-      form_params["EmergencyCallerSid"] = emergency_caller_sid.to_s if !emergency_caller_sid.nil? && !emergency_caller_sid.null?
-      form_params["EmergencyCallingEnabled"] = emergency_calling_enabled.to_s if !emergency_calling_enabled.nil? && !emergency_calling_enabled.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["Secure"] = secure.to_s if !secure.nil? && !secure.null?
-      form_params["SipRegistration"] = sip_registration.to_s if !sip_registration.nil? && !sip_registration.null?
-      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil? && !voice_fallback_method.null?
-      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil? && !voice_fallback_url.null?
-      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil? && !voice_method.null?
-      form_params["VoiceStatusCallbackMethod"] = voice_status_callback_method.to_s if !voice_status_callback_method.nil? && !voice_status_callback_method.null?
-      form_params["VoiceStatusCallbackUrl"] = voice_status_callback_url.to_s if !voice_status_callback_url.nil? && !voice_status_callback_url.null?
-      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil? && !voice_url.null?
+      form_params["ByocTrunkSid"] = byoc_trunk_sid.to_s if !byoc_trunk_sid.nil?
+      form_params["DomainName"] = domain_name.to_s if !domain_name.nil?
+      form_params["EmergencyCallerSid"] = emergency_caller_sid.to_s if !emergency_caller_sid.nil?
+      form_params["EmergencyCallingEnabled"] = emergency_calling_enabled.to_s if !emergency_calling_enabled.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["Secure"] = secure.to_s if !secure.nil?
+      form_params["SipRegistration"] = sip_registration.to_s if !sip_registration.nil?
+      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil?
+      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil?
+      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil?
+      form_params["VoiceStatusCallbackMethod"] = voice_status_callback_method.to_s if !voice_status_callback_method.nil?
+      form_params["VoiceStatusCallbackUrl"] = voice_status_callback_url.to_s if !voice_status_callback_url.nil?
+      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil?
 
       # http body (model)
       post_body = nil
@@ -3323,7 +3323,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_ip_access_control_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipIpAccessControlList.from_nason(data), status_code, headers
+      return SipSipIpAccessControlList.from_json(data), status_code, headers
     end
 
     # Create a new IpAccessControlList resource
@@ -3367,7 +3367,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -3411,7 +3411,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_ip_access_control_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipIpAccessControlListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipIpAccessControlListMapping.from_json(data), status_code, headers
     end
 
     # Create a new IpAccessControlListMapping resource.
@@ -3482,7 +3482,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["IpAccessControlListSid"] = ip_access_control_list_sid.to_s if !ip_access_control_list_sid.nil? && !ip_access_control_list_sid.null?
+      form_params["IpAccessControlListSid"] = ip_access_control_list_sid.to_s if !ip_access_control_list_sid.nil?
 
       # http body (model)
       post_body = nil
@@ -3528,7 +3528,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_sip_ip_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipIpAccessControlListSipIpAddress.from_nason(data), status_code, headers
+      return SipSipIpAccessControlListSipIpAddress.from_json(data), status_code, headers
     end
 
     # Create a new IpAddress resource.
@@ -3587,9 +3587,9 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["CidrPrefixLength"] = cidr_prefix_length.to_s if !cidr_prefix_length.nil? && !cidr_prefix_length.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["IpAddress"] = ip_address.to_s if !ip_address.nil? && !ip_address.null?
+      form_params["CidrPrefixLength"] = cidr_prefix_length.to_s if !cidr_prefix_length.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["IpAddress"] = ip_address.to_s if !ip_address.nil?
 
       # http body (model)
       post_body = nil
@@ -3629,7 +3629,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Token.from_nason(data), status_code, headers
+      return Token.from_json(data), status_code, headers
     end
 
     # Create a new token for ICE servers
@@ -3672,7 +3672,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Ttl"] = ttl.to_s if !ttl.nil? && !ttl.null?
+      form_params["Ttl"] = ttl.to_s if !ttl.nil?
 
       # http body (model)
       post_body = nil
@@ -3718,7 +3718,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_usage_trigger\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return UsageUsageTrigger.from_nason(data), status_code, headers
+      return UsageUsageTrigger.from_json(data), status_code, headers
     end
 
     # Create a new UsageTrigger
@@ -3755,15 +3755,15 @@ module Twilio
         raise ArgumentError.new("invalid value for \"usage_category\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !callback_method.nil? && !callback_method.null? && !allowable_values.includes?(callback_method)
+      if @api_client.config.client_side_validation && !callback_method.nil? && !allowable_values.includes?(callback_method)
         raise ArgumentError.new("invalid value for \"callback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["daily", "monthly", "yearly", "alltime"]
-      if @api_client.config.client_side_validation && !recurring.nil? && !recurring.null? && !allowable_values.includes?(recurring)
+      if @api_client.config.client_side_validation && !recurring.nil? && !allowable_values.includes?(recurring)
         raise ArgumentError.new("invalid value for \"recurring\", must be one of #{allowable_values}")
       end
       allowable_values = ["count", "usage", "price"]
-      if @api_client.config.client_side_validation && !trigger_by.nil? && !trigger_by.null? && !allowable_values.includes?(trigger_by)
+      if @api_client.config.client_side_validation && !trigger_by.nil? && !allowable_values.includes?(trigger_by)
         raise ArgumentError.new("invalid value for \"trigger_by\", must be one of #{allowable_values}")
       end
       # resource path
@@ -3781,13 +3781,13 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["CallbackMethod"] = callback_method.to_s if !callback_method.nil? && !callback_method.null?
-      form_params["CallbackUrl"] = callback_url.to_s if !callback_url.nil? && !callback_url.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["Recurring"] = recurring.to_s if !recurring.nil? && !recurring.null?
-      form_params["TriggerBy"] = trigger_by.to_s if !trigger_by.nil? && !trigger_by.null?
-      form_params["TriggerValue"] = trigger_value.to_s if !trigger_value.nil? && !trigger_value.null?
-      form_params["UsageCategory"] = usage_category.to_s if !usage_category.nil? && !usage_category.null?
+      form_params["CallbackMethod"] = callback_method.to_s if !callback_method.nil?
+      form_params["CallbackUrl"] = callback_url.to_s if !callback_url.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["Recurring"] = recurring.to_s if !recurring.nil?
+      form_params["TriggerBy"] = trigger_by.to_s if !trigger_by.nil?
+      form_params["TriggerValue"] = trigger_value.to_s if !trigger_value.nil?
+      form_params["UsageCategory"] = usage_category.to_s if !usage_category.nil?
 
       # http body (model)
       post_body = nil
@@ -3829,7 +3829,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#create_validation_request\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ValidationRequest.from_nason(data), status_code, headers
+      return ValidationRequest.from_json(data), status_code, headers
     end
 
     #
@@ -3859,7 +3859,7 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -3877,12 +3877,12 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["CallDelay"] = call_delay.to_s if !call_delay.nil? && !call_delay.null?
-      form_params["Extension"] = extension.to_s if !extension.nil? && !extension.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
+      form_params["CallDelay"] = call_delay.to_s if !call_delay.nil?
+      form_params["Extension"] = extension.to_s if !extension.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
 
       # http body (model)
       post_body = nil
@@ -7173,7 +7173,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Account.from_nason(data), status_code, headers
+      return Account.from_json(data), status_code, headers
     end
 
     # Fetch the account specified by the provided Account Sid
@@ -7255,7 +7255,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Address.from_nason(data), status_code, headers
+      return Address.from_json(data), status_code, headers
     end
 
     #
@@ -7351,7 +7351,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Application.from_nason(data), status_code, headers
+      return Application.from_json(data), status_code, headers
     end
 
     # Fetch the application specified by the provided sid
@@ -7447,7 +7447,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_authorized_connect_app\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return AuthorizedConnectApp.from_nason(data), status_code, headers
+      return AuthorizedConnectApp.from_json(data), status_code, headers
     end
 
     # Fetch an instance of an authorized-connect-app
@@ -7543,7 +7543,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_available_phone_number_country\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return AvailablePhoneNumberCountry.from_nason(data), status_code, headers
+      return AvailablePhoneNumberCountry.from_json(data), status_code, headers
     end
 
     #
@@ -7624,7 +7624,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_balance\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Balance.from_nason(data), status_code, headers
+      return Balance.from_json(data), status_code, headers
     end
 
     # Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child accounts do not contain balance information
@@ -7706,7 +7706,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_call\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Call.from_nason(data), status_code, headers
+      return Call.from_json(data), status_code, headers
     end
 
     # Fetch the call specified by the provided Call SID
@@ -7802,7 +7802,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_call_feedback\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallCallFeedback.from_nason(data), status_code, headers
+      return CallCallFeedback.from_json(data), status_code, headers
     end
 
     # Fetch a Feedback resource from a call
@@ -7898,7 +7898,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_call_feedback_summary\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallCallFeedbackSummary.from_nason(data), status_code, headers
+      return CallCallFeedbackSummary.from_json(data), status_code, headers
     end
 
     # Fetch a FeedbackSummary resource from a call
@@ -7996,7 +7996,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_call_notification\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallCallNotificationInstance.from_nason(data), status_code, headers
+      return CallCallNotificationInstance.from_json(data), status_code, headers
     end
 
     #
@@ -8108,7 +8108,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_call_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallCallRecording.from_nason(data), status_code, headers
+      return CallCallRecording.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a recording for a call
@@ -8218,7 +8218,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_conference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Conference.from_nason(data), status_code, headers
+      return Conference.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a conference
@@ -8316,7 +8316,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_conference_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ConferenceConferenceRecording.from_nason(data), status_code, headers
+      return ConferenceConferenceRecording.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a recording for a call
@@ -8426,7 +8426,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_connect_app\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ConnectApp.from_nason(data), status_code, headers
+      return ConnectApp.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a connect-app
@@ -8522,7 +8522,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_incoming_phone_number\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return IncomingPhoneNumber.from_nason(data), status_code, headers
+      return IncomingPhoneNumber.from_json(data), status_code, headers
     end
 
     # Fetch an incoming-phone-number belonging to the account used to make the request.
@@ -8620,7 +8620,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_incoming_phone_number_assigned_add_on\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.from_nason(data), status_code, headers
+      return IncomingPhoneNumberIncomingPhoneNumberAssignedAddOn.from_json(data), status_code, headers
     end
 
     # Fetch an instance of an Add-on installation currently assigned to this Number.
@@ -8734,7 +8734,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_incoming_phone_number_assigned_add_on_extension\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension.from_nason(data), status_code, headers
+      return IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension.from_json(data), status_code, headers
     end
 
     # Fetch an instance of an Extension for the Assigned Add-on.
@@ -8858,7 +8858,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Key.from_nason(data), status_code, headers
+      return Key.from_json(data), status_code, headers
     end
 
     #
@@ -8956,7 +8956,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_media\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return MessageMedia.from_nason(data), status_code, headers
+      return MessageMedia.from_json(data), status_code, headers
     end
 
     # Fetch a single media instance belonging to the account used to make the request
@@ -9068,7 +9068,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return QueueMember.from_nason(data), status_code, headers
+      return QueueMember.from_json(data), status_code, headers
     end
 
     # Fetch a specific member from the queue
@@ -9165,7 +9165,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Message.from_nason(data), status_code, headers
+      return Message.from_json(data), status_code, headers
     end
 
     # Fetch a message belonging to the account used to make the request
@@ -9261,7 +9261,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_notification\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return NotificationInstance.from_nason(data), status_code, headers
+      return NotificationInstance.from_json(data), status_code, headers
     end
 
     # Fetch a notification belonging to the account used to make the request
@@ -9357,7 +9357,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_outgoing_caller_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return OutgoingCallerId.from_nason(data), status_code, headers
+      return OutgoingCallerId.from_json(data), status_code, headers
     end
 
     # Fetch an outgoing-caller-id belonging to the account used to make the request
@@ -9455,7 +9455,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_participant\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ConferenceParticipant.from_nason(data), status_code, headers
+      return ConferenceParticipant.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a participant
@@ -9552,7 +9552,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_queue\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Queue.from_nason(data), status_code, headers
+      return Queue.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a queue identified by the QueueSid
@@ -9648,7 +9648,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Recording.from_nason(data), status_code, headers
+      return Recording.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a recording
@@ -9695,7 +9695,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["IncludeSoftDeleted"] = include_soft_deleted.to_s if !include_soft_deleted.nil? && !include_soft_deleted.null?
+      query_params["IncludeSoftDeleted"] = include_soft_deleted.to_s if !include_soft_deleted.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -9747,7 +9747,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_recording_add_on_result\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return RecordingRecordingAddOnResult.from_nason(data), status_code, headers
+      return RecordingRecordingAddOnResult.from_json(data), status_code, headers
     end
 
     # Fetch an instance of an AddOnResult
@@ -9861,7 +9861,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_recording_add_on_result_payload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return RecordingRecordingAddOnResultRecordingAddOnResultPayload.from_nason(data), status_code, headers
+      return RecordingRecordingAddOnResultRecordingAddOnResultPayload.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a result payload
@@ -9987,7 +9987,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_recording_transcription\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return RecordingRecordingTranscription.from_nason(data), status_code, headers
+      return RecordingRecordingTranscription.from_json(data), status_code, headers
     end
 
     #
@@ -10097,7 +10097,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_short_code\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ShortCode.from_nason(data), status_code, headers
+      return ShortCode.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a short code
@@ -10193,7 +10193,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_signing_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SigningKey.from_nason(data), status_code, headers
+      return SigningKey.from_json(data), status_code, headers
     end
 
     #
@@ -10291,7 +10291,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_auth_calls_credential_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping.from_json(data), status_code, headers
     end
 
     # Fetch a specific instance of a credential list mapping
@@ -10403,7 +10403,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_auth_calls_ip_access_control_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping.from_json(data), status_code, headers
     end
 
     # Fetch a specific instance of an IP Access Control List mapping
@@ -10515,7 +10515,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_auth_registrations_credential_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping.from_json(data), status_code, headers
     end
 
     # Fetch a specific instance of a credential list mapping
@@ -10627,7 +10627,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_credential\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipCredentialListSipCredential.from_nason(data), status_code, headers
+      return SipSipCredentialListSipCredential.from_json(data), status_code, headers
     end
 
     # Fetch a single credential.
@@ -10737,7 +10737,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_credential_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipCredentialList.from_nason(data), status_code, headers
+      return SipSipCredentialList.from_json(data), status_code, headers
     end
 
     # Get a Credential List
@@ -10835,7 +10835,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_credential_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipCredentialListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipCredentialListMapping.from_json(data), status_code, headers
     end
 
     # Fetch a single CredentialListMapping resource from an account.
@@ -10945,7 +10945,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomain.from_nason(data), status_code, headers
+      return SipSipDomain.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a Domain
@@ -11041,7 +11041,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_ip_access_control_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipIpAccessControlList.from_nason(data), status_code, headers
+      return SipSipIpAccessControlList.from_json(data), status_code, headers
     end
 
     # Fetch a specific instance of an IpAccessControlList
@@ -11139,7 +11139,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_ip_access_control_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomainSipIpAccessControlListMapping.from_nason(data), status_code, headers
+      return SipSipDomainSipIpAccessControlListMapping.from_json(data), status_code, headers
     end
 
     # Fetch an IpAccessControlListMapping resource.
@@ -11251,7 +11251,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_sip_ip_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipIpAccessControlListSipIpAddress.from_nason(data), status_code, headers
+      return SipSipIpAccessControlListSipIpAddress.from_json(data), status_code, headers
     end
 
     # Read one IpAddress resource.
@@ -11361,7 +11361,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_transcription\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Transcription.from_nason(data), status_code, headers
+      return Transcription.from_json(data), status_code, headers
     end
 
     # Fetch an instance of a Transcription
@@ -11457,7 +11457,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#fetch_usage_trigger\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return UsageUsageTrigger.from_nason(data), status_code, headers
+      return UsageUsageTrigger.from_json(data), status_code, headers
     end
 
     # Fetch and instance of a usage-trigger
@@ -11549,7 +11549,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAccountResponse.from_nason(data), status_code, headers
+      return ListAccountResponse.from_json(data), status_code, headers
     end
 
     # Retrieves a collection of Accounts belonging to the account used to make the request
@@ -11564,7 +11564,7 @@ module Twilio
         Log.debug { "Calling API: DefaultApi.list_account ..." }
       end
       allowable_values = ["active", "suspended", "closed"]
-      if @api_client.config.client_side_validation && !status.nil? && !status.null? && !allowable_values.includes?(status)
+      if @api_client.config.client_side_validation && !status.nil? && !allowable_values.includes?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -11580,9 +11580,9 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["Status"] = status.to_s if !status.nil? && !status.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["Status"] = status.to_s if !status.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11630,7 +11630,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAddressResponse.from_nason(data), status_code, headers
+      return ListAddressResponse.from_json(data), status_code, headers
     end
 
     #
@@ -11671,10 +11671,10 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["CustomerName"] = customer_name.to_s if !customer_name.nil? && !customer_name.null?
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["IsoCountry"] = iso_country.to_s if !iso_country.nil? && !iso_country.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["CustomerName"] = customer_name.to_s if !customer_name.nil?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["IsoCountry"] = iso_country.to_s if !iso_country.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11722,7 +11722,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListApplicationResponse.from_nason(data), status_code, headers
+      return ListApplicationResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of applications representing an application within the requesting account
@@ -11763,8 +11763,8 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11812,7 +11812,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_authorized_connect_app\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAuthorizedConnectAppResponse.from_nason(data), status_code, headers
+      return ListAuthorizedConnectAppResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of authorized-connect-apps belonging to the account used to make the request
@@ -11853,7 +11853,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11901,7 +11901,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_available_phone_number_country\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAvailablePhoneNumberCountryResponse.from_nason(data), status_code, headers
+      return ListAvailablePhoneNumberCountryResponse.from_json(data), status_code, headers
     end
 
     #
@@ -11942,7 +11942,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -11992,7 +11992,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_available_phone_number_local\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAvailablePhoneNumberLocalResponse.from_nason(data), status_code, headers
+      return ListAvailablePhoneNumberLocalResponse.from_json(data), status_code, headers
     end
 
     #
@@ -12034,25 +12034,25 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
-      query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
-      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
-      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil? && !mms_enabled.null?
-      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil? && !voice_enabled.null?
-      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil? && !exclude_all_address_required.null?
-      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil? && !exclude_local_address_required.null?
-      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil? && !exclude_foreign_address_required.null?
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["NearNumber"] = near_number.to_s if !near_number.nil? && !near_number.null?
-      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil? && !near_lat_long.null?
-      query_params["Distance"] = distance.to_s if !distance.nil? && !distance.null?
-      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil? && !in_postal_code.null?
-      query_params["InRegion"] = in_region.to_s if !in_region.nil? && !in_region.null?
-      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil? && !in_rate_center.null?
-      query_params["InLata"] = in_lata.to_s if !in_lata.nil? && !in_lata.null?
-      query_params["InLocality"] = in_locality.to_s if !in_locality.nil? && !in_locality.null?
-      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil? && !fax_enabled.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["AreaCode"] = area_code.to_s if !area_code.nil?
+      query_params["Contains"] = contains.to_s if !contains.nil?
+      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil?
+      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil?
+      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil?
+      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil?
+      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil?
+      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["NearNumber"] = near_number.to_s if !near_number.nil?
+      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil?
+      query_params["Distance"] = distance.to_s if !distance.nil?
+      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil?
+      query_params["InRegion"] = in_region.to_s if !in_region.nil?
+      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil?
+      query_params["InLata"] = in_lata.to_s if !in_lata.nil?
+      query_params["InLocality"] = in_locality.to_s if !in_locality.nil?
+      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -12102,7 +12102,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_available_phone_number_machine_to_machine\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAvailablePhoneNumberMachineToMachineResponse.from_nason(data), status_code, headers
+      return ListAvailablePhoneNumberMachineToMachineResponse.from_json(data), status_code, headers
     end
 
     #
@@ -12144,25 +12144,25 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
-      query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
-      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
-      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil? && !mms_enabled.null?
-      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil? && !voice_enabled.null?
-      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil? && !exclude_all_address_required.null?
-      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil? && !exclude_local_address_required.null?
-      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil? && !exclude_foreign_address_required.null?
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["NearNumber"] = near_number.to_s if !near_number.nil? && !near_number.null?
-      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil? && !near_lat_long.null?
-      query_params["Distance"] = distance.to_s if !distance.nil? && !distance.null?
-      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil? && !in_postal_code.null?
-      query_params["InRegion"] = in_region.to_s if !in_region.nil? && !in_region.null?
-      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil? && !in_rate_center.null?
-      query_params["InLata"] = in_lata.to_s if !in_lata.nil? && !in_lata.null?
-      query_params["InLocality"] = in_locality.to_s if !in_locality.nil? && !in_locality.null?
-      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil? && !fax_enabled.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["AreaCode"] = area_code.to_s if !area_code.nil?
+      query_params["Contains"] = contains.to_s if !contains.nil?
+      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil?
+      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil?
+      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil?
+      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil?
+      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil?
+      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["NearNumber"] = near_number.to_s if !near_number.nil?
+      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil?
+      query_params["Distance"] = distance.to_s if !distance.nil?
+      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil?
+      query_params["InRegion"] = in_region.to_s if !in_region.nil?
+      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil?
+      query_params["InLata"] = in_lata.to_s if !in_lata.nil?
+      query_params["InLocality"] = in_locality.to_s if !in_locality.nil?
+      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -12212,7 +12212,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_available_phone_number_mobile\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAvailablePhoneNumberMobileResponse.from_nason(data), status_code, headers
+      return ListAvailablePhoneNumberMobileResponse.from_json(data), status_code, headers
     end
 
     #
@@ -12254,25 +12254,25 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
-      query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
-      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
-      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil? && !mms_enabled.null?
-      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil? && !voice_enabled.null?
-      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil? && !exclude_all_address_required.null?
-      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil? && !exclude_local_address_required.null?
-      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil? && !exclude_foreign_address_required.null?
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["NearNumber"] = near_number.to_s if !near_number.nil? && !near_number.null?
-      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil? && !near_lat_long.null?
-      query_params["Distance"] = distance.to_s if !distance.nil? && !distance.null?
-      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil? && !in_postal_code.null?
-      query_params["InRegion"] = in_region.to_s if !in_region.nil? && !in_region.null?
-      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil? && !in_rate_center.null?
-      query_params["InLata"] = in_lata.to_s if !in_lata.nil? && !in_lata.null?
-      query_params["InLocality"] = in_locality.to_s if !in_locality.nil? && !in_locality.null?
-      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil? && !fax_enabled.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["AreaCode"] = area_code.to_s if !area_code.nil?
+      query_params["Contains"] = contains.to_s if !contains.nil?
+      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil?
+      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil?
+      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil?
+      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil?
+      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil?
+      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["NearNumber"] = near_number.to_s if !near_number.nil?
+      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil?
+      query_params["Distance"] = distance.to_s if !distance.nil?
+      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil?
+      query_params["InRegion"] = in_region.to_s if !in_region.nil?
+      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil?
+      query_params["InLata"] = in_lata.to_s if !in_lata.nil?
+      query_params["InLocality"] = in_locality.to_s if !in_locality.nil?
+      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -12322,7 +12322,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_available_phone_number_national\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAvailablePhoneNumberNationalResponse.from_nason(data), status_code, headers
+      return ListAvailablePhoneNumberNationalResponse.from_json(data), status_code, headers
     end
 
     #
@@ -12364,25 +12364,25 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
-      query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
-      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
-      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil? && !mms_enabled.null?
-      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil? && !voice_enabled.null?
-      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil? && !exclude_all_address_required.null?
-      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil? && !exclude_local_address_required.null?
-      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil? && !exclude_foreign_address_required.null?
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["NearNumber"] = near_number.to_s if !near_number.nil? && !near_number.null?
-      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil? && !near_lat_long.null?
-      query_params["Distance"] = distance.to_s if !distance.nil? && !distance.null?
-      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil? && !in_postal_code.null?
-      query_params["InRegion"] = in_region.to_s if !in_region.nil? && !in_region.null?
-      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil? && !in_rate_center.null?
-      query_params["InLata"] = in_lata.to_s if !in_lata.nil? && !in_lata.null?
-      query_params["InLocality"] = in_locality.to_s if !in_locality.nil? && !in_locality.null?
-      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil? && !fax_enabled.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["AreaCode"] = area_code.to_s if !area_code.nil?
+      query_params["Contains"] = contains.to_s if !contains.nil?
+      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil?
+      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil?
+      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil?
+      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil?
+      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil?
+      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["NearNumber"] = near_number.to_s if !near_number.nil?
+      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil?
+      query_params["Distance"] = distance.to_s if !distance.nil?
+      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil?
+      query_params["InRegion"] = in_region.to_s if !in_region.nil?
+      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil?
+      query_params["InLata"] = in_lata.to_s if !in_lata.nil?
+      query_params["InLocality"] = in_locality.to_s if !in_locality.nil?
+      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -12432,7 +12432,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_available_phone_number_shared_cost\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAvailablePhoneNumberSharedCostResponse.from_nason(data), status_code, headers
+      return ListAvailablePhoneNumberSharedCostResponse.from_json(data), status_code, headers
     end
 
     #
@@ -12474,25 +12474,25 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
-      query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
-      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
-      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil? && !mms_enabled.null?
-      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil? && !voice_enabled.null?
-      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil? && !exclude_all_address_required.null?
-      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil? && !exclude_local_address_required.null?
-      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil? && !exclude_foreign_address_required.null?
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["NearNumber"] = near_number.to_s if !near_number.nil? && !near_number.null?
-      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil? && !near_lat_long.null?
-      query_params["Distance"] = distance.to_s if !distance.nil? && !distance.null?
-      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil? && !in_postal_code.null?
-      query_params["InRegion"] = in_region.to_s if !in_region.nil? && !in_region.null?
-      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil? && !in_rate_center.null?
-      query_params["InLata"] = in_lata.to_s if !in_lata.nil? && !in_lata.null?
-      query_params["InLocality"] = in_locality.to_s if !in_locality.nil? && !in_locality.null?
-      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil? && !fax_enabled.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["AreaCode"] = area_code.to_s if !area_code.nil?
+      query_params["Contains"] = contains.to_s if !contains.nil?
+      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil?
+      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil?
+      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil?
+      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil?
+      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil?
+      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["NearNumber"] = near_number.to_s if !near_number.nil?
+      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil?
+      query_params["Distance"] = distance.to_s if !distance.nil?
+      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil?
+      query_params["InRegion"] = in_region.to_s if !in_region.nil?
+      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil?
+      query_params["InLata"] = in_lata.to_s if !in_lata.nil?
+      query_params["InLocality"] = in_locality.to_s if !in_locality.nil?
+      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -12542,7 +12542,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_available_phone_number_toll_free\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAvailablePhoneNumberTollFreeResponse.from_nason(data), status_code, headers
+      return ListAvailablePhoneNumberTollFreeResponse.from_json(data), status_code, headers
     end
 
     #
@@ -12584,25 +12584,25 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
-      query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
-      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
-      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil? && !mms_enabled.null?
-      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil? && !voice_enabled.null?
-      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil? && !exclude_all_address_required.null?
-      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil? && !exclude_local_address_required.null?
-      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil? && !exclude_foreign_address_required.null?
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["NearNumber"] = near_number.to_s if !near_number.nil? && !near_number.null?
-      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil? && !near_lat_long.null?
-      query_params["Distance"] = distance.to_s if !distance.nil? && !distance.null?
-      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil? && !in_postal_code.null?
-      query_params["InRegion"] = in_region.to_s if !in_region.nil? && !in_region.null?
-      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil? && !in_rate_center.null?
-      query_params["InLata"] = in_lata.to_s if !in_lata.nil? && !in_lata.null?
-      query_params["InLocality"] = in_locality.to_s if !in_locality.nil? && !in_locality.null?
-      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil? && !fax_enabled.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["AreaCode"] = area_code.to_s if !area_code.nil?
+      query_params["Contains"] = contains.to_s if !contains.nil?
+      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil?
+      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil?
+      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil?
+      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil?
+      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil?
+      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["NearNumber"] = near_number.to_s if !near_number.nil?
+      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil?
+      query_params["Distance"] = distance.to_s if !distance.nil?
+      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil?
+      query_params["InRegion"] = in_region.to_s if !in_region.nil?
+      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil?
+      query_params["InLata"] = in_lata.to_s if !in_lata.nil?
+      query_params["InLocality"] = in_locality.to_s if !in_locality.nil?
+      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -12652,7 +12652,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_available_phone_number_voip\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListAvailablePhoneNumberVoipResponse.from_nason(data), status_code, headers
+      return ListAvailablePhoneNumberVoipResponse.from_json(data), status_code, headers
     end
 
     #
@@ -12694,25 +12694,25 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["AreaCode"] = area_code.to_s if !area_code.nil? && !area_code.null?
-      query_params["Contains"] = contains.to_s if !contains.nil? && !contains.null?
-      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil? && !sms_enabled.null?
-      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil? && !mms_enabled.null?
-      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil? && !voice_enabled.null?
-      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil? && !exclude_all_address_required.null?
-      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil? && !exclude_local_address_required.null?
-      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil? && !exclude_foreign_address_required.null?
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["NearNumber"] = near_number.to_s if !near_number.nil? && !near_number.null?
-      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil? && !near_lat_long.null?
-      query_params["Distance"] = distance.to_s if !distance.nil? && !distance.null?
-      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil? && !in_postal_code.null?
-      query_params["InRegion"] = in_region.to_s if !in_region.nil? && !in_region.null?
-      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil? && !in_rate_center.null?
-      query_params["InLata"] = in_lata.to_s if !in_lata.nil? && !in_lata.null?
-      query_params["InLocality"] = in_locality.to_s if !in_locality.nil? && !in_locality.null?
-      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil? && !fax_enabled.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["AreaCode"] = area_code.to_s if !area_code.nil?
+      query_params["Contains"] = contains.to_s if !contains.nil?
+      query_params["SmsEnabled"] = sms_enabled.to_s if !sms_enabled.nil?
+      query_params["MmsEnabled"] = mms_enabled.to_s if !mms_enabled.nil?
+      query_params["VoiceEnabled"] = voice_enabled.to_s if !voice_enabled.nil?
+      query_params["ExcludeAllAddressRequired"] = exclude_all_address_required.to_s if !exclude_all_address_required.nil?
+      query_params["ExcludeLocalAddressRequired"] = exclude_local_address_required.to_s if !exclude_local_address_required.nil?
+      query_params["ExcludeForeignAddressRequired"] = exclude_foreign_address_required.to_s if !exclude_foreign_address_required.nil?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["NearNumber"] = near_number.to_s if !near_number.nil?
+      query_params["NearLatLong"] = near_lat_long.to_s if !near_lat_long.nil?
+      query_params["Distance"] = distance.to_s if !distance.nil?
+      query_params["InPostalCode"] = in_postal_code.to_s if !in_postal_code.nil?
+      query_params["InRegion"] = in_region.to_s if !in_region.nil?
+      query_params["InRateCenter"] = in_rate_center.to_s if !in_rate_center.nil?
+      query_params["InLata"] = in_lata.to_s if !in_lata.nil?
+      query_params["InLocality"] = in_locality.to_s if !in_locality.nil?
+      query_params["FaxEnabled"] = fax_enabled.to_s if !fax_enabled.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -12760,7 +12760,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_call\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListCallResponse.from_nason(data), status_code, headers
+      return ListCallResponse.from_json(data), status_code, headers
     end
 
     # Retrieves a collection of calls made to and from your account
@@ -12802,7 +12802,7 @@ module Twilio
       end
 
       allowable_values = ["queued", "ringing", "in-progress", "completed", "busy", "failed", "no-answer", "canceled"]
-      if @api_client.config.client_side_validation && !status.nil? && !status.null? && !allowable_values.includes?(status)
+      if @api_client.config.client_side_validation && !status.nil? && !allowable_values.includes?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -12818,17 +12818,17 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["To"] = to.to_s if !to.nil? && !to.null?
-      query_params["From"] = from.to_s if !from.nil? && !from.null?
-      query_params["ParentCallSid"] = parent_call_sid.to_s if !parent_call_sid.nil? && !parent_call_sid.null?
-      query_params["Status"] = status.to_s if !status.nil? && !status.null?
-      query_params["StartTime"] = Time::Format::RFC_2822.format(start_time) if !start_time.nil? && !start_time.null?
-      query_params["StartTime<"] = Time::Format::RFC_2822.format(start_time_before) if !start_time_before.nil? && !start_time_before.null?
-      query_params["StartTime>"] = Time::Format::RFC_2822.format(start_time_after) if !start_time_after.nil? && !start_time_after.null?
-      query_params["EndTime"] = Time::Format::RFC_2822.format(end_time) if !end_time.nil? && !end_time.null?
-      query_params["EndTime<"] = Time::Format::RFC_2822.format(end_time_before) if !end_time_before.nil? && !end_time_before.null?
-      query_params["EndTime>"] = Time::Format::RFC_2822.format(end_time_after) if !end_time_after.nil? && !end_time_after.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["To"] = to.to_s if !to.nil?
+      query_params["From"] = from.to_s if !from.nil?
+      query_params["ParentCallSid"] = parent_call_sid.to_s if !parent_call_sid.nil?
+      query_params["Status"] = status.to_s if !status.nil?
+      query_params["StartTime"] = Time::Format::RFC_2822.format(start_time) if !start_time.nil?
+      query_params["StartTime<"] = Time::Format::RFC_2822.format(start_time_before) if !start_time_before.nil?
+      query_params["StartTime>"] = Time::Format::RFC_2822.format(start_time_after) if !start_time_after.nil?
+      query_params["EndTime"] = Time::Format::RFC_2822.format(end_time) if !end_time.nil?
+      query_params["EndTime<"] = Time::Format::RFC_2822.format(end_time_before) if !end_time_before.nil?
+      query_params["EndTime>"] = Time::Format::RFC_2822.format(end_time_after) if !end_time_after.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -12878,7 +12878,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_call_event\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListCallEventResponse.from_nason(data), status_code, headers
+      return ListCallEventResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of all events for a call.
@@ -12933,7 +12933,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -12983,7 +12983,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_call_notification\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListCallNotificationResponse.from_nason(data), status_code, headers
+      return ListCallNotificationResponse.from_json(data), status_code, headers
     end
 
     #
@@ -13038,11 +13038,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Log"] = log.to_s if !log.nil? && !log.null?
-      query_params["MessageDate"] = Time::Format::ISO_8601_DATE.format(message_date) if !message_date.nil? && !message_date.null?
-      query_params["MessageDate<"] = Time::Format::ISO_8601_DATE.format(message_date_before) if !message_date_before.nil? && !message_date_before.null?
-      query_params["MessageDate>"] = Time::Format::ISO_8601_DATE.format(message_date_after) if !message_date_after.nil? && !message_date_after.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Log"] = log.to_s if !log.nil?
+      query_params["MessageDate"] = Time::Format::ISO_8601_DATE.format(message_date) if !message_date.nil?
+      query_params["MessageDate<"] = Time::Format::ISO_8601_DATE.format(message_date_before) if !message_date_before.nil?
+      query_params["MessageDate>"] = Time::Format::ISO_8601_DATE.format(message_date_after) if !message_date_after.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -13092,7 +13092,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_call_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListCallRecordingResponse.from_nason(data), status_code, headers
+      return ListCallRecordingResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of recordings belonging to the call used to make the request
@@ -13147,10 +13147,10 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
-      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil?
+      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created_before) if !date_created_before.nil?
+      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created_after) if !date_created_after.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -13198,7 +13198,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_conference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListConferenceResponse.from_nason(data), status_code, headers
+      return ListConferenceResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of conferences belonging to the account used to make the request
@@ -13227,7 +13227,7 @@ module Twilio
       end
 
       allowable_values = ["init", "in-progress", "completed"]
-      if @api_client.config.client_side_validation && !status.nil? && !status.null? && !allowable_values.includes?(status)
+      if @api_client.config.client_side_validation && !status.nil? && !allowable_values.includes?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -13243,15 +13243,15 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
-      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
-      query_params["DateUpdated"] = Time::Format::ISO_8601_DATE.format(date_updated) if !date_updated.nil? && !date_updated.null?
-      query_params["DateUpdated<"] = Time::Format::ISO_8601_DATE.format(date_updated_before) if !date_updated_before.nil? && !date_updated_before.null?
-      query_params["DateUpdated>"] = Time::Format::ISO_8601_DATE.format(date_updated_after) if !date_updated_after.nil? && !date_updated_after.null?
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["Status"] = status.to_s if !status.nil? && !status.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil?
+      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created_before) if !date_created_before.nil?
+      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created_after) if !date_created_after.nil?
+      query_params["DateUpdated"] = Time::Format::ISO_8601_DATE.format(date_updated) if !date_updated.nil?
+      query_params["DateUpdated<"] = Time::Format::ISO_8601_DATE.format(date_updated_before) if !date_updated_before.nil?
+      query_params["DateUpdated>"] = Time::Format::ISO_8601_DATE.format(date_updated_after) if !date_updated_after.nil?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["Status"] = status.to_s if !status.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -13301,7 +13301,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_conference_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListConferenceRecordingResponse.from_nason(data), status_code, headers
+      return ListConferenceRecordingResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of recordings belonging to the call used to make the request
@@ -13356,10 +13356,10 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
-      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["DateCreated"] = Time::Format::ISO_8601_DATE.format(date_created) if !date_created.nil?
+      query_params["DateCreated<"] = Time::Format::ISO_8601_DATE.format(date_created_before) if !date_created_before.nil?
+      query_params["DateCreated>"] = Time::Format::ISO_8601_DATE.format(date_created_after) if !date_created_after.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -13407,7 +13407,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_connect_app\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListConnectAppResponse.from_nason(data), status_code, headers
+      return ListConnectAppResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of connect-apps belonging to the account used to make the request
@@ -13448,7 +13448,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -13498,7 +13498,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_dependent_phone_number\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListDependentPhoneNumberResponse.from_nason(data), status_code, headers
+      return ListDependentPhoneNumberResponse.from_json(data), status_code, headers
     end
 
     #
@@ -13553,7 +13553,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -13601,7 +13601,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_incoming_phone_number\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListIncomingPhoneNumberResponse.from_nason(data), status_code, headers
+      return ListIncomingPhoneNumberResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.
@@ -13642,11 +13642,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      query_params["Origin"] = origin.to_s if !origin.nil? && !origin.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      query_params["Origin"] = origin.to_s if !origin.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -13696,7 +13696,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_incoming_phone_number_assigned_add_on\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListIncomingPhoneNumberAssignedAddOnResponse.from_nason(data), status_code, headers
+      return ListIncomingPhoneNumberAssignedAddOnResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of Add-on installations currently assigned to this Number.
@@ -13751,7 +13751,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -13803,7 +13803,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_incoming_phone_number_assigned_add_on_extension\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListIncomingPhoneNumberAssignedAddOnExtensionResponse.from_nason(data), status_code, headers
+      return ListIncomingPhoneNumberAssignedAddOnExtensionResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of Extensions for the Assigned Add-on.
@@ -13872,7 +13872,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -13920,7 +13920,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_incoming_phone_number_local\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListIncomingPhoneNumberLocalResponse.from_nason(data), status_code, headers
+      return ListIncomingPhoneNumberLocalResponse.from_json(data), status_code, headers
     end
 
     #
@@ -13961,11 +13961,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      query_params["Origin"] = origin.to_s if !origin.nil? && !origin.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      query_params["Origin"] = origin.to_s if !origin.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14013,7 +14013,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_incoming_phone_number_mobile\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListIncomingPhoneNumberMobileResponse.from_nason(data), status_code, headers
+      return ListIncomingPhoneNumberMobileResponse.from_json(data), status_code, headers
     end
 
     #
@@ -14054,11 +14054,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      query_params["Origin"] = origin.to_s if !origin.nil? && !origin.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      query_params["Origin"] = origin.to_s if !origin.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14106,7 +14106,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_incoming_phone_number_toll_free\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListIncomingPhoneNumberTollFreeResponse.from_nason(data), status_code, headers
+      return ListIncomingPhoneNumberTollFreeResponse.from_json(data), status_code, headers
     end
 
     #
@@ -14147,11 +14147,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Beta"] = beta.to_s if !beta.nil? && !beta.null?
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      query_params["Origin"] = origin.to_s if !origin.nil? && !origin.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Beta"] = beta.to_s if !beta.nil?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      query_params["Origin"] = origin.to_s if !origin.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14199,7 +14199,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListKeyResponse.from_nason(data), status_code, headers
+      return ListKeyResponse.from_json(data), status_code, headers
     end
 
     #
@@ -14240,7 +14240,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14290,7 +14290,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_media\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListMediaResponse.from_nason(data), status_code, headers
+      return ListMediaResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of Media resources belonging to the account used to make the request
@@ -14345,10 +14345,10 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["DateCreated"] = Time::Format::RFC_2822.format(date_created) if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = Time::Format::RFC_2822.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
-      query_params["DateCreated>"] = Time::Format::RFC_2822.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["DateCreated"] = Time::Format::RFC_2822.format(date_created) if !date_created.nil?
+      query_params["DateCreated<"] = Time::Format::RFC_2822.format(date_created_before) if !date_created_before.nil?
+      query_params["DateCreated>"] = Time::Format::RFC_2822.format(date_created_after) if !date_created_after.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14398,7 +14398,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListMemberResponse.from_nason(data), status_code, headers
+      return ListMemberResponse.from_json(data), status_code, headers
     end
 
     # Retrieve the members of the queue
@@ -14453,7 +14453,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14501,7 +14501,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListMessageResponse.from_nason(data), status_code, headers
+      return ListMessageResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of messages belonging to the account used to make the request
@@ -14542,12 +14542,12 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["To"] = to.to_s if !to.nil? && !to.null?
-      query_params["From"] = from.to_s if !from.nil? && !from.null?
-      query_params["DateSent"] = Time::Format::RFC_2822.format(date_sent) if !date_sent.nil? && !date_sent.null?
-      query_params["DateSent<"] = Time::Format::RFC_2822.format(date_sent_before) if !date_sent_before.nil? && !date_sent_before.null?
-      query_params["DateSent>"] = Time::Format::RFC_2822.format(date_sent_after) if !date_sent_after.nil? && !date_sent_after.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["To"] = to.to_s if !to.nil?
+      query_params["From"] = from.to_s if !from.nil?
+      query_params["DateSent"] = Time::Format::RFC_2822.format(date_sent) if !date_sent.nil?
+      query_params["DateSent<"] = Time::Format::RFC_2822.format(date_sent_before) if !date_sent_before.nil?
+      query_params["DateSent>"] = Time::Format::RFC_2822.format(date_sent_after) if !date_sent_after.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14595,7 +14595,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_notification\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListNotificationResponse.from_nason(data), status_code, headers
+      return ListNotificationResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of notifications belonging to the account used to make the request
@@ -14636,11 +14636,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Log"] = log.to_s if !log.nil? && !log.null?
-      query_params["MessageDate"] = Time::Format::ISO_8601_DATE.format(message_date) if !message_date.nil? && !message_date.null?
-      query_params["MessageDate<"] = Time::Format::ISO_8601_DATE.format(message_date_before) if !message_date_before.nil? && !message_date_before.null?
-      query_params["MessageDate>"] = Time::Format::ISO_8601_DATE.format(message_date_after) if !message_date_after.nil? && !message_date_after.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Log"] = log.to_s if !log.nil?
+      query_params["MessageDate"] = Time::Format::ISO_8601_DATE.format(message_date) if !message_date.nil?
+      query_params["MessageDate<"] = Time::Format::ISO_8601_DATE.format(message_date_before) if !message_date_before.nil?
+      query_params["MessageDate>"] = Time::Format::ISO_8601_DATE.format(message_date_after) if !message_date_after.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14688,7 +14688,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_outgoing_caller_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListOutgoingCallerIdResponse.from_nason(data), status_code, headers
+      return ListOutgoingCallerIdResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
@@ -14729,9 +14729,9 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil? && !phone_number.null?
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PhoneNumber"] = phone_number.to_s if !phone_number.nil?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14781,7 +14781,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_participant\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListParticipantResponse.from_nason(data), status_code, headers
+      return ListParticipantResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of participants belonging to the account used to make the request
@@ -14836,10 +14836,10 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Muted"] = muted.to_s if !muted.nil? && !muted.null?
-      query_params["Hold"] = hold.to_s if !hold.nil? && !hold.null?
-      query_params["Coaching"] = coaching.to_s if !coaching.nil? && !coaching.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Muted"] = muted.to_s if !muted.nil?
+      query_params["Hold"] = hold.to_s if !hold.nil?
+      query_params["Coaching"] = coaching.to_s if !coaching.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14887,7 +14887,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_queue\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListQueueResponse.from_nason(data), status_code, headers
+      return ListQueueResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of queues belonging to the account used to make the request
@@ -14928,7 +14928,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -14976,7 +14976,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListRecordingResponse.from_nason(data), status_code, headers
+      return ListRecordingResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of recordings belonging to the account used to make the request
@@ -15043,13 +15043,13 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["DateCreated"] = Time::Format::RFC_2822.format(date_created) if !date_created.nil? && !date_created.null?
-      query_params["DateCreated<"] = Time::Format::RFC_2822.format(date_created_before) if !date_created_before.nil? && !date_created_before.null?
-      query_params["DateCreated>"] = Time::Format::RFC_2822.format(date_created_after) if !date_created_after.nil? && !date_created_after.null?
-      query_params["CallSid"] = call_sid.to_s if !call_sid.nil? && !call_sid.null?
-      query_params["ConferenceSid"] = conference_sid.to_s if !conference_sid.nil? && !conference_sid.null?
-      query_params["IncludeSoftDeleted"] = include_soft_deleted.to_s if !include_soft_deleted.nil? && !include_soft_deleted.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["DateCreated"] = Time::Format::RFC_2822.format(date_created) if !date_created.nil?
+      query_params["DateCreated<"] = Time::Format::RFC_2822.format(date_created_before) if !date_created_before.nil?
+      query_params["DateCreated>"] = Time::Format::RFC_2822.format(date_created_after) if !date_created_after.nil?
+      query_params["CallSid"] = call_sid.to_s if !call_sid.nil?
+      query_params["ConferenceSid"] = conference_sid.to_s if !conference_sid.nil?
+      query_params["IncludeSoftDeleted"] = include_soft_deleted.to_s if !include_soft_deleted.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -15099,7 +15099,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_recording_add_on_result\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListRecordingAddOnResultResponse.from_nason(data), status_code, headers
+      return ListRecordingAddOnResultResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of results belonging to the recording
@@ -15154,7 +15154,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -15206,7 +15206,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_recording_add_on_result_payload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListRecordingAddOnResultPayloadResponse.from_nason(data), status_code, headers
+      return ListRecordingAddOnResultPayloadResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of payloads belonging to the AddOnResult
@@ -15275,7 +15275,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -15325,7 +15325,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_recording_transcription\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListRecordingTranscriptionResponse.from_nason(data), status_code, headers
+      return ListRecordingTranscriptionResponse.from_json(data), status_code, headers
     end
 
     #
@@ -15380,7 +15380,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -15428,7 +15428,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_short_code\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListShortCodeResponse.from_nason(data), status_code, headers
+      return ListShortCodeResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of short-codes belonging to the account used to make the request
@@ -15469,9 +15469,9 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      query_params["ShortCode"] = short_code.to_s if !short_code.nil? && !short_code.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      query_params["ShortCode"] = short_code.to_s if !short_code.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -15519,7 +15519,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_signing_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSigningKeyResponse.from_nason(data), status_code, headers
+      return ListSigningKeyResponse.from_json(data), status_code, headers
     end
 
     #
@@ -15560,7 +15560,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -15610,7 +15610,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_auth_calls_credential_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipAuthCallsCredentialListMappingResponse.from_nason(data), status_code, headers
+      return ListSipAuthCallsCredentialListMappingResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of credential list mappings belonging to the domain used in the request
@@ -15665,7 +15665,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -15715,7 +15715,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_auth_calls_ip_access_control_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipAuthCallsIpAccessControlListMappingResponse.from_nason(data), status_code, headers
+      return ListSipAuthCallsIpAccessControlListMappingResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of IP Access Control List mappings belonging to the domain used in the request
@@ -15770,7 +15770,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -15820,7 +15820,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_auth_registrations_credential_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipAuthRegistrationsCredentialListMappingResponse.from_nason(data), status_code, headers
+      return ListSipAuthRegistrationsCredentialListMappingResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of credential list mappings belonging to the domain used in the request
@@ -15875,7 +15875,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -15925,7 +15925,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_credential\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipCredentialResponse.from_nason(data), status_code, headers
+      return ListSipCredentialResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of credentials.
@@ -15980,7 +15980,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16028,7 +16028,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_credential_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipCredentialListResponse.from_nason(data), status_code, headers
+      return ListSipCredentialListResponse.from_json(data), status_code, headers
     end
 
     # Get All Credential Lists
@@ -16069,7 +16069,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16119,7 +16119,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_credential_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipCredentialListMappingResponse.from_nason(data), status_code, headers
+      return ListSipCredentialListMappingResponse.from_json(data), status_code, headers
     end
 
     # Read multiple CredentialListMapping resources from an account.
@@ -16174,7 +16174,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16222,7 +16222,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipDomainResponse.from_nason(data), status_code, headers
+      return ListSipDomainResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of domains belonging to the account used to make the request
@@ -16263,7 +16263,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16311,7 +16311,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_ip_access_control_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipIpAccessControlListResponse.from_nason(data), status_code, headers
+      return ListSipIpAccessControlListResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of IpAccessControlLists that belong to the account used to make the request
@@ -16352,7 +16352,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16402,7 +16402,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_ip_access_control_list_mapping\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipIpAccessControlListMappingResponse.from_nason(data), status_code, headers
+      return ListSipIpAccessControlListMappingResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of IpAccessControlListMapping resources.
@@ -16457,7 +16457,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16507,7 +16507,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_sip_ip_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListSipIpAddressResponse.from_nason(data), status_code, headers
+      return ListSipIpAddressResponse.from_json(data), status_code, headers
     end
 
     # Read multiple IpAddress resources.
@@ -16562,7 +16562,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16610,7 +16610,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_transcription\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListTranscriptionResponse.from_nason(data), status_code, headers
+      return ListTranscriptionResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of transcriptions belonging to the account used to make the request
@@ -16651,7 +16651,7 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16699,7 +16699,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_record\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageRecordResponse.from_nason(data), status_code, headers
+      return ListUsageRecordResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of usage-records belonging to the account used to make the request
@@ -16728,7 +16728,7 @@ module Twilio
       end
 
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !category.nil? && !category.null? && !allowable_values.includes?(category)
+      if @api_client.config.client_side_validation && !category.nil? && !allowable_values.includes?(category)
         raise ArgumentError.new("invalid value for \"category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -16744,11 +16744,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Category"] = category.to_s if !category.nil?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16796,7 +16796,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_record_all_time\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageRecordAllTimeResponse.from_nason(data), status_code, headers
+      return ListUsageRecordAllTimeResponse.from_json(data), status_code, headers
     end
 
     #
@@ -16825,7 +16825,7 @@ module Twilio
       end
 
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !category.nil? && !category.null? && !allowable_values.includes?(category)
+      if @api_client.config.client_side_validation && !category.nil? && !allowable_values.includes?(category)
         raise ArgumentError.new("invalid value for \"category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -16841,11 +16841,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Category"] = category.to_s if !category.nil?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16893,7 +16893,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_record_daily\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageRecordDailyResponse.from_nason(data), status_code, headers
+      return ListUsageRecordDailyResponse.from_json(data), status_code, headers
     end
 
     #
@@ -16922,7 +16922,7 @@ module Twilio
       end
 
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !category.nil? && !category.null? && !allowable_values.includes?(category)
+      if @api_client.config.client_side_validation && !category.nil? && !allowable_values.includes?(category)
         raise ArgumentError.new("invalid value for \"category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -16938,11 +16938,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Category"] = category.to_s if !category.nil?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -16990,7 +16990,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_record_last_month\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageRecordLastMonthResponse.from_nason(data), status_code, headers
+      return ListUsageRecordLastMonthResponse.from_json(data), status_code, headers
     end
 
     #
@@ -17019,7 +17019,7 @@ module Twilio
       end
 
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !category.nil? && !category.null? && !allowable_values.includes?(category)
+      if @api_client.config.client_side_validation && !category.nil? && !allowable_values.includes?(category)
         raise ArgumentError.new("invalid value for \"category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -17035,11 +17035,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Category"] = category.to_s if !category.nil?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -17087,7 +17087,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_record_monthly\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageRecordMonthlyResponse.from_nason(data), status_code, headers
+      return ListUsageRecordMonthlyResponse.from_json(data), status_code, headers
     end
 
     #
@@ -17116,7 +17116,7 @@ module Twilio
       end
 
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !category.nil? && !category.null? && !allowable_values.includes?(category)
+      if @api_client.config.client_side_validation && !category.nil? && !allowable_values.includes?(category)
         raise ArgumentError.new("invalid value for \"category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -17132,11 +17132,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Category"] = category.to_s if !category.nil?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -17184,7 +17184,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_record_this_month\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageRecordThisMonthResponse.from_nason(data), status_code, headers
+      return ListUsageRecordThisMonthResponse.from_json(data), status_code, headers
     end
 
     #
@@ -17213,7 +17213,7 @@ module Twilio
       end
 
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !category.nil? && !category.null? && !allowable_values.includes?(category)
+      if @api_client.config.client_side_validation && !category.nil? && !allowable_values.includes?(category)
         raise ArgumentError.new("invalid value for \"category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -17229,11 +17229,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Category"] = category.to_s if !category.nil?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -17281,7 +17281,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_record_today\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageRecordTodayResponse.from_nason(data), status_code, headers
+      return ListUsageRecordTodayResponse.from_json(data), status_code, headers
     end
 
     #
@@ -17310,7 +17310,7 @@ module Twilio
       end
 
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !category.nil? && !category.null? && !allowable_values.includes?(category)
+      if @api_client.config.client_side_validation && !category.nil? && !allowable_values.includes?(category)
         raise ArgumentError.new("invalid value for \"category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -17326,11 +17326,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Category"] = category.to_s if !category.nil?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -17378,7 +17378,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_record_yearly\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageRecordYearlyResponse.from_nason(data), status_code, headers
+      return ListUsageRecordYearlyResponse.from_json(data), status_code, headers
     end
 
     #
@@ -17407,7 +17407,7 @@ module Twilio
       end
 
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !category.nil? && !category.null? && !allowable_values.includes?(category)
+      if @api_client.config.client_side_validation && !category.nil? && !allowable_values.includes?(category)
         raise ArgumentError.new("invalid value for \"category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -17423,11 +17423,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Category"] = category.to_s if !category.nil?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -17475,7 +17475,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_record_yesterday\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageRecordYesterdayResponse.from_nason(data), status_code, headers
+      return ListUsageRecordYesterdayResponse.from_json(data), status_code, headers
     end
 
     #
@@ -17504,7 +17504,7 @@ module Twilio
       end
 
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !category.nil? && !category.null? && !allowable_values.includes?(category)
+      if @api_client.config.client_side_validation && !category.nil? && !allowable_values.includes?(category)
         raise ArgumentError.new("invalid value for \"category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -17520,11 +17520,11 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Category"] = category.to_s if !category.nil? && !category.null?
-      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil? && !start_date.null?
-      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil? && !end_date.null?
-      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil? && !include_subaccounts.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Category"] = category.to_s if !category.nil?
+      query_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
+      query_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
+      query_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -17572,7 +17572,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#list_usage_trigger\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ListUsageTriggerResponse.from_nason(data), status_code, headers
+      return ListUsageTriggerResponse.from_json(data), status_code, headers
     end
 
     # Retrieve a list of usage-triggers belonging to the account used to make the request
@@ -17601,15 +17601,15 @@ module Twilio
       end
 
       allowable_values = ["daily", "monthly", "yearly", "alltime"]
-      if @api_client.config.client_side_validation && !recurring.nil? && !recurring.null? && !allowable_values.includes?(recurring)
+      if @api_client.config.client_side_validation && !recurring.nil? && !allowable_values.includes?(recurring)
         raise ArgumentError.new("invalid value for \"recurring\", must be one of #{allowable_values}")
       end
       allowable_values = ["count", "usage", "price"]
-      if @api_client.config.client_side_validation && !trigger_by.nil? && !trigger_by.null? && !allowable_values.includes?(trigger_by)
+      if @api_client.config.client_side_validation && !trigger_by.nil? && !allowable_values.includes?(trigger_by)
         raise ArgumentError.new("invalid value for \"trigger_by\", must be one of #{allowable_values}")
       end
       allowable_values = ["a2p-registration-fees", "agent-conference", "answering-machine-detection", "authy-authentications", "authy-calls-outbound", "authy-monthly-fees", "authy-phone-intelligence", "authy-phone-verifications", "authy-sms-outbound", "call-progess-events", "calleridlookups", "calls", "calls-client", "calls-globalconference", "calls-inbound", "calls-inbound-local", "calls-inbound-mobile", "calls-inbound-tollfree", "calls-outbound", "calls-pay-verb-transactions", "calls-recordings", "calls-sip", "calls-sip-inbound", "calls-sip-outbound", "calls-transfers", "carrier-lookups", "conversations", "conversations-api-requests", "conversations-conversation-events", "conversations-endpoint-connectivity", "conversations-events", "conversations-participant-events", "conversations-participants", "cps", "flex-usage", "fraud-lookups", "group-rooms", "group-rooms-data-track", "group-rooms-encrypted-media-recorded", "group-rooms-media-downloaded", "group-rooms-media-recorded", "group-rooms-media-routed", "group-rooms-media-stored", "group-rooms-participant-minutes", "group-rooms-recorded-minutes", "imp-v1-usage", "lookups", "marketplace", "marketplace-algorithmia-named-entity-recognition", "marketplace-cadence-transcription", "marketplace-cadence-translation", "marketplace-capio-speech-to-text", "marketplace-convriza-ababa", "marketplace-deepgram-phrase-detector", "marketplace-digital-segment-business-info", "marketplace-facebook-offline-conversions", "marketplace-google-speech-to-text", "marketplace-ibm-watson-message-insights", "marketplace-ibm-watson-message-sentiment", "marketplace-ibm-watson-recording-analysis", "marketplace-ibm-watson-tone-analyzer", "marketplace-icehook-systems-scout", "marketplace-infogroup-dataaxle-bizinfo", "marketplace-keen-io-contact-center-analytics", "marketplace-marchex-cleancall", "marketplace-marchex-sentiment-analysis-for-sms", "marketplace-marketplace-nextcaller-social-id", "marketplace-mobile-commons-opt-out-classifier", "marketplace-nexiwave-voicemail-to-text", "marketplace-nextcaller-advanced-caller-identification", "marketplace-nomorobo-spam-score", "marketplace-payfone-tcpa-compliance", "marketplace-remeeting-automatic-speech-recognition", "marketplace-tcpa-defense-solutions-blacklist-feed", "marketplace-telo-opencnam", "marketplace-truecnam-true-spam", "marketplace-twilio-caller-name-lookup-us", "marketplace-twilio-carrier-information-lookup", "marketplace-voicebase-pci", "marketplace-voicebase-transcription", "marketplace-voicebase-transcription-custom-vocabulary", "marketplace-whitepages-pro-caller-identification", "marketplace-whitepages-pro-phone-intelligence", "marketplace-whitepages-pro-phone-reputation", "marketplace-wolfarm-spoken-results", "marketplace-wolfram-short-answer", "marketplace-ytica-contact-center-reporting-analytics", "mediastorage", "mms", "mms-inbound", "mms-inbound-longcode", "mms-inbound-shortcode", "mms-messages-carrierfees", "mms-outbound", "mms-outbound-longcode", "mms-outbound-shortcode", "monitor-reads", "monitor-storage", "monitor-writes", "notify", "notify-actions-attempts", "notify-channels", "number-format-lookups", "pchat", "pchat-users", "peer-to-peer-rooms-participant-minutes", "pfax", "pfax-minutes", "pfax-minutes-inbound", "pfax-minutes-outbound", "pfax-pages", "phonenumbers", "phonenumbers-cps", "phonenumbers-emergency", "phonenumbers-local", "phonenumbers-mobile", "phonenumbers-setups", "phonenumbers-tollfree", "premiumsupport", "proxy", "proxy-active-sessions", "pstnconnectivity", "pv", "pv-composition-media-downloaded", "pv-composition-media-encrypted", "pv-composition-media-stored", "pv-composition-minutes", "pv-recording-compositions", "pv-room-participants", "pv-room-participants-au1", "pv-room-participants-br1", "pv-room-participants-ie1", "pv-room-participants-jp1", "pv-room-participants-sg1", "pv-room-participants-us1", "pv-room-participants-us2", "pv-rooms", "pv-sip-endpoint-registrations", "recordings", "recordingstorage", "rooms-group-bandwidth", "rooms-group-minutes", "rooms-peer-to-peer-minutes", "shortcodes", "shortcodes-customerowned", "shortcodes-mms-enablement", "shortcodes-mps", "shortcodes-random", "shortcodes-uk", "shortcodes-vanity", "small-group-rooms", "small-group-rooms-data-track", "small-group-rooms-participant-minutes", "sms", "sms-inbound", "sms-inbound-longcode", "sms-inbound-shortcode", "sms-messages-carrierfees", "sms-messages-features", "sms-messages-features-senderid", "sms-outbound", "sms-outbound-content-inspection", "sms-outbound-longcode", "sms-outbound-shortcode", "speech-recognition", "studio-engagements", "sync", "sync-actions", "sync-endpoint-hours", "sync-endpoint-hours-above-daily-cap", "taskrouter-tasks", "totalprice", "transcriptions", "trunking-cps", "trunking-emergency-calls", "trunking-origination", "trunking-origination-local", "trunking-origination-mobile", "trunking-origination-tollfree", "trunking-recordings", "trunking-secure", "trunking-termination", "turnmegabytes", "turnmegabytes-australia", "turnmegabytes-brasil", "turnmegabytes-germany", "turnmegabytes-india", "turnmegabytes-ireland", "turnmegabytes-japan", "turnmegabytes-singapore", "turnmegabytes-useast", "turnmegabytes-uswest", "twilio-interconnect", "verify-push", "verify-totp", "verify-whatsapp-conversations-business-initiated", "video-recordings", "voice-insights", "voice-insights-client-insights-on-demand-minute", "voice-insights-ptsn-insights-on-demand-minute", "voice-insights-sip-interface-insights-on-demand-minute", "voice-insights-sip-trunking-insights-on-demand-minute", "wireless", "wireless-orders", "wireless-orders-artwork", "wireless-orders-bulk", "wireless-orders-esim", "wireless-orders-starter", "wireless-usage", "wireless-usage-commands", "wireless-usage-commands-africa", "wireless-usage-commands-asia", "wireless-usage-commands-centralandsouthamerica", "wireless-usage-commands-europe", "wireless-usage-commands-home", "wireless-usage-commands-northamerica", "wireless-usage-commands-oceania", "wireless-usage-commands-roaming", "wireless-usage-data", "wireless-usage-data-africa", "wireless-usage-data-asia", "wireless-usage-data-centralandsouthamerica", "wireless-usage-data-custom-additionalmb", "wireless-usage-data-custom-first5mb", "wireless-usage-data-domestic-roaming", "wireless-usage-data-europe", "wireless-usage-data-individual-additionalgb", "wireless-usage-data-individual-firstgb", "wireless-usage-data-international-roaming-canada", "wireless-usage-data-international-roaming-india", "wireless-usage-data-international-roaming-mexico", "wireless-usage-data-northamerica", "wireless-usage-data-oceania", "wireless-usage-data-pooled", "wireless-usage-data-pooled-downlink", "wireless-usage-data-pooled-uplink", "wireless-usage-mrc", "wireless-usage-mrc-custom", "wireless-usage-mrc-individual", "wireless-usage-mrc-pooled", "wireless-usage-mrc-suspended", "wireless-usage-sms", "wireless-usage-voice"]
-      if @api_client.config.client_side_validation && !usage_category.nil? && !usage_category.null? && !allowable_values.includes?(usage_category)
+      if @api_client.config.client_side_validation && !usage_category.nil? && !allowable_values.includes?(usage_category)
         raise ArgumentError.new("invalid value for \"usage_category\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !page_size.nil? && page_size > 1000
@@ -17625,10 +17625,10 @@ module Twilio
 
       # query parameters
       query_params = Hash(String, (String | Array(String))).new
-      query_params["Recurring"] = recurring.to_s if !recurring.nil? && !recurring.null?
-      query_params["TriggerBy"] = trigger_by.to_s if !trigger_by.nil? && !trigger_by.null?
-      query_params["UsageCategory"] = usage_category.to_s if !usage_category.nil? && !usage_category.null?
-      query_params["PageSize"] = page_size.to_s if !page_size.nil? && !page_size.null?
+      query_params["Recurring"] = recurring.to_s if !recurring.nil?
+      query_params["TriggerBy"] = trigger_by.to_s if !trigger_by.nil?
+      query_params["UsageCategory"] = usage_category.to_s if !usage_category.nil?
+      query_params["PageSize"] = page_size.to_s if !page_size.nil?
 
       # header parameters
       header_params = Hash(String, String).new
@@ -17676,7 +17676,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Account.from_nason(data), status_code, headers
+      return Account.from_json(data), status_code, headers
     end
 
     # Modify the properties of a given Account
@@ -17705,7 +17705,7 @@ module Twilio
       end
 
       allowable_values = ["active", "suspended", "closed"]
-      if @api_client.config.client_side_validation && !status.nil? && !status.null? && !allowable_values.includes?(status)
+      if @api_client.config.client_side_validation && !status.nil? && !allowable_values.includes?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{allowable_values}")
       end
       # resource path
@@ -17723,8 +17723,8 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["Status"] = status.to_s if !status.nil? && !status.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["Status"] = status.to_s if !status.nil?
 
       # http body (model)
       post_body = nil
@@ -17766,7 +17766,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Address.from_nason(data), status_code, headers
+      return Address.from_json(data), status_code, headers
     end
 
     #
@@ -17823,14 +17823,14 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AutoCorrectAddress"] = auto_correct_address.to_s if !auto_correct_address.nil? && !auto_correct_address.null?
-      form_params["City"] = city.to_s if !city.nil? && !city.null?
-      form_params["CustomerName"] = customer_name.to_s if !customer_name.nil? && !customer_name.null?
-      form_params["EmergencyEnabled"] = emergency_enabled.to_s if !emergency_enabled.nil? && !emergency_enabled.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["PostalCode"] = postal_code.to_s if !postal_code.nil? && !postal_code.null?
-      form_params["Region"] = region.to_s if !region.nil? && !region.null?
-      form_params["Street"] = street.to_s if !street.nil? && !street.null?
+      form_params["AutoCorrectAddress"] = auto_correct_address.to_s if !auto_correct_address.nil?
+      form_params["City"] = city.to_s if !city.nil?
+      form_params["CustomerName"] = customer_name.to_s if !customer_name.nil?
+      form_params["EmergencyEnabled"] = emergency_enabled.to_s if !emergency_enabled.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["PostalCode"] = postal_code.to_s if !postal_code.nil?
+      form_params["Region"] = region.to_s if !region.nil?
+      form_params["Street"] = street.to_s if !street.nil?
 
       # http body (model)
       post_body = nil
@@ -17872,7 +17872,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Application.from_nason(data), status_code, headers
+      return Application.from_json(data), status_code, headers
     end
 
     # Updates the application&#39;s properties
@@ -17915,23 +17915,23 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !sms_fallback_method.null? && !allowable_values.includes?(sms_fallback_method)
+      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !allowable_values.includes?(sms_fallback_method)
         raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_method.nil? && !sms_method.null? && !allowable_values.includes?(sms_method)
+      if @api_client.config.client_side_validation && !sms_method.nil? && !allowable_values.includes?(sms_method)
         raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !voice_fallback_method.null? && !allowable_values.includes?(voice_fallback_method)
+      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !allowable_values.includes?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_method.nil? && !voice_method.null? && !allowable_values.includes?(voice_method)
+      if @api_client.config.client_side_validation && !voice_method.nil? && !allowable_values.includes?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -17949,21 +17949,21 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["ApiVersion"] = api_version.to_s if !api_version.nil? && !api_version.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["MessageStatusCallback"] = message_status_callback.to_s if !message_status_callback.nil? && !message_status_callback.null?
-      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil? && !sms_fallback_method.null?
-      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil? && !sms_fallback_url.null?
-      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil? && !sms_method.null?
-      form_params["SmsStatusCallback"] = sms_status_callback.to_s if !sms_status_callback.nil? && !sms_status_callback.null?
-      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil? && !sms_url.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil? && !voice_caller_id_lookup.null?
-      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil? && !voice_fallback_method.null?
-      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil? && !voice_fallback_url.null?
-      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil? && !voice_method.null?
-      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil? && !voice_url.null?
+      form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["MessageStatusCallback"] = message_status_callback.to_s if !message_status_callback.nil?
+      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil?
+      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil?
+      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil?
+      form_params["SmsStatusCallback"] = sms_status_callback.to_s if !sms_status_callback.nil?
+      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil?
+      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil?
+      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil?
+      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil?
+      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil?
 
       # http body (model)
       post_body = nil
@@ -18005,7 +18005,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_call\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Call.from_nason(data), status_code, headers
+      return Call.from_json(data), status_code, headers
     end
 
     # Initiates a call redirect or terminates a call
@@ -18048,19 +18048,19 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !fallback_method.nil? && !fallback_method.null? && !allowable_values.includes?(fallback_method)
+      if @api_client.config.client_side_validation && !fallback_method.nil? && !allowable_values.includes?(fallback_method)
         raise ArgumentError.new("invalid value for \"fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !method.nil? && !method.null? && !allowable_values.includes?(method)
+      if @api_client.config.client_side_validation && !method.nil? && !allowable_values.includes?(method)
         raise ArgumentError.new("invalid value for \"method\", must be one of #{allowable_values}")
       end
       allowable_values = ["canceled", "completed"]
-      if @api_client.config.client_side_validation && !status.nil? && !status.null? && !allowable_values.includes?(status)
+      if @api_client.config.client_side_validation && !status.nil? && !allowable_values.includes?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -18078,15 +18078,15 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FallbackMethod"] = fallback_method.to_s if !fallback_method.nil? && !fallback_method.null?
-      form_params["FallbackUrl"] = fallback_url.to_s if !fallback_url.nil? && !fallback_url.null?
-      form_params["Method"] = method.to_s if !method.nil? && !method.null?
-      form_params["Status"] = status.to_s if !status.nil? && !status.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["TimeLimit"] = time_limit.to_s if !time_limit.nil? && !time_limit.null?
-      form_params["Twiml"] = twiml.to_s if !twiml.nil? && !twiml.null?
-      form_params["Url"] = url.to_s if !url.nil? && !url.null?
+      form_params["FallbackMethod"] = fallback_method.to_s if !fallback_method.nil?
+      form_params["FallbackUrl"] = fallback_url.to_s if !fallback_url.nil?
+      form_params["Method"] = method.to_s if !method.nil?
+      form_params["Status"] = status.to_s if !status.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["TimeLimit"] = time_limit.to_s if !time_limit.nil?
+      form_params["Twiml"] = twiml.to_s if !twiml.nil?
+      form_params["Url"] = url.to_s if !url.nil?
 
       # http body (model)
       post_body = nil
@@ -18128,7 +18128,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_call_feedback\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallCallFeedback.from_nason(data), status_code, headers
+      return CallCallFeedback.from_json(data), status_code, headers
     end
 
     # Update a Feedback resource for a call
@@ -18158,7 +18158,7 @@ module Twilio
       end
 
       allowable_values = ["audio-latency", "digits-not-captured", "dropped-call", "imperfect-audio", "incorrect-caller-id", "one-way-audio", "post-dial-delay", "unsolicited-call"]
-      if @api_client.config.client_side_validation && !issue.nil? && !issue.null? && !issue.all? { |item| allowable_values.includes?(item) }
+      if @api_client.config.client_side_validation && !issue.nil? && !issue.all? { |item| allowable_values.includes?(item) }
         raise ArgumentError.new("invalid value for \"issue\", must include one of #{allowable_values}")
       end
       # resource path
@@ -18176,8 +18176,8 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Issue"] = @api_client.build_collection_param(issue, "multi") if !issue.nil? && !issue.null? && !issue.empty?
-      form_params["QualityScore"] = quality_score.to_s if !quality_score.nil? && !quality_score.null?
+      form_params["Issue"] = @api_client.build_collection_param(issue, "multi") if !issue.nil? && !issue.empty?
+      form_params["QualityScore"] = quality_score.to_s if !quality_score.nil?
 
       # http body (model)
       post_body = nil
@@ -18223,7 +18223,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_call_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallCallRecording.from_nason(data), status_code, headers
+      return CallCallRecording.from_json(data), status_code, headers
     end
 
     # Changes the status of the recording to paused, stopped, or in-progress. Note: Pass &#x60;Twilio.CURRENT&#x60; instead of recording sid to reference current active recording.
@@ -18287,8 +18287,8 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["PauseBehavior"] = pause_behavior.to_s if !pause_behavior.nil? && !pause_behavior.null?
-      form_params["Status"] = status.to_s if !status.nil? && !status.null?
+      form_params["PauseBehavior"] = pause_behavior.to_s if !pause_behavior.nil?
+      form_params["Status"] = status.to_s if !status.nil?
 
       # http body (model)
       post_body = nil
@@ -18330,7 +18330,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_conference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Conference.from_nason(data), status_code, headers
+      return Conference.from_json(data), status_code, headers
     end
 
     #
@@ -18360,11 +18360,11 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !announce_method.nil? && !announce_method.null? && !allowable_values.includes?(announce_method)
+      if @api_client.config.client_side_validation && !announce_method.nil? && !allowable_values.includes?(announce_method)
         raise ArgumentError.new("invalid value for \"announce_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["completed"]
-      if @api_client.config.client_side_validation && !status.nil? && !status.null? && !allowable_values.includes?(status)
+      if @api_client.config.client_side_validation && !status.nil? && !allowable_values.includes?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{allowable_values}")
       end
       # resource path
@@ -18382,9 +18382,9 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AnnounceMethod"] = announce_method.to_s if !announce_method.nil? && !announce_method.null?
-      form_params["AnnounceUrl"] = announce_url.to_s if !announce_url.nil? && !announce_url.null?
-      form_params["Status"] = status.to_s if !status.nil? && !status.null?
+      form_params["AnnounceMethod"] = announce_method.to_s if !announce_method.nil?
+      form_params["AnnounceUrl"] = announce_url.to_s if !announce_url.nil?
+      form_params["Status"] = status.to_s if !status.nil?
 
       # http body (model)
       post_body = nil
@@ -18430,7 +18430,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_conference_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ConferenceConferenceRecording.from_nason(data), status_code, headers
+      return ConferenceConferenceRecording.from_json(data), status_code, headers
     end
 
     # Changes the status of the recording to paused, stopped, or in-progress. Note: To use &#x60;Twilio.CURRENT&#x60;, pass it as recording sid.
@@ -18494,8 +18494,8 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["PauseBehavior"] = pause_behavior.to_s if !pause_behavior.nil? && !pause_behavior.null?
-      form_params["Status"] = status.to_s if !status.nil? && !status.null?
+      form_params["PauseBehavior"] = pause_behavior.to_s if !pause_behavior.nil?
+      form_params["Status"] = status.to_s if !status.nil?
 
       # http body (model)
       post_body = nil
@@ -18537,7 +18537,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_connect_app\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ConnectApp.from_nason(data), status_code, headers
+      return ConnectApp.from_json(data), status_code, headers
     end
 
     # Update a connect-app with the specified parameters
@@ -18580,11 +18580,11 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !deauthorize_callback_method.nil? && !deauthorize_callback_method.null? && !allowable_values.includes?(deauthorize_callback_method)
+      if @api_client.config.client_side_validation && !deauthorize_callback_method.nil? && !allowable_values.includes?(deauthorize_callback_method)
         raise ArgumentError.new("invalid value for \"deauthorize_callback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["get-all", "post-all"]
-      if @api_client.config.client_side_validation && !permissions.nil? && !permissions.null? && !permissions.all? { |item| allowable_values.includes?(item) }
+      if @api_client.config.client_side_validation && !permissions.nil? && !permissions.all? { |item| allowable_values.includes?(item) }
         raise ArgumentError.new("invalid value for \"permissions\", must include one of #{allowable_values}")
       end
       # resource path
@@ -18602,14 +18602,14 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AuthorizeRedirectUrl"] = authorize_redirect_url.to_s if !authorize_redirect_url.nil? && !authorize_redirect_url.null?
-      form_params["CompanyName"] = company_name.to_s if !company_name.nil? && !company_name.null?
-      form_params["DeauthorizeCallbackMethod"] = deauthorize_callback_method.to_s if !deauthorize_callback_method.nil? && !deauthorize_callback_method.null?
-      form_params["DeauthorizeCallbackUrl"] = deauthorize_callback_url.to_s if !deauthorize_callback_url.nil? && !deauthorize_callback_url.null?
-      form_params["Description"] = description.to_s if !description.nil? && !description.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["HomepageUrl"] = homepage_url.to_s if !homepage_url.nil? && !homepage_url.null?
-      form_params["Permissions"] = @api_client.build_collection_param(permissions, "multi") if !permissions.nil? && !permissions.null? && !permissions.empty?
+      form_params["AuthorizeRedirectUrl"] = authorize_redirect_url.to_s if !authorize_redirect_url.nil?
+      form_params["CompanyName"] = company_name.to_s if !company_name.nil?
+      form_params["DeauthorizeCallbackMethod"] = deauthorize_callback_method.to_s if !deauthorize_callback_method.nil?
+      form_params["DeauthorizeCallbackUrl"] = deauthorize_callback_url.to_s if !deauthorize_callback_url.nil?
+      form_params["Description"] = description.to_s if !description.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["HomepageUrl"] = homepage_url.to_s if !homepage_url.nil?
+      form_params["Permissions"] = @api_client.build_collection_param(permissions, "multi") if !permissions.nil? && !permissions.empty?
 
       # http body (model)
       post_body = nil
@@ -18651,7 +18651,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_incoming_phone_number\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return IncomingPhoneNumber.from_nason(data), status_code, headers
+      return IncomingPhoneNumber.from_json(data), status_code, headers
     end
 
     # Update an incoming-phone-number instance.
@@ -18746,7 +18746,7 @@ module Twilio
       end
 
       allowable_values = ["Active", "Inactive"]
-      if @api_client.config.client_side_validation && !emergency_status.nil? && !emergency_status.null? && !allowable_values.includes?(emergency_status)
+      if @api_client.config.client_side_validation && !emergency_status.nil? && !allowable_values.includes?(emergency_status)
         raise ArgumentError.new("invalid value for \"emergency_status\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !identity_sid.nil? && identity_sid.to_s.size > 34
@@ -18776,15 +18776,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !sms_fallback_method.null? && !allowable_values.includes?(sms_fallback_method)
+      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !allowable_values.includes?(sms_fallback_method)
         raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_method.nil? && !sms_method.null? && !allowable_values.includes?(sms_method)
+      if @api_client.config.client_side_validation && !sms_method.nil? && !allowable_values.includes?(sms_method)
         raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !status_callback_method.nil? && !status_callback_method.null? && !allowable_values.includes?(status_callback_method)
+      if @api_client.config.client_side_validation && !status_callback_method.nil? && !allowable_values.includes?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !trunk_sid.nil? && trunk_sid.to_s.size > 34
@@ -18814,15 +18814,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !voice_fallback_method.null? && !allowable_values.includes?(voice_fallback_method)
+      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !allowable_values.includes?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_method.nil? && !voice_method.null? && !allowable_values.includes?(voice_method)
+      if @api_client.config.client_side_validation && !voice_method.nil? && !allowable_values.includes?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["voice", "fax"]
-      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !voice_receive_mode.null? && !allowable_values.includes?(voice_receive_mode)
+      if @api_client.config.client_side_validation && !voice_receive_mode.nil? && !allowable_values.includes?(voice_receive_mode)
         raise ArgumentError.new("invalid value for \"voice_receive_mode\", must be one of #{allowable_values}")
       end
       # resource path
@@ -18840,29 +18840,29 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AccountSid"] = account_sid2.to_s if !account_sid2.nil? && !account_sid2.null?
-      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil? && !address_sid.null?
-      form_params["ApiVersion"] = api_version.to_s if !api_version.nil? && !api_version.null?
-      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil? && !bundle_sid.null?
-      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil? && !emergency_address_sid.null?
-      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil? && !emergency_status.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil? && !identity_sid.null?
-      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil? && !sms_application_sid.null?
-      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil? && !sms_fallback_method.null?
-      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil? && !sms_fallback_url.null?
-      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil? && !sms_method.null?
-      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil? && !sms_url.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
-      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil? && !status_callback_method.null?
-      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil? && !trunk_sid.null?
-      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil? && !voice_application_sid.null?
-      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil? && !voice_caller_id_lookup.null?
-      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil? && !voice_fallback_method.null?
-      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil? && !voice_fallback_url.null?
-      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil? && !voice_method.null?
-      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil? && !voice_receive_mode.null?
-      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil? && !voice_url.null?
+      form_params["AccountSid"] = account_sid2.to_s if !account_sid2.nil?
+      form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
+      form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
+      form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil?
+      form_params["EmergencyAddressSid"] = emergency_address_sid.to_s if !emergency_address_sid.nil?
+      form_params["EmergencyStatus"] = emergency_status.to_s if !emergency_status.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["IdentitySid"] = identity_sid.to_s if !identity_sid.nil?
+      form_params["SmsApplicationSid"] = sms_application_sid.to_s if !sms_application_sid.nil?
+      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil?
+      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil?
+      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil?
+      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
+      form_params["StatusCallbackMethod"] = status_callback_method.to_s if !status_callback_method.nil?
+      form_params["TrunkSid"] = trunk_sid.to_s if !trunk_sid.nil?
+      form_params["VoiceApplicationSid"] = voice_application_sid.to_s if !voice_application_sid.nil?
+      form_params["VoiceCallerIdLookup"] = voice_caller_id_lookup.to_s if !voice_caller_id_lookup.nil?
+      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil?
+      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil?
+      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil?
+      form_params["VoiceReceiveMode"] = voice_receive_mode.to_s if !voice_receive_mode.nil?
+      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil?
 
       # http body (model)
       post_body = nil
@@ -18904,7 +18904,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Key.from_nason(data), status_code, headers
+      return Key.from_json(data), status_code, headers
     end
 
     #
@@ -18961,7 +18961,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -19007,7 +19007,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return QueueMember.from_nason(data), status_code, headers
+      return QueueMember.from_json(data), status_code, headers
     end
 
     # Dequeue a member from a queue and have the member&#39;s call begin executing the TwiML document at that URL
@@ -19052,7 +19052,7 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !method.nil? && !method.null? && !allowable_values.includes?(method)
+      if @api_client.config.client_side_validation && !method.nil? && !allowable_values.includes?(method)
         raise ArgumentError.new("invalid value for \"method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -19070,8 +19070,8 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Method"] = method.to_s if !method.nil? && !method.null?
-      form_params["Url"] = url.to_s if !url.nil? && !url.null?
+      form_params["Method"] = method.to_s if !method.nil?
+      form_params["Url"] = url.to_s if !url.nil?
 
       # http body (model)
       post_body = nil
@@ -19113,7 +19113,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Message.from_nason(data), status_code, headers
+      return Message.from_json(data), status_code, headers
     end
 
     # To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
@@ -19156,7 +19156,7 @@ module Twilio
       end
 
       allowable_values = ["canceled"]
-      if @api_client.config.client_side_validation && !status.nil? && !status.null? && !allowable_values.includes?(status)
+      if @api_client.config.client_side_validation && !status.nil? && !allowable_values.includes?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{allowable_values}")
       end
       # resource path
@@ -19174,8 +19174,8 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Body"] = body.to_s if !body.nil? && !body.null?
-      form_params["Status"] = status.to_s if !status.nil? && !status.null?
+      form_params["Body"] = body.to_s if !body.nil?
+      form_params["Status"] = status.to_s if !status.nil?
 
       # http body (model)
       post_body = nil
@@ -19217,7 +19217,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_outgoing_caller_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return OutgoingCallerId.from_nason(data), status_code, headers
+      return OutgoingCallerId.from_json(data), status_code, headers
     end
 
     # Updates the caller-id
@@ -19274,7 +19274,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -19318,7 +19318,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_participant\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ConferenceParticipant.from_nason(data), status_code, headers
+      return ConferenceParticipant.from_json(data), status_code, headers
     end
 
     # Update the properties of the participant
@@ -19362,7 +19362,7 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !announce_method.nil? && !announce_method.null? && !allowable_values.includes?(announce_method)
+      if @api_client.config.client_side_validation && !announce_method.nil? && !allowable_values.includes?(announce_method)
         raise ArgumentError.new("invalid value for \"announce_method\", must be one of #{allowable_values}")
       end
       if @api_client.config.client_side_validation && !call_sid_to_coach.nil? && call_sid_to_coach.to_s.size > 34
@@ -19379,11 +19379,11 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !hold_method.nil? && !hold_method.null? && !allowable_values.includes?(hold_method)
+      if @api_client.config.client_side_validation && !hold_method.nil? && !allowable_values.includes?(hold_method)
         raise ArgumentError.new("invalid value for \"hold_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !wait_method.nil? && !wait_method.null? && !allowable_values.includes?(wait_method)
+      if @api_client.config.client_side_validation && !wait_method.nil? && !allowable_values.includes?(wait_method)
         raise ArgumentError.new("invalid value for \"wait_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -19401,18 +19401,18 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["AnnounceMethod"] = announce_method.to_s if !announce_method.nil? && !announce_method.null?
-      form_params["AnnounceUrl"] = announce_url.to_s if !announce_url.nil? && !announce_url.null?
-      form_params["BeepOnExit"] = beep_on_exit.to_s if !beep_on_exit.nil? && !beep_on_exit.null?
-      form_params["CallSidToCoach"] = call_sid_to_coach.to_s if !call_sid_to_coach.nil? && !call_sid_to_coach.null?
-      form_params["Coaching"] = coaching.to_s if !coaching.nil? && !coaching.null?
-      form_params["EndConferenceOnExit"] = end_conference_on_exit.to_s if !end_conference_on_exit.nil? && !end_conference_on_exit.null?
-      form_params["Hold"] = hold.to_s if !hold.nil? && !hold.null?
-      form_params["HoldMethod"] = hold_method.to_s if !hold_method.nil? && !hold_method.null?
-      form_params["HoldUrl"] = hold_url.to_s if !hold_url.nil? && !hold_url.null?
-      form_params["Muted"] = muted.to_s if !muted.nil? && !muted.null?
-      form_params["WaitMethod"] = wait_method.to_s if !wait_method.nil? && !wait_method.null?
-      form_params["WaitUrl"] = wait_url.to_s if !wait_url.nil? && !wait_url.null?
+      form_params["AnnounceMethod"] = announce_method.to_s if !announce_method.nil?
+      form_params["AnnounceUrl"] = announce_url.to_s if !announce_url.nil?
+      form_params["BeepOnExit"] = beep_on_exit.to_s if !beep_on_exit.nil?
+      form_params["CallSidToCoach"] = call_sid_to_coach.to_s if !call_sid_to_coach.nil?
+      form_params["Coaching"] = coaching.to_s if !coaching.nil?
+      form_params["EndConferenceOnExit"] = end_conference_on_exit.to_s if !end_conference_on_exit.nil?
+      form_params["Hold"] = hold.to_s if !hold.nil?
+      form_params["HoldMethod"] = hold_method.to_s if !hold_method.nil?
+      form_params["HoldUrl"] = hold_url.to_s if !hold_url.nil?
+      form_params["Muted"] = muted.to_s if !muted.nil?
+      form_params["WaitMethod"] = wait_method.to_s if !wait_method.nil?
+      form_params["WaitUrl"] = wait_url.to_s if !wait_url.nil?
 
       # http body (model)
       post_body = nil
@@ -19460,7 +19460,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_payments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallPayments.from_nason(data), status_code, headers
+      return CallPayments.from_json(data), status_code, headers
     end
 
     # update an instance of payments with different phases of payment flows.
@@ -19519,11 +19519,11 @@ module Twilio
       end
 
       allowable_values = ["payment-card-number", "expiration-date", "security-code", "postal-code", "bank-routing-number", "bank-account-number"]
-      if @api_client.config.client_side_validation && !capture.nil? && !capture.null? && !allowable_values.includes?(capture)
+      if @api_client.config.client_side_validation && !capture.nil? && !allowable_values.includes?(capture)
         raise ArgumentError.new("invalid value for \"capture\", must be one of #{allowable_values}")
       end
       allowable_values = ["complete", "cancel"]
-      if @api_client.config.client_side_validation && !status.nil? && !status.null? && !allowable_values.includes?(status)
+      if @api_client.config.client_side_validation && !status.nil? && !allowable_values.includes?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{allowable_values}")
       end
       # resource path
@@ -19541,10 +19541,10 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Capture"] = capture.to_s if !capture.nil? && !capture.null?
-      form_params["IdempotencyKey"] = idempotency_key.to_s if !idempotency_key.nil? && !idempotency_key.null?
-      form_params["Status"] = status.to_s if !status.nil? && !status.null?
-      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil? && !status_callback.null?
+      form_params["Capture"] = capture.to_s if !capture.nil?
+      form_params["IdempotencyKey"] = idempotency_key.to_s if !idempotency_key.nil?
+      form_params["Status"] = status.to_s if !status.nil?
+      form_params["StatusCallback"] = status_callback.to_s if !status_callback.nil?
 
       # http body (model)
       post_body = nil
@@ -19586,7 +19586,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_queue\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return Queue.from_nason(data), status_code, headers
+      return Queue.from_json(data), status_code, headers
     end
 
     # Update the queue with the new parameters
@@ -19643,8 +19643,8 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["MaxSize"] = max_size.to_s if !max_size.nil? && !max_size.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["MaxSize"] = max_size.to_s if !max_size.nil?
 
       # http body (model)
       post_body = nil
@@ -19686,7 +19686,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_short_code\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return ShortCode.from_nason(data), status_code, headers
+      return ShortCode.from_json(data), status_code, headers
     end
 
     # Update a short code with the following parameters
@@ -19729,11 +19729,11 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !sms_fallback_method.null? && !allowable_values.includes?(sms_fallback_method)
+      if @api_client.config.client_side_validation && !sms_fallback_method.nil? && !allowable_values.includes?(sms_fallback_method)
         raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !sms_method.nil? && !sms_method.null? && !allowable_values.includes?(sms_method)
+      if @api_client.config.client_side_validation && !sms_method.nil? && !allowable_values.includes?(sms_method)
         raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -19751,12 +19751,12 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["ApiVersion"] = api_version.to_s if !api_version.nil? && !api_version.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil? && !sms_fallback_method.null?
-      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil? && !sms_fallback_url.null?
-      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil? && !sms_method.null?
-      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil? && !sms_url.null?
+      form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil?
+      form_params["SmsFallbackUrl"] = sms_fallback_url.to_s if !sms_fallback_url.nil?
+      form_params["SmsMethod"] = sms_method.to_s if !sms_method.nil?
+      form_params["SmsUrl"] = sms_url.to_s if !sms_url.nil?
 
       # http body (model)
       post_body = nil
@@ -19798,7 +19798,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_signing_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SigningKey.from_nason(data), status_code, headers
+      return SigningKey.from_json(data), status_code, headers
     end
 
     #
@@ -19855,7 +19855,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -19899,7 +19899,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_sip_credential\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipCredentialListSipCredential.from_nason(data), status_code, headers
+      return SipSipCredentialListSipCredential.from_json(data), status_code, headers
     end
 
     # Update a credential resource.
@@ -19970,7 +19970,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Password"] = password.to_s if !password.nil? && !password.null?
+      form_params["Password"] = password.to_s if !password.nil?
 
       # http body (model)
       post_body = nil
@@ -20014,7 +20014,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_sip_credential_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipCredentialList.from_nason(data), status_code, headers
+      return SipSipCredentialList.from_json(data), status_code, headers
     end
 
     # Update a Credential List
@@ -20072,7 +20072,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -20114,7 +20114,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_sip_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipDomain.from_nason(data), status_code, headers
+      return SipSipDomain.from_json(data), status_code, headers
     end
 
     # Update the attributes of a domain
@@ -20183,15 +20183,15 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !voice_fallback_method.null? && !allowable_values.includes?(voice_fallback_method)
+      if @api_client.config.client_side_validation && !voice_fallback_method.nil? && !allowable_values.includes?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_method.nil? && !voice_method.null? && !allowable_values.includes?(voice_method)
+      if @api_client.config.client_side_validation && !voice_method.nil? && !allowable_values.includes?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{allowable_values}")
       end
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !voice_status_callback_method.nil? && !voice_status_callback_method.null? && !allowable_values.includes?(voice_status_callback_method)
+      if @api_client.config.client_side_validation && !voice_status_callback_method.nil? && !allowable_values.includes?(voice_status_callback_method)
         raise ArgumentError.new("invalid value for \"voice_status_callback_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -20209,19 +20209,19 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["ByocTrunkSid"] = byoc_trunk_sid.to_s if !byoc_trunk_sid.nil? && !byoc_trunk_sid.null?
-      form_params["DomainName"] = domain_name.to_s if !domain_name.nil? && !domain_name.null?
-      form_params["EmergencyCallerSid"] = emergency_caller_sid.to_s if !emergency_caller_sid.nil? && !emergency_caller_sid.null?
-      form_params["EmergencyCallingEnabled"] = emergency_calling_enabled.to_s if !emergency_calling_enabled.nil? && !emergency_calling_enabled.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["Secure"] = secure.to_s if !secure.nil? && !secure.null?
-      form_params["SipRegistration"] = sip_registration.to_s if !sip_registration.nil? && !sip_registration.null?
-      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil? && !voice_fallback_method.null?
-      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil? && !voice_fallback_url.null?
-      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil? && !voice_method.null?
-      form_params["VoiceStatusCallbackMethod"] = voice_status_callback_method.to_s if !voice_status_callback_method.nil? && !voice_status_callback_method.null?
-      form_params["VoiceStatusCallbackUrl"] = voice_status_callback_url.to_s if !voice_status_callback_url.nil? && !voice_status_callback_url.null?
-      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil? && !voice_url.null?
+      form_params["ByocTrunkSid"] = byoc_trunk_sid.to_s if !byoc_trunk_sid.nil?
+      form_params["DomainName"] = domain_name.to_s if !domain_name.nil?
+      form_params["EmergencyCallerSid"] = emergency_caller_sid.to_s if !emergency_caller_sid.nil?
+      form_params["EmergencyCallingEnabled"] = emergency_calling_enabled.to_s if !emergency_calling_enabled.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["Secure"] = secure.to_s if !secure.nil?
+      form_params["SipRegistration"] = sip_registration.to_s if !sip_registration.nil?
+      form_params["VoiceFallbackMethod"] = voice_fallback_method.to_s if !voice_fallback_method.nil?
+      form_params["VoiceFallbackUrl"] = voice_fallback_url.to_s if !voice_fallback_url.nil?
+      form_params["VoiceMethod"] = voice_method.to_s if !voice_method.nil?
+      form_params["VoiceStatusCallbackMethod"] = voice_status_callback_method.to_s if !voice_status_callback_method.nil?
+      form_params["VoiceStatusCallbackUrl"] = voice_status_callback_url.to_s if !voice_status_callback_url.nil?
+      form_params["VoiceUrl"] = voice_url.to_s if !voice_url.nil?
 
       # http body (model)
       post_body = nil
@@ -20265,7 +20265,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_sip_ip_access_control_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipIpAccessControlList.from_nason(data), status_code, headers
+      return SipSipIpAccessControlList.from_json(data), status_code, headers
     end
 
     # Rename an IpAccessControlList
@@ -20323,7 +20323,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil
@@ -20367,7 +20367,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_sip_ip_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return SipSipIpAccessControlListSipIpAddress.from_nason(data), status_code, headers
+      return SipSipIpAccessControlListSipIpAddress.from_json(data), status_code, headers
     end
 
     # Update an IpAddress resource.
@@ -20438,9 +20438,9 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["CidrPrefixLength"] = cidr_prefix_length.to_s if !cidr_prefix_length.nil? && !cidr_prefix_length.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
-      form_params["IpAddress"] = ip_address.to_s if !ip_address.nil? && !ip_address.null?
+      form_params["CidrPrefixLength"] = cidr_prefix_length.to_s if !cidr_prefix_length.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
+      form_params["IpAddress"] = ip_address.to_s if !ip_address.nil?
 
       # http body (model)
       post_body = nil
@@ -20486,7 +20486,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_siprec\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallSiprec.from_nason(data), status_code, headers
+      return CallSiprec.from_json(data), status_code, headers
     end
 
     # Stop a Siprec using either the SID of the Siprec resource or the &#x60;name&#x60; used when creating the resource
@@ -20550,7 +20550,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Status"] = status.to_s if !status.nil? && !status.null?
+      form_params["Status"] = status.to_s if !status.nil?
 
       # http body (model)
       post_body = nil
@@ -20596,7 +20596,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_stream\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return CallStream.from_nason(data), status_code, headers
+      return CallStream.from_json(data), status_code, headers
     end
 
     # Stop a Stream using either the SID of the Stream resource or the &#x60;name&#x60; used when creating the resource
@@ -20660,7 +20660,7 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["Status"] = status.to_s if !status.nil? && !status.null?
+      form_params["Status"] = status.to_s if !status.nil?
 
       # http body (model)
       post_body = nil
@@ -20702,7 +20702,7 @@ module Twilio
         Log.debug { "API called: DefaultApi#update_usage_trigger\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
-      return UsageUsageTrigger.from_nason(data), status_code, headers
+      return UsageUsageTrigger.from_json(data), status_code, headers
     end
 
     # Update an instance of a usage trigger
@@ -20745,7 +20745,7 @@ module Twilio
       end
 
       allowable_values = ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"]
-      if @api_client.config.client_side_validation && !callback_method.nil? && !callback_method.null? && !allowable_values.includes?(callback_method)
+      if @api_client.config.client_side_validation && !callback_method.nil? && !allowable_values.includes?(callback_method)
         raise ArgumentError.new("invalid value for \"callback_method\", must be one of #{allowable_values}")
       end
       # resource path
@@ -20763,9 +20763,9 @@ module Twilio
 
       # form parameters
       form_params = Hash(String, (String | Array(String) | ::File)).new
-      form_params["CallbackMethod"] = callback_method.to_s if !callback_method.nil? && !callback_method.null?
-      form_params["CallbackUrl"] = callback_url.to_s if !callback_url.nil? && !callback_url.null?
-      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil? && !friendly_name.null?
+      form_params["CallbackMethod"] = callback_method.to_s if !callback_method.nil?
+      form_params["CallbackUrl"] = callback_url.to_s if !callback_url.nil?
+      form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
       post_body = nil

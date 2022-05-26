@@ -11,7 +11,7 @@
 # Dependencies
 require "crest"
 require "log"
-require "nason"
+require "json"
 require "time"
 require "uri"
 
