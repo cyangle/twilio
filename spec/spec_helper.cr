@@ -18,7 +18,6 @@ PASSWORD = ENV.fetch("PASSWORD", "ignored_by_vcr")
 Twilio.configure do |config|
   config.username = USERNAME
   config.password = PASSWORD
-  config.debugging = true
 end
 
 VCR.configure do |settings|
