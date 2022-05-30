@@ -10,3 +10,33 @@
 # load modules
 require "spec"
 require "../src/twilio"
+require "vcr"
+
+USERNAME = ENV.fetch("USERNAME", "ignored_by_vcr")
+PASSWORD = ENV.fetch("PASSWORD", "ignored_by_vcr")
+
+Twilio.configure do |config|
+  config.username = USERNAME
+  config.password = PASSWORD
+  config.debugging = true
+end
+
+VCR.configure do |settings|
+  settings.filter_sensitive_data["Authorization"] = "<Authorization>"
+  settings.filter_sensitive_data["User-Agent"] = "<User-Agent>"
+end
+
+# Hard code multipart form boundary, so that the request VCR hash stays the same
+module MIME::Multipart
+  def self.generate_boundary : String
+    "--------------------------H7hSYF3gcw9E6XaggJOeKuL75HHLadwbHB_OFan4xGi1cqTm"
+  end
+end
+
+class File < IO::FileDescriptor
+  def to_s
+    gets_to_end.tap do |_|
+      rewind
+    end
+  end
+end
