@@ -16,7 +16,7 @@ require "time"
 require "uri"
 
 # Project files
-require "./twilio/ext/**"
+require "./ext/**"
 require "./twilio/configuration.cr"
 require "./twilio/api_error.cr"
 require "./twilio/api_client.cr"

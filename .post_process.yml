@@ -82,15 +82,3 @@ tasks:
         name: 'Update date_updated3'
         pattern: 'date_updated3'
         new_value: 'date_updated_after'
-  - name: 'Update default_api_spec.cr'
-    file_glob: './spec/api/default_api_spec.cr'
-    changes:
-      -
-        name: 'Correct instance test case'
-        pattern: '    it "should create an instance of DefaultApi" do'
-        new_value: "
-          \   it \"should create an instance of DefaultApi\" do\n
-          \     Twilio.configure do |config|\n
-          \       config.username = \"TWILIO_ACCOUNT_SID\"\n
-          \       config.password = \"TWILIO_AUTH_TOKEN\"\n
-          \     end\n"

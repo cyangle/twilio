@@ -15,11 +15,6 @@ require "../spec_helper"
 describe "DefaultApi" do
   describe "test an instance of DefaultApi" do
     it "should create an instance of DefaultApi" do
-      Twilio.configure do |config|
-        config.username = "TWILIO_ACCOUNT_SID"
-        config.password = "TWILIO_AUTH_TOKEN"
-      end
-
       api_instance = Twilio::DefaultApi.new
       api_instance.should be_a(Twilio::DefaultApi)
     end
