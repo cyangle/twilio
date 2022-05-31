@@ -88,29 +88,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    class EnumAttributeValidator
-      getter datatype : String
-      getter allowable_values : Array(String | Int32 | Float64)
-
-      def initialize(datatype, allowable_values)
-        @datatype = datatype
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        value.nil? || allowable_values.includes?(value)
-      end
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(*, @auth_token : String? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @friendly_name : String? = nil, @owner_account_sid : String? = nil, @sid : String? = nil, @status : String? = nil, @subresource_uris : Hash(String, String)? = nil, @_type : String? = nil, @uri : String? = nil)
@@ -158,9 +135,9 @@ module Twilio
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^AC[0-9a-fA-F]{32}$/
-      status_validator = EnumAttributeValidator.new("String", ["active", "suspended", "closed"])
+      status_validator = EnumValidator.new("String", ["active", "suspended", "closed"])
       return false unless status_validator.valid?(@status)
-      _type_validator = EnumAttributeValidator.new("String", ["Trial", "Full"])
+      _type_validator = EnumValidator.new("String", ["Trial", "Full"])
       return false unless _type_validator.valid?(@_type)
       true
     end
@@ -206,7 +183,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new("String", ["active", "suspended", "closed"])
+      validator = EnumValidator.new("String", ["active", "suspended", "closed"])
       unless validator.valid?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{validator.allowable_values}.")
       end
@@ -216,7 +193,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] _type Object to be assigned
     def _type=(_type)
-      validator = EnumAttributeValidator.new("String", ["Trial", "Full"])
+      validator = EnumValidator.new("String", ["Trial", "Full"])
       unless validator.valid?(_type)
         raise ArgumentError.new("invalid value for \"_type\", must be one of #{validator.allowable_values}.")
       end

@@ -153,3 +153,4 @@ src/twilio/models/usage_usage_record_usage_record_yearly.cr
 src/twilio/models/usage_usage_record_usage_record_yesterday.cr
 src/twilio/models/usage_usage_trigger.cr
 src/twilio/models/validation_request.cr
+src/validators/enum_validator.cr

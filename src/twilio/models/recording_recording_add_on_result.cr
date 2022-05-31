@@ -88,29 +88,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
-    class EnumAttributeValidator
-      getter datatype : String
-      getter allowable_values : Array(String | Int32 | Float64)
-
-      def initialize(datatype, allowable_values)
-        @datatype = datatype
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        value.nil? || allowable_values.includes?(value)
-      end
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(*, @account_sid : String? = nil, @add_on_configuration_sid : String? = nil, @add_on_sid : String? = nil, @date_completed : Time? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @reference_sid : String? = nil, @sid : String? = nil, @status : String? = nil, @subresource_uris : Hash(String, String)? = nil)
@@ -206,7 +183,7 @@ module Twilio
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^XR[0-9a-fA-F]{32}$/
-      status_validator = EnumAttributeValidator.new("String", ["canceled", "completed", "deleted", "failed", "in-progress", "init", "processing", "queued"])
+      status_validator = EnumValidator.new("String", ["canceled", "completed", "deleted", "failed", "in-progress", "init", "processing", "queued"])
       return false unless status_validator.valid?(@status)
       true
     end
@@ -309,7 +286,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new("String", ["canceled", "completed", "deleted", "failed", "in-progress", "init", "processing", "queued"])
+      validator = EnumValidator.new("String", ["canceled", "completed", "deleted", "failed", "in-progress", "init", "processing", "queued"])
       unless validator.valid?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{validator.allowable_values}.")
       end

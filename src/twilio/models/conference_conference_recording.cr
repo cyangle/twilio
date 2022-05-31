@@ -136,29 +136,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    class EnumAttributeValidator
-      getter datatype : String
-      getter allowable_values : Array(String | Int32 | Float64)
-
-      def initialize(datatype, allowable_values)
-        @datatype = datatype
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        value.nil? || allowable_values.includes?(value)
-      end
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(*, @account_sid : String? = nil, @api_version : String? = nil, @call_sid : String? = nil, @channels : Int32? = nil, @conference_sid : String? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @duration : String? = nil, @encryption_details : EncryptionDetails? = nil, @error_code : Int32? = nil, @price : String? = nil, @price_unit : String? = nil, @sid : String? = nil, @source : String? = nil, @start_time : Time? = nil, @status : String? = nil, @uri : String? = nil)
@@ -238,9 +215,9 @@ module Twilio
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^RE[0-9a-fA-F]{32}$/
-      source_validator = EnumAttributeValidator.new("String", ["DialVerb", "Conference", "OutboundAPI", "Trunking", "RecordVerb", "StartCallRecordingAPI", "StartConferenceRecordingAPI"])
+      source_validator = EnumValidator.new("String", ["DialVerb", "Conference", "OutboundAPI", "Trunking", "RecordVerb", "StartCallRecordingAPI", "StartConferenceRecordingAPI"])
       return false unless source_validator.valid?(@source)
-      status_validator = EnumAttributeValidator.new("String", ["in-progress", "paused", "stopped", "processing", "completed", "absent"])
+      status_validator = EnumValidator.new("String", ["in-progress", "paused", "stopped", "processing", "completed", "absent"])
       return false unless status_validator.valid?(@status)
       true
     end
@@ -324,7 +301,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] source Object to be assigned
     def source=(source)
-      validator = EnumAttributeValidator.new("String", ["DialVerb", "Conference", "OutboundAPI", "Trunking", "RecordVerb", "StartCallRecordingAPI", "StartConferenceRecordingAPI"])
+      validator = EnumValidator.new("String", ["DialVerb", "Conference", "OutboundAPI", "Trunking", "RecordVerb", "StartCallRecordingAPI", "StartConferenceRecordingAPI"])
       unless validator.valid?(source)
         raise ArgumentError.new("invalid value for \"source\", must be one of #{validator.allowable_values}.")
       end
@@ -334,7 +311,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new("String", ["in-progress", "paused", "stopped", "processing", "completed", "absent"])
+      validator = EnumValidator.new("String", ["in-progress", "paused", "stopped", "processing", "completed", "absent"])
       unless validator.valid?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{validator.allowable_values}.")
       end

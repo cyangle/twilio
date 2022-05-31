@@ -102,29 +102,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    class EnumAttributeValidator
-      getter datatype : String
-      getter allowable_values : Array(String | Int32 | Float64)
-
-      def initialize(datatype, allowable_values)
-        @datatype = datatype
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        value.nil? || allowable_values.includes?(value)
-      end
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(*, @account_sid : String? = nil, @api_version : String? = nil, @call_sid_ending_conference : String? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @friendly_name : String? = nil, @reason_conference_ended : String? = nil, @region : String? = nil, @sid : String? = nil, @status : String? = nil, @subresource_uris : Hash(String, String)? = nil, @uri : String? = nil)
@@ -185,12 +162,12 @@ module Twilio
       return false if !@call_sid_ending_conference.nil? && @call_sid_ending_conference.to_s.size > 34
       return false if !@call_sid_ending_conference.nil? && @call_sid_ending_conference.to_s.size < 34
       return false if !@call_sid_ending_conference.nil? && @call_sid_ending_conference !~ /^CA[0-9a-fA-F]{32}$/
-      reason_conference_ended_validator = EnumAttributeValidator.new("String", ["conference-ended-via-api", "participant-with-end-conference-on-exit-left", "participant-with-end-conference-on-exit-kicked", "last-participant-kicked", "last-participant-left"])
+      reason_conference_ended_validator = EnumValidator.new("String", ["conference-ended-via-api", "participant-with-end-conference-on-exit-left", "participant-with-end-conference-on-exit-kicked", "last-participant-kicked", "last-participant-left"])
       return false unless reason_conference_ended_validator.valid?(@reason_conference_ended)
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^CF[0-9a-fA-F]{32}$/
-      status_validator = EnumAttributeValidator.new("String", ["init", "in-progress", "completed"])
+      status_validator = EnumValidator.new("String", ["init", "in-progress", "completed"])
       return false unless status_validator.valid?(@status)
       true
     end
@@ -236,7 +213,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] reason_conference_ended Object to be assigned
     def reason_conference_ended=(reason_conference_ended)
-      validator = EnumAttributeValidator.new("String", ["conference-ended-via-api", "participant-with-end-conference-on-exit-left", "participant-with-end-conference-on-exit-kicked", "last-participant-kicked", "last-participant-left"])
+      validator = EnumValidator.new("String", ["conference-ended-via-api", "participant-with-end-conference-on-exit-left", "participant-with-end-conference-on-exit-kicked", "last-participant-kicked", "last-participant-left"])
       unless validator.valid?(reason_conference_ended)
         raise ArgumentError.new("invalid value for \"reason_conference_ended\", must be one of #{validator.allowable_values}.")
       end
@@ -265,7 +242,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new("String", ["init", "in-progress", "completed"])
+      validator = EnumValidator.new("String", ["init", "in-progress", "completed"])
       unless validator.valid?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{validator.allowable_values}.")
       end

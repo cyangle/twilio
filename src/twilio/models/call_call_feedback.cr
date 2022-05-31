@@ -60,29 +60,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
-    class EnumAttributeValidator
-      getter datatype : String
-      getter allowable_values : Array(String | Int32 | Float64)
-
-      def initialize(datatype, allowable_values)
-        @datatype = datatype
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        value.nil? || allowable_values.includes?(value)
-      end
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(*, @account_sid : String? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @issues : Array(String)? = nil, @quality_score : Int32? = nil, @sid : String? = nil)

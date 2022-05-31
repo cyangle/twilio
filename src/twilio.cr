@@ -17,6 +17,7 @@ require "uri"
 
 # Project files
 require "./ext/**"
+require "./validators/**"
 require "./twilio/configuration.cr"
 require "./twilio/api_error.cr"
 require "./twilio/api_client.cr"

@@ -158,29 +158,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    class EnumAttributeValidator
-      getter datatype : String
-      getter allowable_values : Array(String | Int32 | Float64)
-
-      def initialize(datatype, allowable_values)
-        @datatype = datatype
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        value.nil? || allowable_values.includes?(value)
-      end
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(*, @account_sid : String? = nil, @api_version : String? = nil, @body : String? = nil, @date_created : Time? = nil, @date_sent : Time? = nil, @date_updated : Time? = nil, @direction : String? = nil, @error_code : Int32? = nil, @error_message : String? = nil, @from : String? = nil, @messaging_service_sid : String? = nil, @num_media : String? = nil, @num_segments : String? = nil, @price : String? = nil, @price_unit : String? = nil, @sid : String? = nil, @status : String? = nil, @subresource_uris : Hash(String, String)? = nil, @to : String? = nil, @uri : String? = nil)
@@ -238,7 +215,7 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      direction_validator = EnumAttributeValidator.new("String", ["inbound", "outbound-api", "outbound-call", "outbound-reply"])
+      direction_validator = EnumValidator.new("String", ["inbound", "outbound-api", "outbound-call", "outbound-reply"])
       return false unless direction_validator.valid?(@direction)
       return false if !@messaging_service_sid.nil? && @messaging_service_sid.to_s.size > 34
       return false if !@messaging_service_sid.nil? && @messaging_service_sid.to_s.size < 34
@@ -246,7 +223,7 @@ module Twilio
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^(SM|MM)[0-9a-fA-F]{32}$/
-      status_validator = EnumAttributeValidator.new("String", ["queued", "sending", "sent", "failed", "delivered", "undelivered", "receiving", "received", "accepted", "scheduled", "read", "partially_delivered", "canceled"])
+      status_validator = EnumValidator.new("String", ["queued", "sending", "sent", "failed", "delivered", "undelivered", "receiving", "received", "accepted", "scheduled", "read", "partially_delivered", "canceled"])
       return false unless status_validator.valid?(@status)
       true
     end
@@ -273,7 +250,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] direction Object to be assigned
     def direction=(direction)
-      validator = EnumAttributeValidator.new("String", ["inbound", "outbound-api", "outbound-call", "outbound-reply"])
+      validator = EnumValidator.new("String", ["inbound", "outbound-api", "outbound-call", "outbound-reply"])
       unless validator.valid?(direction)
         raise ArgumentError.new("invalid value for \"direction\", must be one of #{validator.allowable_values}.")
       end
@@ -321,7 +298,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new("String", ["queued", "sending", "sent", "failed", "delivered", "undelivered", "receiving", "received", "accepted", "scheduled", "read", "partially_delivered", "canceled"])
+      validator = EnumValidator.new("String", ["queued", "sending", "sent", "failed", "delivered", "undelivered", "receiving", "received", "accepted", "scheduled", "read", "partially_delivered", "canceled"])
       unless validator.valid?(status)
         raise ArgumentError.new("invalid value for \"status\", must be one of #{validator.allowable_values}.")
       end

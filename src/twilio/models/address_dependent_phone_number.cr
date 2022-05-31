@@ -199,29 +199,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_url_present : Bool = false
 
-    class EnumAttributeValidator
-      getter datatype : String
-      getter allowable_values : Array(String | Int32 | Float64)
-
-      def initialize(datatype, allowable_values)
-        @datatype = datatype
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        value.nil? || allowable_values.includes?(value)
-      end
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(*, @account_sid : String? = nil, @address_requirements : String? = nil, @api_version : String? = nil, @capabilities : AddressDependentPhoneNumberCapabilities? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @emergency_address_sid : String? = nil, @emergency_status : String? = nil, @friendly_name : String? = nil, @phone_number : String? = nil, @sid : String? = nil, @sms_application_sid : String? = nil, @sms_fallback_method : String? = nil, @sms_fallback_url : String? = nil, @sms_method : String? = nil, @sms_url : String? = nil, @status_callback : String? = nil, @status_callback_method : String? = nil, @trunk_sid : String? = nil, @uri : String? = nil, @voice_application_sid : String? = nil, @voice_caller_id_lookup : Bool? = nil, @voice_fallback_method : String? = nil, @voice_fallback_url : String? = nil, @voice_method : String? = nil, @voice_url : String? = nil)
@@ -318,12 +295,12 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      address_requirements_validator = EnumAttributeValidator.new("String", ["none", "any", "local", "foreign"])
+      address_requirements_validator = EnumValidator.new("String", ["none", "any", "local", "foreign"])
       return false unless address_requirements_validator.valid?(@address_requirements)
       return false if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size > 34
       return false if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size < 34
       return false if !@emergency_address_sid.nil? && @emergency_address_sid !~ /^AD[0-9a-fA-F]{32}$/
-      emergency_status_validator = EnumAttributeValidator.new("String", ["Active", "Inactive"])
+      emergency_status_validator = EnumValidator.new("String", ["Active", "Inactive"])
       return false unless emergency_status_validator.valid?(@emergency_status)
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
@@ -331,11 +308,11 @@ module Twilio
       return false if !@sms_application_sid.nil? && @sms_application_sid.to_s.size > 34
       return false if !@sms_application_sid.nil? && @sms_application_sid.to_s.size < 34
       return false if !@sms_application_sid.nil? && @sms_application_sid !~ /^AP[0-9a-fA-F]{32}$/
-      sms_fallback_method_validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      sms_fallback_method_validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       return false unless sms_fallback_method_validator.valid?(@sms_fallback_method)
-      sms_method_validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      sms_method_validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       return false unless sms_method_validator.valid?(@sms_method)
-      status_callback_method_validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      status_callback_method_validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       return false unless status_callback_method_validator.valid?(@status_callback_method)
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size > 34
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size < 34
@@ -343,9 +320,9 @@ module Twilio
       return false if !@voice_application_sid.nil? && @voice_application_sid.to_s.size > 34
       return false if !@voice_application_sid.nil? && @voice_application_sid.to_s.size < 34
       return false if !@voice_application_sid.nil? && @voice_application_sid !~ /^AP[0-9a-fA-F]{32}$/
-      voice_fallback_method_validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      voice_fallback_method_validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       return false unless voice_fallback_method_validator.valid?(@voice_fallback_method)
-      voice_method_validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      voice_method_validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       return false unless voice_method_validator.valid?(@voice_method)
       true
     end
@@ -372,7 +349,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] address_requirements Object to be assigned
     def address_requirements=(address_requirements)
-      validator = EnumAttributeValidator.new("String", ["none", "any", "local", "foreign"])
+      validator = EnumValidator.new("String", ["none", "any", "local", "foreign"])
       unless validator.valid?(address_requirements)
         raise ArgumentError.new("invalid value for \"address_requirements\", must be one of #{validator.allowable_values}.")
       end
@@ -401,7 +378,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] emergency_status Object to be assigned
     def emergency_status=(emergency_status)
-      validator = EnumAttributeValidator.new("String", ["Active", "Inactive"])
+      validator = EnumValidator.new("String", ["Active", "Inactive"])
       unless validator.valid?(emergency_status)
         raise ArgumentError.new("invalid value for \"emergency_status\", must be one of #{validator.allowable_values}.")
       end
@@ -449,7 +426,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_fallback_method Object to be assigned
     def sms_fallback_method=(sms_fallback_method)
-      validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       unless validator.valid?(sms_fallback_method)
         raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{validator.allowable_values}.")
       end
@@ -459,7 +436,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_method Object to be assigned
     def sms_method=(sms_method)
-      validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       unless validator.valid?(sms_method)
         raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{validator.allowable_values}.")
       end
@@ -469,7 +446,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status_callback_method Object to be assigned
     def status_callback_method=(status_callback_method)
-      validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       unless validator.valid?(status_callback_method)
         raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{validator.allowable_values}.")
       end
@@ -517,7 +494,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_fallback_method Object to be assigned
     def voice_fallback_method=(voice_fallback_method)
-      validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       unless validator.valid?(voice_fallback_method)
         raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{validator.allowable_values}.")
       end
@@ -527,7 +504,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_method Object to be assigned
     def voice_method=(voice_method)
-      validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       unless validator.valid?(voice_method)
         raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{validator.allowable_values}.")
       end

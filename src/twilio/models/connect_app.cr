@@ -95,29 +95,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    class EnumAttributeValidator
-      getter datatype : String
-      getter allowable_values : Array(String | Int32 | Float64)
-
-      def initialize(datatype, allowable_values)
-        @datatype = datatype
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        value.nil? || allowable_values.includes?(value)
-      end
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(*, @account_sid : String? = nil, @authorize_redirect_url : String? = nil, @company_name : String? = nil, @deauthorize_callback_method : String? = nil, @deauthorize_callback_url : String? = nil, @description : String? = nil, @friendly_name : String? = nil, @homepage_url : String? = nil, @permissions : Array(String)? = nil, @sid : String? = nil, @uri : String? = nil)
@@ -162,7 +139,7 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      deauthorize_callback_method_validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      deauthorize_callback_method_validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       return false unless deauthorize_callback_method_validator.valid?(@deauthorize_callback_method)
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
@@ -192,7 +169,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] deauthorize_callback_method Object to be assigned
     def deauthorize_callback_method=(deauthorize_callback_method)
-      validator = EnumAttributeValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+      validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
       unless validator.valid?(deauthorize_callback_method)
         raise ArgumentError.new("invalid value for \"deauthorize_callback_method\", must be one of #{validator.allowable_values}.")
       end
