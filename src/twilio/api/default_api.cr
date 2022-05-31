@@ -65,7 +65,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -166,7 +166,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AutoCorrectAddress"] = auto_correct_address.to_s if !auto_correct_address.nil?
       form_params["City"] = city.to_s if !city.nil?
       form_params["CustomerName"] = customer_name.to_s if !customer_name.nil?
@@ -277,7 +277,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
       form_params["MessageStatusCallback"] = message_status_callback.to_s if !message_status_callback.nil?
@@ -426,7 +426,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["ApplicationSid"] = application_sid.to_s if !application_sid.nil?
       form_params["AsyncAmd"] = async_amd.to_s if !async_amd.nil?
       form_params["AsyncAmdStatusCallback"] = async_amd_status_callback.to_s if !async_amd_status_callback.nil?
@@ -553,7 +553,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["EndDate"] = Time::Format::ISO_8601_DATE.format(end_date) if !end_date.nil?
       form_params["IncludeSubaccounts"] = include_subaccounts.to_s if !include_subaccounts.nil?
       form_params["StartDate"] = Time::Format::ISO_8601_DATE.format(start_date) if !start_date.nil?
@@ -660,7 +660,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["RecordingChannels"] = recording_channels.to_s if !recording_channels.nil?
       form_params["RecordingStatusCallback"] = recording_status_callback.to_s if !recording_status_callback.nil?
       form_params["RecordingStatusCallbackEvent"] = @api_client.build_collection_param(recording_status_callback_event, "multi") if !recording_status_callback_event.nil? && !recording_status_callback_event.empty?
@@ -867,7 +867,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
       form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
       form_params["AreaCode"] = area_code.to_s if !area_code.nil?
@@ -1005,7 +1005,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["InstalledAddOnSid"] = installed_add_on_sid.to_s if !installed_add_on_sid.nil?
 
       # http body (model)
@@ -1210,7 +1210,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
       form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
       form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil?
@@ -1437,7 +1437,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
       form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
       form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil?
@@ -1664,7 +1664,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
       form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
       form_params["BundleSid"] = bundle_sid.to_s if !bundle_sid.nil?
@@ -1810,7 +1810,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AddressRetention"] = address_retention.to_s if !address_retention.nil?
       form_params["ApplicationSid"] = application_sid.to_s if !application_sid.nil?
       form_params["Attempt"] = attempt.to_s if !attempt.nil?
@@ -1931,7 +1931,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Outcome"] = outcome.to_s if !outcome.nil?
 
       # http body (model)
@@ -2014,7 +2014,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -2097,7 +2097,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -2235,7 +2235,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Beep"] = beep.to_s if !beep.nil?
       form_params["Byoc"] = byoc.to_s if !byoc.nil?
       form_params["CallReason"] = call_reason.to_s if !call_reason.nil?
@@ -2390,7 +2390,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["BankAccountType"] = bank_account_type.to_s if !bank_account_type.nil?
       form_params["ChargeAmount"] = charge_amount.to_s if !charge_amount.nil?
       form_params["Currency"] = currency.to_s if !currency.nil?
@@ -2491,7 +2491,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
       form_params["MaxSize"] = max_size.to_s if !max_size.nil?
 
@@ -2607,7 +2607,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["CredentialListSid"] = credential_list_sid.to_s if !credential_list_sid.nil?
 
       # http body (model)
@@ -2722,7 +2722,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["IpAccessControlListSid"] = ip_access_control_list_sid.to_s if !ip_access_control_list_sid.nil?
 
       # http body (model)
@@ -2837,7 +2837,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["CredentialListSid"] = credential_list_sid.to_s if !credential_list_sid.nil?
 
       # http body (model)
@@ -2942,7 +2942,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Password"] = password.to_s if !password.nil?
       form_params["Username"] = username.to_s if !username.nil?
 
@@ -3029,7 +3029,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -3144,7 +3144,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["CredentialListSid"] = credential_list_sid.to_s if !credential_list_sid.nil?
 
       # http body (model)
@@ -3268,7 +3268,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["ByocTrunkSid"] = byoc_trunk_sid.to_s if !byoc_trunk_sid.nil?
       form_params["DomainName"] = domain_name.to_s if !domain_name.nil?
       form_params["EmergencyCallerSid"] = emergency_caller_sid.to_s if !emergency_caller_sid.nil?
@@ -3366,7 +3366,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -3481,7 +3481,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["IpAccessControlListSid"] = ip_access_control_list_sid.to_s if !ip_access_control_list_sid.nil?
 
       # http body (model)
@@ -3586,7 +3586,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["CidrPrefixLength"] = cidr_prefix_length.to_s if !cidr_prefix_length.nil?
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
       form_params["IpAddress"] = ip_address.to_s if !ip_address.nil?
@@ -3671,7 +3671,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Ttl"] = ttl.to_s if !ttl.nil?
 
       # http body (model)
@@ -3780,7 +3780,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["CallbackMethod"] = callback_method.to_s if !callback_method.nil?
       form_params["CallbackUrl"] = callback_url.to_s if !callback_url.nil?
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
@@ -3876,7 +3876,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["CallDelay"] = call_delay.to_s if !call_delay.nil?
       form_params["Extension"] = extension.to_s if !extension.nil?
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
@@ -17722,7 +17722,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
       form_params["Status"] = status.to_s if !status.nil?
 
@@ -17822,7 +17822,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AutoCorrectAddress"] = auto_correct_address.to_s if !auto_correct_address.nil?
       form_params["City"] = city.to_s if !city.nil?
       form_params["CustomerName"] = customer_name.to_s if !customer_name.nil?
@@ -17948,7 +17948,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
       form_params["MessageStatusCallback"] = message_status_callback.to_s if !message_status_callback.nil?
@@ -18077,7 +18077,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FallbackMethod"] = fallback_method.to_s if !fallback_method.nil?
       form_params["FallbackUrl"] = fallback_url.to_s if !fallback_url.nil?
       form_params["Method"] = method.to_s if !method.nil?
@@ -18175,7 +18175,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Issue"] = @api_client.build_collection_param(issue, "multi") if !issue.nil? && !issue.empty?
       form_params["QualityScore"] = quality_score.to_s if !quality_score.nil?
 
@@ -18286,7 +18286,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["PauseBehavior"] = pause_behavior.to_s if !pause_behavior.nil?
       form_params["Status"] = status.to_s if !status.nil?
 
@@ -18381,7 +18381,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AnnounceMethod"] = announce_method.to_s if !announce_method.nil?
       form_params["AnnounceUrl"] = announce_url.to_s if !announce_url.nil?
       form_params["Status"] = status.to_s if !status.nil?
@@ -18493,7 +18493,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["PauseBehavior"] = pause_behavior.to_s if !pause_behavior.nil?
       form_params["Status"] = status.to_s if !status.nil?
 
@@ -18601,7 +18601,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AuthorizeRedirectUrl"] = authorize_redirect_url.to_s if !authorize_redirect_url.nil?
       form_params["CompanyName"] = company_name.to_s if !company_name.nil?
       form_params["DeauthorizeCallbackMethod"] = deauthorize_callback_method.to_s if !deauthorize_callback_method.nil?
@@ -18839,7 +18839,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AccountSid"] = account_sid2.to_s if !account_sid2.nil?
       form_params["AddressSid"] = address_sid.to_s if !address_sid.nil?
       form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
@@ -18960,7 +18960,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -19069,7 +19069,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Method"] = method.to_s if !method.nil?
       form_params["Url"] = url.to_s if !url.nil?
 
@@ -19173,7 +19173,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Body"] = body.to_s if !body.nil?
       form_params["Status"] = status.to_s if !status.nil?
 
@@ -19273,7 +19273,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -19400,7 +19400,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["AnnounceMethod"] = announce_method.to_s if !announce_method.nil?
       form_params["AnnounceUrl"] = announce_url.to_s if !announce_url.nil?
       form_params["BeepOnExit"] = beep_on_exit.to_s if !beep_on_exit.nil?
@@ -19540,7 +19540,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Capture"] = capture.to_s if !capture.nil?
       form_params["IdempotencyKey"] = idempotency_key.to_s if !idempotency_key.nil?
       form_params["Status"] = status.to_s if !status.nil?
@@ -19642,7 +19642,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
       form_params["MaxSize"] = max_size.to_s if !max_size.nil?
 
@@ -19750,7 +19750,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["ApiVersion"] = api_version.to_s if !api_version.nil?
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
       form_params["SmsFallbackMethod"] = sms_fallback_method.to_s if !sms_fallback_method.nil?
@@ -19854,7 +19854,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -19969,7 +19969,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Password"] = password.to_s if !password.nil?
 
       # http body (model)
@@ -20071,7 +20071,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -20208,7 +20208,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["ByocTrunkSid"] = byoc_trunk_sid.to_s if !byoc_trunk_sid.nil?
       form_params["DomainName"] = domain_name.to_s if !domain_name.nil?
       form_params["EmergencyCallerSid"] = emergency_caller_sid.to_s if !emergency_caller_sid.nil?
@@ -20322,7 +20322,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
 
       # http body (model)
@@ -20437,7 +20437,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["CidrPrefixLength"] = cidr_prefix_length.to_s if !cidr_prefix_length.nil?
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
       form_params["IpAddress"] = ip_address.to_s if !ip_address.nil?
@@ -20549,7 +20549,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Status"] = status.to_s if !status.nil?
 
       # http body (model)
@@ -20659,7 +20659,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["Status"] = status.to_s if !status.nil?
 
       # http body (model)
@@ -20762,7 +20762,7 @@ module Twilio
       header_params["Content-Type"] = @api_client.select_header_content_type(["application/x-www-form-urlencoded"])
 
       # form parameters
-      form_params = Hash(String, (String | Array(String) | ::File)).new
+      form_params = Hash(String, (String | Array(String) | IO)).new
       form_params["CallbackMethod"] = callback_method.to_s if !callback_method.nil?
       form_params["CallbackUrl"] = callback_url.to_s if !callback_url.nil?
       form_params["FriendlyName"] = friendly_name.to_s if !friendly_name.nil?
