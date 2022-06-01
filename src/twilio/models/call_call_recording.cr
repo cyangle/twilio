@@ -115,7 +115,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? source_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_SOURCE = EnumValidator.new("String", ["DialVerb", "Conference", "OutboundAPI", "Trunking", "RecordVerb", "StartCallRecordingAPI", "StartConferenceRecordingAPI"])
+    ENUM_VALIDATOR_FOR_SOURCE = EnumValidator.new("source", "String", ["DialVerb", "Conference", "OutboundAPI", "Trunking", "RecordVerb", "StartCallRecordingAPI", "StartConferenceRecordingAPI"])
 
     # The start time of the recording, given in RFC 2822 format
     @[JSON::Field(key: "start_time", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: start_time.nil? && !start_time_present?)]
@@ -131,7 +131,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("String", ["in-progress", "paused", "stopped", "processing", "completed", "absent"])
+    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("status", "String", ["in-progress", "paused", "stopped", "processing", "completed", "absent"])
 
     # The recorded track. Can be: `inbound`, `outbound`, or `both`.
     @[JSON::Field(key: "track", type: String?, presence: true, ignore_serialize: track.nil? && !track_present?)]
@@ -209,13 +209,9 @@ module Twilio
         invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_SOURCE.valid?(@source)
-        invalid_properties.push("invalid value for \"source\", must be one of #{ENUM_VALIDATOR_FOR_SOURCE.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_SOURCE.error_message) unless ENUM_VALIDATOR_FOR_SOURCE.valid?(@source)
 
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
-        invalid_properties.push("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS.error_message) unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
 
       invalid_properties
     end
@@ -319,18 +315,14 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] source Object to be assigned
     def source=(source)
-      unless ENUM_VALIDATOR_FOR_SOURCE.valid?(source)
-        raise ArgumentError.new("invalid value for \"source\", must be one of #{ENUM_VALIDATOR_FOR_SOURCE.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_SOURCE.valid!(source)
       @source = source
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(status)
-        raise ArgumentError.new("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_STATUS.valid!(status)
       @status = status
     end
 

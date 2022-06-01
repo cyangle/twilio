@@ -41,10 +41,12 @@ module Twilio
 
     # Issues experienced during the call
     @[JSON::Field(key: "issues", type: Array(String)?, presence: true, ignore_serialize: issues.nil? && !issues_present?)]
-    property issues : Array(String)?
+    getter issues : Array(String)?
 
     @[JSON::Field(ignore: true)]
     property? issues_present : Bool = false
+
+    ENUM_VALIDATOR_FOR_ISSUES = EnumValidator.new("issues", "String", ["audio-latency", "digits-not-captured", "dropped-call", "imperfect-audio", "incorrect-caller-id", "one-way-audio", "post-dial-delay", "unsolicited-call"])
 
     # 1 to 5 quality score
     @[JSON::Field(key: "quality_score", type: Int32?, presence: true, ignore_serialize: quality_score.nil? && !quality_score_present?)]
@@ -83,6 +85,8 @@ module Twilio
         invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
+      invalid_properties.push(ENUM_VALIDATOR_FOR_ISSUES.error_message) unless ENUM_VALIDATOR_FOR_ISSUES.all_valid?(@issues)
+
       if !@sid.nil? && @sid.to_s.size > 34
         invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
@@ -105,6 +109,7 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      return false unless ENUM_VALIDATOR_FOR_ISSUES.all_valid?(@issues)
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^CA[0-9a-fA-F]{32}$/
@@ -128,6 +133,13 @@ module Twilio
       end
 
       @account_sid = account_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] issues Object to be assigned
+    def issues=(issues)
+      ENUM_VALIDATOR_FOR_ISSUES.all_valid!(issues)
+      @issues = issues
     end
 
     # Custom attribute writer method with validation

@@ -116,7 +116,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("String", ["queued", "in-progress", "completed", "failed"])
+    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("status", "String", ["queued", "in-progress", "completed", "failed"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
@@ -154,9 +154,7 @@ module Twilio
         invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
-        invalid_properties.push("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS.error_message) unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
 
       invalid_properties
     end
@@ -215,9 +213,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(status)
-        raise ArgumentError.new("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_STATUS.valid!(status)
       @status = status
     end
 

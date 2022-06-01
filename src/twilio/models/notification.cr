@@ -95,7 +95,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? request_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_REQUEST_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_REQUEST_METHOD = EnumValidator.new("request_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # URL of the resource that generated the notification
     @[JSON::Field(key: "request_url", type: String?, presence: true, ignore_serialize: request_url.nil? && !request_url_present?)]
@@ -154,9 +154,7 @@ module Twilio
         invalid_properties.push("invalid value for \"call_sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_REQUEST_METHOD.valid?(@request_method)
-        invalid_properties.push("invalid value for \"request_method\", must be one of #{ENUM_VALIDATOR_FOR_REQUEST_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_REQUEST_METHOD.error_message) unless ENUM_VALIDATOR_FOR_REQUEST_METHOD.valid?(@request_method)
 
       if !@sid.nil? && @sid.to_s.size > 34
         invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
@@ -231,9 +229,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] request_method Object to be assigned
     def request_method=(request_method)
-      unless ENUM_VALIDATOR_FOR_REQUEST_METHOD.valid?(request_method)
-        raise ArgumentError.new("invalid value for \"request_method\", must be one of #{ENUM_VALIDATOR_FOR_REQUEST_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_REQUEST_METHOD.valid!(request_method)
       @request_method = request_method
     end
 

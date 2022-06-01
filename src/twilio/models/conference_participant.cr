@@ -109,7 +109,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("String", ["queued", "connecting", "ringing", "connected", "complete", "failed"])
+    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("status", "String", ["queued", "connecting", "ringing", "connected", "complete", "failed"])
 
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
@@ -180,9 +180,7 @@ module Twilio
         invalid_properties.push("invalid value for \"conference_sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
-        invalid_properties.push("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS.error_message) unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
 
       invalid_properties
     end
@@ -285,9 +283,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(status)
-        raise ArgumentError.new("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_STATUS.valid!(status)
       @status = status
     end
 

@@ -53,7 +53,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? outcome_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_OUTCOME = EnumValidator.new("String", ["confirmed", "unconfirmed"])
+    ENUM_VALIDATOR_FOR_OUTCOME = EnumValidator.new("outcome", "String", ["confirmed", "unconfirmed"])
 
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
@@ -98,9 +98,7 @@ module Twilio
         invalid_properties.push("invalid value for \"message_sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_OUTCOME.valid?(@outcome)
-        invalid_properties.push("invalid value for \"outcome\", must be one of #{ENUM_VALIDATOR_FOR_OUTCOME.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_OUTCOME.error_message) unless ENUM_VALIDATOR_FOR_OUTCOME.valid?(@outcome)
 
       invalid_properties
     end
@@ -159,9 +157,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] outcome Object to be assigned
     def outcome=(outcome)
-      unless ENUM_VALIDATOR_FOR_OUTCOME.valid?(outcome)
-        raise ArgumentError.new("invalid value for \"outcome\", must be one of #{ENUM_VALIDATOR_FOR_OUTCOME.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_OUTCOME.valid!(outcome)
       @outcome = outcome
     end
 

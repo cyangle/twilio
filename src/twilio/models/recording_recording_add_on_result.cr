@@ -81,7 +81,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("String", ["canceled", "completed", "deleted", "failed", "in-progress", "init", "processing", "queued"])
+    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("status", "String", ["canceled", "completed", "deleted", "failed", "in-progress", "init", "processing", "queued"])
 
     # Account Instance Subresources
     @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
@@ -165,9 +165,7 @@ module Twilio
         invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
-        invalid_properties.push("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS.error_message) unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
 
       invalid_properties
     end
@@ -292,9 +290,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(status)
-        raise ArgumentError.new("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_STATUS.valid!(status)
       @status = status
     end
 

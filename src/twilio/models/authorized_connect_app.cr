@@ -76,10 +76,12 @@ module Twilio
 
     # Permissions authorized to the app
     @[JSON::Field(key: "permissions", type: Array(String)?, presence: true, ignore_serialize: permissions.nil? && !permissions_present?)]
-    property permissions : Array(String)?
+    getter permissions : Array(String)?
 
     @[JSON::Field(ignore: true)]
     property? permissions_present : Bool = false
+
+    ENUM_VALIDATOR_FOR_PERMISSIONS = EnumValidator.new("permissions", "String", ["get-all", "post-all"])
 
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
@@ -124,6 +126,8 @@ module Twilio
         invalid_properties.push("invalid value for \"connect_app_sid\", must conform to the pattern #{pattern}.")
       end
 
+      invalid_properties.push(ENUM_VALIDATOR_FOR_PERMISSIONS.error_message) unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
+
       invalid_properties
     end
 
@@ -136,6 +140,7 @@ module Twilio
       return false if !@connect_app_sid.nil? && @connect_app_sid.to_s.size > 34
       return false if !@connect_app_sid.nil? && @connect_app_sid.to_s.size < 34
       return false if !@connect_app_sid.nil? && @connect_app_sid !~ /^CN[0-9a-fA-F]{32}$/
+      return false unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
       true
     end
 
@@ -175,6 +180,13 @@ module Twilio
       end
 
       @connect_app_sid = connect_app_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] permissions Object to be assigned
+    def permissions=(permissions)
+      ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid!(permissions)
+      @permissions = permissions
     end
 
     # Checks equality by comparing each attribute.

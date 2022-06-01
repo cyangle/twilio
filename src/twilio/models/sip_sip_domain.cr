@@ -130,7 +130,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_fallback_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD = EnumValidator.new("voice_fallback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL we call when an error occurs while executing TwiML
     @[JSON::Field(key: "voice_fallback_url", type: String?, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?)]
@@ -146,7 +146,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_VOICE_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_VOICE_METHOD = EnumValidator.new("voice_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The HTTP method we use to call voice_status_callback_url
     @[JSON::Field(key: "voice_status_callback_method", type: String?, presence: true, ignore_serialize: voice_status_callback_method.nil? && !voice_status_callback_method_present?)]
@@ -155,7 +155,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_status_callback_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD = EnumValidator.new("voice_status_callback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL that we call with status updates
     @[JSON::Field(key: "voice_status_callback_url", type: String?, presence: true, ignore_serialize: voice_status_callback_url.nil? && !voice_status_callback_url_present?)]
@@ -233,17 +233,11 @@ module Twilio
         invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(@voice_fallback_method)
-        invalid_properties.push("invalid value for \"voice_fallback_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(@voice_fallback_method)
 
-      unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(@voice_method)
-        invalid_properties.push("invalid value for \"voice_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_VOICE_METHOD.error_message) unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(@voice_method)
 
-      unless ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD.valid?(@voice_status_callback_method)
-        invalid_properties.push("invalid value for \"voice_status_callback_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD.valid?(@voice_status_callback_method)
 
       invalid_properties
     end
@@ -348,27 +342,21 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_fallback_method Object to be assigned
     def voice_fallback_method=(voice_fallback_method)
-      unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(voice_fallback_method)
-        raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid!(voice_fallback_method)
       @voice_fallback_method = voice_fallback_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_method Object to be assigned
     def voice_method=(voice_method)
-      unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(voice_method)
-        raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_VOICE_METHOD.valid!(voice_method)
       @voice_method = voice_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_status_callback_method Object to be assigned
     def voice_status_callback_method=(voice_status_callback_method)
-      unless ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD.valid?(voice_status_callback_method)
-        raise ArgumentError.new("invalid value for \"voice_status_callback_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD.valid!(voice_status_callback_method)
       @voice_status_callback_method = voice_status_callback_method
     end
 

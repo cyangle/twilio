@@ -46,7 +46,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? deauthorize_callback_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD = EnumValidator.new("deauthorize_callback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL we call to de-authorize the Connect App
     @[JSON::Field(key: "deauthorize_callback_url", type: String?, presence: true, ignore_serialize: deauthorize_callback_url.nil? && !deauthorize_callback_url_present?)]
@@ -78,10 +78,12 @@ module Twilio
 
     # The set of permissions that your ConnectApp requests
     @[JSON::Field(key: "permissions", type: Array(String)?, presence: true, ignore_serialize: permissions.nil? && !permissions_present?)]
-    property permissions : Array(String)?
+    getter permissions : Array(String)?
 
     @[JSON::Field(ignore: true)]
     property? permissions_present : Bool = false
+
+    ENUM_VALIDATOR_FOR_PERMISSIONS = EnumValidator.new("permissions", "String", ["get-all", "post-all"])
 
     # The unique string that identifies the resource
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
@@ -120,9 +122,9 @@ module Twilio
         invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(@deauthorize_callback_method)
-        invalid_properties.push("invalid value for \"deauthorize_callback_method\", must be one of #{ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(@deauthorize_callback_method)
+
+      invalid_properties.push(ENUM_VALIDATOR_FOR_PERMISSIONS.error_message) unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
 
       if !@sid.nil? && @sid.to_s.size > 34
         invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
@@ -147,6 +149,7 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
       return false unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(@deauthorize_callback_method)
+      return false unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^CN[0-9a-fA-F]{32}$/
@@ -175,10 +178,15 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] deauthorize_callback_method Object to be assigned
     def deauthorize_callback_method=(deauthorize_callback_method)
-      unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(deauthorize_callback_method)
-        raise ArgumentError.new("invalid value for \"deauthorize_callback_method\", must be one of #{ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid!(deauthorize_callback_method)
       @deauthorize_callback_method = deauthorize_callback_method
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] permissions Object to be assigned
+    def permissions=(permissions)
+      ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid!(permissions)
+      @permissions = permissions
     end
 
     # Custom attribute writer method with validation

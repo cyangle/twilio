@@ -32,7 +32,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? address_requirements_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS = EnumValidator.new("String", ["none", "any", "local", "foreign"])
+    ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS = EnumValidator.new("address_requirements", "String", ["none", "any", "local", "foreign"])
 
     # The API version used to start a new TwiML session
     @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
@@ -75,7 +75,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? emergency_status_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_EMERGENCY_STATUS = EnumValidator.new("String", ["Active", "Inactive"])
+    ENUM_VALIDATOR_FOR_EMERGENCY_STATUS = EnumValidator.new("emergency_status", "String", ["Active", "Inactive"])
 
     # The string that you assigned to describe the resource
     @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
@@ -112,7 +112,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sms_fallback_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD = EnumValidator.new("sms_fallback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL that we call when an error occurs while retrieving or executing the TwiML
     @[JSON::Field(key: "sms_fallback_url", type: String?, presence: true, ignore_serialize: sms_fallback_url.nil? && !sms_fallback_url_present?)]
@@ -128,7 +128,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sms_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_SMS_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_SMS_METHOD = EnumValidator.new("sms_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL we call when the phone number receives an incoming SMS message
     @[JSON::Field(key: "sms_url", type: String?, presence: true, ignore_serialize: sms_url.nil? && !sms_url_present?)]
@@ -151,7 +151,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? status_callback_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD = EnumValidator.new("status_callback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The SID of the Trunk that handles calls to the phone number
     @[JSON::Field(key: "trunk_sid", type: String?, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?)]
@@ -188,7 +188,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_fallback_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD = EnumValidator.new("voice_fallback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL we call when an error occurs in TwiML
     @[JSON::Field(key: "voice_fallback_url", type: String?, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?)]
@@ -204,7 +204,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_method_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_VOICE_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
+    ENUM_VALIDATOR_FOR_VOICE_METHOD = EnumValidator.new("voice_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL we call when the phone number receives a call
     @[JSON::Field(key: "voice_url", type: String?, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?)]
@@ -236,9 +236,7 @@ module Twilio
         invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid?(@address_requirements)
-        invalid_properties.push("invalid value for \"address_requirements\", must be one of #{ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.error_message) unless ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid?(@address_requirements)
 
       if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"emergency_address_sid\", the character length must be smaller than or equal to 34.")
@@ -253,9 +251,7 @@ module Twilio
         invalid_properties.push("invalid value for \"emergency_address_sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid?(@emergency_status)
-        invalid_properties.push("invalid value for \"emergency_status\", must be one of #{ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.error_message) unless ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid?(@emergency_status)
 
       if !@sid.nil? && @sid.to_s.size > 34
         invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
@@ -283,17 +279,11 @@ module Twilio
         invalid_properties.push("invalid value for \"sms_application_sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid?(@sms_fallback_method)
-        invalid_properties.push("invalid value for \"sms_fallback_method\", must be one of #{ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid?(@sms_fallback_method)
 
-      unless ENUM_VALIDATOR_FOR_SMS_METHOD.valid?(@sms_method)
-        invalid_properties.push("invalid value for \"sms_method\", must be one of #{ENUM_VALIDATOR_FOR_SMS_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_SMS_METHOD.error_message) unless ENUM_VALIDATOR_FOR_SMS_METHOD.valid?(@sms_method)
 
-      unless ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid?(@status_callback_method)
-        invalid_properties.push("invalid value for \"status_callback_method\", must be one of #{ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid?(@status_callback_method)
 
       if !@trunk_sid.nil? && @trunk_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"trunk_sid\", the character length must be smaller than or equal to 34.")
@@ -321,13 +311,9 @@ module Twilio
         invalid_properties.push("invalid value for \"voice_application_sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(@voice_fallback_method)
-        invalid_properties.push("invalid value for \"voice_fallback_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(@voice_fallback_method)
 
-      unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(@voice_method)
-        invalid_properties.push("invalid value for \"voice_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_METHOD.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_VOICE_METHOD.error_message) unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(@voice_method)
 
       invalid_properties
     end
@@ -385,9 +371,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] address_requirements Object to be assigned
     def address_requirements=(address_requirements)
-      unless ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid?(address_requirements)
-        raise ArgumentError.new("invalid value for \"address_requirements\", must be one of #{ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid!(address_requirements)
       @address_requirements = address_requirements
     end
 
@@ -413,9 +397,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] emergency_status Object to be assigned
     def emergency_status=(emergency_status)
-      unless ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid?(emergency_status)
-        raise ArgumentError.new("invalid value for \"emergency_status\", must be one of #{ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid!(emergency_status)
       @emergency_status = emergency_status
     end
 
@@ -460,27 +442,21 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_fallback_method Object to be assigned
     def sms_fallback_method=(sms_fallback_method)
-      unless ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid?(sms_fallback_method)
-        raise ArgumentError.new("invalid value for \"sms_fallback_method\", must be one of #{ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid!(sms_fallback_method)
       @sms_fallback_method = sms_fallback_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_method Object to be assigned
     def sms_method=(sms_method)
-      unless ENUM_VALIDATOR_FOR_SMS_METHOD.valid?(sms_method)
-        raise ArgumentError.new("invalid value for \"sms_method\", must be one of #{ENUM_VALIDATOR_FOR_SMS_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_SMS_METHOD.valid!(sms_method)
       @sms_method = sms_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status_callback_method Object to be assigned
     def status_callback_method=(status_callback_method)
-      unless ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid?(status_callback_method)
-        raise ArgumentError.new("invalid value for \"status_callback_method\", must be one of #{ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid!(status_callback_method)
       @status_callback_method = status_callback_method
     end
 
@@ -525,18 +501,14 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_fallback_method Object to be assigned
     def voice_fallback_method=(voice_fallback_method)
-      unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(voice_fallback_method)
-        raise ArgumentError.new("invalid value for \"voice_fallback_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid!(voice_fallback_method)
       @voice_fallback_method = voice_fallback_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_method Object to be assigned
     def voice_method=(voice_method)
-      unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(voice_method)
-        raise ArgumentError.new("invalid value for \"voice_method\", must be one of #{ENUM_VALIDATOR_FOR_VOICE_METHOD.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_VOICE_METHOD.valid!(voice_method)
       @voice_method = voice_method
     end
 

@@ -73,12 +73,55 @@ describe Twilio::ConnectApp do
   end
 
   describe "test attribute 'permissions'" do
-    it "should work" do
-      # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new("Array(String)", ["get-all", "post-all"])
-      # validator.allowable_values.each do |value|
-      #   expect { instance.permissions = value }.not_to raise_error
-      # end
+    context "set to empty array" do
+      it "should work" do
+        connect_app = Twilio::ConnectApp.new
+        (connect_app.permissions).should be_nil
+        connect_app.permissions = Array(String).new
+        (connect_app.permissions).should eq(Array(String).new)
+      end
+    end
+
+    context "set to invalid array" do
+      it "raises error" do
+        expect_raises(ArgumentError, /must be one of/) do
+          connect_app = Twilio::ConnectApp.new
+          (connect_app.permissions).should be_nil
+          connect_app.permissions = ["invalid"]
+        end
+      end
+    end
+
+    context "set to partial valid array" do
+      it "raises error" do
+        expect_raises(ArgumentError, /must be one of/) do
+          connect_app = Twilio::ConnectApp.new
+          (connect_app.permissions).should be_nil
+          connect_app.permissions = ["get-all", "invalid"]
+        end
+      end
+    end
+
+    context "set to all valid array" do
+      it "sets the values" do
+        connect_app = Twilio::ConnectApp.new
+        values = ["get-all", "post-all"]
+        (connect_app.permissions).should be_nil
+        connect_app.permissions = values
+        (connect_app.permissions).should eq(values)
+      end
+    end
+
+    context "set to nil from array" do
+      it "sets the values" do
+        connect_app = Twilio::ConnectApp.new
+        values = ["get-all", "post-all"]
+        (connect_app.permissions).should be_nil
+        connect_app.permissions = values
+        (connect_app.permissions).should eq(values)
+        connect_app.permissions = nil
+        (connect_app.permissions).should be_nil
+      end
     end
   end
 

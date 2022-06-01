@@ -67,7 +67,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? direction_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_DIRECTION = EnumValidator.new("String", ["inbound", "outbound-api", "outbound-call", "outbound-reply"])
+    ENUM_VALIDATOR_FOR_DIRECTION = EnumValidator.new("direction", "String", ["inbound", "outbound-api", "outbound-call", "outbound-reply"])
 
     # The error code associated with the message
     @[JSON::Field(key: "error_code", type: Int32?, presence: true, ignore_serialize: error_code.nil? && !error_code_present?)]
@@ -139,7 +139,7 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("String", ["queued", "sending", "sent", "failed", "delivered", "undelivered", "receiving", "received", "accepted", "scheduled", "read", "partially_delivered", "canceled"])
+    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("status", "String", ["queued", "sending", "sent", "failed", "delivered", "undelivered", "receiving", "received", "accepted", "scheduled", "read", "partially_delivered", "canceled"])
 
     # Account Instance Subresources
     @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
@@ -185,9 +185,7 @@ module Twilio
         invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_DIRECTION.valid?(@direction)
-        invalid_properties.push("invalid value for \"direction\", must be one of #{ENUM_VALIDATOR_FOR_DIRECTION.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_DIRECTION.error_message) unless ENUM_VALIDATOR_FOR_DIRECTION.valid?(@direction)
 
       if !@messaging_service_sid.nil? && @messaging_service_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"messaging_service_sid\", the character length must be smaller than or equal to 34.")
@@ -215,9 +213,7 @@ module Twilio
         invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
-        invalid_properties.push("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS.error_message) unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
 
       invalid_properties
     end
@@ -261,9 +257,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] direction Object to be assigned
     def direction=(direction)
-      unless ENUM_VALIDATOR_FOR_DIRECTION.valid?(direction)
-        raise ArgumentError.new("invalid value for \"direction\", must be one of #{ENUM_VALIDATOR_FOR_DIRECTION.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_DIRECTION.valid!(direction)
       @direction = direction
     end
 
@@ -308,9 +302,7 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      unless ENUM_VALIDATOR_FOR_STATUS.valid?(status)
-        raise ArgumentError.new("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
-      end
+      ENUM_VALIDATOR_FOR_STATUS.valid!(status)
       @status = status
     end
 
