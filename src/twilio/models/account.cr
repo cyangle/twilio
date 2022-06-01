@@ -48,24 +48,26 @@ module Twilio
 
     # The unique 34 character id representing the parent of this account
     @[JSON::Field(key: "owner_account_sid", type: String?, presence: true, ignore_serialize: owner_account_sid.nil? && !owner_account_sid_present?)]
-    property owner_account_sid : String?
+    getter owner_account_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? owner_account_sid_present : Bool = false
 
     # A 34 character string that uniquely identifies this resource.
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    property sid : String?
+    getter sid : String?
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The status of this account
     @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
-    property status : String?
+    getter status : String?
 
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
+
+    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("String", ["active", "suspended", "closed"])
 
     # Account Instance Subresources
     @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
@@ -76,10 +78,12 @@ module Twilio
 
     # The type of this account
     @[JSON::Field(key: "type", type: String?, presence: true, ignore_serialize: _type.nil? && !_type_present?)]
-    property _type : String?
+    getter _type : String?
 
     @[JSON::Field(ignore: true)]
     property? _type_present : Bool = false
+
+    ENUM_VALIDATOR_FOR__TYPE = EnumValidator.new("String", ["Trial", "Full"])
 
     # The URI for this resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
@@ -97,6 +101,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@owner_account_sid.nil? && @owner_account_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"owner_account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -123,6 +128,14 @@ module Twilio
         invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
+      unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
+        invalid_properties.push("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
+      end
+
+      unless ENUM_VALIDATOR_FOR__TYPE.valid?(@_type)
+        invalid_properties.push("invalid value for \"_type\", must be one of #{ENUM_VALIDATOR_FOR__TYPE.allowable_values}.")
+      end
+
       invalid_properties
     end
 
@@ -135,10 +148,8 @@ module Twilio
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^AC[0-9a-fA-F]{32}$/
-      status_validator = EnumValidator.new("String", ["active", "suspended", "closed"])
-      return false unless status_validator.valid?(@status)
-      _type_validator = EnumValidator.new("String", ["Trial", "Full"])
-      return false unless _type_validator.valid?(@_type)
+      return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
+      return false unless ENUM_VALIDATOR_FOR__TYPE.valid?(@_type)
       true
     end
 
@@ -183,9 +194,8 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumValidator.new("String", ["active", "suspended", "closed"])
-      unless validator.valid?(status)
-        raise ArgumentError.new("invalid value for \"status\", must be one of #{validator.allowable_values}.")
+      unless ENUM_VALIDATOR_FOR_STATUS.valid?(status)
+        raise ArgumentError.new("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
       end
       @status = status
     end
@@ -193,9 +203,8 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] _type Object to be assigned
     def _type=(_type)
-      validator = EnumValidator.new("String", ["Trial", "Full"])
-      unless validator.valid?(_type)
-        raise ArgumentError.new("invalid value for \"_type\", must be one of #{validator.allowable_values}.")
+      unless ENUM_VALIDATOR_FOR__TYPE.valid?(_type)
+        raise ArgumentError.new("invalid value for \"_type\", must be one of #{ENUM_VALIDATOR_FOR__TYPE.allowable_values}.")
       end
       @_type = _type
     end
@@ -224,9 +233,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [auth_token, date_created, date_updated, friendly_name, owner_account_sid, sid, status, subresource_uris, _type, uri].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@auth_token, @date_created, @date_updated, @friendly_name, @owner_account_sid, @sid, @status, @subresource_uris, @_type, @uri)
   end
 end

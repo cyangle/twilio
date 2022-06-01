@@ -20,7 +20,7 @@ module Twilio
     # Optional properties
     # The unique id of the Account that is responsible for this resource.
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    property account_sid : String?
+    getter account_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
@@ -41,7 +41,7 @@ module Twilio
 
     # The unique string that identifies the SipDomain resource.
     @[JSON::Field(key: "domain_sid", type: String?, presence: true, ignore_serialize: domain_sid.nil? && !domain_sid_present?)]
-    property domain_sid : String?
+    getter domain_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? domain_sid_present : Bool = false
@@ -55,7 +55,7 @@ module Twilio
 
     # A 34 character string that uniquely identifies this resource.
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    property sid : String?
+    getter sid : String?
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
@@ -76,6 +76,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@account_sid.nil? && @account_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -211,9 +212,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [account_sid, date_created, date_updated, domain_sid, friendly_name, sid, uri].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@account_sid, @date_created, @date_updated, @domain_sid, @friendly_name, @sid, @uri)
   end
 end

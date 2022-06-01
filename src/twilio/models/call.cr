@@ -20,7 +20,7 @@ module Twilio
     # Optional properties
     # The SID of the Account that created this resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    property account_sid : String?
+    getter account_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
@@ -104,21 +104,21 @@ module Twilio
 
     # The Group SID associated with this call. If no Group is associated with the call, the field is empty.
     @[JSON::Field(key: "group_sid", type: String?, presence: true, ignore_serialize: group_sid.nil? && !group_sid_present?)]
-    property group_sid : String?
+    getter group_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? group_sid_present : Bool = false
 
     # The SID that identifies the call that created this leg.
     @[JSON::Field(key: "parent_call_sid", type: String?, presence: true, ignore_serialize: parent_call_sid.nil? && !parent_call_sid_present?)]
-    property parent_call_sid : String?
+    getter parent_call_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? parent_call_sid_present : Bool = false
 
     # If the call was inbound, this is the SID of the IncomingPhoneNumber resource that received the call. If the call was outbound, it is the SID of the OutgoingCallerId resource from which the call was placed.
     @[JSON::Field(key: "phone_number_sid", type: String?, presence: true, ignore_serialize: phone_number_sid.nil? && !phone_number_sid_present?)]
-    property phone_number_sid : String?
+    getter phone_number_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? phone_number_sid_present : Bool = false
@@ -146,7 +146,7 @@ module Twilio
 
     # The unique string that identifies this resource
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    property sid : String?
+    getter sid : String?
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
@@ -160,10 +160,12 @@ module Twilio
 
     # The status of this call.
     @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
-    property status : String?
+    getter status : String?
 
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
+
+    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("String", ["queued", "ringing", "in-progress", "completed", "busy", "failed", "no-answer", "canceled"])
 
     # Account Instance Subresources
     @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
@@ -188,7 +190,7 @@ module Twilio
 
     # The (optional) unique identifier of the trunk resource that was used for this call.
     @[JSON::Field(key: "trunk_sid", type: String?, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?)]
-    property trunk_sid : String?
+    getter trunk_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? trunk_sid_present : Bool = false
@@ -209,6 +211,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@account_sid.nil? && @account_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -274,6 +277,10 @@ module Twilio
         invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
+      unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
+        invalid_properties.push("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
+      end
+
       if !@trunk_sid.nil? && @trunk_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"trunk_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -308,8 +315,7 @@ module Twilio
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^CA[0-9a-fA-F]{32}$/
-      status_validator = EnumValidator.new("String", ["queued", "ringing", "in-progress", "completed", "busy", "failed", "no-answer", "canceled"])
-      return false unless status_validator.valid?(@status)
+      return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size > 34
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size < 34
       return false if !@trunk_sid.nil? && @trunk_sid !~ /^TK[0-9a-fA-F]{32}$/
@@ -414,9 +420,8 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumValidator.new("String", ["queued", "ringing", "in-progress", "completed", "busy", "failed", "no-answer", "canceled"])
-      unless validator.valid?(status)
-        raise ArgumentError.new("invalid value for \"status\", must be one of #{validator.allowable_values}.")
+      unless ENUM_VALIDATOR_FOR_STATUS.valid?(status)
+        raise ArgumentError.new("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
       end
       @status = status
     end
@@ -480,9 +485,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [account_sid, answered_by, api_version, caller_name, date_created, date_updated, direction, duration, end_time, forwarded_from, from, from_formatted, group_sid, parent_call_sid, phone_number_sid, price, price_unit, queue_time, sid, start_time, status, subresource_uris, to, to_formatted, trunk_sid, uri].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@account_sid, @answered_by, @api_version, @caller_name, @date_created, @date_updated, @direction, @duration, @end_time, @forwarded_from, @from, @from_formatted, @group_sid, @parent_call_sid, @phone_number_sid, @price, @price_unit, @queue_time, @sid, @start_time, @status, @subresource_uris, @to, @to_formatted, @trunk_sid, @uri)
   end
 end

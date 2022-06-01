@@ -1,6 +1,6 @@
 class EnumValidator
   getter datatype : String
-  getter allowable_values : Array(String | Int32 | Float64)
+  getter allowable_values : Set(String | Int32 | Float64)
 
   def initialize(datatype, allowable_values)
     @datatype = datatype
@@ -13,7 +13,7 @@ class EnumValidator
       else
         value
       end
-    end
+    end.to_set
   end
 
   def valid?(value)

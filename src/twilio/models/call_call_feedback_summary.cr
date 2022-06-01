@@ -20,7 +20,7 @@ module Twilio
     # Optional properties
     # The unique sid that identifies this account
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    property account_sid : String?
+    getter account_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
@@ -97,7 +97,7 @@ module Twilio
 
     # A string that uniquely identifies this feedback entry
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    property sid : String?
+    getter sid : String?
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
@@ -111,10 +111,12 @@ module Twilio
 
     # The status of the feedback summary
     @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
-    property status : String?
+    getter status : String?
 
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
+
+    ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("String", ["queued", "in-progress", "completed", "failed"])
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
@@ -125,6 +127,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@account_sid.nil? && @account_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -151,6 +154,10 @@ module Twilio
         invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
+      unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
+        invalid_properties.push("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
+      end
+
       invalid_properties
     end
 
@@ -163,8 +170,7 @@ module Twilio
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^FS[0-9a-fA-F]{32}$/
-      status_validator = EnumValidator.new("String", ["queued", "in-progress", "completed", "failed"])
-      return false unless status_validator.valid?(@status)
+      return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
       true
     end
 
@@ -209,9 +215,8 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumValidator.new("String", ["queued", "in-progress", "completed", "failed"])
-      unless validator.valid?(status)
-        raise ArgumentError.new("invalid value for \"status\", must be one of #{validator.allowable_values}.")
+      unless ENUM_VALIDATOR_FOR_STATUS.valid?(status)
+        raise ArgumentError.new("invalid value for \"status\", must be one of #{ENUM_VALIDATOR_FOR_STATUS.allowable_values}.")
       end
       @status = status
     end
@@ -244,9 +249,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [account_sid, call_count, call_feedback_count, date_created, date_updated, end_date, include_subaccounts, issues, quality_score_average, quality_score_median, quality_score_standard_deviation, sid, start_date, status].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@account_sid, @call_count, @call_feedback_count, @date_created, @date_updated, @end_date, @include_subaccounts, @issues, @quality_score_average, @quality_score_median, @quality_score_standard_deviation, @sid, @start_date, @status)
   end
 end

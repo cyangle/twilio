@@ -81,6 +81,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       invalid_properties
     end
 
@@ -113,9 +114,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [authorized_connect_apps, _end, first_page_uri, next_page_uri, page, page_size, previous_page_uri, start, uri].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@authorized_connect_apps, @_end, @first_page_uri, @next_page_uri, @page, @page_size, @previous_page_uri, @start, @uri)
   end
 end

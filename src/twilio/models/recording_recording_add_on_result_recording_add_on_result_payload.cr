@@ -20,28 +20,28 @@ module Twilio
     # Optional properties
     # The SID of the Account that created the resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    property account_sid : String?
+    getter account_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The SID of the Add-on configuration
     @[JSON::Field(key: "add_on_configuration_sid", type: String?, presence: true, ignore_serialize: add_on_configuration_sid.nil? && !add_on_configuration_sid_present?)]
-    property add_on_configuration_sid : String?
+    getter add_on_configuration_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? add_on_configuration_sid_present : Bool = false
 
     # The SID of the AddOnResult to which the payload belongs
     @[JSON::Field(key: "add_on_result_sid", type: String?, presence: true, ignore_serialize: add_on_result_sid.nil? && !add_on_result_sid_present?)]
-    property add_on_result_sid : String?
+    getter add_on_result_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? add_on_result_sid_present : Bool = false
 
     # The SID of the Add-on to which the result belongs
     @[JSON::Field(key: "add_on_sid", type: String?, presence: true, ignore_serialize: add_on_sid.nil? && !add_on_sid_present?)]
-    property add_on_sid : String?
+    getter add_on_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? add_on_sid_present : Bool = false
@@ -76,14 +76,14 @@ module Twilio
 
     # The SID of the recording to which the AddOnResult resource that contains the payload belongs
     @[JSON::Field(key: "reference_sid", type: String?, presence: true, ignore_serialize: reference_sid.nil? && !reference_sid_present?)]
-    property reference_sid : String?
+    getter reference_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? reference_sid_present : Bool = false
 
     # The unique string that identifies the resource
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    property sid : String?
+    getter sid : String?
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
@@ -104,6 +104,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@account_sid.nil? && @account_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -348,9 +349,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [account_sid, add_on_configuration_sid, add_on_result_sid, add_on_sid, content_type, date_created, date_updated, label, reference_sid, sid, subresource_uris].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@account_sid, @add_on_configuration_sid, @add_on_result_sid, @add_on_sid, @content_type, @date_created, @date_updated, @label, @reference_sid, @sid, @subresource_uris)
   end
 end

@@ -20,7 +20,7 @@ module Twilio
     # Optional properties
     # The SID of the Call the resource is associated with
     @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
-    property call_sid : String?
+    getter call_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
@@ -41,7 +41,7 @@ module Twilio
 
     # The SID of the Queue the member is in
     @[JSON::Field(key: "queue_sid", type: String?, presence: true, ignore_serialize: queue_sid.nil? && !queue_sid_present?)]
-    property queue_sid : String?
+    getter queue_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? queue_sid_present : Bool = false
@@ -69,6 +69,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@call_sid.nil? && @call_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"call_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -168,9 +169,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [call_sid, date_enqueued, position, queue_sid, uri, wait_time].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@call_sid, @date_enqueued, @position, @queue_sid, @uri, @wait_time)
   end
 end

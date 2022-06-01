@@ -21,8 +21,43 @@ describe Twilio::Call do
   end
 
   describe "test attribute 'account_sid'" do
-    it "should work" do
-      # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
+    context "length is 33" do
+      it "raises error" do
+        expect_raises(ArgumentError, /the character length must be great than or equal to 34/) do
+          call = Twilio::Call.new
+          call.account_sid = "123456789012345678901234567890123"
+        end
+      end
+    end
+
+    context "length is 34" do
+      context "invalid pattern" do
+        it "raises error" do
+          expect_raises(ArgumentError, /must conform to the pattern/) do
+            call = Twilio::Call.new
+            call.account_sid = "1234567890123456789012345678901234"
+          end
+        end
+      end
+
+      context "valid pattern" do
+        it "sets the value" do
+          value = "AC12345678901234567890123456789012"
+          call = Twilio::Call.new
+          (call.account_sid).should be_nil
+          call.account_sid = value
+          (call.account_sid).should eq(value)
+        end
+      end
+    end
+
+    context "length is 35" do
+      it "raises error" do
+        expect_raises(ArgumentError, /the character length must be smaller than or equal to 34/) do
+          call = Twilio::Call.new
+          call.account_sid = "12345678901234567890123456789012345"
+        end
+      end
     end
   end
 
@@ -141,12 +176,28 @@ describe Twilio::Call do
   end
 
   describe "test attribute 'status'" do
-    it "should work" do
-      # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new("String", ["queued", "ringing", "in-progress", "completed", "busy", "failed", "no-answer", "canceled"])
-      # validator.allowable_values.each do |value|
-      #   expect { instance.status = value }.not_to raise_error
-      # end
+    context "valid values" do
+      it "should work" do
+        call = Twilio::Call.new
+        (call.status).should be_nil
+        Twilio::Call::ENUM_VALIDATOR_FOR_STATUS.allowable_values.each do |val|
+          value = val.to_s
+          (call.status).should_not eq(value)
+          call.status = value
+          (call.status).should eq(value)
+        end
+      end
+    end
+
+    context "invalid value" do
+      it "raises error" do
+        expect_raises(ArgumentError, /must be one of/) do
+          call = Twilio::Call.new
+          (call.status).should be_nil
+          value = "invalid"
+          call.status = value
+        end
+      end
     end
   end
 
@@ -177,6 +228,22 @@ describe Twilio::Call do
   describe "test attribute 'uri'" do
     it "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
+    end
+  end
+
+  describe "#hash" do
+    it "calculates the hash" do
+      call = Twilio::Call.from_json(File.read("spec/fixtures/calls/valid_call.json"))
+      call2 = Twilio::Call.from_json(File.read("spec/fixtures/calls/valid_call.json"))
+      (call.hash).should eq(call2.hash)
+    end
+  end
+
+  describe "#==" do
+    it "equals" do
+      call = Twilio::Call.from_json(File.read("spec/fixtures/calls/valid_call.json"))
+      call2 = Twilio::Call.from_json(File.read("spec/fixtures/calls/valid_call.json"))
+      (call == call2).should be_true
     end
   end
 end

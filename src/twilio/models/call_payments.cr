@@ -20,14 +20,14 @@ module Twilio
     # Optional properties
     # The SID of the Account that created the Payments resource.
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    property account_sid : String?
+    getter account_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The SID of the Call the resource is associated with.
     @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
-    property call_sid : String?
+    getter call_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
@@ -48,7 +48,7 @@ module Twilio
 
     # The SID of the Payments resource.
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    property sid : String?
+    getter sid : String?
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
@@ -69,6 +69,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@account_sid.nil? && @account_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -203,9 +204,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [account_sid, call_sid, date_created, date_updated, sid, uri].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@account_sid, @call_sid, @date_created, @date_updated, @sid, @uri)
   end
 end

@@ -20,7 +20,7 @@ module Twilio
     # Optional properties
     # The SID of the Account that created the resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    property account_sid : String?
+    getter account_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
@@ -41,17 +41,19 @@ module Twilio
 
     # The SID of the Message resource for which the feedback was provided
     @[JSON::Field(key: "message_sid", type: String?, presence: true, ignore_serialize: message_sid.nil? && !message_sid_present?)]
-    property message_sid : String?
+    getter message_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? message_sid_present : Bool = false
 
     # Whether the feedback has arrived
     @[JSON::Field(key: "outcome", type: String?, presence: true, ignore_serialize: outcome.nil? && !outcome_present?)]
-    property outcome : String?
+    getter outcome : String?
 
     @[JSON::Field(ignore: true)]
     property? outcome_present : Bool = false
+
+    ENUM_VALIDATOR_FOR_OUTCOME = EnumValidator.new("String", ["confirmed", "unconfirmed"])
 
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
@@ -69,6 +71,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@account_sid.nil? && @account_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -95,6 +98,10 @@ module Twilio
         invalid_properties.push("invalid value for \"message_sid\", must conform to the pattern #{pattern}.")
       end
 
+      unless ENUM_VALIDATOR_FOR_OUTCOME.valid?(@outcome)
+        invalid_properties.push("invalid value for \"outcome\", must be one of #{ENUM_VALIDATOR_FOR_OUTCOME.allowable_values}.")
+      end
+
       invalid_properties
     end
 
@@ -107,8 +114,7 @@ module Twilio
       return false if !@message_sid.nil? && @message_sid.to_s.size > 34
       return false if !@message_sid.nil? && @message_sid.to_s.size < 34
       return false if !@message_sid.nil? && @message_sid !~ /^(SM|MM)[0-9a-fA-F]{32}$/
-      outcome_validator = EnumValidator.new("String", ["confirmed", "unconfirmed"])
-      return false unless outcome_validator.valid?(@outcome)
+      return false unless ENUM_VALIDATOR_FOR_OUTCOME.valid?(@outcome)
       true
     end
 
@@ -153,9 +159,8 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] outcome Object to be assigned
     def outcome=(outcome)
-      validator = EnumValidator.new("String", ["confirmed", "unconfirmed"])
-      unless validator.valid?(outcome)
-        raise ArgumentError.new("invalid value for \"outcome\", must be one of #{validator.allowable_values}.")
+      unless ENUM_VALIDATOR_FOR_OUTCOME.valid?(outcome)
+        raise ArgumentError.new("invalid value for \"outcome\", must be one of #{ENUM_VALIDATOR_FOR_OUTCOME.allowable_values}.")
       end
       @outcome = outcome
     end
@@ -180,9 +185,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [account_sid, date_created, date_updated, message_sid, outcome, uri].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@account_sid, @date_created, @date_updated, @message_sid, @outcome, @uri)
   end
 end

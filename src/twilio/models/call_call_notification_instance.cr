@@ -20,7 +20,7 @@ module Twilio
     # Optional properties
     # The SID of the Account that created the resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    property account_sid : String?
+    getter account_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
@@ -34,7 +34,7 @@ module Twilio
 
     # The SID of the Call the resource is associated with
     @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
-    property call_sid : String?
+    getter call_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
@@ -90,10 +90,12 @@ module Twilio
 
     # HTTP method used with the request url
     @[JSON::Field(key: "request_method", type: String?, presence: true, ignore_serialize: request_method.nil? && !request_method_present?)]
-    property request_method : String?
+    getter request_method : String?
 
     @[JSON::Field(ignore: true)]
     property? request_method_present : Bool = false
+
+    ENUM_VALIDATOR_FOR_REQUEST_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # URL of the resource that generated the notification
     @[JSON::Field(key: "request_url", type: String?, presence: true, ignore_serialize: request_url.nil? && !request_url_present?)]
@@ -125,7 +127,7 @@ module Twilio
 
     # The unique string that identifies the resource
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    property sid : String?
+    getter sid : String?
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
@@ -146,6 +148,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@account_sid.nil? && @account_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -170,6 +173,10 @@ module Twilio
       pattern = /^CA[0-9a-fA-F]{32}$/
       if !@call_sid.nil? && @call_sid !~ pattern
         invalid_properties.push("invalid value for \"call_sid\", must conform to the pattern #{pattern}.")
+      end
+
+      unless ENUM_VALIDATOR_FOR_REQUEST_METHOD.valid?(@request_method)
+        invalid_properties.push("invalid value for \"request_method\", must be one of #{ENUM_VALIDATOR_FOR_REQUEST_METHOD.allowable_values}.")
       end
 
       if !@sid.nil? && @sid.to_s.size > 34
@@ -197,8 +204,7 @@ module Twilio
       return false if !@call_sid.nil? && @call_sid.to_s.size > 34
       return false if !@call_sid.nil? && @call_sid.to_s.size < 34
       return false if !@call_sid.nil? && @call_sid !~ /^CA[0-9a-fA-F]{32}$/
-      request_method_validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
-      return false unless request_method_validator.valid?(@request_method)
+      return false unless ENUM_VALIDATOR_FOR_REQUEST_METHOD.valid?(@request_method)
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^NO[0-9a-fA-F]{32}$/
@@ -246,9 +252,8 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] request_method Object to be assigned
     def request_method=(request_method)
-      validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
-      unless validator.valid?(request_method)
-        raise ArgumentError.new("invalid value for \"request_method\", must be one of #{validator.allowable_values}.")
+      unless ENUM_VALIDATOR_FOR_REQUEST_METHOD.valid?(request_method)
+        raise ArgumentError.new("invalid value for \"request_method\", must be one of #{ENUM_VALIDATOR_FOR_REQUEST_METHOD.allowable_values}.")
       end
       @request_method = request_method
     end
@@ -303,9 +308,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [account_sid, api_version, call_sid, date_created, date_updated, error_code, log, message_date, message_text, more_info, request_method, request_url, request_variables, response_body, response_headers, sid, uri].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@account_sid, @api_version, @call_sid, @date_created, @date_updated, @error_code, @log, @message_date, @message_text, @more_info, @request_method, @request_url, @request_variables, @response_body, @response_headers, @sid, @uri)
   end
 end

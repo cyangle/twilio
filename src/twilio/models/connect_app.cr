@@ -20,7 +20,7 @@ module Twilio
     # Optional properties
     # The SID of the Account that created the resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    property account_sid : String?
+    getter account_sid : String?
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
@@ -41,10 +41,12 @@ module Twilio
 
     # The HTTP method we use to call deauthorize_callback_url
     @[JSON::Field(key: "deauthorize_callback_method", type: String?, presence: true, ignore_serialize: deauthorize_callback_method.nil? && !deauthorize_callback_method_present?)]
-    property deauthorize_callback_method : String?
+    getter deauthorize_callback_method : String?
 
     @[JSON::Field(ignore: true)]
     property? deauthorize_callback_method_present : Bool = false
+
+    ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL we call to de-authorize the Connect App
     @[JSON::Field(key: "deauthorize_callback_url", type: String?, presence: true, ignore_serialize: deauthorize_callback_url.nil? && !deauthorize_callback_url_present?)]
@@ -83,7 +85,7 @@ module Twilio
 
     # The unique string that identifies the resource
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    property sid : String?
+    getter sid : String?
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
@@ -104,6 +106,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@account_sid.nil? && @account_sid.to_s.size > 34
         invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -115,6 +118,10 @@ module Twilio
       pattern = /^AC[0-9a-fA-F]{32}$/
       if !@account_sid.nil? && @account_sid !~ pattern
         invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+      end
+
+      unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(@deauthorize_callback_method)
+        invalid_properties.push("invalid value for \"deauthorize_callback_method\", must be one of #{ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.allowable_values}.")
       end
 
       if !@sid.nil? && @sid.to_s.size > 34
@@ -139,8 +146,7 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      deauthorize_callback_method_validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
-      return false unless deauthorize_callback_method_validator.valid?(@deauthorize_callback_method)
+      return false unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(@deauthorize_callback_method)
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^CN[0-9a-fA-F]{32}$/
@@ -169,9 +175,8 @@ module Twilio
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] deauthorize_callback_method Object to be assigned
     def deauthorize_callback_method=(deauthorize_callback_method)
-      validator = EnumValidator.new("String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
-      unless validator.valid?(deauthorize_callback_method)
-        raise ArgumentError.new("invalid value for \"deauthorize_callback_method\", must be one of #{validator.allowable_values}.")
+      unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(deauthorize_callback_method)
+        raise ArgumentError.new("invalid value for \"deauthorize_callback_method\", must be one of #{ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.allowable_values}.")
       end
       @deauthorize_callback_method = deauthorize_callback_method
     end
@@ -220,9 +225,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [account_sid, authorize_redirect_url, company_name, deauthorize_callback_method, deauthorize_callback_url, description, friendly_name, homepage_url, permissions, sid, uri].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@account_sid, @authorize_redirect_url, @company_name, @deauthorize_callback_method, @deauthorize_callback_url, @description, @friendly_name, @homepage_url, @permissions, @sid, @uri)
   end
 end

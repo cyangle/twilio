@@ -37,7 +37,7 @@ module Twilio
     property? friendly_name_present : Bool = false
 
     @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    property sid : String?
+    getter sid : String?
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
@@ -51,6 +51,7 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+
       if !@sid.nil? && @sid.to_s.size > 34
         invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
@@ -113,9 +114,7 @@ module Twilio
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Integer] Hash code
-    def hash
-      [date_created, date_updated, friendly_name, sid].hash
-    end
+    # @return [UInt64] Hash code
+    def_hash(@date_created, @date_updated, @friendly_name, @sid)
   end
 end
