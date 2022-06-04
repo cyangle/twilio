@@ -98,9 +98,11 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false if !@call_sid.nil? && @call_sid.to_s.size > 34
       return false if !@call_sid.nil? && @call_sid.to_s.size < 34
       return false if !@call_sid.nil? && @call_sid !~ /^CA[0-9a-fA-F]{32}$/
+
       true
     end
 
@@ -142,26 +144,16 @@ module Twilio
       @call_sid = call_sid
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        call_sid == o.call_sid &&
-        friendly_name == o.friendly_name &&
-        phone_number == o.phone_number &&
-        validation_code == o.validation_code
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @call_sid, @friendly_name, @phone_number, @validation_code)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @call_sid, @friendly_name, @phone_number, @validation_code)
   end
 end

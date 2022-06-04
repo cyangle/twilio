@@ -159,7 +159,9 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_CATEGORY.valid?(@category)
+
       true
     end
 
@@ -189,36 +191,16 @@ module Twilio
       @category = category
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        api_version == o.api_version &&
-        as_of == o.as_of &&
-        category == o.category &&
-        count == o.count &&
-        count_unit == o.count_unit &&
-        description == o.description &&
-        end_date == o.end_date &&
-        price == o.price &&
-        price_unit == o.price_unit &&
-        start_date == o.start_date &&
-        subresource_uris == o.subresource_uris &&
-        uri == o.uri &&
-        usage == o.usage &&
-        usage_unit == o.usage_unit
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @api_version, @as_of, @category, @count, @count_unit, @description, @end_date, @price, @price_unit, @start_date, @subresource_uris, @uri, @usage, @usage_unit)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @api_version, @as_of, @category, @count, @count_unit, @description, @end_date, @price, @price_unit, @start_date, @subresource_uris, @uri, @usage, @usage_unit)
   end
 end

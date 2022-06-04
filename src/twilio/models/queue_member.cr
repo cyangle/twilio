@@ -105,9 +105,11 @@ module Twilio
       return false if !@call_sid.nil? && @call_sid.to_s.size > 34
       return false if !@call_sid.nil? && @call_sid.to_s.size < 34
       return false if !@call_sid.nil? && @call_sid !~ /^CA[0-9a-fA-F]{32}$/
+
       return false if !@queue_sid.nil? && @queue_sid.to_s.size > 34
       return false if !@queue_sid.nil? && @queue_sid.to_s.size < 34
       return false if !@queue_sid.nil? && @queue_sid !~ /^QU[0-9a-fA-F]{32}$/
+
       true
     end
 
@@ -149,27 +151,16 @@ module Twilio
       @queue_sid = queue_sid
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        call_sid == o.call_sid &&
-        date_enqueued == o.date_enqueued &&
-        position == o.position &&
-        queue_sid == o.queue_sid &&
-        uri == o.uri &&
-        wait_time == o.wait_time
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@call_sid, @date_enqueued, @position, @queue_sid, @uri, @wait_time)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@call_sid, @date_enqueued, @position, @queue_sid, @uri, @wait_time)
   end
 end

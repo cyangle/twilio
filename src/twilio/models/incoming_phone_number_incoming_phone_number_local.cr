@@ -425,39 +425,57 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid?(@address_requirements)
+
       return false if !@address_sid.nil? && @address_sid.to_s.size > 34
       return false if !@address_sid.nil? && @address_sid.to_s.size < 34
       return false if !@address_sid.nil? && @address_sid !~ /^AD[0-9a-fA-F]{32}$/
+
       return false if !@bundle_sid.nil? && @bundle_sid.to_s.size > 34
       return false if !@bundle_sid.nil? && @bundle_sid.to_s.size < 34
       return false if !@bundle_sid.nil? && @bundle_sid !~ /^BU[0-9a-fA-F]{32}$/
+
       return false if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size > 34
       return false if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size < 34
       return false if !@emergency_address_sid.nil? && @emergency_address_sid !~ /^AD[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_EMERGENCY_ADDRESS_STATUS.valid?(@emergency_address_status)
+
       return false unless ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid?(@emergency_status)
+
       return false if !@identity_sid.nil? && @identity_sid.to_s.size > 34
       return false if !@identity_sid.nil? && @identity_sid.to_s.size < 34
       return false if !@identity_sid.nil? && @identity_sid !~ /^RI[0-9a-fA-F]{32}$/
+
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^PN[0-9a-fA-F]{32}$/
+
       return false if !@sms_application_sid.nil? && @sms_application_sid.to_s.size > 34
       return false if !@sms_application_sid.nil? && @sms_application_sid.to_s.size < 34
       return false if !@sms_application_sid.nil? && @sms_application_sid !~ /^AP[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid?(@sms_fallback_method)
+
       return false unless ENUM_VALIDATOR_FOR_SMS_METHOD.valid?(@sms_method)
+
       return false unless ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid?(@status_callback_method)
+
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size > 34
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size < 34
       return false if !@trunk_sid.nil? && @trunk_sid !~ /^TK[0-9a-fA-F]{32}$/
+
       return false if !@voice_application_sid.nil? && @voice_application_sid.to_s.size > 34
       return false if !@voice_application_sid.nil? && @voice_application_sid.to_s.size < 34
       return false if !@voice_application_sid.nil? && @voice_application_sid !~ /^AP[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(@voice_fallback_method)
+
       return false unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(@voice_method)
+
       return false unless ENUM_VALIDATOR_FOR_VOICE_RECEIVE_MODE.valid?(@voice_receive_mode)
+
       true
     end
 
@@ -695,55 +713,16 @@ module Twilio
       @voice_receive_mode = voice_receive_mode
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        address_requirements == o.address_requirements &&
-        address_sid == o.address_sid &&
-        api_version == o.api_version &&
-        beta == o.beta &&
-        bundle_sid == o.bundle_sid &&
-        capabilities == o.capabilities &&
-        date_created == o.date_created &&
-        date_updated == o.date_updated &&
-        emergency_address_sid == o.emergency_address_sid &&
-        emergency_address_status == o.emergency_address_status &&
-        emergency_status == o.emergency_status &&
-        friendly_name == o.friendly_name &&
-        identity_sid == o.identity_sid &&
-        origin == o.origin &&
-        phone_number == o.phone_number &&
-        sid == o.sid &&
-        sms_application_sid == o.sms_application_sid &&
-        sms_fallback_method == o.sms_fallback_method &&
-        sms_fallback_url == o.sms_fallback_url &&
-        sms_method == o.sms_method &&
-        sms_url == o.sms_url &&
-        status == o.status &&
-        status_callback == o.status_callback &&
-        status_callback_method == o.status_callback_method &&
-        trunk_sid == o.trunk_sid &&
-        uri == o.uri &&
-        voice_application_sid == o.voice_application_sid &&
-        voice_caller_id_lookup == o.voice_caller_id_lookup &&
-        voice_fallback_method == o.voice_fallback_method &&
-        voice_fallback_url == o.voice_fallback_url &&
-        voice_method == o.voice_method &&
-        voice_receive_mode == o.voice_receive_mode &&
-        voice_url == o.voice_url
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @address_requirements, @address_sid, @api_version, @beta, @bundle_sid, @capabilities, @date_created, @date_updated, @emergency_address_sid, @emergency_address_status, @emergency_status, @friendly_name, @identity_sid, @origin, @phone_number, @sid, @sms_application_sid, @sms_fallback_method, @sms_fallback_url, @sms_method, @sms_url, @status, @status_callback, @status_callback_method, @trunk_sid, @uri, @voice_application_sid, @voice_caller_id_lookup, @voice_fallback_method, @voice_fallback_url, @voice_method, @voice_receive_mode, @voice_url)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @address_requirements, @address_sid, @api_version, @beta, @bundle_sid, @capabilities, @date_created, @date_updated, @emergency_address_sid, @emergency_address_status, @emergency_status, @friendly_name, @identity_sid, @origin, @phone_number, @sid, @sms_application_sid, @sms_fallback_method, @sms_fallback_url, @sms_method, @sms_url, @status, @status_callback, @status_callback_method, @trunk_sid, @uri, @voice_application_sid, @voice_caller_id_lookup, @voice_fallback_method, @voice_fallback_url, @voice_method, @voice_receive_mode, @voice_url)
   end
 end

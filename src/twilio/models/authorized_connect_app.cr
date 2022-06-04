@@ -137,10 +137,13 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false if !@connect_app_sid.nil? && @connect_app_sid.to_s.size > 34
       return false if !@connect_app_sid.nil? && @connect_app_sid.to_s.size < 34
       return false if !@connect_app_sid.nil? && @connect_app_sid !~ /^CN[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
+
       true
     end
 
@@ -189,31 +192,16 @@ module Twilio
       @permissions = permissions
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        connect_app_company_name == o.connect_app_company_name &&
-        connect_app_description == o.connect_app_description &&
-        connect_app_friendly_name == o.connect_app_friendly_name &&
-        connect_app_homepage_url == o.connect_app_homepage_url &&
-        connect_app_sid == o.connect_app_sid &&
-        date_created == o.date_created &&
-        date_updated == o.date_updated &&
-        permissions == o.permissions &&
-        uri == o.uri
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @connect_app_company_name, @connect_app_description, @connect_app_friendly_name, @connect_app_homepage_url, @connect_app_sid, @date_created, @date_updated, @permissions, @uri)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @connect_app_company_name, @connect_app_description, @connect_app_friendly_name, @connect_app_homepage_url, @connect_app_sid, @date_created, @date_updated, @permissions, @uri)
   end
 end

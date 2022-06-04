@@ -155,11 +155,15 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^SC[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid?(@sms_fallback_method)
+
       return false unless ENUM_VALIDATOR_FOR_SMS_METHOD.valid?(@sms_method)
+
       true
     end
 
@@ -215,33 +219,16 @@ module Twilio
       @sms_method = sms_method
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        api_version == o.api_version &&
-        date_created == o.date_created &&
-        date_updated == o.date_updated &&
-        friendly_name == o.friendly_name &&
-        short_code == o.short_code &&
-        sid == o.sid &&
-        sms_fallback_method == o.sms_fallback_method &&
-        sms_fallback_url == o.sms_fallback_url &&
-        sms_method == o.sms_method &&
-        sms_url == o.sms_url &&
-        uri == o.uri
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @api_version, @date_created, @date_updated, @friendly_name, @short_code, @sid, @sms_fallback_method, @sms_fallback_url, @sms_method, @sms_url, @uri)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @api_version, @date_created, @date_updated, @friendly_name, @short_code, @sid, @sms_fallback_method, @sms_fallback_url, @sms_method, @sms_url, @uri)
   end
 end

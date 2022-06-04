@@ -191,13 +191,19 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_CALLBACK_METHOD.valid?(@callback_method)
+
       return false unless ENUM_VALIDATOR_FOR_RECURRING.valid?(@recurring)
+
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^UT[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_TRIGGER_BY.valid?(@trigger_by)
+
       return false unless ENUM_VALIDATOR_FOR_USAGE_CATEGORY.valid?(@usage_category)
+
       true
     end
 
@@ -267,37 +273,16 @@ module Twilio
       @usage_category = usage_category
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        api_version == o.api_version &&
-        callback_method == o.callback_method &&
-        callback_url == o.callback_url &&
-        current_value == o.current_value &&
-        date_created == o.date_created &&
-        date_fired == o.date_fired &&
-        date_updated == o.date_updated &&
-        friendly_name == o.friendly_name &&
-        recurring == o.recurring &&
-        sid == o.sid &&
-        trigger_by == o.trigger_by &&
-        trigger_value == o.trigger_value &&
-        uri == o.uri &&
-        usage_category == o.usage_category &&
-        usage_record_uri == o.usage_record_uri
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @api_version, @callback_method, @callback_url, @current_value, @date_created, @date_fired, @date_updated, @friendly_name, @recurring, @sid, @trigger_by, @trigger_value, @uri, @usage_category, @usage_record_uri)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @api_version, @callback_method, @callback_url, @current_value, @date_created, @date_fired, @date_updated, @friendly_name, @recurring, @sid, @trigger_by, @trigger_value, @uri, @usage_category, @usage_record_uri)
   end
 end

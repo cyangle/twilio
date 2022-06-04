@@ -72,26 +72,16 @@ module Twilio
       true
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        beta == o.beta &&
-        country == o.country &&
-        country_code == o.country_code &&
-        subresource_uris == o.subresource_uris &&
-        uri == o.uri
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@beta, @country, @country_code, @subresource_uris, @uri)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@beta, @country, @country_code, @subresource_uris, @uri)
   end
 end

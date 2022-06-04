@@ -248,18 +248,25 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false if !@byoc_trunk_sid.nil? && @byoc_trunk_sid.to_s.size > 34
       return false if !@byoc_trunk_sid.nil? && @byoc_trunk_sid.to_s.size < 34
       return false if !@byoc_trunk_sid.nil? && @byoc_trunk_sid !~ /^BY[0-9a-fA-F]{32}$/
+
       return false if !@emergency_caller_sid.nil? && @emergency_caller_sid.to_s.size > 34
       return false if !@emergency_caller_sid.nil? && @emergency_caller_sid.to_s.size < 34
       return false if !@emergency_caller_sid.nil? && @emergency_caller_sid !~ /^PN[0-9a-fA-F]{32}$/
+
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^SD[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(@voice_fallback_method)
+
       return false unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(@voice_method)
+
       return false unless ENUM_VALIDATOR_FOR_VOICE_STATUS_CALLBACK_METHOD.valid?(@voice_status_callback_method)
+
       true
     end
 
@@ -360,42 +367,16 @@ module Twilio
       @voice_status_callback_method = voice_status_callback_method
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        api_version == o.api_version &&
-        auth_type == o.auth_type &&
-        byoc_trunk_sid == o.byoc_trunk_sid &&
-        date_created == o.date_created &&
-        date_updated == o.date_updated &&
-        domain_name == o.domain_name &&
-        emergency_caller_sid == o.emergency_caller_sid &&
-        emergency_calling_enabled == o.emergency_calling_enabled &&
-        friendly_name == o.friendly_name &&
-        secure == o.secure &&
-        sid == o.sid &&
-        sip_registration == o.sip_registration &&
-        subresource_uris == o.subresource_uris &&
-        uri == o.uri &&
-        voice_fallback_method == o.voice_fallback_method &&
-        voice_fallback_url == o.voice_fallback_url &&
-        voice_method == o.voice_method &&
-        voice_status_callback_method == o.voice_status_callback_method &&
-        voice_status_callback_url == o.voice_status_callback_url &&
-        voice_url == o.voice_url
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @api_version, @auth_type, @byoc_trunk_sid, @date_created, @date_updated, @domain_name, @emergency_caller_sid, @emergency_calling_enabled, @friendly_name, @secure, @sid, @sip_registration, @subresource_uris, @uri, @voice_fallback_method, @voice_fallback_url, @voice_method, @voice_status_callback_method, @voice_status_callback_url, @voice_url)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @api_version, @auth_type, @byoc_trunk_sid, @date_created, @date_updated, @domain_name, @emergency_caller_sid, @emergency_calling_enabled, @friendly_name, @secure, @sid, @sip_registration, @subresource_uris, @uri, @voice_fallback_method, @voice_fallback_url, @voice_method, @voice_status_callback_method, @voice_status_callback_url, @voice_url)
   end
 end

@@ -176,19 +176,25 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false if !@add_on_configuration_sid.nil? && @add_on_configuration_sid.to_s.size > 34
       return false if !@add_on_configuration_sid.nil? && @add_on_configuration_sid.to_s.size < 34
       return false if !@add_on_configuration_sid.nil? && @add_on_configuration_sid !~ /^XE[0-9a-fA-F]{32}$/
+
       return false if !@add_on_sid.nil? && @add_on_sid.to_s.size > 34
       return false if !@add_on_sid.nil? && @add_on_sid.to_s.size < 34
       return false if !@add_on_sid.nil? && @add_on_sid !~ /^XB[0-9a-fA-F]{32}$/
+
       return false if !@reference_sid.nil? && @reference_sid.to_s.size > 34
       return false if !@reference_sid.nil? && @reference_sid.to_s.size < 34
       return false if !@reference_sid.nil? && @reference_sid !~ /^RE[0-9a-fA-F]{32}$/
+
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^XR[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
+
       true
     end
 
@@ -294,31 +300,16 @@ module Twilio
       @status = status
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        add_on_configuration_sid == o.add_on_configuration_sid &&
-        add_on_sid == o.add_on_sid &&
-        date_completed == o.date_completed &&
-        date_created == o.date_created &&
-        date_updated == o.date_updated &&
-        reference_sid == o.reference_sid &&
-        sid == o.sid &&
-        status == o.status &&
-        subresource_uris == o.subresource_uris
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @add_on_configuration_sid, @add_on_sid, @date_completed, @date_created, @date_updated, @reference_sid, @sid, @status, @subresource_uris)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @add_on_configuration_sid, @add_on_sid, @date_completed, @date_created, @date_updated, @reference_sid, @sid, @status, @subresource_uris)
   end
 end

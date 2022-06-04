@@ -301,22 +301,29 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false if !@group_sid.nil? && @group_sid.to_s.size > 34
       return false if !@group_sid.nil? && @group_sid.to_s.size < 34
       return false if !@group_sid.nil? && @group_sid !~ /^GP[0-9a-fA-F]{32}$/
+
       return false if !@parent_call_sid.nil? && @parent_call_sid.to_s.size > 34
       return false if !@parent_call_sid.nil? && @parent_call_sid.to_s.size < 34
       return false if !@parent_call_sid.nil? && @parent_call_sid !~ /^CA[0-9a-fA-F]{32}$/
+
       return false if !@phone_number_sid.nil? && @phone_number_sid.to_s.size > 34
       return false if !@phone_number_sid.nil? && @phone_number_sid.to_s.size < 34
       return false if !@phone_number_sid.nil? && @phone_number_sid !~ /^PN[0-9a-fA-F]{32}$/
+
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^CA[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
+
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size > 34
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size < 34
       return false if !@trunk_sid.nil? && @trunk_sid !~ /^TK[0-9a-fA-F]{32}$/
+
       true
     end
 
@@ -441,47 +448,16 @@ module Twilio
       @trunk_sid = trunk_sid
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        answered_by == o.answered_by &&
-        api_version == o.api_version &&
-        caller_name == o.caller_name &&
-        date_created == o.date_created &&
-        date_updated == o.date_updated &&
-        direction == o.direction &&
-        duration == o.duration &&
-        end_time == o.end_time &&
-        forwarded_from == o.forwarded_from &&
-        from == o.from &&
-        from_formatted == o.from_formatted &&
-        group_sid == o.group_sid &&
-        parent_call_sid == o.parent_call_sid &&
-        phone_number_sid == o.phone_number_sid &&
-        price == o.price &&
-        price_unit == o.price_unit &&
-        queue_time == o.queue_time &&
-        sid == o.sid &&
-        start_time == o.start_time &&
-        status == o.status &&
-        subresource_uris == o.subresource_uris &&
-        to == o.to &&
-        to_formatted == o.to_formatted &&
-        trunk_sid == o.trunk_sid &&
-        uri == o.uri
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @answered_by, @api_version, @caller_name, @date_created, @date_updated, @direction, @duration, @end_time, @forwarded_from, @from, @from_formatted, @group_sid, @parent_call_sid, @phone_number_sid, @price, @price_unit, @queue_time, @sid, @start_time, @status, @subresource_uris, @to, @to_formatted, @trunk_sid, @uri)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @answered_by, @api_version, @caller_name, @date_created, @date_updated, @direction, @duration, @end_time, @forwarded_from, @from, @from_formatted, @group_sid, @parent_call_sid, @phone_number_sid, @price, @price_unit, @queue_time, @sid, @start_time, @status, @subresource_uris, @to, @to_formatted, @trunk_sid, @uri)
   end
 end

@@ -148,11 +148,15 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(@deauthorize_callback_method)
+
       return false unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
+
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^CN[0-9a-fA-F]{32}$/
+
       true
     end
 
@@ -208,32 +212,16 @@ module Twilio
       @sid = sid
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        authorize_redirect_url == o.authorize_redirect_url &&
-        company_name == o.company_name &&
-        deauthorize_callback_method == o.deauthorize_callback_method &&
-        deauthorize_callback_url == o.deauthorize_callback_url &&
-        description == o.description &&
-        friendly_name == o.friendly_name &&
-        homepage_url == o.homepage_url &&
-        permissions == o.permissions &&
-        sid == o.sid &&
-        uri == o.uri
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @authorize_redirect_url, @company_name, @deauthorize_callback_method, @deauthorize_callback_url, @description, @friendly_name, @homepage_url, @permissions, @sid, @uri)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @authorize_redirect_url, @company_name, @deauthorize_callback_method, @deauthorize_callback_url, @description, @friendly_name, @homepage_url, @permissions, @sid, @uri)
   end
 end

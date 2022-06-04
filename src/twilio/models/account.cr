@@ -141,11 +141,15 @@ module Twilio
       return false if !@owner_account_sid.nil? && @owner_account_sid.to_s.size > 34
       return false if !@owner_account_sid.nil? && @owner_account_sid.to_s.size < 34
       return false if !@owner_account_sid.nil? && @owner_account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
+
       return false unless ENUM_VALIDATOR_FOR__TYPE.valid?(@_type)
+
       true
     end
 
@@ -201,31 +205,16 @@ module Twilio
       @_type = _type
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        auth_token == o.auth_token &&
-        date_created == o.date_created &&
-        date_updated == o.date_updated &&
-        friendly_name == o.friendly_name &&
-        owner_account_sid == o.owner_account_sid &&
-        sid == o.sid &&
-        status == o.status &&
-        subresource_uris == o.subresource_uris &&
-        _type == o._type &&
-        uri == o.uri
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@auth_token, @date_created, @date_updated, @friendly_name, @owner_account_sid, @sid, @status, @subresource_uris, @_type, @uri)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@auth_token, @date_created, @date_updated, @friendly_name, @owner_account_sid, @sid, @status, @subresource_uris, @_type, @uri)
   end
 end

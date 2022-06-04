@@ -168,9 +168,11 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^AD[0-9a-fA-F]{32}$/
+
       true
     end
 
@@ -212,36 +214,16 @@ module Twilio
       @sid = sid
     end
 
-    # Checks equality by comparing each attribute.
-    # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.same?(o)
-      self.class == o.class &&
-        account_sid == o.account_sid &&
-        city == o.city &&
-        customer_name == o.customer_name &&
-        date_created == o.date_created &&
-        date_updated == o.date_updated &&
-        emergency_enabled == o.emergency_enabled &&
-        friendly_name == o.friendly_name &&
-        iso_country == o.iso_country &&
-        postal_code == o.postal_code &&
-        region == o.region &&
-        sid == o.sid &&
-        street == o.street &&
-        uri == o.uri &&
-        validated == o.validated &&
-        verified == o.verified
-    end
-
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
       self == o
     end
 
-    # Calculates hash code according to all attributes.
-    # @return [UInt64] Hash code
-    def_hash(@account_sid, @city, @customer_name, @date_created, @date_updated, @emergency_enabled, @friendly_name, @iso_country, @postal_code, @region, @sid, @street, @uri, @validated, @verified)
+    # Generates #hash and #== methods from all fields
+    # #== @return [Bool]
+    # #hash calculates hash code according to all attributes.
+    # #hash @return [UInt64] Hash code
+    def_equals_and_hash(@account_sid, @city, @customer_name, @date_created, @date_updated, @emergency_enabled, @friendly_name, @iso_country, @postal_code, @region, @sid, @street, @uri, @validated, @verified)
   end
 end
