@@ -19,6 +19,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     @[JSON::Field(key: "type", type: String?, presence: true, ignore_serialize: _type.nil? && !_type_present?)]
     property _type : String?
 
@@ -45,7 +46,14 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @_type : String? = nil, @public_key_sid : String? = nil, @encrypted_cek : String? = nil, @iv : String? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @_type : String? = nil,
+      @public_key_sid : String? = nil,
+      @encrypted_cek : String? = nil,
+      @iv : String? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -72,6 +80,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@_type, @public_key_sid, @encrypted_cek, @iv)
+    def_equals_and_hash(@_type, @_type_present, @public_key_sid, @public_key_sid_present, @encrypted_cek, @encrypted_cek_present, @iv, @iv_present)
   end
 end

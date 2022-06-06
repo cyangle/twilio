@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     # The type of Address resource the phone number requires
     @[JSON::Field(key: "address_requirements", type: String?, presence: true, ignore_serialize: address_requirements.nil? && !address_requirements_present?)]
     property address_requirements : String?
@@ -110,7 +111,23 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @address_requirements : String? = nil, @beta : Bool? = nil, @capabilities : AvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities? = nil, @friendly_name : String? = nil, @iso_country : String? = nil, @lata : String? = nil, @latitude : String? = nil, @locality : String? = nil, @longitude : String? = nil, @phone_number : String? = nil, @postal_code : String? = nil, @rate_center : String? = nil, @region : String? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @address_requirements : String? = nil,
+      @beta : Bool? = nil,
+      @capabilities : AvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities? = nil,
+      @friendly_name : String? = nil,
+      @iso_country : String? = nil,
+      @lata : String? = nil,
+      @latitude : String? = nil,
+      @locality : String? = nil,
+      @longitude : String? = nil,
+      @phone_number : String? = nil,
+      @postal_code : String? = nil,
+      @rate_center : String? = nil,
+      @region : String? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -137,6 +154,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@address_requirements, @beta, @capabilities, @friendly_name, @iso_country, @lata, @latitude, @locality, @longitude, @phone_number, @postal_code, @rate_center, @region)
+    def_equals_and_hash(@address_requirements, @address_requirements_present, @beta, @beta_present, @capabilities, @capabilities_present, @friendly_name, @friendly_name_present, @iso_country, @iso_country_present, @lata, @lata_present, @latitude, @latitude_present, @locality, @locality_present, @longitude, @longitude_present, @phone_number, @phone_number_present, @postal_code, @postal_code_present, @rate_center, @rate_center_present, @region, @region_present)
   end
 end

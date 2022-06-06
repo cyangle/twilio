@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     # The SID of the Account that created the resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String?
@@ -83,7 +84,19 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? = nil, @assigned_add_on_sid : String? = nil, @enabled : Bool? = nil, @friendly_name : String? = nil, @product_name : String? = nil, @resource_sid : String? = nil, @sid : String? = nil, @unique_name : String? = nil, @uri : String? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @account_sid : String? = nil,
+      @assigned_add_on_sid : String? = nil,
+      @enabled : Bool? = nil,
+      @friendly_name : String? = nil,
+      @product_name : String? = nil,
+      @resource_sid : String? = nil,
+      @sid : String? = nil,
+      @unique_name : String? = nil,
+      @uri : String? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -152,15 +165,12 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-
       return false if !@assigned_add_on_sid.nil? && @assigned_add_on_sid.to_s.size > 34
       return false if !@assigned_add_on_sid.nil? && @assigned_add_on_sid.to_s.size < 34
       return false if !@assigned_add_on_sid.nil? && @assigned_add_on_sid !~ /^XE[0-9a-fA-F]{32}$/
-
       return false if !@resource_sid.nil? && @resource_sid.to_s.size > 34
       return false if !@resource_sid.nil? && @resource_sid.to_s.size < 34
       return false if !@resource_sid.nil? && @resource_sid !~ /^PN[0-9a-fA-F]{32}$/
-
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^XF[0-9a-fA-F]{32}$/
@@ -170,7 +180,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] account_sid Value to be assigned
-    def account_sid=(account_sid)
+    def account_sid=(account_sid : String?)
       if !account_sid.nil? && account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -189,7 +199,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] assigned_add_on_sid Value to be assigned
-    def assigned_add_on_sid=(assigned_add_on_sid)
+    def assigned_add_on_sid=(assigned_add_on_sid : String?)
       if !assigned_add_on_sid.nil? && assigned_add_on_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"assigned_add_on_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -208,7 +218,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] resource_sid Value to be assigned
-    def resource_sid=(resource_sid)
+    def resource_sid=(resource_sid : String?)
       if !resource_sid.nil? && resource_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"resource_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -227,7 +237,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] sid Value to be assigned
-    def sid=(sid)
+    def sid=(sid : String?)
       if !sid.nil? && sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
@@ -254,6 +264,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @assigned_add_on_sid, @enabled, @friendly_name, @product_name, @resource_sid, @sid, @unique_name, @uri)
+    def_equals_and_hash(@account_sid, @account_sid_present, @assigned_add_on_sid, @assigned_add_on_sid_present, @enabled, @enabled_present, @friendly_name, @friendly_name_present, @product_name, @product_name_present, @resource_sid, @resource_sid_present, @sid, @sid_present, @unique_name, @unique_name_present, @uri, @uri_present)
   end
 end

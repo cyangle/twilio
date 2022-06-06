@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     # The SID of the Account that is responsible for the resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String?
@@ -125,7 +126,25 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? = nil, @city : String? = nil, @customer_name : String? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @emergency_enabled : Bool? = nil, @friendly_name : String? = nil, @iso_country : String? = nil, @postal_code : String? = nil, @region : String? = nil, @sid : String? = nil, @street : String? = nil, @uri : String? = nil, @validated : Bool? = nil, @verified : Bool? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @account_sid : String? = nil,
+      @city : String? = nil,
+      @customer_name : String? = nil,
+      @date_created : Time? = nil,
+      @date_updated : Time? = nil,
+      @emergency_enabled : Bool? = nil,
+      @friendly_name : String? = nil,
+      @iso_country : String? = nil,
+      @postal_code : String? = nil,
+      @region : String? = nil,
+      @sid : String? = nil,
+      @street : String? = nil,
+      @uri : String? = nil,
+      @validated : Bool? = nil,
+      @verified : Bool? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -168,7 +187,6 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^AD[0-9a-fA-F]{32}$/
@@ -178,7 +196,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] account_sid Value to be assigned
-    def account_sid=(account_sid)
+    def account_sid=(account_sid : String?)
       if !account_sid.nil? && account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -197,7 +215,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] sid Value to be assigned
-    def sid=(sid)
+    def sid=(sid : String?)
       if !sid.nil? && sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
@@ -224,6 +242,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @city, @customer_name, @date_created, @date_updated, @emergency_enabled, @friendly_name, @iso_country, @postal_code, @region, @sid, @street, @uri, @validated, @verified)
+    def_equals_and_hash(@account_sid, @account_sid_present, @city, @city_present, @customer_name, @customer_name_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @emergency_enabled, @emergency_enabled_present, @friendly_name, @friendly_name_present, @iso_country, @iso_country_present, @postal_code, @postal_code_present, @region, @region_present, @sid, @sid_present, @street, @street_present, @uri, @uri_present, @validated, @validated_present, @verified, @verified_present)
   end
 end

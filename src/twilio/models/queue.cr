@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     # The SID of the Account that created this resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String?
@@ -83,7 +84,19 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? = nil, @average_wait_time : Int32? = nil, @current_size : Int32? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @friendly_name : String? = nil, @max_size : Int32? = nil, @sid : String? = nil, @uri : String? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @account_sid : String? = nil,
+      @average_wait_time : Int32? = nil,
+      @current_size : Int32? = nil,
+      @date_created : Time? = nil,
+      @date_updated : Time? = nil,
+      @friendly_name : String? = nil,
+      @max_size : Int32? = nil,
+      @sid : String? = nil,
+      @uri : String? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -126,7 +139,6 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^QU[0-9a-fA-F]{32}$/
@@ -136,7 +148,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] account_sid Value to be assigned
-    def account_sid=(account_sid)
+    def account_sid=(account_sid : String?)
       if !account_sid.nil? && account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -155,7 +167,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] sid Value to be assigned
-    def sid=(sid)
+    def sid=(sid : String?)
       if !sid.nil? && sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
@@ -182,6 +194,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @average_wait_time, @current_size, @date_created, @date_updated, @friendly_name, @max_size, @sid, @uri)
+    def_equals_and_hash(@account_sid, @account_sid_present, @average_wait_time, @average_wait_time_present, @current_size, @current_size_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @friendly_name, @friendly_name_present, @max_size, @max_size_present, @sid, @sid_present, @uri, @uri_present)
   end
 end

@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     # The SID of the Account that created the resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String?
@@ -215,7 +216,36 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? = nil, @address_requirements : String? = nil, @api_version : String? = nil, @capabilities : AddressDependentPhoneNumberCapabilities? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @emergency_address_sid : String? = nil, @emergency_status : String? = nil, @friendly_name : String? = nil, @phone_number : String? = nil, @sid : String? = nil, @sms_application_sid : String? = nil, @sms_fallback_method : String? = nil, @sms_fallback_url : String? = nil, @sms_method : String? = nil, @sms_url : String? = nil, @status_callback : String? = nil, @status_callback_method : String? = nil, @trunk_sid : String? = nil, @uri : String? = nil, @voice_application_sid : String? = nil, @voice_caller_id_lookup : Bool? = nil, @voice_fallback_method : String? = nil, @voice_fallback_url : String? = nil, @voice_method : String? = nil, @voice_url : String? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @account_sid : String? = nil,
+      @address_requirements : String? = nil,
+      @api_version : String? = nil,
+      @capabilities : AddressDependentPhoneNumberCapabilities? = nil,
+      @date_created : Time? = nil,
+      @date_updated : Time? = nil,
+      @emergency_address_sid : String? = nil,
+      @emergency_status : String? = nil,
+      @friendly_name : String? = nil,
+      @phone_number : String? = nil,
+      @sid : String? = nil,
+      @sms_application_sid : String? = nil,
+      @sms_fallback_method : String? = nil,
+      @sms_fallback_url : String? = nil,
+      @sms_method : String? = nil,
+      @sms_url : String? = nil,
+      @status_callback : String? = nil,
+      @status_callback_method : String? = nil,
+      @trunk_sid : String? = nil,
+      @uri : String? = nil,
+      @voice_application_sid : String? = nil,
+      @voice_caller_id_lookup : Bool? = nil,
+      @voice_fallback_method : String? = nil,
+      @voice_fallback_url : String? = nil,
+      @voice_method : String? = nil,
+      @voice_url : String? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -324,39 +354,27 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-
       return false unless ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid?(@address_requirements)
-
       return false if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size > 34
       return false if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size < 34
       return false if !@emergency_address_sid.nil? && @emergency_address_sid !~ /^AD[0-9a-fA-F]{32}$/
-
       return false unless ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid?(@emergency_status)
-
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^PN[0-9a-fA-F]{32}$/
-
       return false if !@sms_application_sid.nil? && @sms_application_sid.to_s.size > 34
       return false if !@sms_application_sid.nil? && @sms_application_sid.to_s.size < 34
       return false if !@sms_application_sid.nil? && @sms_application_sid !~ /^AP[0-9a-fA-F]{32}$/
-
       return false unless ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid?(@sms_fallback_method)
-
       return false unless ENUM_VALIDATOR_FOR_SMS_METHOD.valid?(@sms_method)
-
       return false unless ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid?(@status_callback_method)
-
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size > 34
       return false if !@trunk_sid.nil? && @trunk_sid.to_s.size < 34
       return false if !@trunk_sid.nil? && @trunk_sid !~ /^TK[0-9a-fA-F]{32}$/
-
       return false if !@voice_application_sid.nil? && @voice_application_sid.to_s.size > 34
       return false if !@voice_application_sid.nil? && @voice_application_sid.to_s.size < 34
       return false if !@voice_application_sid.nil? && @voice_application_sid !~ /^AP[0-9a-fA-F]{32}$/
-
       return false unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(@voice_fallback_method)
-
       return false unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(@voice_method)
 
       true
@@ -364,7 +382,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] account_sid Value to be assigned
-    def account_sid=(account_sid)
+    def account_sid=(account_sid : String?)
       if !account_sid.nil? && account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -383,14 +401,14 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] address_requirements Object to be assigned
-    def address_requirements=(address_requirements)
+    def address_requirements=(address_requirements : String?)
       ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid!(address_requirements)
       @address_requirements = address_requirements
     end
 
     # Custom attribute writer method with validation
     # @param [Object] emergency_address_sid Value to be assigned
-    def emergency_address_sid=(emergency_address_sid)
+    def emergency_address_sid=(emergency_address_sid : String?)
       if !emergency_address_sid.nil? && emergency_address_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"emergency_address_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -409,14 +427,14 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] emergency_status Object to be assigned
-    def emergency_status=(emergency_status)
+    def emergency_status=(emergency_status : String?)
       ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid!(emergency_status)
       @emergency_status = emergency_status
     end
 
     # Custom attribute writer method with validation
     # @param [Object] sid Value to be assigned
-    def sid=(sid)
+    def sid=(sid : String?)
       if !sid.nil? && sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
@@ -435,7 +453,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] sms_application_sid Value to be assigned
-    def sms_application_sid=(sms_application_sid)
+    def sms_application_sid=(sms_application_sid : String?)
       if !sms_application_sid.nil? && sms_application_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sms_application_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -454,28 +472,28 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_fallback_method Object to be assigned
-    def sms_fallback_method=(sms_fallback_method)
+    def sms_fallback_method=(sms_fallback_method : String?)
       ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid!(sms_fallback_method)
       @sms_fallback_method = sms_fallback_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_method Object to be assigned
-    def sms_method=(sms_method)
+    def sms_method=(sms_method : String?)
       ENUM_VALIDATOR_FOR_SMS_METHOD.valid!(sms_method)
       @sms_method = sms_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status_callback_method Object to be assigned
-    def status_callback_method=(status_callback_method)
+    def status_callback_method=(status_callback_method : String?)
       ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid!(status_callback_method)
       @status_callback_method = status_callback_method
     end
 
     # Custom attribute writer method with validation
     # @param [Object] trunk_sid Value to be assigned
-    def trunk_sid=(trunk_sid)
+    def trunk_sid=(trunk_sid : String?)
       if !trunk_sid.nil? && trunk_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"trunk_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -494,7 +512,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] voice_application_sid Value to be assigned
-    def voice_application_sid=(voice_application_sid)
+    def voice_application_sid=(voice_application_sid : String?)
       if !voice_application_sid.nil? && voice_application_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"voice_application_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -513,14 +531,14 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_fallback_method Object to be assigned
-    def voice_fallback_method=(voice_fallback_method)
+    def voice_fallback_method=(voice_fallback_method : String?)
       ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid!(voice_fallback_method)
       @voice_fallback_method = voice_fallback_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_method Object to be assigned
-    def voice_method=(voice_method)
+    def voice_method=(voice_method : String?)
       ENUM_VALIDATOR_FOR_VOICE_METHOD.valid!(voice_method)
       @voice_method = voice_method
     end
@@ -535,6 +553,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @address_requirements, @api_version, @capabilities, @date_created, @date_updated, @emergency_address_sid, @emergency_status, @friendly_name, @phone_number, @sid, @sms_application_sid, @sms_fallback_method, @sms_fallback_url, @sms_method, @sms_url, @status_callback, @status_callback_method, @trunk_sid, @uri, @voice_application_sid, @voice_caller_id_lookup, @voice_fallback_method, @voice_fallback_url, @voice_method, @voice_url)
+    def_equals_and_hash(@account_sid, @account_sid_present, @address_requirements, @address_requirements_present, @api_version, @api_version_present, @capabilities, @capabilities_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @emergency_address_sid, @emergency_address_sid_present, @emergency_status, @emergency_status_present, @friendly_name, @friendly_name_present, @phone_number, @phone_number_present, @sid, @sid_present, @sms_application_sid, @sms_application_sid_present, @sms_fallback_method, @sms_fallback_method_present, @sms_fallback_url, @sms_fallback_url_present, @sms_method, @sms_method_present, @sms_url, @sms_url_present, @status_callback, @status_callback_present, @status_callback_method, @status_callback_method_present, @trunk_sid, @trunk_sid_present, @uri, @uri_present, @voice_application_sid, @voice_application_sid_present, @voice_caller_id_lookup, @voice_caller_id_lookup_present, @voice_fallback_method, @voice_fallback_method_present, @voice_fallback_url, @voice_fallback_url_present, @voice_method, @voice_method_present, @voice_url, @voice_url_present)
   end
 end

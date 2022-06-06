@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     @[JSON::Field(key: "request", type: CallCallEventRequest?, presence: true, ignore_serialize: request.nil? && !request_present?)]
     property request : CallCallEventRequest?
 
@@ -32,7 +33,12 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @request : CallCallEventRequest? = nil, @response : CallCallEventResponse? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @request : CallCallEventRequest? = nil,
+      @response : CallCallEventResponse? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -59,6 +65,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@request, @response)
+    def_equals_and_hash(@request, @request_present, @response, @response_present)
   end
 end

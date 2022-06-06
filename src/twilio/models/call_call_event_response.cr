@@ -19,6 +19,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     @[JSON::Field(key: "response_code", type: Int32?, presence: true, ignore_serialize: response_code.nil? && !response_code_present?)]
     property response_code : Int32?
 
@@ -51,7 +52,15 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @response_code : Int32? = nil, @request_duration : Int32? = nil, @content_type : String? = nil, @date_created : String? = nil, @response_body : String? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @response_code : Int32? = nil,
+      @request_duration : Int32? = nil,
+      @content_type : String? = nil,
+      @date_created : String? = nil,
+      @response_body : String? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -78,6 +87,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@response_code, @request_duration, @content_type, @date_created, @response_body)
+    def_equals_and_hash(@response_code, @response_code_present, @request_duration, @request_duration_present, @content_type, @content_type_present, @date_created, @date_created_present, @response_body, @response_body_present)
   end
 end

@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
     property date_created : Time?
 
@@ -44,7 +45,14 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @date_created : Time? = nil, @date_updated : Time? = nil, @friendly_name : String? = nil, @sid : String? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @date_created : Time? = nil,
+      @date_updated : Time? = nil,
+      @friendly_name : String? = nil,
+      @sid : String? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -80,7 +88,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] sid Value to be assigned
-    def sid=(sid)
+    def sid=(sid : String?)
       if !sid.nil? && sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
@@ -107,6 +115,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@date_created, @date_updated, @friendly_name, @sid)
+    def_equals_and_hash(@date_created, @date_created_present, @date_updated, @date_updated_present, @friendly_name, @friendly_name_present, @sid, @sid_present)
   end
 end

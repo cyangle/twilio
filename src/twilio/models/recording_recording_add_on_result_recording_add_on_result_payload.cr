@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     # The SID of the Account that created the resource
     @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String?
@@ -97,7 +98,21 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @account_sid : String? = nil, @add_on_configuration_sid : String? = nil, @add_on_result_sid : String? = nil, @add_on_sid : String? = nil, @content_type : String? = nil, @date_created : Time? = nil, @date_updated : Time? = nil, @label : String? = nil, @reference_sid : String? = nil, @sid : String? = nil, @subresource_uris : Hash(String, String)? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @account_sid : String? = nil,
+      @add_on_configuration_sid : String? = nil,
+      @add_on_result_sid : String? = nil,
+      @add_on_sid : String? = nil,
+      @content_type : String? = nil,
+      @date_created : Time? = nil,
+      @date_updated : Time? = nil,
+      @label : String? = nil,
+      @reference_sid : String? = nil,
+      @sid : String? = nil,
+      @subresource_uris : Hash(String, String)? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -192,23 +207,18 @@ module Twilio
       return false if !@account_sid.nil? && @account_sid.to_s.size > 34
       return false if !@account_sid.nil? && @account_sid.to_s.size < 34
       return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-
       return false if !@add_on_configuration_sid.nil? && @add_on_configuration_sid.to_s.size > 34
       return false if !@add_on_configuration_sid.nil? && @add_on_configuration_sid.to_s.size < 34
       return false if !@add_on_configuration_sid.nil? && @add_on_configuration_sid !~ /^XE[0-9a-fA-F]{32}$/
-
       return false if !@add_on_result_sid.nil? && @add_on_result_sid.to_s.size > 34
       return false if !@add_on_result_sid.nil? && @add_on_result_sid.to_s.size < 34
       return false if !@add_on_result_sid.nil? && @add_on_result_sid !~ /^XR[0-9a-fA-F]{32}$/
-
       return false if !@add_on_sid.nil? && @add_on_sid.to_s.size > 34
       return false if !@add_on_sid.nil? && @add_on_sid.to_s.size < 34
       return false if !@add_on_sid.nil? && @add_on_sid !~ /^XB[0-9a-fA-F]{32}$/
-
       return false if !@reference_sid.nil? && @reference_sid.to_s.size > 34
       return false if !@reference_sid.nil? && @reference_sid.to_s.size < 34
       return false if !@reference_sid.nil? && @reference_sid !~ /^RE[0-9a-fA-F]{32}$/
-
       return false if !@sid.nil? && @sid.to_s.size > 34
       return false if !@sid.nil? && @sid.to_s.size < 34
       return false if !@sid.nil? && @sid !~ /^XH[0-9a-fA-F]{32}$/
@@ -218,7 +228,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] account_sid Value to be assigned
-    def account_sid=(account_sid)
+    def account_sid=(account_sid : String?)
       if !account_sid.nil? && account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -237,7 +247,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] add_on_configuration_sid Value to be assigned
-    def add_on_configuration_sid=(add_on_configuration_sid)
+    def add_on_configuration_sid=(add_on_configuration_sid : String?)
       if !add_on_configuration_sid.nil? && add_on_configuration_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"add_on_configuration_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -256,7 +266,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] add_on_result_sid Value to be assigned
-    def add_on_result_sid=(add_on_result_sid)
+    def add_on_result_sid=(add_on_result_sid : String?)
       if !add_on_result_sid.nil? && add_on_result_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"add_on_result_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -275,7 +285,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] add_on_sid Value to be assigned
-    def add_on_sid=(add_on_sid)
+    def add_on_sid=(add_on_sid : String?)
       if !add_on_sid.nil? && add_on_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"add_on_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -294,7 +304,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] reference_sid Value to be assigned
-    def reference_sid=(reference_sid)
+    def reference_sid=(reference_sid : String?)
       if !reference_sid.nil? && reference_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"reference_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -313,7 +323,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] sid Value to be assigned
-    def sid=(sid)
+    def sid=(sid : String?)
       if !sid.nil? && sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
@@ -340,6 +350,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @add_on_configuration_sid, @add_on_result_sid, @add_on_sid, @content_type, @date_created, @date_updated, @label, @reference_sid, @sid, @subresource_uris)
+    def_equals_and_hash(@account_sid, @account_sid_present, @add_on_configuration_sid, @add_on_configuration_sid_present, @add_on_result_sid, @add_on_result_sid_present, @add_on_sid, @add_on_sid_present, @content_type, @content_type_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @label, @label_present, @reference_sid, @reference_sid_present, @sid, @sid_present, @subresource_uris, @subresource_uris_present)
   end
 end

@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     # The SID of the Call the resource is associated with
     @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
     getter call_sid : String?
@@ -62,7 +63,16 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @call_sid : String? = nil, @date_enqueued : Time? = nil, @position : Int32? = nil, @queue_sid : String? = nil, @uri : String? = nil, @wait_time : Int32? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @call_sid : String? = nil,
+      @date_enqueued : Time? = nil,
+      @position : Int32? = nil,
+      @queue_sid : String? = nil,
+      @uri : String? = nil,
+      @wait_time : Int32? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -105,7 +115,6 @@ module Twilio
       return false if !@call_sid.nil? && @call_sid.to_s.size > 34
       return false if !@call_sid.nil? && @call_sid.to_s.size < 34
       return false if !@call_sid.nil? && @call_sid !~ /^CA[0-9a-fA-F]{32}$/
-
       return false if !@queue_sid.nil? && @queue_sid.to_s.size > 34
       return false if !@queue_sid.nil? && @queue_sid.to_s.size < 34
       return false if !@queue_sid.nil? && @queue_sid !~ /^QU[0-9a-fA-F]{32}$/
@@ -115,7 +124,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] call_sid Value to be assigned
-    def call_sid=(call_sid)
+    def call_sid=(call_sid : String?)
       if !call_sid.nil? && call_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"call_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -134,7 +143,7 @@ module Twilio
 
     # Custom attribute writer method with validation
     # @param [Object] queue_sid Value to be assigned
-    def queue_sid=(queue_sid)
+    def queue_sid=(queue_sid : String?)
       if !queue_sid.nil? && queue_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"queue_sid\", the character length must be smaller than or equal to 34.")
       end
@@ -161,6 +170,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@call_sid, @date_enqueued, @position, @queue_sid, @uri, @wait_time)
+    def_equals_and_hash(@call_sid, @call_sid_present, @date_enqueued, @date_enqueued_present, @position, @position_present, @queue_sid, @queue_sid_present, @uri, @uri_present, @wait_time, @wait_time_present)
   end
 end

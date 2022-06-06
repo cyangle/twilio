@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     # Whether all phone numbers available in the country are new to the Twilio platform.
     @[JSON::Field(key: "beta", type: Bool?, presence: true, ignore_serialize: beta.nil? && !beta_present?)]
     property beta : Bool?
@@ -55,7 +56,15 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @beta : Bool? = nil, @country : String? = nil, @country_code : String? = nil, @subresource_uris : Hash(String, String)? = nil, @uri : String? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @beta : Bool? = nil,
+      @country : String? = nil,
+      @country_code : String? = nil,
+      @subresource_uris : Hash(String, String)? = nil,
+      @uri : String? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -82,6 +91,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@beta, @country, @country_code, @subresource_uris, @uri)
+    def_equals_and_hash(@beta, @beta_present, @country, @country_present, @country_code, @country_code_present, @subresource_uris, @subresource_uris_present, @uri, @uri_present)
   end
 end

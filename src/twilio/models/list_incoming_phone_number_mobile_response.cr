@@ -18,6 +18,7 @@ module Twilio
     include JSON::Serializable::Unmapped
 
     # Optional properties
+
     @[JSON::Field(key: "end", type: Int32?, presence: true, ignore_serialize: _end.nil? && !_end_present?)]
     property _end : Int32?
 
@@ -74,7 +75,19 @@ module Twilio
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    def initialize(*, @_end : Int32? = nil, @first_page_uri : String? = nil, @incoming_phone_numbers : Array(IncomingPhoneNumberIncomingPhoneNumberMobile)? = nil, @next_page_uri : String? = nil, @page : Int32? = nil, @page_size : Int32? = nil, @previous_page_uri : String? = nil, @start : Int32? = nil, @uri : String? = nil)
+    def initialize(
+      *,
+      # Optional properties
+      @_end : Int32? = nil,
+      @first_page_uri : String? = nil,
+      @incoming_phone_numbers : Array(IncomingPhoneNumberIncomingPhoneNumberMobile)? = nil,
+      @next_page_uri : String? = nil,
+      @page : Int32? = nil,
+      @page_size : Int32? = nil,
+      @previous_page_uri : String? = nil,
+      @start : Int32? = nil,
+      @uri : String? = nil
+    )
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -101,6 +114,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@_end, @first_page_uri, @incoming_phone_numbers, @next_page_uri, @page, @page_size, @previous_page_uri, @start, @uri)
+    def_equals_and_hash(@_end, @_end_present, @first_page_uri, @first_page_uri_present, @incoming_phone_numbers, @incoming_phone_numbers_present, @next_page_uri, @next_page_uri_present, @page, @page_present, @page_size, @page_size_present, @previous_page_uri, @previous_page_uri_present, @start, @start_present, @uri, @uri_present)
   end
 end
