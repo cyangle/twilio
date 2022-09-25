@@ -12,81 +12,81 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class AuthorizedConnectApp
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The company name set for the Connect App
-    @[JSON::Field(key: "connect_app_company_name", type: String?, presence: true, ignore_serialize: connect_app_company_name.nil? && !connect_app_company_name_present?)]
-    property connect_app_company_name : String?
+    @[JSON::Field(key: "connect_app_company_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: connect_app_company_name.nil? && !connect_app_company_name_present?)]
+    getter connect_app_company_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? connect_app_company_name_present : Bool = false
 
     # A detailed description of the app
-    @[JSON::Field(key: "connect_app_description", type: String?, presence: true, ignore_serialize: connect_app_description.nil? && !connect_app_description_present?)]
-    property connect_app_description : String?
+    @[JSON::Field(key: "connect_app_description", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: connect_app_description.nil? && !connect_app_description_present?)]
+    getter connect_app_description : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? connect_app_description_present : Bool = false
 
     # The name of the Connect App
-    @[JSON::Field(key: "connect_app_friendly_name", type: String?, presence: true, ignore_serialize: connect_app_friendly_name.nil? && !connect_app_friendly_name_present?)]
-    property connect_app_friendly_name : String?
+    @[JSON::Field(key: "connect_app_friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: connect_app_friendly_name.nil? && !connect_app_friendly_name_present?)]
+    getter connect_app_friendly_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? connect_app_friendly_name_present : Bool = false
 
     # The public URL for the Connect App
-    @[JSON::Field(key: "connect_app_homepage_url", type: String?, presence: true, ignore_serialize: connect_app_homepage_url.nil? && !connect_app_homepage_url_present?)]
-    property connect_app_homepage_url : String?
+    @[JSON::Field(key: "connect_app_homepage_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: connect_app_homepage_url.nil? && !connect_app_homepage_url_present?)]
+    getter connect_app_homepage_url : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? connect_app_homepage_url_present : Bool = false
 
     # The SID that we assigned to the Connect App
-    @[JSON::Field(key: "connect_app_sid", type: String?, presence: true, ignore_serialize: connect_app_sid.nil? && !connect_app_sid_present?)]
-    getter connect_app_sid : String?
+    @[JSON::Field(key: "connect_app_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: connect_app_sid.nil? && !connect_app_sid_present?)]
+    getter connect_app_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? connect_app_sid_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
-    property date_created : Time?
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
-    property date_updated : Time?
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # Permissions authorized to the app
-    @[JSON::Field(key: "permissions", type: Array(String)?, presence: true, ignore_serialize: permissions.nil? && !permissions_present?)]
-    getter permissions : Array(String)?
+    @[JSON::Field(key: "permissions", type: Array(String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: permissions.nil? && !permissions_present?)]
+    getter permissions : Array(String)? = nil
 
     @[JSON::Field(ignore: true)]
     property? permissions_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_PERMISSIONS = EnumValidator.new("permissions", "String", ["get-all", "post-all"])
+    ENUM_VALIDATOR_FOR_PERMISSIONS = EnumValidator.new("permissions", "Array(String)", ["get-all", "post-all"])
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
@@ -113,31 +113,33 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _connect_app_sid = @connect_app_sid
+        if _connect_app_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"connect_app_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
-      end
+        if _connect_app_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"connect_app_sid\", the character length must be great than or equal to 34.")
+        end
 
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@connect_app_sid.nil? && @connect_app_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"connect_app_sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@connect_app_sid.nil? && @connect_app_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"connect_app_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^CN[0-9a-fA-F]{32}$/
-      if !@connect_app_sid.nil? && @connect_app_sid !~ pattern
-        invalid_properties.push("invalid value for \"connect_app_sid\", must conform to the pattern #{pattern}.")
+        pattern = /^CN[0-9a-fA-F]{32}$/
+        if _connect_app_sid !~ pattern
+          invalid_properties.push("invalid value for \"connect_app_sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_PERMISSIONS.error_message) unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
@@ -148,60 +150,121 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      return false if !@connect_app_sid.nil? && @connect_app_sid.to_s.size > 34
-      return false if !@connect_app_sid.nil? && @connect_app_sid.to_s.size < 34
-      return false if !@connect_app_sid.nil? && @connect_app_sid !~ /^CN[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
+      if _connect_app_sid = @connect_app_sid
+        return false if _connect_app_sid.to_s.size > 34
+        return false if _connect_app_sid.to_s.size < 34
+        return false if _connect_app_sid !~ /^CN[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] connect_app_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] connect_app_company_name Object to be assigned
+    def connect_app_company_name=(connect_app_company_name : String?)
+      if connect_app_company_name.nil?
+        return @connect_app_company_name = nil
+      end
+      @connect_app_company_name = connect_app_company_name
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] connect_app_description Object to be assigned
+    def connect_app_description=(connect_app_description : String?)
+      if connect_app_description.nil?
+        return @connect_app_description = nil
+      end
+      @connect_app_description = connect_app_description
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] connect_app_friendly_name Object to be assigned
+    def connect_app_friendly_name=(connect_app_friendly_name : String?)
+      if connect_app_friendly_name.nil?
+        return @connect_app_friendly_name = nil
+      end
+      @connect_app_friendly_name = connect_app_friendly_name
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] connect_app_homepage_url Object to be assigned
+    def connect_app_homepage_url=(connect_app_homepage_url : String?)
+      if connect_app_homepage_url.nil?
+        return @connect_app_homepage_url = nil
+      end
+      @connect_app_homepage_url = connect_app_homepage_url
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] connect_app_sid Object to be assigned
     def connect_app_sid=(connect_app_sid : String?)
-      if !connect_app_sid.nil? && connect_app_sid.to_s.size > 34
+      if connect_app_sid.nil?
+        return @connect_app_sid = nil
+      end
+      _connect_app_sid = connect_app_sid.not_nil!
+      if _connect_app_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"connect_app_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !connect_app_sid.nil? && connect_app_sid.to_s.size < 34
+      if _connect_app_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"connect_app_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^CN[0-9a-fA-F]{32}$/
-      if !connect_app_sid.nil? && connect_app_sid !~ pattern
+      if _connect_app_sid !~ pattern
         raise ArgumentError.new("invalid value for \"connect_app_sid\", must conform to the pattern #{pattern}.")
       end
 
       @connect_app_sid = connect_app_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      @date_created = date_created
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      @date_updated = date_updated
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] permissions Object to be assigned
     def permissions=(permissions : Array(String)?)
-      ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid!(permissions)
+      if permissions.nil?
+        return @permissions = nil
+      end
+      _permissions = permissions.not_nil!
+      ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid!(_permissions)
       @permissions = permissions
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
     end
 
     # @see the `==` method

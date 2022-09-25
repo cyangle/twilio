@@ -12,37 +12,37 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class ConnectApp
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The URL to redirect the user to after authorization
-    @[JSON::Field(key: "authorize_redirect_url", type: String?, presence: true, ignore_serialize: authorize_redirect_url.nil? && !authorize_redirect_url_present?)]
-    property authorize_redirect_url : String?
+    @[JSON::Field(key: "authorize_redirect_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: authorize_redirect_url.nil? && !authorize_redirect_url_present?)]
+    getter authorize_redirect_url : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? authorize_redirect_url_present : Bool = false
 
     # The company name set for the Connect App
-    @[JSON::Field(key: "company_name", type: String?, presence: true, ignore_serialize: company_name.nil? && !company_name_present?)]
-    property company_name : String?
+    @[JSON::Field(key: "company_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: company_name.nil? && !company_name_present?)]
+    getter company_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? company_name_present : Bool = false
 
     # The HTTP method we use to call deauthorize_callback_url
-    @[JSON::Field(key: "deauthorize_callback_method", type: String?, presence: true, ignore_serialize: deauthorize_callback_method.nil? && !deauthorize_callback_method_present?)]
-    getter deauthorize_callback_method : String?
+    @[JSON::Field(key: "deauthorize_callback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: deauthorize_callback_method.nil? && !deauthorize_callback_method_present?)]
+    getter deauthorize_callback_method : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? deauthorize_callback_method_present : Bool = false
@@ -50,52 +50,52 @@ module Twilio
     ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD = EnumValidator.new("deauthorize_callback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL we call to de-authorize the Connect App
-    @[JSON::Field(key: "deauthorize_callback_url", type: String?, presence: true, ignore_serialize: deauthorize_callback_url.nil? && !deauthorize_callback_url_present?)]
-    property deauthorize_callback_url : String?
+    @[JSON::Field(key: "deauthorize_callback_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: deauthorize_callback_url.nil? && !deauthorize_callback_url_present?)]
+    getter deauthorize_callback_url : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? deauthorize_callback_url_present : Bool = false
 
     # The description of the Connect App
-    @[JSON::Field(key: "description", type: String?, presence: true, ignore_serialize: description.nil? && !description_present?)]
-    property description : String?
+    @[JSON::Field(key: "description", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: description.nil? && !description_present?)]
+    getter description : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? description_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
-    property friendly_name : String?
+    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
+    getter friendly_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The URL users can obtain more information
-    @[JSON::Field(key: "homepage_url", type: String?, presence: true, ignore_serialize: homepage_url.nil? && !homepage_url_present?)]
-    property homepage_url : String?
+    @[JSON::Field(key: "homepage_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: homepage_url.nil? && !homepage_url_present?)]
+    getter homepage_url : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? homepage_url_present : Bool = false
 
     # The set of permissions that your ConnectApp requests
-    @[JSON::Field(key: "permissions", type: Array(String)?, presence: true, ignore_serialize: permissions.nil? && !permissions_present?)]
-    getter permissions : Array(String)?
+    @[JSON::Field(key: "permissions", type: Array(String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: permissions.nil? && !permissions_present?)]
+    getter permissions : Array(String)? = nil
 
     @[JSON::Field(ignore: true)]
     property? permissions_present : Bool = false
 
-    ENUM_VALIDATOR_FOR_PERMISSIONS = EnumValidator.new("permissions", "String", ["get-all", "post-all"])
+    ENUM_VALIDATOR_FOR_PERMISSIONS = EnumValidator.new("permissions", "Array(String)", ["get-all", "post-all"])
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String?
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
@@ -123,35 +123,37 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
-      end
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(@deauthorize_callback_method)
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_PERMISSIONS.error_message) unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
+      if _sid = @sid
+        if _sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@sid.nil? && @sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
-      end
+        if _sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@sid.nil? && @sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^CN[0-9a-fA-F]{32}$/
-      if !@sid.nil? && @sid !~ pattern
-        invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        pattern = /^CN[0-9a-fA-F]{32}$/
+        if _sid !~ pattern
+          invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties
@@ -160,68 +162,131 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid?(@deauthorize_callback_method)
       return false unless ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid?(@permissions)
-      return false if !@sid.nil? && @sid.to_s.size > 34
-      return false if !@sid.nil? && @sid.to_s.size < 34
-      return false if !@sid.nil? && @sid !~ /^CN[0-9a-fA-F]{32}$/
+      if _sid = @sid
+        return false if _sid.to_s.size > 34
+        return false if _sid.to_s.size < 34
+        return false if _sid !~ /^CN[0-9a-fA-F]{32}$/
+      end
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] authorize_redirect_url Object to be assigned
+    def authorize_redirect_url=(authorize_redirect_url : String?)
+      if authorize_redirect_url.nil?
+        return @authorize_redirect_url = nil
+      end
+      @authorize_redirect_url = authorize_redirect_url
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] company_name Object to be assigned
+    def company_name=(company_name : String?)
+      if company_name.nil?
+        return @company_name = nil
+      end
+      @company_name = company_name
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] deauthorize_callback_method Object to be assigned
     def deauthorize_callback_method=(deauthorize_callback_method : String?)
-      ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid!(deauthorize_callback_method)
+      if deauthorize_callback_method.nil?
+        return @deauthorize_callback_method = nil
+      end
+      _deauthorize_callback_method = deauthorize_callback_method.not_nil!
+      ENUM_VALIDATOR_FOR_DEAUTHORIZE_CALLBACK_METHOD.valid!(_deauthorize_callback_method)
       @deauthorize_callback_method = deauthorize_callback_method
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] deauthorize_callback_url Object to be assigned
+    def deauthorize_callback_url=(deauthorize_callback_url : String?)
+      if deauthorize_callback_url.nil?
+        return @deauthorize_callback_url = nil
+      end
+      @deauthorize_callback_url = deauthorize_callback_url
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] description Object to be assigned
+    def description=(description : String?)
+      if description.nil?
+        return @description = nil
+      end
+      @description = description
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] friendly_name Object to be assigned
+    def friendly_name=(friendly_name : String?)
+      if friendly_name.nil?
+        return @friendly_name = nil
+      end
+      @friendly_name = friendly_name
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] homepage_url Object to be assigned
+    def homepage_url=(homepage_url : String?)
+      if homepage_url.nil?
+        return @homepage_url = nil
+      end
+      @homepage_url = homepage_url
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] permissions Object to be assigned
     def permissions=(permissions : Array(String)?)
-      ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid!(permissions)
+      if permissions.nil?
+        return @permissions = nil
+      end
+      _permissions = permissions.not_nil!
+      ENUM_VALIDATOR_FOR_PERMISSIONS.all_valid!(_permissions)
       @permissions = permissions
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
     def sid=(sid : String?)
-      if !sid.nil? && sid.to_s.size > 34
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      if _sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !sid.nil? && sid.to_s.size < 34
+      if _sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^CN[0-9a-fA-F]{32}$/
-      if !sid.nil? && sid !~ pattern
+      if _sid !~ pattern
         raise ArgumentError.new("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
       @sid = sid
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
     end
 
     # @see the `==` method

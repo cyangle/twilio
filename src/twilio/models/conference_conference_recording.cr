@@ -12,106 +12,106 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class ConferenceConferenceRecording
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The API version used to create the recording
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
-    property api_version : String?
+    @[JSON::Field(key: "api_version", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
+    getter api_version : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # The SID of the Call the resource is associated with
-    @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
-    getter call_sid : String?
+    @[JSON::Field(key: "call_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
+    getter call_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
 
     # The number of channels in the final recording file as an integer
-    @[JSON::Field(key: "channels", type: Int32?, presence: true, ignore_serialize: channels.nil? && !channels_present?)]
-    property channels : Int32?
+    @[JSON::Field(key: "channels", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: channels.nil? && !channels_present?)]
+    getter channels : Int32? = nil
 
     @[JSON::Field(ignore: true)]
     property? channels_present : Bool = false
 
     # The Conference SID that identifies the conference associated with the recording
-    @[JSON::Field(key: "conference_sid", type: String?, presence: true, ignore_serialize: conference_sid.nil? && !conference_sid_present?)]
-    getter conference_sid : String?
+    @[JSON::Field(key: "conference_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: conference_sid.nil? && !conference_sid_present?)]
+    getter conference_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? conference_sid_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
-    property date_created : Time?
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
-    property date_updated : Time?
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The length of the recording in seconds
-    @[JSON::Field(key: "duration", type: String?, presence: true, ignore_serialize: duration.nil? && !duration_present?)]
-    property duration : String?
+    @[JSON::Field(key: "duration", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: duration.nil? && !duration_present?)]
+    getter duration : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? duration_present : Bool = false
 
-    @[JSON::Field(key: "encryption_details", type: EncryptionDetails?, presence: true, ignore_serialize: encryption_details.nil? && !encryption_details_present?)]
-    property encryption_details : EncryptionDetails?
+    @[JSON::Field(key: "encryption_details", type: EncryptionDetails?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: encryption_details.nil? && !encryption_details_present?)]
+    getter encryption_details : EncryptionDetails? = nil
 
     @[JSON::Field(ignore: true)]
     property? encryption_details_present : Bool = false
 
     # More information about why the recording is missing, if status is `absent`.
-    @[JSON::Field(key: "error_code", type: Int32?, presence: true, ignore_serialize: error_code.nil? && !error_code_present?)]
-    property error_code : Int32?
+    @[JSON::Field(key: "error_code", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: error_code.nil? && !error_code_present?)]
+    getter error_code : Int32? = nil
 
     @[JSON::Field(ignore: true)]
     property? error_code_present : Bool = false
 
     # The one-time cost of creating the recording.
-    @[JSON::Field(key: "price", type: String?, presence: true, ignore_serialize: price.nil? && !price_present?)]
-    property price : String?
+    @[JSON::Field(key: "price", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: price.nil? && !price_present?)]
+    getter price : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? price_present : Bool = false
 
     # The currency used in the price property.
-    @[JSON::Field(key: "price_unit", type: String?, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?)]
-    property price_unit : String?
+    @[JSON::Field(key: "price_unit", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?)]
+    getter price_unit : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? price_unit_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String?
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # How the recording was created
-    @[JSON::Field(key: "source", type: String?, presence: true, ignore_serialize: source.nil? && !source_present?)]
-    getter source : String?
+    @[JSON::Field(key: "source", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: source.nil? && !source_present?)]
+    getter source : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? source_present : Bool = false
@@ -119,15 +119,15 @@ module Twilio
     ENUM_VALIDATOR_FOR_SOURCE = EnumValidator.new("source", "String", ["DialVerb", "Conference", "OutboundAPI", "Trunking", "RecordVerb", "StartCallRecordingAPI", "StartConferenceRecordingAPI"])
 
     # The start time of the recording, given in RFC 2822 format
-    @[JSON::Field(key: "start_time", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: start_time.nil? && !start_time_present?)]
-    property start_time : Time?
+    @[JSON::Field(key: "start_time", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: start_time.nil? && !start_time_present?, converter: Time::RFC2822Converter)]
+    getter start_time : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? start_time_present : Bool = false
 
     # The status of the recording
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
-    getter status : String?
+    @[JSON::Field(key: "status", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status.nil? && !status_present?)]
+    getter status : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
@@ -135,8 +135,8 @@ module Twilio
     ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("status", "String", ["in-progress", "paused", "stopped", "processing", "completed", "absent"])
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
@@ -170,57 +170,61 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _call_sid = @call_sid
+        if _call_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"call_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        if _call_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"call_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^CA[0-9a-fA-F]{32}$/
+        if _call_sid !~ pattern
+          invalid_properties.push("invalid value for \"call_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _conference_sid = @conference_sid
+        if _conference_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"conference_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        if _conference_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"conference_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^CF[0-9a-fA-F]{32}$/
+        if _conference_sid !~ pattern
+          invalid_properties.push("invalid value for \"conference_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _sid = @sid
+        if _sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@call_sid.nil? && @call_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"call_sid\", the character length must be smaller than or equal to 34.")
-      end
+        if _sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@call_sid.nil? && @call_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"call_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^CA[0-9a-fA-F]{32}$/
-      if !@call_sid.nil? && @call_sid !~ pattern
-        invalid_properties.push("invalid value for \"call_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@conference_sid.nil? && @conference_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"conference_sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@conference_sid.nil? && @conference_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"conference_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^CF[0-9a-fA-F]{32}$/
-      if !@conference_sid.nil? && @conference_sid !~ pattern
-        invalid_properties.push("invalid value for \"conference_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^RE[0-9a-fA-F]{32}$/
-      if !@sid.nil? && @sid !~ pattern
-        invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        pattern = /^RE[0-9a-fA-F]{32}$/
+        if _sid !~ pattern
+          invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_SOURCE.error_message) unless ENUM_VALIDATOR_FOR_SOURCE.valid?(@source)
@@ -233,112 +237,211 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      return false if !@call_sid.nil? && @call_sid.to_s.size > 34
-      return false if !@call_sid.nil? && @call_sid.to_s.size < 34
-      return false if !@call_sid.nil? && @call_sid !~ /^CA[0-9a-fA-F]{32}$/
-      return false if !@conference_sid.nil? && @conference_sid.to_s.size > 34
-      return false if !@conference_sid.nil? && @conference_sid.to_s.size < 34
-      return false if !@conference_sid.nil? && @conference_sid !~ /^CF[0-9a-fA-F]{32}$/
-      return false if !@sid.nil? && @sid.to_s.size > 34
-      return false if !@sid.nil? && @sid.to_s.size < 34
-      return false if !@sid.nil? && @sid !~ /^RE[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
+      if _call_sid = @call_sid
+        return false if _call_sid.to_s.size > 34
+        return false if _call_sid.to_s.size < 34
+        return false if _call_sid !~ /^CA[0-9a-fA-F]{32}$/
+      end
+      if _conference_sid = @conference_sid
+        return false if _conference_sid.to_s.size > 34
+        return false if _conference_sid.to_s.size < 34
+        return false if _conference_sid !~ /^CF[0-9a-fA-F]{32}$/
+      end
+      if _sid = @sid
+        return false if _sid.to_s.size > 34
+        return false if _sid.to_s.size < 34
+        return false if _sid !~ /^RE[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_SOURCE.valid?(@source)
       return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] call_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] api_version Object to be assigned
+    def api_version=(api_version : String?)
+      if api_version.nil?
+        return @api_version = nil
+      end
+      @api_version = api_version
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] call_sid Object to be assigned
     def call_sid=(call_sid : String?)
-      if !call_sid.nil? && call_sid.to_s.size > 34
+      if call_sid.nil?
+        return @call_sid = nil
+      end
+      _call_sid = call_sid.not_nil!
+      if _call_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"call_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !call_sid.nil? && call_sid.to_s.size < 34
+      if _call_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"call_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^CA[0-9a-fA-F]{32}$/
-      if !call_sid.nil? && call_sid !~ pattern
+      if _call_sid !~ pattern
         raise ArgumentError.new("invalid value for \"call_sid\", must conform to the pattern #{pattern}.")
       end
 
       @call_sid = call_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] conference_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] channels Object to be assigned
+    def channels=(channels : Int32?)
+      if channels.nil?
+        return @channels = nil
+      end
+      @channels = channels
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] conference_sid Object to be assigned
     def conference_sid=(conference_sid : String?)
-      if !conference_sid.nil? && conference_sid.to_s.size > 34
+      if conference_sid.nil?
+        return @conference_sid = nil
+      end
+      _conference_sid = conference_sid.not_nil!
+      if _conference_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"conference_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !conference_sid.nil? && conference_sid.to_s.size < 34
+      if _conference_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"conference_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^CF[0-9a-fA-F]{32}$/
-      if !conference_sid.nil? && conference_sid !~ pattern
+      if _conference_sid !~ pattern
         raise ArgumentError.new("invalid value for \"conference_sid\", must conform to the pattern #{pattern}.")
       end
 
       @conference_sid = conference_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      @date_created = date_created
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      @date_updated = date_updated
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] duration Object to be assigned
+    def duration=(duration : String?)
+      if duration.nil?
+        return @duration = nil
+      end
+      @duration = duration
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] encryption_details Object to be assigned
+    def encryption_details=(encryption_details : EncryptionDetails?)
+      if encryption_details.nil?
+        return @encryption_details = nil
+      end
+      @encryption_details = encryption_details
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] error_code Object to be assigned
+    def error_code=(error_code : Int32?)
+      if error_code.nil?
+        return @error_code = nil
+      end
+      @error_code = error_code
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] price Object to be assigned
+    def price=(price : String?)
+      if price.nil?
+        return @price = nil
+      end
+      @price = price
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] price_unit Object to be assigned
+    def price_unit=(price_unit : String?)
+      if price_unit.nil?
+        return @price_unit = nil
+      end
+      @price_unit = price_unit
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
     def sid=(sid : String?)
-      if !sid.nil? && sid.to_s.size > 34
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      if _sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !sid.nil? && sid.to_s.size < 34
+      if _sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^RE[0-9a-fA-F]{32}$/
-      if !sid.nil? && sid !~ pattern
+      if _sid !~ pattern
         raise ArgumentError.new("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
       @sid = sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] source Object to be assigned
     def source=(source : String?)
-      ENUM_VALIDATOR_FOR_SOURCE.valid!(source)
+      if source.nil?
+        return @source = nil
+      end
+      _source = source.not_nil!
+      ENUM_VALIDATOR_FOR_SOURCE.valid!(_source)
       @source = source
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] start_time Object to be assigned
+    def start_time=(start_time : Time?)
+      if start_time.nil?
+        return @start_time = nil
+      end
+      @start_time = start_time
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status : String?)
-      ENUM_VALIDATOR_FOR_STATUS.valid!(status)
+      if status.nil?
+        return @status = nil
+      end
+      _status = status.not_nil!
+      ENUM_VALIDATOR_FOR_STATUS.valid!(_status)
       @status = status
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
     end
 
     # @see the `==` method

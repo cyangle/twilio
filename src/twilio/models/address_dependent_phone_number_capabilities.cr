@@ -13,36 +13,24 @@ require "log"
 
 module Twilio
   # Indicate if a phone can receive calls or messages
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class AddressDependentPhoneNumberCapabilities
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
-    @[JSON::Field(key: "fax", type: Bool?, presence: true, ignore_serialize: fax.nil? && !fax_present?)]
-    property fax : Bool?
+    @[JSON::Field(key: "fax", type: Bool?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter fax : Bool? = nil
 
-    @[JSON::Field(ignore: true)]
-    property? fax_present : Bool = false
+    @[JSON::Field(key: "mms", type: Bool?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter mms : Bool? = nil
 
-    @[JSON::Field(key: "mms", type: Bool?, presence: true, ignore_serialize: mms.nil? && !mms_present?)]
-    property mms : Bool?
+    @[JSON::Field(key: "sms", type: Bool?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter sms : Bool? = nil
 
-    @[JSON::Field(ignore: true)]
-    property? mms_present : Bool = false
-
-    @[JSON::Field(key: "sms", type: Bool?, presence: true, ignore_serialize: sms.nil? && !sms_present?)]
-    property sms : Bool?
-
-    @[JSON::Field(ignore: true)]
-    property? sms_present : Bool = false
-
-    @[JSON::Field(key: "voice", type: Bool?, presence: true, ignore_serialize: voice.nil? && !voice_present?)]
-    property voice : Bool?
-
-    @[JSON::Field(ignore: true)]
-    property? voice_present : Bool = false
+    @[JSON::Field(key: "voice", type: Bool?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter voice : Bool? = nil
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
@@ -70,6 +58,36 @@ module Twilio
       true
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] fax Object to be assigned
+    def fax=(fax : Bool?)
+      if fax.nil?
+        return @fax = nil
+      end
+      @fax = fax
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] mms Object to be assigned
+    def mms=(mms : Bool?)
+      if mms.nil?
+        return @mms = nil
+      end
+      @mms = mms
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sms Object to be assigned
+    def sms=(sms : Bool?)
+      if sms.nil?
+        return @sms = nil
+      end
+      @sms = sms
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice Object to be assigned
+    def voice=(voice : Bool?)
+      if voice.nil?
+        return @voice = nil
+      end
+      @voice = voice
+    end
+
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
@@ -80,6 +98,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@fax, @fax_present, @mms, @mms_present, @sms, @sms_present, @voice, @voice_present)
+    def_equals_and_hash(@fax, @mms, @sms, @voice)
   end
 end

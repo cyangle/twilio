@@ -12,58 +12,58 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class SipSipCredentialListSipCredential
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The unique id of the Account that is responsible for this resource.
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The unique id that identifies the credential list that includes this credential
-    @[JSON::Field(key: "credential_list_sid", type: String?, presence: true, ignore_serialize: credential_list_sid.nil? && !credential_list_sid_present?)]
-    getter credential_list_sid : String?
+    @[JSON::Field(key: "credential_list_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: credential_list_sid.nil? && !credential_list_sid_present?)]
+    getter credential_list_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? credential_list_sid_present : Bool = false
 
     # The date that this resource was created, given as GMT in RFC 2822 format.
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
-    property date_created : Time?
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The date that this resource was last updated, given as GMT in RFC 2822 format.
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
-    property date_updated : Time?
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # A 34 character string that uniquely identifies this resource.
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String?
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The URI for this resource, relative to https://api.twilio.com
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
     # The username for this credential.
-    @[JSON::Field(key: "username", type: String?, presence: true, ignore_serialize: username.nil? && !username_present?)]
-    property username : String?
+    @[JSON::Field(key: "username", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: username.nil? && !username_present?)]
+    getter username : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? username_present : Bool = false
@@ -87,44 +87,47 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _credential_list_sid = @credential_list_sid
+        if _credential_list_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"credential_list_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        if _credential_list_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"credential_list_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^CL[0-9a-fA-F]{32}$/
+        if _credential_list_sid !~ pattern
+          invalid_properties.push("invalid value for \"credential_list_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _sid = @sid
+        if _sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
-      end
+        if _sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@credential_list_sid.nil? && @credential_list_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"credential_list_sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@credential_list_sid.nil? && @credential_list_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"credential_list_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^CL[0-9a-fA-F]{32}$/
-      if !@credential_list_sid.nil? && @credential_list_sid !~ pattern
-        invalid_properties.push("invalid value for \"credential_list_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^CR[0-9a-fA-F]{32}$/
-      if !@sid.nil? && @sid !~ pattern
-        invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        pattern = /^CR[0-9a-fA-F]{32}$/
+        if _sid !~ pattern
+          invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties
@@ -133,74 +136,116 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      return false if !@credential_list_sid.nil? && @credential_list_sid.to_s.size > 34
-      return false if !@credential_list_sid.nil? && @credential_list_sid.to_s.size < 34
-      return false if !@credential_list_sid.nil? && @credential_list_sid !~ /^CL[0-9a-fA-F]{32}$/
-      return false if !@sid.nil? && @sid.to_s.size > 34
-      return false if !@sid.nil? && @sid.to_s.size < 34
-      return false if !@sid.nil? && @sid !~ /^CR[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
+      if _credential_list_sid = @credential_list_sid
+        return false if _credential_list_sid.to_s.size > 34
+        return false if _credential_list_sid.to_s.size < 34
+        return false if _credential_list_sid !~ /^CL[0-9a-fA-F]{32}$/
+      end
+      if _sid = @sid
+        return false if _sid.to_s.size > 34
+        return false if _sid.to_s.size < 34
+        return false if _sid !~ /^CR[0-9a-fA-F]{32}$/
+      end
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] credential_list_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] credential_list_sid Object to be assigned
     def credential_list_sid=(credential_list_sid : String?)
-      if !credential_list_sid.nil? && credential_list_sid.to_s.size > 34
+      if credential_list_sid.nil?
+        return @credential_list_sid = nil
+      end
+      _credential_list_sid = credential_list_sid.not_nil!
+      if _credential_list_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"credential_list_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !credential_list_sid.nil? && credential_list_sid.to_s.size < 34
+      if _credential_list_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"credential_list_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^CL[0-9a-fA-F]{32}$/
-      if !credential_list_sid.nil? && credential_list_sid !~ pattern
+      if _credential_list_sid !~ pattern
         raise ArgumentError.new("invalid value for \"credential_list_sid\", must conform to the pattern #{pattern}.")
       end
 
       @credential_list_sid = credential_list_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      @date_created = date_created
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      @date_updated = date_updated
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
     def sid=(sid : String?)
-      if !sid.nil? && sid.to_s.size > 34
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      if _sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !sid.nil? && sid.to_s.size < 34
+      if _sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^CR[0-9a-fA-F]{32}$/
-      if !sid.nil? && sid !~ pattern
+      if _sid !~ pattern
         raise ArgumentError.new("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
       @sid = sid
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] username Object to be assigned
+    def username=(username : String?)
+      if username.nil?
+        return @username = nil
+      end
+      @username = username
     end
 
     # @see the `==` method

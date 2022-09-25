@@ -12,58 +12,58 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class Message
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The API version used to process the message
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
-    property api_version : String?
+    @[JSON::Field(key: "api_version", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
+    getter api_version : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # The message text
-    @[JSON::Field(key: "body", type: String?, presence: true, ignore_serialize: body.nil? && !body_present?)]
-    property body : String?
+    @[JSON::Field(key: "body", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: body.nil? && !body_present?)]
+    getter body : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? body_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
-    property date_created : Time?
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT when the message was sent
-    @[JSON::Field(key: "date_sent", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_sent.nil? && !date_sent_present?)]
-    property date_sent : Time?
+    @[JSON::Field(key: "date_sent", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_sent.nil? && !date_sent_present?, converter: Time::RFC2822Converter)]
+    getter date_sent : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_sent_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
-    property date_updated : Time?
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The direction of the message
-    @[JSON::Field(key: "direction", type: String?, presence: true, ignore_serialize: direction.nil? && !direction_present?)]
-    getter direction : String?
+    @[JSON::Field(key: "direction", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: direction.nil? && !direction_present?)]
+    getter direction : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? direction_present : Bool = false
@@ -71,71 +71,71 @@ module Twilio
     ENUM_VALIDATOR_FOR_DIRECTION = EnumValidator.new("direction", "String", ["inbound", "outbound-api", "outbound-call", "outbound-reply"])
 
     # The error code associated with the message
-    @[JSON::Field(key: "error_code", type: Int32?, presence: true, ignore_serialize: error_code.nil? && !error_code_present?)]
-    property error_code : Int32?
+    @[JSON::Field(key: "error_code", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: error_code.nil? && !error_code_present?)]
+    getter error_code : Int32? = nil
 
     @[JSON::Field(ignore: true)]
     property? error_code_present : Bool = false
 
     # The description of the error_code
-    @[JSON::Field(key: "error_message", type: String?, presence: true, ignore_serialize: error_message.nil? && !error_message_present?)]
-    property error_message : String?
+    @[JSON::Field(key: "error_message", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: error_message.nil? && !error_message_present?)]
+    getter error_message : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? error_message_present : Bool = false
 
     # The phone number that initiated the message
-    @[JSON::Field(key: "from", type: String?, presence: true, ignore_serialize: from.nil? && !from_present?)]
-    property from : String?
+    @[JSON::Field(key: "from", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: from.nil? && !from_present?)]
+    getter from : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? from_present : Bool = false
 
     # The SID of the Messaging Service used with the message.
-    @[JSON::Field(key: "messaging_service_sid", type: String?, presence: true, ignore_serialize: messaging_service_sid.nil? && !messaging_service_sid_present?)]
-    getter messaging_service_sid : String?
+    @[JSON::Field(key: "messaging_service_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: messaging_service_sid.nil? && !messaging_service_sid_present?)]
+    getter messaging_service_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? messaging_service_sid_present : Bool = false
 
     # The number of media files associated with the message
-    @[JSON::Field(key: "num_media", type: String?, presence: true, ignore_serialize: num_media.nil? && !num_media_present?)]
-    property num_media : String?
+    @[JSON::Field(key: "num_media", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: num_media.nil? && !num_media_present?)]
+    getter num_media : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? num_media_present : Bool = false
 
     # The number of messages used to deliver the message body
-    @[JSON::Field(key: "num_segments", type: String?, presence: true, ignore_serialize: num_segments.nil? && !num_segments_present?)]
-    property num_segments : String?
+    @[JSON::Field(key: "num_segments", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: num_segments.nil? && !num_segments_present?)]
+    getter num_segments : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? num_segments_present : Bool = false
 
     # The amount billed for the message
-    @[JSON::Field(key: "price", type: String?, presence: true, ignore_serialize: price.nil? && !price_present?)]
-    property price : String?
+    @[JSON::Field(key: "price", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: price.nil? && !price_present?)]
+    getter price : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? price_present : Bool = false
 
     # The currency in which price is measured
-    @[JSON::Field(key: "price_unit", type: String?, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?)]
-    property price_unit : String?
+    @[JSON::Field(key: "price_unit", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?)]
+    getter price_unit : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? price_unit_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String?
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The status of the message
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
-    getter status : String?
+    @[JSON::Field(key: "status", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status.nil? && !status_present?)]
+    getter status : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
@@ -143,22 +143,22 @@ module Twilio
     ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("status", "String", ["queued", "sending", "sent", "failed", "delivered", "undelivered", "receiving", "received", "accepted", "scheduled", "read", "partially_delivered", "canceled"])
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
-    property subresource_uris : Hash(String, String)?
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
+    getter subresource_uris : Hash(String, String)? = nil
 
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
     # The phone number that received the message
-    @[JSON::Field(key: "to", type: String?, presence: true, ignore_serialize: to.nil? && !to_present?)]
-    property to : String?
+    @[JSON::Field(key: "to", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: to.nil? && !to_present?)]
+    getter to : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? to_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
@@ -195,46 +195,49 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
-      end
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_DIRECTION.error_message) unless ENUM_VALIDATOR_FOR_DIRECTION.valid?(@direction)
+      if _messaging_service_sid = @messaging_service_sid
+        if _messaging_service_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"messaging_service_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@messaging_service_sid.nil? && @messaging_service_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"messaging_service_sid\", the character length must be smaller than or equal to 34.")
+        if _messaging_service_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"messaging_service_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^MG[0-9a-fA-F]{32}$/
+        if _messaging_service_sid !~ pattern
+          invalid_properties.push("invalid value for \"messaging_service_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _sid = @sid
+        if _sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@messaging_service_sid.nil? && @messaging_service_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"messaging_service_sid\", the character length must be great than or equal to 34.")
-      end
+        if _sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
+        end
 
-      pattern = /^MG[0-9a-fA-F]{32}$/
-      if !@messaging_service_sid.nil? && @messaging_service_sid !~ pattern
-        invalid_properties.push("invalid value for \"messaging_service_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^(SM|MM)[0-9a-fA-F]{32}$/
-      if !@sid.nil? && @sid !~ pattern
-        invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        pattern = /^(SM|MM)[0-9a-fA-F]{32}$/
+        if _sid !~ pattern
+          invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS.error_message) unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
@@ -245,90 +248,213 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_DIRECTION.valid?(@direction)
-      return false if !@messaging_service_sid.nil? && @messaging_service_sid.to_s.size > 34
-      return false if !@messaging_service_sid.nil? && @messaging_service_sid.to_s.size < 34
-      return false if !@messaging_service_sid.nil? && @messaging_service_sid !~ /^MG[0-9a-fA-F]{32}$/
-      return false if !@sid.nil? && @sid.to_s.size > 34
-      return false if !@sid.nil? && @sid.to_s.size < 34
-      return false if !@sid.nil? && @sid !~ /^(SM|MM)[0-9a-fA-F]{32}$/
+      if _messaging_service_sid = @messaging_service_sid
+        return false if _messaging_service_sid.to_s.size > 34
+        return false if _messaging_service_sid.to_s.size < 34
+        return false if _messaging_service_sid !~ /^MG[0-9a-fA-F]{32}$/
+      end
+      if _sid = @sid
+        return false if _sid.to_s.size > 34
+        return false if _sid.to_s.size < 34
+        return false if _sid !~ /^(SM|MM)[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] api_version Object to be assigned
+    def api_version=(api_version : String?)
+      if api_version.nil?
+        return @api_version = nil
+      end
+      @api_version = api_version
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] body Object to be assigned
+    def body=(body : String?)
+      if body.nil?
+        return @body = nil
+      end
+      @body = body
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      @date_created = date_created
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_sent Object to be assigned
+    def date_sent=(date_sent : Time?)
+      if date_sent.nil?
+        return @date_sent = nil
+      end
+      @date_sent = date_sent
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      @date_updated = date_updated
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] direction Object to be assigned
     def direction=(direction : String?)
-      ENUM_VALIDATOR_FOR_DIRECTION.valid!(direction)
+      if direction.nil?
+        return @direction = nil
+      end
+      _direction = direction.not_nil!
+      ENUM_VALIDATOR_FOR_DIRECTION.valid!(_direction)
       @direction = direction
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] messaging_service_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] error_code Object to be assigned
+    def error_code=(error_code : Int32?)
+      if error_code.nil?
+        return @error_code = nil
+      end
+      @error_code = error_code
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] error_message Object to be assigned
+    def error_message=(error_message : String?)
+      if error_message.nil?
+        return @error_message = nil
+      end
+      @error_message = error_message
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] from Object to be assigned
+    def from=(from : String?)
+      if from.nil?
+        return @from = nil
+      end
+      @from = from
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] messaging_service_sid Object to be assigned
     def messaging_service_sid=(messaging_service_sid : String?)
-      if !messaging_service_sid.nil? && messaging_service_sid.to_s.size > 34
+      if messaging_service_sid.nil?
+        return @messaging_service_sid = nil
+      end
+      _messaging_service_sid = messaging_service_sid.not_nil!
+      if _messaging_service_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"messaging_service_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !messaging_service_sid.nil? && messaging_service_sid.to_s.size < 34
+      if _messaging_service_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"messaging_service_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^MG[0-9a-fA-F]{32}$/
-      if !messaging_service_sid.nil? && messaging_service_sid !~ pattern
+      if _messaging_service_sid !~ pattern
         raise ArgumentError.new("invalid value for \"messaging_service_sid\", must conform to the pattern #{pattern}.")
       end
 
       @messaging_service_sid = messaging_service_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] num_media Object to be assigned
+    def num_media=(num_media : String?)
+      if num_media.nil?
+        return @num_media = nil
+      end
+      @num_media = num_media
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] num_segments Object to be assigned
+    def num_segments=(num_segments : String?)
+      if num_segments.nil?
+        return @num_segments = nil
+      end
+      @num_segments = num_segments
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] price Object to be assigned
+    def price=(price : String?)
+      if price.nil?
+        return @price = nil
+      end
+      @price = price
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] price_unit Object to be assigned
+    def price_unit=(price_unit : String?)
+      if price_unit.nil?
+        return @price_unit = nil
+      end
+      @price_unit = price_unit
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
     def sid=(sid : String?)
-      if !sid.nil? && sid.to_s.size > 34
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      if _sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !sid.nil? && sid.to_s.size < 34
+      if _sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^(SM|MM)[0-9a-fA-F]{32}$/
-      if !sid.nil? && sid !~ pattern
+      if _sid !~ pattern
         raise ArgumentError.new("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
       @sid = sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status : String?)
-      ENUM_VALIDATOR_FOR_STATUS.valid!(status)
+      if status.nil?
+        return @status = nil
+      end
+      _status = status.not_nil!
+      ENUM_VALIDATOR_FOR_STATUS.valid!(_status)
       @status = status
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] subresource_uris Object to be assigned
+    def subresource_uris=(subresource_uris : Hash(String, String)?)
+      if subresource_uris.nil?
+        return @subresource_uris = nil
+      end
+      @subresource_uris = subresource_uris
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] to Object to be assigned
+    def to=(to : String?)
+      if to.nil?
+        return @to = nil
+      end
+      @to = to
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
     end
 
     # @see the `==` method

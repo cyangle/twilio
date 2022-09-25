@@ -12,44 +12,44 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class ValidationRequest
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The SID of the Call the resource is associated with
-    @[JSON::Field(key: "call_sid", type: String?, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
-    getter call_sid : String?
+    @[JSON::Field(key: "call_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: call_sid.nil? && !call_sid_present?)]
+    getter call_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
-    property friendly_name : String?
+    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
+    getter friendly_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The phone number to verify in E.164 format
-    @[JSON::Field(key: "phone_number", type: String?, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?)]
-    property phone_number : String?
+    @[JSON::Field(key: "phone_number", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?)]
+    getter phone_number : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? phone_number_present : Bool = false
 
     # The 6 digit validation code that someone must enter to validate the Caller ID  when `phone_number` is called
-    @[JSON::Field(key: "validation_code", type: String?, presence: true, ignore_serialize: validation_code.nil? && !validation_code_present?)]
-    property validation_code : String?
+    @[JSON::Field(key: "validation_code", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: validation_code.nil? && !validation_code_present?)]
+    getter validation_code : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? validation_code_present : Bool = false
@@ -71,31 +71,33 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _call_sid = @call_sid
+        if _call_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"call_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
-      end
+        if _call_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"call_sid\", the character length must be great than or equal to 34.")
+        end
 
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@call_sid.nil? && @call_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"call_sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@call_sid.nil? && @call_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"call_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^CA[0-9a-fA-F]{32}$/
-      if !@call_sid.nil? && @call_sid !~ pattern
-        invalid_properties.push("invalid value for \"call_sid\", must conform to the pattern #{pattern}.")
+        pattern = /^CA[0-9a-fA-F]{32}$/
+        if _call_sid !~ pattern
+          invalid_properties.push("invalid value for \"call_sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties
@@ -104,52 +106,83 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      return false if !@call_sid.nil? && @call_sid.to_s.size > 34
-      return false if !@call_sid.nil? && @call_sid.to_s.size < 34
-      return false if !@call_sid.nil? && @call_sid !~ /^CA[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
+      if _call_sid = @call_sid
+        return false if _call_sid.to_s.size > 34
+        return false if _call_sid.to_s.size < 34
+        return false if _call_sid !~ /^CA[0-9a-fA-F]{32}$/
+      end
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] call_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] call_sid Object to be assigned
     def call_sid=(call_sid : String?)
-      if !call_sid.nil? && call_sid.to_s.size > 34
+      if call_sid.nil?
+        return @call_sid = nil
+      end
+      _call_sid = call_sid.not_nil!
+      if _call_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"call_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !call_sid.nil? && call_sid.to_s.size < 34
+      if _call_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"call_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^CA[0-9a-fA-F]{32}$/
-      if !call_sid.nil? && call_sid !~ pattern
+      if _call_sid !~ pattern
         raise ArgumentError.new("invalid value for \"call_sid\", must conform to the pattern #{pattern}.")
       end
 
       @call_sid = call_sid
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] friendly_name Object to be assigned
+    def friendly_name=(friendly_name : String?)
+      if friendly_name.nil?
+        return @friendly_name = nil
+      end
+      @friendly_name = friendly_name
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] phone_number Object to be assigned
+    def phone_number=(phone_number : String?)
+      if phone_number.nil?
+        return @phone_number = nil
+      end
+      @phone_number = phone_number
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] validation_code Object to be assigned
+    def validation_code=(validation_code : String?)
+      if validation_code.nil?
+        return @validation_code = nil
+      end
+      @validation_code = validation_code
     end
 
     # @see the `==` method

@@ -12,21 +12,21 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class CallCallEvent
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
-    @[JSON::Field(key: "request", type: CallCallEventRequest?, presence: true, ignore_serialize: request.nil? && !request_present?)]
-    property request : CallCallEventRequest?
+    @[JSON::Field(key: "request", type: CallCallEventRequest?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: request.nil? && !request_present?)]
+    getter request : CallCallEventRequest? = nil
 
     @[JSON::Field(ignore: true)]
     property? request_present : Bool = false
 
-    @[JSON::Field(key: "response", type: CallCallEventResponse?, presence: true, ignore_serialize: response.nil? && !response_present?)]
-    property response : CallCallEventResponse?
+    @[JSON::Field(key: "response", type: CallCallEventResponse?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: response.nil? && !response_present?)]
+    getter response : CallCallEventResponse? = nil
 
     @[JSON::Field(ignore: true)]
     property? response_present : Bool = false
@@ -53,6 +53,22 @@ module Twilio
     # @return true if the model is valid
     def valid?
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] request Object to be assigned
+    def request=(request : CallCallEventRequest?)
+      if request.nil?
+        return @request = nil
+      end
+      @request = request
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] response Object to be assigned
+    def response=(response : CallCallEventResponse?)
+      if response.nil?
+        return @response = nil
+      end
+      @response = response
     end
 
     # @see the `==` method

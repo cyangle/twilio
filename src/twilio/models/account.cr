@@ -12,58 +12,58 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class Account
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The authorization token for this account
-    @[JSON::Field(key: "auth_token", type: String?, presence: true, ignore_serialize: auth_token.nil? && !auth_token_present?)]
-    property auth_token : String?
+    @[JSON::Field(key: "auth_token", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: auth_token.nil? && !auth_token_present?)]
+    getter auth_token : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? auth_token_present : Bool = false
 
     # The date this account was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
-    property date_created : Time?
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The date this account was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
-    property date_updated : Time?
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # A human readable description of this account
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
-    property friendly_name : String?
+    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
+    getter friendly_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The unique 34 character id representing the parent of this account
-    @[JSON::Field(key: "owner_account_sid", type: String?, presence: true, ignore_serialize: owner_account_sid.nil? && !owner_account_sid_present?)]
-    getter owner_account_sid : String?
+    @[JSON::Field(key: "owner_account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: owner_account_sid.nil? && !owner_account_sid_present?)]
+    getter owner_account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? owner_account_sid_present : Bool = false
 
     # A 34 character string that uniquely identifies this resource.
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String?
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The status of this account
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
-    getter status : String?
+    @[JSON::Field(key: "status", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status.nil? && !status_present?)]
+    getter status : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
@@ -71,15 +71,15 @@ module Twilio
     ENUM_VALIDATOR_FOR_STATUS = EnumValidator.new("status", "String", ["active", "suspended", "closed"])
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
-    property subresource_uris : Hash(String, String)?
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
+    getter subresource_uris : Hash(String, String)? = nil
 
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
     # The type of this account
-    @[JSON::Field(key: "type", type: String?, presence: true, ignore_serialize: _type.nil? && !_type_present?)]
-    getter _type : String?
+    @[JSON::Field(key: "type", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: _type.nil? && !_type_present?)]
+    getter _type : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? _type_present : Bool = false
@@ -87,8 +87,8 @@ module Twilio
     ENUM_VALIDATOR_FOR__TYPE = EnumValidator.new("_type", "String", ["Trial", "Full"])
 
     # The URI for this resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
@@ -115,31 +115,33 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _owner_account_sid = @owner_account_sid
+        if _owner_account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"owner_account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@owner_account_sid.nil? && @owner_account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"owner_account_sid\", the character length must be smaller than or equal to 34.")
+        if _owner_account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"owner_account_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _owner_account_sid !~ pattern
+          invalid_properties.push("invalid value for \"owner_account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _sid = @sid
+        if _sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@owner_account_sid.nil? && @owner_account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"owner_account_sid\", the character length must be great than or equal to 34.")
-      end
+        if _sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
+        end
 
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@owner_account_sid.nil? && @owner_account_sid !~ pattern
-        invalid_properties.push("invalid value for \"owner_account_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@sid.nil? && @sid !~ pattern
-        invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _sid !~ pattern
+          invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS.error_message) unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
@@ -152,68 +154,124 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@owner_account_sid.nil? && @owner_account_sid.to_s.size > 34
-      return false if !@owner_account_sid.nil? && @owner_account_sid.to_s.size < 34
-      return false if !@owner_account_sid.nil? && @owner_account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      return false if !@sid.nil? && @sid.to_s.size > 34
-      return false if !@sid.nil? && @sid.to_s.size < 34
-      return false if !@sid.nil? && @sid !~ /^AC[0-9a-fA-F]{32}$/
+      if _owner_account_sid = @owner_account_sid
+        return false if _owner_account_sid.to_s.size > 34
+        return false if _owner_account_sid.to_s.size < 34
+        return false if _owner_account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
+      if _sid = @sid
+        return false if _sid.to_s.size > 34
+        return false if _sid.to_s.size < 34
+        return false if _sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
       return false unless ENUM_VALIDATOR_FOR__TYPE.valid?(@_type)
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] owner_account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] auth_token Object to be assigned
+    def auth_token=(auth_token : String?)
+      if auth_token.nil?
+        return @auth_token = nil
+      end
+      @auth_token = auth_token
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      @date_created = date_created
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      @date_updated = date_updated
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] friendly_name Object to be assigned
+    def friendly_name=(friendly_name : String?)
+      if friendly_name.nil?
+        return @friendly_name = nil
+      end
+      @friendly_name = friendly_name
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] owner_account_sid Object to be assigned
     def owner_account_sid=(owner_account_sid : String?)
-      if !owner_account_sid.nil? && owner_account_sid.to_s.size > 34
+      if owner_account_sid.nil?
+        return @owner_account_sid = nil
+      end
+      _owner_account_sid = owner_account_sid.not_nil!
+      if _owner_account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"owner_account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !owner_account_sid.nil? && owner_account_sid.to_s.size < 34
+      if _owner_account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"owner_account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !owner_account_sid.nil? && owner_account_sid !~ pattern
+      if _owner_account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"owner_account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @owner_account_sid = owner_account_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
     def sid=(sid : String?)
-      if !sid.nil? && sid.to_s.size > 34
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      if _sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !sid.nil? && sid.to_s.size < 34
+      if _sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !sid.nil? && sid !~ pattern
+      if _sid !~ pattern
         raise ArgumentError.new("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
       @sid = sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status : String?)
-      ENUM_VALIDATOR_FOR_STATUS.valid!(status)
+      if status.nil?
+        return @status = nil
+      end
+      _status = status.not_nil!
+      ENUM_VALIDATOR_FOR_STATUS.valid!(_status)
       @status = status
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] subresource_uris Object to be assigned
+    def subresource_uris=(subresource_uris : Hash(String, String)?)
+      if subresource_uris.nil?
+        return @subresource_uris = nil
+      end
+      @subresource_uris = subresource_uris
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] _type Object to be assigned
     def _type=(_type : String?)
-      ENUM_VALIDATOR_FOR__TYPE.valid!(_type)
+      if _type.nil?
+        return @_type = nil
+      end
+      __type = _type.not_nil!
+      ENUM_VALIDATOR_FOR__TYPE.valid!(__type)
       @_type = _type
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
     end
 
     # @see the `==` method

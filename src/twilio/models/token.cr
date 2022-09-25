@@ -12,58 +12,58 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class Token
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
-    property date_created : Time?
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
-    property date_updated : Time?
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # An array representing the ephemeral credentials
-    @[JSON::Field(key: "ice_servers", type: Array(TokenIceServersInner)?, presence: true, ignore_serialize: ice_servers.nil? && !ice_servers_present?)]
-    property ice_servers : Array(TokenIceServersInner)?
+    @[JSON::Field(key: "ice_servers", type: Array(TokenIceServersInner)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: ice_servers.nil? && !ice_servers_present?)]
+    getter ice_servers : Array(TokenIceServersInner)? = nil
 
     @[JSON::Field(ignore: true)]
     property? ice_servers_present : Bool = false
 
     # The temporary password used for authenticating
-    @[JSON::Field(key: "password", type: String?, presence: true, ignore_serialize: password.nil? && !password_present?)]
-    property password : String?
+    @[JSON::Field(key: "password", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: password.nil? && !password_present?)]
+    getter password : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? password_present : Bool = false
 
     # The duration in seconds the credentials are valid
-    @[JSON::Field(key: "ttl", type: String?, presence: true, ignore_serialize: ttl.nil? && !ttl_present?)]
-    property ttl : String?
+    @[JSON::Field(key: "ttl", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: ttl.nil? && !ttl_present?)]
+    getter ttl : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? ttl_present : Bool = false
 
     # The temporary username that uniquely identifies a Token
-    @[JSON::Field(key: "username", type: String?, presence: true, ignore_serialize: username.nil? && !username_present?)]
-    property username : String?
+    @[JSON::Field(key: "username", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: username.nil? && !username_present?)]
+    getter username : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? username_present : Bool = false
@@ -87,18 +87,19 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
-      end
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties
@@ -107,30 +108,78 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      @date_created = date_created
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      @date_updated = date_updated
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] ice_servers Object to be assigned
+    def ice_servers=(ice_servers : Array(TokenIceServersInner)?)
+      if ice_servers.nil?
+        return @ice_servers = nil
+      end
+      @ice_servers = ice_servers
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] password Object to be assigned
+    def password=(password : String?)
+      if password.nil?
+        return @password = nil
+      end
+      @password = password
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] ttl Object to be assigned
+    def ttl=(ttl : String?)
+      if ttl.nil?
+        return @ttl = nil
+      end
+      @ttl = ttl
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] username Object to be assigned
+    def username=(username : String?)
+      if username.nil?
+        return @username = nil
+      end
+      @username = username
     end
 
     # @see the `==` method

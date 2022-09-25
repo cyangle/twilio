@@ -12,44 +12,44 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class AvailablePhoneNumberCountry
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # Whether all phone numbers available in the country are new to the Twilio platform.
-    @[JSON::Field(key: "beta", type: Bool?, presence: true, ignore_serialize: beta.nil? && !beta_present?)]
-    property beta : Bool?
+    @[JSON::Field(key: "beta", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: beta.nil? && !beta_present?)]
+    getter beta : Bool? = nil
 
     @[JSON::Field(ignore: true)]
     property? beta_present : Bool = false
 
     # The name of the country
-    @[JSON::Field(key: "country", type: String?, presence: true, ignore_serialize: country.nil? && !country_present?)]
-    property country : String?
+    @[JSON::Field(key: "country", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: country.nil? && !country_present?)]
+    getter country : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? country_present : Bool = false
 
     # The ISO-3166-1 country code of the country.
-    @[JSON::Field(key: "country_code", type: String?, presence: true, ignore_serialize: country_code.nil? && !country_code_present?)]
-    property country_code : String?
+    @[JSON::Field(key: "country_code", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: country_code.nil? && !country_code_present?)]
+    getter country_code : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? country_code_present : Bool = false
 
     # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
-    property subresource_uris : Hash(String, String)?
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
+    getter subresource_uris : Hash(String, String)? = nil
 
     @[JSON::Field(ignore: true)]
     property? subresource_uris_present : Bool = false
 
     # The URI of the Country resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
@@ -79,6 +79,43 @@ module Twilio
     # @return true if the model is valid
     def valid?
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] beta Object to be assigned
+    def beta=(beta : Bool?)
+      if beta.nil?
+        return @beta = nil
+      end
+      @beta = beta
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] country Object to be assigned
+    def country=(country : String?)
+      if country.nil?
+        return @country = nil
+      end
+      @country = country
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] country_code Object to be assigned
+    def country_code=(country_code : String?)
+      if country_code.nil?
+        return @country_code = nil
+      end
+      @country_code = country_code
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] subresource_uris Object to be assigned
+    def subresource_uris=(subresource_uris : Hash(String, String)?)
+      if subresource_uris.nil?
+        return @subresource_uris = nil
+      end
+      @subresource_uris = subresource_uris
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
     end
 
     # @see the `==` method

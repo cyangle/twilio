@@ -20,6 +20,7 @@ module Twilio
     end
 
     # Create a new Twilio Subaccount from the account making the request
+    # @optional @param friendly_name [String?] A human readable description of the account to create, defaults to `SubAccount Created at {YYYY-MM-DD HH:MM meridian}`
     # @return [Account]
     def create_account(*, friendly_name : String? = nil)
       data, _status_code, _headers = create_account_with_http_info(friendly_name: friendly_name)
@@ -27,6 +28,7 @@ module Twilio
     end
 
     # Create a new Twilio Subaccount from the account making the request
+    # @optional @param friendly_name [String?] A human readable description of the account to create, defaults to `SubAccount Created at {YYYY-MM-DD HH:MM meridian}`
     # @return [Array<(Account, Integer, Hash)>] Account data, response status code and response headers
     def create_account_with_http_info(*, friendly_name : String? = nil)
       request = build_api_request_for_create_account(friendly_name: friendly_name)
@@ -41,6 +43,7 @@ module Twilio
     end
 
     # Create a new Twilio Subaccount from the account making the request
+    # @optional @param friendly_name [String?] A human readable description of the account to create, defaults to `SubAccount Created at {YYYY-MM-DD HH:MM meridian}`
     # @return nil
     def create_account(*, friendly_name : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_account(friendly_name: friendly_name).execute(&block)
@@ -94,6 +97,9 @@ module Twilio
     # @param postal_code [String] The postal code of the new address.
     # @param region [String] The state or region of the new address.
     # @param street [String] The number and street address of the new address.
+    # @optional @param auto_correct_address [Bool?] Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
+    # @optional @param emergency_enabled [Bool?] Whether to enable emergency calling on the new address. Can be: `true` or `false`.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the new address. It can be up to 64 characters long.
     # @return [Address]
     def create_address(*, account_sid : String = @account_sid, city : String, customer_name : String, iso_country : String, postal_code : String, region : String, street : String, auto_correct_address : Bool? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil)
       data, _status_code, _headers = create_address_with_http_info(account_sid: account_sid, city: city, customer_name: customer_name, iso_country: iso_country, postal_code: postal_code, region: region, street: street, auto_correct_address: auto_correct_address, emergency_enabled: emergency_enabled, friendly_name: friendly_name)
@@ -108,6 +114,9 @@ module Twilio
     # @param postal_code [String] The postal code of the new address.
     # @param region [String] The state or region of the new address.
     # @param street [String] The number and street address of the new address.
+    # @optional @param auto_correct_address [Bool?] Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
+    # @optional @param emergency_enabled [Bool?] Whether to enable emergency calling on the new address. Can be: `true` or `false`.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the new address. It can be up to 64 characters long.
     # @return [Array<(Address, Integer, Hash)>] Address data, response status code and response headers
     def create_address_with_http_info(*, account_sid : String = @account_sid, city : String, customer_name : String, iso_country : String, postal_code : String, region : String, street : String, auto_correct_address : Bool? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil)
       request = build_api_request_for_create_address(account_sid: account_sid, city: city, customer_name: customer_name, iso_country: iso_country, postal_code: postal_code, region: region, street: street, auto_correct_address: auto_correct_address, emergency_enabled: emergency_enabled, friendly_name: friendly_name)
@@ -129,6 +138,9 @@ module Twilio
     # @param postal_code [String] The postal code of the new address.
     # @param region [String] The state or region of the new address.
     # @param street [String] The number and street address of the new address.
+    # @optional @param auto_correct_address [Bool?] Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
+    # @optional @param emergency_enabled [Bool?] Whether to enable emergency calling on the new address. Can be: `true` or `false`.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the new address. It can be up to 64 characters long.
     # @return nil
     def create_address(*, account_sid : String = @account_sid, city : String, customer_name : String, iso_country : String, postal_code : String, region : String, street : String, auto_correct_address : Bool? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_address(account_sid: account_sid, city: city, customer_name: customer_name, iso_country: iso_country, postal_code: postal_code, region: region, street: street, auto_correct_address: auto_correct_address, emergency_enabled: emergency_enabled, friendly_name: friendly_name).execute(&block)
@@ -197,6 +209,21 @@ module Twilio
 
     # Create a new application within your account
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+    # @optional @param api_version [String?] The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is the account's default API version.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the new application. It can be up to 64 characters long.
+    # @optional @param message_status_callback [String?] The URL we should call using a POST method to send message status information to your application.
+    # @optional @param sms_fallback_method [String?] The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_status_callback [String?] The URL we should call using a POST method to send status information about SMS messages sent by the application.
+    # @optional @param sms_url [String?] The URL we should call when the phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_url [String?] The URL we should call when the phone number assigned to this application receives a call.
     # @return [Application]
     def create_application(*, account_sid : String = @account_sid, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil)
       data, _status_code, _headers = create_application_with_http_info(account_sid: account_sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
@@ -205,6 +232,21 @@ module Twilio
 
     # Create a new application within your account
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+    # @optional @param api_version [String?] The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is the account's default API version.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the new application. It can be up to 64 characters long.
+    # @optional @param message_status_callback [String?] The URL we should call using a POST method to send message status information to your application.
+    # @optional @param sms_fallback_method [String?] The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_status_callback [String?] The URL we should call using a POST method to send status information about SMS messages sent by the application.
+    # @optional @param sms_url [String?] The URL we should call when the phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_url [String?] The URL we should call when the phone number assigned to this application receives a call.
     # @return [Array<(Application, Integer, Hash)>] Application data, response status code and response headers
     def create_application_with_http_info(*, account_sid : String = @account_sid, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil)
       request = build_api_request_for_create_application(account_sid: account_sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
@@ -220,6 +262,21 @@ module Twilio
 
     # Create a new application within your account
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+    # @optional @param api_version [String?] The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is the account's default API version.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the new application. It can be up to 64 characters long.
+    # @optional @param message_status_callback [String?] The URL we should call using a POST method to send message status information to your application.
+    # @optional @param sms_fallback_method [String?] The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_status_callback [String?] The URL we should call using a POST method to send status information about SMS messages sent by the application.
+    # @optional @param sms_url [String?] The URL we should call when the phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_url [String?] The URL we should call when the phone number assigned to this application receives a call.
     # @return nil
     def create_application(*, account_sid : String = @account_sid, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_application(account_sid: account_sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url).execute(&block)
@@ -316,6 +373,39 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param from [String] The phone number or client identifier to use as the caller id. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `From` must also be a phone number.
     # @param to [String] The phone number, SIP address, or client identifier to call.
+    # @optional @param application_sid [String?] The SID of the Application resource that will handle the call, if the call will be handled by an application.
+    # @optional @param async_amd [String?] Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`.
+    # @optional @param async_amd_status_callback [String?] The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
+    # @optional @param async_amd_status_callback_method [String?] The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param byoc [String?] The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
+    # @optional @param call_reason [String?] The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
+    # @optional @param call_token [String?] A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
+    # @optional @param caller_id [String?] The phone number, SIP address, or Client identifier that made this call. Phone numbers are in [E.164 format](https://wwnw.twilio.com/docs/glossary/what-e164) (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
+    # @optional @param fallback_method [String?] The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param fallback_url [String?] The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param machine_detection [String?] Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
+    # @optional @param machine_detection_silence_timeout [Int32?] The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
+    # @optional @param machine_detection_speech_end_threshold [Int32?] The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.
+    # @optional @param machine_detection_speech_threshold [Int32?] The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.
+    # @optional @param machine_detection_timeout [Int32?] The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
+    # @optional @param method [String?] The HTTP method we should use when calling the `url` parameter's value. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param record [Bool?] Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL.
+    # @optional @param recording_channels [String?] The number of channels in the final recording. Can be: `mono` or `dual`. The default is `mono`. `mono` records both legs of the call in a single channel of the recording file. `dual` records each leg to a separate channel of the recording file. The first channel of a dual-channel recording contains the parent call and the second channel contains the child call.
+    # @optional @param recording_status_callback [String?] The URL that we call when the recording is available to be accessed.
+    # @optional @param recording_status_callback_event [Array(String)?] The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate  multiple values with a space.
+    # @optional @param recording_status_callback_method [String?] The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param recording_track [String?] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio.
+    # @optional @param send_digits [String?] A string of keys to dial after connecting to the number, maximum of 32 digits. Valid digits in the string include: any digit (`0`-`9`), '`#`', '`*`' and '`w`', to insert a half second pause. For example, if you connected to a company phone number and wanted to pause for one second, and then dial extension 1234 followed by the pound key, the value of this parameter would be `ww1234#`. Remember to URL-encode this string, since the '`#`' character has special meaning in a URL. If both `SendDigits` and `MachineDetection` parameters are provided, then `MachineDetection` will be ignored.
+    # @optional @param sip_auth_password [String?] The password required to authenticate the user account specified in `sip_auth_username`.
+    # @optional @param sip_auth_username [String?] The username used to authenticate the caller making a SIP call.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
+    # @optional @param status_callback_event [Array(String)?] The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&code-sdk-version=json). If an `application_sid` is present, this parameter is ignored.
+    # @optional @param status_callback_method [String?] The HTTP method we should use when calling the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param time_limit [Int32?] The maximum duration of the call in seconds. Constraints depend on account and configuration.
+    # @optional @param timeout [Int32?] The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail.
+    # @optional @param trim [String?] Whether to trim any leading and trailing silence from the recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
+    # @optional @param twiml [String?] TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored. Max 4000 characters.
+    # @optional @param url [String?] The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).
     # @return [Call]
     def create_call(*, account_sid : String = @account_sid, from : String, to : String, application_sid : String? = nil, async_amd : String? = nil, async_amd_status_callback : String? = nil, async_amd_status_callback_method : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_token : String? = nil, caller_id : String? = nil, fallback_method : String? = nil, fallback_url : String? = nil, machine_detection : String? = nil, machine_detection_silence_timeout : Int32? = nil, machine_detection_speech_end_threshold : Int32? = nil, machine_detection_speech_threshold : Int32? = nil, machine_detection_timeout : Int32? = nil, method : String? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, send_digits : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, trim : String? = nil, twiml : String? = nil, url : String? = nil)
       data, _status_code, _headers = create_call_with_http_info(account_sid: account_sid, from: from, to: to, application_sid: application_sid, async_amd: async_amd, async_amd_status_callback: async_amd_status_callback, async_amd_status_callback_method: async_amd_status_callback_method, byoc: byoc, call_reason: call_reason, call_token: call_token, caller_id: caller_id, fallback_method: fallback_method, fallback_url: fallback_url, machine_detection: machine_detection, machine_detection_silence_timeout: machine_detection_silence_timeout, machine_detection_speech_end_threshold: machine_detection_speech_end_threshold, machine_detection_speech_threshold: machine_detection_speech_threshold, machine_detection_timeout: machine_detection_timeout, method: method, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, send_digits: send_digits, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, trim: trim, twiml: twiml, url: url)
@@ -326,6 +416,39 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param from [String] The phone number or client identifier to use as the caller id. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `From` must also be a phone number.
     # @param to [String] The phone number, SIP address, or client identifier to call.
+    # @optional @param application_sid [String?] The SID of the Application resource that will handle the call, if the call will be handled by an application.
+    # @optional @param async_amd [String?] Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`.
+    # @optional @param async_amd_status_callback [String?] The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
+    # @optional @param async_amd_status_callback_method [String?] The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param byoc [String?] The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
+    # @optional @param call_reason [String?] The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
+    # @optional @param call_token [String?] A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
+    # @optional @param caller_id [String?] The phone number, SIP address, or Client identifier that made this call. Phone numbers are in [E.164 format](https://wwnw.twilio.com/docs/glossary/what-e164) (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
+    # @optional @param fallback_method [String?] The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param fallback_url [String?] The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param machine_detection [String?] Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
+    # @optional @param machine_detection_silence_timeout [Int32?] The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
+    # @optional @param machine_detection_speech_end_threshold [Int32?] The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.
+    # @optional @param machine_detection_speech_threshold [Int32?] The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.
+    # @optional @param machine_detection_timeout [Int32?] The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
+    # @optional @param method [String?] The HTTP method we should use when calling the `url` parameter's value. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param record [Bool?] Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL.
+    # @optional @param recording_channels [String?] The number of channels in the final recording. Can be: `mono` or `dual`. The default is `mono`. `mono` records both legs of the call in a single channel of the recording file. `dual` records each leg to a separate channel of the recording file. The first channel of a dual-channel recording contains the parent call and the second channel contains the child call.
+    # @optional @param recording_status_callback [String?] The URL that we call when the recording is available to be accessed.
+    # @optional @param recording_status_callback_event [Array(String)?] The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate  multiple values with a space.
+    # @optional @param recording_status_callback_method [String?] The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param recording_track [String?] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio.
+    # @optional @param send_digits [String?] A string of keys to dial after connecting to the number, maximum of 32 digits. Valid digits in the string include: any digit (`0`-`9`), '`#`', '`*`' and '`w`', to insert a half second pause. For example, if you connected to a company phone number and wanted to pause for one second, and then dial extension 1234 followed by the pound key, the value of this parameter would be `ww1234#`. Remember to URL-encode this string, since the '`#`' character has special meaning in a URL. If both `SendDigits` and `MachineDetection` parameters are provided, then `MachineDetection` will be ignored.
+    # @optional @param sip_auth_password [String?] The password required to authenticate the user account specified in `sip_auth_username`.
+    # @optional @param sip_auth_username [String?] The username used to authenticate the caller making a SIP call.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
+    # @optional @param status_callback_event [Array(String)?] The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&code-sdk-version=json). If an `application_sid` is present, this parameter is ignored.
+    # @optional @param status_callback_method [String?] The HTTP method we should use when calling the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param time_limit [Int32?] The maximum duration of the call in seconds. Constraints depend on account and configuration.
+    # @optional @param timeout [Int32?] The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail.
+    # @optional @param trim [String?] Whether to trim any leading and trailing silence from the recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
+    # @optional @param twiml [String?] TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored. Max 4000 characters.
+    # @optional @param url [String?] The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).
     # @return [Array<(Call, Integer, Hash)>] Call data, response status code and response headers
     def create_call_with_http_info(*, account_sid : String = @account_sid, from : String, to : String, application_sid : String? = nil, async_amd : String? = nil, async_amd_status_callback : String? = nil, async_amd_status_callback_method : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_token : String? = nil, caller_id : String? = nil, fallback_method : String? = nil, fallback_url : String? = nil, machine_detection : String? = nil, machine_detection_silence_timeout : Int32? = nil, machine_detection_speech_end_threshold : Int32? = nil, machine_detection_speech_threshold : Int32? = nil, machine_detection_timeout : Int32? = nil, method : String? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, send_digits : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, trim : String? = nil, twiml : String? = nil, url : String? = nil)
       request = build_api_request_for_create_call(account_sid: account_sid, from: from, to: to, application_sid: application_sid, async_amd: async_amd, async_amd_status_callback: async_amd_status_callback, async_amd_status_callback_method: async_amd_status_callback_method, byoc: byoc, call_reason: call_reason, call_token: call_token, caller_id: caller_id, fallback_method: fallback_method, fallback_url: fallback_url, machine_detection: machine_detection, machine_detection_silence_timeout: machine_detection_silence_timeout, machine_detection_speech_end_threshold: machine_detection_speech_end_threshold, machine_detection_speech_threshold: machine_detection_speech_threshold, machine_detection_timeout: machine_detection_timeout, method: method, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, send_digits: send_digits, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, trim: trim, twiml: twiml, url: url)
@@ -343,6 +466,39 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param from [String] The phone number or client identifier to use as the caller id. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `From` must also be a phone number.
     # @param to [String] The phone number, SIP address, or client identifier to call.
+    # @optional @param application_sid [String?] The SID of the Application resource that will handle the call, if the call will be handled by an application.
+    # @optional @param async_amd [String?] Select whether to perform answering machine detection in the background. Default, blocks the execution of the call until Answering Machine Detection is completed. Can be: `true` or `false`.
+    # @optional @param async_amd_status_callback [String?] The URL that we should call using the `async_amd_status_callback_method` to notify customer application whether the call was answered by human, machine or fax.
+    # @optional @param async_amd_status_callback_method [String?] The HTTP method we should use when calling the `async_amd_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param byoc [String?] The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
+    # @optional @param call_reason [String?] The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
+    # @optional @param call_token [String?] A token string needed to invoke a forwarded call. A call_token is generated when an incoming call is received on a Twilio number. Pass an incoming call's call_token value to a forwarded call via the call_token parameter when creating a new call. A forwarded call should bear the same CallerID of the original incoming call.
+    # @optional @param caller_id [String?] The phone number, SIP address, or Client identifier that made this call. Phone numbers are in [E.164 format](https://wwnw.twilio.com/docs/glossary/what-e164) (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
+    # @optional @param fallback_method [String?] The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param fallback_url [String?] The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param machine_detection [String?] Whether to detect if a human, answering machine, or fax has picked up the call. Can be: `Enable` or `DetectMessageEnd`. Use `Enable` if you would like us to return `AnsweredBy` as soon as the called party is identified. Use `DetectMessageEnd`, if you would like to leave a message on an answering machine. If `send_digits` is provided, this parameter is ignored. For more information, see [Answering Machine Detection](https://www.twilio.com/docs/voice/answering-machine-detection).
+    # @optional @param machine_detection_silence_timeout [Int32?] The number of milliseconds of initial silence after which an `unknown` AnsweredBy result will be returned. Possible Values: 2000-10000. Default: 5000.
+    # @optional @param machine_detection_speech_end_threshold [Int32?] The number of milliseconds of silence after speech activity at which point the speech activity is considered complete. Possible Values: 500-5000. Default: 1200.
+    # @optional @param machine_detection_speech_threshold [Int32?] The number of milliseconds that is used as the measuring stick for the length of the speech activity, where durations lower than this value will be interpreted as a human and longer than this value as a machine. Possible Values: 1000-6000. Default: 2400.
+    # @optional @param machine_detection_timeout [Int32?] The number of seconds that we should attempt to detect an answering machine before timing out and sending a voice request with `AnsweredBy` of `unknown`. The default timeout is 30 seconds.
+    # @optional @param method [String?] The HTTP method we should use when calling the `url` parameter's value. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param record [Bool?] Whether to record the call. Can be `true` to record the phone call, or `false` to not. The default is `false`. The `recording_url` is sent to the `status_callback` URL.
+    # @optional @param recording_channels [String?] The number of channels in the final recording. Can be: `mono` or `dual`. The default is `mono`. `mono` records both legs of the call in a single channel of the recording file. `dual` records each leg to a separate channel of the recording file. The first channel of a dual-channel recording contains the parent call and the second channel contains the child call.
+    # @optional @param recording_status_callback [String?] The URL that we call when the recording is available to be accessed.
+    # @optional @param recording_status_callback_event [Array(String)?] The recording status events that will trigger calls to the URL specified in `recording_status_callback`. Can be: `in-progress`, `completed` and `absent`. Defaults to `completed`. Separate  multiple values with a space.
+    # @optional @param recording_status_callback_method [String?] The HTTP method we should use when calling the `recording_status_callback` URL. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param recording_track [String?] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio.
+    # @optional @param send_digits [String?] A string of keys to dial after connecting to the number, maximum of 32 digits. Valid digits in the string include: any digit (`0`-`9`), '`#`', '`*`' and '`w`', to insert a half second pause. For example, if you connected to a company phone number and wanted to pause for one second, and then dial extension 1234 followed by the pound key, the value of this parameter would be `ww1234#`. Remember to URL-encode this string, since the '`#`' character has special meaning in a URL. If both `SendDigits` and `MachineDetection` parameters are provided, then `MachineDetection` will be ignored.
+    # @optional @param sip_auth_password [String?] The password required to authenticate the user account specified in `sip_auth_username`.
+    # @optional @param sip_auth_username [String?] The username used to authenticate the caller making a SIP call.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
+    # @optional @param status_callback_event [Array(String)?] The call progress events that we will send to the `status_callback` URL. Can be: `initiated`, `ringing`, `answered`, and `completed`. If no event is specified, we send the `completed` status. If you want to receive multiple events, specify each one in a separate `status_callback_event` parameter. See the code sample for [monitoring call progress](https://www.twilio.com/docs/voice/api/call-resource?code-sample=code-create-a-call-resource-and-specify-a-statuscallbackevent&code-sdk-version=json). If an `application_sid` is present, this parameter is ignored.
+    # @optional @param status_callback_method [String?] The HTTP method we should use when calling the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param time_limit [Int32?] The maximum duration of the call in seconds. Constraints depend on account and configuration.
+    # @optional @param timeout [Int32?] The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail.
+    # @optional @param trim [String?] Whether to trim any leading and trailing silence from the recording. Can be: `trim-silence` or `do-not-trim` and the default is `trim-silence`.
+    # @optional @param twiml [String?] TwiML instructions for the call Twilio will use without fetching Twiml from url parameter. If both `twiml` and `url` are provided then `twiml` parameter will be ignored. Max 4000 characters.
+    # @optional @param url [String?] The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).
     # @return nil
     def create_call(*, account_sid : String = @account_sid, from : String, to : String, application_sid : String? = nil, async_amd : String? = nil, async_amd_status_callback : String? = nil, async_amd_status_callback_method : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_token : String? = nil, caller_id : String? = nil, fallback_method : String? = nil, fallback_url : String? = nil, machine_detection : String? = nil, machine_detection_silence_timeout : Int32? = nil, machine_detection_speech_end_threshold : Int32? = nil, machine_detection_speech_threshold : Int32? = nil, machine_detection_timeout : Int32? = nil, method : String? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, send_digits : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, trim : String? = nil, twiml : String? = nil, url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_call(account_sid: account_sid, from: from, to: to, application_sid: application_sid, async_amd: async_amd, async_amd_status_callback: async_amd_status_callback, async_amd_status_callback_method: async_amd_status_callback_method, byoc: byoc, call_reason: call_reason, call_token: call_token, caller_id: caller_id, fallback_method: fallback_method, fallback_url: fallback_url, machine_detection: machine_detection, machine_detection_silence_timeout: machine_detection_silence_timeout, machine_detection_speech_end_threshold: machine_detection_speech_end_threshold, machine_detection_speech_threshold: machine_detection_speech_threshold, machine_detection_timeout: machine_detection_timeout, method: method, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, send_digits: send_digits, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, trim: trim, twiml: twiml, url: url).execute(&block)
@@ -485,6 +641,9 @@ module Twilio
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param end_date [Time] Only include feedback given on or before this date. Format is `YYYY-MM-DD` and specified in UTC.
     # @param start_date [Time] Only include feedback given on or after this date. Format is `YYYY-MM-DD` and specified in UTC.
+    # @optional @param include_subaccounts [Bool?] Whether to also include Feedback resources from all subaccounts. `true` includes feedback from all subaccounts and `false`, the default, includes feedback from only the specified account.
+    # @optional @param status_callback [String?] The URL that we will request when the feedback summary is complete.
+    # @optional @param status_callback_method [String?] The HTTP method (`GET` or `POST`) we use to make the request to the `StatusCallback` URL.
     # @return [CallCallFeedbackSummary]
     def create_call_feedback_summary(*, account_sid : String = @account_sid, end_date : Time, start_date : Time, include_subaccounts : Bool? = nil, status_callback : String? = nil, status_callback_method : String? = nil)
       data, _status_code, _headers = create_call_feedback_summary_with_http_info(account_sid: account_sid, end_date: end_date, start_date: start_date, include_subaccounts: include_subaccounts, status_callback: status_callback, status_callback_method: status_callback_method)
@@ -495,6 +654,9 @@ module Twilio
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param end_date [Time] Only include feedback given on or before this date. Format is `YYYY-MM-DD` and specified in UTC.
     # @param start_date [Time] Only include feedback given on or after this date. Format is `YYYY-MM-DD` and specified in UTC.
+    # @optional @param include_subaccounts [Bool?] Whether to also include Feedback resources from all subaccounts. `true` includes feedback from all subaccounts and `false`, the default, includes feedback from only the specified account.
+    # @optional @param status_callback [String?] The URL that we will request when the feedback summary is complete.
+    # @optional @param status_callback_method [String?] The HTTP method (`GET` or `POST`) we use to make the request to the `StatusCallback` URL.
     # @return [Array<(CallCallFeedbackSummary, Integer, Hash)>] CallCallFeedbackSummary data, response status code and response headers
     def create_call_feedback_summary_with_http_info(*, account_sid : String = @account_sid, end_date : Time, start_date : Time, include_subaccounts : Bool? = nil, status_callback : String? = nil, status_callback_method : String? = nil)
       request = build_api_request_for_create_call_feedback_summary(account_sid: account_sid, end_date: end_date, start_date: start_date, include_subaccounts: include_subaccounts, status_callback: status_callback, status_callback_method: status_callback_method)
@@ -512,6 +674,9 @@ module Twilio
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param end_date [Time] Only include feedback given on or before this date. Format is `YYYY-MM-DD` and specified in UTC.
     # @param start_date [Time] Only include feedback given on or after this date. Format is `YYYY-MM-DD` and specified in UTC.
+    # @optional @param include_subaccounts [Bool?] Whether to also include Feedback resources from all subaccounts. `true` includes feedback from all subaccounts and `false`, the default, includes feedback from only the specified account.
+    # @optional @param status_callback [String?] The URL that we will request when the feedback summary is complete.
+    # @optional @param status_callback_method [String?] The HTTP method (`GET` or `POST`) we use to make the request to the `StatusCallback` URL.
     # @return nil
     def create_call_feedback_summary(*, account_sid : String = @account_sid, end_date : Time, start_date : Time, include_subaccounts : Bool? = nil, status_callback : String? = nil, status_callback_method : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_call_feedback_summary(account_sid: account_sid, end_date: end_date, start_date: start_date, include_subaccounts: include_subaccounts, status_callback: status_callback, status_callback_method: status_callback_method).execute(&block)
@@ -581,6 +746,12 @@ module Twilio
     # Create a recording for the call
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param call_sid [String] The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) to associate the resource with.
+    # @optional @param recording_channels [String?] The number of channels used in the recording. Can be: `mono` or `dual` and the default is `mono`. `mono` records all parties of the call into one channel. `dual` records each party of a 2-party call into separate channels.
+    # @optional @param recording_status_callback [String?] The URL we should call using the `recording_status_callback_method` on each recording event specified in  `recording_status_callback_event`. For more information, see [RecordingStatusCallback parameters](https://www.twilio.com/docs/voice/api/recording#recordingstatuscallback).
+    # @optional @param recording_status_callback_event [Array(String)?] The recording status events on which we should call the `recording_status_callback` URL. Can be: `in-progress`, `completed` and `absent` and the default is `completed`. Separate multiple event values with a space.
+    # @optional @param recording_status_callback_method [String?] The HTTP method we should use to call `recording_status_callback`. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param recording_track [String?] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio.
+    # @optional @param trim [String?] Whether to trim any leading and trailing silence in the recording. Can be: `trim-silence` or `do-not-trim` and the default is `do-not-trim`. `trim-silence` trims the silence from the beginning and end of the recording and `do-not-trim` does not.
     # @return [CallCallRecording]
     def create_call_recording(*, account_sid : String = @account_sid, call_sid : String, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, trim : String? = nil)
       data, _status_code, _headers = create_call_recording_with_http_info(account_sid: account_sid, call_sid: call_sid, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, trim: trim)
@@ -590,6 +761,12 @@ module Twilio
     # Create a recording for the call
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param call_sid [String] The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) to associate the resource with.
+    # @optional @param recording_channels [String?] The number of channels used in the recording. Can be: `mono` or `dual` and the default is `mono`. `mono` records all parties of the call into one channel. `dual` records each party of a 2-party call into separate channels.
+    # @optional @param recording_status_callback [String?] The URL we should call using the `recording_status_callback_method` on each recording event specified in  `recording_status_callback_event`. For more information, see [RecordingStatusCallback parameters](https://www.twilio.com/docs/voice/api/recording#recordingstatuscallback).
+    # @optional @param recording_status_callback_event [Array(String)?] The recording status events on which we should call the `recording_status_callback` URL. Can be: `in-progress`, `completed` and `absent` and the default is `completed`. Separate multiple event values with a space.
+    # @optional @param recording_status_callback_method [String?] The HTTP method we should use to call `recording_status_callback`. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param recording_track [String?] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio.
+    # @optional @param trim [String?] Whether to trim any leading and trailing silence in the recording. Can be: `trim-silence` or `do-not-trim` and the default is `do-not-trim`. `trim-silence` trims the silence from the beginning and end of the recording and `do-not-trim` does not.
     # @return [Array<(CallCallRecording, Integer, Hash)>] CallCallRecording data, response status code and response headers
     def create_call_recording_with_http_info(*, account_sid : String = @account_sid, call_sid : String, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, trim : String? = nil)
       request = build_api_request_for_create_call_recording(account_sid: account_sid, call_sid: call_sid, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, trim: trim)
@@ -606,6 +783,12 @@ module Twilio
     # Create a recording for the call
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param call_sid [String] The SID of the [Call](https://www.twilio.com/docs/voice/api/call-resource) to associate the resource with.
+    # @optional @param recording_channels [String?] The number of channels used in the recording. Can be: `mono` or `dual` and the default is `mono`. `mono` records all parties of the call into one channel. `dual` records each party of a 2-party call into separate channels.
+    # @optional @param recording_status_callback [String?] The URL we should call using the `recording_status_callback_method` on each recording event specified in  `recording_status_callback_event`. For more information, see [RecordingStatusCallback parameters](https://www.twilio.com/docs/voice/api/recording#recordingstatuscallback).
+    # @optional @param recording_status_callback_event [Array(String)?] The recording status events on which we should call the `recording_status_callback` URL. Can be: `in-progress`, `completed` and `absent` and the default is `completed`. Separate multiple event values with a space.
+    # @optional @param recording_status_callback_method [String?] The HTTP method we should use to call `recording_status_callback`. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param recording_track [String?] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is generated from Twilio. `both` records the audio that is received and generated by Twilio.
+    # @optional @param trim [String?] Whether to trim any leading and trailing silence in the recording. Can be: `trim-silence` or `do-not-trim` and the default is `do-not-trim`. `trim-silence` trims the silence from the beginning and end of the recording and `do-not-trim` does not.
     # @return nil
     def create_call_recording(*, account_sid : String = @account_sid, call_sid : String, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, trim : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_call_recording(account_sid: account_sid, call_sid: call_sid, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, trim: trim).execute(&block)
@@ -688,6 +871,30 @@ module Twilio
 
     # Purchase a phone-number for the account.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param area_code [String?] The desired area code for your new incoming phone number. Can be any three-digit, US or Canada area code. We will provision an available phone number within this area code for you. **You must provide an `area_code` or a `phone_number`.** (US and Canada only).
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the new phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
+    # @optional @param phone_number [String?] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [IncomingPhoneNumber]
     def create_incoming_phone_number(*, account_sid : String = @account_sid, address_sid : String? = nil, api_version : String? = nil, area_code : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, phone_number : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       data, _status_code, _headers = create_incoming_phone_number_with_http_info(account_sid: account_sid, address_sid: address_sid, api_version: api_version, area_code: area_code, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, phone_number: phone_number, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -696,6 +903,30 @@ module Twilio
 
     # Purchase a phone-number for the account.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param area_code [String?] The desired area code for your new incoming phone number. Can be any three-digit, US or Canada area code. We will provision an available phone number within this area code for you. **You must provide an `area_code` or a `phone_number`.** (US and Canada only).
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the new phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
+    # @optional @param phone_number [String?] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [Array<(IncomingPhoneNumber, Integer, Hash)>] IncomingPhoneNumber data, response status code and response headers
     def create_incoming_phone_number_with_http_info(*, account_sid : String = @account_sid, address_sid : String? = nil, api_version : String? = nil, area_code : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, phone_number : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       request = build_api_request_for_create_incoming_phone_number(account_sid: account_sid, address_sid: address_sid, api_version: api_version, area_code: area_code, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, phone_number: phone_number, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -711,6 +942,30 @@ module Twilio
 
     # Purchase a phone-number for the account.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param area_code [String?] The desired area code for your new incoming phone number. Can be any three-digit, US or Canada area code. We will provision an available phone number within this area code for you. **You must provide an `area_code` or a `phone_number`.** (US and Canada only).
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the new phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
+    # @optional @param phone_number [String?] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return nil
     def create_incoming_phone_number(*, account_sid : String = @account_sid, address_sid : String? = nil, api_version : String? = nil, area_code : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, phone_number : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_incoming_phone_number(account_sid: account_sid, address_sid: address_sid, api_version: api_version, area_code: area_code, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, phone_number: phone_number, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url).execute(&block)
@@ -1029,6 +1284,28 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [IncomingPhoneNumberIncomingPhoneNumberLocal]
     def create_incoming_phone_number_local(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       data, _status_code, _headers = create_incoming_phone_number_local_with_http_info(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -1038,6 +1315,28 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [Array<(IncomingPhoneNumberIncomingPhoneNumberLocal, Integer, Hash)>] IncomingPhoneNumberIncomingPhoneNumberLocal data, response status code and response headers
     def create_incoming_phone_number_local_with_http_info(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       request = build_api_request_for_create_incoming_phone_number_local(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -1054,6 +1353,28 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return nil
     def create_incoming_phone_number_local(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_incoming_phone_number_local(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url).execute(&block)
@@ -1256,6 +1577,28 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, the is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those of the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [IncomingPhoneNumberIncomingPhoneNumberMobile]
     def create_incoming_phone_number_mobile(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       data, _status_code, _headers = create_incoming_phone_number_mobile_with_http_info(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -1265,6 +1608,28 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, the is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those of the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [Array<(IncomingPhoneNumberIncomingPhoneNumberMobile, Integer, Hash)>] IncomingPhoneNumberIncomingPhoneNumberMobile data, response status code and response headers
     def create_incoming_phone_number_mobile_with_http_info(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       request = build_api_request_for_create_incoming_phone_number_mobile(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -1281,6 +1646,28 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, the is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those of the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return nil
     def create_incoming_phone_number_mobile(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_incoming_phone_number_mobile(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url).execute(&block)
@@ -1483,6 +1870,28 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an Identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all `sms_*_url` values and use those of the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [IncomingPhoneNumberIncomingPhoneNumberTollFree]
     def create_incoming_phone_number_toll_free(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       data, _status_code, _headers = create_incoming_phone_number_toll_free_with_http_info(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -1492,6 +1901,28 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an Identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all `sms_*_url` values and use those of the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [Array<(IncomingPhoneNumberIncomingPhoneNumberTollFree, Integer, Hash)>] IncomingPhoneNumberIncomingPhoneNumberTollFree data, response status code and response headers
     def create_incoming_phone_number_toll_free_with_http_info(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       request = build_api_request_for_create_incoming_phone_number_toll_free(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -1508,6 +1939,28 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param phone_number [String] The phone number to purchase specified in [E.164](https://www.twilio.com/docs/glossary/what-e164) format.  E.164 phone numbers consist of a + followed by the country code and subscriber number without punctuation characters. For example, +14155551234.
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the new phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the new phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from the new phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the new phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the new phone number. Some regions require an Identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the new phone number. If an `sms_application_sid` is present, we ignore all `sms_*_url` values and use those of the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the new phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle calls to the new phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle calls to the new phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the new phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the new phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return nil
     def create_incoming_phone_number_toll_free(*, account_sid : String = @account_sid, phone_number : String, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_incoming_phone_number_toll_free(account_sid: account_sid, phone_number: phone_number, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url).execute(&block)
@@ -1710,6 +2163,24 @@ module Twilio
     # Send a message from the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param to [String] The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels.
+    # @optional @param address_retention [String?] Determines if the address can be stored or obfuscated based on privacy settings
+    # @optional @param application_sid [String?] The SID of the application that should receive message status. We POST a `message_sid` parameter and a `message_status` parameter with a value of `sent` or `failed` to the [application](https://www.twilio.com/docs/usage/api/applications)'s `message_status_callback`. If a `status_callback` parameter is also passed, it will be ignored and the application's `message_status_callback` parameter will be used.
+    # @optional @param attempt [Int32?] Total number of attempts made ( including this ) to send out the message regardless of the provider used
+    # @optional @param body [String?] The text of the message you want to send. Can be up to 1,600 characters in length.
+    # @optional @param content_retention [String?] Determines if the message content can be stored or redacted based on privacy settings
+    # @optional @param force_delivery [Bool?] Reserved
+    # @optional @param from [String?] A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-code) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty.
+    # @optional @param max_price [Float64?] The maximum total price in US dollars that you will pay for the message to be delivered. Can be a decimal value that has up to 4 decimal places. All messages are queued for delivery and the message cost is checked before the message is sent. If the cost exceeds `max_price`, the message will fail and a status of `Failed` is sent to the status callback. If `MaxPrice` is not set, the message cost is not checked.
+    # @optional @param media_url [Array(String)?] The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. The media size limit is 5MB for supported file types (JPEG, PNG, GIF) and 500KB for [other types](https://www.twilio.com/docs/sms/accepted-mime-types) of accepted media. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada.
+    # @optional @param messaging_service_sid [String?] The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services#send-a-message-with-copilot) you want to associate with the Message. Set this parameter to use the [Messaging Service Settings and Copilot Features](https://www.twilio.com/console/sms/services) you have configured and leave the `from` parameter empty. When only this parameter is set, Twilio will use your enabled Copilot Features to select the `from` phone number for delivery.
+    # @optional @param persistent_action [Array(String)?] Rich actions for Channels Messages.
+    # @optional @param provide_feedback [Bool?] Whether to confirm delivery of the message. Set this value to `true` if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the [Message Feedback API](https://www.twilio.com/docs/sms/api/message-feedback-resource). This parameter is `false` by default.
+    # @optional @param schedule_type [String?] Indicates your intent to schedule a message. Pass the value `fixed` to schedule a message at a fixed time.
+    # @optional @param send_as_mms [Bool?] If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media.
+    # @optional @param send_at [Time?] The time that Twilio will send the message. Must be in ISO 8601 format.
+    # @optional @param smart_encoded [Bool?] Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application. If specified, we POST these message status changes to the URL: `queued`, `failed`, `sent`, `delivered`, or `undelivered`. Twilio will POST its [standard request parameters](https://www.twilio.com/docs/sms/twiml#request-parameters) as well as some additional parameters including `MessageSid`, `MessageStatus`, and `ErrorCode`. If you include this parameter with the `messaging_service_sid`, we use this URL instead of the Status Callback URL of the [Messaging Service](https://www.twilio.com/docs/sms/services/api). URLs must contain a valid hostname and underscores are not allowed.
+    # @optional @param validity_period [Int32?] How long in seconds the message can remain in our outgoing message queue. After this period elapses, the message fails and we call your status callback. Can be between 1 and the default value of 14,400 seconds. After a message has been accepted by a carrier, however, we cannot guarantee that the message will not be queued after this period. We recommend that this value be at least 5 seconds.
     # @return [Message]
     def create_message(*, account_sid : String = @account_sid, to : String, address_retention : String? = nil, application_sid : String? = nil, attempt : Int32? = nil, body : String? = nil, content_retention : String? = nil, force_delivery : Bool? = nil, from : String? = nil, max_price : Float64? = nil, media_url : Array(String)? = nil, messaging_service_sid : String? = nil, persistent_action : Array(String)? = nil, provide_feedback : Bool? = nil, schedule_type : String? = nil, send_as_mms : Bool? = nil, send_at : Time? = nil, smart_encoded : Bool? = nil, status_callback : String? = nil, validity_period : Int32? = nil)
       data, _status_code, _headers = create_message_with_http_info(account_sid: account_sid, to: to, address_retention: address_retention, application_sid: application_sid, attempt: attempt, body: body, content_retention: content_retention, force_delivery: force_delivery, from: from, max_price: max_price, media_url: media_url, messaging_service_sid: messaging_service_sid, persistent_action: persistent_action, provide_feedback: provide_feedback, schedule_type: schedule_type, send_as_mms: send_as_mms, send_at: send_at, smart_encoded: smart_encoded, status_callback: status_callback, validity_period: validity_period)
@@ -1719,6 +2190,24 @@ module Twilio
     # Send a message from the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param to [String] The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels.
+    # @optional @param address_retention [String?] Determines if the address can be stored or obfuscated based on privacy settings
+    # @optional @param application_sid [String?] The SID of the application that should receive message status. We POST a `message_sid` parameter and a `message_status` parameter with a value of `sent` or `failed` to the [application](https://www.twilio.com/docs/usage/api/applications)'s `message_status_callback`. If a `status_callback` parameter is also passed, it will be ignored and the application's `message_status_callback` parameter will be used.
+    # @optional @param attempt [Int32?] Total number of attempts made ( including this ) to send out the message regardless of the provider used
+    # @optional @param body [String?] The text of the message you want to send. Can be up to 1,600 characters in length.
+    # @optional @param content_retention [String?] Determines if the message content can be stored or redacted based on privacy settings
+    # @optional @param force_delivery [Bool?] Reserved
+    # @optional @param from [String?] A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-code) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty.
+    # @optional @param max_price [Float64?] The maximum total price in US dollars that you will pay for the message to be delivered. Can be a decimal value that has up to 4 decimal places. All messages are queued for delivery and the message cost is checked before the message is sent. If the cost exceeds `max_price`, the message will fail and a status of `Failed` is sent to the status callback. If `MaxPrice` is not set, the message cost is not checked.
+    # @optional @param media_url [Array(String)?] The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. The media size limit is 5MB for supported file types (JPEG, PNG, GIF) and 500KB for [other types](https://www.twilio.com/docs/sms/accepted-mime-types) of accepted media. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada.
+    # @optional @param messaging_service_sid [String?] The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services#send-a-message-with-copilot) you want to associate with the Message. Set this parameter to use the [Messaging Service Settings and Copilot Features](https://www.twilio.com/console/sms/services) you have configured and leave the `from` parameter empty. When only this parameter is set, Twilio will use your enabled Copilot Features to select the `from` phone number for delivery.
+    # @optional @param persistent_action [Array(String)?] Rich actions for Channels Messages.
+    # @optional @param provide_feedback [Bool?] Whether to confirm delivery of the message. Set this value to `true` if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the [Message Feedback API](https://www.twilio.com/docs/sms/api/message-feedback-resource). This parameter is `false` by default.
+    # @optional @param schedule_type [String?] Indicates your intent to schedule a message. Pass the value `fixed` to schedule a message at a fixed time.
+    # @optional @param send_as_mms [Bool?] If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media.
+    # @optional @param send_at [Time?] The time that Twilio will send the message. Must be in ISO 8601 format.
+    # @optional @param smart_encoded [Bool?] Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application. If specified, we POST these message status changes to the URL: `queued`, `failed`, `sent`, `delivered`, or `undelivered`. Twilio will POST its [standard request parameters](https://www.twilio.com/docs/sms/twiml#request-parameters) as well as some additional parameters including `MessageSid`, `MessageStatus`, and `ErrorCode`. If you include this parameter with the `messaging_service_sid`, we use this URL instead of the Status Callback URL of the [Messaging Service](https://www.twilio.com/docs/sms/services/api). URLs must contain a valid hostname and underscores are not allowed.
+    # @optional @param validity_period [Int32?] How long in seconds the message can remain in our outgoing message queue. After this period elapses, the message fails and we call your status callback. Can be between 1 and the default value of 14,400 seconds. After a message has been accepted by a carrier, however, we cannot guarantee that the message will not be queued after this period. We recommend that this value be at least 5 seconds.
     # @return [Array<(Message, Integer, Hash)>] Message data, response status code and response headers
     def create_message_with_http_info(*, account_sid : String = @account_sid, to : String, address_retention : String? = nil, application_sid : String? = nil, attempt : Int32? = nil, body : String? = nil, content_retention : String? = nil, force_delivery : Bool? = nil, from : String? = nil, max_price : Float64? = nil, media_url : Array(String)? = nil, messaging_service_sid : String? = nil, persistent_action : Array(String)? = nil, provide_feedback : Bool? = nil, schedule_type : String? = nil, send_as_mms : Bool? = nil, send_at : Time? = nil, smart_encoded : Bool? = nil, status_callback : String? = nil, validity_period : Int32? = nil)
       request = build_api_request_for_create_message(account_sid: account_sid, to: to, address_retention: address_retention, application_sid: application_sid, attempt: attempt, body: body, content_retention: content_retention, force_delivery: force_delivery, from: from, max_price: max_price, media_url: media_url, messaging_service_sid: messaging_service_sid, persistent_action: persistent_action, provide_feedback: provide_feedback, schedule_type: schedule_type, send_as_mms: send_as_mms, send_at: send_at, smart_encoded: smart_encoded, status_callback: status_callback, validity_period: validity_period)
@@ -1735,6 +2224,24 @@ module Twilio
     # Send a message from the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param to [String] The destination phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format for SMS/MMS or [Channel user address](https://www.twilio.com/docs/sms/channels#channel-addresses) for other 3rd-party channels.
+    # @optional @param address_retention [String?] Determines if the address can be stored or obfuscated based on privacy settings
+    # @optional @param application_sid [String?] The SID of the application that should receive message status. We POST a `message_sid` parameter and a `message_status` parameter with a value of `sent` or `failed` to the [application](https://www.twilio.com/docs/usage/api/applications)'s `message_status_callback`. If a `status_callback` parameter is also passed, it will be ignored and the application's `message_status_callback` parameter will be used.
+    # @optional @param attempt [Int32?] Total number of attempts made ( including this ) to send out the message regardless of the provider used
+    # @optional @param body [String?] The text of the message you want to send. Can be up to 1,600 characters in length.
+    # @optional @param content_retention [String?] Determines if the message content can be stored or redacted based on privacy settings
+    # @optional @param force_delivery [Bool?] Reserved
+    # @optional @param from [String?] A Twilio phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, an [alphanumeric sender ID](https://www.twilio.com/docs/sms/send-messages#use-an-alphanumeric-sender-id), or a [Channel Endpoint address](https://www.twilio.com/docs/sms/channels#channel-addresses) that is enabled for the type of message you want to send. Phone numbers or [short codes](https://www.twilio.com/docs/sms/api/short-code) purchased from Twilio also work here. You cannot, for example, spoof messages from a private cell phone number. If you are using `messaging_service_sid`, this parameter must be empty.
+    # @optional @param max_price [Float64?] The maximum total price in US dollars that you will pay for the message to be delivered. Can be a decimal value that has up to 4 decimal places. All messages are queued for delivery and the message cost is checked before the message is sent. If the cost exceeds `max_price`, the message will fail and a status of `Failed` is sent to the status callback. If `MaxPrice` is not set, the message cost is not checked.
+    # @optional @param media_url [Array(String)?] The URL of the media to send with the message. The media can be of type `gif`, `png`, and `jpeg` and will be formatted correctly on the recipient's device. The media size limit is 5MB for supported file types (JPEG, PNG, GIF) and 500KB for [other types](https://www.twilio.com/docs/sms/accepted-mime-types) of accepted media. To send more than one image in the message body, provide multiple `media_url` parameters in the POST request. You can include up to 10 `media_url` parameters per message. You can send images in an SMS message in only the US and Canada.
+    # @optional @param messaging_service_sid [String?] The SID of the [Messaging Service](https://www.twilio.com/docs/sms/services#send-a-message-with-copilot) you want to associate with the Message. Set this parameter to use the [Messaging Service Settings and Copilot Features](https://www.twilio.com/console/sms/services) you have configured and leave the `from` parameter empty. When only this parameter is set, Twilio will use your enabled Copilot Features to select the `from` phone number for delivery.
+    # @optional @param persistent_action [Array(String)?] Rich actions for Channels Messages.
+    # @optional @param provide_feedback [Bool?] Whether to confirm delivery of the message. Set this value to `true` if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the [Message Feedback API](https://www.twilio.com/docs/sms/api/message-feedback-resource). This parameter is `false` by default.
+    # @optional @param schedule_type [String?] Indicates your intent to schedule a message. Pass the value `fixed` to schedule a message at a fixed time.
+    # @optional @param send_as_mms [Bool?] If set to True, Twilio will deliver the message as a single MMS message, regardless of the presence of media.
+    # @optional @param send_at [Time?] The time that Twilio will send the message. Must be in ISO 8601 format.
+    # @optional @param smart_encoded [Bool?] Whether to detect Unicode characters that have a similar GSM-7 character and replace them. Can be: `true` or `false`.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application. If specified, we POST these message status changes to the URL: `queued`, `failed`, `sent`, `delivered`, or `undelivered`. Twilio will POST its [standard request parameters](https://www.twilio.com/docs/sms/twiml#request-parameters) as well as some additional parameters including `MessageSid`, `MessageStatus`, and `ErrorCode`. If you include this parameter with the `messaging_service_sid`, we use this URL instead of the Status Callback URL of the [Messaging Service](https://www.twilio.com/docs/sms/services/api). URLs must contain a valid hostname and underscores are not allowed.
+    # @optional @param validity_period [Int32?] How long in seconds the message can remain in our outgoing message queue. After this period elapses, the message fails and we call your status callback. Can be between 1 and the default value of 14,400 seconds. After a message has been accepted by a carrier, however, we cannot guarantee that the message will not be queued after this period. We recommend that this value be at least 5 seconds.
     # @return nil
     def create_message(*, account_sid : String = @account_sid, to : String, address_retention : String? = nil, application_sid : String? = nil, attempt : Int32? = nil, body : String? = nil, content_retention : String? = nil, force_delivery : Bool? = nil, from : String? = nil, max_price : Float64? = nil, media_url : Array(String)? = nil, messaging_service_sid : String? = nil, persistent_action : Array(String)? = nil, provide_feedback : Bool? = nil, schedule_type : String? = nil, send_as_mms : Bool? = nil, send_at : Time? = nil, smart_encoded : Bool? = nil, status_callback : String? = nil, validity_period : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_create_message(account_sid: account_sid, to: to, address_retention: address_retention, application_sid: application_sid, attempt: attempt, body: body, content_retention: content_retention, force_delivery: force_delivery, from: from, max_price: max_price, media_url: media_url, messaging_service_sid: messaging_service_sid, persistent_action: persistent_action, provide_feedback: provide_feedback, schedule_type: schedule_type, send_as_mms: send_as_mms, send_at: send_at, smart_encoded: smart_encoded, status_callback: status_callback, validity_period: validity_period).execute(&block)
@@ -1852,6 +2359,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param message_sid [String] The SID of the Message resource for which the feedback was provided.
+    # @optional @param outcome [String?] Whether the feedback has arrived. Can be: `unconfirmed` or `confirmed`. If `provide_feedback`=`true` in [the initial HTTP POST](https://www.twilio.com/docs/sms/api/message-resource#create-a-message-resource), the initial value of this property is `unconfirmed`. After the message arrives, update the value to `confirmed`.
     # @return [MessageMessageFeedback]
     def create_message_feedback(*, account_sid : String = @account_sid, message_sid : String, outcome : String? = nil)
       data, _status_code, _headers = create_message_feedback_with_http_info(account_sid: account_sid, message_sid: message_sid, outcome: outcome)
@@ -1861,6 +2369,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param message_sid [String] The SID of the Message resource for which the feedback was provided.
+    # @optional @param outcome [String?] Whether the feedback has arrived. Can be: `unconfirmed` or `confirmed`. If `provide_feedback`=`true` in [the initial HTTP POST](https://www.twilio.com/docs/sms/api/message-resource#create-a-message-resource), the initial value of this property is `unconfirmed`. After the message arrives, update the value to `confirmed`.
     # @return [Array<(MessageMessageFeedback, Integer, Hash)>] MessageMessageFeedback data, response status code and response headers
     def create_message_feedback_with_http_info(*, account_sid : String = @account_sid, message_sid : String, outcome : String? = nil)
       request = build_api_request_for_create_message_feedback(account_sid: account_sid, message_sid: message_sid, outcome: outcome)
@@ -1877,6 +2386,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param message_sid [String] The SID of the Message resource for which the feedback was provided.
+    # @optional @param outcome [String?] Whether the feedback has arrived. Can be: `unconfirmed` or `confirmed`. If `provide_feedback`=`true` in [the initial HTTP POST](https://www.twilio.com/docs/sms/api/message-resource#create-a-message-resource), the initial value of this property is `unconfirmed`. After the message arrives, update the value to `confirmed`.
     # @return nil
     def create_message_feedback(*, account_sid : String = @account_sid, message_sid : String, outcome : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_message_feedback(account_sid: account_sid, message_sid: message_sid, outcome: outcome).execute(&block)
@@ -1954,6 +2464,7 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [NewKey]
     def create_new_key(*, account_sid : String = @account_sid, friendly_name : String? = nil)
       data, _status_code, _headers = create_new_key_with_http_info(account_sid: account_sid, friendly_name: friendly_name)
@@ -1962,6 +2473,7 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [Array<(NewKey, Integer, Hash)>] NewKey data, response status code and response headers
     def create_new_key_with_http_info(*, account_sid : String = @account_sid, friendly_name : String? = nil)
       request = build_api_request_for_create_new_key(account_sid: account_sid, friendly_name: friendly_name)
@@ -1977,6 +2489,7 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return nil
     def create_new_key(*, account_sid : String = @account_sid, friendly_name : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_new_key(account_sid: account_sid, friendly_name: friendly_name).execute(&block)
@@ -2037,6 +2550,7 @@ module Twilio
 
     # Create a new Signing Key for the account making the request.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [NewSigningKey]
     def create_new_signing_key(*, account_sid : String = @account_sid, friendly_name : String? = nil)
       data, _status_code, _headers = create_new_signing_key_with_http_info(account_sid: account_sid, friendly_name: friendly_name)
@@ -2045,6 +2559,7 @@ module Twilio
 
     # Create a new Signing Key for the account making the request.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [Array<(NewSigningKey, Integer, Hash)>] NewSigningKey data, response status code and response headers
     def create_new_signing_key_with_http_info(*, account_sid : String = @account_sid, friendly_name : String? = nil)
       request = build_api_request_for_create_new_signing_key(account_sid: account_sid, friendly_name: friendly_name)
@@ -2060,6 +2575,7 @@ module Twilio
 
     # Create a new Signing Key for the account making the request.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will be responsible for the new Key resource.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return nil
     def create_new_signing_key(*, account_sid : String = @account_sid, friendly_name : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_new_signing_key(account_sid: account_sid, friendly_name: friendly_name).execute(&block)
@@ -2123,6 +2639,43 @@ module Twilio
     # @param conference_sid [String] The SID of the participant's conference.
     # @param from [String] The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `from` must also be a phone number. If `to` is sip address, this value of `from` should be a username portion to be used to populate the P-Asserted-Identity header that is passed to the SIP endpoint.
     # @param to [String] The phone number, SIP address, or Client identifier that received this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). SIP addresses are formatted as `sip:name@company.com`. Client identifiers are formatted `client:name`. [Custom parameters](https://www.twilio.com/docs/voice/api/conference-participant-resource#custom-parameters) may also be specified.
+    # @optional @param beep [String?] Whether to play a notification beep to the conference when the participant joins. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.
+    # @optional @param byoc [String?] The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
+    # @optional @param call_reason [String?] The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
+    # @optional @param call_sid_to_coach [String?] The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
+    # @optional @param caller_id [String?] The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `callerId` must also be a phone number. If `to` is sip address, this value of `callerId` should be a username portion to be used to populate the From header that is passed to the SIP endpoint.
+    # @optional @param coaching [Bool?] Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
+    # @optional @param conference_record [String?] Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.
+    # @optional @param conference_recording_status_callback [String?] The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.
+    # @optional @param conference_recording_status_callback_event [Array(String)?] The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`
+    # @optional @param conference_recording_status_callback_method [String?] The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param conference_status_callback [String?] The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.
+    # @optional @param conference_status_callback_event [Array(String)?] The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `modify`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`.
+    # @optional @param conference_status_callback_method [String?] The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param conference_trim [String?] Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
+    # @optional @param early_media [Bool?] Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. Can be: `true` or `false` and defaults to `true`.
+    # @optional @param end_conference_on_exit [Bool?] Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param jitter_buffer_size [String?] Jitter buffer size for the connecting participant. Twilio will use this setting to apply Jitter Buffer before participant's audio is mixed into the conference. Can be: `off`, `small`, `medium`, and `large`. Default to `large`.
+    # @optional @param label [String?] A label for this participant. If one is supplied, it may subsequently be used to fetch, update or delete the participant.
+    # @optional @param max_participants [Int32?] The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.
+    # @optional @param muted [Bool?] Whether the agent is muted in the conference. Can be `true` or `false` and the default is `false`.
+    # @optional @param record [Bool?] Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`.
+    # @optional @param recording_channels [String?] The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.
+    # @optional @param recording_status_callback [String?] The URL that we should call using the `recording_status_callback_method` when the recording status changes.
+    # @optional @param recording_status_callback_event [Array(String)?] The recording state changes that should generate a call to `recording_status_callback`. Can be: `started`, `in-progress`, `paused`, `resumed`, `stopped`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`.
+    # @optional @param recording_status_callback_method [String?] The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param recording_track [String?] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is sent from Twilio. `both` records the audio that is received and sent by Twilio.
+    # @optional @param region [String?] The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
+    # @optional @param sip_auth_password [String?] The SIP password for authentication.
+    # @optional @param sip_auth_username [String?] The SIP username used for authentication.
+    # @optional @param start_conference_on_enter [Bool?] Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_event [Array(String)?] The conference state changes that should generate a call to `status_callback`. Can be: `initiated`, `ringing`, `answered`, and `completed`. Separate multiple values with a space. The default value is `completed`.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` and `POST` and defaults to `POST`.
+    # @optional @param time_limit [Int32?] The maximum duration of the call in seconds. Constraints depend on account and configuration.
+    # @optional @param timeout [Int32?] The number of seconds that we should allow the phone to ring before assuming there is no answer. Can be an integer between `5` and `600`, inclusive. The default value is `60`. We always add a 5-second timeout buffer to outgoing calls, so  value of 10 would result in an actual timeout that was closer to 15 seconds.
+    # @optional @param wait_method [String?] The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
+    # @optional @param wait_url [String?] The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
     # @return [ConferenceParticipant]
     def create_participant(*, account_sid : String = @account_sid, conference_sid : String, from : String, to : String, beep : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_sid_to_coach : String? = nil, caller_id : String? = nil, coaching : Bool? = nil, conference_record : String? = nil, conference_recording_status_callback : String? = nil, conference_recording_status_callback_event : Array(String)? = nil, conference_recording_status_callback_method : String? = nil, conference_status_callback : String? = nil, conference_status_callback_event : Array(String)? = nil, conference_status_callback_method : String? = nil, conference_trim : String? = nil, early_media : Bool? = nil, end_conference_on_exit : Bool? = nil, jitter_buffer_size : String? = nil, label : String? = nil, max_participants : Int32? = nil, muted : Bool? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, region : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, start_conference_on_enter : Bool? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, wait_method : String? = nil, wait_url : String? = nil)
       data, _status_code, _headers = create_participant_with_http_info(account_sid: account_sid, conference_sid: conference_sid, from: from, to: to, beep: beep, byoc: byoc, call_reason: call_reason, call_sid_to_coach: call_sid_to_coach, caller_id: caller_id, coaching: coaching, conference_record: conference_record, conference_recording_status_callback: conference_recording_status_callback, conference_recording_status_callback_event: conference_recording_status_callback_event, conference_recording_status_callback_method: conference_recording_status_callback_method, conference_status_callback: conference_status_callback, conference_status_callback_event: conference_status_callback_event, conference_status_callback_method: conference_status_callback_method, conference_trim: conference_trim, early_media: early_media, end_conference_on_exit: end_conference_on_exit, jitter_buffer_size: jitter_buffer_size, label: label, max_participants: max_participants, muted: muted, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, region: region, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, start_conference_on_enter: start_conference_on_enter, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, wait_method: wait_method, wait_url: wait_url)
@@ -2134,6 +2687,43 @@ module Twilio
     # @param conference_sid [String] The SID of the participant's conference.
     # @param from [String] The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `from` must also be a phone number. If `to` is sip address, this value of `from` should be a username portion to be used to populate the P-Asserted-Identity header that is passed to the SIP endpoint.
     # @param to [String] The phone number, SIP address, or Client identifier that received this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). SIP addresses are formatted as `sip:name@company.com`. Client identifiers are formatted `client:name`. [Custom parameters](https://www.twilio.com/docs/voice/api/conference-participant-resource#custom-parameters) may also be specified.
+    # @optional @param beep [String?] Whether to play a notification beep to the conference when the participant joins. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.
+    # @optional @param byoc [String?] The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
+    # @optional @param call_reason [String?] The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
+    # @optional @param call_sid_to_coach [String?] The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
+    # @optional @param caller_id [String?] The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `callerId` must also be a phone number. If `to` is sip address, this value of `callerId` should be a username portion to be used to populate the From header that is passed to the SIP endpoint.
+    # @optional @param coaching [Bool?] Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
+    # @optional @param conference_record [String?] Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.
+    # @optional @param conference_recording_status_callback [String?] The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.
+    # @optional @param conference_recording_status_callback_event [Array(String)?] The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`
+    # @optional @param conference_recording_status_callback_method [String?] The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param conference_status_callback [String?] The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.
+    # @optional @param conference_status_callback_event [Array(String)?] The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `modify`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`.
+    # @optional @param conference_status_callback_method [String?] The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param conference_trim [String?] Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
+    # @optional @param early_media [Bool?] Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. Can be: `true` or `false` and defaults to `true`.
+    # @optional @param end_conference_on_exit [Bool?] Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param jitter_buffer_size [String?] Jitter buffer size for the connecting participant. Twilio will use this setting to apply Jitter Buffer before participant's audio is mixed into the conference. Can be: `off`, `small`, `medium`, and `large`. Default to `large`.
+    # @optional @param label [String?] A label for this participant. If one is supplied, it may subsequently be used to fetch, update or delete the participant.
+    # @optional @param max_participants [Int32?] The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.
+    # @optional @param muted [Bool?] Whether the agent is muted in the conference. Can be `true` or `false` and the default is `false`.
+    # @optional @param record [Bool?] Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`.
+    # @optional @param recording_channels [String?] The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.
+    # @optional @param recording_status_callback [String?] The URL that we should call using the `recording_status_callback_method` when the recording status changes.
+    # @optional @param recording_status_callback_event [Array(String)?] The recording state changes that should generate a call to `recording_status_callback`. Can be: `started`, `in-progress`, `paused`, `resumed`, `stopped`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`.
+    # @optional @param recording_status_callback_method [String?] The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param recording_track [String?] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is sent from Twilio. `both` records the audio that is received and sent by Twilio.
+    # @optional @param region [String?] The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
+    # @optional @param sip_auth_password [String?] The SIP password for authentication.
+    # @optional @param sip_auth_username [String?] The SIP username used for authentication.
+    # @optional @param start_conference_on_enter [Bool?] Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_event [Array(String)?] The conference state changes that should generate a call to `status_callback`. Can be: `initiated`, `ringing`, `answered`, and `completed`. Separate multiple values with a space. The default value is `completed`.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` and `POST` and defaults to `POST`.
+    # @optional @param time_limit [Int32?] The maximum duration of the call in seconds. Constraints depend on account and configuration.
+    # @optional @param timeout [Int32?] The number of seconds that we should allow the phone to ring before assuming there is no answer. Can be an integer between `5` and `600`, inclusive. The default value is `60`. We always add a 5-second timeout buffer to outgoing calls, so  value of 10 would result in an actual timeout that was closer to 15 seconds.
+    # @optional @param wait_method [String?] The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
+    # @optional @param wait_url [String?] The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
     # @return [Array<(ConferenceParticipant, Integer, Hash)>] ConferenceParticipant data, response status code and response headers
     def create_participant_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, from : String, to : String, beep : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_sid_to_coach : String? = nil, caller_id : String? = nil, coaching : Bool? = nil, conference_record : String? = nil, conference_recording_status_callback : String? = nil, conference_recording_status_callback_event : Array(String)? = nil, conference_recording_status_callback_method : String? = nil, conference_status_callback : String? = nil, conference_status_callback_event : Array(String)? = nil, conference_status_callback_method : String? = nil, conference_trim : String? = nil, early_media : Bool? = nil, end_conference_on_exit : Bool? = nil, jitter_buffer_size : String? = nil, label : String? = nil, max_participants : Int32? = nil, muted : Bool? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, region : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, start_conference_on_enter : Bool? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, wait_method : String? = nil, wait_url : String? = nil)
       request = build_api_request_for_create_participant(account_sid: account_sid, conference_sid: conference_sid, from: from, to: to, beep: beep, byoc: byoc, call_reason: call_reason, call_sid_to_coach: call_sid_to_coach, caller_id: caller_id, coaching: coaching, conference_record: conference_record, conference_recording_status_callback: conference_recording_status_callback, conference_recording_status_callback_event: conference_recording_status_callback_event, conference_recording_status_callback_method: conference_recording_status_callback_method, conference_status_callback: conference_status_callback, conference_status_callback_event: conference_status_callback_event, conference_status_callback_method: conference_status_callback_method, conference_trim: conference_trim, early_media: early_media, end_conference_on_exit: end_conference_on_exit, jitter_buffer_size: jitter_buffer_size, label: label, max_participants: max_participants, muted: muted, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, region: region, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, start_conference_on_enter: start_conference_on_enter, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, wait_method: wait_method, wait_url: wait_url)
@@ -2152,6 +2742,43 @@ module Twilio
     # @param conference_sid [String] The SID of the participant's conference.
     # @param from [String] The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `from` must also be a phone number. If `to` is sip address, this value of `from` should be a username portion to be used to populate the P-Asserted-Identity header that is passed to the SIP endpoint.
     # @param to [String] The phone number, SIP address, or Client identifier that received this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). SIP addresses are formatted as `sip:name@company.com`. Client identifiers are formatted `client:name`. [Custom parameters](https://www.twilio.com/docs/voice/api/conference-participant-resource#custom-parameters) may also be specified.
+    # @optional @param beep [String?] Whether to play a notification beep to the conference when the participant joins. Can be: `true`, `false`, `onEnter`, or `onExit`. The default value is `true`.
+    # @optional @param byoc [String?] The SID of a BYOC (Bring Your Own Carrier) trunk to route this call with. Note that `byoc` is only meaningful when `to` is a phone number; it will otherwise be ignored. (Beta)
+    # @optional @param call_reason [String?] The Reason for the outgoing call. Use it to specify the purpose of the call that is presented on the called party's phone. (Branded Calls Beta)
+    # @optional @param call_sid_to_coach [String?] The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
+    # @optional @param caller_id [String?] The phone number, Client identifier, or username portion of SIP address that made this call. Phone numbers are in [E.164](https://www.twilio.com/docs/glossary/what-e164) format (e.g., +16175551212). Client identifiers are formatted `client:name`. If using a phone number, it must be a Twilio number or a Verified [outgoing caller id](https://www.twilio.com/docs/voice/api/outgoing-caller-ids) for your account. If the `to` parameter is a phone number, `callerId` must also be a phone number. If `to` is sip address, this value of `callerId` should be a username portion to be used to populate the From header that is passed to the SIP endpoint.
+    # @optional @param coaching [Bool?] Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
+    # @optional @param conference_record [String?] Whether to record the conference the participant is joining. Can be: `true`, `false`, `record-from-start`, and `do-not-record`. The default value is `false`.
+    # @optional @param conference_recording_status_callback [String?] The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available.
+    # @optional @param conference_recording_status_callback_event [Array(String)?] The conference recording state changes that generate a call to `conference_recording_status_callback`. Can be: `in-progress`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`
+    # @optional @param conference_recording_status_callback_method [String?] The HTTP method we should use to call `conference_recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param conference_status_callback [String?] The URL we should call using the `conference_status_callback_method` when the conference events in `conference_status_callback_event` occur. Only the value set by the first participant to join the conference is used. Subsequent `conference_status_callback` values are ignored.
+    # @optional @param conference_status_callback_event [Array(String)?] The conference state changes that should generate a call to `conference_status_callback`. Can be: `start`, `end`, `join`, `leave`, `mute`, `hold`, `modify`, `speaker`, and `announcement`. Separate multiple values with a space. Defaults to `start end`.
+    # @optional @param conference_status_callback_method [String?] The HTTP method we should use to call `conference_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param conference_trim [String?] Whether to trim leading and trailing silence from your recorded conference audio files. Can be: `trim-silence` or `do-not-trim` and defaults to `trim-silence`.
+    # @optional @param early_media [Bool?] Whether to allow an agent to hear the state of the outbound call, including ringing or disconnect messages. Can be: `true` or `false` and defaults to `true`.
+    # @optional @param end_conference_on_exit [Bool?] Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param jitter_buffer_size [String?] Jitter buffer size for the connecting participant. Twilio will use this setting to apply Jitter Buffer before participant's audio is mixed into the conference. Can be: `off`, `small`, `medium`, and `large`. Default to `large`.
+    # @optional @param label [String?] A label for this participant. If one is supplied, it may subsequently be used to fetch, update or delete the participant.
+    # @optional @param max_participants [Int32?] The maximum number of participants in the conference. Can be a positive integer from `2` to `250`. The default value is `250`.
+    # @optional @param muted [Bool?] Whether the agent is muted in the conference. Can be `true` or `false` and the default is `false`.
+    # @optional @param record [Bool?] Whether to record the participant and their conferences, including the time between conferences. Can be `true` or `false` and the default is `false`.
+    # @optional @param recording_channels [String?] The recording channels for the final recording. Can be: `mono` or `dual` and the default is `mono`.
+    # @optional @param recording_status_callback [String?] The URL that we should call using the `recording_status_callback_method` when the recording status changes.
+    # @optional @param recording_status_callback_event [Array(String)?] The recording state changes that should generate a call to `recording_status_callback`. Can be: `started`, `in-progress`, `paused`, `resumed`, `stopped`, `completed`, `failed`, and `absent`. Separate multiple values with a space, ex: `'in-progress completed failed'`.
+    # @optional @param recording_status_callback_method [String?] The HTTP method we should use when we call `recording_status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param recording_track [String?] The audio track to record for the call. Can be: `inbound`, `outbound` or `both`. The default is `both`. `inbound` records the audio that is received by Twilio. `outbound` records the audio that is sent from Twilio. `both` records the audio that is received and sent by Twilio.
+    # @optional @param region [String?] The [region](https://support.twilio.com/hc/en-us/articles/223132167-How-global-low-latency-routing-and-region-selection-work-for-conferences-and-Client-calls) where we should mix the recorded audio. Can be:`us1`, `ie1`, `de1`, `sg1`, `br1`, `au1`, or `jp1`.
+    # @optional @param sip_auth_password [String?] The SIP password for authentication.
+    # @optional @param sip_auth_username [String?] The SIP username used for authentication.
+    # @optional @param start_conference_on_enter [Bool?] Whether to start the conference when the participant joins, if it has not already started. Can be: `true` or `false` and the default is `true`. If `false` and the conference has not started, the participant is muted and hears background music until another participant starts the conference.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_event [Array(String)?] The conference state changes that should generate a call to `status_callback`. Can be: `initiated`, `ringing`, `answered`, and `completed`. Separate multiple values with a space. The default value is `completed`.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` and `POST` and defaults to `POST`.
+    # @optional @param time_limit [Int32?] The maximum duration of the call in seconds. Constraints depend on account and configuration.
+    # @optional @param timeout [Int32?] The number of seconds that we should allow the phone to ring before assuming there is no answer. Can be an integer between `5` and `600`, inclusive. The default value is `60`. We always add a 5-second timeout buffer to outgoing calls, so  value of 10 would result in an actual timeout that was closer to 15 seconds.
+    # @optional @param wait_method [String?] The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
+    # @optional @param wait_url [String?] The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
     # @return nil
     def create_participant(*, account_sid : String = @account_sid, conference_sid : String, from : String, to : String, beep : String? = nil, byoc : String? = nil, call_reason : String? = nil, call_sid_to_coach : String? = nil, caller_id : String? = nil, coaching : Bool? = nil, conference_record : String? = nil, conference_recording_status_callback : String? = nil, conference_recording_status_callback_event : Array(String)? = nil, conference_recording_status_callback_method : String? = nil, conference_status_callback : String? = nil, conference_status_callback_event : Array(String)? = nil, conference_status_callback_method : String? = nil, conference_trim : String? = nil, early_media : Bool? = nil, end_conference_on_exit : Bool? = nil, jitter_buffer_size : String? = nil, label : String? = nil, max_participants : Int32? = nil, muted : Bool? = nil, record : Bool? = nil, recording_channels : String? = nil, recording_status_callback : String? = nil, recording_status_callback_event : Array(String)? = nil, recording_status_callback_method : String? = nil, recording_track : String? = nil, region : String? = nil, sip_auth_password : String? = nil, sip_auth_username : String? = nil, start_conference_on_enter : Bool? = nil, status_callback : String? = nil, status_callback_event : Array(String)? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, timeout : Int32? = nil, wait_method : String? = nil, wait_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_participant(account_sid: account_sid, conference_sid: conference_sid, from: from, to: to, beep: beep, byoc: byoc, call_reason: call_reason, call_sid_to_coach: call_sid_to_coach, caller_id: caller_id, coaching: coaching, conference_record: conference_record, conference_recording_status_callback: conference_recording_status_callback, conference_recording_status_callback_event: conference_recording_status_callback_event, conference_recording_status_callback_method: conference_recording_status_callback_method, conference_status_callback: conference_status_callback, conference_status_callback_event: conference_status_callback_event, conference_status_callback_method: conference_status_callback_method, conference_trim: conference_trim, early_media: early_media, end_conference_on_exit: end_conference_on_exit, jitter_buffer_size: jitter_buffer_size, label: label, max_participants: max_participants, muted: muted, record: record, recording_channels: recording_channels, recording_status_callback: recording_status_callback, recording_status_callback_event: recording_status_callback_event, recording_status_callback_method: recording_status_callback_method, recording_track: recording_track, region: region, sip_auth_password: sip_auth_password, sip_auth_username: sip_auth_username, start_conference_on_enter: start_conference_on_enter, status_callback: status_callback, status_callback_event: status_callback_event, status_callback_method: status_callback_method, time_limit: time_limit, timeout: timeout, wait_method: wait_method, wait_url: wait_url).execute(&block)
@@ -2299,6 +2926,20 @@ module Twilio
     # @param call_sid [String] The SID of the call that will create the resource. Call leg associated with this sid is expected to provide payment information thru DTMF.
     # @param idempotency_key [String] A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback)
+    # @optional @param bank_account_type [String?] Type of bank account if payment source is ACH. One of `consumer-checking`, `consumer-savings`, or `commercial-checking`. The default value is `consumer-checking`.
+    # @optional @param charge_amount [Float64?] A positive decimal value less than 1,000,000 to charge against the credit card or bank account. Default currency can be overwritten with `currency` field. Leave blank or set to 0 to tokenize.
+    # @optional @param currency [String?] The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the <Pay> Connector are accepted.
+    # @optional @param description [String?] The description can be used to provide more details regarding the transaction. This information is submitted along with the payment details to the Payment Connector which are then posted on the transactions.
+    # @optional @param input [String?] A list of inputs that should be accepted. Currently only `dtmf` is supported. All digits captured during a pay session are redacted from the logs.
+    # @optional @param min_postal_code_length [Int32?] A positive integer that is used to validate the length of the `PostalCode` inputted by the user. User must enter this many digits.
+    # @optional @param parameter [String?] A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments). The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors).
+    # @optional @param payment_connector [String?] This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.
+    # @optional @param payment_method [String?] Type of payment being captured. One of `credit-card` or `ach-debit`. The default value is `credit-card`.
+    # @optional @param postal_code [Bool?] Indicates whether the credit card postal code (zip code) is a required piece of payment information that must be provided by the caller. The default is `true`.
+    # @optional @param security_code [Bool?] Indicates whether the credit card security code is a required piece of payment information that must be provided by the caller. The default is `true`.
+    # @optional @param timeout [Int32?] The number of seconds that <Pay> should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured. The default is `5`, maximum is `600`.
+    # @optional @param token_type [String?] Indicates whether the payment method should be tokenized as a `one-time` or `reusable` token. The default value is `reusable`. Do not enter a charge amount when tokenizing. If a charge amount is entered, the payment method will be charged and not tokenized.
+    # @optional @param valid_card_types [String?] Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex`
     # @return [CallPayments]
     def create_payments(*, account_sid : String = @account_sid, call_sid : String, idempotency_key : String, status_callback : String, bank_account_type : String? = nil, charge_amount : Float64? = nil, currency : String? = nil, description : String? = nil, input : String? = nil, min_postal_code_length : Int32? = nil, parameter : String? = nil, payment_connector : String? = nil, payment_method : String? = nil, postal_code : Bool? = nil, security_code : Bool? = nil, timeout : Int32? = nil, token_type : String? = nil, valid_card_types : String? = nil)
       data, _status_code, _headers = create_payments_with_http_info(account_sid: account_sid, call_sid: call_sid, idempotency_key: idempotency_key, status_callback: status_callback, bank_account_type: bank_account_type, charge_amount: charge_amount, currency: currency, description: description, input: input, min_postal_code_length: min_postal_code_length, parameter: parameter, payment_connector: payment_connector, payment_method: payment_method, postal_code: postal_code, security_code: security_code, timeout: timeout, token_type: token_type, valid_card_types: valid_card_types)
@@ -2310,6 +2951,20 @@ module Twilio
     # @param call_sid [String] The SID of the call that will create the resource. Call leg associated with this sid is expected to provide payment information thru DTMF.
     # @param idempotency_key [String] A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback)
+    # @optional @param bank_account_type [String?] Type of bank account if payment source is ACH. One of `consumer-checking`, `consumer-savings`, or `commercial-checking`. The default value is `consumer-checking`.
+    # @optional @param charge_amount [Float64?] A positive decimal value less than 1,000,000 to charge against the credit card or bank account. Default currency can be overwritten with `currency` field. Leave blank or set to 0 to tokenize.
+    # @optional @param currency [String?] The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the <Pay> Connector are accepted.
+    # @optional @param description [String?] The description can be used to provide more details regarding the transaction. This information is submitted along with the payment details to the Payment Connector which are then posted on the transactions.
+    # @optional @param input [String?] A list of inputs that should be accepted. Currently only `dtmf` is supported. All digits captured during a pay session are redacted from the logs.
+    # @optional @param min_postal_code_length [Int32?] A positive integer that is used to validate the length of the `PostalCode` inputted by the user. User must enter this many digits.
+    # @optional @param parameter [String?] A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments). The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors).
+    # @optional @param payment_connector [String?] This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.
+    # @optional @param payment_method [String?] Type of payment being captured. One of `credit-card` or `ach-debit`. The default value is `credit-card`.
+    # @optional @param postal_code [Bool?] Indicates whether the credit card postal code (zip code) is a required piece of payment information that must be provided by the caller. The default is `true`.
+    # @optional @param security_code [Bool?] Indicates whether the credit card security code is a required piece of payment information that must be provided by the caller. The default is `true`.
+    # @optional @param timeout [Int32?] The number of seconds that <Pay> should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured. The default is `5`, maximum is `600`.
+    # @optional @param token_type [String?] Indicates whether the payment method should be tokenized as a `one-time` or `reusable` token. The default value is `reusable`. Do not enter a charge amount when tokenizing. If a charge amount is entered, the payment method will be charged and not tokenized.
+    # @optional @param valid_card_types [String?] Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex`
     # @return [Array<(CallPayments, Integer, Hash)>] CallPayments data, response status code and response headers
     def create_payments_with_http_info(*, account_sid : String = @account_sid, call_sid : String, idempotency_key : String, status_callback : String, bank_account_type : String? = nil, charge_amount : Float64? = nil, currency : String? = nil, description : String? = nil, input : String? = nil, min_postal_code_length : Int32? = nil, parameter : String? = nil, payment_connector : String? = nil, payment_method : String? = nil, postal_code : Bool? = nil, security_code : Bool? = nil, timeout : Int32? = nil, token_type : String? = nil, valid_card_types : String? = nil)
       request = build_api_request_for_create_payments(account_sid: account_sid, call_sid: call_sid, idempotency_key: idempotency_key, status_callback: status_callback, bank_account_type: bank_account_type, charge_amount: charge_amount, currency: currency, description: description, input: input, min_postal_code_length: min_postal_code_length, parameter: parameter, payment_connector: payment_connector, payment_method: payment_method, postal_code: postal_code, security_code: security_code, timeout: timeout, token_type: token_type, valid_card_types: valid_card_types)
@@ -2328,6 +2983,20 @@ module Twilio
     # @param call_sid [String] The SID of the call that will create the resource. Call leg associated with this sid is expected to provide payment information thru DTMF.
     # @param idempotency_key [String] A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [expected StatusCallback values](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback)
+    # @optional @param bank_account_type [String?] Type of bank account if payment source is ACH. One of `consumer-checking`, `consumer-savings`, or `commercial-checking`. The default value is `consumer-checking`.
+    # @optional @param charge_amount [Float64?] A positive decimal value less than 1,000,000 to charge against the credit card or bank account. Default currency can be overwritten with `currency` field. Leave blank or set to 0 to tokenize.
+    # @optional @param currency [String?] The currency of the `charge_amount`, formatted as [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format. The default value is `USD` and all values allowed from the <Pay> Connector are accepted.
+    # @optional @param description [String?] The description can be used to provide more details regarding the transaction. This information is submitted along with the payment details to the Payment Connector which are then posted on the transactions.
+    # @optional @param input [String?] A list of inputs that should be accepted. Currently only `dtmf` is supported. All digits captured during a pay session are redacted from the logs.
+    # @optional @param min_postal_code_length [Int32?] A positive integer that is used to validate the length of the `PostalCode` inputted by the user. User must enter this many digits.
+    # @optional @param parameter [String?] A single-level JSON object used to pass custom parameters to payment processors. (Required for ACH payments). The information that has to be included here depends on the <Pay> Connector. [Read more](https://www.twilio.com/console/voice/pay-connectors).
+    # @optional @param payment_connector [String?] This is the unique name corresponding to the Payment Gateway Connector installed in the Twilio Add-ons. Learn more about [<Pay> Connectors](https://www.twilio.com/console/voice/pay-connectors). The default value is `Default`.
+    # @optional @param payment_method [String?] Type of payment being captured. One of `credit-card` or `ach-debit`. The default value is `credit-card`.
+    # @optional @param postal_code [Bool?] Indicates whether the credit card postal code (zip code) is a required piece of payment information that must be provided by the caller. The default is `true`.
+    # @optional @param security_code [Bool?] Indicates whether the credit card security code is a required piece of payment information that must be provided by the caller. The default is `true`.
+    # @optional @param timeout [Int32?] The number of seconds that <Pay> should wait for the caller to press a digit between each subsequent digit, after the first one, before moving on to validate the digits captured. The default is `5`, maximum is `600`.
+    # @optional @param token_type [String?] Indicates whether the payment method should be tokenized as a `one-time` or `reusable` token. The default value is `reusable`. Do not enter a charge amount when tokenizing. If a charge amount is entered, the payment method will be charged and not tokenized.
+    # @optional @param valid_card_types [String?] Credit card types separated by space that Pay should accept. The default value is `visa mastercard amex`
     # @return nil
     def create_payments(*, account_sid : String = @account_sid, call_sid : String, idempotency_key : String, status_callback : String, bank_account_type : String? = nil, charge_amount : Float64? = nil, currency : String? = nil, description : String? = nil, input : String? = nil, min_postal_code_length : Int32? = nil, parameter : String? = nil, payment_connector : String? = nil, payment_method : String? = nil, postal_code : Bool? = nil, security_code : Bool? = nil, timeout : Int32? = nil, token_type : String? = nil, valid_card_types : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_payments(account_sid: account_sid, call_sid: call_sid, idempotency_key: idempotency_key, status_callback: status_callback, bank_account_type: bank_account_type, charge_amount: charge_amount, currency: currency, description: description, input: input, min_postal_code_length: min_postal_code_length, parameter: parameter, payment_connector: payment_connector, payment_method: payment_method, postal_code: postal_code, security_code: security_code, timeout: timeout, token_type: token_type, valid_card_types: valid_card_types).execute(&block)
@@ -2429,6 +3098,7 @@ module Twilio
     # Create a queue
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param friendly_name [String] A descriptive string that you created to describe this resource. It can be up to 64 characters long.
+    # @optional @param max_size [Int32?] The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
     # @return [Queue]
     def create_queue(*, account_sid : String = @account_sid, friendly_name : String, max_size : Int32? = nil)
       data, _status_code, _headers = create_queue_with_http_info(account_sid: account_sid, friendly_name: friendly_name, max_size: max_size)
@@ -2438,6 +3108,7 @@ module Twilio
     # Create a queue
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param friendly_name [String] A descriptive string that you created to describe this resource. It can be up to 64 characters long.
+    # @optional @param max_size [Int32?] The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
     # @return [Array<(Queue, Integer, Hash)>] Queue data, response status code and response headers
     def create_queue_with_http_info(*, account_sid : String = @account_sid, friendly_name : String, max_size : Int32? = nil)
       request = build_api_request_for_create_queue(account_sid: account_sid, friendly_name: friendly_name, max_size: max_size)
@@ -2454,6 +3125,7 @@ module Twilio
     # Create a queue
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param friendly_name [String] A descriptive string that you created to describe this resource. It can be up to 64 characters long.
+    # @optional @param max_size [Int32?] The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
     # @return nil
     def create_queue(*, account_sid : String = @account_sid, friendly_name : String, max_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_create_queue(account_sid: account_sid, friendly_name: friendly_name, max_size: max_size).execute(&block)
@@ -3168,6 +3840,18 @@ module Twilio
     # Create a new Domain
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param domain_name [String] The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
+    # @optional @param byoc_trunk_sid [String?] The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.
+    # @optional @param emergency_caller_sid [String?] Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.
+    # @optional @param emergency_calling_enabled [Bool?] Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the resource. It can be up to 64 characters long.
+    # @optional @param secure [Bool?] Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.
+    # @optional @param sip_registration [Bool?] Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML from `voice_url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_status_callback_method [String?] The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_status_callback_url [String?] The URL that we should call to pass status parameters (such as call ended) to your application.
+    # @optional @param voice_url [String?] The URL we should when the domain receives a call.
     # @return [SipSipDomain]
     def create_sip_domain(*, account_sid : String = @account_sid, domain_name : String, byoc_trunk_sid : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil)
       data, _status_code, _headers = create_sip_domain_with_http_info(account_sid: account_sid, domain_name: domain_name, byoc_trunk_sid: byoc_trunk_sid, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
@@ -3177,6 +3861,18 @@ module Twilio
     # Create a new Domain
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param domain_name [String] The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
+    # @optional @param byoc_trunk_sid [String?] The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.
+    # @optional @param emergency_caller_sid [String?] Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.
+    # @optional @param emergency_calling_enabled [Bool?] Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the resource. It can be up to 64 characters long.
+    # @optional @param secure [Bool?] Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.
+    # @optional @param sip_registration [Bool?] Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML from `voice_url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_status_callback_method [String?] The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_status_callback_url [String?] The URL that we should call to pass status parameters (such as call ended) to your application.
+    # @optional @param voice_url [String?] The URL we should when the domain receives a call.
     # @return [Array<(SipSipDomain, Integer, Hash)>] SipSipDomain data, response status code and response headers
     def create_sip_domain_with_http_info(*, account_sid : String = @account_sid, domain_name : String, byoc_trunk_sid : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil)
       request = build_api_request_for_create_sip_domain(account_sid: account_sid, domain_name: domain_name, byoc_trunk_sid: byoc_trunk_sid, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
@@ -3193,6 +3889,18 @@ module Twilio
     # Create a new Domain
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
     # @param domain_name [String] The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
+    # @optional @param byoc_trunk_sid [String?] The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.
+    # @optional @param emergency_caller_sid [String?] Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.
+    # @optional @param emergency_calling_enabled [Bool?] Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the resource. It can be up to 64 characters long.
+    # @optional @param secure [Bool?] Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.
+    # @optional @param sip_registration [Bool?] Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML from `voice_url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_status_callback_method [String?] The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_status_callback_url [String?] The URL that we should call to pass status parameters (such as call ended) to your application.
+    # @optional @param voice_url [String?] The URL we should when the domain receives a call.
     # @return nil
     def create_sip_domain(*, account_sid : String = @account_sid, domain_name : String, byoc_trunk_sid : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_sip_domain(account_sid: account_sid, domain_name: domain_name, byoc_trunk_sid: byoc_trunk_sid, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url).execute(&block)
@@ -3507,6 +4215,7 @@ module Twilio
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid with which to associate the created IpAddress resource.
     # @param friendly_name [String] A human readable descriptive text for this resource, up to 64 characters long.
     # @param ip_address [String] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
+    # @optional @param cidr_prefix_length [Int32?] An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
     # @return [SipSipIpAccessControlListSipIpAddress]
     def create_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, friendly_name : String, ip_address : String, cidr_prefix_length : Int32? = nil)
       data, _status_code, _headers = create_sip_ip_address_with_http_info(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, friendly_name: friendly_name, ip_address: ip_address, cidr_prefix_length: cidr_prefix_length)
@@ -3518,6 +4227,7 @@ module Twilio
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid with which to associate the created IpAddress resource.
     # @param friendly_name [String] A human readable descriptive text for this resource, up to 64 characters long.
     # @param ip_address [String] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
+    # @optional @param cidr_prefix_length [Int32?] An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
     # @return [Array<(SipSipIpAccessControlListSipIpAddress, Integer, Hash)>] SipSipIpAccessControlListSipIpAddress data, response status code and response headers
     def create_sip_ip_address_with_http_info(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, friendly_name : String, ip_address : String, cidr_prefix_length : Int32? = nil)
       request = build_api_request_for_create_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, friendly_name: friendly_name, ip_address: ip_address, cidr_prefix_length: cidr_prefix_length)
@@ -3536,6 +4246,7 @@ module Twilio
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid with which to associate the created IpAddress resource.
     # @param friendly_name [String] A human readable descriptive text for this resource, up to 64 characters long.
     # @param ip_address [String] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
+    # @optional @param cidr_prefix_length [Int32?] An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
     # @return nil
     def create_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, friendly_name : String, ip_address : String, cidr_prefix_length : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_create_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, friendly_name: friendly_name, ip_address: ip_address, cidr_prefix_length: cidr_prefix_length).execute(&block)
@@ -3611,6 +4322,7 @@ module Twilio
 
     # Create a new token for ICE servers
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+    # @optional @param ttl [Int32?] The duration in seconds for which the generated credentials are valid. The default value is 86400 (24 hours).
     # @return [Token]
     def create_token(*, account_sid : String = @account_sid, ttl : Int32? = nil)
       data, _status_code, _headers = create_token_with_http_info(account_sid: account_sid, ttl: ttl)
@@ -3619,6 +4331,7 @@ module Twilio
 
     # Create a new token for ICE servers
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+    # @optional @param ttl [Int32?] The duration in seconds for which the generated credentials are valid. The default value is 86400 (24 hours).
     # @return [Array<(Token, Integer, Hash)>] Token data, response status code and response headers
     def create_token_with_http_info(*, account_sid : String = @account_sid, ttl : Int32? = nil)
       request = build_api_request_for_create_token(account_sid: account_sid, ttl: ttl)
@@ -3634,6 +4347,7 @@ module Twilio
 
     # Create a new token for ICE servers
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that will create the resource.
+    # @optional @param ttl [Int32?] The duration in seconds for which the generated credentials are valid. The default value is 86400 (24 hours).
     # @return nil
     def create_token(*, account_sid : String = @account_sid, ttl : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_create_token(account_sid: account_sid, ttl: ttl).execute(&block)
@@ -3697,6 +4411,10 @@ module Twilio
     # @param callback_url [String] The URL we should call using `callback_method` when the trigger fires.
     # @param trigger_value [String] The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`.
     # @param usage_category [String] The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.
+    # @optional @param callback_method [String?] The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+    # @optional @param recurring [String?] The frequency of a recurring UsageTrigger.  Can be: `daily`, `monthly`, or `yearly` for recurring triggers or empty for non-recurring triggers. A trigger will only fire once during each period. Recurring times are in GMT.
+    # @optional @param trigger_by [String?] The field in the [UsageRecord](https://www.twilio.com/docs/usage/api/usage-record) resource that should fire the trigger.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).  The default is `usage`.
     # @return [UsageUsageTrigger]
     def create_usage_trigger(*, account_sid : String = @account_sid, callback_url : String, trigger_value : String, usage_category : String, callback_method : String? = nil, friendly_name : String? = nil, recurring : String? = nil, trigger_by : String? = nil)
       data, _status_code, _headers = create_usage_trigger_with_http_info(account_sid: account_sid, callback_url: callback_url, trigger_value: trigger_value, usage_category: usage_category, callback_method: callback_method, friendly_name: friendly_name, recurring: recurring, trigger_by: trigger_by)
@@ -3708,6 +4426,10 @@ module Twilio
     # @param callback_url [String] The URL we should call using `callback_method` when the trigger fires.
     # @param trigger_value [String] The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`.
     # @param usage_category [String] The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.
+    # @optional @param callback_method [String?] The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+    # @optional @param recurring [String?] The frequency of a recurring UsageTrigger.  Can be: `daily`, `monthly`, or `yearly` for recurring triggers or empty for non-recurring triggers. A trigger will only fire once during each period. Recurring times are in GMT.
+    # @optional @param trigger_by [String?] The field in the [UsageRecord](https://www.twilio.com/docs/usage/api/usage-record) resource that should fire the trigger.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).  The default is `usage`.
     # @return [Array<(UsageUsageTrigger, Integer, Hash)>] UsageUsageTrigger data, response status code and response headers
     def create_usage_trigger_with_http_info(*, account_sid : String = @account_sid, callback_url : String, trigger_value : String, usage_category : String, callback_method : String? = nil, friendly_name : String? = nil, recurring : String? = nil, trigger_by : String? = nil)
       request = build_api_request_for_create_usage_trigger(account_sid: account_sid, callback_url: callback_url, trigger_value: trigger_value, usage_category: usage_category, callback_method: callback_method, friendly_name: friendly_name, recurring: recurring, trigger_by: trigger_by)
@@ -3726,6 +4448,10 @@ module Twilio
     # @param callback_url [String] The URL we should call using `callback_method` when the trigger fires.
     # @param trigger_value [String] The usage value at which the trigger should fire.  For convenience, you can use an offset value such as `+30` to specify a trigger_value that is 30 units more than the current usage value. Be sure to urlencode a `+` as `%2B`.
     # @param usage_category [String] The usage category that the trigger should watch.  Use one of the supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) for this value.
+    # @optional @param callback_method [String?] The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+    # @optional @param recurring [String?] The frequency of a recurring UsageTrigger.  Can be: `daily`, `monthly`, or `yearly` for recurring triggers or empty for non-recurring triggers. A trigger will only fire once during each period. Recurring times are in GMT.
+    # @optional @param trigger_by [String?] The field in the [UsageRecord](https://www.twilio.com/docs/usage/api/usage-record) resource that should fire the trigger.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).  The default is `usage`.
     # @return nil
     def create_usage_trigger(*, account_sid : String = @account_sid, callback_url : String, trigger_value : String, usage_category : String, callback_method : String? = nil, friendly_name : String? = nil, recurring : String? = nil, trigger_by : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_usage_trigger(account_sid: account_sid, callback_url: callback_url, trigger_value: trigger_value, usage_category: usage_category, callback_method: callback_method, friendly_name: friendly_name, recurring: recurring, trigger_by: trigger_by).execute(&block)
@@ -3809,6 +4535,11 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for the new caller ID resource.
     # @param phone_number [String] The phone number to verify in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
+    # @optional @param call_delay [Int32?] The number of seconds to delay before initiating the verification call. Can be an integer between `0` and `60`, inclusive. The default is `0`.
+    # @optional @param extension [String?] The digits to dial after connecting the verification call.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the new caller ID resource. It can be up to 64 characters long. The default value is a formatted version of the phone number.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information about the verification process to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`, and the default is `POST`.
     # @return [ValidationRequest]
     def create_validation_request(*, account_sid : String = @account_sid, phone_number : String, call_delay : Int32? = nil, extension : String? = nil, friendly_name : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil)
       data, _status_code, _headers = create_validation_request_with_http_info(account_sid: account_sid, phone_number: phone_number, call_delay: call_delay, extension: extension, friendly_name: friendly_name, status_callback: status_callback, status_callback_method: status_callback_method)
@@ -3818,6 +4549,11 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for the new caller ID resource.
     # @param phone_number [String] The phone number to verify in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
+    # @optional @param call_delay [Int32?] The number of seconds to delay before initiating the verification call. Can be an integer between `0` and `60`, inclusive. The default is `0`.
+    # @optional @param extension [String?] The digits to dial after connecting the verification call.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the new caller ID resource. It can be up to 64 characters long. The default value is a formatted version of the phone number.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information about the verification process to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`, and the default is `POST`.
     # @return [Array<(ValidationRequest, Integer, Hash)>] ValidationRequest data, response status code and response headers
     def create_validation_request_with_http_info(*, account_sid : String = @account_sid, phone_number : String, call_delay : Int32? = nil, extension : String? = nil, friendly_name : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil)
       request = build_api_request_for_create_validation_request(account_sid: account_sid, phone_number: phone_number, call_delay: call_delay, extension: extension, friendly_name: friendly_name, status_callback: status_callback, status_callback_method: status_callback_method)
@@ -3834,6 +4570,11 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for the new caller ID resource.
     # @param phone_number [String] The phone number to verify in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
+    # @optional @param call_delay [Int32?] The number of seconds to delay before initiating the verification call. Can be an integer between `0` and `60`, inclusive. The default is `0`.
+    # @optional @param extension [String?] The digits to dial after connecting the verification call.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the new caller ID resource. It can be up to 64 characters long. The default value is a formatted version of the phone number.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information about the verification process to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`, and the default is `POST`.
     # @return nil
     def create_validation_request(*, account_sid : String = @account_sid, phone_number : String, call_delay : Int32? = nil, extension : String? = nil, friendly_name : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, &block : Crest::Response ->)
       build_api_request_for_create_validation_request(account_sid: account_sid, phone_number: phone_number, call_delay: call_delay, extension: extension, friendly_name: friendly_name, status_callback: status_callback, status_callback_method: status_callback_method).execute(&block)
@@ -9628,6 +10369,7 @@ module Twilio
     # Fetch an instance of a recording
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource to fetch.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to fetch.
+    # @optional @param include_soft_deleted [Bool?] A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
     # @return [Recording]
     def fetch_recording(*, account_sid : String = @account_sid, sid : String, include_soft_deleted : Bool? = nil)
       data, _status_code, _headers = fetch_recording_with_http_info(account_sid: account_sid, sid: sid, include_soft_deleted: include_soft_deleted)
@@ -9637,6 +10379,7 @@ module Twilio
     # Fetch an instance of a recording
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource to fetch.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to fetch.
+    # @optional @param include_soft_deleted [Bool?] A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
     # @return [Array<(Recording, Integer, Hash)>] Recording data, response status code and response headers
     def fetch_recording_with_http_info(*, account_sid : String = @account_sid, sid : String, include_soft_deleted : Bool? = nil)
       request = build_api_request_for_fetch_recording(account_sid: account_sid, sid: sid, include_soft_deleted: include_soft_deleted)
@@ -9653,6 +10396,7 @@ module Twilio
     # Fetch an instance of a recording
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource to fetch.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to fetch.
+    # @optional @param include_soft_deleted [Bool?] A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
     # @return nil
     def fetch_recording(*, account_sid : String = @account_sid, sid : String, include_soft_deleted : Bool? = nil, &block : Crest::Response ->)
       build_api_request_for_fetch_recording(account_sid: account_sid, sid: sid, include_soft_deleted: include_soft_deleted).execute(&block)
@@ -11531,6 +12275,9 @@ module Twilio
     end
 
     # Retrieves a collection of Accounts belonging to the account used to make the request
+    # @optional @param friendly_name [String?] Only return the Account resources with friendly names that exactly match this name.
+    # @optional @param status [String?] Only return Account resources with the given status. Can be `closed`, `suspended` or `active`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAccountResponse]
     def list_account(*, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_account_with_http_info(friendly_name: friendly_name, status: status, page_size: page_size)
@@ -11538,6 +12285,9 @@ module Twilio
     end
 
     # Retrieves a collection of Accounts belonging to the account used to make the request
+    # @optional @param friendly_name [String?] Only return the Account resources with friendly names that exactly match this name.
+    # @optional @param status [String?] Only return Account resources with the given status. Can be `closed`, `suspended` or `active`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAccountResponse, Integer, Hash)>] ListAccountResponse data, response status code and response headers
     def list_account_with_http_info(*, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_account(friendly_name: friendly_name, status: status, page_size: page_size)
@@ -11552,6 +12302,9 @@ module Twilio
     end
 
     # Retrieves a collection of Accounts belonging to the account used to make the request
+    # @optional @param friendly_name [String?] Only return the Account resources with friendly names that exactly match this name.
+    # @optional @param status [String?] Only return Account resources with the given status. Can be `closed`, `suspended` or `active`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_account(*, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_account(friendly_name: friendly_name, status: status, page_size: page_size).execute(&block)
@@ -11611,6 +12364,10 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to read.
+    # @optional @param customer_name [String?] The `customer_name` of the Address resources to read.
+    # @optional @param friendly_name [String?] The string that identifies the Address resources to read.
+    # @optional @param iso_country [String?] The ISO country code of the Address resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAddressResponse]
     def list_address(*, account_sid : String = @account_sid, customer_name : String? = nil, friendly_name : String? = nil, iso_country : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_address_with_http_info(account_sid: account_sid, customer_name: customer_name, friendly_name: friendly_name, iso_country: iso_country, page_size: page_size)
@@ -11619,6 +12376,10 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to read.
+    # @optional @param customer_name [String?] The `customer_name` of the Address resources to read.
+    # @optional @param friendly_name [String?] The string that identifies the Address resources to read.
+    # @optional @param iso_country [String?] The ISO country code of the Address resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAddressResponse, Integer, Hash)>] ListAddressResponse data, response status code and response headers
     def list_address_with_http_info(*, account_sid : String = @account_sid, customer_name : String? = nil, friendly_name : String? = nil, iso_country : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_address(account_sid: account_sid, customer_name: customer_name, friendly_name: friendly_name, iso_country: iso_country, page_size: page_size)
@@ -11634,6 +12395,10 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to read.
+    # @optional @param customer_name [String?] The `customer_name` of the Address resources to read.
+    # @optional @param friendly_name [String?] The string that identifies the Address resources to read.
+    # @optional @param iso_country [String?] The ISO country code of the Address resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_address(*, account_sid : String = @account_sid, customer_name : String? = nil, friendly_name : String? = nil, iso_country : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_address(account_sid: account_sid, customer_name: customer_name, friendly_name: friendly_name, iso_country: iso_country, page_size: page_size).execute(&block)
@@ -11703,6 +12468,8 @@ module Twilio
 
     # Retrieve a list of applications representing an application within the requesting account
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to read.
+    # @optional @param friendly_name [String?] The string that identifies the Application resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListApplicationResponse]
     def list_application(*, account_sid : String = @account_sid, friendly_name : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_application_with_http_info(account_sid: account_sid, friendly_name: friendly_name, page_size: page_size)
@@ -11711,6 +12478,8 @@ module Twilio
 
     # Retrieve a list of applications representing an application within the requesting account
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to read.
+    # @optional @param friendly_name [String?] The string that identifies the Application resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListApplicationResponse, Integer, Hash)>] ListApplicationResponse data, response status code and response headers
     def list_application_with_http_info(*, account_sid : String = @account_sid, friendly_name : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_application(account_sid: account_sid, friendly_name: friendly_name, page_size: page_size)
@@ -11726,6 +12495,8 @@ module Twilio
 
     # Retrieve a list of applications representing an application within the requesting account
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to read.
+    # @optional @param friendly_name [String?] The string that identifies the Application resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_application(*, account_sid : String = @account_sid, friendly_name : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_application(account_sid: account_sid, friendly_name: friendly_name, page_size: page_size).execute(&block)
@@ -11793,6 +12564,7 @@ module Twilio
 
     # Retrieve a list of authorized-connect-apps belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAuthorizedConnectAppResponse]
     def list_authorized_connect_app(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_authorized_connect_app_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -11801,6 +12573,7 @@ module Twilio
 
     # Retrieve a list of authorized-connect-apps belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAuthorizedConnectAppResponse, Integer, Hash)>] ListAuthorizedConnectAppResponse data, response status code and response headers
     def list_authorized_connect_app_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_authorized_connect_app(account_sid: account_sid, page_size: page_size)
@@ -11816,6 +12589,7 @@ module Twilio
 
     # Retrieve a list of authorized-connect-apps belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AuthorizedConnectApp resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_authorized_connect_app(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_authorized_connect_app(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -11882,6 +12656,7 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the available phone number Country resources.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAvailablePhoneNumberCountryResponse]
     def list_available_phone_number_country(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_available_phone_number_country_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -11890,6 +12665,7 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the available phone number Country resources.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAvailablePhoneNumberCountryResponse, Integer, Hash)>] ListAvailablePhoneNumberCountryResponse data, response status code and response headers
     def list_available_phone_number_country_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_available_phone_number_country(account_sid: account_sid, page_size: page_size)
@@ -11905,6 +12681,7 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the available phone number Country resources.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_available_phone_number_country(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_available_phone_number_country(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -11972,6 +12749,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumberlocal-resource?code-sample=code-find-phone-numbers-by-number-pattern) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumberlocal-resource?code-sample=code-find-phone-numbers-by-character-pattern). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAvailablePhoneNumberLocalResponse]
     def list_available_phone_number_local(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_available_phone_number_local_with_http_info(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -11981,6 +12777,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumberlocal-resource?code-sample=code-find-phone-numbers-by-number-pattern) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumberlocal-resource?code-sample=code-find-phone-numbers-by-character-pattern). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAvailablePhoneNumberLocalResponse, Integer, Hash)>] ListAvailablePhoneNumberLocalResponse data, response status code and response headers
     def list_available_phone_number_local_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_available_phone_number_local(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -11997,6 +12812,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumberlocal-resource?code-sample=code-find-phone-numbers-by-number-pattern) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumberlocal-resource?code-sample=code-find-phone-numbers-by-character-pattern). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_available_phone_number_local(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_available_phone_number_local(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size).execute(&block)
@@ -12082,6 +12916,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAvailablePhoneNumberMachineToMachineResponse]
     def list_available_phone_number_machine_to_machine(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_available_phone_number_machine_to_machine_with_http_info(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12091,6 +12944,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAvailablePhoneNumberMachineToMachineResponse, Integer, Hash)>] ListAvailablePhoneNumberMachineToMachineResponse data, response status code and response headers
     def list_available_phone_number_machine_to_machine_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_available_phone_number_machine_to_machine(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12107,6 +12979,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_available_phone_number_machine_to_machine(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_available_phone_number_machine_to_machine(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size).execute(&block)
@@ -12192,6 +13083,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAvailablePhoneNumberMobileResponse]
     def list_available_phone_number_mobile(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_available_phone_number_mobile_with_http_info(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12201,6 +13111,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAvailablePhoneNumberMobileResponse, Integer, Hash)>] ListAvailablePhoneNumberMobileResponse data, response status code and response headers
     def list_available_phone_number_mobile_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_available_phone_number_mobile(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12217,6 +13146,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_available_phone_number_mobile(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_available_phone_number_mobile(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size).execute(&block)
@@ -12302,6 +13250,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAvailablePhoneNumberNationalResponse]
     def list_available_phone_number_national(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_available_phone_number_national_with_http_info(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12311,6 +13278,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAvailablePhoneNumberNationalResponse, Integer, Hash)>] ListAvailablePhoneNumberNationalResponse data, response status code and response headers
     def list_available_phone_number_national_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_available_phone_number_national(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12327,6 +13313,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_available_phone_number_national(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_available_phone_number_national(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size).execute(&block)
@@ -12412,6 +13417,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAvailablePhoneNumberSharedCostResponse]
     def list_available_phone_number_shared_cost(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_available_phone_number_shared_cost_with_http_info(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12421,6 +13445,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAvailablePhoneNumberSharedCostResponse, Integer, Hash)>] ListAvailablePhoneNumberSharedCostResponse data, response status code and response headers
     def list_available_phone_number_shared_cost_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_available_phone_number_shared_cost(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12437,6 +13480,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_available_phone_number_shared_cost(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_available_phone_number_shared_cost(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size).execute(&block)
@@ -12522,6 +13584,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAvailablePhoneNumberTollFreeResponse]
     def list_available_phone_number_toll_free(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_available_phone_number_toll_free_with_http_info(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12531,6 +13612,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAvailablePhoneNumberTollFreeResponse, Integer, Hash)>] ListAvailablePhoneNumberTollFreeResponse data, response status code and response headers
     def list_available_phone_number_toll_free_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_available_phone_number_toll_free(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12547,6 +13647,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_available_phone_number_toll_free(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_available_phone_number_toll_free(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size).execute(&block)
@@ -12632,6 +13751,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListAvailablePhoneNumberVoipResponse]
     def list_available_phone_number_voip(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_available_phone_number_voip_with_http_info(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12641,6 +13779,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListAvailablePhoneNumberVoipResponse, Integer, Hash)>] ListAvailablePhoneNumberVoipResponse data, response status code and response headers
     def list_available_phone_number_voip_with_http_info(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_available_phone_number_voip(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size)
@@ -12657,6 +13814,25 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) requesting the AvailablePhoneNumber resources.
     # @param country_code [String] The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country from which to read phone numbers.
+    # @optional @param area_code [Int32?] The area code of the phone numbers to read. Applies to only phone numbers in the US and Canada.
+    # @optional @param contains [String?] The pattern on which to match phone numbers. Valid characters are `*`, `0-9`, `a-z`, and `A-Z`. The `*` character matches any single digit. For examples, see [Example 2](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-2) and [Example 3](https://www.twilio.com/docs/phone-numbers/api/availablephonenumber-resource#local-get-basic-example-3). If specified, this value must have at least two characters.
+    # @optional @param sms_enabled [Bool?] Whether the phone numbers can receive text messages. Can be: `true` or `false`.
+    # @optional @param mms_enabled [Bool?] Whether the phone numbers can receive MMS messages. Can be: `true` or `false`.
+    # @optional @param voice_enabled [Bool?] Whether the phone numbers can receive calls. Can be: `true` or `false`.
+    # @optional @param exclude_all_address_required [Bool?] Whether to exclude phone numbers that require an [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_local_address_required [Bool?] Whether to exclude phone numbers that require a local [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param exclude_foreign_address_required [Bool?] Whether to exclude phone numbers that require a foreign [Address](https://www.twilio.com/docs/usage/api/address). Can be: `true` or `false` and the default is `false`.
+    # @optional @param beta [Bool?] Whether to read phone numbers that are new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param near_number [String?] Given a phone number, find a geographically close number within `distance` miles. Distance defaults to 25 miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param near_lat_long [String?] Given a latitude/longitude pair `lat,long` find geographically close numbers within `distance` miles. Applies to only phone numbers in the US and Canada.
+    # @optional @param distance [Int32?] The search radius, in miles, for a `near_` query.  Can be up to `500` and the default is `25`. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_postal_code [String?] Limit results to a particular postal code. Given a phone number, search within the same postal code as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_region [String?] Limit results to a particular region, state, or province. Given a phone number, search within the same region as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_rate_center [String?] Limit results to a specific rate center, or given a phone number search within the same rate center as that number. Requires `in_lata` to be set as well. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_lata [String?] Limit results to a specific local access and transport area ([LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area)). Given a phone number, search within the same [LATA](https://en.wikipedia.org/wiki/Local_access_and_transport_area) as that number. Applies to only phone numbers in the US and Canada.
+    # @optional @param in_locality [String?] Limit results to a particular locality or city. Given a phone number, search within the same Locality as that number.
+    # @optional @param fax_enabled [Bool?] Whether the phone numbers can receive faxes. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_available_phone_number_voip(*, account_sid : String = @account_sid, country_code : String, area_code : Int32? = nil, contains : String? = nil, sms_enabled : Bool? = nil, mms_enabled : Bool? = nil, voice_enabled : Bool? = nil, exclude_all_address_required : Bool? = nil, exclude_local_address_required : Bool? = nil, exclude_foreign_address_required : Bool? = nil, beta : Bool? = nil, near_number : String? = nil, near_lat_long : String? = nil, distance : Int32? = nil, in_postal_code : String? = nil, in_region : String? = nil, in_rate_center : String? = nil, in_lata : String? = nil, in_locality : String? = nil, fax_enabled : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_available_phone_number_voip(account_sid: account_sid, country_code: country_code, area_code: area_code, contains: contains, sms_enabled: sms_enabled, mms_enabled: mms_enabled, voice_enabled: voice_enabled, exclude_all_address_required: exclude_all_address_required, exclude_local_address_required: exclude_local_address_required, exclude_foreign_address_required: exclude_foreign_address_required, beta: beta, near_number: near_number, near_lat_long: near_lat_long, distance: distance, in_postal_code: in_postal_code, in_region: in_region, in_rate_center: in_rate_center, in_lata: in_lata, in_locality: in_locality, fax_enabled: fax_enabled, page_size: page_size).execute(&block)
@@ -12741,6 +13917,17 @@ module Twilio
 
     # Retrieves a collection of calls made to and from your account
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to read.
+    # @optional @param to [String?] Only show calls made to this phone number, SIP address, Client identifier or SIM SID.
+    # @optional @param from [String?] Only include calls from this phone number, SIP address, Client identifier or SIM SID.
+    # @optional @param parent_call_sid [String?] Only include calls spawned by calls with this SID.
+    # @optional @param status [String?] The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`.
+    # @optional @param start_time [Time?] Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
+    # @optional @param start_time_before [Time?] Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
+    # @optional @param start_time_after [Time?] Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
+    # @optional @param end_time [Time?] Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
+    # @optional @param end_time_before [Time?] Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
+    # @optional @param end_time_after [Time?] Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListCallResponse]
     def list_call(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, parent_call_sid : String? = nil, status : String? = nil, start_time : Time? = nil, start_time_before : Time? = nil, start_time_after : Time? = nil, end_time : Time? = nil, end_time_before : Time? = nil, end_time_after : Time? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_call_with_http_info(account_sid: account_sid, to: to, from: from, parent_call_sid: parent_call_sid, status: status, start_time: start_time, start_time_before: start_time_before, start_time_after: start_time_after, end_time: end_time, end_time_before: end_time_before, end_time_after: end_time_after, page_size: page_size)
@@ -12749,6 +13936,17 @@ module Twilio
 
     # Retrieves a collection of calls made to and from your account
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to read.
+    # @optional @param to [String?] Only show calls made to this phone number, SIP address, Client identifier or SIM SID.
+    # @optional @param from [String?] Only include calls from this phone number, SIP address, Client identifier or SIM SID.
+    # @optional @param parent_call_sid [String?] Only include calls spawned by calls with this SID.
+    # @optional @param status [String?] The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`.
+    # @optional @param start_time [Time?] Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
+    # @optional @param start_time_before [Time?] Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
+    # @optional @param start_time_after [Time?] Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
+    # @optional @param end_time [Time?] Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
+    # @optional @param end_time_before [Time?] Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
+    # @optional @param end_time_after [Time?] Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListCallResponse, Integer, Hash)>] ListCallResponse data, response status code and response headers
     def list_call_with_http_info(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, parent_call_sid : String? = nil, status : String? = nil, start_time : Time? = nil, start_time_before : Time? = nil, start_time_after : Time? = nil, end_time : Time? = nil, end_time_before : Time? = nil, end_time_after : Time? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_call(account_sid: account_sid, to: to, from: from, parent_call_sid: parent_call_sid, status: status, start_time: start_time, start_time_before: start_time_before, start_time_after: start_time_after, end_time: end_time, end_time_before: end_time_before, end_time_after: end_time_after, page_size: page_size)
@@ -12764,6 +13962,17 @@ module Twilio
 
     # Retrieves a collection of calls made to and from your account
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to read.
+    # @optional @param to [String?] Only show calls made to this phone number, SIP address, Client identifier or SIM SID.
+    # @optional @param from [String?] Only include calls from this phone number, SIP address, Client identifier or SIM SID.
+    # @optional @param parent_call_sid [String?] Only include calls spawned by calls with this SID.
+    # @optional @param status [String?] The status of the calls to include. Can be: `queued`, `ringing`, `in-progress`, `canceled`, `completed`, `failed`, `busy`, or `no-answer`.
+    # @optional @param start_time [Time?] Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
+    # @optional @param start_time_before [Time?] Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
+    # @optional @param start_time_after [Time?] Only include calls that started on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that started on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read calls that started on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read calls that started on or after midnight of this date.
+    # @optional @param end_time [Time?] Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
+    # @optional @param end_time_before [Time?] Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
+    # @optional @param end_time_after [Time?] Only include calls that ended on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read only calls that ended on this date. You can also specify an inequality, such as `EndTime<=YYYY-MM-DD`, to read calls that ended on or before midnight of this date, and `EndTime>=YYYY-MM-DD` to read calls that ended on or after midnight of this date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_call(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, parent_call_sid : String? = nil, status : String? = nil, start_time : Time? = nil, start_time_before : Time? = nil, start_time_after : Time? = nil, end_time : Time? = nil, end_time_before : Time? = nil, end_time_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_call(account_sid: account_sid, to: to, from: from, parent_call_sid: parent_call_sid, status: status, start_time: start_time, start_time_before: start_time_before, start_time_after: start_time_after, end_time: end_time, end_time_before: end_time_before, end_time_after: end_time_after, page_size: page_size).execute(&block)
@@ -12858,6 +14067,7 @@ module Twilio
     # Retrieve a list of all events for a call.
     # @param account_sid [String] The unique SID identifier of the Account.
     # @param call_sid [String] The unique SID identifier of the Call.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListCallEventResponse]
     def list_call_event(*, account_sid : String = @account_sid, call_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_call_event_with_http_info(account_sid: account_sid, call_sid: call_sid, page_size: page_size)
@@ -12867,6 +14077,7 @@ module Twilio
     # Retrieve a list of all events for a call.
     # @param account_sid [String] The unique SID identifier of the Account.
     # @param call_sid [String] The unique SID identifier of the Call.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListCallEventResponse, Integer, Hash)>] ListCallEventResponse data, response status code and response headers
     def list_call_event_with_http_info(*, account_sid : String = @account_sid, call_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_call_event(account_sid: account_sid, call_sid: call_sid, page_size: page_size)
@@ -12883,6 +14094,7 @@ module Twilio
     # Retrieve a list of all events for a call.
     # @param account_sid [String] The unique SID identifier of the Account.
     # @param call_sid [String] The unique SID identifier of the Call.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_call_event(*, account_sid : String = @account_sid, call_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_call_event(account_sid: account_sid, call_sid: call_sid, page_size: page_size).execute(&block)
@@ -12963,6 +14175,11 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call Notification resources to read.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resources to read.
+    # @optional @param log [Int32?] Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.
+    # @optional @param message_date [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_before [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_after [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListCallNotificationResponse]
     def list_call_notification(*, account_sid : String = @account_sid, call_sid : String, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_call_notification_with_http_info(account_sid: account_sid, call_sid: call_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
@@ -12972,6 +14189,11 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call Notification resources to read.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resources to read.
+    # @optional @param log [Int32?] Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.
+    # @optional @param message_date [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_before [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_after [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListCallNotificationResponse, Integer, Hash)>] ListCallNotificationResponse data, response status code and response headers
     def list_call_notification_with_http_info(*, account_sid : String = @account_sid, call_sid : String, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_call_notification(account_sid: account_sid, call_sid: call_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
@@ -12988,6 +14210,11 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call Notification resources to read.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the Call Notification resources to read.
+    # @optional @param log [Int32?] Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.
+    # @optional @param message_date [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_before [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_after [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_call_notification(*, account_sid : String = @account_sid, call_sid : String, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_call_notification(account_sid: account_sid, call_sid: call_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size).execute(&block)
@@ -13072,6 +14299,10 @@ module Twilio
     # Retrieve a list of recordings belonging to the call used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.
+    # @optional @param date_created [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_before [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_after [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListCallRecordingResponse]
     def list_call_recording(*, account_sid : String = @account_sid, call_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_call_recording_with_http_info(account_sid: account_sid, call_sid: call_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
@@ -13081,6 +14312,10 @@ module Twilio
     # Retrieve a list of recordings belonging to the call used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.
+    # @optional @param date_created [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_before [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_after [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListCallRecordingResponse, Integer, Hash)>] ListCallRecordingResponse data, response status code and response headers
     def list_call_recording_with_http_info(*, account_sid : String = @account_sid, call_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_call_recording(account_sid: account_sid, call_sid: call_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
@@ -13097,6 +14332,10 @@ module Twilio
     # Retrieve a list of recordings belonging to the call used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.
+    # @optional @param date_created [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_before [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_after [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_call_recording(*, account_sid : String = @account_sid, call_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_call_recording(account_sid: account_sid, call_sid: call_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size).execute(&block)
@@ -13179,6 +14418,15 @@ module Twilio
 
     # Retrieve a list of conferences belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to read.
+    # @optional @param date_created [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+    # @optional @param date_created_before [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+    # @optional @param date_created_after [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+    # @optional @param date_updated [Time?] The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+    # @optional @param date_updated_before [Time?] The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+    # @optional @param date_updated_after [Time?] The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+    # @optional @param friendly_name [String?] The string that identifies the Conference resources to read.
+    # @optional @param status [String?] The status of the resources to read. Can be: `init`, `in-progress`, or `completed`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListConferenceResponse]
     def list_conference(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, date_updated : Time? = nil, date_updated_before : Time? = nil, date_updated_after : Time? = nil, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_conference_with_http_info(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, date_updated: date_updated, date_updated_before: date_updated_before, date_updated_after: date_updated_after, friendly_name: friendly_name, status: status, page_size: page_size)
@@ -13187,6 +14435,15 @@ module Twilio
 
     # Retrieve a list of conferences belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to read.
+    # @optional @param date_created [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+    # @optional @param date_created_before [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+    # @optional @param date_created_after [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+    # @optional @param date_updated [Time?] The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+    # @optional @param date_updated_before [Time?] The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+    # @optional @param date_updated_after [Time?] The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+    # @optional @param friendly_name [String?] The string that identifies the Conference resources to read.
+    # @optional @param status [String?] The status of the resources to read. Can be: `init`, `in-progress`, or `completed`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListConferenceResponse, Integer, Hash)>] ListConferenceResponse data, response status code and response headers
     def list_conference_with_http_info(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, date_updated : Time? = nil, date_updated_before : Time? = nil, date_updated_after : Time? = nil, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_conference(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, date_updated: date_updated, date_updated_before: date_updated_before, date_updated_after: date_updated_after, friendly_name: friendly_name, status: status, page_size: page_size)
@@ -13202,6 +14459,15 @@ module Twilio
 
     # Retrieve a list of conferences belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to read.
+    # @optional @param date_created [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+    # @optional @param date_created_before [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+    # @optional @param date_created_after [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that started on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify  conferences that started on or after midnight on a date, use `>=YYYY-MM-DD`.
+    # @optional @param date_updated [Time?] The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+    # @optional @param date_updated_before [Time?] The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+    # @optional @param date_updated_after [Time?] The `date_updated` value, specified as `YYYY-MM-DD`, of the resources to read. To read conferences that were last updated on or before midnight on a date, use `<=YYYY-MM-DD`, and to specify conferences that were last updated on or after midnight on a given date, use  `>=YYYY-MM-DD`.
+    # @optional @param friendly_name [String?] The string that identifies the Conference resources to read.
+    # @optional @param status [String?] The status of the resources to read. Can be: `init`, `in-progress`, or `completed`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_conference(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, date_updated : Time? = nil, date_updated_before : Time? = nil, date_updated_after : Time? = nil, friendly_name : String? = nil, status : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_conference(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, date_updated: date_updated, date_updated_before: date_updated_before, date_updated_after: date_updated_after, friendly_name: friendly_name, status: status, page_size: page_size).execute(&block)
@@ -13281,6 +14547,10 @@ module Twilio
     # Retrieve a list of recordings belonging to the call used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference Recording resources to read.
     # @param conference_sid [String] The Conference SID that identifies the conference associated with the recording to read.
+    # @optional @param date_created [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_before [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_after [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListConferenceRecordingResponse]
     def list_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_conference_recording_with_http_info(account_sid: account_sid, conference_sid: conference_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
@@ -13290,6 +14560,10 @@ module Twilio
     # Retrieve a list of recordings belonging to the call used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference Recording resources to read.
     # @param conference_sid [String] The Conference SID that identifies the conference associated with the recording to read.
+    # @optional @param date_created [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_before [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_after [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListConferenceRecordingResponse, Integer, Hash)>] ListConferenceRecordingResponse data, response status code and response headers
     def list_conference_recording_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_conference_recording(account_sid: account_sid, conference_sid: conference_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
@@ -13306,6 +14580,10 @@ module Twilio
     # Retrieve a list of recordings belonging to the call used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference Recording resources to read.
     # @param conference_sid [String] The Conference SID that identifies the conference associated with the recording to read.
+    # @optional @param date_created [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_before [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param date_created_after [Time?] The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read. You can also specify inequality: `DateCreated<=YYYY-MM-DD` will return recordings generated at or before midnight on a given date, and `DateCreated>=YYYY-MM-DD` returns recordings generated at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_conference_recording(account_sid: account_sid, conference_sid: conference_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size).execute(&block)
@@ -13388,6 +14666,7 @@ module Twilio
 
     # Retrieve a list of connect-apps belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListConnectAppResponse]
     def list_connect_app(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_connect_app_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -13396,6 +14675,7 @@ module Twilio
 
     # Retrieve a list of connect-apps belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListConnectAppResponse, Integer, Hash)>] ListConnectAppResponse data, response status code and response headers
     def list_connect_app_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_connect_app(account_sid: account_sid, page_size: page_size)
@@ -13411,6 +14691,7 @@ module Twilio
 
     # Retrieve a list of connect-apps belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_connect_app(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_connect_app(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -13478,6 +14759,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the DependentPhoneNumber resources to read.
     # @param address_sid [String] The SID of the Address resource associated with the phone number.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListDependentPhoneNumberResponse]
     def list_dependent_phone_number(*, account_sid : String = @account_sid, address_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_dependent_phone_number_with_http_info(account_sid: account_sid, address_sid: address_sid, page_size: page_size)
@@ -13487,6 +14769,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the DependentPhoneNumber resources to read.
     # @param address_sid [String] The SID of the Address resource associated with the phone number.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListDependentPhoneNumberResponse, Integer, Hash)>] ListDependentPhoneNumberResponse data, response status code and response headers
     def list_dependent_phone_number_with_http_info(*, account_sid : String = @account_sid, address_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_dependent_phone_number(account_sid: account_sid, address_sid: address_sid, page_size: page_size)
@@ -13503,6 +14786,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the DependentPhoneNumber resources to read.
     # @param address_sid [String] The SID of the Address resource associated with the phone number.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_dependent_phone_number(*, account_sid : String = @account_sid, address_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_dependent_phone_number(account_sid: account_sid, address_sid: address_sid, page_size: page_size).execute(&block)
@@ -13582,6 +14866,11 @@ module Twilio
 
     # Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the IncomingPhoneNumber resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListIncomingPhoneNumberResponse]
     def list_incoming_phone_number(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_incoming_phone_number_with_http_info(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
@@ -13590,6 +14879,11 @@ module Twilio
 
     # Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the IncomingPhoneNumber resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListIncomingPhoneNumberResponse, Integer, Hash)>] ListIncomingPhoneNumberResponse data, response status code and response headers
     def list_incoming_phone_number_with_http_info(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_incoming_phone_number(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
@@ -13605,6 +14899,11 @@ module Twilio
 
     # Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the IncomingPhoneNumber resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_incoming_phone_number(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_incoming_phone_number(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size).execute(&block)
@@ -13676,6 +14975,7 @@ module Twilio
     # Retrieve a list of Add-on installations currently assigned to this Number.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @param resource_sid [String] The SID of the Phone Number to which the Add-on is assigned.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListIncomingPhoneNumberAssignedAddOnResponse]
     def list_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_incoming_phone_number_assigned_add_on_with_http_info(account_sid: account_sid, resource_sid: resource_sid, page_size: page_size)
@@ -13685,6 +14985,7 @@ module Twilio
     # Retrieve a list of Add-on installations currently assigned to this Number.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @param resource_sid [String] The SID of the Phone Number to which the Add-on is assigned.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListIncomingPhoneNumberAssignedAddOnResponse, Integer, Hash)>] ListIncomingPhoneNumberAssignedAddOnResponse data, response status code and response headers
     def list_incoming_phone_number_assigned_add_on_with_http_info(*, account_sid : String = @account_sid, resource_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, page_size: page_size)
@@ -13701,6 +15002,7 @@ module Twilio
     # Retrieve a list of Add-on installations currently assigned to this Number.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @param resource_sid [String] The SID of the Phone Number to which the Add-on is assigned.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_incoming_phone_number_assigned_add_on(*, account_sid : String = @account_sid, resource_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_incoming_phone_number_assigned_add_on(account_sid: account_sid, resource_sid: resource_sid, page_size: page_size).execute(&block)
@@ -13782,6 +15084,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @param resource_sid [String] The SID of the Phone Number to which the Add-on is assigned.
     # @param assigned_add_on_sid [String] The SID that uniquely identifies the assigned Add-on installation.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListIncomingPhoneNumberAssignedAddOnExtensionResponse]
     def list_incoming_phone_number_assigned_add_on_extension(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_incoming_phone_number_assigned_add_on_extension_with_http_info(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, page_size: page_size)
@@ -13792,6 +15095,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @param resource_sid [String] The SID of the Phone Number to which the Add-on is assigned.
     # @param assigned_add_on_sid [String] The SID that uniquely identifies the assigned Add-on installation.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListIncomingPhoneNumberAssignedAddOnExtensionResponse, Integer, Hash)>] ListIncomingPhoneNumberAssignedAddOnExtensionResponse data, response status code and response headers
     def list_incoming_phone_number_assigned_add_on_extension_with_http_info(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_incoming_phone_number_assigned_add_on_extension(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, page_size: page_size)
@@ -13809,6 +15113,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
     # @param resource_sid [String] The SID of the Phone Number to which the Add-on is assigned.
     # @param assigned_add_on_sid [String] The SID that uniquely identifies the assigned Add-on installation.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_incoming_phone_number_assigned_add_on_extension(*, account_sid : String = @account_sid, resource_sid : String, assigned_add_on_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_incoming_phone_number_assigned_add_on_extension(account_sid: account_sid, resource_sid: resource_sid, assigned_add_on_sid: assigned_add_on_sid, page_size: page_size).execute(&block)
@@ -13901,6 +15206,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListIncomingPhoneNumberLocalResponse]
     def list_incoming_phone_number_local(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_incoming_phone_number_local_with_http_info(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
@@ -13909,6 +15219,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListIncomingPhoneNumberLocalResponse, Integer, Hash)>] ListIncomingPhoneNumberLocalResponse data, response status code and response headers
     def list_incoming_phone_number_local_with_http_info(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_incoming_phone_number_local(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
@@ -13924,6 +15239,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_incoming_phone_number_local(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_incoming_phone_number_local(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size).execute(&block)
@@ -13994,6 +15314,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListIncomingPhoneNumberMobileResponse]
     def list_incoming_phone_number_mobile(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_incoming_phone_number_mobile_with_http_info(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
@@ -14002,6 +15327,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListIncomingPhoneNumberMobileResponse, Integer, Hash)>] ListIncomingPhoneNumberMobileResponse data, response status code and response headers
     def list_incoming_phone_number_mobile_with_http_info(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_incoming_phone_number_mobile(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
@@ -14017,6 +15347,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_incoming_phone_number_mobile(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_incoming_phone_number_mobile(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size).execute(&block)
@@ -14087,6 +15422,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListIncomingPhoneNumberTollFreeResponse]
     def list_incoming_phone_number_toll_free(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_incoming_phone_number_toll_free_with_http_info(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
@@ -14095,6 +15435,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListIncomingPhoneNumberTollFreeResponse, Integer, Hash)>] ListIncomingPhoneNumberTollFreeResponse data, response status code and response headers
     def list_incoming_phone_number_toll_free_with_http_info(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_incoming_phone_number_toll_free(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size)
@@ -14110,6 +15455,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the resources to read.
+    # @optional @param beta [Bool?] Whether to include phone numbers new to the Twilio platform. Can be: `true` or `false` and the default is `true`.
+    # @optional @param friendly_name [String?] A string that identifies the resources to read.
+    # @optional @param phone_number [String?] The phone numbers of the IncomingPhoneNumber resources to read. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param origin [String?] Whether to include phone numbers based on their origin. Can be: `twilio` or `hosted`. By default, phone numbers of all origin are included.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_incoming_phone_number_toll_free(*, account_sid : String = @account_sid, beta : Bool? = nil, friendly_name : String? = nil, phone_number : String? = nil, origin : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_incoming_phone_number_toll_free(account_sid: account_sid, beta: beta, friendly_name: friendly_name, phone_number: phone_number, origin: origin, page_size: page_size).execute(&block)
@@ -14180,6 +15530,7 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListKeyResponse]
     def list_key(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_key_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -14188,6 +15539,7 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListKeyResponse, Integer, Hash)>] ListKeyResponse data, response status code and response headers
     def list_key_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_key(account_sid: account_sid, page_size: page_size)
@@ -14203,6 +15555,7 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_key(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_key(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -14270,6 +15623,10 @@ module Twilio
     # Retrieve a list of Media resources belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to read.
     # @param message_sid [String] The SID of the Message resource that this Media resource belongs to.
+    # @optional @param date_created [Time?] Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
+    # @optional @param date_created_before [Time?] Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
+    # @optional @param date_created_after [Time?] Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListMediaResponse]
     def list_media(*, account_sid : String = @account_sid, message_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_media_with_http_info(account_sid: account_sid, message_sid: message_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
@@ -14279,6 +15636,10 @@ module Twilio
     # Retrieve a list of Media resources belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to read.
     # @param message_sid [String] The SID of the Message resource that this Media resource belongs to.
+    # @optional @param date_created [Time?] Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
+    # @optional @param date_created_before [Time?] Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
+    # @optional @param date_created_after [Time?] Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListMediaResponse, Integer, Hash)>] ListMediaResponse data, response status code and response headers
     def list_media_with_http_info(*, account_sid : String = @account_sid, message_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_media(account_sid: account_sid, message_sid: message_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size)
@@ -14295,6 +15656,10 @@ module Twilio
     # Retrieve a list of Media resources belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Media resource(s) to read.
     # @param message_sid [String] The SID of the Message resource that this Media resource belongs to.
+    # @optional @param date_created [Time?] Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
+    # @optional @param date_created_before [Time?] Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
+    # @optional @param date_created_after [Time?] Only include media that was created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read media that was created on this date. You can also specify an inequality, such as `StartTime<=YYYY-MM-DD`, to read media that was created on or before midnight of this date, and `StartTime>=YYYY-MM-DD` to read media that was created on or after midnight of this date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_media(*, account_sid : String = @account_sid, message_sid : String, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_media(account_sid: account_sid, message_sid: message_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, page_size: page_size).execute(&block)
@@ -14378,6 +15743,7 @@ module Twilio
     # Retrieve the members of the queue
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Member resource(s) to read.
     # @param queue_sid [String] The SID of the Queue in which to find the members
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListMemberResponse]
     def list_member(*, account_sid : String = @account_sid, queue_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_member_with_http_info(account_sid: account_sid, queue_sid: queue_sid, page_size: page_size)
@@ -14387,6 +15753,7 @@ module Twilio
     # Retrieve the members of the queue
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Member resource(s) to read.
     # @param queue_sid [String] The SID of the Queue in which to find the members
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListMemberResponse, Integer, Hash)>] ListMemberResponse data, response status code and response headers
     def list_member_with_http_info(*, account_sid : String = @account_sid, queue_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_member(account_sid: account_sid, queue_sid: queue_sid, page_size: page_size)
@@ -14403,6 +15770,7 @@ module Twilio
     # Retrieve the members of the queue
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Member resource(s) to read.
     # @param queue_sid [String] The SID of the Queue in which to find the members
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_member(*, account_sid : String = @account_sid, queue_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_member(account_sid: account_sid, queue_sid: queue_sid, page_size: page_size).execute(&block)
@@ -14482,6 +15850,12 @@ module Twilio
 
     # Retrieve a list of messages belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to read.
+    # @optional @param to [String?] Read messages sent to only this phone number.
+    # @optional @param from [String?] Read messages sent from only this phone number or alphanumeric sender ID.
+    # @optional @param date_sent [Time?] The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.
+    # @optional @param date_sent_before [Time?] The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.
+    # @optional @param date_sent_after [Time?] The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListMessageResponse]
     def list_message(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, date_sent : Time? = nil, date_sent_before : Time? = nil, date_sent_after : Time? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_message_with_http_info(account_sid: account_sid, to: to, from: from, date_sent: date_sent, date_sent_before: date_sent_before, date_sent_after: date_sent_after, page_size: page_size)
@@ -14490,6 +15864,12 @@ module Twilio
 
     # Retrieve a list of messages belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to read.
+    # @optional @param to [String?] Read messages sent to only this phone number.
+    # @optional @param from [String?] Read messages sent from only this phone number or alphanumeric sender ID.
+    # @optional @param date_sent [Time?] The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.
+    # @optional @param date_sent_before [Time?] The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.
+    # @optional @param date_sent_after [Time?] The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListMessageResponse, Integer, Hash)>] ListMessageResponse data, response status code and response headers
     def list_message_with_http_info(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, date_sent : Time? = nil, date_sent_before : Time? = nil, date_sent_after : Time? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_message(account_sid: account_sid, to: to, from: from, date_sent: date_sent, date_sent_before: date_sent_before, date_sent_after: date_sent_after, page_size: page_size)
@@ -14505,6 +15885,12 @@ module Twilio
 
     # Retrieve a list of messages belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to read.
+    # @optional @param to [String?] Read messages sent to only this phone number.
+    # @optional @param from [String?] Read messages sent from only this phone number or alphanumeric sender ID.
+    # @optional @param date_sent [Time?] The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.
+    # @optional @param date_sent_before [Time?] The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.
+    # @optional @param date_sent_after [Time?] The date of the messages to show. Specify a date as `YYYY-MM-DD` in GMT to read only messages sent on this date. For example: `2009-07-06`. You can also specify an inequality, such as `DateSent<=YYYY-MM-DD`, to read messages sent on or before midnight on a date, and `DateSent>=YYYY-MM-DD` to read messages sent on or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_message(*, account_sid : String = @account_sid, to : String? = nil, from : String? = nil, date_sent : Time? = nil, date_sent_before : Time? = nil, date_sent_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_message(account_sid: account_sid, to: to, from: from, date_sent: date_sent, date_sent_before: date_sent_before, date_sent_after: date_sent_after, page_size: page_size).execute(&block)
@@ -14576,6 +15962,11 @@ module Twilio
 
     # Retrieve a list of notifications belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resources to read.
+    # @optional @param log [Int32?] Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.
+    # @optional @param message_date [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_before [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_after [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListNotificationResponse]
     def list_notification(*, account_sid : String = @account_sid, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_notification_with_http_info(account_sid: account_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
@@ -14584,6 +15975,11 @@ module Twilio
 
     # Retrieve a list of notifications belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resources to read.
+    # @optional @param log [Int32?] Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.
+    # @optional @param message_date [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_before [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_after [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListNotificationResponse, Integer, Hash)>] ListNotificationResponse data, response status code and response headers
     def list_notification_with_http_info(*, account_sid : String = @account_sid, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_notification(account_sid: account_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size)
@@ -14599,6 +15995,11 @@ module Twilio
 
     # Retrieve a list of notifications belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resources to read.
+    # @optional @param log [Int32?] Only read notifications of the specified log level. Can be:  `0` to read only ERROR notifications or `1` to read only WARNING notifications. By default, all notifications are read.
+    # @optional @param message_date [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_before [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param message_date_after [Time?] Only show notifications for the specified date, formatted as `YYYY-MM-DD`. You can also specify an inequality, such as `<=YYYY-MM-DD` for messages logged at or before midnight on a date, or `>=YYYY-MM-DD` for messages logged at or after midnight on a date.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_notification(*, account_sid : String = @account_sid, log : Int32? = nil, message_date : Time? = nil, message_date_before : Time? = nil, message_date_after : Time? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_notification(account_sid: account_sid, log: log, message_date: message_date, message_date_before: message_date_before, message_date_after: message_date_after, page_size: page_size).execute(&block)
@@ -14669,6 +16070,9 @@ module Twilio
 
     # Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to read.
+    # @optional @param phone_number [String?] The phone number of the OutgoingCallerId resources to read.
+    # @optional @param friendly_name [String?] The string that identifies the OutgoingCallerId resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListOutgoingCallerIdResponse]
     def list_outgoing_caller_id(*, account_sid : String = @account_sid, phone_number : String? = nil, friendly_name : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_outgoing_caller_id_with_http_info(account_sid: account_sid, phone_number: phone_number, friendly_name: friendly_name, page_size: page_size)
@@ -14677,6 +16081,9 @@ module Twilio
 
     # Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to read.
+    # @optional @param phone_number [String?] The phone number of the OutgoingCallerId resources to read.
+    # @optional @param friendly_name [String?] The string that identifies the OutgoingCallerId resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListOutgoingCallerIdResponse, Integer, Hash)>] ListOutgoingCallerIdResponse data, response status code and response headers
     def list_outgoing_caller_id_with_http_info(*, account_sid : String = @account_sid, phone_number : String? = nil, friendly_name : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_outgoing_caller_id(account_sid: account_sid, phone_number: phone_number, friendly_name: friendly_name, page_size: page_size)
@@ -14692,6 +16099,9 @@ module Twilio
 
     # Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to read.
+    # @optional @param phone_number [String?] The phone number of the OutgoingCallerId resources to read.
+    # @optional @param friendly_name [String?] The string that identifies the OutgoingCallerId resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_outgoing_caller_id(*, account_sid : String = @account_sid, phone_number : String? = nil, friendly_name : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_outgoing_caller_id(account_sid: account_sid, phone_number: phone_number, friendly_name: friendly_name, page_size: page_size).execute(&block)
@@ -14761,6 +16171,10 @@ module Twilio
     # Retrieve a list of participants belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resources to read.
     # @param conference_sid [String] The SID of the conference with the participants to read.
+    # @optional @param muted [Bool?] Whether to return only participants that are muted. Can be: `true` or `false`.
+    # @optional @param hold [Bool?] Whether to return only participants that are on hold. Can be: `true` or `false`.
+    # @optional @param coaching [Bool?] Whether to return only participants who are coaching another call. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListParticipantResponse]
     def list_participant(*, account_sid : String = @account_sid, conference_sid : String, muted : Bool? = nil, hold : Bool? = nil, coaching : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_participant_with_http_info(account_sid: account_sid, conference_sid: conference_sid, muted: muted, hold: hold, coaching: coaching, page_size: page_size)
@@ -14770,6 +16184,10 @@ module Twilio
     # Retrieve a list of participants belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resources to read.
     # @param conference_sid [String] The SID of the conference with the participants to read.
+    # @optional @param muted [Bool?] Whether to return only participants that are muted. Can be: `true` or `false`.
+    # @optional @param hold [Bool?] Whether to return only participants that are on hold. Can be: `true` or `false`.
+    # @optional @param coaching [Bool?] Whether to return only participants who are coaching another call. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListParticipantResponse, Integer, Hash)>] ListParticipantResponse data, response status code and response headers
     def list_participant_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, muted : Bool? = nil, hold : Bool? = nil, coaching : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_participant(account_sid: account_sid, conference_sid: conference_sid, muted: muted, hold: hold, coaching: coaching, page_size: page_size)
@@ -14786,6 +16204,10 @@ module Twilio
     # Retrieve a list of participants belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resources to read.
     # @param conference_sid [String] The SID of the conference with the participants to read.
+    # @optional @param muted [Bool?] Whether to return only participants that are muted. Can be: `true` or `false`.
+    # @optional @param hold [Bool?] Whether to return only participants that are on hold. Can be: `true` or `false`.
+    # @optional @param coaching [Bool?] Whether to return only participants who are coaching another call. Can be: `true` or `false`.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_participant(*, account_sid : String = @account_sid, conference_sid : String, muted : Bool? = nil, hold : Bool? = nil, coaching : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_participant(account_sid: account_sid, conference_sid: conference_sid, muted: muted, hold: hold, coaching: coaching, page_size: page_size).execute(&block)
@@ -14868,6 +16290,7 @@ module Twilio
 
     # Retrieve a list of queues belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListQueueResponse]
     def list_queue(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_queue_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -14876,6 +16299,7 @@ module Twilio
 
     # Retrieve a list of queues belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListQueueResponse, Integer, Hash)>] ListQueueResponse data, response status code and response headers
     def list_queue_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_queue(account_sid: account_sid, page_size: page_size)
@@ -14891,6 +16315,7 @@ module Twilio
 
     # Retrieve a list of queues belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_queue(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_queue(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -14957,6 +16382,13 @@ module Twilio
 
     # Retrieve a list of recordings belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.
+    # @optional @param date_created [Time?] Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
+    # @optional @param date_created_before [Time?] Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
+    # @optional @param date_created_after [Time?] Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
+    # @optional @param call_sid [String?] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.
+    # @optional @param conference_sid [String?] The Conference SID that identifies the conference associated with the recording to read.
+    # @optional @param include_soft_deleted [Bool?] A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListRecordingResponse]
     def list_recording(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, call_sid : String? = nil, conference_sid : String? = nil, include_soft_deleted : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_recording_with_http_info(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, call_sid: call_sid, conference_sid: conference_sid, include_soft_deleted: include_soft_deleted, page_size: page_size)
@@ -14965,6 +16397,13 @@ module Twilio
 
     # Retrieve a list of recordings belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.
+    # @optional @param date_created [Time?] Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
+    # @optional @param date_created_before [Time?] Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
+    # @optional @param date_created_after [Time?] Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
+    # @optional @param call_sid [String?] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.
+    # @optional @param conference_sid [String?] The Conference SID that identifies the conference associated with the recording to read.
+    # @optional @param include_soft_deleted [Bool?] A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListRecordingResponse, Integer, Hash)>] ListRecordingResponse data, response status code and response headers
     def list_recording_with_http_info(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, call_sid : String? = nil, conference_sid : String? = nil, include_soft_deleted : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_recording(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, call_sid: call_sid, conference_sid: conference_sid, include_soft_deleted: include_soft_deleted, page_size: page_size)
@@ -14980,6 +16419,13 @@ module Twilio
 
     # Retrieve a list of recordings belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resources to read.
+    # @optional @param date_created [Time?] Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
+    # @optional @param date_created_before [Time?] Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
+    # @optional @param date_created_after [Time?] Only include recordings that were created on this date. Specify a date as `YYYY-MM-DD` in GMT, for example: `2009-07-06`, to read recordings that were created on this date. You can also specify an inequality, such as `DateCreated<=YYYY-MM-DD`, to read recordings that were created on or before midnight of this date, and `DateCreated>=YYYY-MM-DD` to read recordings that were created on or after midnight of this date.
+    # @optional @param call_sid [String?] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resources to read.
+    # @optional @param conference_sid [String?] The Conference SID that identifies the conference associated with the recording to read.
+    # @optional @param include_soft_deleted [Bool?] A boolean parameter indicating whether to retrieve soft deleted recordings or not. Recordings metadata are kept after deletion for a retention period of 40 days.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_recording(*, account_sid : String = @account_sid, date_created : Time? = nil, date_created_before : Time? = nil, date_created_after : Time? = nil, call_sid : String? = nil, conference_sid : String? = nil, include_soft_deleted : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_recording(account_sid: account_sid, date_created: date_created, date_created_before: date_created_before, date_created_after: date_created_after, call_sid: call_sid, conference_sid: conference_sid, include_soft_deleted: include_soft_deleted, page_size: page_size).execute(&block)
@@ -15079,6 +16525,7 @@ module Twilio
     # Retrieve a list of results belonging to the recording
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult resources to read.
     # @param reference_sid [String] The SID of the recording to which the result to read belongs.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListRecordingAddOnResultResponse]
     def list_recording_add_on_result(*, account_sid : String = @account_sid, reference_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_recording_add_on_result_with_http_info(account_sid: account_sid, reference_sid: reference_sid, page_size: page_size)
@@ -15088,6 +16535,7 @@ module Twilio
     # Retrieve a list of results belonging to the recording
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult resources to read.
     # @param reference_sid [String] The SID of the recording to which the result to read belongs.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListRecordingAddOnResultResponse, Integer, Hash)>] ListRecordingAddOnResultResponse data, response status code and response headers
     def list_recording_add_on_result_with_http_info(*, account_sid : String = @account_sid, reference_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_recording_add_on_result(account_sid: account_sid, reference_sid: reference_sid, page_size: page_size)
@@ -15104,6 +16552,7 @@ module Twilio
     # Retrieve a list of results belonging to the recording
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult resources to read.
     # @param reference_sid [String] The SID of the recording to which the result to read belongs.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_recording_add_on_result(*, account_sid : String = @account_sid, reference_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_recording_add_on_result(account_sid: account_sid, reference_sid: reference_sid, page_size: page_size).execute(&block)
@@ -15185,6 +16634,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult Payload resources to read.
     # @param reference_sid [String] The SID of the recording to which the AddOnResult resource that contains the payloads to read belongs.
     # @param add_on_result_sid [String] The SID of the AddOnResult to which the payloads to read belongs.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListRecordingAddOnResultPayloadResponse]
     def list_recording_add_on_result_payload(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_recording_add_on_result_payload_with_http_info(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, page_size: page_size)
@@ -15195,6 +16645,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult Payload resources to read.
     # @param reference_sid [String] The SID of the recording to which the AddOnResult resource that contains the payloads to read belongs.
     # @param add_on_result_sid [String] The SID of the AddOnResult to which the payloads to read belongs.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListRecordingAddOnResultPayloadResponse, Integer, Hash)>] ListRecordingAddOnResultPayloadResponse data, response status code and response headers
     def list_recording_add_on_result_payload_with_http_info(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_recording_add_on_result_payload(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, page_size: page_size)
@@ -15212,6 +16663,7 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording AddOnResult Payload resources to read.
     # @param reference_sid [String] The SID of the recording to which the AddOnResult resource that contains the payloads to read belongs.
     # @param add_on_result_sid [String] The SID of the AddOnResult to which the payloads to read belongs.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_recording_add_on_result_payload(*, account_sid : String = @account_sid, reference_sid : String, add_on_result_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_recording_add_on_result_payload(account_sid: account_sid, reference_sid: reference_sid, add_on_result_sid: add_on_result_sid, page_size: page_size).execute(&block)
@@ -15305,6 +16757,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.
     # @param recording_sid [String] The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcriptions to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListRecordingTranscriptionResponse]
     def list_recording_transcription(*, account_sid : String = @account_sid, recording_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_recording_transcription_with_http_info(account_sid: account_sid, recording_sid: recording_sid, page_size: page_size)
@@ -15314,6 +16767,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.
     # @param recording_sid [String] The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcriptions to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListRecordingTranscriptionResponse, Integer, Hash)>] ListRecordingTranscriptionResponse data, response status code and response headers
     def list_recording_transcription_with_http_info(*, account_sid : String = @account_sid, recording_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_recording_transcription(account_sid: account_sid, recording_sid: recording_sid, page_size: page_size)
@@ -15330,6 +16784,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.
     # @param recording_sid [String] The SID of the [Recording](https://www.twilio.com/docs/voice/api/recording) that created the transcriptions to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_recording_transcription(*, account_sid : String = @account_sid, recording_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_recording_transcription(account_sid: account_sid, recording_sid: recording_sid, page_size: page_size).execute(&block)
@@ -15409,6 +16864,9 @@ module Twilio
 
     # Retrieve a list of short-codes belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to read.
+    # @optional @param friendly_name [String?] The string that identifies the ShortCode resources to read.
+    # @optional @param short_code [String?] Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListShortCodeResponse]
     def list_short_code(*, account_sid : String = @account_sid, friendly_name : String? = nil, short_code : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_short_code_with_http_info(account_sid: account_sid, friendly_name: friendly_name, short_code: short_code, page_size: page_size)
@@ -15417,6 +16875,9 @@ module Twilio
 
     # Retrieve a list of short-codes belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to read.
+    # @optional @param friendly_name [String?] The string that identifies the ShortCode resources to read.
+    # @optional @param short_code [String?] Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListShortCodeResponse, Integer, Hash)>] ListShortCodeResponse data, response status code and response headers
     def list_short_code_with_http_info(*, account_sid : String = @account_sid, friendly_name : String? = nil, short_code : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_short_code(account_sid: account_sid, friendly_name: friendly_name, short_code: short_code, page_size: page_size)
@@ -15432,6 +16893,9 @@ module Twilio
 
     # Retrieve a list of short-codes belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to read.
+    # @optional @param friendly_name [String?] The string that identifies the ShortCode resources to read.
+    # @optional @param short_code [String?] Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_short_code(*, account_sid : String = @account_sid, friendly_name : String? = nil, short_code : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_short_code(account_sid: account_sid, friendly_name: friendly_name, short_code: short_code, page_size: page_size).execute(&block)
@@ -15500,6 +16964,7 @@ module Twilio
 
     #
     # @param account_sid [String]
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSigningKeyResponse]
     def list_signing_key(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_signing_key_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -15508,6 +16973,7 @@ module Twilio
 
     #
     # @param account_sid [String]
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSigningKeyResponse, Integer, Hash)>] ListSigningKeyResponse data, response status code and response headers
     def list_signing_key_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_signing_key(account_sid: account_sid, page_size: page_size)
@@ -15523,6 +16989,7 @@ module Twilio
 
     #
     # @param account_sid [String]
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_signing_key(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_signing_key(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -15590,6 +17057,7 @@ module Twilio
     # Retrieve a list of credential list mappings belonging to the domain used in the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to read.
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipAuthCallsCredentialListMappingResponse]
     def list_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_auth_calls_credential_list_mapping_with_http_info(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -15599,6 +17067,7 @@ module Twilio
     # Retrieve a list of credential list mappings belonging to the domain used in the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to read.
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipAuthCallsCredentialListMappingResponse, Integer, Hash)>] ListSipAuthCallsCredentialListMappingResponse data, response status code and response headers
     def list_sip_auth_calls_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -15615,6 +17084,7 @@ module Twilio
     # Retrieve a list of credential list mappings belonging to the domain used in the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to read.
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_auth_calls_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_auth_calls_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size).execute(&block)
@@ -15695,6 +17165,7 @@ module Twilio
     # Retrieve a list of IP Access Control List mappings belonging to the domain used in the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IpAccessControlListMapping resources to read.
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipAuthCallsIpAccessControlListMappingResponse]
     def list_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_auth_calls_ip_access_control_list_mapping_with_http_info(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -15704,6 +17175,7 @@ module Twilio
     # Retrieve a list of IP Access Control List mappings belonging to the domain used in the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IpAccessControlListMapping resources to read.
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipAuthCallsIpAccessControlListMappingResponse, Integer, Hash)>] ListSipAuthCallsIpAccessControlListMappingResponse data, response status code and response headers
     def list_sip_auth_calls_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -15720,6 +17192,7 @@ module Twilio
     # Retrieve a list of IP Access Control List mappings belonging to the domain used in the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IpAccessControlListMapping resources to read.
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_auth_calls_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_auth_calls_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size).execute(&block)
@@ -15800,6 +17273,7 @@ module Twilio
     # Retrieve a list of credential list mappings belonging to the domain used in the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to read.
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipAuthRegistrationsCredentialListMappingResponse]
     def list_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_auth_registrations_credential_list_mapping_with_http_info(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -15809,6 +17283,7 @@ module Twilio
     # Retrieve a list of credential list mappings belonging to the domain used in the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to read.
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipAuthRegistrationsCredentialListMappingResponse, Integer, Hash)>] ListSipAuthRegistrationsCredentialListMappingResponse data, response status code and response headers
     def list_sip_auth_registrations_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -15825,6 +17300,7 @@ module Twilio
     # Retrieve a list of credential list mappings belonging to the domain used in the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialListMapping resources to read.
     # @param domain_sid [String] The SID of the SIP domain that contains the resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_auth_registrations_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_auth_registrations_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size).execute(&block)
@@ -15905,6 +17381,7 @@ module Twilio
     # Retrieve a list of credentials.
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @param credential_list_sid [String] The unique id that identifies the credential list that contains the desired credentials.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipCredentialResponse]
     def list_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_credential_with_http_info(account_sid: account_sid, credential_list_sid: credential_list_sid, page_size: page_size)
@@ -15914,6 +17391,7 @@ module Twilio
     # Retrieve a list of credentials.
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @param credential_list_sid [String] The unique id that identifies the credential list that contains the desired credentials.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipCredentialResponse, Integer, Hash)>] ListSipCredentialResponse data, response status code and response headers
     def list_sip_credential_with_http_info(*, account_sid : String = @account_sid, credential_list_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, page_size: page_size)
@@ -15930,6 +17408,7 @@ module Twilio
     # Retrieve a list of credentials.
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @param credential_list_sid [String] The unique id that identifies the credential list that contains the desired credentials.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, page_size: page_size).execute(&block)
@@ -16009,6 +17488,7 @@ module Twilio
 
     # Get All Credential Lists
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipCredentialListResponse]
     def list_sip_credential_list(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_credential_list_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -16017,6 +17497,7 @@ module Twilio
 
     # Get All Credential Lists
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipCredentialListResponse, Integer, Hash)>] ListSipCredentialListResponse data, response status code and response headers
     def list_sip_credential_list_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_credential_list(account_sid: account_sid, page_size: page_size)
@@ -16032,6 +17513,7 @@ module Twilio
 
     # Get All Credential Lists
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_credential_list(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_credential_list(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -16099,6 +17581,7 @@ module Twilio
     # Read multiple CredentialListMapping resources from an account.
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP Domain that includes the resource to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipCredentialListMappingResponse]
     def list_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_credential_list_mapping_with_http_info(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -16108,6 +17591,7 @@ module Twilio
     # Read multiple CredentialListMapping resources from an account.
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP Domain that includes the resource to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipCredentialListMappingResponse, Integer, Hash)>] ListSipCredentialListMappingResponse data, response status code and response headers
     def list_sip_credential_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -16124,6 +17608,7 @@ module Twilio
     # Read multiple CredentialListMapping resources from an account.
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP Domain that includes the resource to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_credential_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_credential_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size).execute(&block)
@@ -16203,6 +17688,7 @@ module Twilio
 
     # Retrieve a list of domains belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipDomainResponse]
     def list_sip_domain(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_domain_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -16211,6 +17697,7 @@ module Twilio
 
     # Retrieve a list of domains belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipDomainResponse, Integer, Hash)>] ListSipDomainResponse data, response status code and response headers
     def list_sip_domain_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_domain(account_sid: account_sid, page_size: page_size)
@@ -16226,6 +17713,7 @@ module Twilio
 
     # Retrieve a list of domains belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_domain(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_domain(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -16292,6 +17780,7 @@ module Twilio
 
     # Retrieve a list of IpAccessControlLists that belong to the account used to make the request
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipIpAccessControlListResponse]
     def list_sip_ip_access_control_list(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_ip_access_control_list_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -16300,6 +17789,7 @@ module Twilio
 
     # Retrieve a list of IpAccessControlLists that belong to the account used to make the request
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipIpAccessControlListResponse, Integer, Hash)>] ListSipIpAccessControlListResponse data, response status code and response headers
     def list_sip_ip_access_control_list_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_ip_access_control_list(account_sid: account_sid, page_size: page_size)
@@ -16315,6 +17805,7 @@ module Twilio
 
     # Retrieve a list of IpAccessControlLists that belong to the account used to make the request
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_ip_access_control_list(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_ip_access_control_list(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -16382,6 +17873,7 @@ module Twilio
     # Retrieve a list of IpAccessControlListMapping resources.
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP domain.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipIpAccessControlListMappingResponse]
     def list_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_ip_access_control_list_mapping_with_http_info(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -16391,6 +17883,7 @@ module Twilio
     # Retrieve a list of IpAccessControlListMapping resources.
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP domain.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipIpAccessControlListMappingResponse, Integer, Hash)>] ListSipIpAccessControlListMappingResponse data, response status code and response headers
     def list_sip_ip_access_control_list_mapping_with_http_info(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size)
@@ -16407,6 +17900,7 @@ module Twilio
     # Retrieve a list of IpAccessControlListMapping resources.
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @param domain_sid [String] A 34 character string that uniquely identifies the SIP domain.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_ip_access_control_list_mapping(*, account_sid : String = @account_sid, domain_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_ip_access_control_list_mapping(account_sid: account_sid, domain_sid: domain_sid, page_size: page_size).execute(&block)
@@ -16487,6 +17981,7 @@ module Twilio
     # Read multiple IpAddress resources.
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid that identifies the IpAddress resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListSipIpAddressResponse]
     def list_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, page_size : Int32? = nil)
       data, _status_code, _headers = list_sip_ip_address_with_http_info(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, page_size: page_size)
@@ -16496,6 +17991,7 @@ module Twilio
     # Read multiple IpAddress resources.
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid that identifies the IpAddress resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListSipIpAddressResponse, Integer, Hash)>] ListSipIpAddressResponse data, response status code and response headers
     def list_sip_ip_address_with_http_info(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, page_size : Int32? = nil)
       request = build_api_request_for_list_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, page_size: page_size)
@@ -16512,6 +18008,7 @@ module Twilio
     # Read multiple IpAddress resources.
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid that identifies the IpAddress resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, page_size: page_size).execute(&block)
@@ -16591,6 +18088,7 @@ module Twilio
 
     # Retrieve a list of transcriptions belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListTranscriptionResponse]
     def list_transcription(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       data, _status_code, _headers = list_transcription_with_http_info(account_sid: account_sid, page_size: page_size)
@@ -16599,6 +18097,7 @@ module Twilio
 
     # Retrieve a list of transcriptions belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListTranscriptionResponse, Integer, Hash)>] ListTranscriptionResponse data, response status code and response headers
     def list_transcription_with_http_info(*, account_sid : String = @account_sid, page_size : Int32? = nil)
       request = build_api_request_for_list_transcription(account_sid: account_sid, page_size: page_size)
@@ -16614,6 +18113,7 @@ module Twilio
 
     # Retrieve a list of transcriptions belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Transcription resources to read.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_transcription(*, account_sid : String = @account_sid, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_transcription(account_sid: account_sid, page_size: page_size).execute(&block)
@@ -16680,6 +18180,11 @@ module Twilio
 
     # Retrieve a list of usage-records belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageRecordResponse]
     def list_usage_record(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_record_with_http_info(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -16688,6 +18193,11 @@ module Twilio
 
     # Retrieve a list of usage-records belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageRecordResponse, Integer, Hash)>] ListUsageRecordResponse data, response status code and response headers
     def list_usage_record_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_record(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -16703,6 +18213,11 @@ module Twilio
 
     # Retrieve a list of usage-records belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_record(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_record(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size).execute(&block)
@@ -16777,6 +18292,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageRecordAllTimeResponse]
     def list_usage_record_all_time(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_record_all_time_with_http_info(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -16785,6 +18305,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageRecordAllTimeResponse, Integer, Hash)>] ListUsageRecordAllTimeResponse data, response status code and response headers
     def list_usage_record_all_time_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_record_all_time(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -16800,6 +18325,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_record_all_time(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_record_all_time(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size).execute(&block)
@@ -16874,6 +18404,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageRecordDailyResponse]
     def list_usage_record_daily(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_record_daily_with_http_info(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -16882,6 +18417,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageRecordDailyResponse, Integer, Hash)>] ListUsageRecordDailyResponse data, response status code and response headers
     def list_usage_record_daily_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_record_daily(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -16897,6 +18437,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_record_daily(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_record_daily(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size).execute(&block)
@@ -16971,6 +18516,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageRecordLastMonthResponse]
     def list_usage_record_last_month(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_record_last_month_with_http_info(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -16979,6 +18529,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageRecordLastMonthResponse, Integer, Hash)>] ListUsageRecordLastMonthResponse data, response status code and response headers
     def list_usage_record_last_month_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_record_last_month(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -16994,6 +18549,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_record_last_month(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_record_last_month(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size).execute(&block)
@@ -17068,6 +18628,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageRecordMonthlyResponse]
     def list_usage_record_monthly(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_record_monthly_with_http_info(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17076,6 +18641,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageRecordMonthlyResponse, Integer, Hash)>] ListUsageRecordMonthlyResponse data, response status code and response headers
     def list_usage_record_monthly_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_record_monthly(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17091,6 +18661,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_record_monthly(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_record_monthly(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size).execute(&block)
@@ -17165,6 +18740,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageRecordThisMonthResponse]
     def list_usage_record_this_month(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_record_this_month_with_http_info(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17173,6 +18753,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageRecordThisMonthResponse, Integer, Hash)>] ListUsageRecordThisMonthResponse data, response status code and response headers
     def list_usage_record_this_month_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_record_this_month(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17188,6 +18773,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_record_this_month(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_record_this_month(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size).execute(&block)
@@ -17262,6 +18852,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageRecordTodayResponse]
     def list_usage_record_today(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_record_today_with_http_info(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17270,6 +18865,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageRecordTodayResponse, Integer, Hash)>] ListUsageRecordTodayResponse data, response status code and response headers
     def list_usage_record_today_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_record_today(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17285,6 +18885,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_record_today(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_record_today(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size).execute(&block)
@@ -17359,6 +18964,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageRecordYearlyResponse]
     def list_usage_record_yearly(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_record_yearly_with_http_info(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17367,6 +18977,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageRecordYearlyResponse, Integer, Hash)>] ListUsageRecordYearlyResponse data, response status code and response headers
     def list_usage_record_yearly_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_record_yearly(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17382,6 +18997,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_record_yearly(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_record_yearly(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size).execute(&block)
@@ -17456,6 +19076,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageRecordYesterdayResponse]
     def list_usage_record_yesterday(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_record_yesterday_with_http_info(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17464,6 +19089,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageRecordYesterdayResponse, Integer, Hash)>] ListUsageRecordYesterdayResponse data, response status code and response headers
     def list_usage_record_yesterday_with_http_info(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_record_yesterday(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size)
@@ -17479,6 +19109,11 @@ module Twilio
 
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resources to read.
+    # @optional @param category [String?] The [usage category](https://www.twilio.com/docs/usage/api/usage-record#usage-categories) of the UsageRecord resources to read. Only UsageRecord resources in the specified category are retrieved.
+    # @optional @param start_date [Time?] Only include usage that has occurred on or after this date. Specify the date in GMT and format as `YYYY-MM-DD`. You can also specify offsets from the current date, such as: `-30days`, which will set the start date to be 30 days before the current date.
+    # @optional @param end_date [Time?] Only include usage that occurred on or before this date. Specify the date in GMT and format as `YYYY-MM-DD`.  You can also specify offsets from the current date, such as: `+30days`, which will set the end date to 30 days from the current date.
+    # @optional @param include_subaccounts [Bool?] Whether to include usage from the master account and all its subaccounts. Can be: `true` (the default) to include usage from the master account and all subaccounts or `false` to retrieve usage from only the specified account.
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_record_yesterday(*, account_sid : String = @account_sid, category : String? = nil, start_date : Time? = nil, end_date : Time? = nil, include_subaccounts : Bool? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_record_yesterday(account_sid: account_sid, category: category, start_date: start_date, end_date: end_date, include_subaccounts: include_subaccounts, page_size: page_size).execute(&block)
@@ -17553,6 +19188,10 @@ module Twilio
 
     # Retrieve a list of usage-triggers belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to read.
+    # @optional @param recurring [String?] The frequency of recurring UsageTriggers to read. Can be: `daily`, `monthly`, or `yearly` to read recurring UsageTriggers. An empty value or a value of `alltime` reads non-recurring UsageTriggers.
+    # @optional @param trigger_by [String?] The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).
+    # @optional @param usage_category [String?] The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories).
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [ListUsageTriggerResponse]
     def list_usage_trigger(*, account_sid : String = @account_sid, recurring : String? = nil, trigger_by : String? = nil, usage_category : String? = nil, page_size : Int32? = nil)
       data, _status_code, _headers = list_usage_trigger_with_http_info(account_sid: account_sid, recurring: recurring, trigger_by: trigger_by, usage_category: usage_category, page_size: page_size)
@@ -17561,6 +19200,10 @@ module Twilio
 
     # Retrieve a list of usage-triggers belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to read.
+    # @optional @param recurring [String?] The frequency of recurring UsageTriggers to read. Can be: `daily`, `monthly`, or `yearly` to read recurring UsageTriggers. An empty value or a value of `alltime` reads non-recurring UsageTriggers.
+    # @optional @param trigger_by [String?] The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).
+    # @optional @param usage_category [String?] The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories).
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return [Array<(ListUsageTriggerResponse, Integer, Hash)>] ListUsageTriggerResponse data, response status code and response headers
     def list_usage_trigger_with_http_info(*, account_sid : String = @account_sid, recurring : String? = nil, trigger_by : String? = nil, usage_category : String? = nil, page_size : Int32? = nil)
       request = build_api_request_for_list_usage_trigger(account_sid: account_sid, recurring: recurring, trigger_by: trigger_by, usage_category: usage_category, page_size: page_size)
@@ -17576,6 +19219,10 @@ module Twilio
 
     # Retrieve a list of usage-triggers belonging to the account used to make the request
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to read.
+    # @optional @param recurring [String?] The frequency of recurring UsageTriggers to read. Can be: `daily`, `monthly`, or `yearly` to read recurring UsageTriggers. An empty value or a value of `alltime` reads non-recurring UsageTriggers.
+    # @optional @param trigger_by [String?] The trigger field of the UsageTriggers to read.  Can be: `count`, `usage`, or `price` as described in the [UsageRecords documentation](https://www.twilio.com/docs/usage/api/usage-record#usage-count-price).
+    # @optional @param usage_category [String?] The usage category of the UsageTriggers to read. Must be a supported [usage categories](https://www.twilio.com/docs/usage/api/usage-record#usage-categories).
+    # @optional @param page_size [Int32?] How many resources to return in each list page. The default is 50, and the maximum is 1000.
     # @return nil
     def list_usage_trigger(*, account_sid : String = @account_sid, recurring : String? = nil, trigger_by : String? = nil, usage_category : String? = nil, page_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_list_usage_trigger(account_sid: account_sid, recurring: recurring, trigger_by: trigger_by, usage_category: usage_category, page_size: page_size).execute(&block)
@@ -17657,6 +19304,8 @@ module Twilio
 
     # Modify the properties of a given Account
     # @param sid [String] The Account Sid that uniquely identifies the account to update
+    # @optional @param friendly_name [String?] Update the human-readable description of this Account
+    # @optional @param status [String?] Alter the status of this account: use `closed` to irreversibly close this account, `suspended` to temporarily suspend it, or `active` to reactivate it.
     # @return [Account]
     def update_account(*, sid : String, friendly_name : String? = nil, status : String? = nil)
       data, _status_code, _headers = update_account_with_http_info(sid: sid, friendly_name: friendly_name, status: status)
@@ -17665,6 +19314,8 @@ module Twilio
 
     # Modify the properties of a given Account
     # @param sid [String] The Account Sid that uniquely identifies the account to update
+    # @optional @param friendly_name [String?] Update the human-readable description of this Account
+    # @optional @param status [String?] Alter the status of this account: use `closed` to irreversibly close this account, `suspended` to temporarily suspend it, or `active` to reactivate it.
     # @return [Array<(Account, Integer, Hash)>] Account data, response status code and response headers
     def update_account_with_http_info(*, sid : String, friendly_name : String? = nil, status : String? = nil)
       request = build_api_request_for_update_account(sid: sid, friendly_name: friendly_name, status: status)
@@ -17680,6 +19331,8 @@ module Twilio
 
     # Modify the properties of a given Account
     # @param sid [String] The Account Sid that uniquely identifies the account to update
+    # @optional @param friendly_name [String?] Update the human-readable description of this Account
+    # @optional @param status [String?] Alter the status of this account: use `closed` to irreversibly close this account, `suspended` to temporarily suspend it, or `active` to reactivate it.
     # @return nil
     def update_account(*, sid : String, friendly_name : String? = nil, status : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_account(sid: sid, friendly_name: friendly_name, status: status).execute(&block)
@@ -17746,6 +19399,14 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Address resource to update.
+    # @optional @param auto_correct_address [Bool?] Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
+    # @optional @param city [String?] The city of the address.
+    # @optional @param customer_name [String?] The name to associate with the address.
+    # @optional @param emergency_enabled [Bool?] Whether to enable emergency calling on the address. Can be: `true` or `false`.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the address. It can be up to 64 characters long.
+    # @optional @param postal_code [String?] The postal code of the address.
+    # @optional @param region [String?] The state or region of the address.
+    # @optional @param street [String?] The number and street address of the address.
     # @return [Address]
     def update_address(*, account_sid : String = @account_sid, sid : String, auto_correct_address : Bool? = nil, city : String? = nil, customer_name : String? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil, postal_code : String? = nil, region : String? = nil, street : String? = nil)
       data, _status_code, _headers = update_address_with_http_info(account_sid: account_sid, sid: sid, auto_correct_address: auto_correct_address, city: city, customer_name: customer_name, emergency_enabled: emergency_enabled, friendly_name: friendly_name, postal_code: postal_code, region: region, street: street)
@@ -17755,6 +19416,14 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Address resource to update.
+    # @optional @param auto_correct_address [Bool?] Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
+    # @optional @param city [String?] The city of the address.
+    # @optional @param customer_name [String?] The name to associate with the address.
+    # @optional @param emergency_enabled [Bool?] Whether to enable emergency calling on the address. Can be: `true` or `false`.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the address. It can be up to 64 characters long.
+    # @optional @param postal_code [String?] The postal code of the address.
+    # @optional @param region [String?] The state or region of the address.
+    # @optional @param street [String?] The number and street address of the address.
     # @return [Array<(Address, Integer, Hash)>] Address data, response status code and response headers
     def update_address_with_http_info(*, account_sid : String = @account_sid, sid : String, auto_correct_address : Bool? = nil, city : String? = nil, customer_name : String? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil, postal_code : String? = nil, region : String? = nil, street : String? = nil)
       request = build_api_request_for_update_address(account_sid: account_sid, sid: sid, auto_correct_address: auto_correct_address, city: city, customer_name: customer_name, emergency_enabled: emergency_enabled, friendly_name: friendly_name, postal_code: postal_code, region: region, street: street)
@@ -17771,6 +19440,14 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that is responsible for the Address resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Address resource to update.
+    # @optional @param auto_correct_address [Bool?] Whether we should automatically correct the address. Can be: `true` or `false` and the default is `true`. If empty or `true`, we will correct the address you provide if necessary. If `false`, we won't alter the address you provide.
+    # @optional @param city [String?] The city of the address.
+    # @optional @param customer_name [String?] The name to associate with the address.
+    # @optional @param emergency_enabled [Bool?] Whether to enable emergency calling on the address. Can be: `true` or `false`.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the address. It can be up to 64 characters long.
+    # @optional @param postal_code [String?] The postal code of the address.
+    # @optional @param region [String?] The state or region of the address.
+    # @optional @param street [String?] The number and street address of the address.
     # @return nil
     def update_address(*, account_sid : String = @account_sid, sid : String, auto_correct_address : Bool? = nil, city : String? = nil, customer_name : String? = nil, emergency_enabled : Bool? = nil, friendly_name : String? = nil, postal_code : String? = nil, region : String? = nil, street : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_address(account_sid: account_sid, sid: sid, auto_correct_address: auto_correct_address, city: city, customer_name: customer_name, emergency_enabled: emergency_enabled, friendly_name: friendly_name, postal_code: postal_code, region: region, street: street).execute(&block)
@@ -17852,6 +19529,21 @@ module Twilio
     # Updates the application's properties
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Application resource to update.
+    # @optional @param api_version [String?] The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is your account's default API version.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+    # @optional @param message_status_callback [String?] The URL we should call using a POST method to send message status information to your application.
+    # @optional @param sms_fallback_method [String?] The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_status_callback [String?] Same as message_status_callback: The URL we should call using a POST method to send status information about SMS messages sent by the application. Deprecated, included for backwards compatibility.
+    # @optional @param sms_url [String?] The URL we should call when the phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_url [String?] The URL we should call when the phone number assigned to this application receives a call.
     # @return [Application]
     def update_application(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil)
       data, _status_code, _headers = update_application_with_http_info(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
@@ -17861,6 +19553,21 @@ module Twilio
     # Updates the application&#39;s properties
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Application resource to update.
+    # @optional @param api_version [String?] The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is your account's default API version.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+    # @optional @param message_status_callback [String?] The URL we should call using a POST method to send message status information to your application.
+    # @optional @param sms_fallback_method [String?] The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_status_callback [String?] Same as message_status_callback: The URL we should call using a POST method to send status information about SMS messages sent by the application. Deprecated, included for backwards compatibility.
+    # @optional @param sms_url [String?] The URL we should call when the phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_url [String?] The URL we should call when the phone number assigned to this application receives a call.
     # @return [Array<(Application, Integer, Hash)>] Application data, response status code and response headers
     def update_application_with_http_info(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil)
       request = build_api_request_for_update_application(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url)
@@ -17877,6 +19584,21 @@ module Twilio
     # Updates the application&#39;s properties
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Application resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Application resource to update.
+    # @optional @param api_version [String?] The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`. The default value is your account's default API version.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+    # @optional @param message_status_callback [String?] The URL we should call using a POST method to send message status information to your application.
+    # @optional @param sms_fallback_method [String?] The HTTP method we should use to call `sms_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML from `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method we should use to call `sms_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_status_callback [String?] Same as message_status_callback: The URL we should call using a POST method to send status information about SMS messages sent by the application. Deprecated, included for backwards compatibility.
+    # @optional @param sms_url [String?] The URL we should call when the phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST`.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether we should look up the caller's caller-ID name from the CNAM database (additional charges apply). Can be: `true` or `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_url [String?] The URL we should call when the phone number assigned to this application receives a call.
     # @return nil
     def update_application(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, message_status_callback : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_status_callback : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_application(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, message_status_callback: message_status_callback, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_status_callback: sms_status_callback, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_url: voice_url).execute(&block)
@@ -17985,6 +19707,15 @@ module Twilio
     # Initiates a call redirect or terminates a call
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Call resource to update
+    # @optional @param fallback_method [String?] The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param fallback_url [String?] The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param method [String?] The HTTP method we should use when calling the `url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param status [String?] The new status of the resource. Can be: `canceled` or `completed`. Specifying `canceled` will attempt to hang up calls that are queued or ringing; however, it will not affect calls already in progress. Specifying `completed` will attempt to hang up a call even if it's already in progress.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
+    # @optional @param status_callback_method [String?] The HTTP method we should use when requesting the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param time_limit [Int32?] The maximum duration of the call in seconds. Constraints depend on account and configuration.
+    # @optional @param twiml [String?] TwiML instructions for the call Twilio will use without fetching Twiml from url. Twiml and url parameters are mutually exclusive
+    # @optional @param url [String?] The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).
     # @return [Call]
     def update_call(*, account_sid : String = @account_sid, sid : String, fallback_method : String? = nil, fallback_url : String? = nil, method : String? = nil, status : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, twiml : String? = nil, url : String? = nil)
       data, _status_code, _headers = update_call_with_http_info(account_sid: account_sid, sid: sid, fallback_method: fallback_method, fallback_url: fallback_url, method: method, status: status, status_callback: status_callback, status_callback_method: status_callback_method, time_limit: time_limit, twiml: twiml, url: url)
@@ -17994,6 +19725,15 @@ module Twilio
     # Initiates a call redirect or terminates a call
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Call resource to update
+    # @optional @param fallback_method [String?] The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param fallback_url [String?] The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param method [String?] The HTTP method we should use when calling the `url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param status [String?] The new status of the resource. Can be: `canceled` or `completed`. Specifying `canceled` will attempt to hang up calls that are queued or ringing; however, it will not affect calls already in progress. Specifying `completed` will attempt to hang up a call even if it's already in progress.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
+    # @optional @param status_callback_method [String?] The HTTP method we should use when requesting the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param time_limit [Int32?] The maximum duration of the call in seconds. Constraints depend on account and configuration.
+    # @optional @param twiml [String?] TwiML instructions for the call Twilio will use without fetching Twiml from url. Twiml and url parameters are mutually exclusive
+    # @optional @param url [String?] The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).
     # @return [Array<(Call, Integer, Hash)>] Call data, response status code and response headers
     def update_call_with_http_info(*, account_sid : String = @account_sid, sid : String, fallback_method : String? = nil, fallback_url : String? = nil, method : String? = nil, status : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, twiml : String? = nil, url : String? = nil)
       request = build_api_request_for_update_call(account_sid: account_sid, sid: sid, fallback_method: fallback_method, fallback_url: fallback_url, method: method, status: status, status_callback: status_callback, status_callback_method: status_callback_method, time_limit: time_limit, twiml: twiml, url: url)
@@ -18010,6 +19750,15 @@ module Twilio
     # Initiates a call redirect or terminates a call
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Call resource(s) to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Call resource to update
+    # @optional @param fallback_method [String?] The HTTP method that we should use to request the `fallback_url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param fallback_url [String?] The URL that we call using the `fallback_method` if an error occurs when requesting or executing the TwiML at `url`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param method [String?] The HTTP method we should use when calling the `url`. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param status [String?] The new status of the resource. Can be: `canceled` or `completed`. Specifying `canceled` will attempt to hang up calls that are queued or ringing; however, it will not affect calls already in progress. Specifying `completed` will attempt to hang up a call even if it's already in progress.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application. If no `status_callback_event` is specified, we will send the `completed` status. If an `application_sid` parameter is present, this parameter is ignored. URLs must contain a valid hostname (underscores are not permitted).
+    # @optional @param status_callback_method [String?] The HTTP method we should use when requesting the `status_callback` URL. Can be: `GET` or `POST` and the default is `POST`. If an `application_sid` parameter is present, this parameter is ignored.
+    # @optional @param time_limit [Int32?] The maximum duration of the call in seconds. Constraints depend on account and configuration.
+    # @optional @param twiml [String?] TwiML instructions for the call Twilio will use without fetching Twiml from url. Twiml and url parameters are mutually exclusive
+    # @optional @param url [String?] The absolute URL that returns the TwiML instructions for the call. We will call this URL using the `method` when the call connects. For more information, see the [Url Parameter](https://www.twilio.com/docs/voice/make-calls#specify-a-url-parameter) section in [Making Calls](https://www.twilio.com/docs/voice/make-calls).
     # @return nil
     def update_call(*, account_sid : String = @account_sid, sid : String, fallback_method : String? = nil, fallback_url : String? = nil, method : String? = nil, status : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, time_limit : Int32? = nil, twiml : String? = nil, url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_call(account_sid: account_sid, sid: sid, fallback_method: fallback_method, fallback_url: fallback_url, method: method, status: status, status_callback: status_callback, status_callback_method: status_callback_method, time_limit: time_limit, twiml: twiml, url: url).execute(&block)
@@ -18108,6 +19857,8 @@ module Twilio
     # Update a Feedback resource for a call
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param call_sid [String] The call sid that uniquely identifies the call
+    # @optional @param issue [Array(String)?] One or more issues experienced during the call. The issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`.
+    # @optional @param quality_score [Int32?] The call quality expressed as an integer from `1` to `5` where `1` represents very poor call quality and `5` represents a perfect call.
     # @return [CallCallFeedback]
     def update_call_feedback(*, account_sid : String = @account_sid, call_sid : String, issue : Array(String)? = nil, quality_score : Int32? = nil)
       data, _status_code, _headers = update_call_feedback_with_http_info(account_sid: account_sid, call_sid: call_sid, issue: issue, quality_score: quality_score)
@@ -18117,6 +19868,8 @@ module Twilio
     # Update a Feedback resource for a call
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param call_sid [String] The call sid that uniquely identifies the call
+    # @optional @param issue [Array(String)?] One or more issues experienced during the call. The issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`.
+    # @optional @param quality_score [Int32?] The call quality expressed as an integer from `1` to `5` where `1` represents very poor call quality and `5` represents a perfect call.
     # @return [Array<(CallCallFeedback, Integer, Hash)>] CallCallFeedback data, response status code and response headers
     def update_call_feedback_with_http_info(*, account_sid : String = @account_sid, call_sid : String, issue : Array(String)? = nil, quality_score : Int32? = nil)
       request = build_api_request_for_update_call_feedback(account_sid: account_sid, call_sid: call_sid, issue: issue, quality_score: quality_score)
@@ -18133,6 +19886,8 @@ module Twilio
     # Update a Feedback resource for a call
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param call_sid [String] The call sid that uniquely identifies the call
+    # @optional @param issue [Array(String)?] One or more issues experienced during the call. The issues can be: `imperfect-audio`, `dropped-call`, `incorrect-caller-id`, `post-dial-delay`, `digits-not-captured`, `audio-latency`, `unsolicited-call`, or `one-way-audio`.
+    # @optional @param quality_score [Int32?] The call quality expressed as an integer from `1` to `5` where `1` represents very poor call quality and `5` represents a perfect call.
     # @return nil
     def update_call_feedback(*, account_sid : String = @account_sid, call_sid : String, issue : Array(String)? = nil, quality_score : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_update_call_feedback(account_sid: account_sid, call_sid: call_sid, issue: issue, quality_score: quality_score).execute(&block)
@@ -18201,6 +19956,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to update.
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
+    # @optional @param pause_behavior [String?] Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
     # @return [CallCallRecording]
     def update_call_recording(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String, pause_behavior : String? = nil)
       data, _status_code, _headers = update_call_recording_with_http_info(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status, pause_behavior: pause_behavior)
@@ -18212,6 +19968,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to update.
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
+    # @optional @param pause_behavior [String?] Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
     # @return [Array<(CallCallRecording, Integer, Hash)>] CallCallRecording data, response status code and response headers
     def update_call_recording_with_http_info(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String, pause_behavior : String? = nil)
       request = build_api_request_for_update_call_recording(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status, pause_behavior: pause_behavior)
@@ -18230,6 +19987,7 @@ module Twilio
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Recording resource to update.
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
+    # @optional @param pause_behavior [String?] Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
     # @return nil
     def update_call_recording(*, account_sid : String = @account_sid, call_sid : String, sid : String, status : String, pause_behavior : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_call_recording(account_sid: account_sid, call_sid: call_sid, sid: sid, status: status, pause_behavior: pause_behavior).execute(&block)
@@ -18309,6 +20067,9 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference resource to update
+    # @optional @param announce_method [String?] The HTTP method used to call `announce_url`. Can be: `GET` or `POST` and the default is `POST`
+    # @optional @param announce_url [String?] The URL we should call to announce something into the conference. The URL can return an MP3, a WAV, or a TwiML document with `<Play>` or `<Say>`.
+    # @optional @param status [String?] The new status of the resource. Can be:  Can be: `init`, `in-progress`, or `completed`. Specifying `completed` will end the conference and hang up all participants
     # @return [Conference]
     def update_conference(*, account_sid : String = @account_sid, sid : String, announce_method : String? = nil, announce_url : String? = nil, status : String? = nil)
       data, _status_code, _headers = update_conference_with_http_info(account_sid: account_sid, sid: sid, announce_method: announce_method, announce_url: announce_url, status: status)
@@ -18318,6 +20079,9 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference resource to update
+    # @optional @param announce_method [String?] The HTTP method used to call `announce_url`. Can be: `GET` or `POST` and the default is `POST`
+    # @optional @param announce_url [String?] The URL we should call to announce something into the conference. The URL can return an MP3, a WAV, or a TwiML document with `<Play>` or `<Say>`.
+    # @optional @param status [String?] The new status of the resource. Can be:  Can be: `init`, `in-progress`, or `completed`. Specifying `completed` will end the conference and hang up all participants
     # @return [Array<(Conference, Integer, Hash)>] Conference data, response status code and response headers
     def update_conference_with_http_info(*, account_sid : String = @account_sid, sid : String, announce_method : String? = nil, announce_url : String? = nil, status : String? = nil)
       request = build_api_request_for_update_conference(account_sid: account_sid, sid: sid, announce_method: announce_method, announce_url: announce_url, status: status)
@@ -18334,6 +20098,9 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Conference resource(s) to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference resource to update
+    # @optional @param announce_method [String?] The HTTP method used to call `announce_url`. Can be: `GET` or `POST` and the default is `POST`
+    # @optional @param announce_url [String?] The URL we should call to announce something into the conference. The URL can return an MP3, a WAV, or a TwiML document with `<Play>` or `<Say>`.
+    # @optional @param status [String?] The new status of the resource. Can be:  Can be: `init`, `in-progress`, or `completed`. Specifying `completed` will end the conference and hang up all participants
     # @return nil
     def update_conference(*, account_sid : String = @account_sid, sid : String, announce_method : String? = nil, announce_url : String? = nil, status : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_conference(account_sid: account_sid, sid: sid, announce_method: announce_method, announce_url: announce_url, status: status).execute(&block)
@@ -18407,6 +20174,7 @@ module Twilio
     # @param conference_sid [String] The Conference SID that identifies the conference associated with the recording to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference Recording resource to update. Use `Twilio.CURRENT` to reference the current active recording.
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
+    # @optional @param pause_behavior [String?] Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
     # @return [ConferenceConferenceRecording]
     def update_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, sid : String, status : String, pause_behavior : String? = nil)
       data, _status_code, _headers = update_conference_recording_with_http_info(account_sid: account_sid, conference_sid: conference_sid, sid: sid, status: status, pause_behavior: pause_behavior)
@@ -18418,6 +20186,7 @@ module Twilio
     # @param conference_sid [String] The Conference SID that identifies the conference associated with the recording to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference Recording resource to update. Use `Twilio.CURRENT` to reference the current active recording.
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
+    # @optional @param pause_behavior [String?] Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
     # @return [Array<(ConferenceConferenceRecording, Integer, Hash)>] ConferenceConferenceRecording data, response status code and response headers
     def update_conference_recording_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, sid : String, status : String, pause_behavior : String? = nil)
       request = build_api_request_for_update_conference_recording(account_sid: account_sid, conference_sid: conference_sid, sid: sid, status: status, pause_behavior: pause_behavior)
@@ -18436,6 +20205,7 @@ module Twilio
     # @param conference_sid [String] The Conference SID that identifies the conference associated with the recording to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Conference Recording resource to update. Use `Twilio.CURRENT` to reference the current active recording.
     # @param status [String] The new status of the recording. Can be: `stopped`, `paused`, `in-progress`.
+    # @optional @param pause_behavior [String?] Whether to record during a pause. Can be: `skip` or `silence` and the default is `silence`. `skip` does not record during the pause period, while `silence` will replace the actual audio of the call with silence during the pause period. This parameter only applies when setting `status` is set to `paused`.
     # @return nil
     def update_conference_recording(*, account_sid : String = @account_sid, conference_sid : String, sid : String, status : String, pause_behavior : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_conference_recording(account_sid: account_sid, conference_sid: conference_sid, sid: sid, status: status, pause_behavior: pause_behavior).execute(&block)
@@ -18515,6 +20285,14 @@ module Twilio
     # Update a connect-app with the specified parameters
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the ConnectApp resource to update.
+    # @optional @param authorize_redirect_url [String?] The URL to redirect the user to after we authenticate the user and obtain authorization to access the Connect App.
+    # @optional @param company_name [String?] The company name to set for the Connect App.
+    # @optional @param deauthorize_callback_method [String?] The HTTP method to use when calling `deauthorize_callback_url`.
+    # @optional @param deauthorize_callback_url [String?] The URL to call using the `deauthorize_callback_method` to de-authorize the Connect App.
+    # @optional @param description [String?] A description of the Connect App.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+    # @optional @param homepage_url [String?] A public URL where users can obtain more information about this Connect App.
+    # @optional @param permissions [Array(String)?] A comma-separated list of the permissions you will request from the users of this ConnectApp.  Can include: `get-all` and `post-all`.
     # @return [ConnectApp]
     def update_connect_app(*, account_sid : String = @account_sid, sid : String, authorize_redirect_url : String? = nil, company_name : String? = nil, deauthorize_callback_method : String? = nil, deauthorize_callback_url : String? = nil, description : String? = nil, friendly_name : String? = nil, homepage_url : String? = nil, permissions : Array(String)? = nil)
       data, _status_code, _headers = update_connect_app_with_http_info(account_sid: account_sid, sid: sid, authorize_redirect_url: authorize_redirect_url, company_name: company_name, deauthorize_callback_method: deauthorize_callback_method, deauthorize_callback_url: deauthorize_callback_url, description: description, friendly_name: friendly_name, homepage_url: homepage_url, permissions: permissions)
@@ -18524,6 +20302,14 @@ module Twilio
     # Update a connect-app with the specified parameters
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the ConnectApp resource to update.
+    # @optional @param authorize_redirect_url [String?] The URL to redirect the user to after we authenticate the user and obtain authorization to access the Connect App.
+    # @optional @param company_name [String?] The company name to set for the Connect App.
+    # @optional @param deauthorize_callback_method [String?] The HTTP method to use when calling `deauthorize_callback_url`.
+    # @optional @param deauthorize_callback_url [String?] The URL to call using the `deauthorize_callback_method` to de-authorize the Connect App.
+    # @optional @param description [String?] A description of the Connect App.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+    # @optional @param homepage_url [String?] A public URL where users can obtain more information about this Connect App.
+    # @optional @param permissions [Array(String)?] A comma-separated list of the permissions you will request from the users of this ConnectApp.  Can include: `get-all` and `post-all`.
     # @return [Array<(ConnectApp, Integer, Hash)>] ConnectApp data, response status code and response headers
     def update_connect_app_with_http_info(*, account_sid : String = @account_sid, sid : String, authorize_redirect_url : String? = nil, company_name : String? = nil, deauthorize_callback_method : String? = nil, deauthorize_callback_url : String? = nil, description : String? = nil, friendly_name : String? = nil, homepage_url : String? = nil, permissions : Array(String)? = nil)
       request = build_api_request_for_update_connect_app(account_sid: account_sid, sid: sid, authorize_redirect_url: authorize_redirect_url, company_name: company_name, deauthorize_callback_method: deauthorize_callback_method, deauthorize_callback_url: deauthorize_callback_url, description: description, friendly_name: friendly_name, homepage_url: homepage_url, permissions: permissions)
@@ -18540,6 +20326,14 @@ module Twilio
     # Update a connect-app with the specified parameters
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ConnectApp resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the ConnectApp resource to update.
+    # @optional @param authorize_redirect_url [String?] The URL to redirect the user to after we authenticate the user and obtain authorization to access the Connect App.
+    # @optional @param company_name [String?] The company name to set for the Connect App.
+    # @optional @param deauthorize_callback_method [String?] The HTTP method to use when calling `deauthorize_callback_url`.
+    # @optional @param deauthorize_callback_url [String?] The URL to call using the `deauthorize_callback_method` to de-authorize the Connect App.
+    # @optional @param description [String?] A description of the Connect App.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
+    # @optional @param homepage_url [String?] A public URL where users can obtain more information about this Connect App.
+    # @optional @param permissions [Array(String)?] A comma-separated list of the permissions you will request from the users of this ConnectApp.  Can include: `get-all` and `post-all`.
     # @return nil
     def update_connect_app(*, account_sid : String = @account_sid, sid : String, authorize_redirect_url : String? = nil, company_name : String? = nil, deauthorize_callback_method : String? = nil, deauthorize_callback_url : String? = nil, description : String? = nil, friendly_name : String? = nil, homepage_url : String? = nil, permissions : Array(String)? = nil, &block : Crest::Response ->)
       build_api_request_for_update_connect_app(account_sid: account_sid, sid: sid, authorize_redirect_url: authorize_redirect_url, company_name: company_name, deauthorize_callback_method: deauthorize_callback_method, deauthorize_callback_url: deauthorize_callback_url, description: description, friendly_name: friendly_name, homepage_url: homepage_url, permissions: permissions).execute(&block)
@@ -18629,6 +20423,29 @@ module Twilio
     # Update an incoming-phone-number instance.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).
     # @param sid [String] The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to update.
+    # @optional @param account_sid2 [String?] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from this phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe this phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the phone number. Some regions require an identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle phone calls to the phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle phone calls to the phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [IncomingPhoneNumber]
     def update_incoming_phone_number(*, account_sid : String = @account_sid, sid : String, account_sid2 : String? = @account_sid, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       data, _status_code, _headers = update_incoming_phone_number_with_http_info(account_sid: account_sid, sid: sid, account_sid2: account_sid2, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -18638,6 +20455,29 @@ module Twilio
     # Update an incoming-phone-number instance.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).
     # @param sid [String] The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to update.
+    # @optional @param account_sid2 [String?] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from this phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe this phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the phone number. Some regions require an identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle phone calls to the phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle phone calls to the phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return [Array<(IncomingPhoneNumber, Integer, Hash)>] IncomingPhoneNumber data, response status code and response headers
     def update_incoming_phone_number_with_http_info(*, account_sid : String = @account_sid, sid : String, account_sid2 : String? = @account_sid, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil)
       request = build_api_request_for_update_incoming_phone_number(account_sid: account_sid, sid: sid, account_sid2: account_sid2, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url)
@@ -18654,6 +20494,29 @@ module Twilio
     # Update an incoming-phone-number instance.
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).
     # @param sid [String] The Twilio-provided string that uniquely identifies the IncomingPhoneNumber resource to update.
+    # @optional @param account_sid2 [String?] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IncomingPhoneNumber resource to update.  For more information, see [Exchanging Numbers Between Subaccounts](https://www.twilio.com/docs/iam/api/subaccounts#exchanging-numbers).
+    # @optional @param address_sid [String?] The SID of the Address resource we should associate with the phone number. Some regions require addresses to meet local regulations.
+    # @optional @param api_version [String?] The API version to use for incoming calls made to the phone number. The default is `2010-04-01`.
+    # @optional @param bundle_sid [String?] The SID of the Bundle resource that you associate with the phone number. Some regions require a Bundle to meet local Regulations.
+    # @optional @param emergency_address_sid [String?] The SID of the emergency address configuration to use for emergency calling from this phone number.
+    # @optional @param emergency_status [String?] The parameter displays if emergency calling is enabled for this number. Active numbers may place emergency calls by dialing valid emergency numbers for the country.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe this phone number. It can be up to 64 characters long. By default, this is a formatted version of the phone number.
+    # @optional @param identity_sid [String?] The SID of the Identity resource that we should associate with the phone number. Some regions require an identity to meet local regulations.
+    # @optional @param sms_application_sid [String?] The SID of the application that should handle SMS messages sent to the number. If an `sms_application_sid` is present, we ignore all of the `sms_*_url` urls and use those set on the application.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call `sms_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call when an error occurs while requesting or executing the TwiML defined by `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method that we should use to call `sms_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param sms_url [String?] The URL we should call when the phone number receives an incoming SMS message.
+    # @optional @param status_callback [String?] The URL we should call using the `status_callback_method` to send status information to your application.
+    # @optional @param status_callback_method [String?] The HTTP method we should use to call `status_callback`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param trunk_sid [String?] The SID of the Trunk we should use to handle phone calls to the phone number. If a `trunk_sid` is present, we ignore all of the voice urls and voice applications and use only those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    # @optional @param voice_application_sid [String?] The SID of the application we should use to handle phone calls to the phone number. If a `voice_application_sid` is present, we ignore all of the voice urls and use only those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    # @optional @param voice_caller_id_lookup [Bool?] Whether to lookup the caller's name from the CNAM database and post it to your app. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param voice_fallback_method [String?] The HTTP method that we should use to call `voice_fallback_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs retrieving or executing the TwiML requested by `url`.
+    # @optional @param voice_method [String?] The HTTP method that we should use to call `voice_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param voice_receive_mode [String?] The configuration parameter for the phone number to receive incoming voice calls or faxes. Can be: `fax` or `voice` and defaults to `voice`.
+    # @optional @param voice_url [String?] The URL that we should call to answer a call to the phone number. The `voice_url` will not be called if a `voice_application_sid` or a `trunk_sid` is set.
     # @return nil
     def update_incoming_phone_number(*, account_sid : String = @account_sid, sid : String, account_sid2 : String? = @account_sid, address_sid : String? = nil, api_version : String? = nil, bundle_sid : String? = nil, emergency_address_sid : String? = nil, emergency_status : String? = nil, friendly_name : String? = nil, identity_sid : String? = nil, sms_application_sid : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, status_callback : String? = nil, status_callback_method : String? = nil, trunk_sid : String? = nil, voice_application_sid : String? = nil, voice_caller_id_lookup : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_receive_mode : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_incoming_phone_number(account_sid: account_sid, sid: sid, account_sid2: account_sid2, address_sid: address_sid, api_version: api_version, bundle_sid: bundle_sid, emergency_address_sid: emergency_address_sid, emergency_status: emergency_status, friendly_name: friendly_name, identity_sid: identity_sid, sms_application_sid: sms_application_sid, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url, status_callback: status_callback, status_callback_method: status_callback_method, trunk_sid: trunk_sid, voice_application_sid: voice_application_sid, voice_caller_id_lookup: voice_caller_id_lookup, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_receive_mode: voice_receive_mode, voice_url: voice_url).execute(&block)
@@ -18882,6 +20745,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Key resource to update.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [Key]
     def update_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
       data, _status_code, _headers = update_key_with_http_info(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
@@ -18891,6 +20755,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Key resource to update.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [Array<(Key, Integer, Hash)>] Key data, response status code and response headers
     def update_key_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
       request = build_api_request_for_update_key(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
@@ -18907,6 +20772,7 @@ module Twilio
     #
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Key resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Key resource to update.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return nil
     def update_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_key(account_sid: account_sid, sid: sid, friendly_name: friendly_name).execute(&block)
@@ -18983,6 +20849,7 @@ module Twilio
     # @param queue_sid [String] The SID of the Queue in which to find the members to update.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update.
     # @param url [String] The absolute URL of the Queue resource.
+    # @optional @param method [String?] How to pass the update request data. Can be `GET` or `POST` and the default is `POST`. `POST` sends the data as encoded form data and `GET` sends the data as query parameters.
     # @return [QueueMember]
     def update_member(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String, url : String, method : String? = nil)
       data, _status_code, _headers = update_member_with_http_info(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid, url: url, method: method)
@@ -18994,6 +20861,7 @@ module Twilio
     # @param queue_sid [String] The SID of the Queue in which to find the members to update.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update.
     # @param url [String] The absolute URL of the Queue resource.
+    # @optional @param method [String?] How to pass the update request data. Can be `GET` or `POST` and the default is `POST`. `POST` sends the data as encoded form data and `GET` sends the data as query parameters.
     # @return [Array<(QueueMember, Integer, Hash)>] QueueMember data, response status code and response headers
     def update_member_with_http_info(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String, url : String, method : String? = nil)
       request = build_api_request_for_update_member(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid, url: url, method: method)
@@ -19012,6 +20880,7 @@ module Twilio
     # @param queue_sid [String] The SID of the Queue in which to find the members to update.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID of the resource(s) to update.
     # @param url [String] The absolute URL of the Queue resource.
+    # @optional @param method [String?] How to pass the update request data. Can be `GET` or `POST` and the default is `POST`. `POST` sends the data as encoded form data and `GET` sends the data as query parameters.
     # @return nil
     def update_member(*, account_sid : String = @account_sid, queue_sid : String, call_sid : String, url : String, method : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_member(account_sid: account_sid, queue_sid: queue_sid, call_sid: call_sid, url: url, method: method).execute(&block)
@@ -19091,6 +20960,8 @@ module Twilio
     # To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Message resource to update.
+    # @optional @param body [String?] The text of the message you want to send. Can be up to 1,600 characters long.
+    # @optional @param status [String?] When set as `canceled`, allows a message cancelation request if a message has not yet been sent.
     # @return [Message]
     def update_message(*, account_sid : String = @account_sid, sid : String, body : String? = nil, status : String? = nil)
       data, _status_code, _headers = update_message_with_http_info(account_sid: account_sid, sid: sid, body: body, status: status)
@@ -19100,6 +20971,8 @@ module Twilio
     # To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Message resource to update.
+    # @optional @param body [String?] The text of the message you want to send. Can be up to 1,600 characters long.
+    # @optional @param status [String?] When set as `canceled`, allows a message cancelation request if a message has not yet been sent.
     # @return [Array<(Message, Integer, Hash)>] Message data, response status code and response headers
     def update_message_with_http_info(*, account_sid : String = @account_sid, sid : String, body : String? = nil, status : String? = nil)
       request = build_api_request_for_update_message(account_sid: account_sid, sid: sid, body: body, status: status)
@@ -19116,6 +20989,8 @@ module Twilio
     # To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Message resource to update.
+    # @optional @param body [String?] The text of the message you want to send. Can be up to 1,600 characters long.
+    # @optional @param status [String?] When set as `canceled`, allows a message cancelation request if a message has not yet been sent.
     # @return nil
     def update_message(*, account_sid : String = @account_sid, sid : String, body : String? = nil, status : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_message(account_sid: account_sid, sid: sid, body: body, status: status).execute(&block)
@@ -19195,6 +21070,7 @@ module Twilio
     # Updates the caller-id
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to update.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [OutgoingCallerId]
     def update_outgoing_caller_id(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
       data, _status_code, _headers = update_outgoing_caller_id_with_http_info(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
@@ -19204,6 +21080,7 @@ module Twilio
     # Updates the caller-id
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to update.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [Array<(OutgoingCallerId, Integer, Hash)>] OutgoingCallerId data, response status code and response headers
     def update_outgoing_caller_id_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
       request = build_api_request_for_update_outgoing_caller_id(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
@@ -19220,6 +21097,7 @@ module Twilio
     # Updates the caller-id
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OutgoingCallerId resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the OutgoingCallerId resource to update.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return nil
     def update_outgoing_caller_id(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_outgoing_caller_id(account_sid: account_sid, sid: sid, friendly_name: friendly_name).execute(&block)
@@ -19295,6 +21173,18 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resources to update.
     # @param conference_sid [String] The SID of the conference with the participant to update.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to update. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
+    # @optional @param announce_method [String?] The HTTP method we should use to call `announce_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param announce_url [String?] The URL we call using the `announce_method` for an announcement to the participant. The URL must return an MP3 file, a WAV file, or a TwiML document that contains `<Play>` or `<Say>` commands.
+    # @optional @param beep_on_exit [Bool?] Whether to play a notification beep to the conference when the participant exits. Can be: `true` or `false`.
+    # @optional @param call_sid_to_coach [String?] The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
+    # @optional @param coaching [Bool?] Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
+    # @optional @param end_conference_on_exit [Bool?] Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param hold [Bool?] Whether the participant should be on hold. Can be: `true` or `false`. `true` puts the participant on hold, and `false` lets them rejoin the conference.
+    # @optional @param hold_method [String?] The HTTP method we should use to call `hold_url`. Can be: `GET` or `POST` and the default is `GET`.
+    # @optional @param hold_url [String?] The URL we call using the `hold_method` for  music that plays when the participant is on hold. The URL may return an MP3 file, a WAV file, or a TwiML document that contains the `<Play>`, `<Say>` or `<Redirect>` commands.
+    # @optional @param muted [Bool?] Whether the participant should be muted. Can be `true` or `false`. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.
+    # @optional @param wait_method [String?] The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
+    # @optional @param wait_url [String?] The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
     # @return [ConferenceParticipant]
     def update_participant(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String, announce_method : String? = nil, announce_url : String? = nil, beep_on_exit : Bool? = nil, call_sid_to_coach : String? = nil, coaching : Bool? = nil, end_conference_on_exit : Bool? = nil, hold : Bool? = nil, hold_method : String? = nil, hold_url : String? = nil, muted : Bool? = nil, wait_method : String? = nil, wait_url : String? = nil)
       data, _status_code, _headers = update_participant_with_http_info(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid, announce_method: announce_method, announce_url: announce_url, beep_on_exit: beep_on_exit, call_sid_to_coach: call_sid_to_coach, coaching: coaching, end_conference_on_exit: end_conference_on_exit, hold: hold, hold_method: hold_method, hold_url: hold_url, muted: muted, wait_method: wait_method, wait_url: wait_url)
@@ -19305,6 +21195,18 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resources to update.
     # @param conference_sid [String] The SID of the conference with the participant to update.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to update. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
+    # @optional @param announce_method [String?] The HTTP method we should use to call `announce_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param announce_url [String?] The URL we call using the `announce_method` for an announcement to the participant. The URL must return an MP3 file, a WAV file, or a TwiML document that contains `<Play>` or `<Say>` commands.
+    # @optional @param beep_on_exit [Bool?] Whether to play a notification beep to the conference when the participant exits. Can be: `true` or `false`.
+    # @optional @param call_sid_to_coach [String?] The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
+    # @optional @param coaching [Bool?] Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
+    # @optional @param end_conference_on_exit [Bool?] Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param hold [Bool?] Whether the participant should be on hold. Can be: `true` or `false`. `true` puts the participant on hold, and `false` lets them rejoin the conference.
+    # @optional @param hold_method [String?] The HTTP method we should use to call `hold_url`. Can be: `GET` or `POST` and the default is `GET`.
+    # @optional @param hold_url [String?] The URL we call using the `hold_method` for  music that plays when the participant is on hold. The URL may return an MP3 file, a WAV file, or a TwiML document that contains the `<Play>`, `<Say>` or `<Redirect>` commands.
+    # @optional @param muted [Bool?] Whether the participant should be muted. Can be `true` or `false`. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.
+    # @optional @param wait_method [String?] The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
+    # @optional @param wait_url [String?] The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
     # @return [Array<(ConferenceParticipant, Integer, Hash)>] ConferenceParticipant data, response status code and response headers
     def update_participant_with_http_info(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String, announce_method : String? = nil, announce_url : String? = nil, beep_on_exit : Bool? = nil, call_sid_to_coach : String? = nil, coaching : Bool? = nil, end_conference_on_exit : Bool? = nil, hold : Bool? = nil, hold_method : String? = nil, hold_url : String? = nil, muted : Bool? = nil, wait_method : String? = nil, wait_url : String? = nil)
       request = build_api_request_for_update_participant(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid, announce_method: announce_method, announce_url: announce_url, beep_on_exit: beep_on_exit, call_sid_to_coach: call_sid_to_coach, coaching: coaching, end_conference_on_exit: end_conference_on_exit, hold: hold, hold_method: hold_method, hold_url: hold_url, muted: muted, wait_method: wait_method, wait_url: wait_url)
@@ -19322,6 +21224,18 @@ module Twilio
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resources to update.
     # @param conference_sid [String] The SID of the conference with the participant to update.
     # @param call_sid [String] The [Call](https://www.twilio.com/docs/voice/api/call-resource) SID or label of the participant to update. Non URL safe characters in a label must be percent encoded, for example, a space character is represented as %20.
+    # @optional @param announce_method [String?] The HTTP method we should use to call `announce_url`. Can be: `GET` or `POST` and defaults to `POST`.
+    # @optional @param announce_url [String?] The URL we call using the `announce_method` for an announcement to the participant. The URL must return an MP3 file, a WAV file, or a TwiML document that contains `<Play>` or `<Say>` commands.
+    # @optional @param beep_on_exit [Bool?] Whether to play a notification beep to the conference when the participant exits. Can be: `true` or `false`.
+    # @optional @param call_sid_to_coach [String?] The SID of the participant who is being `coached`. The participant being coached is the only participant who can hear the participant who is `coaching`.
+    # @optional @param coaching [Bool?] Whether the participant is coaching another call. Can be: `true` or `false`. If not present, defaults to `false` unless `call_sid_to_coach` is defined. If `true`, `call_sid_to_coach` must be defined.
+    # @optional @param end_conference_on_exit [Bool?] Whether to end the conference when the participant leaves. Can be: `true` or `false` and defaults to `false`.
+    # @optional @param hold [Bool?] Whether the participant should be on hold. Can be: `true` or `false`. `true` puts the participant on hold, and `false` lets them rejoin the conference.
+    # @optional @param hold_method [String?] The HTTP method we should use to call `hold_url`. Can be: `GET` or `POST` and the default is `GET`.
+    # @optional @param hold_url [String?] The URL we call using the `hold_method` for  music that plays when the participant is on hold. The URL may return an MP3 file, a WAV file, or a TwiML document that contains the `<Play>`, `<Say>` or `<Redirect>` commands.
+    # @optional @param muted [Bool?] Whether the participant should be muted. Can be `true` or `false`. `true` will mute the participant, and `false` will un-mute them. Anything value other than `true` or `false` is interpreted as `false`.
+    # @optional @param wait_method [String?] The HTTP method we should use to call `wait_url`. Can be `GET` or `POST` and the default is `POST`. When using a static audio file, this should be `GET` so that we can cache the file.
+    # @optional @param wait_url [String?] The URL we should call using the `wait_method` for the music to play while participants are waiting for the conference to start. The default value is the URL of our standard hold music. [Learn more about hold music](https://www.twilio.com/labs/twimlets/holdmusic).
     # @return nil
     def update_participant(*, account_sid : String = @account_sid, conference_sid : String, call_sid : String, announce_method : String? = nil, announce_url : String? = nil, beep_on_exit : Bool? = nil, call_sid_to_coach : String? = nil, coaching : Bool? = nil, end_conference_on_exit : Bool? = nil, hold : Bool? = nil, hold_method : String? = nil, hold_url : String? = nil, muted : Bool? = nil, wait_method : String? = nil, wait_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_participant(account_sid: account_sid, conference_sid: conference_sid, call_sid: call_sid, announce_method: announce_method, announce_url: announce_url, beep_on_exit: beep_on_exit, call_sid_to_coach: call_sid_to_coach, coaching: coaching, end_conference_on_exit: end_conference_on_exit, hold: hold, hold_method: hold_method, hold_url: hold_url, muted: muted, wait_method: wait_method, wait_url: wait_url).execute(&block)
@@ -19435,6 +21349,8 @@ module Twilio
     # @param sid [String] The SID of Payments session that needs to be updated.
     # @param idempotency_key [String] A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [Update](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-update) and [Complete/Cancel](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-cancelcomplete) POST requests.
+    # @optional @param capture [String?] The piece of payment information that you wish the caller to enter. Must be one of `payment-card-number`, `expiration-date`, `security-code`, `postal-code`, `bank-routing-number`, or `bank-account-number`.
+    # @optional @param status [String?] Indicates whether the current payment session should be cancelled or completed. When `cancel` the payment session is cancelled. When `complete`, Twilio sends the payment information to the selected <Pay> connector for processing.
     # @return [CallPayments]
     def update_payments(*, account_sid : String = @account_sid, call_sid : String, sid : String, idempotency_key : String, status_callback : String, capture : String? = nil, status : String? = nil)
       data, _status_code, _headers = update_payments_with_http_info(account_sid: account_sid, call_sid: call_sid, sid: sid, idempotency_key: idempotency_key, status_callback: status_callback, capture: capture, status: status)
@@ -19447,6 +21363,8 @@ module Twilio
     # @param sid [String] The SID of Payments session that needs to be updated.
     # @param idempotency_key [String] A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [Update](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-update) and [Complete/Cancel](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-cancelcomplete) POST requests.
+    # @optional @param capture [String?] The piece of payment information that you wish the caller to enter. Must be one of `payment-card-number`, `expiration-date`, `security-code`, `postal-code`, `bank-routing-number`, or `bank-account-number`.
+    # @optional @param status [String?] Indicates whether the current payment session should be cancelled or completed. When `cancel` the payment session is cancelled. When `complete`, Twilio sends the payment information to the selected <Pay> connector for processing.
     # @return [Array<(CallPayments, Integer, Hash)>] CallPayments data, response status code and response headers
     def update_payments_with_http_info(*, account_sid : String = @account_sid, call_sid : String, sid : String, idempotency_key : String, status_callback : String, capture : String? = nil, status : String? = nil)
       request = build_api_request_for_update_payments(account_sid: account_sid, call_sid: call_sid, sid: sid, idempotency_key: idempotency_key, status_callback: status_callback, capture: capture, status: status)
@@ -19466,6 +21384,8 @@ module Twilio
     # @param sid [String] The SID of Payments session that needs to be updated.
     # @param idempotency_key [String] A unique token that will be used to ensure that multiple API calls with the same information do not result in multiple transactions. This should be a unique string value per API call and can be a randomly generated.
     # @param status_callback [String] Provide an absolute or relative URL to receive status updates regarding your Pay session. Read more about the [Update](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-update) and [Complete/Cancel](https://www.twilio.com/docs/voice/api/payment-resource#statuscallback-cancelcomplete) POST requests.
+    # @optional @param capture [String?] The piece of payment information that you wish the caller to enter. Must be one of `payment-card-number`, `expiration-date`, `security-code`, `postal-code`, `bank-routing-number`, or `bank-account-number`.
+    # @optional @param status [String?] Indicates whether the current payment session should be cancelled or completed. When `cancel` the payment session is cancelled. When `complete`, Twilio sends the payment information to the selected <Pay> connector for processing.
     # @return nil
     def update_payments(*, account_sid : String = @account_sid, call_sid : String, sid : String, idempotency_key : String, status_callback : String, capture : String? = nil, status : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_payments(account_sid: account_sid, call_sid: call_sid, sid: sid, idempotency_key: idempotency_key, status_callback: status_callback, capture: capture, status: status).execute(&block)
@@ -19564,6 +21484,8 @@ module Twilio
     # Update the queue with the new parameters
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Queue resource to update
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe this resource. It can be up to 64 characters long.
+    # @optional @param max_size [Int32?] The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
     # @return [Queue]
     def update_queue(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, max_size : Int32? = nil)
       data, _status_code, _headers = update_queue_with_http_info(account_sid: account_sid, sid: sid, friendly_name: friendly_name, max_size: max_size)
@@ -19573,6 +21495,8 @@ module Twilio
     # Update the queue with the new parameters
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Queue resource to update
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe this resource. It can be up to 64 characters long.
+    # @optional @param max_size [Int32?] The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
     # @return [Array<(Queue, Integer, Hash)>] Queue data, response status code and response headers
     def update_queue_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, max_size : Int32? = nil)
       request = build_api_request_for_update_queue(account_sid: account_sid, sid: sid, friendly_name: friendly_name, max_size: max_size)
@@ -19589,6 +21513,8 @@ module Twilio
     # Update the queue with the new parameters
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Queue resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the Queue resource to update
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe this resource. It can be up to 64 characters long.
+    # @optional @param max_size [Int32?] The maximum number of calls allowed to be in the queue. The default is 100. The maximum is 5000.
     # @return nil
     def update_queue(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, max_size : Int32? = nil, &block : Crest::Response ->)
       build_api_request_for_update_queue(account_sid: account_sid, sid: sid, friendly_name: friendly_name, max_size: max_size).execute(&block)
@@ -19664,6 +21590,12 @@ module Twilio
     # Update a short code with the following parameters
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the ShortCode resource to update
+    # @optional @param api_version [String?] The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe this resource. It can be up to 64 characters long. By default, the `FriendlyName` is the short code.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call the `sms_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call if an error occurs while retrieving or executing the TwiML from `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method we should use when calling the `sms_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_url [String?] The URL we should call when receiving an incoming SMS message to this short code.
     # @return [ShortCode]
     def update_short_code(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil)
       data, _status_code, _headers = update_short_code_with_http_info(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url)
@@ -19673,6 +21605,12 @@ module Twilio
     # Update a short code with the following parameters
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the ShortCode resource to update
+    # @optional @param api_version [String?] The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe this resource. It can be up to 64 characters long. By default, the `FriendlyName` is the short code.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call the `sms_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call if an error occurs while retrieving or executing the TwiML from `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method we should use when calling the `sms_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_url [String?] The URL we should call when receiving an incoming SMS message to this short code.
     # @return [Array<(ShortCode, Integer, Hash)>] ShortCode data, response status code and response headers
     def update_short_code_with_http_info(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil)
       request = build_api_request_for_update_short_code(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url)
@@ -19689,6 +21627,12 @@ module Twilio
     # Update a short code with the following parameters
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource(s) to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the ShortCode resource to update
+    # @optional @param api_version [String?] The API version to use to start a new TwiML session. Can be: `2010-04-01` or `2008-08-01`.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe this resource. It can be up to 64 characters long. By default, the `FriendlyName` is the short code.
+    # @optional @param sms_fallback_method [String?] The HTTP method that we should use to call the `sms_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_fallback_url [String?] The URL that we should call if an error occurs while retrieving or executing the TwiML from `sms_url`.
+    # @optional @param sms_method [String?] The HTTP method we should use when calling the `sms_url`. Can be: `GET` or `POST`.
+    # @optional @param sms_url [String?] The URL we should call when receiving an incoming SMS message to this short code.
     # @return nil
     def update_short_code(*, account_sid : String = @account_sid, sid : String, api_version : String? = nil, friendly_name : String? = nil, sms_fallback_method : String? = nil, sms_fallback_url : String? = nil, sms_method : String? = nil, sms_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_short_code(account_sid: account_sid, sid: sid, api_version: api_version, friendly_name: friendly_name, sms_fallback_method: sms_fallback_method, sms_fallback_url: sms_fallback_url, sms_method: sms_method, sms_url: sms_url).execute(&block)
@@ -19776,6 +21720,7 @@ module Twilio
     #
     # @param account_sid [String]
     # @param sid [String]
+    # @optional @param friendly_name [String?]
     # @return [SigningKey]
     def update_signing_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
       data, _status_code, _headers = update_signing_key_with_http_info(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
@@ -19785,6 +21730,7 @@ module Twilio
     #
     # @param account_sid [String]
     # @param sid [String]
+    # @optional @param friendly_name [String?]
     # @return [Array<(SigningKey, Integer, Hash)>] SigningKey data, response status code and response headers
     def update_signing_key_with_http_info(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil)
       request = build_api_request_for_update_signing_key(account_sid: account_sid, sid: sid, friendly_name: friendly_name)
@@ -19801,6 +21747,7 @@ module Twilio
     #
     # @param account_sid [String]
     # @param sid [String]
+    # @optional @param friendly_name [String?]
     # @return nil
     def update_signing_key(*, account_sid : String = @account_sid, sid : String, friendly_name : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_signing_key(account_sid: account_sid, sid: sid, friendly_name: friendly_name).execute(&block)
@@ -19876,6 +21823,7 @@ module Twilio
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @param credential_list_sid [String] The unique id that identifies the credential list that includes this credential.
     # @param sid [String] The unique id that identifies the resource to update.
+    # @optional @param password [String?] The password that the username will use when authenticating SIP requests. The password must be a minimum of 12 characters, contain at least 1 digit, and have mixed case. (eg `IWasAtSignal2018`)
     # @return [SipSipCredentialListSipCredential]
     def update_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String, password : String? = nil)
       data, _status_code, _headers = update_sip_credential_with_http_info(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid, password: password)
@@ -19886,6 +21834,7 @@ module Twilio
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @param credential_list_sid [String] The unique id that identifies the credential list that includes this credential.
     # @param sid [String] The unique id that identifies the resource to update.
+    # @optional @param password [String?] The password that the username will use when authenticating SIP requests. The password must be a minimum of 12 characters, contain at least 1 digit, and have mixed case. (eg `IWasAtSignal2018`)
     # @return [Array<(SipSipCredentialListSipCredential, Integer, Hash)>] SipSipCredentialListSipCredential data, response status code and response headers
     def update_sip_credential_with_http_info(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String, password : String? = nil)
       request = build_api_request_for_update_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid, password: password)
@@ -19903,6 +21852,7 @@ module Twilio
     # @param account_sid [String] The unique id of the Account that is responsible for this resource.
     # @param credential_list_sid [String] The unique id that identifies the credential list that includes this credential.
     # @param sid [String] The unique id that identifies the resource to update.
+    # @optional @param password [String?] The password that the username will use when authenticating SIP requests. The password must be a minimum of 12 characters, contain at least 1 digit, and have mixed case. (eg `IWasAtSignal2018`)
     # @return nil
     def update_sip_credential(*, account_sid : String = @account_sid, credential_list_sid : String, sid : String, password : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_sip_credential(account_sid: account_sid, credential_list_sid: credential_list_sid, sid: sid, password: password).execute(&block)
@@ -20092,6 +22042,19 @@ module Twilio
     # Update the attributes of a domain
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the SipDomain resource to update.
+    # @optional @param byoc_trunk_sid [String?] The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.
+    # @optional @param domain_name [String?] The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
+    # @optional @param emergency_caller_sid [String?] Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.
+    # @optional @param emergency_calling_enabled [Bool?] Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the resource. It can be up to 64 characters long.
+    # @optional @param secure [Bool?] Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.
+    # @optional @param sip_registration [Bool?] Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML requested by `voice_url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`
+    # @optional @param voice_status_callback_method [String?] The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_status_callback_url [String?] The URL that we should call to pass status parameters (such as call ended) to your application.
+    # @optional @param voice_url [String?] The URL we should call when the domain receives a call.
     # @return [SipSipDomain]
     def update_sip_domain(*, account_sid : String = @account_sid, sid : String, byoc_trunk_sid : String? = nil, domain_name : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil)
       data, _status_code, _headers = update_sip_domain_with_http_info(account_sid: account_sid, sid: sid, byoc_trunk_sid: byoc_trunk_sid, domain_name: domain_name, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
@@ -20101,6 +22064,19 @@ module Twilio
     # Update the attributes of a domain
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the SipDomain resource to update.
+    # @optional @param byoc_trunk_sid [String?] The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.
+    # @optional @param domain_name [String?] The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
+    # @optional @param emergency_caller_sid [String?] Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.
+    # @optional @param emergency_calling_enabled [Bool?] Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the resource. It can be up to 64 characters long.
+    # @optional @param secure [Bool?] Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.
+    # @optional @param sip_registration [Bool?] Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML requested by `voice_url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`
+    # @optional @param voice_status_callback_method [String?] The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_status_callback_url [String?] The URL that we should call to pass status parameters (such as call ended) to your application.
+    # @optional @param voice_url [String?] The URL we should call when the domain receives a call.
     # @return [Array<(SipSipDomain, Integer, Hash)>] SipSipDomain data, response status code and response headers
     def update_sip_domain_with_http_info(*, account_sid : String = @account_sid, sid : String, byoc_trunk_sid : String? = nil, domain_name : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil)
       request = build_api_request_for_update_sip_domain(account_sid: account_sid, sid: sid, byoc_trunk_sid: byoc_trunk_sid, domain_name: domain_name, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url)
@@ -20117,6 +22093,19 @@ module Twilio
     # Update the attributes of a domain
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SipDomain resource to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the SipDomain resource to update.
+    # @optional @param byoc_trunk_sid [String?] The SID of the BYOC Trunk(Bring Your Own Carrier) resource that the Sip Domain will be associated with.
+    # @optional @param domain_name [String?] The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and \\\"-\\\" and must end with `sip.twilio.com`.
+    # @optional @param emergency_caller_sid [String?] Whether an emergency caller sid is configured for the domain. If present, this phone number will be used as the callback for the emergency call.
+    # @optional @param emergency_calling_enabled [Bool?] Whether emergency calling is enabled for the domain. If enabled, allows emergency calls on the domain from phone numbers with validated addresses.
+    # @optional @param friendly_name [String?] A descriptive string that you created to describe the resource. It can be up to 64 characters long.
+    # @optional @param secure [Bool?] Whether secure SIP is enabled for the domain. If enabled, TLS will be enforced and SRTP will be negotiated on all incoming calls to this sip domain.
+    # @optional @param sip_registration [Bool?] Whether to allow SIP Endpoints to register with the domain to receive calls. Can be `true` or `false`. `true` allows SIP Endpoints to register with the domain to receive calls, `false` does not.
+    # @optional @param voice_fallback_method [String?] The HTTP method we should use to call `voice_fallback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_fallback_url [String?] The URL that we should call when an error occurs while retrieving or executing the TwiML requested by `voice_url`.
+    # @optional @param voice_method [String?] The HTTP method we should use to call `voice_url`
+    # @optional @param voice_status_callback_method [String?] The HTTP method we should use to call `voice_status_callback_url`. Can be: `GET` or `POST`.
+    # @optional @param voice_status_callback_url [String?] The URL that we should call to pass status parameters (such as call ended) to your application.
+    # @optional @param voice_url [String?] The URL we should call when the domain receives a call.
     # @return nil
     def update_sip_domain(*, account_sid : String = @account_sid, sid : String, byoc_trunk_sid : String? = nil, domain_name : String? = nil, emergency_caller_sid : String? = nil, emergency_calling_enabled : Bool? = nil, friendly_name : String? = nil, secure : Bool? = nil, sip_registration : Bool? = nil, voice_fallback_method : String? = nil, voice_fallback_url : String? = nil, voice_method : String? = nil, voice_status_callback_method : String? = nil, voice_status_callback_url : String? = nil, voice_url : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_sip_domain(account_sid: account_sid, sid: sid, byoc_trunk_sid: byoc_trunk_sid, domain_name: domain_name, emergency_caller_sid: emergency_caller_sid, emergency_calling_enabled: emergency_calling_enabled, friendly_name: friendly_name, secure: secure, sip_registration: sip_registration, voice_fallback_method: voice_fallback_method, voice_fallback_url: voice_fallback_url, voice_method: voice_method, voice_status_callback_method: voice_status_callback_method, voice_status_callback_url: voice_status_callback_url, voice_url: voice_url).execute(&block)
@@ -20344,6 +22333,9 @@ module Twilio
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid that identifies the IpAddress resources to update.
     # @param sid [String] A 34 character string that identifies the IpAddress resource to update.
+    # @optional @param cidr_prefix_length [Int32?] An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
+    # @optional @param friendly_name [String?] A human readable descriptive text for this resource, up to 64 characters long.
+    # @optional @param ip_address [String?] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
     # @return [SipSipIpAccessControlListSipIpAddress]
     def update_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String, cidr_prefix_length : Int32? = nil, friendly_name : String? = nil, ip_address : String? = nil)
       data, _status_code, _headers = update_sip_ip_address_with_http_info(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid, cidr_prefix_length: cidr_prefix_length, friendly_name: friendly_name, ip_address: ip_address)
@@ -20354,6 +22346,9 @@ module Twilio
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid that identifies the IpAddress resources to update.
     # @param sid [String] A 34 character string that identifies the IpAddress resource to update.
+    # @optional @param cidr_prefix_length [Int32?] An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
+    # @optional @param friendly_name [String?] A human readable descriptive text for this resource, up to 64 characters long.
+    # @optional @param ip_address [String?] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
     # @return [Array<(SipSipIpAccessControlListSipIpAddress, Integer, Hash)>] SipSipIpAccessControlListSipIpAddress data, response status code and response headers
     def update_sip_ip_address_with_http_info(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String, cidr_prefix_length : Int32? = nil, friendly_name : String? = nil, ip_address : String? = nil)
       request = build_api_request_for_update_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid, cidr_prefix_length: cidr_prefix_length, friendly_name: friendly_name, ip_address: ip_address)
@@ -20371,6 +22366,9 @@ module Twilio
     # @param account_sid [String] The unique id of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this resource.
     # @param ip_access_control_list_sid [String] The IpAccessControlList Sid that identifies the IpAddress resources to update.
     # @param sid [String] A 34 character string that identifies the IpAddress resource to update.
+    # @optional @param cidr_prefix_length [Int32?] An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
+    # @optional @param friendly_name [String?] A human readable descriptive text for this resource, up to 64 characters long.
+    # @optional @param ip_address [String?] An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
     # @return nil
     def update_sip_ip_address(*, account_sid : String = @account_sid, ip_access_control_list_sid : String, sid : String, cidr_prefix_length : Int32? = nil, friendly_name : String? = nil, ip_address : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_sip_ip_address(account_sid: account_sid, ip_access_control_list_sid: ip_access_control_list_sid, sid: sid, cidr_prefix_length: cidr_prefix_length, friendly_name: friendly_name, ip_address: ip_address).execute(&block)
@@ -20678,6 +22676,9 @@ module Twilio
     # Update an instance of a usage trigger
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the UsageTrigger resource to update.
+    # @optional @param callback_method [String?] The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param callback_url [String?] The URL we should call using `callback_method` when the trigger fires.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [UsageUsageTrigger]
     def update_usage_trigger(*, account_sid : String = @account_sid, sid : String, callback_method : String? = nil, callback_url : String? = nil, friendly_name : String? = nil)
       data, _status_code, _headers = update_usage_trigger_with_http_info(account_sid: account_sid, sid: sid, callback_method: callback_method, callback_url: callback_url, friendly_name: friendly_name)
@@ -20687,6 +22688,9 @@ module Twilio
     # Update an instance of a usage trigger
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the UsageTrigger resource to update.
+    # @optional @param callback_method [String?] The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param callback_url [String?] The URL we should call using `callback_method` when the trigger fires.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return [Array<(UsageUsageTrigger, Integer, Hash)>] UsageUsageTrigger data, response status code and response headers
     def update_usage_trigger_with_http_info(*, account_sid : String = @account_sid, sid : String, callback_method : String? = nil, callback_url : String? = nil, friendly_name : String? = nil)
       request = build_api_request_for_update_usage_trigger(account_sid: account_sid, sid: sid, callback_method: callback_method, callback_url: callback_url, friendly_name: friendly_name)
@@ -20703,6 +22707,9 @@ module Twilio
     # Update an instance of a usage trigger
     # @param account_sid [String] The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageTrigger resources to update.
     # @param sid [String] The Twilio-provided string that uniquely identifies the UsageTrigger resource to update.
+    # @optional @param callback_method [String?] The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is `POST`.
+    # @optional @param callback_url [String?] The URL we should call using `callback_method` when the trigger fires.
+    # @optional @param friendly_name [String?] A descriptive string that you create to describe the resource. It can be up to 64 characters long.
     # @return nil
     def update_usage_trigger(*, account_sid : String = @account_sid, sid : String, callback_method : String? = nil, callback_url : String? = nil, friendly_name : String? = nil, &block : Crest::Response ->)
       build_api_request_for_update_usage_trigger(account_sid: account_sid, sid: sid, callback_method: callback_method, callback_url: callback_url, friendly_name: friendly_name).execute(&block)

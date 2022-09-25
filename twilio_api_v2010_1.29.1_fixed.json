@@ -326,12 +326,12 @@
             "type": "string"
           },
           "trunk_sid": {
-            "description": "The SID of the Trunk that handles calls to the phone number",
             "maxLength": 34,
-            "minLength": 34,
+            "minLength": 0,
             "nullable": true,
-            "pattern": "^TK[0-9a-fA-F]{32}$",
-            "type": "string"
+            "pattern": "^TK[0-9a-fA-F]{32}$|^$",
+            "type": "string",
+            "description": "The SID of the Trunk that handles calls to the phone number"
           },
           "uri": {
             "description": "The URI of the resource, relative to `https://api.twilio.com`",
@@ -1455,12 +1455,12 @@
             "type": "string"
           },
           "trunk_sid": {
-            "description": "The (optional) unique identifier of the trunk resource that was used for this call.",
             "maxLength": 34,
-            "minLength": 34,
+            "minLength": 0,
             "nullable": true,
-            "pattern": "^TK[0-9a-fA-F]{32}$",
-            "type": "string"
+            "pattern": "^TK[0-9a-fA-F]{32}$|^$",
+            "type": "string",
+            "description": "The (optional) unique identifier of the trunk resource that was used for this call."
           },
           "uri": {
             "description": "The URI of this resource, relative to `https://api.twilio.com`",
@@ -2778,12 +2778,12 @@
             "type": "string"
           },
           "trunk_sid": {
-            "description": "The SID of the Trunk that handles calls to the phone number",
             "maxLength": 34,
-            "minLength": 34,
+            "minLength": 0,
             "nullable": true,
-            "pattern": "^TK[0-9a-fA-F]{32}$",
-            "type": "string"
+            "pattern": "^TK[0-9a-fA-F]{32}$|^$",
+            "type": "string",
+            "description": "The SID of the Trunk that handles calls to the phone number"
           },
           "uri": {
             "description": "The URI of the resource, relative to `https://api.twilio.com`",
@@ -3206,12 +3206,12 @@
             "type": "string"
           },
           "trunk_sid": {
-            "description": "The SID of the Trunk that handles calls to the phone number",
             "maxLength": 34,
-            "minLength": 34,
+            "minLength": 0,
             "nullable": true,
-            "pattern": "^TK[0-9a-fA-F]{32}$",
-            "type": "string"
+            "pattern": "^TK[0-9a-fA-F]{32}$|^$",
+            "type": "string",
+            "description": "The SID of the Trunk that handles calls to the phone number"
           },
           "uri": {
             "description": "The URI of the resource, relative to `https://api.twilio.com`",
@@ -3497,12 +3497,12 @@
             "type": "string"
           },
           "trunk_sid": {
-            "description": "The SID of the Trunk that handles calls to the phone number",
             "maxLength": 34,
-            "minLength": 34,
+            "minLength": 0,
             "nullable": true,
-            "pattern": "^TK[0-9a-fA-F]{32}$",
-            "type": "string"
+            "pattern": "^TK[0-9a-fA-F]{32}$|^$",
+            "type": "string",
+            "description": "The SID of the Trunk that handles calls to the phone number"
           },
           "uri": {
             "description": "The URI of the resource, relative to `https://api.twilio.com`",
@@ -3788,12 +3788,12 @@
             "type": "string"
           },
           "trunk_sid": {
-            "description": "The SID of the Trunk that handles calls to the phone number",
             "maxLength": 34,
-            "minLength": 34,
+            "minLength": 0,
             "nullable": true,
-            "pattern": "^TK[0-9a-fA-F]{32}$",
-            "type": "string"
+            "pattern": "^TK[0-9a-fA-F]{32}$|^$",
+            "type": "string",
+            "description": "The SID of the Trunk that handles calls to the phone number"
           },
           "uri": {
             "description": "The URI of the resource, relative to `https://api.twilio.com`",

@@ -13,42 +13,39 @@ require "log"
 
 module Twilio
   # Call Response with Events.
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class CallCallEventResponse
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
-    @[JSON::Field(key: "response_code", type: Int32?, presence: true, ignore_serialize: response_code.nil? && !response_code_present?)]
-    property response_code : Int32?
+    @[JSON::Field(key: "response_code", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: response_code.nil? && !response_code_present?)]
+    getter response_code : Int32? = nil
 
     @[JSON::Field(ignore: true)]
     property? response_code_present : Bool = false
 
-    @[JSON::Field(key: "request_duration", type: Int32?, presence: true, ignore_serialize: request_duration.nil? && !request_duration_present?)]
-    property request_duration : Int32?
+    @[JSON::Field(key: "request_duration", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: request_duration.nil? && !request_duration_present?)]
+    getter request_duration : Int32? = nil
 
     @[JSON::Field(ignore: true)]
     property? request_duration_present : Bool = false
 
-    @[JSON::Field(key: "content_type", type: String?, presence: true, ignore_serialize: content_type.nil? && !content_type_present?)]
-    property content_type : String?
+    @[JSON::Field(key: "content_type", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: content_type.nil? && !content_type_present?)]
+    getter content_type : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? content_type_present : Bool = false
 
-    @[JSON::Field(key: "date_created", type: String?, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
-    property date_created : String?
+    @[JSON::Field(key: "date_created", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
+    getter date_created : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
-    @[JSON::Field(key: "response_body", type: String?, presence: true, ignore_serialize: response_body.nil? && !response_body_present?)]
-    property response_body : String?
-
-    @[JSON::Field(ignore: true)]
-    property? response_body_present : Bool = false
+    @[JSON::Field(key: "response_body", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter response_body : String? = nil
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
@@ -77,6 +74,43 @@ module Twilio
       true
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] response_code Object to be assigned
+    def response_code=(response_code : Int32?)
+      if response_code.nil?
+        return @response_code = nil
+      end
+      @response_code = response_code
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] request_duration Object to be assigned
+    def request_duration=(request_duration : Int32?)
+      if request_duration.nil?
+        return @request_duration = nil
+      end
+      @request_duration = request_duration
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] content_type Object to be assigned
+    def content_type=(content_type : String?)
+      if content_type.nil?
+        return @content_type = nil
+      end
+      @content_type = content_type
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : String?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      @date_created = date_created
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] response_body Object to be assigned
+    def response_body=(response_body : String?)
+      if response_body.nil?
+        return @response_body = nil
+      end
+      @response_body = response_body
+    end
+
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
@@ -87,6 +121,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@response_code, @response_code_present, @request_duration, @request_duration_present, @content_type, @content_type_present, @date_created, @date_created_present, @response_body, @response_body_present)
+    def_equals_and_hash(@response_code, @response_code_present, @request_duration, @request_duration_present, @content_type, @content_type_present, @date_created, @date_created_present, @response_body)
   end
 end

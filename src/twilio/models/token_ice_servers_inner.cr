@@ -12,36 +12,24 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class TokenIceServersInner
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
-    @[JSON::Field(key: "credential", type: String?, presence: true, ignore_serialize: credential.nil? && !credential_present?)]
-    property credential : String?
+    @[JSON::Field(key: "credential", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter credential : String? = nil
 
-    @[JSON::Field(ignore: true)]
-    property? credential_present : Bool = false
+    @[JSON::Field(key: "url", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter url : String? = nil
 
-    @[JSON::Field(key: "url", type: String?, presence: true, ignore_serialize: url.nil? && !url_present?)]
-    property url : String?
+    @[JSON::Field(key: "urls", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter urls : String? = nil
 
-    @[JSON::Field(ignore: true)]
-    property? url_present : Bool = false
-
-    @[JSON::Field(key: "urls", type: String?, presence: true, ignore_serialize: urls.nil? && !urls_present?)]
-    property urls : String?
-
-    @[JSON::Field(ignore: true)]
-    property? urls_present : Bool = false
-
-    @[JSON::Field(key: "username", type: String?, presence: true, ignore_serialize: username.nil? && !username_present?)]
-    property username : String?
-
-    @[JSON::Field(ignore: true)]
-    property? username_present : Bool = false
+    @[JSON::Field(key: "username", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter username : String? = nil
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
@@ -69,6 +57,36 @@ module Twilio
       true
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] credential Object to be assigned
+    def credential=(credential : String?)
+      if credential.nil?
+        return @credential = nil
+      end
+      @credential = credential
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] url Object to be assigned
+    def url=(url : String?)
+      if url.nil?
+        return @url = nil
+      end
+      @url = url
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] urls Object to be assigned
+    def urls=(urls : String?)
+      if urls.nil?
+        return @urls = nil
+      end
+      @urls = urls
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] username Object to be assigned
+    def username=(username : String?)
+      if username.nil?
+        return @username = nil
+      end
+      @username = username
+    end
+
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
@@ -79,6 +97,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@credential, @credential_present, @url, @url_present, @urls, @urls_present, @username, @username_present)
+    def_equals_and_hash(@credential, @url, @urls, @username)
   end
 end

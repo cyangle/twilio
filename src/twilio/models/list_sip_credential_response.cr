@@ -12,66 +12,45 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class ListSipCredentialResponse
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
-    @[JSON::Field(key: "credentials", type: Array(SipSipCredentialListSipCredential)?, presence: true, ignore_serialize: credentials.nil? && !credentials_present?)]
-    property credentials : Array(SipSipCredentialListSipCredential)?
+    @[JSON::Field(key: "credentials", type: Array(SipSipCredentialListSipCredential)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter credentials : Array(SipSipCredentialListSipCredential)? = nil
 
-    @[JSON::Field(ignore: true)]
-    property? credentials_present : Bool = false
+    @[JSON::Field(key: "end", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter _end : Int32? = nil
 
-    @[JSON::Field(key: "end", type: Int32?, presence: true, ignore_serialize: _end.nil? && !_end_present?)]
-    property _end : Int32?
+    @[JSON::Field(key: "first_page_uri", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter first_page_uri : String? = nil
 
-    @[JSON::Field(ignore: true)]
-    property? _end_present : Bool = false
-
-    @[JSON::Field(key: "first_page_uri", type: String?, presence: true, ignore_serialize: first_page_uri.nil? && !first_page_uri_present?)]
-    property first_page_uri : String?
-
-    @[JSON::Field(ignore: true)]
-    property? first_page_uri_present : Bool = false
-
-    @[JSON::Field(key: "next_page_uri", type: String?, presence: true, ignore_serialize: next_page_uri.nil? && !next_page_uri_present?)]
-    property next_page_uri : String?
+    @[JSON::Field(key: "next_page_uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: next_page_uri.nil? && !next_page_uri_present?)]
+    getter next_page_uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? next_page_uri_present : Bool = false
 
-    @[JSON::Field(key: "page", type: Int32?, presence: true, ignore_serialize: page.nil? && !page_present?)]
-    property page : Int32?
+    @[JSON::Field(key: "page", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter page : Int32? = nil
 
-    @[JSON::Field(ignore: true)]
-    property? page_present : Bool = false
+    @[JSON::Field(key: "page_size", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter page_size : Int32? = nil
 
-    @[JSON::Field(key: "page_size", type: Int32?, presence: true, ignore_serialize: page_size.nil? && !page_size_present?)]
-    property page_size : Int32?
-
-    @[JSON::Field(ignore: true)]
-    property? page_size_present : Bool = false
-
-    @[JSON::Field(key: "previous_page_uri", type: String?, presence: true, ignore_serialize: previous_page_uri.nil? && !previous_page_uri_present?)]
-    property previous_page_uri : String?
+    @[JSON::Field(key: "previous_page_uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: previous_page_uri.nil? && !previous_page_uri_present?)]
+    getter previous_page_uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? previous_page_uri_present : Bool = false
 
-    @[JSON::Field(key: "start", type: Int32?, presence: true, ignore_serialize: start.nil? && !start_present?)]
-    property start : Int32?
+    @[JSON::Field(key: "start", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter start : Int32? = nil
 
-    @[JSON::Field(ignore: true)]
-    property? start_present : Bool = false
-
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
-
-    @[JSON::Field(ignore: true)]
-    property? uri_present : Bool = false
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter uri : String? = nil
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
@@ -104,6 +83,71 @@ module Twilio
       true
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] credentials Object to be assigned
+    def credentials=(credentials : Array(SipSipCredentialListSipCredential)?)
+      if credentials.nil?
+        return @credentials = nil
+      end
+      @credentials = credentials
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] _end Object to be assigned
+    def _end=(_end : Int32?)
+      if _end.nil?
+        return @_end = nil
+      end
+      @_end = _end
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] first_page_uri Object to be assigned
+    def first_page_uri=(first_page_uri : String?)
+      if first_page_uri.nil?
+        return @first_page_uri = nil
+      end
+      @first_page_uri = first_page_uri
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] next_page_uri Object to be assigned
+    def next_page_uri=(next_page_uri : String?)
+      if next_page_uri.nil?
+        return @next_page_uri = nil
+      end
+      @next_page_uri = next_page_uri
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] page Object to be assigned
+    def page=(page : Int32?)
+      if page.nil?
+        return @page = nil
+      end
+      @page = page
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] page_size Object to be assigned
+    def page_size=(page_size : Int32?)
+      if page_size.nil?
+        return @page_size = nil
+      end
+      @page_size = page_size
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] previous_page_uri Object to be assigned
+    def previous_page_uri=(previous_page_uri : String?)
+      if previous_page_uri.nil?
+        return @previous_page_uri = nil
+      end
+      @previous_page_uri = previous_page_uri
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] start Object to be assigned
+    def start=(start : Int32?)
+      if start.nil?
+        return @start = nil
+      end
+      @start = start
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
+    end
+
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
@@ -114,6 +158,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@credentials, @credentials_present, @_end, @_end_present, @first_page_uri, @first_page_uri_present, @next_page_uri, @next_page_uri_present, @page, @page_present, @page_size, @page_size_present, @previous_page_uri, @previous_page_uri_present, @start, @start_present, @uri, @uri_present)
+    def_equals_and_hash(@credentials, @_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
   end
 end

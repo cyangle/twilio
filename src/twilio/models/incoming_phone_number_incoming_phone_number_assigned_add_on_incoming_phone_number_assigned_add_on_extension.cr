@@ -12,72 +12,72 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The SID that uniquely identifies the assigned Add-on installation
-    @[JSON::Field(key: "assigned_add_on_sid", type: String?, presence: true, ignore_serialize: assigned_add_on_sid.nil? && !assigned_add_on_sid_present?)]
-    getter assigned_add_on_sid : String?
+    @[JSON::Field(key: "assigned_add_on_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: assigned_add_on_sid.nil? && !assigned_add_on_sid_present?)]
+    getter assigned_add_on_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? assigned_add_on_sid_present : Bool = false
 
     # Whether the Extension will be invoked
-    @[JSON::Field(key: "enabled", type: Bool?, presence: true, ignore_serialize: enabled.nil? && !enabled_present?)]
-    property enabled : Bool?
+    @[JSON::Field(key: "enabled", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: enabled.nil? && !enabled_present?)]
+    getter enabled : Bool? = nil
 
     @[JSON::Field(ignore: true)]
     property? enabled_present : Bool = false
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
-    property friendly_name : String?
+    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
+    getter friendly_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # A string that you assigned to describe the Product this Extension is used within
-    @[JSON::Field(key: "product_name", type: String?, presence: true, ignore_serialize: product_name.nil? && !product_name_present?)]
-    property product_name : String?
+    @[JSON::Field(key: "product_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: product_name.nil? && !product_name_present?)]
+    getter product_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? product_name_present : Bool = false
 
     # The SID of the Phone Number to which the Add-on is assigned
-    @[JSON::Field(key: "resource_sid", type: String?, presence: true, ignore_serialize: resource_sid.nil? && !resource_sid_present?)]
-    getter resource_sid : String?
+    @[JSON::Field(key: "resource_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: resource_sid.nil? && !resource_sid_present?)]
+    getter resource_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? resource_sid_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String?
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # An application-defined string that uniquely identifies the resource
-    @[JSON::Field(key: "unique_name", type: String?, presence: true, ignore_serialize: unique_name.nil? && !unique_name_present?)]
-    property unique_name : String?
+    @[JSON::Field(key: "unique_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: unique_name.nil? && !unique_name_present?)]
+    getter unique_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? unique_name_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
@@ -103,57 +103,61 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _assigned_add_on_sid = @assigned_add_on_sid
+        if _assigned_add_on_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"assigned_add_on_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        if _assigned_add_on_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"assigned_add_on_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^XE[0-9a-fA-F]{32}$/
+        if _assigned_add_on_sid !~ pattern
+          invalid_properties.push("invalid value for \"assigned_add_on_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _resource_sid = @resource_sid
+        if _resource_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"resource_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        if _resource_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"resource_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^PN[0-9a-fA-F]{32}$/
+        if _resource_sid !~ pattern
+          invalid_properties.push("invalid value for \"resource_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _sid = @sid
+        if _sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@assigned_add_on_sid.nil? && @assigned_add_on_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"assigned_add_on_sid\", the character length must be smaller than or equal to 34.")
-      end
+        if _sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@assigned_add_on_sid.nil? && @assigned_add_on_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"assigned_add_on_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^XE[0-9a-fA-F]{32}$/
-      if !@assigned_add_on_sid.nil? && @assigned_add_on_sid !~ pattern
-        invalid_properties.push("invalid value for \"assigned_add_on_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@resource_sid.nil? && @resource_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"resource_sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@resource_sid.nil? && @resource_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"resource_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^PN[0-9a-fA-F]{32}$/
-      if !@resource_sid.nil? && @resource_sid !~ pattern
-        invalid_properties.push("invalid value for \"resource_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^XF[0-9a-fA-F]{32}$/
-      if !@sid.nil? && @sid !~ pattern
-        invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        pattern = /^XF[0-9a-fA-F]{32}$/
+        if _sid !~ pattern
+          invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties
@@ -162,96 +166,149 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      return false if !@assigned_add_on_sid.nil? && @assigned_add_on_sid.to_s.size > 34
-      return false if !@assigned_add_on_sid.nil? && @assigned_add_on_sid.to_s.size < 34
-      return false if !@assigned_add_on_sid.nil? && @assigned_add_on_sid !~ /^XE[0-9a-fA-F]{32}$/
-      return false if !@resource_sid.nil? && @resource_sid.to_s.size > 34
-      return false if !@resource_sid.nil? && @resource_sid.to_s.size < 34
-      return false if !@resource_sid.nil? && @resource_sid !~ /^PN[0-9a-fA-F]{32}$/
-      return false if !@sid.nil? && @sid.to_s.size > 34
-      return false if !@sid.nil? && @sid.to_s.size < 34
-      return false if !@sid.nil? && @sid !~ /^XF[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
+      if _assigned_add_on_sid = @assigned_add_on_sid
+        return false if _assigned_add_on_sid.to_s.size > 34
+        return false if _assigned_add_on_sid.to_s.size < 34
+        return false if _assigned_add_on_sid !~ /^XE[0-9a-fA-F]{32}$/
+      end
+      if _resource_sid = @resource_sid
+        return false if _resource_sid.to_s.size > 34
+        return false if _resource_sid.to_s.size < 34
+        return false if _resource_sid !~ /^PN[0-9a-fA-F]{32}$/
+      end
+      if _sid = @sid
+        return false if _sid.to_s.size > 34
+        return false if _sid.to_s.size < 34
+        return false if _sid !~ /^XF[0-9a-fA-F]{32}$/
+      end
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] assigned_add_on_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] assigned_add_on_sid Object to be assigned
     def assigned_add_on_sid=(assigned_add_on_sid : String?)
-      if !assigned_add_on_sid.nil? && assigned_add_on_sid.to_s.size > 34
+      if assigned_add_on_sid.nil?
+        return @assigned_add_on_sid = nil
+      end
+      _assigned_add_on_sid = assigned_add_on_sid.not_nil!
+      if _assigned_add_on_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"assigned_add_on_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !assigned_add_on_sid.nil? && assigned_add_on_sid.to_s.size < 34
+      if _assigned_add_on_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"assigned_add_on_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^XE[0-9a-fA-F]{32}$/
-      if !assigned_add_on_sid.nil? && assigned_add_on_sid !~ pattern
+      if _assigned_add_on_sid !~ pattern
         raise ArgumentError.new("invalid value for \"assigned_add_on_sid\", must conform to the pattern #{pattern}.")
       end
 
       @assigned_add_on_sid = assigned_add_on_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] resource_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] enabled Object to be assigned
+    def enabled=(enabled : Bool?)
+      if enabled.nil?
+        return @enabled = nil
+      end
+      @enabled = enabled
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] friendly_name Object to be assigned
+    def friendly_name=(friendly_name : String?)
+      if friendly_name.nil?
+        return @friendly_name = nil
+      end
+      @friendly_name = friendly_name
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] product_name Object to be assigned
+    def product_name=(product_name : String?)
+      if product_name.nil?
+        return @product_name = nil
+      end
+      @product_name = product_name
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] resource_sid Object to be assigned
     def resource_sid=(resource_sid : String?)
-      if !resource_sid.nil? && resource_sid.to_s.size > 34
+      if resource_sid.nil?
+        return @resource_sid = nil
+      end
+      _resource_sid = resource_sid.not_nil!
+      if _resource_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"resource_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !resource_sid.nil? && resource_sid.to_s.size < 34
+      if _resource_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"resource_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^PN[0-9a-fA-F]{32}$/
-      if !resource_sid.nil? && resource_sid !~ pattern
+      if _resource_sid !~ pattern
         raise ArgumentError.new("invalid value for \"resource_sid\", must conform to the pattern #{pattern}.")
       end
 
       @resource_sid = resource_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
     def sid=(sid : String?)
-      if !sid.nil? && sid.to_s.size > 34
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      if _sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !sid.nil? && sid.to_s.size < 34
+      if _sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^XF[0-9a-fA-F]{32}$/
-      if !sid.nil? && sid !~ pattern
+      if _sid !~ pattern
         raise ArgumentError.new("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
       @sid = sid
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] unique_name Object to be assigned
+    def unique_name=(unique_name : String?)
+      if unique_name.nil?
+        return @unique_name = nil
+      end
+      @unique_name = unique_name
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
     end
 
     # @see the `==` method

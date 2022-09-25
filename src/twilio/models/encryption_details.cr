@@ -13,33 +13,33 @@ require "log"
 
 module Twilio
   # Call recording encryption details
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class EncryptionDetails
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
-    @[JSON::Field(key: "type", type: String?, presence: true, ignore_serialize: _type.nil? && !_type_present?)]
-    property _type : String?
+    @[JSON::Field(key: "type", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: _type.nil? && !_type_present?)]
+    getter _type : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? _type_present : Bool = false
 
-    @[JSON::Field(key: "public_key_sid", type: String?, presence: true, ignore_serialize: public_key_sid.nil? && !public_key_sid_present?)]
-    property public_key_sid : String?
+    @[JSON::Field(key: "public_key_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: public_key_sid.nil? && !public_key_sid_present?)]
+    getter public_key_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? public_key_sid_present : Bool = false
 
-    @[JSON::Field(key: "encrypted_cek", type: String?, presence: true, ignore_serialize: encrypted_cek.nil? && !encrypted_cek_present?)]
-    property encrypted_cek : String?
+    @[JSON::Field(key: "encrypted_cek", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: encrypted_cek.nil? && !encrypted_cek_present?)]
+    getter encrypted_cek : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? encrypted_cek_present : Bool = false
 
-    @[JSON::Field(key: "iv", type: String?, presence: true, ignore_serialize: iv.nil? && !iv_present?)]
-    property iv : String?
+    @[JSON::Field(key: "iv", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: iv.nil? && !iv_present?)]
+    getter iv : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? iv_present : Bool = false
@@ -68,6 +68,36 @@ module Twilio
     # @return true if the model is valid
     def valid?
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] _type Object to be assigned
+    def _type=(_type : String?)
+      if _type.nil?
+        return @_type = nil
+      end
+      @_type = _type
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] public_key_sid Object to be assigned
+    def public_key_sid=(public_key_sid : String?)
+      if public_key_sid.nil?
+        return @public_key_sid = nil
+      end
+      @public_key_sid = public_key_sid
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] encrypted_cek Object to be assigned
+    def encrypted_cek=(encrypted_cek : String?)
+      if encrypted_cek.nil?
+        return @encrypted_cek = nil
+      end
+      @encrypted_cek = encrypted_cek
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] iv Object to be assigned
+    def iv=(iv : String?)
+      if iv.nil?
+        return @iv = nil
+      end
+      @iv = iv
     end
 
     # @see the `==` method

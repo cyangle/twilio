@@ -13,30 +13,27 @@ require "log"
 
 module Twilio
   # Call Request.
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class CallCallEventRequest
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
-    @[JSON::Field(key: "method", type: String?, presence: true, ignore_serialize: method.nil? && !method_present?)]
-    property method : String?
+    @[JSON::Field(key: "method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: method.nil? && !method_present?)]
+    getter method : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? method_present : Bool = false
 
-    @[JSON::Field(key: "url", type: String?, presence: true, ignore_serialize: url.nil? && !url_present?)]
-    property url : String?
+    @[JSON::Field(key: "url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: url.nil? && !url_present?)]
+    getter url : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? url_present : Bool = false
 
-    @[JSON::Field(key: "parameters", type: Hash(String, String)?, presence: true, ignore_serialize: parameters.nil? && !parameters_present?)]
-    property parameters : Hash(String, String)?
-
-    @[JSON::Field(ignore: true)]
-    property? parameters_present : Bool = false
+    @[JSON::Field(key: "parameters", type: Hash(String, String)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter parameters : Hash(String, String)? = nil
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
@@ -63,6 +60,29 @@ module Twilio
       true
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] method Object to be assigned
+    def method=(method : String?)
+      if method.nil?
+        return @method = nil
+      end
+      @method = method
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] url Object to be assigned
+    def url=(url : String?)
+      if url.nil?
+        return @url = nil
+      end
+      @url = url
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] parameters Object to be assigned
+    def parameters=(parameters : Hash(String, String)?)
+      if parameters.nil?
+        return @parameters = nil
+      end
+      @parameters = parameters
+    end
+
     # @see the `==` method
     # @param [Object] Object to be compared
     def eql?(o)
@@ -73,6 +93,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@method, @method_present, @url, @url_present, @parameters, @parameters_present)
+    def_equals_and_hash(@method, @method_present, @url, @url_present, @parameters)
   end
 end

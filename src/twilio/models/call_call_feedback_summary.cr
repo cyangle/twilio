@@ -12,107 +12,107 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class CallCallFeedbackSummary
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The unique sid that identifies this account
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # The total number of calls
-    @[JSON::Field(key: "call_count", type: Int32?, presence: true, ignore_serialize: call_count.nil? && !call_count_present?)]
-    property call_count : Int32?
+    @[JSON::Field(key: "call_count", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: call_count.nil? && !call_count_present?)]
+    getter call_count : Int32? = nil
 
     @[JSON::Field(ignore: true)]
     property? call_count_present : Bool = false
 
     # The total number of calls with a feedback entry
-    @[JSON::Field(key: "call_feedback_count", type: Int32?, presence: true, ignore_serialize: call_feedback_count.nil? && !call_feedback_count_present?)]
-    property call_feedback_count : Int32?
+    @[JSON::Field(key: "call_feedback_count", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: call_feedback_count.nil? && !call_feedback_count_present?)]
+    getter call_feedback_count : Int32? = nil
 
     @[JSON::Field(ignore: true)]
     property? call_feedback_count_present : Bool = false
 
     # The date this resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
-    property date_created : Time?
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The date this resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
-    property date_updated : Time?
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The latest feedback entry date in the summary
-    @[JSON::Field(key: "end_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: end_date.nil? && !end_date_present?)]
-    property end_date : Time?
+    @[JSON::Field(key: "end_date", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: end_date.nil? && !end_date_present?, converter: Time::ISO8601DateConverter)]
+    getter end_date : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? end_date_present : Bool = false
 
     # Whether the feedback summary includes subaccounts
-    @[JSON::Field(key: "include_subaccounts", type: Bool?, presence: true, ignore_serialize: include_subaccounts.nil? && !include_subaccounts_present?)]
-    property include_subaccounts : Bool?
+    @[JSON::Field(key: "include_subaccounts", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: include_subaccounts.nil? && !include_subaccounts_present?)]
+    getter include_subaccounts : Bool? = nil
 
     @[JSON::Field(ignore: true)]
     property? include_subaccounts_present : Bool = false
 
     # Issues experienced during the call
-    @[JSON::Field(key: "issues", type: Array(String)?, presence: true, ignore_serialize: issues.nil? && !issues_present?)]
-    property issues : Array(String)?
+    @[JSON::Field(key: "issues", type: Array(String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: issues.nil? && !issues_present?)]
+    getter issues : Array(String)? = nil
 
     @[JSON::Field(ignore: true)]
     property? issues_present : Bool = false
 
     # The average QualityScore of the feedback entries
-    @[JSON::Field(key: "quality_score_average", type: Float64?, presence: true, ignore_serialize: quality_score_average.nil? && !quality_score_average_present?)]
-    property quality_score_average : Float64?
+    @[JSON::Field(key: "quality_score_average", type: Float64?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: quality_score_average.nil? && !quality_score_average_present?)]
+    getter quality_score_average : Float64? = nil
 
     @[JSON::Field(ignore: true)]
     property? quality_score_average_present : Bool = false
 
     # The median QualityScore of the feedback entries
-    @[JSON::Field(key: "quality_score_median", type: Float64?, presence: true, ignore_serialize: quality_score_median.nil? && !quality_score_median_present?)]
-    property quality_score_median : Float64?
+    @[JSON::Field(key: "quality_score_median", type: Float64?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: quality_score_median.nil? && !quality_score_median_present?)]
+    getter quality_score_median : Float64? = nil
 
     @[JSON::Field(ignore: true)]
     property? quality_score_median_present : Bool = false
 
     # The standard deviation of the quality scores
-    @[JSON::Field(key: "quality_score_standard_deviation", type: Float64?, presence: true, ignore_serialize: quality_score_standard_deviation.nil? && !quality_score_standard_deviation_present?)]
-    property quality_score_standard_deviation : Float64?
+    @[JSON::Field(key: "quality_score_standard_deviation", type: Float64?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: quality_score_standard_deviation.nil? && !quality_score_standard_deviation_present?)]
+    getter quality_score_standard_deviation : Float64? = nil
 
     @[JSON::Field(ignore: true)]
     property? quality_score_standard_deviation_present : Bool = false
 
     # A string that uniquely identifies this feedback entry
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String?
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The earliest feedback entry date in the summary
-    @[JSON::Field(key: "start_date", type: Time?, converter: Time::ISO8601DateConverter, presence: true, ignore_serialize: start_date.nil? && !start_date_present?)]
-    property start_date : Time?
+    @[JSON::Field(key: "start_date", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: start_date.nil? && !start_date_present?, converter: Time::ISO8601DateConverter)]
+    getter start_date : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? start_date_present : Bool = false
 
     # The status of the feedback summary
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
-    getter status : String?
+    @[JSON::Field(key: "status", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status.nil? && !status_present?)]
+    getter status : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
@@ -145,31 +145,33 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _sid = @sid
+        if _sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
-      end
+        if _sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
+        end
 
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^FS[0-9a-fA-F]{32}$/
-      if !@sid.nil? && @sid !~ pattern
-        invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        pattern = /^FS[0-9a-fA-F]{32}$/
+        if _sid !~ pattern
+          invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS.error_message) unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
@@ -180,59 +182,148 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
-      return false if !@sid.nil? && @sid.to_s.size > 34
-      return false if !@sid.nil? && @sid.to_s.size < 34
-      return false if !@sid.nil? && @sid !~ /^FS[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
+      if _sid = @sid
+        return false if _sid.to_s.size > 34
+        return false if _sid.to_s.size < 34
+        return false if _sid !~ /^FS[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_STATUS.valid?(@status)
 
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] call_count Object to be assigned
+    def call_count=(call_count : Int32?)
+      if call_count.nil?
+        return @call_count = nil
+      end
+      @call_count = call_count
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] call_feedback_count Object to be assigned
+    def call_feedback_count=(call_feedback_count : Int32?)
+      if call_feedback_count.nil?
+        return @call_feedback_count = nil
+      end
+      @call_feedback_count = call_feedback_count
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      @date_created = date_created
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      @date_updated = date_updated
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] end_date Object to be assigned
+    def end_date=(end_date : Time?)
+      if end_date.nil?
+        return @end_date = nil
+      end
+      @end_date = end_date
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] include_subaccounts Object to be assigned
+    def include_subaccounts=(include_subaccounts : Bool?)
+      if include_subaccounts.nil?
+        return @include_subaccounts = nil
+      end
+      @include_subaccounts = include_subaccounts
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] issues Object to be assigned
+    def issues=(issues : Array(String)?)
+      if issues.nil?
+        return @issues = nil
+      end
+      @issues = issues
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] quality_score_average Object to be assigned
+    def quality_score_average=(quality_score_average : Float64?)
+      if quality_score_average.nil?
+        return @quality_score_average = nil
+      end
+      @quality_score_average = quality_score_average
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] quality_score_median Object to be assigned
+    def quality_score_median=(quality_score_median : Float64?)
+      if quality_score_median.nil?
+        return @quality_score_median = nil
+      end
+      @quality_score_median = quality_score_median
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] quality_score_standard_deviation Object to be assigned
+    def quality_score_standard_deviation=(quality_score_standard_deviation : Float64?)
+      if quality_score_standard_deviation.nil?
+        return @quality_score_standard_deviation = nil
+      end
+      @quality_score_standard_deviation = quality_score_standard_deviation
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
     def sid=(sid : String?)
-      if !sid.nil? && sid.to_s.size > 34
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      if _sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !sid.nil? && sid.to_s.size < 34
+      if _sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^FS[0-9a-fA-F]{32}$/
-      if !sid.nil? && sid !~ pattern
+      if _sid !~ pattern
         raise ArgumentError.new("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
       @sid = sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] start_date Object to be assigned
+    def start_date=(start_date : Time?)
+      if start_date.nil?
+        return @start_date = nil
+      end
+      @start_date = start_date
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status : String?)
-      ENUM_VALIDATOR_FOR_STATUS.valid!(status)
+      if status.nil?
+        return @status = nil
+      end
+      _status = status.not_nil!
+      ENUM_VALIDATOR_FOR_STATUS.valid!(_status)
       @status = status
     end
 

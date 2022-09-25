@@ -12,23 +12,23 @@ require "time"
 require "log"
 
 module Twilio
-  @[JSON::Serializable::Options(emit_nulls: true)]
   class IncomingPhoneNumberIncomingPhoneNumberLocal
     include JSON::Serializable
     include JSON::Serializable::Unmapped
+    include OpenApi::Json
 
     # Optional properties
 
     # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String?
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
     # Whether the phone number requires an Address registered with Twilio.
-    @[JSON::Field(key: "address_requirements", type: String?, presence: true, ignore_serialize: address_requirements.nil? && !address_requirements_present?)]
-    getter address_requirements : String?
+    @[JSON::Field(key: "address_requirements", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: address_requirements.nil? && !address_requirements_present?)]
+    getter address_requirements : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? address_requirements_present : Bool = false
@@ -36,63 +36,63 @@ module Twilio
     ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS = EnumValidator.new("address_requirements", "String", ["none", "any", "local", "foreign"])
 
     # The SID of the Address resource associated with the phone number
-    @[JSON::Field(key: "address_sid", type: String?, presence: true, ignore_serialize: address_sid.nil? && !address_sid_present?)]
-    getter address_sid : String?
+    @[JSON::Field(key: "address_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: address_sid.nil? && !address_sid_present?)]
+    getter address_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? address_sid_present : Bool = false
 
     # The API version used to start a new TwiML session
-    @[JSON::Field(key: "api_version", type: String?, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
-    property api_version : String?
+    @[JSON::Field(key: "api_version", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
+    getter api_version : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
     # Whether the phone number is new to the Twilio platform
-    @[JSON::Field(key: "beta", type: Bool?, presence: true, ignore_serialize: beta.nil? && !beta_present?)]
-    property beta : Bool?
+    @[JSON::Field(key: "beta", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: beta.nil? && !beta_present?)]
+    getter beta : Bool? = nil
 
     @[JSON::Field(ignore: true)]
     property? beta_present : Bool = false
 
     # The SID of the Bundle resource associated with number
-    @[JSON::Field(key: "bundle_sid", type: String?, presence: true, ignore_serialize: bundle_sid.nil? && !bundle_sid_present?)]
-    getter bundle_sid : String?
+    @[JSON::Field(key: "bundle_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: bundle_sid.nil? && !bundle_sid_present?)]
+    getter bundle_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? bundle_sid_present : Bool = false
 
-    @[JSON::Field(key: "capabilities", type: IncomingPhoneNumberCapabilities?, presence: true, ignore_serialize: capabilities.nil? && !capabilities_present?)]
-    property capabilities : IncomingPhoneNumberCapabilities?
+    @[JSON::Field(key: "capabilities", type: IncomingPhoneNumberCapabilities?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: capabilities.nil? && !capabilities_present?)]
+    getter capabilities : IncomingPhoneNumberCapabilities? = nil
 
     @[JSON::Field(ignore: true)]
     property? capabilities_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
-    @[JSON::Field(key: "date_created", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_created.nil? && !date_created_present?)]
-    property date_created : Time?
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_created_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, converter: Time::RFC2822Converter, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?)]
-    property date_updated : Time?
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
 
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
     # The emergency address configuration to use for emergency calling
-    @[JSON::Field(key: "emergency_address_sid", type: String?, presence: true, ignore_serialize: emergency_address_sid.nil? && !emergency_address_sid_present?)]
-    getter emergency_address_sid : String?
+    @[JSON::Field(key: "emergency_address_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_address_sid.nil? && !emergency_address_sid_present?)]
+    getter emergency_address_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? emergency_address_sid_present : Bool = false
 
     # State of the emergency address configuration for the phone number
-    @[JSON::Field(key: "emergency_address_status", type: String?, presence: true, ignore_serialize: emergency_address_status.nil? && !emergency_address_status_present?)]
-    getter emergency_address_status : String?
+    @[JSON::Field(key: "emergency_address_status", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_address_status.nil? && !emergency_address_status_present?)]
+    getter emergency_address_status : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? emergency_address_status_present : Bool = false
@@ -100,8 +100,8 @@ module Twilio
     ENUM_VALIDATOR_FOR_EMERGENCY_ADDRESS_STATUS = EnumValidator.new("emergency_address_status", "String", ["registered", "unregistered", "pending-registration", "registration-failure", "pending-unregistration", "unregistration-failure"])
 
     # Displays if emergency calling is enabled for this number.
-    @[JSON::Field(key: "emergency_status", type: String?, presence: true, ignore_serialize: emergency_status.nil? && !emergency_status_present?)]
-    getter emergency_status : String?
+    @[JSON::Field(key: "emergency_status", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_status.nil? && !emergency_status_present?)]
+    getter emergency_status : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? emergency_status_present : Bool = false
@@ -109,50 +109,50 @@ module Twilio
     ENUM_VALIDATOR_FOR_EMERGENCY_STATUS = EnumValidator.new("emergency_status", "String", ["Active", "Inactive"])
 
     # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
-    property friendly_name : String?
+    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
+    getter friendly_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
 
     # The SID of the Identity resource associated with number
-    @[JSON::Field(key: "identity_sid", type: String?, presence: true, ignore_serialize: identity_sid.nil? && !identity_sid_present?)]
-    getter identity_sid : String?
+    @[JSON::Field(key: "identity_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: identity_sid.nil? && !identity_sid_present?)]
+    getter identity_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? identity_sid_present : Bool = false
 
     # The phone number's origin. Can be twilio or hosted.
-    @[JSON::Field(key: "origin", type: String?, presence: true, ignore_serialize: origin.nil? && !origin_present?)]
-    property origin : String?
+    @[JSON::Field(key: "origin", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: origin.nil? && !origin_present?)]
+    getter origin : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? origin_present : Bool = false
 
     # The phone number in E.164 format
-    @[JSON::Field(key: "phone_number", type: String?, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?)]
-    property phone_number : String?
+    @[JSON::Field(key: "phone_number", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?)]
+    getter phone_number : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? phone_number_present : Bool = false
 
     # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String?
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
     # The SID of the Application resource to handle SMS messages
-    @[JSON::Field(key: "sms_application_sid", type: String?, presence: true, ignore_serialize: sms_application_sid.nil? && !sms_application_sid_present?)]
-    getter sms_application_sid : String?
+    @[JSON::Field(key: "sms_application_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_application_sid.nil? && !sms_application_sid_present?)]
+    getter sms_application_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sms_application_sid_present : Bool = false
 
     # The HTTP method used with sms_fallback_url
-    @[JSON::Field(key: "sms_fallback_method", type: String?, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
-    getter sms_fallback_method : String?
+    @[JSON::Field(key: "sms_fallback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
+    getter sms_fallback_method : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sms_fallback_method_present : Bool = false
@@ -160,15 +160,15 @@ module Twilio
     ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD = EnumValidator.new("sms_fallback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL that we call when an error occurs while retrieving or executing the TwiML
-    @[JSON::Field(key: "sms_fallback_url", type: String?, presence: true, ignore_serialize: sms_fallback_url.nil? && !sms_fallback_url_present?)]
-    property sms_fallback_url : String?
+    @[JSON::Field(key: "sms_fallback_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_url.nil? && !sms_fallback_url_present?)]
+    getter sms_fallback_url : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sms_fallback_url_present : Bool = false
 
     # The HTTP method to use with sms_url
-    @[JSON::Field(key: "sms_method", type: String?, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
-    getter sms_method : String?
+    @[JSON::Field(key: "sms_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
+    getter sms_method : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sms_method_present : Bool = false
@@ -176,28 +176,28 @@ module Twilio
     ENUM_VALIDATOR_FOR_SMS_METHOD = EnumValidator.new("sms_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL we call when the phone number receives an incoming SMS message
-    @[JSON::Field(key: "sms_url", type: String?, presence: true, ignore_serialize: sms_url.nil? && !sms_url_present?)]
-    property sms_url : String?
+    @[JSON::Field(key: "sms_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_url.nil? && !sms_url_present?)]
+    getter sms_url : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? sms_url_present : Bool = false
 
-    @[JSON::Field(key: "status", type: String?, presence: true, ignore_serialize: status.nil? && !status_present?)]
-    property status : String?
+    @[JSON::Field(key: "status", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status.nil? && !status_present?)]
+    getter status : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? status_present : Bool = false
 
     # The URL to send status information to your application
-    @[JSON::Field(key: "status_callback", type: String?, presence: true, ignore_serialize: status_callback.nil? && !status_callback_present?)]
-    property status_callback : String?
+    @[JSON::Field(key: "status_callback", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status_callback.nil? && !status_callback_present?)]
+    getter status_callback : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? status_callback_present : Bool = false
 
     # The HTTP method we use to call status_callback
-    @[JSON::Field(key: "status_callback_method", type: String?, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?)]
-    getter status_callback_method : String?
+    @[JSON::Field(key: "status_callback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?)]
+    getter status_callback_method : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? status_callback_method_present : Bool = false
@@ -205,36 +205,36 @@ module Twilio
     ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD = EnumValidator.new("status_callback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The SID of the Trunk that handles calls to the phone number
-    @[JSON::Field(key: "trunk_sid", type: String?, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?)]
-    getter trunk_sid : String?
+    @[JSON::Field(key: "trunk_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?)]
+    getter trunk_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? trunk_sid_present : Bool = false
 
     # The URI of the resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    property uri : String?
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
     # The SID of the application that handles calls to the phone number
-    @[JSON::Field(key: "voice_application_sid", type: String?, presence: true, ignore_serialize: voice_application_sid.nil? && !voice_application_sid_present?)]
-    getter voice_application_sid : String?
+    @[JSON::Field(key: "voice_application_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_application_sid.nil? && !voice_application_sid_present?)]
+    getter voice_application_sid : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_application_sid_present : Bool = false
 
     # Whether to lookup the caller's name
-    @[JSON::Field(key: "voice_caller_id_lookup", type: Bool?, presence: true, ignore_serialize: voice_caller_id_lookup.nil? && !voice_caller_id_lookup_present?)]
-    property voice_caller_id_lookup : Bool?
+    @[JSON::Field(key: "voice_caller_id_lookup", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_caller_id_lookup.nil? && !voice_caller_id_lookup_present?)]
+    getter voice_caller_id_lookup : Bool? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_caller_id_lookup_present : Bool = false
 
     # The HTTP method used with voice_fallback_url
-    @[JSON::Field(key: "voice_fallback_method", type: String?, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
-    getter voice_fallback_method : String?
+    @[JSON::Field(key: "voice_fallback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
+    getter voice_fallback_method : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_fallback_method_present : Bool = false
@@ -242,23 +242,23 @@ module Twilio
     ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD = EnumValidator.new("voice_fallback_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
     # The URL we call when an error occurs in TwiML
-    @[JSON::Field(key: "voice_fallback_url", type: String?, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?)]
-    property voice_fallback_url : String?
+    @[JSON::Field(key: "voice_fallback_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?)]
+    getter voice_fallback_url : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_fallback_url_present : Bool = false
 
     # The HTTP method used with the voice_url
-    @[JSON::Field(key: "voice_method", type: String?, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
-    getter voice_method : String?
+    @[JSON::Field(key: "voice_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
+    getter voice_method : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_method_present : Bool = false
 
     ENUM_VALIDATOR_FOR_VOICE_METHOD = EnumValidator.new("voice_method", "String", ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"])
 
-    @[JSON::Field(key: "voice_receive_mode", type: String?, presence: true, ignore_serialize: voice_receive_mode.nil? && !voice_receive_mode_present?)]
-    getter voice_receive_mode : String?
+    @[JSON::Field(key: "voice_receive_mode", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_receive_mode.nil? && !voice_receive_mode_present?)]
+    getter voice_receive_mode : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_receive_mode_present : Bool = false
@@ -266,8 +266,8 @@ module Twilio
     ENUM_VALIDATOR_FOR_VOICE_RECEIVE_MODE = EnumValidator.new("voice_receive_mode", "String", ["voice", "fax"])
 
     # The URL we call when this phone number receives a call
-    @[JSON::Field(key: "voice_url", type: String?, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?)]
-    property voice_url : String?
+    @[JSON::Field(key: "voice_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?)]
+    getter voice_url : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_url_present : Bool = false
@@ -318,102 +318,109 @@ module Twilio
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array(String).new
+      if _account_sid = @account_sid
+        if _account_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
-      end
+        if _account_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@account_sid.nil? && @account_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^AC[0-9a-fA-F]{32}$/
-      if !@account_sid.nil? && @account_sid !~ pattern
-        invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        pattern = /^AC[0-9a-fA-F]{32}$/
+        if _account_sid !~ pattern
+          invalid_properties.push("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.error_message) unless ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid?(@address_requirements)
+      if _address_sid = @address_sid
+        if _address_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"address_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@address_sid.nil? && @address_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"address_sid\", the character length must be smaller than or equal to 34.")
+        if _address_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"address_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^AD[0-9a-fA-F]{32}$/
+        if _address_sid !~ pattern
+          invalid_properties.push("invalid value for \"address_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _bundle_sid = @bundle_sid
+        if _bundle_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"bundle_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@address_sid.nil? && @address_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"address_sid\", the character length must be great than or equal to 34.")
+        if _bundle_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"bundle_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^BU[0-9a-fA-F]{32}$/
+        if _bundle_sid !~ pattern
+          invalid_properties.push("invalid value for \"bundle_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _emergency_address_sid = @emergency_address_sid
+        if _emergency_address_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"emergency_address_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      pattern = /^AD[0-9a-fA-F]{32}$/
-      if !@address_sid.nil? && @address_sid !~ pattern
-        invalid_properties.push("invalid value for \"address_sid\", must conform to the pattern #{pattern}.")
-      end
+        if _emergency_address_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"emergency_address_sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@bundle_sid.nil? && @bundle_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"bundle_sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@bundle_sid.nil? && @bundle_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"bundle_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^BU[0-9a-fA-F]{32}$/
-      if !@bundle_sid.nil? && @bundle_sid !~ pattern
-        invalid_properties.push("invalid value for \"bundle_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"emergency_address_sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"emergency_address_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^AD[0-9a-fA-F]{32}$/
-      if !@emergency_address_sid.nil? && @emergency_address_sid !~ pattern
-        invalid_properties.push("invalid value for \"emergency_address_sid\", must conform to the pattern #{pattern}.")
+        pattern = /^AD[0-9a-fA-F]{32}$/
+        if _emergency_address_sid !~ pattern
+          invalid_properties.push("invalid value for \"emergency_address_sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_EMERGENCY_ADDRESS_STATUS.error_message) unless ENUM_VALIDATOR_FOR_EMERGENCY_ADDRESS_STATUS.valid?(@emergency_address_status)
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.error_message) unless ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid?(@emergency_status)
+      if _identity_sid = @identity_sid
+        if _identity_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"identity_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@identity_sid.nil? && @identity_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"identity_sid\", the character length must be smaller than or equal to 34.")
+        if _identity_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"identity_sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^RI[0-9a-fA-F]{32}$/
+        if _identity_sid !~ pattern
+          invalid_properties.push("invalid value for \"identity_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _sid = @sid
+        if _sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@identity_sid.nil? && @identity_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"identity_sid\", the character length must be great than or equal to 34.")
+        if _sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
+        end
+
+        pattern = /^PN[0-9a-fA-F]{32}$/
+        if _sid !~ pattern
+          invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _sms_application_sid = @sms_application_sid
+        if _sms_application_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"sms_application_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      pattern = /^RI[0-9a-fA-F]{32}$/
-      if !@identity_sid.nil? && @identity_sid !~ pattern
-        invalid_properties.push("invalid value for \"identity_sid\", must conform to the pattern #{pattern}.")
-      end
+        if _sms_application_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"sms_application_sid\", the character length must be great than or equal to 34.")
+        end
 
-      if !@sid.nil? && @sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@sid.nil? && @sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^PN[0-9a-fA-F]{32}$/
-      if !@sid.nil? && @sid !~ pattern
-        invalid_properties.push("invalid value for \"sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@sms_application_sid.nil? && @sms_application_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"sms_application_sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@sms_application_sid.nil? && @sms_application_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"sms_application_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^AP[0-9a-fA-F]{32}$/
-      if !@sms_application_sid.nil? && @sms_application_sid !~ pattern
-        invalid_properties.push("invalid value for \"sms_application_sid\", must conform to the pattern #{pattern}.")
+        pattern = /^AP[0-9a-fA-F]{32}$/
+        if _sms_application_sid !~ pattern
+          invalid_properties.push("invalid value for \"sms_application_sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid?(@sms_fallback_method)
@@ -421,31 +428,33 @@ module Twilio
       invalid_properties.push(ENUM_VALIDATOR_FOR_SMS_METHOD.error_message) unless ENUM_VALIDATOR_FOR_SMS_METHOD.valid?(@sms_method)
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid?(@status_callback_method)
+      if _trunk_sid = @trunk_sid
+        if _trunk_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"trunk_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@trunk_sid.nil? && @trunk_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"trunk_sid\", the character length must be smaller than or equal to 34.")
+        if _trunk_sid.to_s.size < 0
+          invalid_properties.push("invalid value for \"trunk_sid\", the character length must be great than or equal to 0.")
+        end
+
+        pattern = /^TK[0-9a-fA-F]{32}$|^$/
+        if _trunk_sid !~ pattern
+          invalid_properties.push("invalid value for \"trunk_sid\", must conform to the pattern #{pattern}.")
+        end
       end
+      if _voice_application_sid = @voice_application_sid
+        if _voice_application_sid.to_s.size > 34
+          invalid_properties.push("invalid value for \"voice_application_sid\", the character length must be smaller than or equal to 34.")
+        end
 
-      if !@trunk_sid.nil? && @trunk_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"trunk_sid\", the character length must be great than or equal to 34.")
-      end
+        if _voice_application_sid.to_s.size < 34
+          invalid_properties.push("invalid value for \"voice_application_sid\", the character length must be great than or equal to 34.")
+        end
 
-      pattern = /^TK[0-9a-fA-F]{32}$/
-      if !@trunk_sid.nil? && @trunk_sid !~ pattern
-        invalid_properties.push("invalid value for \"trunk_sid\", must conform to the pattern #{pattern}.")
-      end
-
-      if !@voice_application_sid.nil? && @voice_application_sid.to_s.size > 34
-        invalid_properties.push("invalid value for \"voice_application_sid\", the character length must be smaller than or equal to 34.")
-      end
-
-      if !@voice_application_sid.nil? && @voice_application_sid.to_s.size < 34
-        invalid_properties.push("invalid value for \"voice_application_sid\", the character length must be great than or equal to 34.")
-      end
-
-      pattern = /^AP[0-9a-fA-F]{32}$/
-      if !@voice_application_sid.nil? && @voice_application_sid !~ pattern
-        invalid_properties.push("invalid value for \"voice_application_sid\", must conform to the pattern #{pattern}.")
+        pattern = /^AP[0-9a-fA-F]{32}$/
+        if _voice_application_sid !~ pattern
+          invalid_properties.push("invalid value for \"voice_application_sid\", must conform to the pattern #{pattern}.")
+        end
       end
 
       invalid_properties.push(ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.error_message) unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(@voice_fallback_method)
@@ -460,39 +469,57 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@account_sid.nil? && @account_sid.to_s.size > 34
-      return false if !@account_sid.nil? && @account_sid.to_s.size < 34
-      return false if !@account_sid.nil? && @account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      if _account_sid = @account_sid
+        return false if _account_sid.to_s.size > 34
+        return false if _account_sid.to_s.size < 34
+        return false if _account_sid !~ /^AC[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid?(@address_requirements)
-      return false if !@address_sid.nil? && @address_sid.to_s.size > 34
-      return false if !@address_sid.nil? && @address_sid.to_s.size < 34
-      return false if !@address_sid.nil? && @address_sid !~ /^AD[0-9a-fA-F]{32}$/
-      return false if !@bundle_sid.nil? && @bundle_sid.to_s.size > 34
-      return false if !@bundle_sid.nil? && @bundle_sid.to_s.size < 34
-      return false if !@bundle_sid.nil? && @bundle_sid !~ /^BU[0-9a-fA-F]{32}$/
-      return false if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size > 34
-      return false if !@emergency_address_sid.nil? && @emergency_address_sid.to_s.size < 34
-      return false if !@emergency_address_sid.nil? && @emergency_address_sid !~ /^AD[0-9a-fA-F]{32}$/
+      if _address_sid = @address_sid
+        return false if _address_sid.to_s.size > 34
+        return false if _address_sid.to_s.size < 34
+        return false if _address_sid !~ /^AD[0-9a-fA-F]{32}$/
+      end
+      if _bundle_sid = @bundle_sid
+        return false if _bundle_sid.to_s.size > 34
+        return false if _bundle_sid.to_s.size < 34
+        return false if _bundle_sid !~ /^BU[0-9a-fA-F]{32}$/
+      end
+      if _emergency_address_sid = @emergency_address_sid
+        return false if _emergency_address_sid.to_s.size > 34
+        return false if _emergency_address_sid.to_s.size < 34
+        return false if _emergency_address_sid !~ /^AD[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_EMERGENCY_ADDRESS_STATUS.valid?(@emergency_address_status)
       return false unless ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid?(@emergency_status)
-      return false if !@identity_sid.nil? && @identity_sid.to_s.size > 34
-      return false if !@identity_sid.nil? && @identity_sid.to_s.size < 34
-      return false if !@identity_sid.nil? && @identity_sid !~ /^RI[0-9a-fA-F]{32}$/
-      return false if !@sid.nil? && @sid.to_s.size > 34
-      return false if !@sid.nil? && @sid.to_s.size < 34
-      return false if !@sid.nil? && @sid !~ /^PN[0-9a-fA-F]{32}$/
-      return false if !@sms_application_sid.nil? && @sms_application_sid.to_s.size > 34
-      return false if !@sms_application_sid.nil? && @sms_application_sid.to_s.size < 34
-      return false if !@sms_application_sid.nil? && @sms_application_sid !~ /^AP[0-9a-fA-F]{32}$/
+      if _identity_sid = @identity_sid
+        return false if _identity_sid.to_s.size > 34
+        return false if _identity_sid.to_s.size < 34
+        return false if _identity_sid !~ /^RI[0-9a-fA-F]{32}$/
+      end
+      if _sid = @sid
+        return false if _sid.to_s.size > 34
+        return false if _sid.to_s.size < 34
+        return false if _sid !~ /^PN[0-9a-fA-F]{32}$/
+      end
+      if _sms_application_sid = @sms_application_sid
+        return false if _sms_application_sid.to_s.size > 34
+        return false if _sms_application_sid.to_s.size < 34
+        return false if _sms_application_sid !~ /^AP[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid?(@sms_fallback_method)
       return false unless ENUM_VALIDATOR_FOR_SMS_METHOD.valid?(@sms_method)
       return false unless ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid?(@status_callback_method)
-      return false if !@trunk_sid.nil? && @trunk_sid.to_s.size > 34
-      return false if !@trunk_sid.nil? && @trunk_sid.to_s.size < 34
-      return false if !@trunk_sid.nil? && @trunk_sid !~ /^TK[0-9a-fA-F]{32}$/
-      return false if !@voice_application_sid.nil? && @voice_application_sid.to_s.size > 34
-      return false if !@voice_application_sid.nil? && @voice_application_sid.to_s.size < 34
-      return false if !@voice_application_sid.nil? && @voice_application_sid !~ /^AP[0-9a-fA-F]{32}$/
+      if _trunk_sid = @trunk_sid
+        return false if _trunk_sid.to_s.size > 34
+        return false if _trunk_sid.to_s.size < 0
+        return false if _trunk_sid !~ /^TK[0-9a-fA-F]{32}$|^$/
+      end
+      if _voice_application_sid = @voice_application_sid
+        return false if _voice_application_sid.to_s.size > 34
+        return false if _voice_application_sid.to_s.size < 34
+        return false if _voice_application_sid !~ /^AP[0-9a-fA-F]{32}$/
+      end
       return false unless ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid?(@voice_fallback_method)
       return false unless ENUM_VALIDATOR_FOR_VOICE_METHOD.valid?(@voice_method)
       return false unless ENUM_VALIDATOR_FOR_VOICE_RECEIVE_MODE.valid?(@voice_receive_mode)
@@ -500,238 +527,388 @@ module Twilio
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] account_sid Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] account_sid Object to be assigned
     def account_sid=(account_sid : String?)
-      if !account_sid.nil? && account_sid.to_s.size > 34
+      if account_sid.nil?
+        return @account_sid = nil
+      end
+      _account_sid = account_sid.not_nil!
+      if _account_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !account_sid.nil? && account_sid.to_s.size < 34
+      if _account_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"account_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AC[0-9a-fA-F]{32}$/
-      if !account_sid.nil? && account_sid !~ pattern
+      if _account_sid !~ pattern
         raise ArgumentError.new("invalid value for \"account_sid\", must conform to the pattern #{pattern}.")
       end
 
       @account_sid = account_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] address_requirements Object to be assigned
     def address_requirements=(address_requirements : String?)
-      ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid!(address_requirements)
+      if address_requirements.nil?
+        return @address_requirements = nil
+      end
+      _address_requirements = address_requirements.not_nil!
+      ENUM_VALIDATOR_FOR_ADDRESS_REQUIREMENTS.valid!(_address_requirements)
       @address_requirements = address_requirements
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] address_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] address_sid Object to be assigned
     def address_sid=(address_sid : String?)
-      if !address_sid.nil? && address_sid.to_s.size > 34
+      if address_sid.nil?
+        return @address_sid = nil
+      end
+      _address_sid = address_sid.not_nil!
+      if _address_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"address_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !address_sid.nil? && address_sid.to_s.size < 34
+      if _address_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"address_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AD[0-9a-fA-F]{32}$/
-      if !address_sid.nil? && address_sid !~ pattern
+      if _address_sid !~ pattern
         raise ArgumentError.new("invalid value for \"address_sid\", must conform to the pattern #{pattern}.")
       end
 
       @address_sid = address_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] bundle_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] api_version Object to be assigned
+    def api_version=(api_version : String?)
+      if api_version.nil?
+        return @api_version = nil
+      end
+      @api_version = api_version
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] beta Object to be assigned
+    def beta=(beta : Bool?)
+      if beta.nil?
+        return @beta = nil
+      end
+      @beta = beta
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] bundle_sid Object to be assigned
     def bundle_sid=(bundle_sid : String?)
-      if !bundle_sid.nil? && bundle_sid.to_s.size > 34
+      if bundle_sid.nil?
+        return @bundle_sid = nil
+      end
+      _bundle_sid = bundle_sid.not_nil!
+      if _bundle_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"bundle_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !bundle_sid.nil? && bundle_sid.to_s.size < 34
+      if _bundle_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"bundle_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^BU[0-9a-fA-F]{32}$/
-      if !bundle_sid.nil? && bundle_sid !~ pattern
+      if _bundle_sid !~ pattern
         raise ArgumentError.new("invalid value for \"bundle_sid\", must conform to the pattern #{pattern}.")
       end
 
       @bundle_sid = bundle_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] emergency_address_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] capabilities Object to be assigned
+    def capabilities=(capabilities : IncomingPhoneNumberCapabilities?)
+      if capabilities.nil?
+        return @capabilities = nil
+      end
+      @capabilities = capabilities
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      @date_created = date_created
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      @date_updated = date_updated
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] emergency_address_sid Object to be assigned
     def emergency_address_sid=(emergency_address_sid : String?)
-      if !emergency_address_sid.nil? && emergency_address_sid.to_s.size > 34
+      if emergency_address_sid.nil?
+        return @emergency_address_sid = nil
+      end
+      _emergency_address_sid = emergency_address_sid.not_nil!
+      if _emergency_address_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"emergency_address_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !emergency_address_sid.nil? && emergency_address_sid.to_s.size < 34
+      if _emergency_address_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"emergency_address_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AD[0-9a-fA-F]{32}$/
-      if !emergency_address_sid.nil? && emergency_address_sid !~ pattern
+      if _emergency_address_sid !~ pattern
         raise ArgumentError.new("invalid value for \"emergency_address_sid\", must conform to the pattern #{pattern}.")
       end
 
       @emergency_address_sid = emergency_address_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] emergency_address_status Object to be assigned
     def emergency_address_status=(emergency_address_status : String?)
-      ENUM_VALIDATOR_FOR_EMERGENCY_ADDRESS_STATUS.valid!(emergency_address_status)
+      if emergency_address_status.nil?
+        return @emergency_address_status = nil
+      end
+      _emergency_address_status = emergency_address_status.not_nil!
+      ENUM_VALIDATOR_FOR_EMERGENCY_ADDRESS_STATUS.valid!(_emergency_address_status)
       @emergency_address_status = emergency_address_status
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] emergency_status Object to be assigned
     def emergency_status=(emergency_status : String?)
-      ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid!(emergency_status)
+      if emergency_status.nil?
+        return @emergency_status = nil
+      end
+      _emergency_status = emergency_status.not_nil!
+      ENUM_VALIDATOR_FOR_EMERGENCY_STATUS.valid!(_emergency_status)
       @emergency_status = emergency_status
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] identity_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] friendly_name Object to be assigned
+    def friendly_name=(friendly_name : String?)
+      if friendly_name.nil?
+        return @friendly_name = nil
+      end
+      @friendly_name = friendly_name
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] identity_sid Object to be assigned
     def identity_sid=(identity_sid : String?)
-      if !identity_sid.nil? && identity_sid.to_s.size > 34
+      if identity_sid.nil?
+        return @identity_sid = nil
+      end
+      _identity_sid = identity_sid.not_nil!
+      if _identity_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"identity_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !identity_sid.nil? && identity_sid.to_s.size < 34
+      if _identity_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"identity_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^RI[0-9a-fA-F]{32}$/
-      if !identity_sid.nil? && identity_sid !~ pattern
+      if _identity_sid !~ pattern
         raise ArgumentError.new("invalid value for \"identity_sid\", must conform to the pattern #{pattern}.")
       end
 
       @identity_sid = identity_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] origin Object to be assigned
+    def origin=(origin : String?)
+      if origin.nil?
+        return @origin = nil
+      end
+      @origin = origin
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] phone_number Object to be assigned
+    def phone_number=(phone_number : String?)
+      if phone_number.nil?
+        return @phone_number = nil
+      end
+      @phone_number = phone_number
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
     def sid=(sid : String?)
-      if !sid.nil? && sid.to_s.size > 34
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      if _sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !sid.nil? && sid.to_s.size < 34
+      if _sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^PN[0-9a-fA-F]{32}$/
-      if !sid.nil? && sid !~ pattern
+      if _sid !~ pattern
         raise ArgumentError.new("invalid value for \"sid\", must conform to the pattern #{pattern}.")
       end
 
       @sid = sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sms_application_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sms_application_sid Object to be assigned
     def sms_application_sid=(sms_application_sid : String?)
-      if !sms_application_sid.nil? && sms_application_sid.to_s.size > 34
+      if sms_application_sid.nil?
+        return @sms_application_sid = nil
+      end
+      _sms_application_sid = sms_application_sid.not_nil!
+      if _sms_application_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"sms_application_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !sms_application_sid.nil? && sms_application_sid.to_s.size < 34
+      if _sms_application_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"sms_application_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AP[0-9a-fA-F]{32}$/
-      if !sms_application_sid.nil? && sms_application_sid !~ pattern
+      if _sms_application_sid !~ pattern
         raise ArgumentError.new("invalid value for \"sms_application_sid\", must conform to the pattern #{pattern}.")
       end
 
       @sms_application_sid = sms_application_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_fallback_method Object to be assigned
     def sms_fallback_method=(sms_fallback_method : String?)
-      ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid!(sms_fallback_method)
+      if sms_fallback_method.nil?
+        return @sms_fallback_method = nil
+      end
+      _sms_fallback_method = sms_fallback_method.not_nil!
+      ENUM_VALIDATOR_FOR_SMS_FALLBACK_METHOD.valid!(_sms_fallback_method)
       @sms_fallback_method = sms_fallback_method
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sms_fallback_url Object to be assigned
+    def sms_fallback_url=(sms_fallback_url : String?)
+      if sms_fallback_url.nil?
+        return @sms_fallback_url = nil
+      end
+      @sms_fallback_url = sms_fallback_url
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_method Object to be assigned
     def sms_method=(sms_method : String?)
-      ENUM_VALIDATOR_FOR_SMS_METHOD.valid!(sms_method)
+      if sms_method.nil?
+        return @sms_method = nil
+      end
+      _sms_method = sms_method.not_nil!
+      ENUM_VALIDATOR_FOR_SMS_METHOD.valid!(_sms_method)
       @sms_method = sms_method
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sms_url Object to be assigned
+    def sms_url=(sms_url : String?)
+      if sms_url.nil?
+        return @sms_url = nil
+      end
+      @sms_url = sms_url
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status : String?)
+      if status.nil?
+        return @status = nil
+      end
+      @status = status
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status_callback Object to be assigned
+    def status_callback=(status_callback : String?)
+      if status_callback.nil?
+        return @status_callback = nil
+      end
+      @status_callback = status_callback
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status_callback_method Object to be assigned
     def status_callback_method=(status_callback_method : String?)
-      ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid!(status_callback_method)
+      if status_callback_method.nil?
+        return @status_callback_method = nil
+      end
+      _status_callback_method = status_callback_method.not_nil!
+      ENUM_VALIDATOR_FOR_STATUS_CALLBACK_METHOD.valid!(_status_callback_method)
       @status_callback_method = status_callback_method
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] trunk_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] trunk_sid Object to be assigned
     def trunk_sid=(trunk_sid : String?)
-      if !trunk_sid.nil? && trunk_sid.to_s.size > 34
+      if trunk_sid.nil?
+        return @trunk_sid = nil
+      end
+      _trunk_sid = trunk_sid.not_nil!
+      if _trunk_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"trunk_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !trunk_sid.nil? && trunk_sid.to_s.size < 34
-        raise ArgumentError.new("invalid value for \"trunk_sid\", the character length must be great than or equal to 34.")
+      if _trunk_sid.to_s.size < 0
+        raise ArgumentError.new("invalid value for \"trunk_sid\", the character length must be great than or equal to 0.")
       end
 
-      pattern = /^TK[0-9a-fA-F]{32}$/
-      if !trunk_sid.nil? && trunk_sid !~ pattern
+      pattern = /^TK[0-9a-fA-F]{32}$|^$/
+      if _trunk_sid !~ pattern
         raise ArgumentError.new("invalid value for \"trunk_sid\", must conform to the pattern #{pattern}.")
       end
 
       @trunk_sid = trunk_sid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] voice_application_sid Value to be assigned
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      @uri = uri
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_application_sid Object to be assigned
     def voice_application_sid=(voice_application_sid : String?)
-      if !voice_application_sid.nil? && voice_application_sid.to_s.size > 34
+      if voice_application_sid.nil?
+        return @voice_application_sid = nil
+      end
+      _voice_application_sid = voice_application_sid.not_nil!
+      if _voice_application_sid.to_s.size > 34
         raise ArgumentError.new("invalid value for \"voice_application_sid\", the character length must be smaller than or equal to 34.")
       end
 
-      if !voice_application_sid.nil? && voice_application_sid.to_s.size < 34
+      if _voice_application_sid.to_s.size < 34
         raise ArgumentError.new("invalid value for \"voice_application_sid\", the character length must be great than or equal to 34.")
       end
 
       pattern = /^AP[0-9a-fA-F]{32}$/
-      if !voice_application_sid.nil? && voice_application_sid !~ pattern
+      if _voice_application_sid !~ pattern
         raise ArgumentError.new("invalid value for \"voice_application_sid\", must conform to the pattern #{pattern}.")
       end
 
       @voice_application_sid = voice_application_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_caller_id_lookup Object to be assigned
+    def voice_caller_id_lookup=(voice_caller_id_lookup : Bool?)
+      if voice_caller_id_lookup.nil?
+        return @voice_caller_id_lookup = nil
+      end
+      @voice_caller_id_lookup = voice_caller_id_lookup
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_fallback_method Object to be assigned
     def voice_fallback_method=(voice_fallback_method : String?)
-      ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid!(voice_fallback_method)
+      if voice_fallback_method.nil?
+        return @voice_fallback_method = nil
+      end
+      _voice_fallback_method = voice_fallback_method.not_nil!
+      ENUM_VALIDATOR_FOR_VOICE_FALLBACK_METHOD.valid!(_voice_fallback_method)
       @voice_fallback_method = voice_fallback_method
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_fallback_url Object to be assigned
+    def voice_fallback_url=(voice_fallback_url : String?)
+      if voice_fallback_url.nil?
+        return @voice_fallback_url = nil
+      end
+      @voice_fallback_url = voice_fallback_url
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_method Object to be assigned
     def voice_method=(voice_method : String?)
-      ENUM_VALIDATOR_FOR_VOICE_METHOD.valid!(voice_method)
+      if voice_method.nil?
+        return @voice_method = nil
+      end
+      _voice_method = voice_method.not_nil!
+      ENUM_VALIDATOR_FOR_VOICE_METHOD.valid!(_voice_method)
       @voice_method = voice_method
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
+    end # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_receive_mode Object to be assigned
     def voice_receive_mode=(voice_receive_mode : String?)
-      ENUM_VALIDATOR_FOR_VOICE_RECEIVE_MODE.valid!(voice_receive_mode)
+      if voice_receive_mode.nil?
+        return @voice_receive_mode = nil
+      end
+      _voice_receive_mode = voice_receive_mode.not_nil!
+      ENUM_VALIDATOR_FOR_VOICE_RECEIVE_MODE.valid!(_voice_receive_mode)
       @voice_receive_mode = voice_receive_mode
+    end # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_url Object to be assigned
+    def voice_url=(voice_url : String?)
+      if voice_url.nil?
+        return @voice_url = nil
+      end
+      @voice_url = voice_url
     end
 
     # @see the `==` method
