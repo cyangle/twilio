@@ -11,24 +11,25 @@ tasks:
     changes:
       -
         name: 'Update account_sid param'
-        pattern: '\*, account_sid : String'
-        new_value: '*, account_sid : String = @account_sid'
+        pattern: 'account_sid : String\? = nil'
+        new_value: 'account_sid : String? = @account_sid'
       -
         name: 'Update account_sid2 param'
-        pattern: ', account_sid2 : String\? = nil,'
-        new_value: ', account_sid2 : String? = @account_sid,'
+        pattern: 'account_sid2 : String\? = nil'
+        new_value: 'account_sid2 : String? = @account_sid'
       -
         name: 'Correct datetime formatting'
         pattern: 'Time::Format::RFC_3339'
         new_value: 'Time::Format::RFC_2822'
       -
         name: 'Update api initializer'
-        pattern: '$\n^    def initialize\(api_client = ApiClient.default\)$\n^      @api_client = api_client$'
+        pattern: '$\n^    def initialize\(api_client = ApiClient.default\)$\n^      @api_client = api_client$\n^    end'
         new_value: "
           \   property account_sid : String\n\n
           \   def initialize(api_client = ApiClient.default)\n
           \     @api_client = api_client\n
-          \     @account_sid = api_client.config.username.not_nil!"
+          \     @account_sid = api_client.config.username.not_nil!
+          \   end"
         multi_line: true
       -
         name: 'Update collection format'

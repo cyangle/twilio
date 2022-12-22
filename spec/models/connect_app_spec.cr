@@ -77,7 +77,7 @@ describe Twilio::ConnectApp do
       it "should work" do
         connect_app = Twilio::ConnectApp.new
         (connect_app.permissions).should be_nil
-        connect_app.permissions = Array(String).new
+        connect_app.permissions = Array(Twilio::ConnectAppEnumPermission).new
         (connect_app.permissions).should eq(Array(String).new)
       end
     end
@@ -87,7 +87,7 @@ describe Twilio::ConnectApp do
         expect_raises(ArgumentError, /must be one of/) do
           connect_app = Twilio::ConnectApp.new
           (connect_app.permissions).should be_nil
-          connect_app.permissions = ["invalid"]
+          connect_app.permissions = [Twilio::ConnectAppEnumPermission.new("invalid")]
         end
       end
     end
@@ -97,7 +97,10 @@ describe Twilio::ConnectApp do
         expect_raises(ArgumentError, /must be one of/) do
           connect_app = Twilio::ConnectApp.new
           (connect_app.permissions).should be_nil
-          connect_app.permissions = ["get-all", "invalid"]
+          connect_app.permissions = [
+            Twilio::ConnectAppEnumPermission.new("get-all"),
+            Twilio::ConnectAppEnumPermission.new("invalid"),
+          ]
         end
       end
     end
@@ -105,7 +108,10 @@ describe Twilio::ConnectApp do
     context "set to all valid array" do
       it "sets the values" do
         connect_app = Twilio::ConnectApp.new
-        values = ["get-all", "post-all"]
+        values = [
+          Twilio::ConnectAppEnumPermission.new("get-all"),
+          Twilio::ConnectAppEnumPermission.new("post-all"),
+        ]
         (connect_app.permissions).should be_nil
         connect_app.permissions = values
         (connect_app.permissions).should eq(values)
@@ -115,7 +121,10 @@ describe Twilio::ConnectApp do
     context "set to nil from array" do
       it "sets the values" do
         connect_app = Twilio::ConnectApp.new
-        values = ["get-all", "post-all"]
+        values = [
+          Twilio::ConnectAppEnumPermission.new("get-all"),
+          Twilio::ConnectAppEnumPermission.new("post-all"),
+        ]
         (connect_app.permissions).should be_nil
         connect_app.permissions = values
         (connect_app.permissions).should eq(values)

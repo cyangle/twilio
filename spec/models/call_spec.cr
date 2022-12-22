@@ -25,7 +25,7 @@ describe Twilio::Call do
   describe "test attribute 'account_sid'" do
     context "length is 33" do
       it "raises error" do
-        expect_raises(ArgumentError, /the character length must be great than or equal to 34/) do
+        expect_raises(ArgumentError, /invalid value for "account_sid", the character length must be greater than or equal to 34/) do
           call = Twilio::Call.new
           call.account_sid = "123456789012345678901234567890123"
         end
@@ -182,8 +182,8 @@ describe Twilio::Call do
       it "should work" do
         call = Twilio::Call.new
         (call.status).should be_nil
-        Twilio::Call::ENUM_VALIDATOR_FOR_STATUS.allowable_values.each do |val|
-          value = val.to_s
+        Twilio::CallEnumStatus::VALID_VALUES.each do |val|
+          value = Twilio::CallEnumStatus.new(val.to_s)
           (call.status).should_not eq(value)
           call.status = value
           (call.status).should eq(value)
@@ -196,7 +196,7 @@ describe Twilio::Call do
         expect_raises(ArgumentError, /must be one of/) do
           call = Twilio::Call.new
           (call.status).should be_nil
-          value = "invalid"
+          value = Twilio::CallEnumStatus.new("invalid")
           call.status = value
         end
       end
