@@ -100,10 +100,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_date_enqueued = @date_enqueued).nil?
-      end
-      unless (_position = @position).nil?
-      end
+
       unless (_queue_sid = @queue_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("queue_sid", _queue_sid.to_s.size, MAX_LENGTH_FOR_QUEUE_SID)
           invalid_properties.push(max_length_error)
@@ -117,10 +114,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_uri = @uri).nil?
-      end
-      unless (_wait_time = @wait_time).nil?
-      end
+
       invalid_properties
     end
 
@@ -133,22 +127,10 @@ module Twilio
         return false if !PATTERN_FOR_CALL_SID.matches?(_call_sid)
       end
 
-      unless (_date_enqueued = @date_enqueued).nil?
-      end
-
-      unless (_position = @position).nil?
-      end
-
       unless (_queue_sid = @queue_sid).nil?
         return false if _queue_sid.to_s.size > MAX_LENGTH_FOR_QUEUE_SID
         return false if _queue_sid.to_s.size < MIN_LENGTH_FOR_QUEUE_SID
         return false if !PATTERN_FOR_QUEUE_SID.matches?(_queue_sid)
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
-      unless (_wait_time = @wait_time).nil?
       end
 
       true
@@ -156,68 +138,50 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] call_sid Object to be assigned
-    def call_sid=(call_sid : String?)
-      if call_sid.nil?
-        return @call_sid = nil
+    def call_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("call_sid", new_value.to_s.size, MAX_LENGTH_FOR_CALL_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("call_sid", new_value.to_s.size, MIN_LENGTH_FOR_CALL_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("call_sid", new_value, PATTERN_FOR_CALL_SID)
       end
-      _call_sid = call_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("call_sid", _call_sid.to_s.size, MAX_LENGTH_FOR_CALL_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("call_sid", _call_sid.to_s.size, MIN_LENGTH_FOR_CALL_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, PATTERN_FOR_CALL_SID)
-      @call_sid = _call_sid
+
+      @call_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_enqueued Object to be assigned
-    def date_enqueued=(date_enqueued : Time?)
-      if date_enqueued.nil?
-        return @date_enqueued = nil
-      end
-      _date_enqueued = date_enqueued.not_nil!
-      @date_enqueued = _date_enqueued
+    def date_enqueued=(new_value : Time?)
+      @date_enqueued = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] position Object to be assigned
-    def position=(position : Int32?)
-      if position.nil?
-        return @position = nil
-      end
-      _position = position.not_nil!
-      @position = _position
+    def position=(new_value : Int32?)
+      @position = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] queue_sid Object to be assigned
-    def queue_sid=(queue_sid : String?)
-      if queue_sid.nil?
-        return @queue_sid = nil
+    def queue_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("queue_sid", new_value.to_s.size, MAX_LENGTH_FOR_QUEUE_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("queue_sid", new_value.to_s.size, MIN_LENGTH_FOR_QUEUE_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("queue_sid", new_value, PATTERN_FOR_QUEUE_SID)
       end
-      _queue_sid = queue_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("queue_sid", _queue_sid.to_s.size, MAX_LENGTH_FOR_QUEUE_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("queue_sid", _queue_sid.to_s.size, MIN_LENGTH_FOR_QUEUE_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("queue_sid", _queue_sid, PATTERN_FOR_QUEUE_SID)
-      @queue_sid = _queue_sid
+
+      @queue_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] wait_time Object to be assigned
-    def wait_time=(wait_time : Int32?)
-      if wait_time.nil?
-        return @wait_time = nil
-      end
-      _wait_time = wait_time.not_nil!
-      @wait_time = _wait_time
+    def wait_time=(new_value : Int32?)
+      @wait_time = new_value
     end
 
     # Generates #hash and #== methods from all fields

@@ -105,12 +105,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_friendly_name = @friendly_name).nil?
-      end
-      unless (_phone_number = @phone_number).nil?
-      end
-      unless (_validation_code = @validation_code).nil?
-      end
+
       invalid_properties
     end
 
@@ -129,72 +124,49 @@ module Twilio
         return false if !PATTERN_FOR_CALL_SID.matches?(_call_sid)
       end
 
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
-      unless (_phone_number = @phone_number).nil?
-      end
-
-      unless (_validation_code = @validation_code).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] call_sid Object to be assigned
-    def call_sid=(call_sid : String?)
-      if call_sid.nil?
-        return @call_sid = nil
+    def call_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("call_sid", new_value.to_s.size, MAX_LENGTH_FOR_CALL_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("call_sid", new_value.to_s.size, MIN_LENGTH_FOR_CALL_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("call_sid", new_value, PATTERN_FOR_CALL_SID)
       end
-      _call_sid = call_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("call_sid", _call_sid.to_s.size, MAX_LENGTH_FOR_CALL_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("call_sid", _call_sid.to_s.size, MIN_LENGTH_FOR_CALL_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, PATTERN_FOR_CALL_SID)
-      @call_sid = _call_sid
+
+      @call_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+    def friendly_name=(new_value : String?)
+      @friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] phone_number Object to be assigned
-    def phone_number=(phone_number : String?)
-      if phone_number.nil?
-        return @phone_number = nil
-      end
-      _phone_number = phone_number.not_nil!
-      @phone_number = _phone_number
+    def phone_number=(new_value : String?)
+      @phone_number = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] validation_code Object to be assigned
-    def validation_code=(validation_code : String?)
-      if validation_code.nil?
-        return @validation_code = nil
-      end
-      _validation_code = validation_code.not_nil!
-      @validation_code = _validation_code
+    def validation_code=(new_value : String?)
+      @validation_code = new_value
     end
 
     # Generates #hash and #== methods from all fields

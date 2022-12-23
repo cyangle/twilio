@@ -146,16 +146,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_api_version = @api_version).nil?
-      end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_friendly_name = @friendly_name).nil?
-      end
-      unless (_short_code = @short_code).nil?
-      end
+
       unless (_sid = @sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
           invalid_properties.push(max_length_error)
@@ -172,15 +163,11 @@ module Twilio
       unless (_sms_fallback_method = @sms_fallback_method).nil?
         invalid_properties.push(_sms_fallback_method.error_message) if !_sms_fallback_method.valid?
       end
-      unless (_sms_fallback_url = @sms_fallback_url).nil?
-      end
+
       unless (_sms_method = @sms_method).nil?
         invalid_properties.push(_sms_method.error_message) if !_sms_method.valid?
       end
-      unless (_sms_url = @sms_url).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
+
       invalid_properties
     end
 
@@ -193,21 +180,6 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_api_version = @api_version).nil?
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
-      unless (_short_code = @short_code).nil?
-      end
-
       unless (_sid = @sid).nil?
         return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
         return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
@@ -218,17 +190,8 @@ module Twilio
         return false if !_sms_fallback_method.valid?
       end
 
-      unless (_sms_fallback_url = @sms_fallback_url).nil?
-      end
-
       unless (_sms_method = @sms_method).nil?
         return false if !_sms_method.valid?
-      end
-
-      unless (_sms_url = @sms_url).nil?
-      end
-
-      unless (_uri = @uri).nil?
       end
 
       true
@@ -236,130 +199,94 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] api_version Object to be assigned
-    def api_version=(api_version : String?)
-      if api_version.nil?
-        return @api_version = nil
-      end
-      _api_version = api_version.not_nil!
-      @api_version = _api_version
+    def api_version=(new_value : String?)
+      @api_version = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
+    def date_created=(new_value : Time?)
+      @date_created = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
+    def date_updated=(new_value : Time?)
+      @date_updated = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+    def friendly_name=(new_value : String?)
+      @friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] short_code Object to be assigned
-    def short_code=(short_code : String?)
-      if short_code.nil?
-        return @short_code = nil
-      end
-      _short_code = short_code.not_nil!
-      @short_code = _short_code
+    def short_code=(new_value : String?)
+      @short_code = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    def sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("sid", new_value.to_s.size, MAX_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("sid", new_value.to_s.size, MIN_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("sid", new_value, PATTERN_FOR_SID)
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      @sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_fallback_method Object to be assigned
-    def sms_fallback_method=(sms_fallback_method : Twilio::HttpMethod?)
-      if sms_fallback_method.nil?
-        return @sms_fallback_method = nil
+    def sms_fallback_method=(new_value : Twilio::HttpMethod?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _sms_fallback_method = sms_fallback_method.not_nil!
-      _sms_fallback_method.validate
-      @sms_fallback_method = _sms_fallback_method
+
+      @sms_fallback_method = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_fallback_url Object to be assigned
-    def sms_fallback_url=(sms_fallback_url : String?)
-      if sms_fallback_url.nil?
-        return @sms_fallback_url = nil
-      end
-      _sms_fallback_url = sms_fallback_url.not_nil!
-      @sms_fallback_url = _sms_fallback_url
+    def sms_fallback_url=(new_value : String?)
+      @sms_fallback_url = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_method Object to be assigned
-    def sms_method=(sms_method : Twilio::HttpMethod?)
-      if sms_method.nil?
-        return @sms_method = nil
+    def sms_method=(new_value : Twilio::HttpMethod?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _sms_method = sms_method.not_nil!
-      _sms_method.validate
-      @sms_method = _sms_method
+
+      @sms_method = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_url Object to be assigned
-    def sms_url=(sms_url : String?)
-      if sms_url.nil?
-        return @sms_url = nil
-      end
-      _sms_url = sms_url.not_nil!
-      @sms_url = _sms_url
+    def sms_url=(new_value : String?)
+      @sms_url = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Generates #hash and #== methods from all fields

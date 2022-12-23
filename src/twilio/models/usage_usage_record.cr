@@ -164,35 +164,11 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_api_version = @api_version).nil?
-      end
-      unless (_as_of = @as_of).nil?
-      end
+
       unless (_category = @category).nil?
         invalid_properties.push(_category.error_message) if !_category.valid?
       end
-      unless (_count = @count).nil?
-      end
-      unless (_count_unit = @count_unit).nil?
-      end
-      unless (_description = @description).nil?
-      end
-      unless (_end_date = @end_date).nil?
-      end
-      unless (_price = @price).nil?
-      end
-      unless (_price_unit = @price_unit).nil?
-      end
-      unless (_start_date = @start_date).nil?
-      end
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
-      unless (_usage = @usage).nil?
-      end
-      unless (_usage_unit = @usage_unit).nil?
-      end
+
       invalid_properties
     end
 
@@ -205,47 +181,8 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_api_version = @api_version).nil?
-      end
-
-      unless (_as_of = @as_of).nil?
-      end
-
       unless (_category = @category).nil?
         return false if !_category.valid?
-      end
-
-      unless (_count = @count).nil?
-      end
-
-      unless (_count_unit = @count_unit).nil?
-      end
-
-      unless (_description = @description).nil?
-      end
-
-      unless (_end_date = @end_date).nil?
-      end
-
-      unless (_price = @price).nil?
-      end
-
-      unless (_price_unit = @price_unit).nil?
-      end
-
-      unless (_start_date = @start_date).nil?
-      end
-
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
-      unless (_usage = @usage).nil?
-      end
-
-      unless (_usage_unit = @usage_unit).nil?
       end
 
       true
@@ -253,156 +190,102 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] api_version Object to be assigned
-    def api_version=(api_version : String?)
-      if api_version.nil?
-        return @api_version = nil
-      end
-      _api_version = api_version.not_nil!
-      @api_version = _api_version
+    def api_version=(new_value : String?)
+      @api_version = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] as_of Object to be assigned
-    def as_of=(as_of : String?)
-      if as_of.nil?
-        return @as_of = nil
-      end
-      _as_of = as_of.not_nil!
-      @as_of = _as_of
+    def as_of=(new_value : String?)
+      @as_of = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] category Object to be assigned
-    def category=(category : Twilio::UsageRecordEnumCategory?)
-      if category.nil?
-        return @category = nil
+    def category=(new_value : Twilio::UsageRecordEnumCategory?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _category = category.not_nil!
-      _category.validate
-      @category = _category
+
+      @category = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] count Object to be assigned
-    def count=(count : String?)
-      if count.nil?
-        return @count = nil
-      end
-      _count = count.not_nil!
-      @count = _count
+    def count=(new_value : String?)
+      @count = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] count_unit Object to be assigned
-    def count_unit=(count_unit : String?)
-      if count_unit.nil?
-        return @count_unit = nil
-      end
-      _count_unit = count_unit.not_nil!
-      @count_unit = _count_unit
+    def count_unit=(new_value : String?)
+      @count_unit = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] description Object to be assigned
-    def description=(description : String?)
-      if description.nil?
-        return @description = nil
-      end
-      _description = description.not_nil!
-      @description = _description
+    def description=(new_value : String?)
+      @description = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] end_date Object to be assigned
-    def end_date=(end_date : Time?)
-      if end_date.nil?
-        return @end_date = nil
-      end
-      _end_date = end_date.not_nil!
-      @end_date = _end_date
+    def end_date=(new_value : Time?)
+      @end_date = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] price Object to be assigned
-    def price=(price : String?)
-      if price.nil?
-        return @price = nil
-      end
-      _price = price.not_nil!
-      @price = _price
+    def price=(new_value : String?)
+      @price = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] price_unit Object to be assigned
-    def price_unit=(price_unit : String?)
-      if price_unit.nil?
-        return @price_unit = nil
-      end
-      _price_unit = price_unit.not_nil!
-      @price_unit = _price_unit
+    def price_unit=(new_value : String?)
+      @price_unit = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] start_date Object to be assigned
-    def start_date=(start_date : Time?)
-      if start_date.nil?
-        return @start_date = nil
-      end
-      _start_date = start_date.not_nil!
-      @start_date = _start_date
+    def start_date=(new_value : Time?)
+      @start_date = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] subresource_uris Object to be assigned
-    def subresource_uris=(subresource_uris : Hash(String, String)?)
-      if subresource_uris.nil?
-        return @subresource_uris = nil
-      end
-      _subresource_uris = subresource_uris.not_nil!
-      @subresource_uris = _subresource_uris
+    def subresource_uris=(new_value : Hash(String, String)?)
+      @subresource_uris = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] usage Object to be assigned
-    def usage=(usage : String?)
-      if usage.nil?
-        return @usage = nil
-      end
-      _usage = usage.not_nil!
-      @usage = _usage
+    def usage=(new_value : String?)
+      @usage = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] usage_unit Object to be assigned
-    def usage_unit=(usage_unit : String?)
-      if usage_unit.nil?
-        return @usage_unit = nil
-      end
-      _usage_unit = usage_unit.not_nil!
-      @usage_unit = _usage_unit
+    def usage_unit=(new_value : String?)
+      @usage_unit = new_value
     end
 
     # Generates #hash and #== methods from all fields

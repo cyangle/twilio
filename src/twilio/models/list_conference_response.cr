@@ -78,22 +78,7 @@ module Twilio
       unless (_conferences = @conferences).nil?
         invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "conferences", container: _conferences)) if _conferences.is_a?(Array)
       end
-      unless (__end = @_end).nil?
-      end
-      unless (_first_page_uri = @first_page_uri).nil?
-      end
-      unless (_next_page_uri = @next_page_uri).nil?
-      end
-      unless (_page = @page).nil?
-      end
-      unless (_page_size = @page_size).nil?
-      end
-      unless (_previous_page_uri = @previous_page_uri).nil?
-      end
-      unless (_start = @start).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
+
       invalid_properties
     end
 
@@ -104,122 +89,65 @@ module Twilio
         return false if _conferences.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _conferences)
       end
 
-      unless (__end = @_end).nil?
-      end
-
-      unless (_first_page_uri = @first_page_uri).nil?
-      end
-
-      unless (_next_page_uri = @next_page_uri).nil?
-      end
-
-      unless (_page = @page).nil?
-      end
-
-      unless (_page_size = @page_size).nil?
-      end
-
-      unless (_previous_page_uri = @previous_page_uri).nil?
-      end
-
-      unless (_start = @start).nil?
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] conferences Object to be assigned
-    def conferences=(conferences : Array(Twilio::Conference)?)
-      if conferences.nil?
-        return @conferences = nil
+    def conferences=(new_value : Array(Twilio::Conference)?)
+      unless new_value.nil?
+        OpenApi::ContainerValidator.validate(container: new_value) if new_value.is_a?(Array)
       end
-      _conferences = conferences.not_nil!
-      OpenApi::ContainerValidator.validate(container: _conferences) if _conferences.is_a?(Array)
-      @conferences = _conferences
+
+      @conferences = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] _end Object to be assigned
-    def _end=(_end : Int32?)
-      if _end.nil?
-        return @_end = nil
-      end
-      __end = _end.not_nil!
-      @_end = __end
+    def _end=(new_value : Int32?)
+      @_end = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] first_page_uri Object to be assigned
-    def first_page_uri=(first_page_uri : String?)
-      if first_page_uri.nil?
-        return @first_page_uri = nil
-      end
-      _first_page_uri = first_page_uri.not_nil!
-      @first_page_uri = _first_page_uri
+    def first_page_uri=(new_value : String?)
+      @first_page_uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] next_page_uri Object to be assigned
-    def next_page_uri=(next_page_uri : String?)
-      if next_page_uri.nil?
-        return @next_page_uri = nil
-      end
-      _next_page_uri = next_page_uri.not_nil!
-      @next_page_uri = _next_page_uri
+    def next_page_uri=(new_value : String?)
+      @next_page_uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] page Object to be assigned
-    def page=(page : Int32?)
-      if page.nil?
-        return @page = nil
-      end
-      _page = page.not_nil!
-      @page = _page
+    def page=(new_value : Int32?)
+      @page = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] page_size Object to be assigned
-    def page_size=(page_size : Int32?)
-      if page_size.nil?
-        return @page_size = nil
-      end
-      _page_size = page_size.not_nil!
-      @page_size = _page_size
+    def page_size=(new_value : Int32?)
+      @page_size = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] previous_page_uri Object to be assigned
-    def previous_page_uri=(previous_page_uri : String?)
-      if previous_page_uri.nil?
-        return @previous_page_uri = nil
-      end
-      _previous_page_uri = previous_page_uri.not_nil!
-      @previous_page_uri = _previous_page_uri
+    def previous_page_uri=(new_value : String?)
+      @previous_page_uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] start Object to be assigned
-    def start=(start : Int32?)
-      if start.nil?
-        return @start = nil
-      end
-      _start = start.not_nil!
-      @start = _start
+    def start=(new_value : Int32?)
+      @start = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Generates #hash and #== methods from all fields

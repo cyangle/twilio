@@ -66,88 +66,43 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_response_code = @response_code).nil?
-      end
-      unless (_request_duration = @request_duration).nil?
-      end
-      unless (_content_type = @content_type).nil?
-      end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_response_body = @response_body).nil?
-      end
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_response_code = @response_code).nil?
-      end
-
-      unless (_request_duration = @request_duration).nil?
-      end
-
-      unless (_content_type = @content_type).nil?
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_response_body = @response_body).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] response_code Object to be assigned
-    def response_code=(response_code : Int32?)
-      if response_code.nil?
-        return @response_code = nil
-      end
-      _response_code = response_code.not_nil!
-      @response_code = _response_code
+    def response_code=(new_value : Int32?)
+      @response_code = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] request_duration Object to be assigned
-    def request_duration=(request_duration : Int32?)
-      if request_duration.nil?
-        return @request_duration = nil
-      end
-      _request_duration = request_duration.not_nil!
-      @request_duration = _request_duration
+    def request_duration=(new_value : Int32?)
+      @request_duration = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] content_type Object to be assigned
-    def content_type=(content_type : String?)
-      if content_type.nil?
-        return @content_type = nil
-      end
-      _content_type = content_type.not_nil!
-      @content_type = _content_type
+    def content_type=(new_value : String?)
+      @content_type = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : String?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
+    def date_created=(new_value : String?)
+      @date_created = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] response_body Object to be assigned
-    def response_body=(response_body : String?)
-      if response_body.nil?
-        return @response_body = nil
-      end
-      _response_body = response_body.not_nil!
-      @response_body = _response_body
+    def response_body=(new_value : String?)
+      @response_body = new_value
     end
 
     # Generates #hash and #== methods from all fields

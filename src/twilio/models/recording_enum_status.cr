@@ -33,7 +33,7 @@ module Twilio
     end
 
     def self.new(pull : JSON::PullParser)
-      new(String.new(pull))
+      new(String.new(pull), false)
     end
 
     def self.from_json_object_key?(key : String)

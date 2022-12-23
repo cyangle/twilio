@@ -72,24 +72,22 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] request Object to be assigned
-    def request=(request : Twilio::CallCallEventRequest?)
-      if request.nil?
-        return @request = nil
+    def request=(new_value : Twilio::CallCallEventRequest?)
+      unless new_value.nil?
+        new_value.validate if new_value.is_a?(OpenApi::Validatable)
       end
-      _request = request.not_nil!
-      _request.validate if _request.is_a?(OpenApi::Validatable)
-      @request = _request
+
+      @request = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] response Object to be assigned
-    def response=(response : Twilio::CallCallEventResponse?)
-      if response.nil?
-        return @response = nil
+    def response=(new_value : Twilio::CallCallEventResponse?)
+      unless new_value.nil?
+        new_value.validate if new_value.is_a?(OpenApi::Validatable)
       end
-      _response = response.not_nil!
-      _response.validate if _response.is_a?(OpenApi::Validatable)
-      @response = _response
+
+      @response = new_value
     end
 
     # Generates #hash and #== methods from all fields

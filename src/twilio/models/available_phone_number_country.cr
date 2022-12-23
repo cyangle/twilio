@@ -72,88 +72,43 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_beta = @beta).nil?
-      end
-      unless (_country = @country).nil?
-      end
-      unless (_country_code = @country_code).nil?
-      end
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_beta = @beta).nil?
-      end
-
-      unless (_country = @country).nil?
-      end
-
-      unless (_country_code = @country_code).nil?
-      end
-
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] beta Object to be assigned
-    def beta=(beta : Bool?)
-      if beta.nil?
-        return @beta = nil
-      end
-      _beta = beta.not_nil!
-      @beta = _beta
+    def beta=(new_value : Bool?)
+      @beta = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] country Object to be assigned
-    def country=(country : String?)
-      if country.nil?
-        return @country = nil
-      end
-      _country = country.not_nil!
-      @country = _country
+    def country=(new_value : String?)
+      @country = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] country_code Object to be assigned
-    def country_code=(country_code : String?)
-      if country_code.nil?
-        return @country_code = nil
-      end
-      _country_code = country_code.not_nil!
-      @country_code = _country_code
+    def country_code=(new_value : String?)
+      @country_code = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] subresource_uris Object to be assigned
-    def subresource_uris=(subresource_uris : Hash(String, String)?)
-      if subresource_uris.nil?
-        return @subresource_uris = nil
-      end
-      _subresource_uris = subresource_uris.not_nil!
-      @subresource_uris = _subresource_uris
+    def subresource_uris=(new_value : Hash(String, String)?)
+      @subresource_uris = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Generates #hash and #== methods from all fields

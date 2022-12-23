@@ -110,14 +110,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_auth_token = @auth_token).nil?
-      end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_friendly_name = @friendly_name).nil?
-      end
       unless (_owner_account_sid = @owner_account_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("owner_account_sid", _owner_account_sid.to_s.size, MAX_LENGTH_FOR_OWNER_ACCOUNT_SID)
           invalid_properties.push(max_length_error)
@@ -147,31 +139,17 @@ module Twilio
       unless (_status = @status).nil?
         invalid_properties.push(_status.error_message) if !_status.valid?
       end
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
+
       unless (__type = @_type).nil?
         invalid_properties.push(__type.error_message) if !__type.valid?
       end
-      unless (_uri = @uri).nil?
-      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_auth_token = @auth_token).nil?
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
       unless (_owner_account_sid = @owner_account_sid).nil?
         return false if _owner_account_sid.to_s.size > MAX_LENGTH_FOR_OWNER_ACCOUNT_SID
         return false if _owner_account_sid.to_s.size < MIN_LENGTH_FOR_OWNER_ACCOUNT_SID
@@ -188,14 +166,8 @@ module Twilio
         return false if !_status.valid?
       end
 
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-
       unless (__type = @_type).nil?
         return false if !__type.valid?
-      end
-
-      unless (_uri = @uri).nil?
       end
 
       true
@@ -203,110 +175,82 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] auth_token Object to be assigned
-    def auth_token=(auth_token : String?)
-      if auth_token.nil?
-        return @auth_token = nil
-      end
-      _auth_token = auth_token.not_nil!
-      @auth_token = _auth_token
+    def auth_token=(new_value : String?)
+      @auth_token = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
+    def date_created=(new_value : Time?)
+      @date_created = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
+    def date_updated=(new_value : Time?)
+      @date_updated = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+    def friendly_name=(new_value : String?)
+      @friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] owner_account_sid Object to be assigned
-    def owner_account_sid=(owner_account_sid : String?)
-      if owner_account_sid.nil?
-        return @owner_account_sid = nil
+    def owner_account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("owner_account_sid", new_value.to_s.size, MAX_LENGTH_FOR_OWNER_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("owner_account_sid", new_value.to_s.size, MIN_LENGTH_FOR_OWNER_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("owner_account_sid", new_value, PATTERN_FOR_OWNER_ACCOUNT_SID)
       end
-      _owner_account_sid = owner_account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("owner_account_sid", _owner_account_sid.to_s.size, MAX_LENGTH_FOR_OWNER_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("owner_account_sid", _owner_account_sid.to_s.size, MIN_LENGTH_FOR_OWNER_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("owner_account_sid", _owner_account_sid, PATTERN_FOR_OWNER_ACCOUNT_SID)
-      @owner_account_sid = _owner_account_sid
+
+      @owner_account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    def sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("sid", new_value.to_s.size, MAX_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("sid", new_value.to_s.size, MIN_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("sid", new_value, PATTERN_FOR_SID)
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      @sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
-    def status=(status : Twilio::AccountEnumStatus?)
-      if status.nil?
-        return @status = nil
+    def status=(new_value : Twilio::AccountEnumStatus?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _status = status.not_nil!
-      _status.validate
-      @status = _status
+
+      @status = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] subresource_uris Object to be assigned
-    def subresource_uris=(subresource_uris : Hash(String, String)?)
-      if subresource_uris.nil?
-        return @subresource_uris = nil
-      end
-      _subresource_uris = subresource_uris.not_nil!
-      @subresource_uris = _subresource_uris
+    def subresource_uris=(new_value : Hash(String, String)?)
+      @subresource_uris = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] _type Object to be assigned
-    def _type=(_type : Twilio::AccountEnumType?)
-      if _type.nil?
-        return @_type = nil
+    def _type=(new_value : Twilio::AccountEnumType?)
+      unless new_value.nil?
+        new_value.validate
       end
-      __type = _type.not_nil!
-      __type.validate
-      @_type = __type
+
+      @_type = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Generates #hash and #== methods from all fields

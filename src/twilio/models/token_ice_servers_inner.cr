@@ -49,73 +49,37 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_credential = @credential).nil?
-      end
-      unless (_url = @url).nil?
-      end
-      unless (_urls = @urls).nil?
-      end
-      unless (_username = @username).nil?
-      end
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_credential = @credential).nil?
-      end
-
-      unless (_url = @url).nil?
-      end
-
-      unless (_urls = @urls).nil?
-      end
-
-      unless (_username = @username).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] credential Object to be assigned
-    def credential=(credential : String?)
-      if credential.nil?
-        return @credential = nil
-      end
-      _credential = credential.not_nil!
-      @credential = _credential
+    def credential=(new_value : String?)
+      @credential = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] url Object to be assigned
-    def url=(url : String?)
-      if url.nil?
-        return @url = nil
-      end
-      _url = url.not_nil!
-      @url = _url
+    def url=(new_value : String?)
+      @url = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] urls Object to be assigned
-    def urls=(urls : String?)
-      if urls.nil?
-        return @urls = nil
-      end
-      _urls = urls.not_nil!
-      @urls = _urls
+    def urls=(new_value : String?)
+      @urls = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] username Object to be assigned
-    def username=(username : String?)
-      if username.nil?
-        return @username = nil
-      end
-      _username = username.not_nil!
-      @username = _username
+    def username=(new_value : String?)
+      @username = new_value
     end
 
     # Generates #hash and #== methods from all fields

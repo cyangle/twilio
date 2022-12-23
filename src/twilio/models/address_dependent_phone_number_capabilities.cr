@@ -50,73 +50,37 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_fax = @fax).nil?
-      end
-      unless (_mms = @mms).nil?
-      end
-      unless (_sms = @sms).nil?
-      end
-      unless (_voice = @voice).nil?
-      end
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_fax = @fax).nil?
-      end
-
-      unless (_mms = @mms).nil?
-      end
-
-      unless (_sms = @sms).nil?
-      end
-
-      unless (_voice = @voice).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] fax Object to be assigned
-    def fax=(fax : Bool?)
-      if fax.nil?
-        return @fax = nil
-      end
-      _fax = fax.not_nil!
-      @fax = _fax
+    def fax=(new_value : Bool?)
+      @fax = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] mms Object to be assigned
-    def mms=(mms : Bool?)
-      if mms.nil?
-        return @mms = nil
-      end
-      _mms = mms.not_nil!
-      @mms = _mms
+    def mms=(new_value : Bool?)
+      @mms = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms Object to be assigned
-    def sms=(sms : Bool?)
-      if sms.nil?
-        return @sms = nil
-      end
-      _sms = sms.not_nil!
-      @sms = _sms
+    def sms=(new_value : Bool?)
+      @sms = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice Object to be assigned
-    def voice=(voice : Bool?)
-      if voice.nil?
-        return @voice = nil
-      end
-      _voice = voice.not_nil!
-      @voice = _voice
+    def voice=(new_value : Bool?)
+      @voice = new_value
     end
 
     # Generates #hash and #== methods from all fields

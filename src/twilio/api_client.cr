@@ -41,14 +41,17 @@ module Twilio
     # @return [Hash]
     property default_cookies : Hash(String, String)
 
+    # User Agent
+    getter user_agent : String? = nil
+
     # Initializes the ApiClient
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
-    def initialize(@config = Configuration.default, @default_url_encoder = Crest::ZeroEnumeratedFlatParamsEncoder)
-      @user_agent = "OpenAPI-Generator/#{VERSION}/crystal"
-      @default_headers = {
-        "User-Agent" => @user_agent,
-      }
+    def initialize(
+      @config = Configuration.default,
+      @default_url_encoder = Crest::ZeroEnumeratedFlatParamsEncoder,
+      @default_headers = Hash(String, String).new,
       @default_cookies = Hash(String, String).new
+    )
     end
 
     def self.default : ApiClient
@@ -103,9 +106,10 @@ module Twilio
     # Sets user agent in HTTP header
     #
     # @param [String] user_agent User agent (e.g. openapi-generator/ruby/1.0.0)
-    def user_agent=(user_agent : String) : Nil
+    def user_agent=(user_agent : String?) : Nil
+      @default_headers["User-Agent"] = user_agent unless user_agent.nil?
+
       @user_agent = user_agent
-      @default_headers["User-Agent"] = @user_agent
     end
 
     # Return Accept header based on an array of accepts provided.
@@ -162,9 +166,9 @@ module Twilio
 
     # Build form data from form params
     # @param [Array(Tuple(String, Crest::ParamsValue))] form_params
-    def build_form_data(form_params : Array(Tuple(String, Crest::ParamsValue))) : String
+    def build_form_data(form_params : Array(Tuple(String, Crest::ParamsValue)), header_params : Hash(String, String)) : String
       if form_params.any?(&.[1].is_a?(IO))
-        build_multipart_form_data(form_params)
+        build_multipart_form_data(form_params, header_params)
       else
         build_url_encoded_form_data(form_params)
       end
@@ -182,10 +186,12 @@ module Twilio
 
     # Build multipart form data from form params
     # @param [Array(Tuple(String, Crest::ParamsValue))] form_params
-    def build_multipart_form_data(form_params : Array(Tuple(String, Crest::ParamsValue))) : String
+    def build_multipart_form_data(form_params : Array(Tuple(String, Crest::ParamsValue)), header_params : Hash(String, String)) : String
       io = IO::Memory.new
 
       HTTP::FormData.build(io) do |formdata|
+        header_params["Content-Type"] = formdata.content_type
+
         form_params.each do |name, value|
           if value.is_a?(IO)
             add_io_field_to_form(formdata, name, value.as(IO))
@@ -199,7 +205,7 @@ module Twilio
     end
 
     private def add_io_field_to_form(formdata : HTTP::FormData::Builder, name : String, io : IO)
-      filename = io.is_a?(File) ? io.as(::File).path : name.to_s
+      filename = io.is_a?(::File) ? io.as(::File).path : name.to_s
       mime = MIME.from_filename(filename, DEFAULT_MIME_TYPE)
       metadata = HTTP::FormData::FileMetadata.new(filename: filename)
       headers = HTTP::Headers{"Content-Type" => mime}
@@ -258,7 +264,7 @@ module Twilio
         # use JSON string in the payload
         form_or_body = post_body
       elsif !form_params.nil?
-        form_or_body = build_form_data(form_params.not_nil!)
+        form_or_body = build_form_data(form_params.not_nil!, header_params)
       end
 
       Crest::Request.new(

@@ -75,22 +75,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (__end = @_end).nil?
-      end
-      unless (_first_page_uri = @first_page_uri).nil?
-      end
-      unless (_next_page_uri = @next_page_uri).nil?
-      end
-      unless (_page = @page).nil?
-      end
-      unless (_page_size = @page_size).nil?
-      end
-      unless (_previous_page_uri = @previous_page_uri).nil?
-      end
-      unless (_start = @start).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
       unless (_usage_records = @usage_records).nil?
         invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "usage_records", container: _usage_records)) if _usage_records.is_a?(Array)
       end
@@ -100,30 +84,6 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (__end = @_end).nil?
-      end
-
-      unless (_first_page_uri = @first_page_uri).nil?
-      end
-
-      unless (_next_page_uri = @next_page_uri).nil?
-      end
-
-      unless (_page = @page).nil?
-      end
-
-      unless (_page_size = @page_size).nil?
-      end
-
-      unless (_previous_page_uri = @previous_page_uri).nil?
-      end
-
-      unless (_start = @start).nil?
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
       unless (_usage_records = @usage_records).nil?
         return false if _usage_records.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _usage_records)
       end
@@ -133,93 +93,60 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] _end Object to be assigned
-    def _end=(_end : Int32?)
-      if _end.nil?
-        return @_end = nil
-      end
-      __end = _end.not_nil!
-      @_end = __end
+    def _end=(new_value : Int32?)
+      @_end = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] first_page_uri Object to be assigned
-    def first_page_uri=(first_page_uri : String?)
-      if first_page_uri.nil?
-        return @first_page_uri = nil
-      end
-      _first_page_uri = first_page_uri.not_nil!
-      @first_page_uri = _first_page_uri
+    def first_page_uri=(new_value : String?)
+      @first_page_uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] next_page_uri Object to be assigned
-    def next_page_uri=(next_page_uri : String?)
-      if next_page_uri.nil?
-        return @next_page_uri = nil
-      end
-      _next_page_uri = next_page_uri.not_nil!
-      @next_page_uri = _next_page_uri
+    def next_page_uri=(new_value : String?)
+      @next_page_uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] page Object to be assigned
-    def page=(page : Int32?)
-      if page.nil?
-        return @page = nil
-      end
-      _page = page.not_nil!
-      @page = _page
+    def page=(new_value : Int32?)
+      @page = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] page_size Object to be assigned
-    def page_size=(page_size : Int32?)
-      if page_size.nil?
-        return @page_size = nil
-      end
-      _page_size = page_size.not_nil!
-      @page_size = _page_size
+    def page_size=(new_value : Int32?)
+      @page_size = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] previous_page_uri Object to be assigned
-    def previous_page_uri=(previous_page_uri : String?)
-      if previous_page_uri.nil?
-        return @previous_page_uri = nil
-      end
-      _previous_page_uri = previous_page_uri.not_nil!
-      @previous_page_uri = _previous_page_uri
+    def previous_page_uri=(new_value : String?)
+      @previous_page_uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] start Object to be assigned
-    def start=(start : Int32?)
-      if start.nil?
-        return @start = nil
-      end
-      _start = start.not_nil!
-      @start = _start
+    def start=(new_value : Int32?)
+      @start = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] usage_records Object to be assigned
-    def usage_records=(usage_records : Array(Twilio::UsageUsageRecord)?)
-      if usage_records.nil?
-        return @usage_records = nil
+    def usage_records=(new_value : Array(Twilio::UsageUsageRecord)?)
+      unless new_value.nil?
+        OpenApi::ContainerValidator.validate(container: new_value) if new_value.is_a?(Array)
       end
-      _usage_records = usage_records.not_nil!
-      OpenApi::ContainerValidator.validate(container: _usage_records) if _usage_records.is_a?(Array)
-      @usage_records = _usage_records
+
+      @usage_records = new_value
     end
 
     # Generates #hash and #== methods from all fields

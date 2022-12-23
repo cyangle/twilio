@@ -71,11 +71,6 @@ module Twilio
         Log.debug { "Calling API: DefaultApi.create_account ..." }
       end
 
-      if client_side_validation
-        unless (_friendly_name = friendly_name).nil?
-        end
-      end
-
       # resource path
       local_var_path = "/2010-04-01/Accounts.json"
 
@@ -246,31 +241,16 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_ADDRESS_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"city\" is required and cannot be null") if city.nil?
-        unless (_city = city).nil?
-        end
+
         raise ArgumentError.new("\"customer_name\" is required and cannot be null") if customer_name.nil?
-        unless (_customer_name = customer_name).nil?
-        end
+
         raise ArgumentError.new("\"iso_country\" is required and cannot be null") if iso_country.nil?
-        unless (_iso_country = iso_country).nil?
-        end
+
         raise ArgumentError.new("\"postal_code\" is required and cannot be null") if postal_code.nil?
-        unless (_postal_code = postal_code).nil?
-        end
+
         raise ArgumentError.new("\"region\" is required and cannot be null") if region.nil?
-        unless (_region = region).nil?
-        end
+
         raise ArgumentError.new("\"street\" is required and cannot be null") if street.nil?
-        unless (_street = street).nil?
-        end
-        unless (_auto_correct_address = auto_correct_address).nil?
-        end
-        unless (_emergency_enabled = emergency_enabled).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_street_secondary = street_secondary).nil?
-        end
       end
 
       # resource path
@@ -486,40 +466,25 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, CREATE_APPLICATION_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_APPLICATION_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_api_version = api_version).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_message_status_callback = message_status_callback).nil?
-        end
+
         unless (_sms_fallback_method = sms_fallback_method).nil?
           _sms_fallback_method.validate
         end
-        unless (_sms_fallback_url = sms_fallback_url).nil?
-        end
+
         unless (_sms_method = sms_method).nil?
           _sms_method.validate
         end
-        unless (_sms_status_callback = sms_status_callback).nil?
-        end
-        unless (_sms_url = sms_url).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
-        unless (_voice_caller_id_lookup = voice_caller_id_lookup).nil?
-        end
+
         unless (_voice_fallback_method = voice_fallback_method).nil?
           _voice_fallback_method.validate
         end
-        unless (_voice_fallback_url = voice_fallback_url).nil?
-        end
+
         unless (_voice_method = voice_method).nil?
           _voice_method.validate
-        end
-        unless (_voice_url = voice_url).nil?
         end
       end
 
@@ -888,20 +853,15 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_CALL_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"from\" is required and cannot be null") if from.nil?
-        unless (_from = from).nil?
-        end
+
         raise ArgumentError.new("\"to\" is required and cannot be null") if to.nil?
-        unless (_to = to).nil?
-        end
+
         unless (_application_sid = application_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("application_sid", application_sid.to_s.size, CREATE_CALL_MAX_LENGTH_FOR_APPLICATION_SID)
           OpenApi::PrimitiveValidator.validate_min_length("application_sid", application_sid.to_s.size, CREATE_CALL_MIN_LENGTH_FOR_APPLICATION_SID)
           OpenApi::PrimitiveValidator.validate_pattern("application_sid", _application_sid, CREATE_CALL_PATTERN_FOR_APPLICATION_SID)
         end
-        unless (_async_amd = async_amd).nil?
-        end
-        unless (_async_amd_status_callback = async_amd_status_callback).nil?
-        end
+
         unless (_async_amd_status_callback_method = async_amd_status_callback_method).nil?
           _async_amd_status_callback_method.validate
         end
@@ -910,65 +870,21 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("byoc", byoc.to_s.size, CREATE_CALL_MIN_LENGTH_FOR_BYOC)
           OpenApi::PrimitiveValidator.validate_pattern("byoc", _byoc, CREATE_CALL_PATTERN_FOR_BYOC)
         end
-        unless (_call_reason = call_reason).nil?
-        end
-        unless (_call_token = call_token).nil?
-        end
-        unless (_caller_id = caller_id).nil?
-        end
+
         unless (_fallback_method = fallback_method).nil?
           _fallback_method.validate
         end
-        unless (_fallback_url = fallback_url).nil?
-        end
-        unless (_machine_detection = machine_detection).nil?
-        end
-        unless (_machine_detection_silence_timeout = machine_detection_silence_timeout).nil?
-        end
-        unless (_machine_detection_speech_end_threshold = machine_detection_speech_end_threshold).nil?
-        end
-        unless (_machine_detection_speech_threshold = machine_detection_speech_threshold).nil?
-        end
-        unless (_machine_detection_timeout = machine_detection_timeout).nil?
-        end
+
         unless (_method = method).nil?
           _method.validate
         end
-        unless (_record = record).nil?
-        end
-        unless (_recording_channels = recording_channels).nil?
-        end
-        unless (_recording_status_callback = recording_status_callback).nil?
-        end
-        unless (_recording_status_callback_event = recording_status_callback_event).nil?
-        end
+
         unless (_recording_status_callback_method = recording_status_callback_method).nil?
           _recording_status_callback_method.validate
         end
-        unless (_recording_track = recording_track).nil?
-        end
-        unless (_send_digits = send_digits).nil?
-        end
-        unless (_sip_auth_password = sip_auth_password).nil?
-        end
-        unless (_sip_auth_username = sip_auth_username).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
-        unless (_status_callback_event = status_callback_event).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
-        end
-        unless (_time_limit = time_limit).nil?
-        end
-        unless (_timeout = timeout).nil?
-        end
-        unless (_trim = trim).nil?
-        end
-        unless (_twiml = twiml).nil?
-        end
-        unless (_url = url).nil?
         end
       end
 
@@ -1141,15 +1057,9 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_CALL_FEEDBACK_SUMMARY_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"end_date\" is required and cannot be null") if end_date.nil?
-        unless (_end_date = end_date).nil?
-        end
+
         raise ArgumentError.new("\"start_date\" is required and cannot be null") if start_date.nil?
-        unless (_start_date = start_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
@@ -1316,18 +1226,9 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("call_sid", call_sid.to_s.size, CREATE_CALL_RECORDING_MIN_LENGTH_FOR_CALL_SID)
           OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, CREATE_CALL_RECORDING_PATTERN_FOR_CALL_SID)
         end
-        unless (_recording_channels = recording_channels).nil?
-        end
-        unless (_recording_status_callback = recording_status_callback).nil?
-        end
-        unless (_recording_status_callback_event = recording_status_callback_event).nil?
-        end
+
         unless (_recording_status_callback_method = recording_status_callback_method).nil?
           _recording_status_callback_method.validate
-        end
-        unless (_recording_track = recording_track).nil?
-        end
-        unless (_trim = trim).nil?
         end
       end
 
@@ -1629,10 +1530,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("address_sid", address_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_ADDRESS_SID)
           OpenApi::PrimitiveValidator.validate_pattern("address_sid", _address_sid, CREATE_INCOMING_PHONE_NUMBER_PATTERN_FOR_ADDRESS_SID)
         end
-        unless (_api_version = api_version).nil?
-        end
-        unless (_area_code = area_code).nil?
-        end
+
         unless (_bundle_sid = bundle_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("bundle_sid", bundle_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MAX_LENGTH_FOR_BUNDLE_SID)
           OpenApi::PrimitiveValidator.validate_min_length("bundle_sid", bundle_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_BUNDLE_SID)
@@ -1646,15 +1544,13 @@ module Twilio
         unless (_emergency_status = emergency_status).nil?
           _emergency_status.validate
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_identity_sid = identity_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("identity_sid", identity_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MAX_LENGTH_FOR_IDENTITY_SID)
           OpenApi::PrimitiveValidator.validate_min_length("identity_sid", identity_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_IDENTITY_SID)
           OpenApi::PrimitiveValidator.validate_pattern("identity_sid", _identity_sid, CREATE_INCOMING_PHONE_NUMBER_PATTERN_FOR_IDENTITY_SID)
         end
-        unless (_phone_number = phone_number).nil?
-        end
+
         unless (_sms_application_sid = sms_application_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("sms_application_sid", sms_application_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MAX_LENGTH_FOR_SMS_APPLICATION_SID)
           OpenApi::PrimitiveValidator.validate_min_length("sms_application_sid", sms_application_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_SMS_APPLICATION_SID)
@@ -1663,15 +1559,11 @@ module Twilio
         unless (_sms_fallback_method = sms_fallback_method).nil?
           _sms_fallback_method.validate
         end
-        unless (_sms_fallback_url = sms_fallback_url).nil?
-        end
+
         unless (_sms_method = sms_method).nil?
           _sms_method.validate
         end
-        unless (_sms_url = sms_url).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
@@ -1685,20 +1577,16 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("voice_application_sid", voice_application_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_VOICE_APPLICATION_SID)
           OpenApi::PrimitiveValidator.validate_pattern("voice_application_sid", _voice_application_sid, CREATE_INCOMING_PHONE_NUMBER_PATTERN_FOR_VOICE_APPLICATION_SID)
         end
-        unless (_voice_caller_id_lookup = voice_caller_id_lookup).nil?
-        end
+
         unless (_voice_fallback_method = voice_fallback_method).nil?
           _voice_fallback_method.validate
         end
-        unless (_voice_fallback_url = voice_fallback_url).nil?
-        end
+
         unless (_voice_method = voice_method).nil?
           _voice_method.validate
         end
         unless (_voice_receive_mode = voice_receive_mode).nil?
           _voice_receive_mode.validate
-        end
-        unless (_voice_url = voice_url).nil?
         end
       end
 
@@ -2140,15 +2028,13 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_INCOMING_PHONE_NUMBER_LOCAL_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"phone_number\" is required and cannot be null") if phone_number.nil?
-        unless (_phone_number = phone_number).nil?
-        end
+
         unless (_address_sid = address_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("address_sid", address_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_LOCAL_MAX_LENGTH_FOR_ADDRESS_SID)
           OpenApi::PrimitiveValidator.validate_min_length("address_sid", address_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_LOCAL_MIN_LENGTH_FOR_ADDRESS_SID)
           OpenApi::PrimitiveValidator.validate_pattern("address_sid", _address_sid, CREATE_INCOMING_PHONE_NUMBER_LOCAL_PATTERN_FOR_ADDRESS_SID)
         end
-        unless (_api_version = api_version).nil?
-        end
+
         unless (_bundle_sid = bundle_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("bundle_sid", bundle_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_LOCAL_MAX_LENGTH_FOR_BUNDLE_SID)
           OpenApi::PrimitiveValidator.validate_min_length("bundle_sid", bundle_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_LOCAL_MIN_LENGTH_FOR_BUNDLE_SID)
@@ -2162,8 +2048,7 @@ module Twilio
         unless (_emergency_status = emergency_status).nil?
           _emergency_status.validate
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_identity_sid = identity_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("identity_sid", identity_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_LOCAL_MAX_LENGTH_FOR_IDENTITY_SID)
           OpenApi::PrimitiveValidator.validate_min_length("identity_sid", identity_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_LOCAL_MIN_LENGTH_FOR_IDENTITY_SID)
@@ -2177,15 +2062,11 @@ module Twilio
         unless (_sms_fallback_method = sms_fallback_method).nil?
           _sms_fallback_method.validate
         end
-        unless (_sms_fallback_url = sms_fallback_url).nil?
-        end
+
         unless (_sms_method = sms_method).nil?
           _sms_method.validate
         end
-        unless (_sms_url = sms_url).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
@@ -2199,20 +2080,16 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("voice_application_sid", voice_application_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_LOCAL_MIN_LENGTH_FOR_VOICE_APPLICATION_SID)
           OpenApi::PrimitiveValidator.validate_pattern("voice_application_sid", _voice_application_sid, CREATE_INCOMING_PHONE_NUMBER_LOCAL_PATTERN_FOR_VOICE_APPLICATION_SID)
         end
-        unless (_voice_caller_id_lookup = voice_caller_id_lookup).nil?
-        end
+
         unless (_voice_fallback_method = voice_fallback_method).nil?
           _voice_fallback_method.validate
         end
-        unless (_voice_fallback_url = voice_fallback_url).nil?
-        end
+
         unless (_voice_method = voice_method).nil?
           _voice_method.validate
         end
         unless (_voice_receive_mode = voice_receive_mode).nil?
           _voice_receive_mode.validate
-        end
-        unless (_voice_url = voice_url).nil?
         end
       end
 
@@ -2520,15 +2397,13 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_INCOMING_PHONE_NUMBER_MOBILE_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"phone_number\" is required and cannot be null") if phone_number.nil?
-        unless (_phone_number = phone_number).nil?
-        end
+
         unless (_address_sid = address_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("address_sid", address_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MOBILE_MAX_LENGTH_FOR_ADDRESS_SID)
           OpenApi::PrimitiveValidator.validate_min_length("address_sid", address_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MOBILE_MIN_LENGTH_FOR_ADDRESS_SID)
           OpenApi::PrimitiveValidator.validate_pattern("address_sid", _address_sid, CREATE_INCOMING_PHONE_NUMBER_MOBILE_PATTERN_FOR_ADDRESS_SID)
         end
-        unless (_api_version = api_version).nil?
-        end
+
         unless (_bundle_sid = bundle_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("bundle_sid", bundle_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MOBILE_MAX_LENGTH_FOR_BUNDLE_SID)
           OpenApi::PrimitiveValidator.validate_min_length("bundle_sid", bundle_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MOBILE_MIN_LENGTH_FOR_BUNDLE_SID)
@@ -2542,8 +2417,7 @@ module Twilio
         unless (_emergency_status = emergency_status).nil?
           _emergency_status.validate
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_identity_sid = identity_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("identity_sid", identity_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MOBILE_MAX_LENGTH_FOR_IDENTITY_SID)
           OpenApi::PrimitiveValidator.validate_min_length("identity_sid", identity_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MOBILE_MIN_LENGTH_FOR_IDENTITY_SID)
@@ -2557,15 +2431,11 @@ module Twilio
         unless (_sms_fallback_method = sms_fallback_method).nil?
           _sms_fallback_method.validate
         end
-        unless (_sms_fallback_url = sms_fallback_url).nil?
-        end
+
         unless (_sms_method = sms_method).nil?
           _sms_method.validate
         end
-        unless (_sms_url = sms_url).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
@@ -2579,20 +2449,16 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("voice_application_sid", voice_application_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_MOBILE_MIN_LENGTH_FOR_VOICE_APPLICATION_SID)
           OpenApi::PrimitiveValidator.validate_pattern("voice_application_sid", _voice_application_sid, CREATE_INCOMING_PHONE_NUMBER_MOBILE_PATTERN_FOR_VOICE_APPLICATION_SID)
         end
-        unless (_voice_caller_id_lookup = voice_caller_id_lookup).nil?
-        end
+
         unless (_voice_fallback_method = voice_fallback_method).nil?
           _voice_fallback_method.validate
         end
-        unless (_voice_fallback_url = voice_fallback_url).nil?
-        end
+
         unless (_voice_method = voice_method).nil?
           _voice_method.validate
         end
         unless (_voice_receive_mode = voice_receive_mode).nil?
           _voice_receive_mode.validate
-        end
-        unless (_voice_url = voice_url).nil?
         end
       end
 
@@ -2900,15 +2766,13 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"phone_number\" is required and cannot be null") if phone_number.nil?
-        unless (_phone_number = phone_number).nil?
-        end
+
         unless (_address_sid = address_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("address_sid", address_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_MAX_LENGTH_FOR_ADDRESS_SID)
           OpenApi::PrimitiveValidator.validate_min_length("address_sid", address_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_MIN_LENGTH_FOR_ADDRESS_SID)
           OpenApi::PrimitiveValidator.validate_pattern("address_sid", _address_sid, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_PATTERN_FOR_ADDRESS_SID)
         end
-        unless (_api_version = api_version).nil?
-        end
+
         unless (_bundle_sid = bundle_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("bundle_sid", bundle_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_MAX_LENGTH_FOR_BUNDLE_SID)
           OpenApi::PrimitiveValidator.validate_min_length("bundle_sid", bundle_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_MIN_LENGTH_FOR_BUNDLE_SID)
@@ -2922,8 +2786,7 @@ module Twilio
         unless (_emergency_status = emergency_status).nil?
           _emergency_status.validate
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_identity_sid = identity_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("identity_sid", identity_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_MAX_LENGTH_FOR_IDENTITY_SID)
           OpenApi::PrimitiveValidator.validate_min_length("identity_sid", identity_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_MIN_LENGTH_FOR_IDENTITY_SID)
@@ -2937,15 +2800,11 @@ module Twilio
         unless (_sms_fallback_method = sms_fallback_method).nil?
           _sms_fallback_method.validate
         end
-        unless (_sms_fallback_url = sms_fallback_url).nil?
-        end
+
         unless (_sms_method = sms_method).nil?
           _sms_method.validate
         end
-        unless (_sms_url = sms_url).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
@@ -2959,20 +2818,16 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("voice_application_sid", voice_application_sid.to_s.size, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_MIN_LENGTH_FOR_VOICE_APPLICATION_SID)
           OpenApi::PrimitiveValidator.validate_pattern("voice_application_sid", _voice_application_sid, CREATE_INCOMING_PHONE_NUMBER_TOLL_FREE_PATTERN_FOR_VOICE_APPLICATION_SID)
         end
-        unless (_voice_caller_id_lookup = voice_caller_id_lookup).nil?
-        end
+
         unless (_voice_fallback_method = voice_fallback_method).nil?
           _voice_fallback_method.validate
         end
-        unless (_voice_fallback_url = voice_fallback_url).nil?
-        end
+
         unless (_voice_method = voice_method).nil?
           _voice_method.validate
         end
         unless (_voice_receive_mode = voice_receive_mode).nil?
           _voice_receive_mode.validate
-        end
-        unless (_voice_url = voice_url).nil?
         end
       end
 
@@ -3261,8 +3116,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_MESSAGE_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"to\" is required and cannot be null") if to.nil?
-        unless (_to = to).nil?
-        end
+
         unless (_address_retention = address_retention).nil?
           _address_retention.validate
         end
@@ -3271,10 +3125,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("application_sid", application_sid.to_s.size, CREATE_MESSAGE_MIN_LENGTH_FOR_APPLICATION_SID)
           OpenApi::PrimitiveValidator.validate_pattern("application_sid", _application_sid, CREATE_MESSAGE_PATTERN_FOR_APPLICATION_SID)
         end
-        unless (_attempt = attempt).nil?
-        end
-        unless (_body = body).nil?
-        end
+
         unless (_content_retention = content_retention).nil?
           _content_retention.validate
         end
@@ -3283,39 +3134,15 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("content_sid", content_sid.to_s.size, CREATE_MESSAGE_MIN_LENGTH_FOR_CONTENT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("content_sid", _content_sid, CREATE_MESSAGE_PATTERN_FOR_CONTENT_SID)
         end
-        unless (_content_variables = content_variables).nil?
-        end
-        unless (_force_delivery = force_delivery).nil?
-        end
-        unless (_from = from).nil?
-        end
-        unless (_max_price = max_price).nil?
-        end
-        unless (_media_url = media_url).nil?
-        end
+
         unless (_messaging_service_sid = messaging_service_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("messaging_service_sid", messaging_service_sid.to_s.size, CREATE_MESSAGE_MAX_LENGTH_FOR_MESSAGING_SERVICE_SID)
           OpenApi::PrimitiveValidator.validate_min_length("messaging_service_sid", messaging_service_sid.to_s.size, CREATE_MESSAGE_MIN_LENGTH_FOR_MESSAGING_SERVICE_SID)
           OpenApi::PrimitiveValidator.validate_pattern("messaging_service_sid", _messaging_service_sid, CREATE_MESSAGE_PATTERN_FOR_MESSAGING_SERVICE_SID)
         end
-        unless (_persistent_action = persistent_action).nil?
-        end
-        unless (_provide_feedback = provide_feedback).nil?
-        end
+
         unless (_schedule_type = schedule_type).nil?
           _schedule_type.validate
-        end
-        unless (_send_as_mms = send_as_mms).nil?
-        end
-        unless (_send_at = send_at).nil?
-        end
-        unless (_shorten_urls = shorten_urls).nil?
-        end
-        unless (_smart_encoded = smart_encoded).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
-        unless (_validity_period = validity_period).nil?
         end
       end
 
@@ -3573,8 +3400,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, CREATE_NEW_KEY_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_NEW_KEY_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
       end
 
       # resource path
@@ -3682,8 +3507,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_NEW_SIGNING_KEY_MAX_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, CREATE_NEW_SIGNING_KEY_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_NEW_SIGNING_KEY_PATTERN_FOR_ACCOUNT_SID)
-        end
-        unless (_friendly_name = friendly_name).nil?
         end
       end
 
@@ -4122,113 +3945,45 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_PARTICIPANT_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"conference_sid\" is required and cannot be null") if conference_sid.nil?
-        unless (_conference_sid = conference_sid).nil?
-        end
+
         raise ArgumentError.new("\"from\" is required and cannot be null") if from.nil?
-        unless (_from = from).nil?
-        end
+
         raise ArgumentError.new("\"to\" is required and cannot be null") if to.nil?
-        unless (_to = to).nil?
-        end
-        unless (_amd_status_callback = amd_status_callback).nil?
-        end
+
         unless (_amd_status_callback_method = amd_status_callback_method).nil?
           _amd_status_callback_method.validate
         end
-        unless (_beep = beep).nil?
-        end
+
         unless (_byoc = byoc).nil?
           OpenApi::PrimitiveValidator.validate_max_length("byoc", byoc.to_s.size, CREATE_PARTICIPANT_MAX_LENGTH_FOR_BYOC)
           OpenApi::PrimitiveValidator.validate_min_length("byoc", byoc.to_s.size, CREATE_PARTICIPANT_MIN_LENGTH_FOR_BYOC)
           OpenApi::PrimitiveValidator.validate_pattern("byoc", _byoc, CREATE_PARTICIPANT_PATTERN_FOR_BYOC)
         end
-        unless (_call_reason = call_reason).nil?
-        end
+
         unless (_call_sid_to_coach = call_sid_to_coach).nil?
           OpenApi::PrimitiveValidator.validate_max_length("call_sid_to_coach", call_sid_to_coach.to_s.size, CREATE_PARTICIPANT_MAX_LENGTH_FOR_CALL_SID_TO_COACH)
           OpenApi::PrimitiveValidator.validate_min_length("call_sid_to_coach", call_sid_to_coach.to_s.size, CREATE_PARTICIPANT_MIN_LENGTH_FOR_CALL_SID_TO_COACH)
           OpenApi::PrimitiveValidator.validate_pattern("call_sid_to_coach", _call_sid_to_coach, CREATE_PARTICIPANT_PATTERN_FOR_CALL_SID_TO_COACH)
         end
-        unless (_caller_id = caller_id).nil?
-        end
-        unless (_coaching = coaching).nil?
-        end
-        unless (_conference_record = conference_record).nil?
-        end
-        unless (_conference_recording_status_callback = conference_recording_status_callback).nil?
-        end
-        unless (_conference_recording_status_callback_event = conference_recording_status_callback_event).nil?
-        end
+
         unless (_conference_recording_status_callback_method = conference_recording_status_callback_method).nil?
           _conference_recording_status_callback_method.validate
         end
-        unless (_conference_status_callback = conference_status_callback).nil?
-        end
-        unless (_conference_status_callback_event = conference_status_callback_event).nil?
-        end
+
         unless (_conference_status_callback_method = conference_status_callback_method).nil?
           _conference_status_callback_method.validate
         end
-        unless (_conference_trim = conference_trim).nil?
-        end
-        unless (_early_media = early_media).nil?
-        end
-        unless (_end_conference_on_exit = end_conference_on_exit).nil?
-        end
-        unless (_jitter_buffer_size = jitter_buffer_size).nil?
-        end
-        unless (_label = label).nil?
-        end
-        unless (_machine_detection = machine_detection).nil?
-        end
-        unless (_machine_detection_silence_timeout = machine_detection_silence_timeout).nil?
-        end
-        unless (_machine_detection_speech_end_threshold = machine_detection_speech_end_threshold).nil?
-        end
-        unless (_machine_detection_speech_threshold = machine_detection_speech_threshold).nil?
-        end
-        unless (_machine_detection_timeout = machine_detection_timeout).nil?
-        end
-        unless (_max_participants = max_participants).nil?
-        end
-        unless (_muted = muted).nil?
-        end
-        unless (_record = record).nil?
-        end
-        unless (_recording_channels = recording_channels).nil?
-        end
-        unless (_recording_status_callback = recording_status_callback).nil?
-        end
-        unless (_recording_status_callback_event = recording_status_callback_event).nil?
-        end
+
         unless (_recording_status_callback_method = recording_status_callback_method).nil?
           _recording_status_callback_method.validate
         end
-        unless (_recording_track = recording_track).nil?
-        end
-        unless (_region = region).nil?
-        end
-        unless (_sip_auth_password = sip_auth_password).nil?
-        end
-        unless (_sip_auth_username = sip_auth_username).nil?
-        end
-        unless (_start_conference_on_enter = start_conference_on_enter).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
-        unless (_status_callback_event = status_callback_event).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
-        unless (_time_limit = time_limit).nil?
-        end
-        unless (_timeout = timeout).nil?
-        end
+
         unless (_wait_method = wait_method).nil?
           _wait_method.validate
-        end
-        unless (_wait_url = wait_url).nil?
         end
       end
 
@@ -4505,41 +4260,19 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, CREATE_PAYMENTS_PATTERN_FOR_CALL_SID)
         end
         raise ArgumentError.new("\"idempotency_key\" is required and cannot be null") if idempotency_key.nil?
-        unless (_idempotency_key = idempotency_key).nil?
-        end
+
         raise ArgumentError.new("\"status_callback\" is required and cannot be null") if status_callback.nil?
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_bank_account_type = bank_account_type).nil?
           _bank_account_type.validate
         end
-        unless (_charge_amount = charge_amount).nil?
-        end
-        unless (_currency = currency).nil?
-        end
-        unless (_description = description).nil?
-        end
-        unless (_input = input).nil?
-        end
-        unless (_min_postal_code_length = min_postal_code_length).nil?
-        end
-        unless (_parameter = parameter).nil?
-        end
-        unless (_payment_connector = payment_connector).nil?
-        end
+
         unless (_payment_method = payment_method).nil?
           _payment_method.validate
         end
-        unless (_postal_code = postal_code).nil?
-        end
-        unless (_security_code = security_code).nil?
-        end
-        unless (_timeout = timeout).nil?
-        end
+
         unless (_token_type = token_type).nil?
           _token_type.validate
-        end
-        unless (_valid_card_types = valid_card_types).nil?
         end
       end
 
@@ -4672,10 +4405,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_QUEUE_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"friendly_name\" is required and cannot be null") if friendly_name.nil?
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_max_size = max_size).nil?
-        end
       end
 
       # resource path
@@ -5208,11 +4937,8 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("credential_list_sid", _credential_list_sid, CREATE_SIP_CREDENTIAL_PATTERN_FOR_CREDENTIAL_LIST_SID)
         end
         raise ArgumentError.new("\"password\" is required and cannot be null") if password.nil?
-        unless (_password = password).nil?
-        end
+
         raise ArgumentError.new("\"username\" is required and cannot be null") if username.nil?
-        unless (_username = username).nil?
-        end
       end
 
       # resource path
@@ -5323,8 +5049,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_SIP_CREDENTIAL_LIST_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"friendly_name\" is required and cannot be null") if friendly_name.nil?
-        unless (_friendly_name = friendly_name).nil?
-        end
       end
 
       # resource path
@@ -5657,8 +5381,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_SIP_DOMAIN_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"domain_name\" is required and cannot be null") if domain_name.nil?
-        unless (_domain_name = domain_name).nil?
-        end
+
         unless (_byoc_trunk_sid = byoc_trunk_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("byoc_trunk_sid", byoc_trunk_sid.to_s.size, CREATE_SIP_DOMAIN_MAX_LENGTH_FOR_BYOC_TRUNK_SID)
           OpenApi::PrimitiveValidator.validate_min_length("byoc_trunk_sid", byoc_trunk_sid.to_s.size, CREATE_SIP_DOMAIN_MIN_LENGTH_FOR_BYOC_TRUNK_SID)
@@ -5669,28 +5392,16 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("emergency_caller_sid", emergency_caller_sid.to_s.size, CREATE_SIP_DOMAIN_MIN_LENGTH_FOR_EMERGENCY_CALLER_SID)
           OpenApi::PrimitiveValidator.validate_pattern("emergency_caller_sid", _emergency_caller_sid, CREATE_SIP_DOMAIN_PATTERN_FOR_EMERGENCY_CALLER_SID)
         end
-        unless (_emergency_calling_enabled = emergency_calling_enabled).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_secure = secure).nil?
-        end
-        unless (_sip_registration = sip_registration).nil?
-        end
+
         unless (_voice_fallback_method = voice_fallback_method).nil?
           _voice_fallback_method.validate
         end
-        unless (_voice_fallback_url = voice_fallback_url).nil?
-        end
+
         unless (_voice_method = voice_method).nil?
           _voice_method.validate
         end
         unless (_voice_status_callback_method = voice_status_callback_method).nil?
           _voice_status_callback_method.validate
-        end
-        unless (_voice_status_callback_url = voice_status_callback_url).nil?
-        end
-        unless (_voice_url = voice_url).nil?
         end
       end
 
@@ -5813,8 +5524,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_SIP_IP_ACCESS_CONTROL_LIST_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"friendly_name\" is required and cannot be null") if friendly_name.nil?
-        unless (_friendly_name = friendly_name).nil?
-        end
       end
 
       # resource path
@@ -6087,13 +5796,8 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("ip_access_control_list_sid", _ip_access_control_list_sid, CREATE_SIP_IP_ADDRESS_PATTERN_FOR_IP_ACCESS_CONTROL_LIST_SID)
         end
         raise ArgumentError.new("\"friendly_name\" is required and cannot be null") if friendly_name.nil?
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         raise ArgumentError.new("\"ip_address\" is required and cannot be null") if ip_address.nil?
-        unless (_ip_address = ip_address).nil?
-        end
-        unless (_cidr_prefix_length = cidr_prefix_length).nil?
-        end
       end
 
       # resource path
@@ -6203,8 +5907,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_TOKEN_MAX_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, CREATE_TOKEN_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_TOKEN_PATTERN_FOR_ACCOUNT_SID)
-        end
-        unless (_ttl = ttl).nil?
         end
       end
 
@@ -6357,11 +6059,9 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_USAGE_TRIGGER_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"callback_url\" is required and cannot be null") if callback_url.nil?
-        unless (_callback_url = callback_url).nil?
-        end
+
         raise ArgumentError.new("\"trigger_value\" is required and cannot be null") if trigger_value.nil?
-        unless (_trigger_value = trigger_value).nil?
-        end
+
         raise ArgumentError.new("\"usage_category\" is required and cannot be null") if usage_category.nil?
         unless (_usage_category = usage_category).nil?
           _usage_category.validate
@@ -6369,8 +6069,7 @@ module Twilio
         unless (_callback_method = callback_method).nil?
           _callback_method.validate
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_recurring = recurring).nil?
           _recurring.validate
         end
@@ -6515,10 +6214,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, CREATE_USER_DEFINED_MESSAGE_PATTERN_FOR_CALL_SID)
         end
         raise ArgumentError.new("\"content\" is required and cannot be null") if content.nil?
-        unless (_content = content).nil?
-        end
-        unless (_idempotency_key = idempotency_key).nil?
-        end
       end
 
       # resource path
@@ -6659,10 +6354,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, CREATE_USER_DEFINED_MESSAGE_SUBSCRIPTION_PATTERN_FOR_CALL_SID)
         end
         raise ArgumentError.new("\"callback\" is required and cannot be null") if callback.nil?
-        unless (_callback = callback).nil?
-        end
-        unless (_idempotency_key = idempotency_key).nil?
-        end
+
         unless (_method = method).nil?
           _method.validate
         end
@@ -6812,16 +6504,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, CREATE_VALIDATION_REQUEST_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"phone_number\" is required and cannot be null") if phone_number.nil?
-        unless (_phone_number = phone_number).nil?
-        end
-        unless (_call_delay = call_delay).nil?
-        end
-        unless (_extension = extension).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
@@ -8475,8 +8158,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("conference_sid", _conference_sid, DELETE_PARTICIPANT_PATTERN_FOR_CONFERENCE_SID)
         end
         raise ArgumentError.new("\"call_sid\" is required and cannot be null") if call_sid.nil?
-        unless (_call_sid = call_sid).nil?
-        end
       end
 
       # resource path
@@ -11341,8 +11022,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, FETCH_AVAILABLE_PHONE_NUMBER_COUNTRY_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"country_code\" is required and cannot be null") if country_code.nil?
-        unless (_country_code = country_code).nil?
-        end
       end
 
       # resource path
@@ -13157,8 +12836,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("queue_sid", _queue_sid, FETCH_MEMBER_PATTERN_FOR_QUEUE_SID)
         end
         raise ArgumentError.new("\"call_sid\" is required and cannot be null") if call_sid.nil?
-        unless (_call_sid = call_sid).nil?
-        end
       end
 
       # resource path
@@ -13623,8 +13300,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("conference_sid", _conference_sid, FETCH_PARTICIPANT_PATTERN_FOR_CONFERENCE_SID)
         end
         raise ArgumentError.new("\"call_sid\" is required and cannot be null") if call_sid.nil?
-        unless (_call_sid = call_sid).nil?
-        end
       end
 
       # resource path
@@ -13859,8 +13534,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_max_length("sid", sid.to_s.size, FETCH_RECORDING_MAX_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, FETCH_RECORDING_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, FETCH_RECORDING_PATTERN_FOR_SID)
-        end
-        unless (_include_soft_deleted = include_soft_deleted).nil?
         end
       end
 
@@ -16082,8 +15755,6 @@ module Twilio
       end
 
       if client_side_validation
-        unless (_friendly_name = friendly_name).nil?
-        end
         unless (_status = status).nil?
           _status.validate
         end
@@ -16222,12 +15893,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_ADDRESS_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_ADDRESS_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_customer_name = customer_name).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_iso_country = iso_country).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_ADDRESS_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_ADDRESS_MIN_FOR_PAGE_SIZE)
@@ -16350,8 +16016,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_APPLICATION_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_APPLICATION_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_APPLICATION_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_APPLICATION_MIN_FOR_PAGE_SIZE)
@@ -16823,44 +16488,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_AVAILABLE_PHONE_NUMBER_LOCAL_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"country_code\" is required and cannot be null") if country_code.nil?
-        unless (_country_code = country_code).nil?
-        end
-        unless (_area_code = area_code).nil?
-        end
-        unless (_contains = contains).nil?
-        end
-        unless (_sms_enabled = sms_enabled).nil?
-        end
-        unless (_mms_enabled = mms_enabled).nil?
-        end
-        unless (_voice_enabled = voice_enabled).nil?
-        end
-        unless (_exclude_all_address_required = exclude_all_address_required).nil?
-        end
-        unless (_exclude_local_address_required = exclude_local_address_required).nil?
-        end
-        unless (_exclude_foreign_address_required = exclude_foreign_address_required).nil?
-        end
-        unless (_beta = beta).nil?
-        end
-        unless (_near_number = near_number).nil?
-        end
-        unless (_near_lat_long = near_lat_long).nil?
-        end
-        unless (_distance = distance).nil?
-        end
-        unless (_in_postal_code = in_postal_code).nil?
-        end
-        unless (_in_region = in_region).nil?
-        end
-        unless (_in_rate_center = in_rate_center).nil?
-        end
-        unless (_in_lata = in_lata).nil?
-        end
-        unless (_in_locality = in_locality).nil?
-        end
-        unless (_fax_enabled = fax_enabled).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_LOCAL_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_LOCAL_MIN_FOR_PAGE_SIZE)
@@ -17125,44 +16753,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_AVAILABLE_PHONE_NUMBER_MACHINE_TO_MACHINE_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"country_code\" is required and cannot be null") if country_code.nil?
-        unless (_country_code = country_code).nil?
-        end
-        unless (_area_code = area_code).nil?
-        end
-        unless (_contains = contains).nil?
-        end
-        unless (_sms_enabled = sms_enabled).nil?
-        end
-        unless (_mms_enabled = mms_enabled).nil?
-        end
-        unless (_voice_enabled = voice_enabled).nil?
-        end
-        unless (_exclude_all_address_required = exclude_all_address_required).nil?
-        end
-        unless (_exclude_local_address_required = exclude_local_address_required).nil?
-        end
-        unless (_exclude_foreign_address_required = exclude_foreign_address_required).nil?
-        end
-        unless (_beta = beta).nil?
-        end
-        unless (_near_number = near_number).nil?
-        end
-        unless (_near_lat_long = near_lat_long).nil?
-        end
-        unless (_distance = distance).nil?
-        end
-        unless (_in_postal_code = in_postal_code).nil?
-        end
-        unless (_in_region = in_region).nil?
-        end
-        unless (_in_rate_center = in_rate_center).nil?
-        end
-        unless (_in_lata = in_lata).nil?
-        end
-        unless (_in_locality = in_locality).nil?
-        end
-        unless (_fax_enabled = fax_enabled).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_MACHINE_TO_MACHINE_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_MACHINE_TO_MACHINE_MIN_FOR_PAGE_SIZE)
@@ -17427,44 +17018,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_AVAILABLE_PHONE_NUMBER_MOBILE_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"country_code\" is required and cannot be null") if country_code.nil?
-        unless (_country_code = country_code).nil?
-        end
-        unless (_area_code = area_code).nil?
-        end
-        unless (_contains = contains).nil?
-        end
-        unless (_sms_enabled = sms_enabled).nil?
-        end
-        unless (_mms_enabled = mms_enabled).nil?
-        end
-        unless (_voice_enabled = voice_enabled).nil?
-        end
-        unless (_exclude_all_address_required = exclude_all_address_required).nil?
-        end
-        unless (_exclude_local_address_required = exclude_local_address_required).nil?
-        end
-        unless (_exclude_foreign_address_required = exclude_foreign_address_required).nil?
-        end
-        unless (_beta = beta).nil?
-        end
-        unless (_near_number = near_number).nil?
-        end
-        unless (_near_lat_long = near_lat_long).nil?
-        end
-        unless (_distance = distance).nil?
-        end
-        unless (_in_postal_code = in_postal_code).nil?
-        end
-        unless (_in_region = in_region).nil?
-        end
-        unless (_in_rate_center = in_rate_center).nil?
-        end
-        unless (_in_lata = in_lata).nil?
-        end
-        unless (_in_locality = in_locality).nil?
-        end
-        unless (_fax_enabled = fax_enabled).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_MOBILE_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_MOBILE_MIN_FOR_PAGE_SIZE)
@@ -17729,44 +17283,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_AVAILABLE_PHONE_NUMBER_NATIONAL_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"country_code\" is required and cannot be null") if country_code.nil?
-        unless (_country_code = country_code).nil?
-        end
-        unless (_area_code = area_code).nil?
-        end
-        unless (_contains = contains).nil?
-        end
-        unless (_sms_enabled = sms_enabled).nil?
-        end
-        unless (_mms_enabled = mms_enabled).nil?
-        end
-        unless (_voice_enabled = voice_enabled).nil?
-        end
-        unless (_exclude_all_address_required = exclude_all_address_required).nil?
-        end
-        unless (_exclude_local_address_required = exclude_local_address_required).nil?
-        end
-        unless (_exclude_foreign_address_required = exclude_foreign_address_required).nil?
-        end
-        unless (_beta = beta).nil?
-        end
-        unless (_near_number = near_number).nil?
-        end
-        unless (_near_lat_long = near_lat_long).nil?
-        end
-        unless (_distance = distance).nil?
-        end
-        unless (_in_postal_code = in_postal_code).nil?
-        end
-        unless (_in_region = in_region).nil?
-        end
-        unless (_in_rate_center = in_rate_center).nil?
-        end
-        unless (_in_lata = in_lata).nil?
-        end
-        unless (_in_locality = in_locality).nil?
-        end
-        unless (_fax_enabled = fax_enabled).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_NATIONAL_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_NATIONAL_MIN_FOR_PAGE_SIZE)
@@ -18031,44 +17548,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_AVAILABLE_PHONE_NUMBER_SHARED_COST_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"country_code\" is required and cannot be null") if country_code.nil?
-        unless (_country_code = country_code).nil?
-        end
-        unless (_area_code = area_code).nil?
-        end
-        unless (_contains = contains).nil?
-        end
-        unless (_sms_enabled = sms_enabled).nil?
-        end
-        unless (_mms_enabled = mms_enabled).nil?
-        end
-        unless (_voice_enabled = voice_enabled).nil?
-        end
-        unless (_exclude_all_address_required = exclude_all_address_required).nil?
-        end
-        unless (_exclude_local_address_required = exclude_local_address_required).nil?
-        end
-        unless (_exclude_foreign_address_required = exclude_foreign_address_required).nil?
-        end
-        unless (_beta = beta).nil?
-        end
-        unless (_near_number = near_number).nil?
-        end
-        unless (_near_lat_long = near_lat_long).nil?
-        end
-        unless (_distance = distance).nil?
-        end
-        unless (_in_postal_code = in_postal_code).nil?
-        end
-        unless (_in_region = in_region).nil?
-        end
-        unless (_in_rate_center = in_rate_center).nil?
-        end
-        unless (_in_lata = in_lata).nil?
-        end
-        unless (_in_locality = in_locality).nil?
-        end
-        unless (_fax_enabled = fax_enabled).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_SHARED_COST_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_SHARED_COST_MIN_FOR_PAGE_SIZE)
@@ -18333,44 +17813,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_AVAILABLE_PHONE_NUMBER_TOLL_FREE_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"country_code\" is required and cannot be null") if country_code.nil?
-        unless (_country_code = country_code).nil?
-        end
-        unless (_area_code = area_code).nil?
-        end
-        unless (_contains = contains).nil?
-        end
-        unless (_sms_enabled = sms_enabled).nil?
-        end
-        unless (_mms_enabled = mms_enabled).nil?
-        end
-        unless (_voice_enabled = voice_enabled).nil?
-        end
-        unless (_exclude_all_address_required = exclude_all_address_required).nil?
-        end
-        unless (_exclude_local_address_required = exclude_local_address_required).nil?
-        end
-        unless (_exclude_foreign_address_required = exclude_foreign_address_required).nil?
-        end
-        unless (_beta = beta).nil?
-        end
-        unless (_near_number = near_number).nil?
-        end
-        unless (_near_lat_long = near_lat_long).nil?
-        end
-        unless (_distance = distance).nil?
-        end
-        unless (_in_postal_code = in_postal_code).nil?
-        end
-        unless (_in_region = in_region).nil?
-        end
-        unless (_in_rate_center = in_rate_center).nil?
-        end
-        unless (_in_lata = in_lata).nil?
-        end
-        unless (_in_locality = in_locality).nil?
-        end
-        unless (_fax_enabled = fax_enabled).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_TOLL_FREE_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_TOLL_FREE_MIN_FOR_PAGE_SIZE)
@@ -18635,44 +18078,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_AVAILABLE_PHONE_NUMBER_VOIP_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"country_code\" is required and cannot be null") if country_code.nil?
-        unless (_country_code = country_code).nil?
-        end
-        unless (_area_code = area_code).nil?
-        end
-        unless (_contains = contains).nil?
-        end
-        unless (_sms_enabled = sms_enabled).nil?
-        end
-        unless (_mms_enabled = mms_enabled).nil?
-        end
-        unless (_voice_enabled = voice_enabled).nil?
-        end
-        unless (_exclude_all_address_required = exclude_all_address_required).nil?
-        end
-        unless (_exclude_local_address_required = exclude_local_address_required).nil?
-        end
-        unless (_exclude_foreign_address_required = exclude_foreign_address_required).nil?
-        end
-        unless (_beta = beta).nil?
-        end
-        unless (_near_number = near_number).nil?
-        end
-        unless (_near_lat_long = near_lat_long).nil?
-        end
-        unless (_distance = distance).nil?
-        end
-        unless (_in_postal_code = in_postal_code).nil?
-        end
-        unless (_in_region = in_region).nil?
-        end
-        unless (_in_rate_center = in_rate_center).nil?
-        end
-        unless (_in_lata = in_lata).nil?
-        end
-        unless (_in_locality = in_locality).nil?
-        end
-        unless (_fax_enabled = fax_enabled).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_VOIP_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_AVAILABLE_PHONE_NUMBER_VOIP_MIN_FOR_PAGE_SIZE)
@@ -18876,10 +18282,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_CALL_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_CALL_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_to = to).nil?
-        end
-        unless (_from = from).nil?
-        end
+
         unless (_parent_call_sid = parent_call_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("parent_call_sid", parent_call_sid.to_s.size, LIST_CALL_MAX_LENGTH_FOR_PARENT_CALL_SID)
           OpenApi::PrimitiveValidator.validate_min_length("parent_call_sid", parent_call_sid.to_s.size, LIST_CALL_MIN_LENGTH_FOR_PARENT_CALL_SID)
@@ -18888,18 +18291,7 @@ module Twilio
         unless (_status = status).nil?
           _status.validate
         end
-        unless (_start_time = start_time).nil?
-        end
-        unless (_start_time_before = start_time_before).nil?
-        end
-        unless (_start_time_after = start_time_after).nil?
-        end
-        unless (_end_time = end_time).nil?
-        end
-        unless (_end_time_before = end_time_before).nil?
-        end
-        unless (_end_time_after = end_time_after).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_CALL_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_CALL_MIN_FOR_PAGE_SIZE)
@@ -19194,14 +18586,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("call_sid", call_sid.to_s.size, LIST_CALL_NOTIFICATION_MIN_LENGTH_FOR_CALL_SID)
           OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, LIST_CALL_NOTIFICATION_PATTERN_FOR_CALL_SID)
         end
-        unless (_log = log).nil?
-        end
-        unless (_message_date = message_date).nil?
-        end
-        unless (_message_date_before = message_date_before).nil?
-        end
-        unless (_message_date_after = message_date_after).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_CALL_NOTIFICATION_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_CALL_NOTIFICATION_MIN_FOR_PAGE_SIZE)
@@ -19355,12 +18740,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("call_sid", call_sid.to_s.size, LIST_CALL_RECORDING_MIN_LENGTH_FOR_CALL_SID)
           OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, LIST_CALL_RECORDING_PATTERN_FOR_CALL_SID)
         end
-        unless (_date_created = date_created).nil?
-        end
-        unless (_date_created_before = date_created_before).nil?
-        end
-        unless (_date_created_after = date_created_after).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_CALL_RECORDING_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_CALL_RECORDING_MIN_FOR_PAGE_SIZE)
@@ -19532,20 +18912,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_CONFERENCE_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_CONFERENCE_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_date_created = date_created).nil?
-        end
-        unless (_date_created_before = date_created_before).nil?
-        end
-        unless (_date_created_after = date_created_after).nil?
-        end
-        unless (_date_updated = date_updated).nil?
-        end
-        unless (_date_updated_before = date_updated_before).nil?
-        end
-        unless (_date_updated_after = date_updated_after).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_status = status).nil?
           _status.validate
         end
@@ -19706,12 +19073,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("conference_sid", conference_sid.to_s.size, LIST_CONFERENCE_RECORDING_MIN_LENGTH_FOR_CONFERENCE_SID)
           OpenApi::PrimitiveValidator.validate_pattern("conference_sid", _conference_sid, LIST_CONFERENCE_RECORDING_PATTERN_FOR_CONFERENCE_SID)
         end
-        unless (_date_created = date_created).nil?
-        end
-        unless (_date_created_before = date_created_before).nil?
-        end
-        unless (_date_created_after = date_created_after).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_CONFERENCE_RECORDING_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_CONFERENCE_RECORDING_MIN_FOR_PAGE_SIZE)
@@ -20095,14 +19457,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_INCOMING_PHONE_NUMBER_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_beta = beta).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_phone_number = phone_number).nil?
-        end
-        unless (_origin = origin).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_INCOMING_PHONE_NUMBER_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_INCOMING_PHONE_NUMBER_MIN_FOR_PAGE_SIZE)
@@ -20519,14 +19874,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_INCOMING_PHONE_NUMBER_LOCAL_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_INCOMING_PHONE_NUMBER_LOCAL_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_beta = beta).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_phone_number = phone_number).nil?
-        end
-        unless (_origin = origin).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_INCOMING_PHONE_NUMBER_LOCAL_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_INCOMING_PHONE_NUMBER_LOCAL_MIN_FOR_PAGE_SIZE)
@@ -20671,14 +20019,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_INCOMING_PHONE_NUMBER_MOBILE_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_INCOMING_PHONE_NUMBER_MOBILE_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_beta = beta).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_phone_number = phone_number).nil?
-        end
-        unless (_origin = origin).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_INCOMING_PHONE_NUMBER_MOBILE_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_INCOMING_PHONE_NUMBER_MOBILE_MIN_FOR_PAGE_SIZE)
@@ -20823,14 +20164,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_INCOMING_PHONE_NUMBER_TOLL_FREE_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_INCOMING_PHONE_NUMBER_TOLL_FREE_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_beta = beta).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_phone_number = phone_number).nil?
-        end
-        unless (_origin = origin).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_INCOMING_PHONE_NUMBER_TOLL_FREE_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_INCOMING_PHONE_NUMBER_TOLL_FREE_MIN_FOR_PAGE_SIZE)
@@ -21096,12 +20430,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("message_sid", message_sid.to_s.size, LIST_MEDIA_MIN_LENGTH_FOR_MESSAGE_SID)
           OpenApi::PrimitiveValidator.validate_pattern("message_sid", _message_sid, LIST_MEDIA_PATTERN_FOR_MESSAGE_SID)
         end
-        unless (_date_created = date_created).nil?
-        end
-        unless (_date_created_before = date_created_before).nil?
-        end
-        unless (_date_created_after = date_created_after).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_MEDIA_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_MEDIA_MIN_FOR_PAGE_SIZE)
@@ -21380,16 +20709,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_MESSAGE_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_MESSAGE_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_to = to).nil?
-        end
-        unless (_from = from).nil?
-        end
-        unless (_date_sent = date_sent).nil?
-        end
-        unless (_date_sent_before = date_sent_before).nil?
-        end
-        unless (_date_sent_after = date_sent_after).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_MESSAGE_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_MESSAGE_MIN_FOR_PAGE_SIZE)
@@ -21535,14 +20855,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_NOTIFICATION_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_NOTIFICATION_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_log = log).nil?
-        end
-        unless (_message_date = message_date).nil?
-        end
-        unless (_message_date_before = message_date_before).nil?
-        end
-        unless (_message_date_after = message_date_after).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_NOTIFICATION_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_NOTIFICATION_MIN_FOR_PAGE_SIZE)
@@ -21673,10 +20986,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_OUTGOING_CALLER_ID_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_OUTGOING_CALLER_ID_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_phone_number = phone_number).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_OUTGOING_CALLER_ID_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_OUTGOING_CALLER_ID_MIN_FOR_PAGE_SIZE)
@@ -21828,12 +21138,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("conference_sid", conference_sid.to_s.size, LIST_PARTICIPANT_MIN_LENGTH_FOR_CONFERENCE_SID)
           OpenApi::PrimitiveValidator.validate_pattern("conference_sid", _conference_sid, LIST_PARTICIPANT_PATTERN_FOR_CONFERENCE_SID)
         end
-        unless (_muted = muted).nil?
-        end
-        unless (_hold = hold).nil?
-        end
-        unless (_coaching = coaching).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_PARTICIPANT_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_PARTICIPANT_MIN_FOR_PAGE_SIZE)
@@ -22109,12 +21414,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_RECORDING_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_RECORDING_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_date_created = date_created).nil?
-        end
-        unless (_date_created_before = date_created_before).nil?
-        end
-        unless (_date_created_after = date_created_after).nil?
-        end
+
         unless (_call_sid = call_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("call_sid", call_sid.to_s.size, LIST_RECORDING_MAX_LENGTH_FOR_CALL_SID)
           OpenApi::PrimitiveValidator.validate_min_length("call_sid", call_sid.to_s.size, LIST_RECORDING_MIN_LENGTH_FOR_CALL_SID)
@@ -22125,8 +21425,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("conference_sid", conference_sid.to_s.size, LIST_RECORDING_MIN_LENGTH_FOR_CONFERENCE_SID)
           OpenApi::PrimitiveValidator.validate_pattern("conference_sid", _conference_sid, LIST_RECORDING_PATTERN_FOR_CONFERENCE_SID)
         end
-        unless (_include_soft_deleted = include_soft_deleted).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_RECORDING_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_RECORDING_MIN_FOR_PAGE_SIZE)
@@ -22659,10 +21958,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("account_sid", account_sid.to_s.size, LIST_SHORT_CODE_MIN_LENGTH_FOR_ACCOUNT_SID)
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, LIST_SHORT_CODE_PATTERN_FOR_ACCOUNT_SID)
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_short_code = short_code).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_SHORT_CODE_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_SHORT_CODE_MIN_FOR_PAGE_SIZE)
@@ -24264,12 +23560,7 @@ module Twilio
         unless (_category = category).nil?
           _category.validate
         end
-        unless (_start_date = start_date).nil?
-        end
-        unless (_end_date = end_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_USAGE_RECORD_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_USAGE_RECORD_MIN_FOR_PAGE_SIZE)
@@ -24417,12 +23708,7 @@ module Twilio
         unless (_category = category).nil?
           _category.validate
         end
-        unless (_start_date = start_date).nil?
-        end
-        unless (_end_date = end_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_USAGE_RECORD_ALL_TIME_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_USAGE_RECORD_ALL_TIME_MIN_FOR_PAGE_SIZE)
@@ -24570,12 +23856,7 @@ module Twilio
         unless (_category = category).nil?
           _category.validate
         end
-        unless (_start_date = start_date).nil?
-        end
-        unless (_end_date = end_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_USAGE_RECORD_DAILY_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_USAGE_RECORD_DAILY_MIN_FOR_PAGE_SIZE)
@@ -24723,12 +24004,7 @@ module Twilio
         unless (_category = category).nil?
           _category.validate
         end
-        unless (_start_date = start_date).nil?
-        end
-        unless (_end_date = end_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_USAGE_RECORD_LAST_MONTH_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_USAGE_RECORD_LAST_MONTH_MIN_FOR_PAGE_SIZE)
@@ -24876,12 +24152,7 @@ module Twilio
         unless (_category = category).nil?
           _category.validate
         end
-        unless (_start_date = start_date).nil?
-        end
-        unless (_end_date = end_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_USAGE_RECORD_MONTHLY_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_USAGE_RECORD_MONTHLY_MIN_FOR_PAGE_SIZE)
@@ -25029,12 +24300,7 @@ module Twilio
         unless (_category = category).nil?
           _category.validate
         end
-        unless (_start_date = start_date).nil?
-        end
-        unless (_end_date = end_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_USAGE_RECORD_THIS_MONTH_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_USAGE_RECORD_THIS_MONTH_MIN_FOR_PAGE_SIZE)
@@ -25182,12 +24448,7 @@ module Twilio
         unless (_category = category).nil?
           _category.validate
         end
-        unless (_start_date = start_date).nil?
-        end
-        unless (_end_date = end_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_USAGE_RECORD_TODAY_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_USAGE_RECORD_TODAY_MIN_FOR_PAGE_SIZE)
@@ -25335,12 +24596,7 @@ module Twilio
         unless (_category = category).nil?
           _category.validate
         end
-        unless (_start_date = start_date).nil?
-        end
-        unless (_end_date = end_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_USAGE_RECORD_YEARLY_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_USAGE_RECORD_YEARLY_MIN_FOR_PAGE_SIZE)
@@ -25488,12 +24744,7 @@ module Twilio
         unless (_category = category).nil?
           _category.validate
         end
-        unless (_start_date = start_date).nil?
-        end
-        unless (_end_date = end_date).nil?
-        end
-        unless (_include_subaccounts = include_subaccounts).nil?
-        end
+
         unless (_page_size = page_size).nil?
           OpenApi::PrimitiveValidator.validate_max_number("page_size", _page_size, LIST_USAGE_RECORD_YESTERDAY_MAX_FOR_PAGE_SIZE)
           OpenApi::PrimitiveValidator.validate_min_number("page_size", _page_size, LIST_USAGE_RECORD_YESTERDAY_MIN_FOR_PAGE_SIZE)
@@ -25760,8 +25011,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_ACCOUNT_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_ACCOUNT_PATTERN_FOR_SID)
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_status = status).nil?
           _status.validate
         end
@@ -25945,24 +25195,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_max_length("sid", sid.to_s.size, UPDATE_ADDRESS_MAX_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_ADDRESS_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_ADDRESS_PATTERN_FOR_SID)
-        end
-        unless (_auto_correct_address = auto_correct_address).nil?
-        end
-        unless (_city = city).nil?
-        end
-        unless (_customer_name = customer_name).nil?
-        end
-        unless (_emergency_enabled = emergency_enabled).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_postal_code = postal_code).nil?
-        end
-        unless (_region = region).nil?
-        end
-        unless (_street = street).nil?
-        end
-        unless (_street_secondary = street_secondary).nil?
         end
       end
 
@@ -26194,40 +25426,25 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_APPLICATION_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_APPLICATION_PATTERN_FOR_SID)
         end
-        unless (_api_version = api_version).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_message_status_callback = message_status_callback).nil?
-        end
+
         unless (_sms_fallback_method = sms_fallback_method).nil?
           _sms_fallback_method.validate
         end
-        unless (_sms_fallback_url = sms_fallback_url).nil?
-        end
+
         unless (_sms_method = sms_method).nil?
           _sms_method.validate
         end
-        unless (_sms_status_callback = sms_status_callback).nil?
-        end
-        unless (_sms_url = sms_url).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
-        unless (_voice_caller_id_lookup = voice_caller_id_lookup).nil?
-        end
+
         unless (_voice_fallback_method = voice_fallback_method).nil?
           _voice_fallback_method.validate
         end
-        unless (_voice_fallback_url = voice_fallback_url).nil?
-        end
+
         unless (_voice_method = voice_method).nil?
           _voice_method.validate
-        end
-        unless (_voice_url = voice_url).nil?
         end
       end
 
@@ -26426,24 +25643,16 @@ module Twilio
         unless (_fallback_method = fallback_method).nil?
           _fallback_method.validate
         end
-        unless (_fallback_url = fallback_url).nil?
-        end
+
         unless (_method = method).nil?
           _method.validate
         end
         unless (_status = status).nil?
           _status.validate
         end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
-        end
-        unless (_time_limit = time_limit).nil?
-        end
-        unless (_twiml = twiml).nil?
-        end
-        unless (_url = url).nil?
         end
       end
 
@@ -26576,12 +25785,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, UPDATE_CALL_FEEDBACK_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"call_sid\" is required and cannot be null") if call_sid.nil?
-        unless (_call_sid = call_sid).nil?
-        end
-        unless (_issue = issue).nil?
-        end
-        unless (_quality_score = quality_score).nil?
-        end
       end
 
       # resource path
@@ -26722,13 +25925,10 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, UPDATE_CALL_RECORDING_PATTERN_FOR_CALL_SID)
         end
         raise ArgumentError.new("\"sid\" is required and cannot be null") if sid.nil?
-        unless (_sid = sid).nil?
-        end
+
         raise ArgumentError.new("\"status\" is required and cannot be null") if status.nil?
         unless (_status = status).nil?
           _status.validate
-        end
-        unless (_pause_behavior = pause_behavior).nil?
         end
       end
 
@@ -26861,13 +26061,11 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, UPDATE_CONFERENCE_PATTERN_FOR_ACCOUNT_SID)
         end
         raise ArgumentError.new("\"sid\" is required and cannot be null") if sid.nil?
-        unless (_sid = sid).nil?
-        end
+
         unless (_announce_method = announce_method).nil?
           _announce_method.validate
         end
-        unless (_announce_url = announce_url).nil?
-        end
+
         unless (_status = status).nil?
           _status.validate
         end
@@ -27012,13 +26210,10 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("conference_sid", _conference_sid, UPDATE_CONFERENCE_RECORDING_PATTERN_FOR_CONFERENCE_SID)
         end
         raise ArgumentError.new("\"sid\" is required and cannot be null") if sid.nil?
-        unless (_sid = sid).nil?
-        end
+
         raise ArgumentError.new("\"status\" is required and cannot be null") if status.nil?
         unless (_status = status).nil?
           _status.validate
-        end
-        unless (_pause_behavior = pause_behavior).nil?
         end
       end
 
@@ -27194,22 +26389,9 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_CONNECT_APP_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_CONNECT_APP_PATTERN_FOR_SID)
         end
-        unless (_authorize_redirect_url = authorize_redirect_url).nil?
-        end
-        unless (_company_name = company_name).nil?
-        end
+
         unless (_deauthorize_callback_method = deauthorize_callback_method).nil?
           _deauthorize_callback_method.validate
-        end
-        unless (_deauthorize_callback_url = deauthorize_callback_url).nil?
-        end
-        unless (_description = description).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_homepage_url = homepage_url).nil?
-        end
-        unless (_permissions = permissions).nil?
         end
       end
 
@@ -27530,8 +26712,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("address_sid", address_sid.to_s.size, UPDATE_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_ADDRESS_SID)
           OpenApi::PrimitiveValidator.validate_pattern("address_sid", _address_sid, UPDATE_INCOMING_PHONE_NUMBER_PATTERN_FOR_ADDRESS_SID)
         end
-        unless (_api_version = api_version).nil?
-        end
+
         unless (_bundle_sid = bundle_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("bundle_sid", bundle_sid.to_s.size, UPDATE_INCOMING_PHONE_NUMBER_MAX_LENGTH_FOR_BUNDLE_SID)
           OpenApi::PrimitiveValidator.validate_min_length("bundle_sid", bundle_sid.to_s.size, UPDATE_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_BUNDLE_SID)
@@ -27545,8 +26726,7 @@ module Twilio
         unless (_emergency_status = emergency_status).nil?
           _emergency_status.validate
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_identity_sid = identity_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("identity_sid", identity_sid.to_s.size, UPDATE_INCOMING_PHONE_NUMBER_MAX_LENGTH_FOR_IDENTITY_SID)
           OpenApi::PrimitiveValidator.validate_min_length("identity_sid", identity_sid.to_s.size, UPDATE_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_IDENTITY_SID)
@@ -27560,15 +26740,11 @@ module Twilio
         unless (_sms_fallback_method = sms_fallback_method).nil?
           _sms_fallback_method.validate
         end
-        unless (_sms_fallback_url = sms_fallback_url).nil?
-        end
+
         unless (_sms_method = sms_method).nil?
           _sms_method.validate
         end
-        unless (_sms_url = sms_url).nil?
-        end
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_status_callback_method = status_callback_method).nil?
           _status_callback_method.validate
         end
@@ -27582,20 +26758,16 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("voice_application_sid", voice_application_sid.to_s.size, UPDATE_INCOMING_PHONE_NUMBER_MIN_LENGTH_FOR_VOICE_APPLICATION_SID)
           OpenApi::PrimitiveValidator.validate_pattern("voice_application_sid", _voice_application_sid, UPDATE_INCOMING_PHONE_NUMBER_PATTERN_FOR_VOICE_APPLICATION_SID)
         end
-        unless (_voice_caller_id_lookup = voice_caller_id_lookup).nil?
-        end
+
         unless (_voice_fallback_method = voice_fallback_method).nil?
           _voice_fallback_method.validate
         end
-        unless (_voice_fallback_url = voice_fallback_url).nil?
-        end
+
         unless (_voice_method = voice_method).nil?
           _voice_method.validate
         end
         unless (_voice_receive_mode = voice_receive_mode).nil?
           _voice_receive_mode.validate
-        end
-        unless (_voice_url = voice_url).nil?
         end
       end
 
@@ -27743,8 +26915,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_KEY_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_KEY_PATTERN_FOR_SID)
         end
-        unless (_friendly_name = friendly_name).nil?
-        end
       end
 
       # resource path
@@ -27884,11 +27054,9 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("queue_sid", _queue_sid, UPDATE_MEMBER_PATTERN_FOR_QUEUE_SID)
         end
         raise ArgumentError.new("\"call_sid\" is required and cannot be null") if call_sid.nil?
-        unless (_call_sid = call_sid).nil?
-        end
+
         raise ArgumentError.new("\"url\" is required and cannot be null") if url.nil?
-        unless (_url = url).nil?
-        end
+
         unless (_method = method).nil?
           _method.validate
         end
@@ -28024,8 +27192,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_MESSAGE_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_MESSAGE_PATTERN_FOR_SID)
         end
-        unless (_body = body).nil?
-        end
+
         unless (_status = status).nil?
           _status.validate
         end
@@ -28153,8 +27320,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_max_length("sid", sid.to_s.size, UPDATE_OUTGOING_CALLER_ID_MAX_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_OUTGOING_CALLER_ID_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_OUTGOING_CALLER_ID_PATTERN_FOR_SID)
-        end
-        unless (_friendly_name = friendly_name).nil?
         end
       end
 
@@ -28368,37 +27533,23 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("conference_sid", _conference_sid, UPDATE_PARTICIPANT_PATTERN_FOR_CONFERENCE_SID)
         end
         raise ArgumentError.new("\"call_sid\" is required and cannot be null") if call_sid.nil?
-        unless (_call_sid = call_sid).nil?
-        end
+
         unless (_announce_method = announce_method).nil?
           _announce_method.validate
         end
-        unless (_announce_url = announce_url).nil?
-        end
-        unless (_beep_on_exit = beep_on_exit).nil?
-        end
+
         unless (_call_sid_to_coach = call_sid_to_coach).nil?
           OpenApi::PrimitiveValidator.validate_max_length("call_sid_to_coach", call_sid_to_coach.to_s.size, UPDATE_PARTICIPANT_MAX_LENGTH_FOR_CALL_SID_TO_COACH)
           OpenApi::PrimitiveValidator.validate_min_length("call_sid_to_coach", call_sid_to_coach.to_s.size, UPDATE_PARTICIPANT_MIN_LENGTH_FOR_CALL_SID_TO_COACH)
           OpenApi::PrimitiveValidator.validate_pattern("call_sid_to_coach", _call_sid_to_coach, UPDATE_PARTICIPANT_PATTERN_FOR_CALL_SID_TO_COACH)
         end
-        unless (_coaching = coaching).nil?
-        end
-        unless (_end_conference_on_exit = end_conference_on_exit).nil?
-        end
-        unless (_hold = hold).nil?
-        end
+
         unless (_hold_method = hold_method).nil?
           _hold_method.validate
         end
-        unless (_hold_url = hold_url).nil?
-        end
-        unless (_muted = muted).nil?
-        end
+
         unless (_wait_method = wait_method).nil?
           _wait_method.validate
-        end
-        unless (_wait_url = wait_url).nil?
         end
       end
 
@@ -28573,11 +27724,9 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_PAYMENTS_PATTERN_FOR_SID)
         end
         raise ArgumentError.new("\"idempotency_key\" is required and cannot be null") if idempotency_key.nil?
-        unless (_idempotency_key = idempotency_key).nil?
-        end
+
         raise ArgumentError.new("\"status_callback\" is required and cannot be null") if status_callback.nil?
-        unless (_status_callback = status_callback).nil?
-        end
+
         unless (_capture = capture).nil?
           _capture.validate
         end
@@ -28717,10 +27866,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_max_length("sid", sid.to_s.size, UPDATE_QUEUE_MAX_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_QUEUE_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_QUEUE_PATTERN_FOR_SID)
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_max_size = max_size).nil?
         end
       end
 
@@ -28882,19 +28027,13 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_SHORT_CODE_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_SHORT_CODE_PATTERN_FOR_SID)
         end
-        unless (_api_version = api_version).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
+
         unless (_sms_fallback_method = sms_fallback_method).nil?
           _sms_fallback_method.validate
         end
-        unless (_sms_fallback_url = sms_fallback_url).nil?
-        end
+
         unless (_sms_method = sms_method).nil?
           _sms_method.validate
-        end
-        unless (_sms_url = sms_url).nil?
         end
       end
 
@@ -29024,8 +28163,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_max_length("sid", sid.to_s.size, UPDATE_SIGNING_KEY_MAX_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_SIGNING_KEY_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_SIGNING_KEY_PATTERN_FOR_SID)
-        end
-        unless (_friendly_name = friendly_name).nil?
         end
       end
 
@@ -29167,8 +28304,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_SIP_CREDENTIAL_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_SIP_CREDENTIAL_PATTERN_FOR_SID)
         end
-        unless (_password = password).nil?
-        end
       end
 
       # resource path
@@ -29294,8 +28429,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_SIP_CREDENTIAL_LIST_PATTERN_FOR_SID)
         end
         raise ArgumentError.new("\"friendly_name\" is required and cannot be null") if friendly_name.nil?
-        unless (_friendly_name = friendly_name).nil?
-        end
       end
 
       # resource path
@@ -29515,35 +28648,22 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("byoc_trunk_sid", byoc_trunk_sid.to_s.size, UPDATE_SIP_DOMAIN_MIN_LENGTH_FOR_BYOC_TRUNK_SID)
           OpenApi::PrimitiveValidator.validate_pattern("byoc_trunk_sid", _byoc_trunk_sid, UPDATE_SIP_DOMAIN_PATTERN_FOR_BYOC_TRUNK_SID)
         end
-        unless (_domain_name = domain_name).nil?
-        end
+
         unless (_emergency_caller_sid = emergency_caller_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("emergency_caller_sid", emergency_caller_sid.to_s.size, UPDATE_SIP_DOMAIN_MAX_LENGTH_FOR_EMERGENCY_CALLER_SID)
           OpenApi::PrimitiveValidator.validate_min_length("emergency_caller_sid", emergency_caller_sid.to_s.size, UPDATE_SIP_DOMAIN_MIN_LENGTH_FOR_EMERGENCY_CALLER_SID)
           OpenApi::PrimitiveValidator.validate_pattern("emergency_caller_sid", _emergency_caller_sid, UPDATE_SIP_DOMAIN_PATTERN_FOR_EMERGENCY_CALLER_SID)
         end
-        unless (_emergency_calling_enabled = emergency_calling_enabled).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_secure = secure).nil?
-        end
-        unless (_sip_registration = sip_registration).nil?
-        end
+
         unless (_voice_fallback_method = voice_fallback_method).nil?
           _voice_fallback_method.validate
         end
-        unless (_voice_fallback_url = voice_fallback_url).nil?
-        end
+
         unless (_voice_method = voice_method).nil?
           _voice_method.validate
         end
         unless (_voice_status_callback_method = voice_status_callback_method).nil?
           _voice_status_callback_method.validate
-        end
-        unless (_voice_status_callback_url = voice_status_callback_url).nil?
-        end
-        unless (_voice_url = voice_url).nil?
         end
       end
 
@@ -29682,8 +28802,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_SIP_IP_ACCESS_CONTROL_LIST_PATTERN_FOR_SID)
         end
         raise ArgumentError.new("\"friendly_name\" is required and cannot be null") if friendly_name.nil?
-        unless (_friendly_name = friendly_name).nil?
-        end
       end
 
       # resource path
@@ -29838,12 +28956,6 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_min_length("sid", sid.to_s.size, UPDATE_SIP_IP_ADDRESS_MIN_LENGTH_FOR_SID)
           OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, UPDATE_SIP_IP_ADDRESS_PATTERN_FOR_SID)
         end
-        unless (_cidr_prefix_length = cidr_prefix_length).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
-        end
-        unless (_ip_address = ip_address).nil?
-        end
       end
 
       # resource path
@@ -29978,8 +29090,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, UPDATE_SIPREC_PATTERN_FOR_CALL_SID)
         end
         raise ArgumentError.new("\"sid\" is required and cannot be null") if sid.nil?
-        unless (_sid = sid).nil?
-        end
+
         raise ArgumentError.new("\"status\" is required and cannot be null") if status.nil?
         unless (_status = status).nil?
           _status.validate
@@ -30116,8 +29227,7 @@ module Twilio
           OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, UPDATE_STREAM_PATTERN_FOR_CALL_SID)
         end
         raise ArgumentError.new("\"sid\" is required and cannot be null") if sid.nil?
-        unless (_sid = sid).nil?
-        end
+
         raise ArgumentError.new("\"status\" is required and cannot be null") if status.nil?
         unless (_status = status).nil?
           _status.validate
@@ -30262,10 +29372,6 @@ module Twilio
         end
         unless (_callback_method = callback_method).nil?
           _callback_method.validate
-        end
-        unless (_callback_url = callback_url).nil?
-        end
-        unless (_friendly_name = friendly_name).nil?
         end
       end
 

@@ -180,24 +180,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_city = @city).nil?
-      end
-      unless (_customer_name = @customer_name).nil?
-      end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_emergency_enabled = @emergency_enabled).nil?
-      end
-      unless (_friendly_name = @friendly_name).nil?
-      end
-      unless (_iso_country = @iso_country).nil?
-      end
-      unless (_postal_code = @postal_code).nil?
-      end
-      unless (_region = @region).nil?
-      end
+
       unless (_sid = @sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
           invalid_properties.push(max_length_error)
@@ -211,16 +194,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_street = @street).nil?
-      end
-      unless (_street_secondary = @street_secondary).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
-      unless (_validated = @validated).nil?
-      end
-      unless (_verified = @verified).nil?
-      end
+
       invalid_properties
     end
 
@@ -233,52 +207,10 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_city = @city).nil?
-      end
-
-      unless (_customer_name = @customer_name).nil?
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_emergency_enabled = @emergency_enabled).nil?
-      end
-
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
-      unless (_iso_country = @iso_country).nil?
-      end
-
-      unless (_postal_code = @postal_code).nil?
-      end
-
-      unless (_region = @region).nil?
-      end
-
       unless (_sid = @sid).nil?
         return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
         return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
         return false if !PATTERN_FOR_SID.matches?(_sid)
-      end
-
-      unless (_street = @street).nil?
-      end
-
-      unless (_street_secondary = @street_secondary).nil?
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
-      unless (_validated = @validated).nil?
-      end
-
-      unless (_verified = @verified).nil?
       end
 
       true
@@ -286,168 +218,110 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] city Object to be assigned
-    def city=(city : String?)
-      if city.nil?
-        return @city = nil
-      end
-      _city = city.not_nil!
-      @city = _city
+    def city=(new_value : String?)
+      @city = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] customer_name Object to be assigned
-    def customer_name=(customer_name : String?)
-      if customer_name.nil?
-        return @customer_name = nil
-      end
-      _customer_name = customer_name.not_nil!
-      @customer_name = _customer_name
+    def customer_name=(new_value : String?)
+      @customer_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
+    def date_created=(new_value : Time?)
+      @date_created = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
+    def date_updated=(new_value : Time?)
+      @date_updated = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] emergency_enabled Object to be assigned
-    def emergency_enabled=(emergency_enabled : Bool?)
-      if emergency_enabled.nil?
-        return @emergency_enabled = nil
-      end
-      _emergency_enabled = emergency_enabled.not_nil!
-      @emergency_enabled = _emergency_enabled
+    def emergency_enabled=(new_value : Bool?)
+      @emergency_enabled = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+    def friendly_name=(new_value : String?)
+      @friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] iso_country Object to be assigned
-    def iso_country=(iso_country : String?)
-      if iso_country.nil?
-        return @iso_country = nil
-      end
-      _iso_country = iso_country.not_nil!
-      @iso_country = _iso_country
+    def iso_country=(new_value : String?)
+      @iso_country = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] postal_code Object to be assigned
-    def postal_code=(postal_code : String?)
-      if postal_code.nil?
-        return @postal_code = nil
-      end
-      _postal_code = postal_code.not_nil!
-      @postal_code = _postal_code
+    def postal_code=(new_value : String?)
+      @postal_code = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] region Object to be assigned
-    def region=(region : String?)
-      if region.nil?
-        return @region = nil
-      end
-      _region = region.not_nil!
-      @region = _region
+    def region=(new_value : String?)
+      @region = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    def sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("sid", new_value.to_s.size, MAX_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("sid", new_value.to_s.size, MIN_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("sid", new_value, PATTERN_FOR_SID)
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      @sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] street Object to be assigned
-    def street=(street : String?)
-      if street.nil?
-        return @street = nil
-      end
-      _street = street.not_nil!
-      @street = _street
+    def street=(new_value : String?)
+      @street = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] street_secondary Object to be assigned
-    def street_secondary=(street_secondary : String?)
-      if street_secondary.nil?
-        return @street_secondary = nil
-      end
-      _street_secondary = street_secondary.not_nil!
-      @street_secondary = _street_secondary
+    def street_secondary=(new_value : String?)
+      @street_secondary = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] validated Object to be assigned
-    def validated=(validated : Bool?)
-      if validated.nil?
-        return @validated = nil
-      end
-      _validated = validated.not_nil!
-      @validated = _validated
+    def validated=(new_value : Bool?)
+      @validated = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] verified Object to be assigned
-    def verified=(verified : Bool?)
-      if verified.nil?
-        return @verified = nil
-      end
-      _verified = verified.not_nil!
-      @verified = _verified
+    def verified=(new_value : Bool?)
+      @verified = new_value
     end
 
     # Generates #hash and #== methods from all fields

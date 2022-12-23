@@ -136,77 +136,18 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_address_requirements = @address_requirements).nil?
-      end
-      unless (_beta = @beta).nil?
-      end
       unless (_capabilities = @capabilities).nil?
         invalid_properties.concat(_capabilities.list_invalid_properties_for("capabilities")) if _capabilities.is_a?(OpenApi::Validatable)
       end
-      unless (_friendly_name = @friendly_name).nil?
-      end
-      unless (_iso_country = @iso_country).nil?
-      end
-      unless (_lata = @lata).nil?
-      end
-      unless (_latitude = @latitude).nil?
-      end
-      unless (_locality = @locality).nil?
-      end
-      unless (_longitude = @longitude).nil?
-      end
-      unless (_phone_number = @phone_number).nil?
-      end
-      unless (_postal_code = @postal_code).nil?
-      end
-      unless (_rate_center = @rate_center).nil?
-      end
-      unless (_region = @region).nil?
-      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_address_requirements = @address_requirements).nil?
-      end
-
-      unless (_beta = @beta).nil?
-      end
-
       unless (_capabilities = @capabilities).nil?
         return false if _capabilities.is_a?(OpenApi::Validatable) && !_capabilities.valid?
-      end
-
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
-      unless (_iso_country = @iso_country).nil?
-      end
-
-      unless (_lata = @lata).nil?
-      end
-
-      unless (_latitude = @latitude).nil?
-      end
-
-      unless (_locality = @locality).nil?
-      end
-
-      unless (_longitude = @longitude).nil?
-      end
-
-      unless (_phone_number = @phone_number).nil?
-      end
-
-      unless (_postal_code = @postal_code).nil?
-      end
-
-      unless (_rate_center = @rate_center).nil?
-      end
-
-      unless (_region = @region).nil?
       end
 
       true
@@ -214,133 +155,84 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] address_requirements Object to be assigned
-    def address_requirements=(address_requirements : String?)
-      if address_requirements.nil?
-        return @address_requirements = nil
-      end
-      _address_requirements = address_requirements.not_nil!
-      @address_requirements = _address_requirements
+    def address_requirements=(new_value : String?)
+      @address_requirements = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] beta Object to be assigned
-    def beta=(beta : Bool?)
-      if beta.nil?
-        return @beta = nil
-      end
-      _beta = beta.not_nil!
-      @beta = _beta
+    def beta=(new_value : Bool?)
+      @beta = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] capabilities Object to be assigned
-    def capabilities=(capabilities : Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberVoipCapabilities?)
-      if capabilities.nil?
-        return @capabilities = nil
+    def capabilities=(new_value : Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberVoipCapabilities?)
+      unless new_value.nil?
+        new_value.validate if new_value.is_a?(OpenApi::Validatable)
       end
-      _capabilities = capabilities.not_nil!
-      _capabilities.validate if _capabilities.is_a?(OpenApi::Validatable)
-      @capabilities = _capabilities
+
+      @capabilities = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+    def friendly_name=(new_value : String?)
+      @friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] iso_country Object to be assigned
-    def iso_country=(iso_country : String?)
-      if iso_country.nil?
-        return @iso_country = nil
-      end
-      _iso_country = iso_country.not_nil!
-      @iso_country = _iso_country
+    def iso_country=(new_value : String?)
+      @iso_country = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] lata Object to be assigned
-    def lata=(lata : String?)
-      if lata.nil?
-        return @lata = nil
-      end
-      _lata = lata.not_nil!
-      @lata = _lata
+    def lata=(new_value : String?)
+      @lata = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] latitude Object to be assigned
-    def latitude=(latitude : Float64?)
-      if latitude.nil?
-        return @latitude = nil
-      end
-      _latitude = latitude.not_nil!
-      @latitude = _latitude
+    def latitude=(new_value : Float64?)
+      @latitude = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] locality Object to be assigned
-    def locality=(locality : String?)
-      if locality.nil?
-        return @locality = nil
-      end
-      _locality = locality.not_nil!
-      @locality = _locality
+    def locality=(new_value : String?)
+      @locality = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] longitude Object to be assigned
-    def longitude=(longitude : Float64?)
-      if longitude.nil?
-        return @longitude = nil
-      end
-      _longitude = longitude.not_nil!
-      @longitude = _longitude
+    def longitude=(new_value : Float64?)
+      @longitude = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] phone_number Object to be assigned
-    def phone_number=(phone_number : String?)
-      if phone_number.nil?
-        return @phone_number = nil
-      end
-      _phone_number = phone_number.not_nil!
-      @phone_number = _phone_number
+    def phone_number=(new_value : String?)
+      @phone_number = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] postal_code Object to be assigned
-    def postal_code=(postal_code : String?)
-      if postal_code.nil?
-        return @postal_code = nil
-      end
-      _postal_code = postal_code.not_nil!
-      @postal_code = _postal_code
+    def postal_code=(new_value : String?)
+      @postal_code = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] rate_center Object to be assigned
-    def rate_center=(rate_center : String?)
-      if rate_center.nil?
-        return @rate_center = nil
-      end
-      _rate_center = rate_center.not_nil!
-      @rate_center = _rate_center
+    def rate_center=(new_value : String?)
+      @rate_center = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] region Object to be assigned
-    def region=(region : String?)
-      if region.nil?
-        return @region = nil
-      end
-      _region = region.not_nil!
-      @region = _region
+    def region=(new_value : String?)
+      @region = new_value
     end
 
     # Generates #hash and #== methods from all fields

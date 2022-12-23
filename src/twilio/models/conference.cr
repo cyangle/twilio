@@ -142,8 +142,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_api_version = @api_version).nil?
-      end
+
       unless (_call_sid_ending_conference = @call_sid_ending_conference).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("call_sid_ending_conference", _call_sid_ending_conference.to_s.size, MAX_LENGTH_FOR_CALL_SID_ENDING_CONFERENCE)
           invalid_properties.push(max_length_error)
@@ -157,17 +156,11 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_friendly_name = @friendly_name).nil?
-      end
+
       unless (_reason_conference_ended = @reason_conference_ended).nil?
         invalid_properties.push(_reason_conference_ended.error_message) if !_reason_conference_ended.valid?
       end
-      unless (_region = @region).nil?
-      end
+
       unless (_sid = @sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
           invalid_properties.push(max_length_error)
@@ -184,10 +177,7 @@ module Twilio
       unless (_status = @status).nil?
         invalid_properties.push(_status.error_message) if !_status.valid?
       end
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
+
       invalid_properties
     end
 
@@ -200,29 +190,14 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_api_version = @api_version).nil?
-      end
-
       unless (_call_sid_ending_conference = @call_sid_ending_conference).nil?
         return false if _call_sid_ending_conference.to_s.size > MAX_LENGTH_FOR_CALL_SID_ENDING_CONFERENCE
         return false if _call_sid_ending_conference.to_s.size < MIN_LENGTH_FOR_CALL_SID_ENDING_CONFERENCE
         return false if !PATTERN_FOR_CALL_SID_ENDING_CONFERENCE.matches?(_call_sid_ending_conference)
       end
 
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
       unless (_reason_conference_ended = @reason_conference_ended).nil?
         return false if !_reason_conference_ended.valid?
-      end
-
-      unless (_region = @region).nil?
       end
 
       unless (_sid = @sid).nil?
@@ -235,144 +210,105 @@ module Twilio
         return false if !_status.valid?
       end
 
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] api_version Object to be assigned
-    def api_version=(api_version : String?)
-      if api_version.nil?
-        return @api_version = nil
-      end
-      _api_version = api_version.not_nil!
-      @api_version = _api_version
+    def api_version=(new_value : String?)
+      @api_version = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] call_sid_ending_conference Object to be assigned
-    def call_sid_ending_conference=(call_sid_ending_conference : String?)
-      if call_sid_ending_conference.nil?
-        return @call_sid_ending_conference = nil
+    def call_sid_ending_conference=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("call_sid_ending_conference", new_value.to_s.size, MAX_LENGTH_FOR_CALL_SID_ENDING_CONFERENCE)
+        OpenApi::PrimitiveValidator.validate_min_length("call_sid_ending_conference", new_value.to_s.size, MIN_LENGTH_FOR_CALL_SID_ENDING_CONFERENCE)
+        OpenApi::PrimitiveValidator.validate_pattern("call_sid_ending_conference", new_value, PATTERN_FOR_CALL_SID_ENDING_CONFERENCE)
       end
-      _call_sid_ending_conference = call_sid_ending_conference.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("call_sid_ending_conference", _call_sid_ending_conference.to_s.size, MAX_LENGTH_FOR_CALL_SID_ENDING_CONFERENCE)
-      OpenApi::PrimitiveValidator.validate_min_length("call_sid_ending_conference", _call_sid_ending_conference.to_s.size, MIN_LENGTH_FOR_CALL_SID_ENDING_CONFERENCE)
-      OpenApi::PrimitiveValidator.validate_pattern("call_sid_ending_conference", _call_sid_ending_conference, PATTERN_FOR_CALL_SID_ENDING_CONFERENCE)
-      @call_sid_ending_conference = _call_sid_ending_conference
+
+      @call_sid_ending_conference = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
+    def date_created=(new_value : Time?)
+      @date_created = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
+    def date_updated=(new_value : Time?)
+      @date_updated = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+    def friendly_name=(new_value : String?)
+      @friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] reason_conference_ended Object to be assigned
-    def reason_conference_ended=(reason_conference_ended : Twilio::ConferenceEnumReasonConferenceEnded?)
-      if reason_conference_ended.nil?
-        return @reason_conference_ended = nil
+    def reason_conference_ended=(new_value : Twilio::ConferenceEnumReasonConferenceEnded?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _reason_conference_ended = reason_conference_ended.not_nil!
-      _reason_conference_ended.validate
-      @reason_conference_ended = _reason_conference_ended
+
+      @reason_conference_ended = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] region Object to be assigned
-    def region=(region : String?)
-      if region.nil?
-        return @region = nil
-      end
-      _region = region.not_nil!
-      @region = _region
+    def region=(new_value : String?)
+      @region = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    def sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("sid", new_value.to_s.size, MAX_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("sid", new_value.to_s.size, MIN_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("sid", new_value, PATTERN_FOR_SID)
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      @sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
-    def status=(status : Twilio::ConferenceEnumStatus?)
-      if status.nil?
-        return @status = nil
+    def status=(new_value : Twilio::ConferenceEnumStatus?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _status = status.not_nil!
-      _status.validate
-      @status = _status
+
+      @status = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] subresource_uris Object to be assigned
-    def subresource_uris=(subresource_uris : Hash(String, String)?)
-      if subresource_uris.nil?
-        return @subresource_uris = nil
-      end
-      _subresource_uris = subresource_uris.not_nil!
-      @subresource_uris = _subresource_uris
+    def subresource_uris=(new_value : Hash(String, String)?)
+      @subresource_uris = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Generates #hash and #== methods from all fields

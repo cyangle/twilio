@@ -61,73 +61,37 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (__type = @_type).nil?
-      end
-      unless (_public_key_sid = @public_key_sid).nil?
-      end
-      unless (_encrypted_cek = @encrypted_cek).nil?
-      end
-      unless (_iv = @iv).nil?
-      end
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (__type = @_type).nil?
-      end
-
-      unless (_public_key_sid = @public_key_sid).nil?
-      end
-
-      unless (_encrypted_cek = @encrypted_cek).nil?
-      end
-
-      unless (_iv = @iv).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] _type Object to be assigned
-    def _type=(_type : String?)
-      if _type.nil?
-        return @_type = nil
-      end
-      __type = _type.not_nil!
-      @_type = __type
+    def _type=(new_value : String?)
+      @_type = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] public_key_sid Object to be assigned
-    def public_key_sid=(public_key_sid : String?)
-      if public_key_sid.nil?
-        return @public_key_sid = nil
-      end
-      _public_key_sid = public_key_sid.not_nil!
-      @public_key_sid = _public_key_sid
+    def public_key_sid=(new_value : String?)
+      @public_key_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] encrypted_cek Object to be assigned
-    def encrypted_cek=(encrypted_cek : String?)
-      if encrypted_cek.nil?
-        return @encrypted_cek = nil
-      end
-      _encrypted_cek = encrypted_cek.not_nil!
-      @encrypted_cek = _encrypted_cek
+    def encrypted_cek=(new_value : String?)
+      @encrypted_cek = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] iv Object to be assigned
-    def iv=(iv : String?)
-      if iv.nil?
-        return @iv = nil
-      end
-      _iv = iv.not_nil!
-      @iv = _iv
+    def iv=(new_value : String?)
+      @iv = new_value
     end
 
     # Generates #hash and #== methods from all fields

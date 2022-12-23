@@ -105,19 +105,11 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
+
       unless (_ice_servers = @ice_servers).nil?
         invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "ice_servers", container: _ice_servers)) if _ice_servers.is_a?(Array)
       end
-      unless (_password = @password).nil?
-      end
-      unless (_ttl = @ttl).nil?
-      end
-      unless (_username = @username).nil?
-      end
+
       invalid_properties
     end
 
@@ -130,23 +122,8 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
       unless (_ice_servers = @ice_servers).nil?
         return false if _ice_servers.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _ice_servers)
-      end
-
-      unless (_password = @password).nil?
-      end
-
-      unless (_ttl = @ttl).nil?
-      end
-
-      unless (_username = @username).nil?
       end
 
       true
@@ -154,76 +131,54 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
+    def date_created=(new_value : Time?)
+      @date_created = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
+    def date_updated=(new_value : Time?)
+      @date_updated = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] ice_servers Object to be assigned
-    def ice_servers=(ice_servers : Array(Twilio::TokenIceServersInner)?)
-      if ice_servers.nil?
-        return @ice_servers = nil
+    def ice_servers=(new_value : Array(Twilio::TokenIceServersInner)?)
+      unless new_value.nil?
+        OpenApi::ContainerValidator.validate(container: new_value) if new_value.is_a?(Array)
       end
-      _ice_servers = ice_servers.not_nil!
-      OpenApi::ContainerValidator.validate(container: _ice_servers) if _ice_servers.is_a?(Array)
-      @ice_servers = _ice_servers
+
+      @ice_servers = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] password Object to be assigned
-    def password=(password : String?)
-      if password.nil?
-        return @password = nil
-      end
-      _password = password.not_nil!
-      @password = _password
+    def password=(new_value : String?)
+      @password = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] ttl Object to be assigned
-    def ttl=(ttl : String?)
-      if ttl.nil?
-        return @ttl = nil
-      end
-      _ttl = ttl.not_nil!
-      @ttl = _ttl
+    def ttl=(new_value : String?)
+      @ttl = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] username Object to be assigned
-    def username=(username : String?)
-      if username.nil?
-        return @username = nil
-      end
-      _username = username.not_nil!
-      @username = _username
+    def username=(new_value : String?)
+      @username = new_value
     end
 
     # Generates #hash and #== methods from all fields

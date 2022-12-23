@@ -160,26 +160,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_call_count = @call_count).nil?
-      end
-      unless (_call_feedback_count = @call_feedback_count).nil?
-      end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_end_date = @end_date).nil?
-      end
-      unless (_include_subaccounts = @include_subaccounts).nil?
-      end
-      unless (_issues = @issues).nil?
-      end
-      unless (_quality_score_average = @quality_score_average).nil?
-      end
-      unless (_quality_score_median = @quality_score_median).nil?
-      end
-      unless (_quality_score_standard_deviation = @quality_score_standard_deviation).nil?
-      end
+
       unless (_sid = @sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
           invalid_properties.push(max_length_error)
@@ -193,8 +174,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_start_date = @start_date).nil?
-      end
+
       unless (_status = @status).nil?
         invalid_properties.push(_status.error_message) if !_status.valid?
       end
@@ -210,43 +190,10 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_call_count = @call_count).nil?
-      end
-
-      unless (_call_feedback_count = @call_feedback_count).nil?
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_end_date = @end_date).nil?
-      end
-
-      unless (_include_subaccounts = @include_subaccounts).nil?
-      end
-
-      unless (_issues = @issues).nil?
-      end
-
-      unless (_quality_score_average = @quality_score_average).nil?
-      end
-
-      unless (_quality_score_median = @quality_score_median).nil?
-      end
-
-      unless (_quality_score_standard_deviation = @quality_score_standard_deviation).nil?
-      end
-
       unless (_sid = @sid).nil?
         return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
         return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
         return false if !PATTERN_FOR_SID.matches?(_sid)
-      end
-
-      unless (_start_date = @start_date).nil?
       end
 
       unless (_status = @status).nil?
@@ -258,149 +205,102 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] call_count Object to be assigned
-    def call_count=(call_count : Int32?)
-      if call_count.nil?
-        return @call_count = nil
-      end
-      _call_count = call_count.not_nil!
-      @call_count = _call_count
+    def call_count=(new_value : Int32?)
+      @call_count = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] call_feedback_count Object to be assigned
-    def call_feedback_count=(call_feedback_count : Int32?)
-      if call_feedback_count.nil?
-        return @call_feedback_count = nil
-      end
-      _call_feedback_count = call_feedback_count.not_nil!
-      @call_feedback_count = _call_feedback_count
+    def call_feedback_count=(new_value : Int32?)
+      @call_feedback_count = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
+    def date_created=(new_value : Time?)
+      @date_created = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
+    def date_updated=(new_value : Time?)
+      @date_updated = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] end_date Object to be assigned
-    def end_date=(end_date : Time?)
-      if end_date.nil?
-        return @end_date = nil
-      end
-      _end_date = end_date.not_nil!
-      @end_date = _end_date
+    def end_date=(new_value : Time?)
+      @end_date = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] include_subaccounts Object to be assigned
-    def include_subaccounts=(include_subaccounts : Bool?)
-      if include_subaccounts.nil?
-        return @include_subaccounts = nil
-      end
-      _include_subaccounts = include_subaccounts.not_nil!
-      @include_subaccounts = _include_subaccounts
+    def include_subaccounts=(new_value : Bool?)
+      @include_subaccounts = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] issues Object to be assigned
-    def issues=(issues : Array(String)?)
-      if issues.nil?
-        return @issues = nil
-      end
-      _issues = issues.not_nil!
-      @issues = _issues
+    def issues=(new_value : Array(String)?)
+      @issues = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] quality_score_average Object to be assigned
-    def quality_score_average=(quality_score_average : Float64?)
-      if quality_score_average.nil?
-        return @quality_score_average = nil
-      end
-      _quality_score_average = quality_score_average.not_nil!
-      @quality_score_average = _quality_score_average
+    def quality_score_average=(new_value : Float64?)
+      @quality_score_average = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] quality_score_median Object to be assigned
-    def quality_score_median=(quality_score_median : Float64?)
-      if quality_score_median.nil?
-        return @quality_score_median = nil
-      end
-      _quality_score_median = quality_score_median.not_nil!
-      @quality_score_median = _quality_score_median
+    def quality_score_median=(new_value : Float64?)
+      @quality_score_median = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] quality_score_standard_deviation Object to be assigned
-    def quality_score_standard_deviation=(quality_score_standard_deviation : Float64?)
-      if quality_score_standard_deviation.nil?
-        return @quality_score_standard_deviation = nil
-      end
-      _quality_score_standard_deviation = quality_score_standard_deviation.not_nil!
-      @quality_score_standard_deviation = _quality_score_standard_deviation
+    def quality_score_standard_deviation=(new_value : Float64?)
+      @quality_score_standard_deviation = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    def sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("sid", new_value.to_s.size, MAX_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("sid", new_value.to_s.size, MIN_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("sid", new_value, PATTERN_FOR_SID)
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      @sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] start_date Object to be assigned
-    def start_date=(start_date : Time?)
-      if start_date.nil?
-        return @start_date = nil
-      end
-      _start_date = start_date.not_nil!
-      @start_date = _start_date
+    def start_date=(new_value : Time?)
+      @start_date = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
-    def status=(status : Twilio::CallFeedbackSummaryEnumStatus?)
-      if status.nil?
-        return @status = nil
+    def status=(new_value : Twilio::CallFeedbackSummaryEnumStatus?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _status = status.not_nil!
-      _status.validate
-      @status = _status
+
+      @status = new_value
     end
 
     # Generates #hash and #== methods from all fields

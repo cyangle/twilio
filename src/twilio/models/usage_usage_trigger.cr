@@ -167,23 +167,11 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_api_version = @api_version).nil?
-      end
+
       unless (_callback_method = @callback_method).nil?
         invalid_properties.push(_callback_method.error_message) if !_callback_method.valid?
       end
-      unless (_callback_url = @callback_url).nil?
-      end
-      unless (_current_value = @current_value).nil?
-      end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_fired = @date_fired).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_friendly_name = @friendly_name).nil?
-      end
+
       unless (_recurring = @recurring).nil?
         invalid_properties.push(_recurring.error_message) if !_recurring.valid?
       end
@@ -203,15 +191,11 @@ module Twilio
       unless (_trigger_by = @trigger_by).nil?
         invalid_properties.push(_trigger_by.error_message) if !_trigger_by.valid?
       end
-      unless (_trigger_value = @trigger_value).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
+
       unless (_usage_category = @usage_category).nil?
         invalid_properties.push(_usage_category.error_message) if !_usage_category.valid?
       end
-      unless (_usage_record_uri = @usage_record_uri).nil?
-      end
+
       invalid_properties
     end
 
@@ -224,29 +208,8 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_api_version = @api_version).nil?
-      end
-
       unless (_callback_method = @callback_method).nil?
         return false if !_callback_method.valid?
-      end
-
-      unless (_callback_url = @callback_url).nil?
-      end
-
-      unless (_current_value = @current_value).nil?
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_fired = @date_fired).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_friendly_name = @friendly_name).nil?
       end
 
       unless (_recurring = @recurring).nil?
@@ -263,17 +226,8 @@ module Twilio
         return false if !_trigger_by.valid?
       end
 
-      unless (_trigger_value = @trigger_value).nil?
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
       unless (_usage_category = @usage_category).nil?
         return false if !_usage_category.valid?
-      end
-
-      unless (_usage_record_uri = @usage_record_uri).nil?
       end
 
       true
@@ -281,172 +235,126 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] api_version Object to be assigned
-    def api_version=(api_version : String?)
-      if api_version.nil?
-        return @api_version = nil
-      end
-      _api_version = api_version.not_nil!
-      @api_version = _api_version
+    def api_version=(new_value : String?)
+      @api_version = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] callback_method Object to be assigned
-    def callback_method=(callback_method : Twilio::HttpMethod?)
-      if callback_method.nil?
-        return @callback_method = nil
+    def callback_method=(new_value : Twilio::HttpMethod?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _callback_method = callback_method.not_nil!
-      _callback_method.validate
-      @callback_method = _callback_method
+
+      @callback_method = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] callback_url Object to be assigned
-    def callback_url=(callback_url : String?)
-      if callback_url.nil?
-        return @callback_url = nil
-      end
-      _callback_url = callback_url.not_nil!
-      @callback_url = _callback_url
+    def callback_url=(new_value : String?)
+      @callback_url = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] current_value Object to be assigned
-    def current_value=(current_value : String?)
-      if current_value.nil?
-        return @current_value = nil
-      end
-      _current_value = current_value.not_nil!
-      @current_value = _current_value
+    def current_value=(new_value : String?)
+      @current_value = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
+    def date_created=(new_value : Time?)
+      @date_created = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_fired Object to be assigned
-    def date_fired=(date_fired : Time?)
-      if date_fired.nil?
-        return @date_fired = nil
-      end
-      _date_fired = date_fired.not_nil!
-      @date_fired = _date_fired
+    def date_fired=(new_value : Time?)
+      @date_fired = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
+    def date_updated=(new_value : Time?)
+      @date_updated = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+    def friendly_name=(new_value : String?)
+      @friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] recurring Object to be assigned
-    def recurring=(recurring : Twilio::UsageTriggerEnumRecurring?)
-      if recurring.nil?
-        return @recurring = nil
+    def recurring=(new_value : Twilio::UsageTriggerEnumRecurring?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _recurring = recurring.not_nil!
-      _recurring.validate
-      @recurring = _recurring
+
+      @recurring = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    def sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("sid", new_value.to_s.size, MAX_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("sid", new_value.to_s.size, MIN_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("sid", new_value, PATTERN_FOR_SID)
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      @sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] trigger_by Object to be assigned
-    def trigger_by=(trigger_by : Twilio::UsageTriggerEnumTriggerField?)
-      if trigger_by.nil?
-        return @trigger_by = nil
+    def trigger_by=(new_value : Twilio::UsageTriggerEnumTriggerField?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _trigger_by = trigger_by.not_nil!
-      _trigger_by.validate
-      @trigger_by = _trigger_by
+
+      @trigger_by = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] trigger_value Object to be assigned
-    def trigger_value=(trigger_value : String?)
-      if trigger_value.nil?
-        return @trigger_value = nil
-      end
-      _trigger_value = trigger_value.not_nil!
-      @trigger_value = _trigger_value
+    def trigger_value=(new_value : String?)
+      @trigger_value = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] usage_category Object to be assigned
-    def usage_category=(usage_category : Twilio::UsageRecordEnumCategory?)
-      if usage_category.nil?
-        return @usage_category = nil
+    def usage_category=(new_value : Twilio::UsageRecordEnumCategory?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _usage_category = usage_category.not_nil!
-      _usage_category.validate
-      @usage_category = _usage_category
+
+      @usage_category = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] usage_record_uri Object to be assigned
-    def usage_record_uri=(usage_record_uri : String?)
-      if usage_record_uri.nil?
-        return @usage_record_uri = nil
-      end
-      _usage_record_uri = usage_record_uri.not_nil!
-      @usage_record_uri = _usage_record_uri
+    def usage_record_uri=(new_value : String?)
+      @usage_record_uri = new_value
     end
 
     # Generates #hash and #== methods from all fields

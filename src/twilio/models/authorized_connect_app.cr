@@ -132,14 +132,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_connect_app_company_name = @connect_app_company_name).nil?
-      end
-      unless (_connect_app_description = @connect_app_description).nil?
-      end
-      unless (_connect_app_friendly_name = @connect_app_friendly_name).nil?
-      end
-      unless (_connect_app_homepage_url = @connect_app_homepage_url).nil?
-      end
+
       unless (_connect_app_sid = @connect_app_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("connect_app_sid", _connect_app_sid.to_s.size, MAX_LENGTH_FOR_CONNECT_APP_SID)
           invalid_properties.push(max_length_error)
@@ -153,14 +146,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_permissions = @permissions).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
+
       invalid_properties
     end
 
@@ -173,34 +159,10 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_connect_app_company_name = @connect_app_company_name).nil?
-      end
-
-      unless (_connect_app_description = @connect_app_description).nil?
-      end
-
-      unless (_connect_app_friendly_name = @connect_app_friendly_name).nil?
-      end
-
-      unless (_connect_app_homepage_url = @connect_app_homepage_url).nil?
-      end
-
       unless (_connect_app_sid = @connect_app_sid).nil?
         return false if _connect_app_sid.to_s.size > MAX_LENGTH_FOR_CONNECT_APP_SID
         return false if _connect_app_sid.to_s.size < MIN_LENGTH_FOR_CONNECT_APP_SID
         return false if !PATTERN_FOR_CONNECT_APP_SID.matches?(_connect_app_sid)
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_permissions = @permissions).nil?
-      end
-
-      unless (_uri = @uri).nil?
       end
 
       true
@@ -208,108 +170,74 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] connect_app_company_name Object to be assigned
-    def connect_app_company_name=(connect_app_company_name : String?)
-      if connect_app_company_name.nil?
-        return @connect_app_company_name = nil
-      end
-      _connect_app_company_name = connect_app_company_name.not_nil!
-      @connect_app_company_name = _connect_app_company_name
+    def connect_app_company_name=(new_value : String?)
+      @connect_app_company_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] connect_app_description Object to be assigned
-    def connect_app_description=(connect_app_description : String?)
-      if connect_app_description.nil?
-        return @connect_app_description = nil
-      end
-      _connect_app_description = connect_app_description.not_nil!
-      @connect_app_description = _connect_app_description
+    def connect_app_description=(new_value : String?)
+      @connect_app_description = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] connect_app_friendly_name Object to be assigned
-    def connect_app_friendly_name=(connect_app_friendly_name : String?)
-      if connect_app_friendly_name.nil?
-        return @connect_app_friendly_name = nil
-      end
-      _connect_app_friendly_name = connect_app_friendly_name.not_nil!
-      @connect_app_friendly_name = _connect_app_friendly_name
+    def connect_app_friendly_name=(new_value : String?)
+      @connect_app_friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] connect_app_homepage_url Object to be assigned
-    def connect_app_homepage_url=(connect_app_homepage_url : String?)
-      if connect_app_homepage_url.nil?
-        return @connect_app_homepage_url = nil
-      end
-      _connect_app_homepage_url = connect_app_homepage_url.not_nil!
-      @connect_app_homepage_url = _connect_app_homepage_url
+    def connect_app_homepage_url=(new_value : String?)
+      @connect_app_homepage_url = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] connect_app_sid Object to be assigned
-    def connect_app_sid=(connect_app_sid : String?)
-      if connect_app_sid.nil?
-        return @connect_app_sid = nil
+    def connect_app_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("connect_app_sid", new_value.to_s.size, MAX_LENGTH_FOR_CONNECT_APP_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("connect_app_sid", new_value.to_s.size, MIN_LENGTH_FOR_CONNECT_APP_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("connect_app_sid", new_value, PATTERN_FOR_CONNECT_APP_SID)
       end
-      _connect_app_sid = connect_app_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("connect_app_sid", _connect_app_sid.to_s.size, MAX_LENGTH_FOR_CONNECT_APP_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("connect_app_sid", _connect_app_sid.to_s.size, MIN_LENGTH_FOR_CONNECT_APP_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("connect_app_sid", _connect_app_sid, PATTERN_FOR_CONNECT_APP_SID)
-      @connect_app_sid = _connect_app_sid
+
+      @connect_app_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
+    def date_created=(new_value : Time?)
+      @date_created = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
+    def date_updated=(new_value : Time?)
+      @date_updated = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] permissions Object to be assigned
-    def permissions=(permissions : Array(ConnectAppEnumPermission)?)
-      if permissions.nil?
-        return @permissions = nil
-      end
-      _permissions = permissions.not_nil!
-      @permissions = _permissions
+    def permissions=(new_value : Array(ConnectAppEnumPermission)?)
+      @permissions = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Generates #hash and #== methods from all fields

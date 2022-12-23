@@ -52,58 +52,31 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_method = @method).nil?
-      end
-      unless (_url = @url).nil?
-      end
-      unless (_parameters = @parameters).nil?
-      end
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_method = @method).nil?
-      end
-
-      unless (_url = @url).nil?
-      end
-
-      unless (_parameters = @parameters).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] method Object to be assigned
-    def method=(method : String?)
-      if method.nil?
-        return @method = nil
-      end
-      _method = method.not_nil!
-      @method = _method
+    def method=(new_value : String?)
+      @method = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] url Object to be assigned
-    def url=(url : String?)
-      if url.nil?
-        return @url = nil
-      end
-      _url = url.not_nil!
-      @url = _url
+    def url=(new_value : String?)
+      @url = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] parameters Object to be assigned
-    def parameters=(parameters : Hash(String, String)?)
-      if parameters.nil?
-        return @parameters = nil
-      end
-      _parameters = parameters.not_nil!
-      @parameters = _parameters
+    def parameters=(new_value : Hash(String, String)?)
+      @parameters = new_value
     end
 
     # Generates #hash and #== methods from all fields

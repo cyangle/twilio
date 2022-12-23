@@ -139,23 +139,11 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_authorize_redirect_url = @authorize_redirect_url).nil?
-      end
-      unless (_company_name = @company_name).nil?
-      end
+
       unless (_deauthorize_callback_method = @deauthorize_callback_method).nil?
         invalid_properties.push(_deauthorize_callback_method.error_message) if !_deauthorize_callback_method.valid?
       end
-      unless (_deauthorize_callback_url = @deauthorize_callback_url).nil?
-      end
-      unless (_description = @description).nil?
-      end
-      unless (_friendly_name = @friendly_name).nil?
-      end
-      unless (_homepage_url = @homepage_url).nil?
-      end
-      unless (_permissions = @permissions).nil?
-      end
+
       unless (_sid = @sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
           invalid_properties.push(max_length_error)
@@ -169,8 +157,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_uri = @uri).nil?
-      end
+
       invalid_properties
     end
 
@@ -183,29 +170,8 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_authorize_redirect_url = @authorize_redirect_url).nil?
-      end
-
-      unless (_company_name = @company_name).nil?
-      end
-
       unless (_deauthorize_callback_method = @deauthorize_callback_method).nil?
         return false if !_deauthorize_callback_method.valid?
-      end
-
-      unless (_deauthorize_callback_url = @deauthorize_callback_url).nil?
-      end
-
-      unless (_description = @description).nil?
-      end
-
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
-      unless (_homepage_url = @homepage_url).nil?
-      end
-
-      unless (_permissions = @permissions).nil?
       end
 
       unless (_sid = @sid).nil?
@@ -214,127 +180,89 @@ module Twilio
         return false if !PATTERN_FOR_SID.matches?(_sid)
       end
 
-      unless (_uri = @uri).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] authorize_redirect_url Object to be assigned
-    def authorize_redirect_url=(authorize_redirect_url : String?)
-      if authorize_redirect_url.nil?
-        return @authorize_redirect_url = nil
-      end
-      _authorize_redirect_url = authorize_redirect_url.not_nil!
-      @authorize_redirect_url = _authorize_redirect_url
+    def authorize_redirect_url=(new_value : String?)
+      @authorize_redirect_url = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] company_name Object to be assigned
-    def company_name=(company_name : String?)
-      if company_name.nil?
-        return @company_name = nil
-      end
-      _company_name = company_name.not_nil!
-      @company_name = _company_name
+    def company_name=(new_value : String?)
+      @company_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] deauthorize_callback_method Object to be assigned
-    def deauthorize_callback_method=(deauthorize_callback_method : Twilio::HttpMethod?)
-      if deauthorize_callback_method.nil?
-        return @deauthorize_callback_method = nil
+    def deauthorize_callback_method=(new_value : Twilio::HttpMethod?)
+      unless new_value.nil?
+        new_value.validate
       end
-      _deauthorize_callback_method = deauthorize_callback_method.not_nil!
-      _deauthorize_callback_method.validate
-      @deauthorize_callback_method = _deauthorize_callback_method
+
+      @deauthorize_callback_method = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] deauthorize_callback_url Object to be assigned
-    def deauthorize_callback_url=(deauthorize_callback_url : String?)
-      if deauthorize_callback_url.nil?
-        return @deauthorize_callback_url = nil
-      end
-      _deauthorize_callback_url = deauthorize_callback_url.not_nil!
-      @deauthorize_callback_url = _deauthorize_callback_url
+    def deauthorize_callback_url=(new_value : String?)
+      @deauthorize_callback_url = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] description Object to be assigned
-    def description=(description : String?)
-      if description.nil?
-        return @description = nil
-      end
-      _description = description.not_nil!
-      @description = _description
+    def description=(new_value : String?)
+      @description = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+    def friendly_name=(new_value : String?)
+      @friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] homepage_url Object to be assigned
-    def homepage_url=(homepage_url : String?)
-      if homepage_url.nil?
-        return @homepage_url = nil
-      end
-      _homepage_url = homepage_url.not_nil!
-      @homepage_url = _homepage_url
+    def homepage_url=(new_value : String?)
+      @homepage_url = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] permissions Object to be assigned
-    def permissions=(permissions : Array(ConnectAppEnumPermission)?)
-      if permissions.nil?
-        return @permissions = nil
-      end
-      _permissions = permissions.not_nil!
-      @permissions = _permissions
+    def permissions=(new_value : Array(ConnectAppEnumPermission)?)
+      @permissions = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    def sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("sid", new_value.to_s.size, MAX_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("sid", new_value.to_s.size, MIN_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("sid", new_value, PATTERN_FOR_SID)
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      @sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Generates #hash and #== methods from all fields

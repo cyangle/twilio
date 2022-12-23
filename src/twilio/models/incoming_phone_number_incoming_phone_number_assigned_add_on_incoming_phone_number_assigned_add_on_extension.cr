@@ -143,12 +143,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_enabled = @enabled).nil?
-      end
-      unless (_friendly_name = @friendly_name).nil?
-      end
-      unless (_product_name = @product_name).nil?
-      end
+
       unless (_resource_sid = @resource_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("resource_sid", _resource_sid.to_s.size, MAX_LENGTH_FOR_RESOURCE_SID)
           invalid_properties.push(max_length_error)
@@ -175,10 +170,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_unique_name = @unique_name).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
+
       invalid_properties
     end
 
@@ -197,15 +189,6 @@ module Twilio
         return false if !PATTERN_FOR_ASSIGNED_ADD_ON_SID.matches?(_assigned_add_on_sid)
       end
 
-      unless (_enabled = @enabled).nil?
-      end
-
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
-      unless (_product_name = @product_name).nil?
-      end
-
       unless (_resource_sid = @resource_sid).nil?
         return false if _resource_sid.to_s.size > MAX_LENGTH_FOR_RESOURCE_SID
         return false if _resource_sid.to_s.size < MIN_LENGTH_FOR_RESOURCE_SID
@@ -218,115 +201,85 @@ module Twilio
         return false if !PATTERN_FOR_SID.matches?(_sid)
       end
 
-      unless (_unique_name = @unique_name).nil?
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] account_sid Object to be assigned
-    def account_sid=(account_sid : String?)
-      if account_sid.nil?
-        return @account_sid = nil
+    def account_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("account_sid", new_value.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("account_sid", new_value.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("account_sid", new_value, PATTERN_FOR_ACCOUNT_SID)
       end
-      _account_sid = account_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-      @account_sid = _account_sid
+
+      @account_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] assigned_add_on_sid Object to be assigned
-    def assigned_add_on_sid=(assigned_add_on_sid : String?)
-      if assigned_add_on_sid.nil?
-        return @assigned_add_on_sid = nil
+    def assigned_add_on_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("assigned_add_on_sid", new_value.to_s.size, MAX_LENGTH_FOR_ASSIGNED_ADD_ON_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("assigned_add_on_sid", new_value.to_s.size, MIN_LENGTH_FOR_ASSIGNED_ADD_ON_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("assigned_add_on_sid", new_value, PATTERN_FOR_ASSIGNED_ADD_ON_SID)
       end
-      _assigned_add_on_sid = assigned_add_on_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("assigned_add_on_sid", _assigned_add_on_sid.to_s.size, MAX_LENGTH_FOR_ASSIGNED_ADD_ON_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("assigned_add_on_sid", _assigned_add_on_sid.to_s.size, MIN_LENGTH_FOR_ASSIGNED_ADD_ON_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("assigned_add_on_sid", _assigned_add_on_sid, PATTERN_FOR_ASSIGNED_ADD_ON_SID)
-      @assigned_add_on_sid = _assigned_add_on_sid
+
+      @assigned_add_on_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] enabled Object to be assigned
-    def enabled=(enabled : Bool?)
-      if enabled.nil?
-        return @enabled = nil
-      end
-      _enabled = enabled.not_nil!
-      @enabled = _enabled
+    def enabled=(new_value : Bool?)
+      @enabled = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+    def friendly_name=(new_value : String?)
+      @friendly_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] product_name Object to be assigned
-    def product_name=(product_name : String?)
-      if product_name.nil?
-        return @product_name = nil
-      end
-      _product_name = product_name.not_nil!
-      @product_name = _product_name
+    def product_name=(new_value : String?)
+      @product_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] resource_sid Object to be assigned
-    def resource_sid=(resource_sid : String?)
-      if resource_sid.nil?
-        return @resource_sid = nil
+    def resource_sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("resource_sid", new_value.to_s.size, MAX_LENGTH_FOR_RESOURCE_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("resource_sid", new_value.to_s.size, MIN_LENGTH_FOR_RESOURCE_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("resource_sid", new_value, PATTERN_FOR_RESOURCE_SID)
       end
-      _resource_sid = resource_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("resource_sid", _resource_sid.to_s.size, MAX_LENGTH_FOR_RESOURCE_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("resource_sid", _resource_sid.to_s.size, MIN_LENGTH_FOR_RESOURCE_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("resource_sid", _resource_sid, PATTERN_FOR_RESOURCE_SID)
-      @resource_sid = _resource_sid
+
+      @resource_sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    def sid=(new_value : String?)
+      unless new_value.nil?
+        OpenApi::PrimitiveValidator.validate_max_length("sid", new_value.to_s.size, MAX_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_min_length("sid", new_value.to_s.size, MIN_LENGTH_FOR_SID)
+        OpenApi::PrimitiveValidator.validate_pattern("sid", new_value, PATTERN_FOR_SID)
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      @sid = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] unique_name Object to be assigned
-    def unique_name=(unique_name : String?)
-      if unique_name.nil?
-        return @unique_name = nil
-      end
-      _unique_name = unique_name.not_nil!
-      @unique_name = _unique_name
+    def unique_name=(new_value : String?)
+      @unique_name = new_value
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
+    def uri=(new_value : String?)
+      @uri = new_value
     end
 
     # Generates #hash and #== methods from all fields
