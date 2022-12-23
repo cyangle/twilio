@@ -20,14 +20,14 @@ module Twilio
 
     # Optional Properties
 
-    @[JSON::Field(key: "ip_access_control_list_mappings", type: Array(Twilio::SipSipDomainSipIpAccessControlListMapping)?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter ip_access_control_list_mappings : Array(Twilio::SipSipDomainSipIpAccessControlListMapping)? = nil
-
     @[JSON::Field(key: "end", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter _end : Int32? = nil
 
     @[JSON::Field(key: "first_page_uri", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
     getter first_page_uri : String? = nil
+
+    @[JSON::Field(key: "ip_access_control_list_mappings", type: Array(Twilio::SipSipDomainSipIpAccessControlListMapping)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter ip_access_control_list_mappings : Array(Twilio::SipSipDomainSipIpAccessControlListMapping)? = nil
 
     @[JSON::Field(key: "next_page_uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: next_page_uri.nil? && !next_page_uri_present?)]
     getter next_page_uri : String? = nil
@@ -58,9 +58,9 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @ip_access_control_list_mappings : Array(Twilio::SipSipDomainSipIpAccessControlListMapping)? = nil,
       @_end : Int32? = nil,
       @first_page_uri : String? = nil,
+      @ip_access_control_list_mappings : Array(Twilio::SipSipDomainSipIpAccessControlListMapping)? = nil,
       @next_page_uri : String? = nil,
       @page : Int32? = nil,
       @page_size : Int32? = nil,
@@ -75,12 +75,12 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_ip_access_control_list_mappings = @ip_access_control_list_mappings).nil?
-        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "ip_access_control_list_mappings", container: _ip_access_control_list_mappings)) if _ip_access_control_list_mappings.is_a?(Array)
-      end
       unless (__end = @_end).nil?
       end
       unless (_first_page_uri = @first_page_uri).nil?
+      end
+      unless (_ip_access_control_list_mappings = @ip_access_control_list_mappings).nil?
+        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "ip_access_control_list_mappings", container: _ip_access_control_list_mappings)) if _ip_access_control_list_mappings.is_a?(Array)
       end
       unless (_next_page_uri = @next_page_uri).nil?
       end
@@ -100,14 +100,14 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_ip_access_control_list_mappings = @ip_access_control_list_mappings).nil?
-        return false if _ip_access_control_list_mappings.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _ip_access_control_list_mappings)
-      end
-
       unless (__end = @_end).nil?
       end
 
       unless (_first_page_uri = @first_page_uri).nil?
+      end
+
+      unless (_ip_access_control_list_mappings = @ip_access_control_list_mappings).nil?
+        return false if _ip_access_control_list_mappings.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _ip_access_control_list_mappings)
       end
 
       unless (_next_page_uri = @next_page_uri).nil?
@@ -132,17 +132,6 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] ip_access_control_list_mappings Object to be assigned
-    def ip_access_control_list_mappings=(ip_access_control_list_mappings : Array(Twilio::SipSipDomainSipIpAccessControlListMapping)?)
-      if ip_access_control_list_mappings.nil?
-        return @ip_access_control_list_mappings = nil
-      end
-      _ip_access_control_list_mappings = ip_access_control_list_mappings.not_nil!
-      OpenApi::ContainerValidator.validate(container: _ip_access_control_list_mappings) if _ip_access_control_list_mappings.is_a?(Array)
-      @ip_access_control_list_mappings = _ip_access_control_list_mappings
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] _end Object to be assigned
     def _end=(_end : Int32?)
       if _end.nil?
@@ -160,6 +149,17 @@ module Twilio
       end
       _first_page_uri = first_page_uri.not_nil!
       @first_page_uri = _first_page_uri
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] ip_access_control_list_mappings Object to be assigned
+    def ip_access_control_list_mappings=(ip_access_control_list_mappings : Array(Twilio::SipSipDomainSipIpAccessControlListMapping)?)
+      if ip_access_control_list_mappings.nil?
+        return @ip_access_control_list_mappings = nil
+      end
+      _ip_access_control_list_mappings = ip_access_control_list_mappings.not_nil!
+      OpenApi::ContainerValidator.validate(container: _ip_access_control_list_mappings) if _ip_access_control_list_mappings.is_a?(Array)
+      @ip_access_control_list_mappings = _ip_access_control_list_mappings
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -226,6 +226,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@ip_access_control_list_mappings, @_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
+    def_equals_and_hash(@_end, @first_page_uri, @ip_access_control_list_mappings, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
   end
 end

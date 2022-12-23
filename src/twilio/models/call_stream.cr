@@ -20,16 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    # The SID of the Stream resource.
-    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String? = nil
-    MAX_LENGTH_FOR_SID = 34
-    MIN_LENGTH_FOR_SID = 34
-    PATTERN_FOR_SID    = /^MZ[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? sid_present : Bool = false
-
     # The SID of the Account that created this resource
     @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String? = nil
@@ -50,6 +40,13 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
 
+    # The RFC 2822 date and time in GMT that this resource was last updated
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? date_updated_present : Bool = false
+
     # The name of this resource
     @[JSON::Field(key: "name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: name.nil? && !name_present?)]
     getter name : String? = nil
@@ -57,15 +54,18 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? name_present : Bool = false
 
-    @[JSON::Field(key: "status", type: Twilio::StreamEnumStatus?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter status : Twilio::StreamEnumStatus? = nil
-
-    # The RFC 2822 date and time in GMT that this resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
-    getter date_updated : Time? = nil
+    # The SID of the Stream resource.
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
+    MAX_LENGTH_FOR_SID = 34
+    MIN_LENGTH_FOR_SID = 34
+    PATTERN_FOR_SID    = /^MZ[0-9a-fA-F]{32}$/
 
     @[JSON::Field(ignore: true)]
-    property? date_updated_present : Bool = false
+    property? sid_present : Bool = false
+
+    @[JSON::Field(key: "status", type: Twilio::SiprecEnumStatus?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter status : Twilio::SiprecEnumStatus? = nil
 
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
@@ -79,12 +79,12 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @sid : String? = nil,
       @account_sid : String? = nil,
       @call_sid : String? = nil,
-      @name : String? = nil,
-      @status : Twilio::StreamEnumStatus? = nil,
       @date_updated : Time? = nil,
+      @name : String? = nil,
+      @sid : String? = nil,
+      @status : Twilio::SiprecEnumStatus? = nil,
       @uri : String? = nil
     )
     end
@@ -94,19 +94,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_sid = @sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
       unless (_account_sid = @account_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
           invalid_properties.push(max_length_error)
@@ -133,12 +120,25 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
+      unless (_date_updated = @date_updated).nil?
+      end
       unless (_name = @name).nil?
+      end
+      unless (_sid = @sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
+          invalid_properties.push(pattern_error)
+        end
       end
       unless (_status = @status).nil?
         invalid_properties.push(_status.error_message) if !_status.valid?
-      end
-      unless (_date_updated = @date_updated).nil?
       end
       unless (_uri = @uri).nil?
       end
@@ -148,12 +148,6 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_sid = @sid).nil?
-        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
-        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
-        return false if !PATTERN_FOR_SID.matches?(_sid)
-      end
-
       unless (_account_sid = @account_sid).nil?
         return false if _account_sid.to_s.size > MAX_LENGTH_FOR_ACCOUNT_SID
         return false if _account_sid.to_s.size < MIN_LENGTH_FOR_ACCOUNT_SID
@@ -166,33 +160,26 @@ module Twilio
         return false if !PATTERN_FOR_CALL_SID.matches?(_call_sid)
       end
 
+      unless (_date_updated = @date_updated).nil?
+      end
+
       unless (_name = @name).nil?
+      end
+
+      unless (_sid = @sid).nil?
+        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
+        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
+        return false if !PATTERN_FOR_SID.matches?(_sid)
       end
 
       unless (_status = @status).nil?
         return false if !_status.valid?
       end
 
-      unless (_date_updated = @date_updated).nil?
-      end
-
       unless (_uri = @uri).nil?
       end
 
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
-      end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -222,6 +209,16 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      _date_updated = date_updated.not_nil!
+      @date_updated = _date_updated
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] name Object to be assigned
     def name=(name : String?)
       if name.nil?
@@ -232,24 +229,27 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
+    def sid=(sid : String?)
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
+      @sid = _sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
-    def status=(status : Twilio::StreamEnumStatus?)
+    def status=(status : Twilio::SiprecEnumStatus?)
       if status.nil?
         return @status = nil
       end
       _status = status.not_nil!
       _status.validate
       @status = _status
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -266,6 +266,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@sid, @sid_present, @account_sid, @account_sid_present, @call_sid, @call_sid_present, @name, @name_present, @status, @date_updated, @date_updated_present, @uri, @uri_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @call_sid, @call_sid_present, @date_updated, @date_updated_present, @name, @name_present, @sid, @sid_present, @status, @uri, @uri_present)
   end
 end

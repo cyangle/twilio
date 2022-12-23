@@ -44,6 +44,16 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? auth_type_present : Bool = false
 
+    # The SID of the BYOC Trunk resource.
+    @[JSON::Field(key: "byoc_trunk_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: byoc_trunk_sid.nil? && !byoc_trunk_sid_present?)]
+    getter byoc_trunk_sid : String? = nil
+    MAX_LENGTH_FOR_BYOC_TRUNK_SID = 34
+    MIN_LENGTH_FOR_BYOC_TRUNK_SID = 34
+    PATTERN_FOR_BYOC_TRUNK_SID    = /^BY[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? byoc_trunk_sid_present : Bool = false
+
     # The RFC 2822 date and time in GMT that the resource was created
     @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
     getter date_created : Time? = nil
@@ -65,12 +75,36 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? domain_name_present : Bool = false
 
+    # Whether an emergency caller sid is configured for the domain.
+    @[JSON::Field(key: "emergency_caller_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_caller_sid.nil? && !emergency_caller_sid_present?)]
+    getter emergency_caller_sid : String? = nil
+    MAX_LENGTH_FOR_EMERGENCY_CALLER_SID = 34
+    MIN_LENGTH_FOR_EMERGENCY_CALLER_SID = 34
+    PATTERN_FOR_EMERGENCY_CALLER_SID    = /^PN[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? emergency_caller_sid_present : Bool = false
+
+    # Whether emergency calling is enabled for the domain.
+    @[JSON::Field(key: "emergency_calling_enabled", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_calling_enabled.nil? && !emergency_calling_enabled_present?)]
+    getter emergency_calling_enabled : Bool? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? emergency_calling_enabled_present : Bool = false
+
     # The string that you assigned to describe the resource
     @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     getter friendly_name : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? friendly_name_present : Bool = false
+
+    # Whether secure SIP is enabled for the domain
+    @[JSON::Field(key: "secure", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: secure.nil? && !secure_present?)]
+    getter secure : Bool? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? secure_present : Bool = false
 
     # The unique string that identifies the resource
     @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
@@ -82,6 +116,19 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
+    # Whether SIP registration is allowed
+    @[JSON::Field(key: "sip_registration", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sip_registration.nil? && !sip_registration_present?)]
+    getter sip_registration : Bool? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? sip_registration_present : Bool = false
+
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
+    getter subresource_uris : Hash(String, String)? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? subresource_uris_present : Bool = false
+
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     getter uri : String? = nil
@@ -89,11 +136,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    # The HTTP method used with voice_fallback_url
-    @[JSON::Field(key: "voice_fallback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
-    getter voice_fallback_method : String? = nil
-    ERROR_MESSAGE_FOR_VOICE_FALLBACK_METHOD = "invalid value for \"voice_fallback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_VOICE_FALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "voice_fallback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
+    getter voice_fallback_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_fallback_method_present : Bool = false
@@ -105,20 +149,14 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_fallback_url_present : Bool = false
 
-    # The HTTP method to use with voice_url
-    @[JSON::Field(key: "voice_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
-    getter voice_method : String? = nil
-    ERROR_MESSAGE_FOR_VOICE_METHOD = "invalid value for \"voice_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_VOICE_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "voice_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
+    getter voice_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_method_present : Bool = false
 
-    # The HTTP method we use to call voice_status_callback_url
-    @[JSON::Field(key: "voice_status_callback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_status_callback_method.nil? && !voice_status_callback_method_present?)]
-    getter voice_status_callback_method : String? = nil
-    ERROR_MESSAGE_FOR_VOICE_STATUS_CALLBACK_METHOD = "invalid value for \"voice_status_callback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_VOICE_STATUS_CALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "voice_status_callback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_status_callback_method.nil? && !voice_status_callback_method_present?)]
+    getter voice_status_callback_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_status_callback_method_present : Bool = false
@@ -137,54 +175,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_url_present : Bool = false
 
-    # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
-    getter subresource_uris : Hash(String, String)? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? subresource_uris_present : Bool = false
-
-    # Whether SIP registration is allowed
-    @[JSON::Field(key: "sip_registration", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sip_registration.nil? && !sip_registration_present?)]
-    getter sip_registration : Bool? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? sip_registration_present : Bool = false
-
-    # Whether emergency calling is enabled for the domain.
-    @[JSON::Field(key: "emergency_calling_enabled", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_calling_enabled.nil? && !emergency_calling_enabled_present?)]
-    getter emergency_calling_enabled : Bool? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? emergency_calling_enabled_present : Bool = false
-
-    # Whether secure SIP is enabled for the domain
-    @[JSON::Field(key: "secure", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: secure.nil? && !secure_present?)]
-    getter secure : Bool? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? secure_present : Bool = false
-
-    # The SID of the BYOC Trunk resource.
-    @[JSON::Field(key: "byoc_trunk_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: byoc_trunk_sid.nil? && !byoc_trunk_sid_present?)]
-    getter byoc_trunk_sid : String? = nil
-    MAX_LENGTH_FOR_BYOC_TRUNK_SID = 34
-    MIN_LENGTH_FOR_BYOC_TRUNK_SID = 34
-    PATTERN_FOR_BYOC_TRUNK_SID    = /^BY[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? byoc_trunk_sid_present : Bool = false
-
-    # Whether an emergency caller sid is configured for the domain.
-    @[JSON::Field(key: "emergency_caller_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_caller_sid.nil? && !emergency_caller_sid_present?)]
-    getter emergency_caller_sid : String? = nil
-    MAX_LENGTH_FOR_EMERGENCY_CALLER_SID = 34
-    MIN_LENGTH_FOR_EMERGENCY_CALLER_SID = 34
-    PATTERN_FOR_EMERGENCY_CALLER_SID    = /^PN[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? emergency_caller_sid_present : Bool = false
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
@@ -193,24 +183,24 @@ module Twilio
       @account_sid : String? = nil,
       @api_version : String? = nil,
       @auth_type : String? = nil,
+      @byoc_trunk_sid : String? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
       @domain_name : String? = nil,
-      @friendly_name : String? = nil,
-      @sid : String? = nil,
-      @uri : String? = nil,
-      @voice_fallback_method : String? = nil,
-      @voice_fallback_url : String? = nil,
-      @voice_method : String? = nil,
-      @voice_status_callback_method : String? = nil,
-      @voice_status_callback_url : String? = nil,
-      @voice_url : String? = nil,
-      @subresource_uris : Hash(String, String)? = nil,
-      @sip_registration : Bool? = nil,
+      @emergency_caller_sid : String? = nil,
       @emergency_calling_enabled : Bool? = nil,
+      @friendly_name : String? = nil,
       @secure : Bool? = nil,
-      @byoc_trunk_sid : String? = nil,
-      @emergency_caller_sid : String? = nil
+      @sid : String? = nil,
+      @sip_registration : Bool? = nil,
+      @subresource_uris : Hash(String, String)? = nil,
+      @uri : String? = nil,
+      @voice_fallback_method : Twilio::HttpMethod? = nil,
+      @voice_fallback_url : String? = nil,
+      @voice_method : Twilio::HttpMethod? = nil,
+      @voice_status_callback_method : Twilio::HttpMethod? = nil,
+      @voice_status_callback_url : String? = nil,
+      @voice_url : String? = nil
     )
     end
 
@@ -236,13 +226,43 @@ module Twilio
       end
       unless (_auth_type = @auth_type).nil?
       end
+      unless (_byoc_trunk_sid = @byoc_trunk_sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("byoc_trunk_sid", _byoc_trunk_sid.to_s.size, MAX_LENGTH_FOR_BYOC_TRUNK_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("byoc_trunk_sid", _byoc_trunk_sid.to_s.size, MIN_LENGTH_FOR_BYOC_TRUNK_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("byoc_trunk_sid", _byoc_trunk_sid, PATTERN_FOR_BYOC_TRUNK_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
       unless (_date_created = @date_created).nil?
       end
       unless (_date_updated = @date_updated).nil?
       end
       unless (_domain_name = @domain_name).nil?
       end
+      unless (_emergency_caller_sid = @emergency_caller_sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("emergency_caller_sid", _emergency_caller_sid.to_s.size, MAX_LENGTH_FOR_EMERGENCY_CALLER_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("emergency_caller_sid", _emergency_caller_sid.to_s.size, MIN_LENGTH_FOR_EMERGENCY_CALLER_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("emergency_caller_sid", _emergency_caller_sid, PATTERN_FOR_EMERGENCY_CALLER_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
+      unless (_emergency_calling_enabled = @emergency_calling_enabled).nil?
+      end
       unless (_friendly_name = @friendly_name).nil?
+      end
+      unless (_secure = @secure).nil?
       end
       unless (_sid = @sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
@@ -257,56 +277,26 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
+      unless (_sip_registration = @sip_registration).nil?
+      end
+      unless (_subresource_uris = @subresource_uris).nil?
+      end
       unless (_uri = @uri).nil?
       end
       unless (_voice_fallback_method = @voice_fallback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_VOICE_FALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_voice_fallback_method, VALID_VALUES_FOR_VOICE_FALLBACK_METHOD)
+        invalid_properties.push(_voice_fallback_method.error_message) if !_voice_fallback_method.valid?
       end
       unless (_voice_fallback_url = @voice_fallback_url).nil?
       end
       unless (_voice_method = @voice_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_VOICE_METHOD) unless OpenApi::EnumValidator.valid?(_voice_method, VALID_VALUES_FOR_VOICE_METHOD)
+        invalid_properties.push(_voice_method.error_message) if !_voice_method.valid?
       end
       unless (_voice_status_callback_method = @voice_status_callback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_VOICE_STATUS_CALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_voice_status_callback_method, VALID_VALUES_FOR_VOICE_STATUS_CALLBACK_METHOD)
+        invalid_properties.push(_voice_status_callback_method.error_message) if !_voice_status_callback_method.valid?
       end
       unless (_voice_status_callback_url = @voice_status_callback_url).nil?
       end
       unless (_voice_url = @voice_url).nil?
-      end
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-      unless (_sip_registration = @sip_registration).nil?
-      end
-      unless (_emergency_calling_enabled = @emergency_calling_enabled).nil?
-      end
-      unless (_secure = @secure).nil?
-      end
-      unless (_byoc_trunk_sid = @byoc_trunk_sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("byoc_trunk_sid", _byoc_trunk_sid.to_s.size, MAX_LENGTH_FOR_BYOC_TRUNK_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("byoc_trunk_sid", _byoc_trunk_sid.to_s.size, MIN_LENGTH_FOR_BYOC_TRUNK_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("byoc_trunk_sid", _byoc_trunk_sid, PATTERN_FOR_BYOC_TRUNK_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
-      unless (_emergency_caller_sid = @emergency_caller_sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("emergency_caller_sid", _emergency_caller_sid.to_s.size, MAX_LENGTH_FOR_EMERGENCY_CALLER_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("emergency_caller_sid", _emergency_caller_sid.to_s.size, MIN_LENGTH_FOR_EMERGENCY_CALLER_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("emergency_caller_sid", _emergency_caller_sid, PATTERN_FOR_EMERGENCY_CALLER_SID)
-          invalid_properties.push(pattern_error)
-        end
       end
       invalid_properties
     end
@@ -326,6 +316,12 @@ module Twilio
       unless (_auth_type = @auth_type).nil?
       end
 
+      unless (_byoc_trunk_sid = @byoc_trunk_sid).nil?
+        return false if _byoc_trunk_sid.to_s.size > MAX_LENGTH_FOR_BYOC_TRUNK_SID
+        return false if _byoc_trunk_sid.to_s.size < MIN_LENGTH_FOR_BYOC_TRUNK_SID
+        return false if !PATTERN_FOR_BYOC_TRUNK_SID.matches?(_byoc_trunk_sid)
+      end
+
       unless (_date_created = @date_created).nil?
       end
 
@@ -335,7 +331,19 @@ module Twilio
       unless (_domain_name = @domain_name).nil?
       end
 
+      unless (_emergency_caller_sid = @emergency_caller_sid).nil?
+        return false if _emergency_caller_sid.to_s.size > MAX_LENGTH_FOR_EMERGENCY_CALLER_SID
+        return false if _emergency_caller_sid.to_s.size < MIN_LENGTH_FOR_EMERGENCY_CALLER_SID
+        return false if !PATTERN_FOR_EMERGENCY_CALLER_SID.matches?(_emergency_caller_sid)
+      end
+
+      unless (_emergency_calling_enabled = @emergency_calling_enabled).nil?
+      end
+
       unless (_friendly_name = @friendly_name).nil?
+      end
+
+      unless (_secure = @secure).nil?
       end
 
       unless (_sid = @sid).nil?
@@ -344,52 +352,34 @@ module Twilio
         return false if !PATTERN_FOR_SID.matches?(_sid)
       end
 
+      unless (_sip_registration = @sip_registration).nil?
+      end
+
+      unless (_subresource_uris = @subresource_uris).nil?
+      end
+
       unless (_uri = @uri).nil?
       end
 
       unless (_voice_fallback_method = @voice_fallback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_voice_fallback_method, VALID_VALUES_FOR_VOICE_FALLBACK_METHOD)
+        return false if !_voice_fallback_method.valid?
       end
 
       unless (_voice_fallback_url = @voice_fallback_url).nil?
       end
 
       unless (_voice_method = @voice_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_voice_method, VALID_VALUES_FOR_VOICE_METHOD)
+        return false if !_voice_method.valid?
       end
 
       unless (_voice_status_callback_method = @voice_status_callback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_voice_status_callback_method, VALID_VALUES_FOR_VOICE_STATUS_CALLBACK_METHOD)
+        return false if !_voice_status_callback_method.valid?
       end
 
       unless (_voice_status_callback_url = @voice_status_callback_url).nil?
       end
 
       unless (_voice_url = @voice_url).nil?
-      end
-
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-
-      unless (_sip_registration = @sip_registration).nil?
-      end
-
-      unless (_emergency_calling_enabled = @emergency_calling_enabled).nil?
-      end
-
-      unless (_secure = @secure).nil?
-      end
-
-      unless (_byoc_trunk_sid = @byoc_trunk_sid).nil?
-        return false if _byoc_trunk_sid.to_s.size > MAX_LENGTH_FOR_BYOC_TRUNK_SID
-        return false if _byoc_trunk_sid.to_s.size < MIN_LENGTH_FOR_BYOC_TRUNK_SID
-        return false if !PATTERN_FOR_BYOC_TRUNK_SID.matches?(_byoc_trunk_sid)
-      end
-
-      unless (_emergency_caller_sid = @emergency_caller_sid).nil?
-        return false if _emergency_caller_sid.to_s.size > MAX_LENGTH_FOR_EMERGENCY_CALLER_SID
-        return false if _emergency_caller_sid.to_s.size < MIN_LENGTH_FOR_EMERGENCY_CALLER_SID
-        return false if !PATTERN_FOR_EMERGENCY_CALLER_SID.matches?(_emergency_caller_sid)
       end
 
       true
@@ -429,6 +419,19 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] byoc_trunk_sid Object to be assigned
+    def byoc_trunk_sid=(byoc_trunk_sid : String?)
+      if byoc_trunk_sid.nil?
+        return @byoc_trunk_sid = nil
+      end
+      _byoc_trunk_sid = byoc_trunk_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("byoc_trunk_sid", _byoc_trunk_sid.to_s.size, MAX_LENGTH_FOR_BYOC_TRUNK_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("byoc_trunk_sid", _byoc_trunk_sid.to_s.size, MIN_LENGTH_FOR_BYOC_TRUNK_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("byoc_trunk_sid", _byoc_trunk_sid, PATTERN_FOR_BYOC_TRUNK_SID)
+      @byoc_trunk_sid = _byoc_trunk_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
     def date_created=(date_created : Time?)
       if date_created.nil?
@@ -459,6 +462,29 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] emergency_caller_sid Object to be assigned
+    def emergency_caller_sid=(emergency_caller_sid : String?)
+      if emergency_caller_sid.nil?
+        return @emergency_caller_sid = nil
+      end
+      _emergency_caller_sid = emergency_caller_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("emergency_caller_sid", _emergency_caller_sid.to_s.size, MAX_LENGTH_FOR_EMERGENCY_CALLER_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("emergency_caller_sid", _emergency_caller_sid.to_s.size, MIN_LENGTH_FOR_EMERGENCY_CALLER_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("emergency_caller_sid", _emergency_caller_sid, PATTERN_FOR_EMERGENCY_CALLER_SID)
+      @emergency_caller_sid = _emergency_caller_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] emergency_calling_enabled Object to be assigned
+    def emergency_calling_enabled=(emergency_calling_enabled : Bool?)
+      if emergency_calling_enabled.nil?
+        return @emergency_calling_enabled = nil
+      end
+      _emergency_calling_enabled = emergency_calling_enabled.not_nil!
+      @emergency_calling_enabled = _emergency_calling_enabled
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] friendly_name Object to be assigned
     def friendly_name=(friendly_name : String?)
       if friendly_name.nil?
@@ -466,6 +492,16 @@ module Twilio
       end
       _friendly_name = friendly_name.not_nil!
       @friendly_name = _friendly_name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] secure Object to be assigned
+    def secure=(secure : Bool?)
+      if secure.nil?
+        return @secure = nil
+      end
+      _secure = secure.not_nil!
+      @secure = _secure
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -482,6 +518,26 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sip_registration Object to be assigned
+    def sip_registration=(sip_registration : Bool?)
+      if sip_registration.nil?
+        return @sip_registration = nil
+      end
+      _sip_registration = sip_registration.not_nil!
+      @sip_registration = _sip_registration
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] subresource_uris Object to be assigned
+    def subresource_uris=(subresource_uris : Hash(String, String)?)
+      if subresource_uris.nil?
+        return @subresource_uris = nil
+      end
+      _subresource_uris = subresource_uris.not_nil!
+      @subresource_uris = _subresource_uris
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
     def uri=(uri : String?)
       if uri.nil?
@@ -493,12 +549,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_fallback_method Object to be assigned
-    def voice_fallback_method=(voice_fallback_method : String?)
+    def voice_fallback_method=(voice_fallback_method : Twilio::HttpMethod?)
       if voice_fallback_method.nil?
         return @voice_fallback_method = nil
       end
       _voice_fallback_method = voice_fallback_method.not_nil!
-      OpenApi::EnumValidator.validate("voice_fallback_method", _voice_fallback_method, VALID_VALUES_FOR_VOICE_FALLBACK_METHOD)
+      _voice_fallback_method.validate
       @voice_fallback_method = _voice_fallback_method
     end
 
@@ -514,23 +570,23 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_method Object to be assigned
-    def voice_method=(voice_method : String?)
+    def voice_method=(voice_method : Twilio::HttpMethod?)
       if voice_method.nil?
         return @voice_method = nil
       end
       _voice_method = voice_method.not_nil!
-      OpenApi::EnumValidator.validate("voice_method", _voice_method, VALID_VALUES_FOR_VOICE_METHOD)
+      _voice_method.validate
       @voice_method = _voice_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_status_callback_method Object to be assigned
-    def voice_status_callback_method=(voice_status_callback_method : String?)
+    def voice_status_callback_method=(voice_status_callback_method : Twilio::HttpMethod?)
       if voice_status_callback_method.nil?
         return @voice_status_callback_method = nil
       end
       _voice_status_callback_method = voice_status_callback_method.not_nil!
-      OpenApi::EnumValidator.validate("voice_status_callback_method", _voice_status_callback_method, VALID_VALUES_FOR_VOICE_STATUS_CALLBACK_METHOD)
+      _voice_status_callback_method.validate
       @voice_status_callback_method = _voice_status_callback_method
     end
 
@@ -554,76 +610,10 @@ module Twilio
       @voice_url = _voice_url
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] subresource_uris Object to be assigned
-    def subresource_uris=(subresource_uris : Hash(String, String)?)
-      if subresource_uris.nil?
-        return @subresource_uris = nil
-      end
-      _subresource_uris = subresource_uris.not_nil!
-      @subresource_uris = _subresource_uris
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sip_registration Object to be assigned
-    def sip_registration=(sip_registration : Bool?)
-      if sip_registration.nil?
-        return @sip_registration = nil
-      end
-      _sip_registration = sip_registration.not_nil!
-      @sip_registration = _sip_registration
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] emergency_calling_enabled Object to be assigned
-    def emergency_calling_enabled=(emergency_calling_enabled : Bool?)
-      if emergency_calling_enabled.nil?
-        return @emergency_calling_enabled = nil
-      end
-      _emergency_calling_enabled = emergency_calling_enabled.not_nil!
-      @emergency_calling_enabled = _emergency_calling_enabled
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] secure Object to be assigned
-    def secure=(secure : Bool?)
-      if secure.nil?
-        return @secure = nil
-      end
-      _secure = secure.not_nil!
-      @secure = _secure
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] byoc_trunk_sid Object to be assigned
-    def byoc_trunk_sid=(byoc_trunk_sid : String?)
-      if byoc_trunk_sid.nil?
-        return @byoc_trunk_sid = nil
-      end
-      _byoc_trunk_sid = byoc_trunk_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("byoc_trunk_sid", _byoc_trunk_sid.to_s.size, MAX_LENGTH_FOR_BYOC_TRUNK_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("byoc_trunk_sid", _byoc_trunk_sid.to_s.size, MIN_LENGTH_FOR_BYOC_TRUNK_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("byoc_trunk_sid", _byoc_trunk_sid, PATTERN_FOR_BYOC_TRUNK_SID)
-      @byoc_trunk_sid = _byoc_trunk_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] emergency_caller_sid Object to be assigned
-    def emergency_caller_sid=(emergency_caller_sid : String?)
-      if emergency_caller_sid.nil?
-        return @emergency_caller_sid = nil
-      end
-      _emergency_caller_sid = emergency_caller_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("emergency_caller_sid", _emergency_caller_sid.to_s.size, MAX_LENGTH_FOR_EMERGENCY_CALLER_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("emergency_caller_sid", _emergency_caller_sid.to_s.size, MIN_LENGTH_FOR_EMERGENCY_CALLER_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("emergency_caller_sid", _emergency_caller_sid, PATTERN_FOR_EMERGENCY_CALLER_SID)
-      @emergency_caller_sid = _emergency_caller_sid
-    end
-
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @account_sid_present, @api_version, @api_version_present, @auth_type, @auth_type_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @domain_name, @domain_name_present, @friendly_name, @friendly_name_present, @sid, @sid_present, @uri, @uri_present, @voice_fallback_method, @voice_fallback_method_present, @voice_fallback_url, @voice_fallback_url_present, @voice_method, @voice_method_present, @voice_status_callback_method, @voice_status_callback_method_present, @voice_status_callback_url, @voice_status_callback_url_present, @voice_url, @voice_url_present, @subresource_uris, @subresource_uris_present, @sip_registration, @sip_registration_present, @emergency_calling_enabled, @emergency_calling_enabled_present, @secure, @secure_present, @byoc_trunk_sid, @byoc_trunk_sid_present, @emergency_caller_sid, @emergency_caller_sid_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @api_version, @api_version_present, @auth_type, @auth_type_present, @byoc_trunk_sid, @byoc_trunk_sid_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @domain_name, @domain_name_present, @emergency_caller_sid, @emergency_caller_sid_present, @emergency_calling_enabled, @emergency_calling_enabled_present, @friendly_name, @friendly_name_present, @secure, @secure_present, @sid, @sid_present, @sip_registration, @sip_registration_present, @subresource_uris, @subresource_uris_present, @uri, @uri_present, @voice_fallback_method, @voice_fallback_method_present, @voice_fallback_url, @voice_fallback_url_present, @voice_method, @voice_method_present, @voice_status_callback_method, @voice_status_callback_method_present, @voice_status_callback_url, @voice_status_callback_url_present, @voice_url, @voice_url_present)
   end
 end

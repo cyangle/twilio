@@ -20,9 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    @[JSON::Field(key: "transcriptions", type: Array(Twilio::RecordingRecordingTranscription)?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter transcriptions : Array(Twilio::RecordingRecordingTranscription)? = nil
-
     @[JSON::Field(key: "end", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter _end : Int32? = nil
 
@@ -50,6 +47,9 @@ module Twilio
     @[JSON::Field(key: "start", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter start : Int32? = nil
 
+    @[JSON::Field(key: "transcriptions", type: Array(Twilio::Transcription)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter transcriptions : Array(Twilio::Transcription)? = nil
+
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
     getter uri : String? = nil
 
@@ -58,7 +58,6 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @transcriptions : Array(Twilio::RecordingRecordingTranscription)? = nil,
       @_end : Int32? = nil,
       @first_page_uri : String? = nil,
       @next_page_uri : String? = nil,
@@ -66,6 +65,7 @@ module Twilio
       @page_size : Int32? = nil,
       @previous_page_uri : String? = nil,
       @start : Int32? = nil,
+      @transcriptions : Array(Twilio::Transcription)? = nil,
       @uri : String? = nil
     )
     end
@@ -75,9 +75,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_transcriptions = @transcriptions).nil?
-        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "transcriptions", container: _transcriptions)) if _transcriptions.is_a?(Array)
-      end
       unless (__end = @_end).nil?
       end
       unless (_first_page_uri = @first_page_uri).nil?
@@ -91,6 +88,9 @@ module Twilio
       unless (_previous_page_uri = @previous_page_uri).nil?
       end
       unless (_start = @start).nil?
+      end
+      unless (_transcriptions = @transcriptions).nil?
+        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "transcriptions", container: _transcriptions)) if _transcriptions.is_a?(Array)
       end
       unless (_uri = @uri).nil?
       end
@@ -100,10 +100,6 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_transcriptions = @transcriptions).nil?
-        return false if _transcriptions.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _transcriptions)
-      end
-
       unless (__end = @_end).nil?
       end
 
@@ -125,21 +121,14 @@ module Twilio
       unless (_start = @start).nil?
       end
 
+      unless (_transcriptions = @transcriptions).nil?
+        return false if _transcriptions.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _transcriptions)
+      end
+
       unless (_uri = @uri).nil?
       end
 
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] transcriptions Object to be assigned
-    def transcriptions=(transcriptions : Array(Twilio::RecordingRecordingTranscription)?)
-      if transcriptions.nil?
-        return @transcriptions = nil
-      end
-      _transcriptions = transcriptions.not_nil!
-      OpenApi::ContainerValidator.validate(container: _transcriptions) if _transcriptions.is_a?(Array)
-      @transcriptions = _transcriptions
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -213,6 +202,17 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] transcriptions Object to be assigned
+    def transcriptions=(transcriptions : Array(Twilio::Transcription)?)
+      if transcriptions.nil?
+        return @transcriptions = nil
+      end
+      _transcriptions = transcriptions.not_nil!
+      OpenApi::ContainerValidator.validate(container: _transcriptions) if _transcriptions.is_a?(Array)
+      @transcriptions = _transcriptions
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
     def uri=(uri : String?)
       if uri.nil?
@@ -226,6 +226,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@transcriptions, @_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
+    def_equals_and_hash(@_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @transcriptions, @uri)
   end
 end

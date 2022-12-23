@@ -13,13 +13,16 @@ require "log"
 
 module Twilio
   # Whether a phone number can receive calls or messages
-  class AvailablePhoneNumberCountryAvailablePhoneNumberLocalCapabilities
+  class AvailablePhoneNumberCountryAvailablePhoneNumberVoipCapabilities
     include JSON::Serializable
     include JSON::Serializable::Unmapped
     include OpenApi::Validatable
     include OpenApi::Json
 
     # Optional Properties
+
+    @[JSON::Field(key: "fax", type: Bool?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter fax : Bool? = nil
 
     @[JSON::Field(key: "mms", type: Bool?, default: nil, required: false, nullable: false, emit_null: false)]
     getter mms : Bool? = nil
@@ -30,18 +33,15 @@ module Twilio
     @[JSON::Field(key: "voice", type: Bool?, default: nil, required: false, nullable: false, emit_null: false)]
     getter voice : Bool? = nil
 
-    @[JSON::Field(key: "fax", type: Bool?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter fax : Bool? = nil
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
       *,
       # Optional properties
+      @fax : Bool? = nil,
       @mms : Bool? = nil,
       @sms : Bool? = nil,
-      @voice : Bool? = nil,
-      @fax : Bool? = nil
+      @voice : Bool? = nil
     )
     end
 
@@ -50,13 +50,13 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
+      unless (_fax = @fax).nil?
+      end
       unless (_mms = @mms).nil?
       end
       unless (_sms = @sms).nil?
       end
       unless (_voice = @voice).nil?
-      end
-      unless (_fax = @fax).nil?
       end
       invalid_properties
     end
@@ -64,6 +64,9 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
+      unless (_fax = @fax).nil?
+      end
+
       unless (_mms = @mms).nil?
       end
 
@@ -73,10 +76,17 @@ module Twilio
       unless (_voice = @voice).nil?
       end
 
-      unless (_fax = @fax).nil?
-      end
-
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] fax Object to be assigned
+    def fax=(fax : Bool?)
+      if fax.nil?
+        return @fax = nil
+      end
+      _fax = fax.not_nil!
+      @fax = _fax
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -109,20 +119,10 @@ module Twilio
       @voice = _voice
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] fax Object to be assigned
-    def fax=(fax : Bool?)
-      if fax.nil?
-        return @fax = nil
-      end
-      _fax = fax.not_nil!
-      @fax = _fax
-    end
-
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@mms, @sms, @voice, @fax)
+    def_equals_and_hash(@fax, @mms, @sms, @voice)
   end
 end

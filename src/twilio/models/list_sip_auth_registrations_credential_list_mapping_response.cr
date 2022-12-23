@@ -20,8 +20,8 @@ module Twilio
 
     # Optional Properties
 
-    @[JSON::Field(key: "contents", type: Array(Twilio::SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping)?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter contents : Array(Twilio::SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping)? = nil
+    @[JSON::Field(key: "contents", type: Array(Twilio::SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter contents : Array(Twilio::SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping)? = nil
 
     @[JSON::Field(key: "end", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter _end : Int32? = nil
@@ -58,7 +58,7 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @contents : Array(Twilio::SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping)? = nil,
+      @contents : Array(Twilio::SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping)? = nil,
       @_end : Int32? = nil,
       @first_page_uri : String? = nil,
       @next_page_uri : String? = nil,
@@ -133,7 +133,7 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] contents Object to be assigned
-    def contents=(contents : Array(Twilio::SipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping)?)
+    def contents=(contents : Array(Twilio::SipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping)?)
       if contents.nil?
         return @contents = nil
       end

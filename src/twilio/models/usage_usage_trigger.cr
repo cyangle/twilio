@@ -37,11 +37,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
-    # The HTTP method we use to call callback_url
-    @[JSON::Field(key: "callback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: callback_method.nil? && !callback_method_present?)]
-    getter callback_method : String? = nil
-    ERROR_MESSAGE_FOR_CALLBACK_METHOD = "invalid value for \"callback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_CALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "callback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: callback_method.nil? && !callback_method_present?)]
+    getter callback_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? callback_method_present : Bool = false
@@ -118,8 +115,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    @[JSON::Field(key: "usage_category", type: Twilio::UsageTriggerEnumUsageCategory?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter usage_category : Twilio::UsageTriggerEnumUsageCategory? = nil
+    @[JSON::Field(key: "usage_category", type: Twilio::UsageRecordEnumCategory?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter usage_category : Twilio::UsageRecordEnumCategory? = nil
 
     # The URI of the UsageRecord resource this trigger watches
     @[JSON::Field(key: "usage_record_uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: usage_record_uri.nil? && !usage_record_uri_present?)]
@@ -135,7 +132,7 @@ module Twilio
       # Optional properties
       @account_sid : String? = nil,
       @api_version : String? = nil,
-      @callback_method : String? = nil,
+      @callback_method : Twilio::HttpMethod? = nil,
       @callback_url : String? = nil,
       @current_value : String? = nil,
       @date_created : Time? = nil,
@@ -147,7 +144,7 @@ module Twilio
       @trigger_by : Twilio::UsageTriggerEnumTriggerField? = nil,
       @trigger_value : String? = nil,
       @uri : String? = nil,
-      @usage_category : Twilio::UsageTriggerEnumUsageCategory? = nil,
+      @usage_category : Twilio::UsageRecordEnumCategory? = nil,
       @usage_record_uri : String? = nil
     )
     end
@@ -173,7 +170,7 @@ module Twilio
       unless (_api_version = @api_version).nil?
       end
       unless (_callback_method = @callback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_CALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_callback_method, VALID_VALUES_FOR_CALLBACK_METHOD)
+        invalid_properties.push(_callback_method.error_message) if !_callback_method.valid?
       end
       unless (_callback_url = @callback_url).nil?
       end
@@ -231,7 +228,7 @@ module Twilio
       end
 
       unless (_callback_method = @callback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_callback_method, VALID_VALUES_FOR_CALLBACK_METHOD)
+        return false if !_callback_method.valid?
       end
 
       unless (_callback_url = @callback_url).nil?
@@ -307,12 +304,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] callback_method Object to be assigned
-    def callback_method=(callback_method : String?)
+    def callback_method=(callback_method : Twilio::HttpMethod?)
       if callback_method.nil?
         return @callback_method = nil
       end
       _callback_method = callback_method.not_nil!
-      OpenApi::EnumValidator.validate("callback_method", _callback_method, VALID_VALUES_FOR_CALLBACK_METHOD)
+      _callback_method.validate
       @callback_method = _callback_method
     end
 
@@ -433,7 +430,7 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] usage_category Object to be assigned
-    def usage_category=(usage_category : Twilio::UsageTriggerEnumUsageCategory?)
+    def usage_category=(usage_category : Twilio::UsageRecordEnumCategory?)
       if usage_category.nil?
         return @usage_category = nil
       end

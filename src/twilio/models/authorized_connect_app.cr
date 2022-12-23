@@ -83,8 +83,8 @@ module Twilio
     property? date_updated_present : Bool = false
 
     # Permissions authorized to the app
-    @[JSON::Field(key: "permissions", type: Array(AuthorizedConnectAppEnumPermission)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: permissions.nil? && !permissions_present?)]
-    getter permissions : Array(AuthorizedConnectAppEnumPermission)? = nil
+    @[JSON::Field(key: "permissions", type: Array(ConnectAppEnumPermission)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: permissions.nil? && !permissions_present?)]
+    getter permissions : Array(ConnectAppEnumPermission)? = nil
 
     @[JSON::Field(ignore: true)]
     property? permissions_present : Bool = false
@@ -109,7 +109,7 @@ module Twilio
       @connect_app_sid : String? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
-      @permissions : Array(AuthorizedConnectAppEnumPermission)? = nil,
+      @permissions : Array(ConnectAppEnumPermission)? = nil,
       @uri : String? = nil
     )
     end
@@ -294,7 +294,7 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] permissions Object to be assigned
-    def permissions=(permissions : Array(AuthorizedConnectAppEnumPermission)?)
+    def permissions=(permissions : Array(ConnectAppEnumPermission)?)
       if permissions.nil?
         return @permissions = nil
       end

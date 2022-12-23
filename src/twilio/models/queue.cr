@@ -20,34 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    # The RFC 2822 date and time in GMT that this resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
-    getter date_updated : Time? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? date_updated_present : Bool = false
-
-    # The number of calls currently in the queue.
-    @[JSON::Field(key: "current_size", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: current_size.nil? && !current_size_present?)]
-    getter current_size : Int32? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? current_size_present : Bool = false
-
-    # A string that you assigned to describe this resource
-    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
-    getter friendly_name : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? friendly_name_present : Bool = false
-
-    # The URI of this resource, relative to `https://api.twilio.com`
-    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
-    getter uri : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? uri_present : Bool = false
-
     # The SID of the Account that created this resource
     @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String? = nil
@@ -65,6 +37,41 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? average_wait_time_present : Bool = false
 
+    # The number of calls currently in the queue.
+    @[JSON::Field(key: "current_size", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: current_size.nil? && !current_size_present?)]
+    getter current_size : Int32? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? current_size_present : Bool = false
+
+    # The RFC 2822 date and time in GMT that this resource was created
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? date_created_present : Bool = false
+
+    # The RFC 2822 date and time in GMT that this resource was last updated
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? date_updated_present : Bool = false
+
+    # A string that you assigned to describe this resource
+    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
+    getter friendly_name : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? friendly_name_present : Bool = false
+
+    # The max number of calls allowed in the queue
+    @[JSON::Field(key: "max_size", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: max_size.nil? && !max_size_present?)]
+    getter max_size : Int32? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? max_size_present : Bool = false
+
     # The unique string that identifies this resource
     @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     getter sid : String? = nil
@@ -75,34 +82,27 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
-    # The RFC 2822 date and time in GMT that this resource was created
-    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
-    getter date_created : Time? = nil
+    # The URI of this resource, relative to `https://api.twilio.com`
+    @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
+    getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
-    property? date_created_present : Bool = false
-
-    # The max number of calls allowed in the queue
-    @[JSON::Field(key: "max_size", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: max_size.nil? && !max_size_present?)]
-    getter max_size : Int32? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? max_size_present : Bool = false
+    property? uri_present : Bool = false
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
       *,
       # Optional properties
-      @date_updated : Time? = nil,
-      @current_size : Int32? = nil,
-      @friendly_name : String? = nil,
-      @uri : String? = nil,
       @account_sid : String? = nil,
       @average_wait_time : Int32? = nil,
-      @sid : String? = nil,
+      @current_size : Int32? = nil,
       @date_created : Time? = nil,
-      @max_size : Int32? = nil
+      @date_updated : Time? = nil,
+      @friendly_name : String? = nil,
+      @max_size : Int32? = nil,
+      @sid : String? = nil,
+      @uri : String? = nil
     )
     end
 
@@ -111,14 +111,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_current_size = @current_size).nil?
-      end
-      unless (_friendly_name = @friendly_name).nil?
-      end
-      unless (_uri = @uri).nil?
-      end
       unless (_account_sid = @account_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
           invalid_properties.push(max_length_error)
@@ -134,6 +126,16 @@ module Twilio
       end
       unless (_average_wait_time = @average_wait_time).nil?
       end
+      unless (_current_size = @current_size).nil?
+      end
+      unless (_date_created = @date_created).nil?
+      end
+      unless (_date_updated = @date_updated).nil?
+      end
+      unless (_friendly_name = @friendly_name).nil?
+      end
+      unless (_max_size = @max_size).nil?
+      end
       unless (_sid = @sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
           invalid_properties.push(max_length_error)
@@ -147,9 +149,7 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_max_size = @max_size).nil?
+      unless (_uri = @uri).nil?
       end
       invalid_properties
     end
@@ -157,18 +157,6 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_current_size = @current_size).nil?
-      end
-
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
-      unless (_uri = @uri).nil?
-      end
-
       unless (_account_sid = @account_sid).nil?
         return false if _account_sid.to_s.size > MAX_LENGTH_FOR_ACCOUNT_SID
         return false if _account_sid.to_s.size < MIN_LENGTH_FOR_ACCOUNT_SID
@@ -178,59 +166,31 @@ module Twilio
       unless (_average_wait_time = @average_wait_time).nil?
       end
 
+      unless (_current_size = @current_size).nil?
+      end
+
+      unless (_date_created = @date_created).nil?
+      end
+
+      unless (_date_updated = @date_updated).nil?
+      end
+
+      unless (_friendly_name = @friendly_name).nil?
+      end
+
+      unless (_max_size = @max_size).nil?
+      end
+
       unless (_sid = @sid).nil?
         return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
         return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
         return false if !PATTERN_FOR_SID.matches?(_sid)
       end
 
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_max_size = @max_size).nil?
+      unless (_uri = @uri).nil?
       end
 
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] current_size Object to be assigned
-    def current_size=(current_size : Int32?)
-      if current_size.nil?
-        return @current_size = nil
-      end
-      _current_size = current_size.not_nil!
-      @current_size = _current_size
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
-      end
-      _uri = uri.not_nil!
-      @uri = _uri
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -257,16 +217,13 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    # @param [Object] current_size Object to be assigned
+    def current_size=(current_size : Int32?)
+      if current_size.nil?
+        return @current_size = nil
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+      _current_size = current_size.not_nil!
+      @current_size = _current_size
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -280,6 +237,26 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      _date_updated = date_updated.not_nil!
+      @date_updated = _date_updated
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] friendly_name Object to be assigned
+    def friendly_name=(friendly_name : String?)
+      if friendly_name.nil?
+        return @friendly_name = nil
+      end
+      _friendly_name = friendly_name.not_nil!
+      @friendly_name = _friendly_name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] max_size Object to be assigned
     def max_size=(max_size : Int32?)
       if max_size.nil?
@@ -289,10 +266,33 @@ module Twilio
       @max_size = _max_size
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
+    def sid=(sid : String?)
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
+      @sid = _sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      _uri = uri.not_nil!
+      @uri = _uri
+    end
+
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@date_updated, @date_updated_present, @current_size, @current_size_present, @friendly_name, @friendly_name_present, @uri, @uri_present, @account_sid, @account_sid_present, @average_wait_time, @average_wait_time_present, @sid, @sid_present, @date_created, @date_created_present, @max_size, @max_size_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @average_wait_time, @average_wait_time_present, @current_size, @current_size_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @friendly_name, @friendly_name_present, @max_size, @max_size_present, @sid, @sid_present, @uri, @uri_present)
   end
 end

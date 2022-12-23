@@ -20,15 +20,25 @@ module Twilio
 
     # Optional Properties
 
-    # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String? = nil
-    MAX_LENGTH_FOR_SID = 34
-    MIN_LENGTH_FOR_SID = 34
-    PATTERN_FOR_SID    = /^XH[0-9a-fA-F]{32}$/
+    # The SID of the Account that created the resource
+    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
+    getter account_sid : String? = nil
+    MAX_LENGTH_FOR_ACCOUNT_SID = 34
+    MIN_LENGTH_FOR_ACCOUNT_SID = 34
+    PATTERN_FOR_ACCOUNT_SID    = /^AC[0-9a-fA-F]{32}$/
 
     @[JSON::Field(ignore: true)]
-    property? sid_present : Bool = false
+    property? account_sid_present : Bool = false
+
+    # The SID of the Add-on configuration
+    @[JSON::Field(key: "add_on_configuration_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: add_on_configuration_sid.nil? && !add_on_configuration_sid_present?)]
+    getter add_on_configuration_sid : String? = nil
+    MAX_LENGTH_FOR_ADD_ON_CONFIGURATION_SID = 34
+    MIN_LENGTH_FOR_ADD_ON_CONFIGURATION_SID = 34
+    PATTERN_FOR_ADD_ON_CONFIGURATION_SID    = /^XE[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? add_on_configuration_sid_present : Bool = false
 
     # The SID of the AddOnResult to which the payload belongs
     @[JSON::Field(key: "add_on_result_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: add_on_result_sid.nil? && !add_on_result_sid_present?)]
@@ -40,23 +50,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? add_on_result_sid_present : Bool = false
 
-    # The SID of the Account that created the resource
-    @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
-    getter account_sid : String? = nil
-    MAX_LENGTH_FOR_ACCOUNT_SID = 34
-    MIN_LENGTH_FOR_ACCOUNT_SID = 34
-    PATTERN_FOR_ACCOUNT_SID    = /^AC[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? account_sid_present : Bool = false
-
-    # The string that describes the payload
-    @[JSON::Field(key: "label", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: label.nil? && !label_present?)]
-    getter label : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? label_present : Bool = false
-
     # The SID of the Add-on to which the result belongs
     @[JSON::Field(key: "add_on_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: add_on_sid.nil? && !add_on_sid_present?)]
     getter add_on_sid : String? = nil
@@ -66,16 +59,6 @@ module Twilio
 
     @[JSON::Field(ignore: true)]
     property? add_on_sid_present : Bool = false
-
-    # The SID of the Add-on configuration
-    @[JSON::Field(key: "add_on_configuration_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: add_on_configuration_sid.nil? && !add_on_configuration_sid_present?)]
-    getter add_on_configuration_sid : String? = nil
-    MAX_LENGTH_FOR_ADD_ON_CONFIGURATION_SID = 34
-    MIN_LENGTH_FOR_ADD_ON_CONFIGURATION_SID = 34
-    PATTERN_FOR_ADD_ON_CONFIGURATION_SID    = /^XE[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? add_on_configuration_sid_present : Bool = false
 
     # The MIME type of the payload
     @[JSON::Field(key: "content_type", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: content_type.nil? && !content_type_present?)]
@@ -98,6 +81,13 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
+    # The string that describes the payload
+    @[JSON::Field(key: "label", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: label.nil? && !label_present?)]
+    getter label : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? label_present : Bool = false
+
     # The SID of the recording to which the AddOnResult resource that contains the payload belongs
     @[JSON::Field(key: "reference_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: reference_sid.nil? && !reference_sid_present?)]
     getter reference_sid : String? = nil
@@ -108,7 +98,16 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? reference_sid_present : Bool = false
 
-    # Account Instance Subresources
+    # The unique string that identifies the resource
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
+    MAX_LENGTH_FOR_SID = 34
+    MIN_LENGTH_FOR_SID = 34
+    PATTERN_FOR_SID    = /^XH[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? sid_present : Bool = false
+
     @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
     getter subresource_uris : Hash(String, String)? = nil
 
@@ -120,16 +119,16 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @sid : String? = nil,
-      @add_on_result_sid : String? = nil,
       @account_sid : String? = nil,
-      @label : String? = nil,
-      @add_on_sid : String? = nil,
       @add_on_configuration_sid : String? = nil,
+      @add_on_result_sid : String? = nil,
+      @add_on_sid : String? = nil,
       @content_type : String? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
+      @label : String? = nil,
       @reference_sid : String? = nil,
+      @sid : String? = nil,
       @subresource_uris : Hash(String, String)? = nil
     )
     end
@@ -139,32 +138,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_sid = @sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
-      unless (_add_on_result_sid = @add_on_result_sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("add_on_result_sid", _add_on_result_sid.to_s.size, MAX_LENGTH_FOR_ADD_ON_RESULT_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("add_on_result_sid", _add_on_result_sid.to_s.size, MIN_LENGTH_FOR_ADD_ON_RESULT_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("add_on_result_sid", _add_on_result_sid, PATTERN_FOR_ADD_ON_RESULT_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
       unless (_account_sid = @account_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
           invalid_properties.push(max_length_error)
@@ -175,21 +148,6 @@ module Twilio
         end
 
         if pattern_error = OpenApi::PrimitiveValidator.pattern_error("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
-      unless (_label = @label).nil?
-      end
-      unless (_add_on_sid = @add_on_sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("add_on_sid", _add_on_sid.to_s.size, MAX_LENGTH_FOR_ADD_ON_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("add_on_sid", _add_on_sid.to_s.size, MIN_LENGTH_FOR_ADD_ON_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("add_on_sid", _add_on_sid, PATTERN_FOR_ADD_ON_SID)
           invalid_properties.push(pattern_error)
         end
       end
@@ -206,11 +164,39 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
+      unless (_add_on_result_sid = @add_on_result_sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("add_on_result_sid", _add_on_result_sid.to_s.size, MAX_LENGTH_FOR_ADD_ON_RESULT_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("add_on_result_sid", _add_on_result_sid.to_s.size, MIN_LENGTH_FOR_ADD_ON_RESULT_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("add_on_result_sid", _add_on_result_sid, PATTERN_FOR_ADD_ON_RESULT_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
+      unless (_add_on_sid = @add_on_sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("add_on_sid", _add_on_sid.to_s.size, MAX_LENGTH_FOR_ADD_ON_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("add_on_sid", _add_on_sid.to_s.size, MIN_LENGTH_FOR_ADD_ON_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("add_on_sid", _add_on_sid, PATTERN_FOR_ADD_ON_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
       unless (_content_type = @content_type).nil?
       end
       unless (_date_created = @date_created).nil?
       end
       unless (_date_updated = @date_updated).nil?
+      end
+      unless (_label = @label).nil?
       end
       unless (_reference_sid = @reference_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("reference_sid", _reference_sid.to_s.size, MAX_LENGTH_FOR_REFERENCE_SID)
@@ -225,6 +211,19 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
+      unless (_sid = @sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
       unless (_subresource_uris = @subresource_uris).nil?
       end
       invalid_properties
@@ -233,10 +232,16 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_sid = @sid).nil?
-        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
-        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
-        return false if !PATTERN_FOR_SID.matches?(_sid)
+      unless (_account_sid = @account_sid).nil?
+        return false if _account_sid.to_s.size > MAX_LENGTH_FOR_ACCOUNT_SID
+        return false if _account_sid.to_s.size < MIN_LENGTH_FOR_ACCOUNT_SID
+        return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
+      end
+
+      unless (_add_on_configuration_sid = @add_on_configuration_sid).nil?
+        return false if _add_on_configuration_sid.to_s.size > MAX_LENGTH_FOR_ADD_ON_CONFIGURATION_SID
+        return false if _add_on_configuration_sid.to_s.size < MIN_LENGTH_FOR_ADD_ON_CONFIGURATION_SID
+        return false if !PATTERN_FOR_ADD_ON_CONFIGURATION_SID.matches?(_add_on_configuration_sid)
       end
 
       unless (_add_on_result_sid = @add_on_result_sid).nil?
@@ -245,25 +250,10 @@ module Twilio
         return false if !PATTERN_FOR_ADD_ON_RESULT_SID.matches?(_add_on_result_sid)
       end
 
-      unless (_account_sid = @account_sid).nil?
-        return false if _account_sid.to_s.size > MAX_LENGTH_FOR_ACCOUNT_SID
-        return false if _account_sid.to_s.size < MIN_LENGTH_FOR_ACCOUNT_SID
-        return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
-      end
-
-      unless (_label = @label).nil?
-      end
-
       unless (_add_on_sid = @add_on_sid).nil?
         return false if _add_on_sid.to_s.size > MAX_LENGTH_FOR_ADD_ON_SID
         return false if _add_on_sid.to_s.size < MIN_LENGTH_FOR_ADD_ON_SID
         return false if !PATTERN_FOR_ADD_ON_SID.matches?(_add_on_sid)
-      end
-
-      unless (_add_on_configuration_sid = @add_on_configuration_sid).nil?
-        return false if _add_on_configuration_sid.to_s.size > MAX_LENGTH_FOR_ADD_ON_CONFIGURATION_SID
-        return false if _add_on_configuration_sid.to_s.size < MIN_LENGTH_FOR_ADD_ON_CONFIGURATION_SID
-        return false if !PATTERN_FOR_ADD_ON_CONFIGURATION_SID.matches?(_add_on_configuration_sid)
       end
 
       unless (_content_type = @content_type).nil?
@@ -275,42 +265,25 @@ module Twilio
       unless (_date_updated = @date_updated).nil?
       end
 
+      unless (_label = @label).nil?
+      end
+
       unless (_reference_sid = @reference_sid).nil?
         return false if _reference_sid.to_s.size > MAX_LENGTH_FOR_REFERENCE_SID
         return false if _reference_sid.to_s.size < MIN_LENGTH_FOR_REFERENCE_SID
         return false if !PATTERN_FOR_REFERENCE_SID.matches?(_reference_sid)
       end
 
+      unless (_sid = @sid).nil?
+        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
+        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
+        return false if !PATTERN_FOR_SID.matches?(_sid)
+      end
+
       unless (_subresource_uris = @subresource_uris).nil?
       end
 
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
-      end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] add_on_result_sid Object to be assigned
-    def add_on_result_sid=(add_on_result_sid : String?)
-      if add_on_result_sid.nil?
-        return @add_on_result_sid = nil
-      end
-      _add_on_result_sid = add_on_result_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("add_on_result_sid", _add_on_result_sid.to_s.size, MAX_LENGTH_FOR_ADD_ON_RESULT_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("add_on_result_sid", _add_on_result_sid.to_s.size, MIN_LENGTH_FOR_ADD_ON_RESULT_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("add_on_result_sid", _add_on_result_sid, PATTERN_FOR_ADD_ON_RESULT_SID)
-      @add_on_result_sid = _add_on_result_sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -327,13 +300,29 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] label Object to be assigned
-    def label=(label : String?)
-      if label.nil?
-        return @label = nil
+    # @param [Object] add_on_configuration_sid Object to be assigned
+    def add_on_configuration_sid=(add_on_configuration_sid : String?)
+      if add_on_configuration_sid.nil?
+        return @add_on_configuration_sid = nil
       end
-      _label = label.not_nil!
-      @label = _label
+      _add_on_configuration_sid = add_on_configuration_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("add_on_configuration_sid", _add_on_configuration_sid.to_s.size, MAX_LENGTH_FOR_ADD_ON_CONFIGURATION_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("add_on_configuration_sid", _add_on_configuration_sid.to_s.size, MIN_LENGTH_FOR_ADD_ON_CONFIGURATION_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("add_on_configuration_sid", _add_on_configuration_sid, PATTERN_FOR_ADD_ON_CONFIGURATION_SID)
+      @add_on_configuration_sid = _add_on_configuration_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] add_on_result_sid Object to be assigned
+    def add_on_result_sid=(add_on_result_sid : String?)
+      if add_on_result_sid.nil?
+        return @add_on_result_sid = nil
+      end
+      _add_on_result_sid = add_on_result_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("add_on_result_sid", _add_on_result_sid.to_s.size, MAX_LENGTH_FOR_ADD_ON_RESULT_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("add_on_result_sid", _add_on_result_sid.to_s.size, MIN_LENGTH_FOR_ADD_ON_RESULT_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("add_on_result_sid", _add_on_result_sid, PATTERN_FOR_ADD_ON_RESULT_SID)
+      @add_on_result_sid = _add_on_result_sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -347,19 +336,6 @@ module Twilio
       OpenApi::PrimitiveValidator.validate_min_length("add_on_sid", _add_on_sid.to_s.size, MIN_LENGTH_FOR_ADD_ON_SID)
       OpenApi::PrimitiveValidator.validate_pattern("add_on_sid", _add_on_sid, PATTERN_FOR_ADD_ON_SID)
       @add_on_sid = _add_on_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] add_on_configuration_sid Object to be assigned
-    def add_on_configuration_sid=(add_on_configuration_sid : String?)
-      if add_on_configuration_sid.nil?
-        return @add_on_configuration_sid = nil
-      end
-      _add_on_configuration_sid = add_on_configuration_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("add_on_configuration_sid", _add_on_configuration_sid.to_s.size, MAX_LENGTH_FOR_ADD_ON_CONFIGURATION_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("add_on_configuration_sid", _add_on_configuration_sid.to_s.size, MIN_LENGTH_FOR_ADD_ON_CONFIGURATION_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("add_on_configuration_sid", _add_on_configuration_sid, PATTERN_FOR_ADD_ON_CONFIGURATION_SID)
-      @add_on_configuration_sid = _add_on_configuration_sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -393,6 +369,16 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] label Object to be assigned
+    def label=(label : String?)
+      if label.nil?
+        return @label = nil
+      end
+      _label = label.not_nil!
+      @label = _label
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] reference_sid Object to be assigned
     def reference_sid=(reference_sid : String?)
       if reference_sid.nil?
@@ -403,6 +389,19 @@ module Twilio
       OpenApi::PrimitiveValidator.validate_min_length("reference_sid", _reference_sid.to_s.size, MIN_LENGTH_FOR_REFERENCE_SID)
       OpenApi::PrimitiveValidator.validate_pattern("reference_sid", _reference_sid, PATTERN_FOR_REFERENCE_SID)
       @reference_sid = _reference_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
+    def sid=(sid : String?)
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
+      @sid = _sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -419,6 +418,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@sid, @sid_present, @add_on_result_sid, @add_on_result_sid_present, @account_sid, @account_sid_present, @label, @label_present, @add_on_sid, @add_on_sid_present, @add_on_configuration_sid, @add_on_configuration_sid_present, @content_type, @content_type_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @reference_sid, @reference_sid_present, @subresource_uris, @subresource_uris_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @add_on_configuration_sid, @add_on_configuration_sid_present, @add_on_result_sid, @add_on_result_sid_present, @add_on_sid, @add_on_sid_present, @content_type, @content_type_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @label, @label_present, @reference_sid, @reference_sid_present, @sid, @sid_present, @subresource_uris, @subresource_uris_present)
   end
 end

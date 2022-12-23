@@ -96,11 +96,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? more_info_present : Bool = false
 
-    # HTTP method used with the request url
-    @[JSON::Field(key: "request_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: request_method.nil? && !request_method_present?)]
-    getter request_method : String? = nil
-    ERROR_MESSAGE_FOR_REQUEST_METHOD = "invalid value for \"request_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_REQUEST_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "request_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: request_method.nil? && !request_method_present?)]
+    getter request_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? request_method_present : Bool = false
@@ -165,7 +162,7 @@ module Twilio
       @message_date : Time? = nil,
       @message_text : String? = nil,
       @more_info : String? = nil,
-      @request_method : String? = nil,
+      @request_method : Twilio::HttpMethod? = nil,
       @request_url : String? = nil,
       @request_variables : String? = nil,
       @response_body : String? = nil,
@@ -223,7 +220,7 @@ module Twilio
       unless (_more_info = @more_info).nil?
       end
       unless (_request_method = @request_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_REQUEST_METHOD) unless OpenApi::EnumValidator.valid?(_request_method, VALID_VALUES_FOR_REQUEST_METHOD)
+        invalid_properties.push(_request_method.error_message) if !_request_method.valid?
       end
       unless (_request_url = @request_url).nil?
       end
@@ -291,7 +288,7 @@ module Twilio
       end
 
       unless (_request_method = @request_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_request_method, VALID_VALUES_FOR_REQUEST_METHOD)
+        return false if !_request_method.valid?
       end
 
       unless (_request_url = @request_url).nil?
@@ -426,12 +423,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] request_method Object to be assigned
-    def request_method=(request_method : String?)
+    def request_method=(request_method : Twilio::HttpMethod?)
       if request_method.nil?
         return @request_method = nil
       end
       _request_method = request_method.not_nil!
-      OpenApi::EnumValidator.validate("request_method", _request_method, VALID_VALUES_FOR_REQUEST_METHOD)
+      _request_method.validate
       @request_method = _request_method
     end
 

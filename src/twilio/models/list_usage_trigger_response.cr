@@ -20,9 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    @[JSON::Field(key: "usage_triggers", type: Array(Twilio::UsageUsageTrigger)?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter usage_triggers : Array(Twilio::UsageUsageTrigger)? = nil
-
     @[JSON::Field(key: "end", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter _end : Int32? = nil
 
@@ -53,12 +50,14 @@ module Twilio
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
     getter uri : String? = nil
 
+    @[JSON::Field(key: "usage_triggers", type: Array(Twilio::UsageUsageTrigger)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter usage_triggers : Array(Twilio::UsageUsageTrigger)? = nil
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
       *,
       # Optional properties
-      @usage_triggers : Array(Twilio::UsageUsageTrigger)? = nil,
       @_end : Int32? = nil,
       @first_page_uri : String? = nil,
       @next_page_uri : String? = nil,
@@ -66,7 +65,8 @@ module Twilio
       @page_size : Int32? = nil,
       @previous_page_uri : String? = nil,
       @start : Int32? = nil,
-      @uri : String? = nil
+      @uri : String? = nil,
+      @usage_triggers : Array(Twilio::UsageUsageTrigger)? = nil
     )
     end
 
@@ -75,9 +75,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_usage_triggers = @usage_triggers).nil?
-        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "usage_triggers", container: _usage_triggers)) if _usage_triggers.is_a?(Array)
-      end
       unless (__end = @_end).nil?
       end
       unless (_first_page_uri = @first_page_uri).nil?
@@ -93,6 +90,9 @@ module Twilio
       unless (_start = @start).nil?
       end
       unless (_uri = @uri).nil?
+      end
+      unless (_usage_triggers = @usage_triggers).nil?
+        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "usage_triggers", container: _usage_triggers)) if _usage_triggers.is_a?(Array)
       end
       invalid_properties
     end
@@ -100,10 +100,6 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_usage_triggers = @usage_triggers).nil?
-        return false if _usage_triggers.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _usage_triggers)
-      end
-
       unless (__end = @_end).nil?
       end
 
@@ -128,18 +124,11 @@ module Twilio
       unless (_uri = @uri).nil?
       end
 
-      true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] usage_triggers Object to be assigned
-    def usage_triggers=(usage_triggers : Array(Twilio::UsageUsageTrigger)?)
-      if usage_triggers.nil?
-        return @usage_triggers = nil
+      unless (_usage_triggers = @usage_triggers).nil?
+        return false if _usage_triggers.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _usage_triggers)
       end
-      _usage_triggers = usage_triggers.not_nil!
-      OpenApi::ContainerValidator.validate(container: _usage_triggers) if _usage_triggers.is_a?(Array)
-      @usage_triggers = _usage_triggers
+
+      true
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -222,10 +211,21 @@ module Twilio
       @uri = _uri
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] usage_triggers Object to be assigned
+    def usage_triggers=(usage_triggers : Array(Twilio::UsageUsageTrigger)?)
+      if usage_triggers.nil?
+        return @usage_triggers = nil
+      end
+      _usage_triggers = usage_triggers.not_nil!
+      OpenApi::ContainerValidator.validate(container: _usage_triggers) if _usage_triggers.is_a?(Array)
+      @usage_triggers = _usage_triggers
+    end
+
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@usage_triggers, @_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
+    def_equals_and_hash(@_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri, @usage_triggers)
   end
 end

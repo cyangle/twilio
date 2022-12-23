@@ -75,11 +75,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
-    # The HTTP method used with sms_fallback_url
-    @[JSON::Field(key: "sms_fallback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
-    getter sms_fallback_method : String? = nil
-    ERROR_MESSAGE_FOR_SMS_FALLBACK_METHOD = "invalid value for \"sms_fallback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_SMS_FALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "sms_fallback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
+    getter sms_fallback_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? sms_fallback_method_present : Bool = false
@@ -91,11 +88,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sms_fallback_url_present : Bool = false
 
-    # The HTTP method to use with sms_url
-    @[JSON::Field(key: "sms_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
-    getter sms_method : String? = nil
-    ERROR_MESSAGE_FOR_SMS_METHOD = "invalid value for \"sms_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_SMS_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "sms_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
+    getter sms_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? sms_method_present : Bool = false
@@ -121,11 +115,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? status_callback_present : Bool = false
 
-    # The HTTP method we use to call status_callback
-    @[JSON::Field(key: "status_callback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?)]
-    getter status_callback_method : String? = nil
-    ERROR_MESSAGE_FOR_STATUS_CALLBACK_METHOD = "invalid value for \"status_callback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_STATUS_CALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "status_callback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?)]
+    getter status_callback_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? status_callback_method_present : Bool = false
@@ -144,11 +135,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_caller_id_lookup_present : Bool = false
 
-    # The HTTP method used with voice_fallback_url
-    @[JSON::Field(key: "voice_fallback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
-    getter voice_fallback_method : String? = nil
-    ERROR_MESSAGE_FOR_VOICE_FALLBACK_METHOD = "invalid value for \"voice_fallback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_VOICE_FALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "voice_fallback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
+    getter voice_fallback_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_fallback_method_present : Bool = false
@@ -160,11 +148,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? voice_fallback_url_present : Bool = false
 
-    # The HTTP method used with the voice_url
-    @[JSON::Field(key: "voice_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
-    getter voice_method : String? = nil
-    ERROR_MESSAGE_FOR_VOICE_METHOD = "invalid value for \"voice_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_VOICE_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "voice_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
+    getter voice_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? voice_method_present : Bool = false
@@ -188,18 +173,18 @@ module Twilio
       @friendly_name : String? = nil,
       @message_status_callback : String? = nil,
       @sid : String? = nil,
-      @sms_fallback_method : String? = nil,
+      @sms_fallback_method : Twilio::HttpMethod? = nil,
       @sms_fallback_url : String? = nil,
-      @sms_method : String? = nil,
+      @sms_method : Twilio::HttpMethod? = nil,
       @sms_status_callback : String? = nil,
       @sms_url : String? = nil,
       @status_callback : String? = nil,
-      @status_callback_method : String? = nil,
+      @status_callback_method : Twilio::HttpMethod? = nil,
       @uri : String? = nil,
       @voice_caller_id_lookup : Bool? = nil,
-      @voice_fallback_method : String? = nil,
+      @voice_fallback_method : Twilio::HttpMethod? = nil,
       @voice_fallback_url : String? = nil,
-      @voice_method : String? = nil,
+      @voice_method : Twilio::HttpMethod? = nil,
       @voice_url : String? = nil
     )
     end
@@ -246,12 +231,12 @@ module Twilio
         end
       end
       unless (_sms_fallback_method = @sms_fallback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_SMS_FALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_sms_fallback_method, VALID_VALUES_FOR_SMS_FALLBACK_METHOD)
+        invalid_properties.push(_sms_fallback_method.error_message) if !_sms_fallback_method.valid?
       end
       unless (_sms_fallback_url = @sms_fallback_url).nil?
       end
       unless (_sms_method = @sms_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_SMS_METHOD) unless OpenApi::EnumValidator.valid?(_sms_method, VALID_VALUES_FOR_SMS_METHOD)
+        invalid_properties.push(_sms_method.error_message) if !_sms_method.valid?
       end
       unless (_sms_status_callback = @sms_status_callback).nil?
       end
@@ -260,19 +245,19 @@ module Twilio
       unless (_status_callback = @status_callback).nil?
       end
       unless (_status_callback_method = @status_callback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_STATUS_CALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_status_callback_method, VALID_VALUES_FOR_STATUS_CALLBACK_METHOD)
+        invalid_properties.push(_status_callback_method.error_message) if !_status_callback_method.valid?
       end
       unless (_uri = @uri).nil?
       end
       unless (_voice_caller_id_lookup = @voice_caller_id_lookup).nil?
       end
       unless (_voice_fallback_method = @voice_fallback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_VOICE_FALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_voice_fallback_method, VALID_VALUES_FOR_VOICE_FALLBACK_METHOD)
+        invalid_properties.push(_voice_fallback_method.error_message) if !_voice_fallback_method.valid?
       end
       unless (_voice_fallback_url = @voice_fallback_url).nil?
       end
       unless (_voice_method = @voice_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_VOICE_METHOD) unless OpenApi::EnumValidator.valid?(_voice_method, VALID_VALUES_FOR_VOICE_METHOD)
+        invalid_properties.push(_voice_method.error_message) if !_voice_method.valid?
       end
       unless (_voice_url = @voice_url).nil?
       end
@@ -310,14 +295,14 @@ module Twilio
       end
 
       unless (_sms_fallback_method = @sms_fallback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_sms_fallback_method, VALID_VALUES_FOR_SMS_FALLBACK_METHOD)
+        return false if !_sms_fallback_method.valid?
       end
 
       unless (_sms_fallback_url = @sms_fallback_url).nil?
       end
 
       unless (_sms_method = @sms_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_sms_method, VALID_VALUES_FOR_SMS_METHOD)
+        return false if !_sms_method.valid?
       end
 
       unless (_sms_status_callback = @sms_status_callback).nil?
@@ -330,7 +315,7 @@ module Twilio
       end
 
       unless (_status_callback_method = @status_callback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_status_callback_method, VALID_VALUES_FOR_STATUS_CALLBACK_METHOD)
+        return false if !_status_callback_method.valid?
       end
 
       unless (_uri = @uri).nil?
@@ -340,14 +325,14 @@ module Twilio
       end
 
       unless (_voice_fallback_method = @voice_fallback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_voice_fallback_method, VALID_VALUES_FOR_VOICE_FALLBACK_METHOD)
+        return false if !_voice_fallback_method.valid?
       end
 
       unless (_voice_fallback_url = @voice_fallback_url).nil?
       end
 
       unless (_voice_method = @voice_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_voice_method, VALID_VALUES_FOR_VOICE_METHOD)
+        return false if !_voice_method.valid?
       end
 
       unless (_voice_url = @voice_url).nil?
@@ -434,12 +419,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_fallback_method Object to be assigned
-    def sms_fallback_method=(sms_fallback_method : String?)
+    def sms_fallback_method=(sms_fallback_method : Twilio::HttpMethod?)
       if sms_fallback_method.nil?
         return @sms_fallback_method = nil
       end
       _sms_fallback_method = sms_fallback_method.not_nil!
-      OpenApi::EnumValidator.validate("sms_fallback_method", _sms_fallback_method, VALID_VALUES_FOR_SMS_FALLBACK_METHOD)
+      _sms_fallback_method.validate
       @sms_fallback_method = _sms_fallback_method
     end
 
@@ -455,12 +440,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_method Object to be assigned
-    def sms_method=(sms_method : String?)
+    def sms_method=(sms_method : Twilio::HttpMethod?)
       if sms_method.nil?
         return @sms_method = nil
       end
       _sms_method = sms_method.not_nil!
-      OpenApi::EnumValidator.validate("sms_method", _sms_method, VALID_VALUES_FOR_SMS_METHOD)
+      _sms_method.validate
       @sms_method = _sms_method
     end
 
@@ -496,12 +481,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status_callback_method Object to be assigned
-    def status_callback_method=(status_callback_method : String?)
+    def status_callback_method=(status_callback_method : Twilio::HttpMethod?)
       if status_callback_method.nil?
         return @status_callback_method = nil
       end
       _status_callback_method = status_callback_method.not_nil!
-      OpenApi::EnumValidator.validate("status_callback_method", _status_callback_method, VALID_VALUES_FOR_STATUS_CALLBACK_METHOD)
+      _status_callback_method.validate
       @status_callback_method = _status_callback_method
     end
 
@@ -527,12 +512,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_fallback_method Object to be assigned
-    def voice_fallback_method=(voice_fallback_method : String?)
+    def voice_fallback_method=(voice_fallback_method : Twilio::HttpMethod?)
       if voice_fallback_method.nil?
         return @voice_fallback_method = nil
       end
       _voice_fallback_method = voice_fallback_method.not_nil!
-      OpenApi::EnumValidator.validate("voice_fallback_method", _voice_fallback_method, VALID_VALUES_FOR_VOICE_FALLBACK_METHOD)
+      _voice_fallback_method.validate
       @voice_fallback_method = _voice_fallback_method
     end
 
@@ -548,12 +533,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] voice_method Object to be assigned
-    def voice_method=(voice_method : String?)
+    def voice_method=(voice_method : Twilio::HttpMethod?)
       if voice_method.nil?
         return @voice_method = nil
       end
       _voice_method = voice_method.not_nil!
-      OpenApi::EnumValidator.validate("voice_method", _voice_method, VALID_VALUES_FOR_VOICE_METHOD)
+      _voice_method.validate
       @voice_method = _voice_method
     end
 

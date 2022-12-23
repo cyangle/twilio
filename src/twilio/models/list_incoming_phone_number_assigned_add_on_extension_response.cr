@@ -20,11 +20,11 @@ module Twilio
 
     # Optional Properties
 
-    @[JSON::Field(key: "extensions", type: Array(Twilio::IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension)?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter extensions : Array(Twilio::IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension)? = nil
-
     @[JSON::Field(key: "end", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter _end : Int32? = nil
+
+    @[JSON::Field(key: "extensions", type: Array(Twilio::IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter extensions : Array(Twilio::IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension)? = nil
 
     @[JSON::Field(key: "first_page_uri", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
     getter first_page_uri : String? = nil
@@ -58,8 +58,8 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @extensions : Array(Twilio::IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension)? = nil,
       @_end : Int32? = nil,
+      @extensions : Array(Twilio::IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension)? = nil,
       @first_page_uri : String? = nil,
       @next_page_uri : String? = nil,
       @page : Int32? = nil,
@@ -75,10 +75,10 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
+      unless (__end = @_end).nil?
+      end
       unless (_extensions = @extensions).nil?
         invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "extensions", container: _extensions)) if _extensions.is_a?(Array)
-      end
-      unless (__end = @_end).nil?
       end
       unless (_first_page_uri = @first_page_uri).nil?
       end
@@ -100,11 +100,11 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_extensions = @extensions).nil?
-        return false if _extensions.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _extensions)
+      unless (__end = @_end).nil?
       end
 
-      unless (__end = @_end).nil?
+      unless (_extensions = @extensions).nil?
+        return false if _extensions.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _extensions)
       end
 
       unless (_first_page_uri = @first_page_uri).nil?
@@ -132,6 +132,16 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] _end Object to be assigned
+    def _end=(_end : Int32?)
+      if _end.nil?
+        return @_end = nil
+      end
+      __end = _end.not_nil!
+      @_end = __end
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] extensions Object to be assigned
     def extensions=(extensions : Array(Twilio::IncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension)?)
       if extensions.nil?
@@ -140,16 +150,6 @@ module Twilio
       _extensions = extensions.not_nil!
       OpenApi::ContainerValidator.validate(container: _extensions) if _extensions.is_a?(Array)
       @extensions = _extensions
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] _end Object to be assigned
-    def _end=(_end : Int32?)
-      if _end.nil?
-        return @_end = nil
-      end
-      __end = _end.not_nil!
-      @_end = __end
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -226,6 +226,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@extensions, @_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
+    def_equals_and_hash(@_end, @extensions, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
   end
 end

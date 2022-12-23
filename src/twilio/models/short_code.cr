@@ -75,11 +75,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
 
-    # HTTP method we use to call the sms_fallback_url
-    @[JSON::Field(key: "sms_fallback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
-    getter sms_fallback_method : String? = nil
-    ERROR_MESSAGE_FOR_SMS_FALLBACK_METHOD = "invalid value for \"sms_fallback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_SMS_FALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "sms_fallback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
+    getter sms_fallback_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? sms_fallback_method_present : Bool = false
@@ -91,11 +88,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sms_fallback_url_present : Bool = false
 
-    # HTTP method to use when requesting the sms url
-    @[JSON::Field(key: "sms_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
-    getter sms_method : String? = nil
-    ERROR_MESSAGE_FOR_SMS_METHOD = "invalid value for \"sms_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_SMS_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "sms_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
+    getter sms_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? sms_method_present : Bool = false
@@ -126,9 +120,9 @@ module Twilio
       @friendly_name : String? = nil,
       @short_code : String? = nil,
       @sid : String? = nil,
-      @sms_fallback_method : String? = nil,
+      @sms_fallback_method : Twilio::HttpMethod? = nil,
       @sms_fallback_url : String? = nil,
-      @sms_method : String? = nil,
+      @sms_method : Twilio::HttpMethod? = nil,
       @sms_url : String? = nil,
       @uri : String? = nil
     )
@@ -176,12 +170,12 @@ module Twilio
         end
       end
       unless (_sms_fallback_method = @sms_fallback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_SMS_FALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_sms_fallback_method, VALID_VALUES_FOR_SMS_FALLBACK_METHOD)
+        invalid_properties.push(_sms_fallback_method.error_message) if !_sms_fallback_method.valid?
       end
       unless (_sms_fallback_url = @sms_fallback_url).nil?
       end
       unless (_sms_method = @sms_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_SMS_METHOD) unless OpenApi::EnumValidator.valid?(_sms_method, VALID_VALUES_FOR_SMS_METHOD)
+        invalid_properties.push(_sms_method.error_message) if !_sms_method.valid?
       end
       unless (_sms_url = @sms_url).nil?
       end
@@ -221,14 +215,14 @@ module Twilio
       end
 
       unless (_sms_fallback_method = @sms_fallback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_sms_fallback_method, VALID_VALUES_FOR_SMS_FALLBACK_METHOD)
+        return false if !_sms_fallback_method.valid?
       end
 
       unless (_sms_fallback_url = @sms_fallback_url).nil?
       end
 
       unless (_sms_method = @sms_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_sms_method, VALID_VALUES_FOR_SMS_METHOD)
+        return false if !_sms_method.valid?
       end
 
       unless (_sms_url = @sms_url).nil?
@@ -318,12 +312,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_fallback_method Object to be assigned
-    def sms_fallback_method=(sms_fallback_method : String?)
+    def sms_fallback_method=(sms_fallback_method : Twilio::HttpMethod?)
       if sms_fallback_method.nil?
         return @sms_fallback_method = nil
       end
       _sms_fallback_method = sms_fallback_method.not_nil!
-      OpenApi::EnumValidator.validate("sms_fallback_method", _sms_fallback_method, VALID_VALUES_FOR_SMS_FALLBACK_METHOD)
+      _sms_fallback_method.validate
       @sms_fallback_method = _sms_fallback_method
     end
 
@@ -339,12 +333,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sms_method Object to be assigned
-    def sms_method=(sms_method : String?)
+    def sms_method=(sms_method : Twilio::HttpMethod?)
       if sms_method.nil?
         return @sms_method = nil
       end
       _sms_method = sms_method.not_nil!
-      OpenApi::EnumValidator.validate("sms_method", _sms_method, VALID_VALUES_FOR_SMS_METHOD)
+      _sms_method.validate
       @sms_method = _sms_method
     end
 

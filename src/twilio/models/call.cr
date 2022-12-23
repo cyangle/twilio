@@ -20,40 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    # The unique string that identifies this resource
-    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String? = nil
-    MAX_LENGTH_FOR_SID = 34
-    MIN_LENGTH_FOR_SID = 34
-    PATTERN_FOR_SID    = /^CA[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? sid_present : Bool = false
-
-    # The RFC 2822 date and time in GMT that this resource was created
-    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
-    getter date_created : Time? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? date_created_present : Bool = false
-
-    # The RFC 2822 date and time in GMT that this resource was last updated
-    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
-    getter date_updated : Time? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? date_updated_present : Bool = false
-
-    # The SID that identifies the call that created this leg.
-    @[JSON::Field(key: "parent_call_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: parent_call_sid.nil? && !parent_call_sid_present?)]
-    getter parent_call_sid : String? = nil
-    MAX_LENGTH_FOR_PARENT_CALL_SID = 34
-    MIN_LENGTH_FOR_PARENT_CALL_SID = 34
-    PATTERN_FOR_PARENT_CALL_SID    = /^CA[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? parent_call_sid_present : Bool = false
-
     # The SID of the Account that created this resource
     @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String? = nil
@@ -63,89 +29,6 @@ module Twilio
 
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
-
-    # The phone number, SIP address or Client identifier that received this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
-    @[JSON::Field(key: "to", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: to.nil? && !to_present?)]
-    getter to : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? to_present : Bool = false
-
-    # The phone number, SIP address or Client identifier that received this call. Formatted for display.
-    @[JSON::Field(key: "to_formatted", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: to_formatted.nil? && !to_formatted_present?)]
-    getter to_formatted : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? to_formatted_present : Bool = false
-
-    # The phone number, SIP address or Client identifier that made this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
-    @[JSON::Field(key: "from", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: from.nil? && !from_present?)]
-    getter from : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? from_present : Bool = false
-
-    # The calling phone number, SIP address, or Client identifier formatted for display.
-    @[JSON::Field(key: "from_formatted", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: from_formatted.nil? && !from_formatted_present?)]
-    getter from_formatted : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? from_formatted_present : Bool = false
-
-    # If the call was inbound, this is the SID of the IncomingPhoneNumber resource that received the call. If the call was outbound, it is the SID of the OutgoingCallerId resource from which the call was placed.
-    @[JSON::Field(key: "phone_number_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: phone_number_sid.nil? && !phone_number_sid_present?)]
-    getter phone_number_sid : String? = nil
-    MAX_LENGTH_FOR_PHONE_NUMBER_SID = 34
-    MIN_LENGTH_FOR_PHONE_NUMBER_SID = 34
-    PATTERN_FOR_PHONE_NUMBER_SID    = /^PN[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? phone_number_sid_present : Bool = false
-
-    @[JSON::Field(key: "status", type: Twilio::CallEnumStatus?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter status : Twilio::CallEnumStatus? = nil
-
-    # The start time of the call. Null if the call has not yet been dialed.
-    @[JSON::Field(key: "start_time", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: start_time.nil? && !start_time_present?, converter: Time::RFC2822Converter)]
-    getter start_time : Time? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? start_time_present : Bool = false
-
-    # The end time of the call. Null if the call did not complete successfully.
-    @[JSON::Field(key: "end_time", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: end_time.nil? && !end_time_present?, converter: Time::RFC2822Converter)]
-    getter end_time : Time? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? end_time_present : Bool = false
-
-    # The length of the call in seconds.
-    @[JSON::Field(key: "duration", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: duration.nil? && !duration_present?)]
-    getter duration : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? duration_present : Bool = false
-
-    # The charge for this call, in the currency associated with the account. Populated after the call is completed. May not be immediately available.
-    @[JSON::Field(key: "price", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: price.nil? && !price_present?)]
-    getter price : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? price_present : Bool = false
-
-    # The currency in which `Price` is measured.
-    @[JSON::Field(key: "price_unit", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?)]
-    getter price_unit : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? price_unit_present : Bool = false
-
-    # A string describing the direction of the call. `inbound` for inbound calls, `outbound-api` for calls initiated via the REST API or `outbound-dial` for calls initiated by a `Dial` verb.
-    @[JSON::Field(key: "direction", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: direction.nil? && !direction_present?)]
-    getter direction : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? direction_present : Bool = false
 
     # Either `human` or `machine` if this call was initiated with answering machine detection. Empty otherwise.
     @[JSON::Field(key: "answered_by", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: answered_by.nil? && !answered_by_present?)]
@@ -161,12 +44,68 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? api_version_present : Bool = false
 
+    # The caller's name if this call was an incoming call to a phone number with caller ID Lookup enabled. Otherwise, empty.
+    @[JSON::Field(key: "caller_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: caller_name.nil? && !caller_name_present?)]
+    getter caller_name : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? caller_name_present : Bool = false
+
+    # The RFC 2822 date and time in GMT that this resource was created
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? date_created_present : Bool = false
+
+    # The RFC 2822 date and time in GMT that this resource was last updated
+    @[JSON::Field(key: "date_updated", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_updated.nil? && !date_updated_present?, converter: Time::RFC2822Converter)]
+    getter date_updated : Time? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? date_updated_present : Bool = false
+
+    # A string describing the direction of the call. `inbound` for inbound calls, `outbound-api` for calls initiated via the REST API or `outbound-dial` for calls initiated by a `Dial` verb.
+    @[JSON::Field(key: "direction", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: direction.nil? && !direction_present?)]
+    getter direction : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? direction_present : Bool = false
+
+    # The length of the call in seconds.
+    @[JSON::Field(key: "duration", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: duration.nil? && !duration_present?)]
+    getter duration : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? duration_present : Bool = false
+
+    # The end time of the call. Null if the call did not complete successfully.
+    @[JSON::Field(key: "end_time", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: end_time.nil? && !end_time_present?, converter: Time::RFC2822Converter)]
+    getter end_time : Time? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? end_time_present : Bool = false
+
     # The forwarding phone number if this call was an incoming call forwarded from another number (depends on carrier supporting forwarding). Otherwise, empty.
     @[JSON::Field(key: "forwarded_from", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: forwarded_from.nil? && !forwarded_from_present?)]
     getter forwarded_from : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? forwarded_from_present : Bool = false
+
+    # The phone number, SIP address or Client identifier that made this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
+    @[JSON::Field(key: "from", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: from.nil? && !from_present?)]
+    getter from : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? from_present : Bool = false
+
+    # The calling phone number, SIP address, or Client identifier formatted for display.
+    @[JSON::Field(key: "from_formatted", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: from_formatted.nil? && !from_formatted_present?)]
+    getter from_formatted : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? from_formatted_present : Bool = false
 
     # The Group SID associated with this call. If no Group is associated with the call, the field is empty.
     @[JSON::Field(key: "group_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: group_sid.nil? && !group_sid_present?)]
@@ -178,12 +117,39 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? group_sid_present : Bool = false
 
-    # The caller's name if this call was an incoming call to a phone number with caller ID Lookup enabled. Otherwise, empty.
-    @[JSON::Field(key: "caller_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: caller_name.nil? && !caller_name_present?)]
-    getter caller_name : String? = nil
+    # The SID that identifies the call that created this leg.
+    @[JSON::Field(key: "parent_call_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: parent_call_sid.nil? && !parent_call_sid_present?)]
+    getter parent_call_sid : String? = nil
+    MAX_LENGTH_FOR_PARENT_CALL_SID = 34
+    MIN_LENGTH_FOR_PARENT_CALL_SID = 34
+    PATTERN_FOR_PARENT_CALL_SID    = /^CA[0-9a-fA-F]{32}$/
 
     @[JSON::Field(ignore: true)]
-    property? caller_name_present : Bool = false
+    property? parent_call_sid_present : Bool = false
+
+    # If the call was inbound, this is the SID of the IncomingPhoneNumber resource that received the call. If the call was outbound, it is the SID of the OutgoingCallerId resource from which the call was placed.
+    @[JSON::Field(key: "phone_number_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: phone_number_sid.nil? && !phone_number_sid_present?)]
+    getter phone_number_sid : String? = nil
+    MAX_LENGTH_FOR_PHONE_NUMBER_SID = 34
+    MIN_LENGTH_FOR_PHONE_NUMBER_SID = 34
+    PATTERN_FOR_PHONE_NUMBER_SID    = /^PN[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? phone_number_sid_present : Bool = false
+
+    # The charge for this call, in the currency associated with the account. Populated after the call is completed. May not be immediately available.
+    @[JSON::Field(key: "price", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: price.nil? && !price_present?)]
+    getter price : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? price_present : Bool = false
+
+    # The currency in which `Price` is measured.
+    @[JSON::Field(key: "price_unit", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: price_unit.nil? && !price_unit_present?)]
+    getter price_unit : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? price_unit_present : Bool = false
 
     # The wait time in milliseconds before the call is placed.
     @[JSON::Field(key: "queue_time", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: queue_time.nil? && !queue_time_present?)]
@@ -191,6 +157,46 @@ module Twilio
 
     @[JSON::Field(ignore: true)]
     property? queue_time_present : Bool = false
+
+    # The unique string that identifies this resource
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
+    MAX_LENGTH_FOR_SID = 34
+    MIN_LENGTH_FOR_SID = 34
+    PATTERN_FOR_SID    = /^CA[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? sid_present : Bool = false
+
+    # The start time of the call. Null if the call has not yet been dialed.
+    @[JSON::Field(key: "start_time", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: start_time.nil? && !start_time_present?, converter: Time::RFC2822Converter)]
+    getter start_time : Time? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? start_time_present : Bool = false
+
+    @[JSON::Field(key: "status", type: Twilio::CallEnumStatus?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter status : Twilio::CallEnumStatus? = nil
+
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
+    getter subresource_uris : Hash(String, String)? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? subresource_uris_present : Bool = false
+
+    # The phone number, SIP address or Client identifier that received this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
+    @[JSON::Field(key: "to", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: to.nil? && !to_present?)]
+    getter to : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? to_present : Bool = false
+
+    # The phone number, SIP address or Client identifier that received this call. Formatted for display.
+    @[JSON::Field(key: "to_formatted", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: to_formatted.nil? && !to_formatted_present?)]
+    getter to_formatted : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? to_formatted_present : Bool = false
 
     # The (optional) unique identifier of the trunk resource that was used for this call.
     @[JSON::Field(key: "trunk_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?)]
@@ -209,44 +215,37 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
-    getter subresource_uris : Hash(String, String)? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? subresource_uris_present : Bool = false
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
       *,
       # Optional properties
-      @sid : String? = nil,
-      @date_created : Time? = nil,
-      @date_updated : Time? = nil,
-      @parent_call_sid : String? = nil,
       @account_sid : String? = nil,
-      @to : String? = nil,
-      @to_formatted : String? = nil,
-      @from : String? = nil,
-      @from_formatted : String? = nil,
-      @phone_number_sid : String? = nil,
-      @status : Twilio::CallEnumStatus? = nil,
-      @start_time : Time? = nil,
-      @end_time : Time? = nil,
-      @duration : String? = nil,
-      @price : String? = nil,
-      @price_unit : String? = nil,
-      @direction : String? = nil,
       @answered_by : String? = nil,
       @api_version : String? = nil,
-      @forwarded_from : String? = nil,
-      @group_sid : String? = nil,
       @caller_name : String? = nil,
+      @date_created : Time? = nil,
+      @date_updated : Time? = nil,
+      @direction : String? = nil,
+      @duration : String? = nil,
+      @end_time : Time? = nil,
+      @forwarded_from : String? = nil,
+      @from : String? = nil,
+      @from_formatted : String? = nil,
+      @group_sid : String? = nil,
+      @parent_call_sid : String? = nil,
+      @phone_number_sid : String? = nil,
+      @price : String? = nil,
+      @price_unit : String? = nil,
       @queue_time : String? = nil,
+      @sid : String? = nil,
+      @start_time : Time? = nil,
+      @status : Twilio::CallEnumStatus? = nil,
+      @subresource_uris : Hash(String, String)? = nil,
+      @to : String? = nil,
+      @to_formatted : String? = nil,
       @trunk_sid : String? = nil,
-      @uri : String? = nil,
-      @subresource_uris : Hash(String, String)? = nil
+      @uri : String? = nil
     )
     end
 
@@ -255,36 +254,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_sid = @sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_parent_call_sid = @parent_call_sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("parent_call_sid", _parent_call_sid.to_s.size, MAX_LENGTH_FOR_PARENT_CALL_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("parent_call_sid", _parent_call_sid.to_s.size, MIN_LENGTH_FOR_PARENT_CALL_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("parent_call_sid", _parent_call_sid, PATTERN_FOR_PARENT_CALL_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
       unless (_account_sid = @account_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
           invalid_properties.push(max_length_error)
@@ -298,47 +267,27 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_to = @to).nil?
-      end
-      unless (_to_formatted = @to_formatted).nil?
-      end
-      unless (_from = @from).nil?
-      end
-      unless (_from_formatted = @from_formatted).nil?
-      end
-      unless (_phone_number_sid = @phone_number_sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("phone_number_sid", _phone_number_sid.to_s.size, MAX_LENGTH_FOR_PHONE_NUMBER_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("phone_number_sid", _phone_number_sid.to_s.size, MIN_LENGTH_FOR_PHONE_NUMBER_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("phone_number_sid", _phone_number_sid, PATTERN_FOR_PHONE_NUMBER_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
-      unless (_status = @status).nil?
-        invalid_properties.push(_status.error_message) if !_status.valid?
-      end
-      unless (_start_time = @start_time).nil?
-      end
-      unless (_end_time = @end_time).nil?
-      end
-      unless (_duration = @duration).nil?
-      end
-      unless (_price = @price).nil?
-      end
-      unless (_price_unit = @price_unit).nil?
-      end
-      unless (_direction = @direction).nil?
-      end
       unless (_answered_by = @answered_by).nil?
       end
       unless (_api_version = @api_version).nil?
       end
+      unless (_caller_name = @caller_name).nil?
+      end
+      unless (_date_created = @date_created).nil?
+      end
+      unless (_date_updated = @date_updated).nil?
+      end
+      unless (_direction = @direction).nil?
+      end
+      unless (_duration = @duration).nil?
+      end
+      unless (_end_time = @end_time).nil?
+      end
       unless (_forwarded_from = @forwarded_from).nil?
+      end
+      unless (_from = @from).nil?
+      end
+      unless (_from_formatted = @from_formatted).nil?
       end
       unless (_group_sid = @group_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("group_sid", _group_sid.to_s.size, MAX_LENGTH_FOR_GROUP_SID)
@@ -353,9 +302,61 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_caller_name = @caller_name).nil?
+      unless (_parent_call_sid = @parent_call_sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("parent_call_sid", _parent_call_sid.to_s.size, MAX_LENGTH_FOR_PARENT_CALL_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("parent_call_sid", _parent_call_sid.to_s.size, MIN_LENGTH_FOR_PARENT_CALL_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("parent_call_sid", _parent_call_sid, PATTERN_FOR_PARENT_CALL_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
+      unless (_phone_number_sid = @phone_number_sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("phone_number_sid", _phone_number_sid.to_s.size, MAX_LENGTH_FOR_PHONE_NUMBER_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("phone_number_sid", _phone_number_sid.to_s.size, MIN_LENGTH_FOR_PHONE_NUMBER_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("phone_number_sid", _phone_number_sid, PATTERN_FOR_PHONE_NUMBER_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
+      unless (_price = @price).nil?
+      end
+      unless (_price_unit = @price_unit).nil?
       end
       unless (_queue_time = @queue_time).nil?
+      end
+      unless (_sid = @sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
+      unless (_start_time = @start_time).nil?
+      end
+      unless (_status = @status).nil?
+        invalid_properties.push(_status.error_message) if !_status.valid?
+      end
+      unless (_subresource_uris = @subresource_uris).nil?
+      end
+      unless (_to = @to).nil?
+      end
+      unless (_to_formatted = @to_formatted).nil?
       end
       unless (_trunk_sid = @trunk_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("trunk_sid", _trunk_sid.to_s.size, MAX_LENGTH_FOR_TRUNK_SID)
@@ -372,76 +373,16 @@ module Twilio
       end
       unless (_uri = @uri).nil?
       end
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_sid = @sid).nil?
-        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
-        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
-        return false if !PATTERN_FOR_SID.matches?(_sid)
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_parent_call_sid = @parent_call_sid).nil?
-        return false if _parent_call_sid.to_s.size > MAX_LENGTH_FOR_PARENT_CALL_SID
-        return false if _parent_call_sid.to_s.size < MIN_LENGTH_FOR_PARENT_CALL_SID
-        return false if !PATTERN_FOR_PARENT_CALL_SID.matches?(_parent_call_sid)
-      end
-
       unless (_account_sid = @account_sid).nil?
         return false if _account_sid.to_s.size > MAX_LENGTH_FOR_ACCOUNT_SID
         return false if _account_sid.to_s.size < MIN_LENGTH_FOR_ACCOUNT_SID
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
-      end
-
-      unless (_to = @to).nil?
-      end
-
-      unless (_to_formatted = @to_formatted).nil?
-      end
-
-      unless (_from = @from).nil?
-      end
-
-      unless (_from_formatted = @from_formatted).nil?
-      end
-
-      unless (_phone_number_sid = @phone_number_sid).nil?
-        return false if _phone_number_sid.to_s.size > MAX_LENGTH_FOR_PHONE_NUMBER_SID
-        return false if _phone_number_sid.to_s.size < MIN_LENGTH_FOR_PHONE_NUMBER_SID
-        return false if !PATTERN_FOR_PHONE_NUMBER_SID.matches?(_phone_number_sid)
-      end
-
-      unless (_status = @status).nil?
-        return false if !_status.valid?
-      end
-
-      unless (_start_time = @start_time).nil?
-      end
-
-      unless (_end_time = @end_time).nil?
-      end
-
-      unless (_duration = @duration).nil?
-      end
-
-      unless (_price = @price).nil?
-      end
-
-      unless (_price_unit = @price_unit).nil?
-      end
-
-      unless (_direction = @direction).nil?
       end
 
       unless (_answered_by = @answered_by).nil?
@@ -450,7 +391,31 @@ module Twilio
       unless (_api_version = @api_version).nil?
       end
 
+      unless (_caller_name = @caller_name).nil?
+      end
+
+      unless (_date_created = @date_created).nil?
+      end
+
+      unless (_date_updated = @date_updated).nil?
+      end
+
+      unless (_direction = @direction).nil?
+      end
+
+      unless (_duration = @duration).nil?
+      end
+
+      unless (_end_time = @end_time).nil?
+      end
+
       unless (_forwarded_from = @forwarded_from).nil?
+      end
+
+      unless (_from = @from).nil?
+      end
+
+      unless (_from_formatted = @from_formatted).nil?
       end
 
       unless (_group_sid = @group_sid).nil?
@@ -459,10 +424,47 @@ module Twilio
         return false if !PATTERN_FOR_GROUP_SID.matches?(_group_sid)
       end
 
-      unless (_caller_name = @caller_name).nil?
+      unless (_parent_call_sid = @parent_call_sid).nil?
+        return false if _parent_call_sid.to_s.size > MAX_LENGTH_FOR_PARENT_CALL_SID
+        return false if _parent_call_sid.to_s.size < MIN_LENGTH_FOR_PARENT_CALL_SID
+        return false if !PATTERN_FOR_PARENT_CALL_SID.matches?(_parent_call_sid)
+      end
+
+      unless (_phone_number_sid = @phone_number_sid).nil?
+        return false if _phone_number_sid.to_s.size > MAX_LENGTH_FOR_PHONE_NUMBER_SID
+        return false if _phone_number_sid.to_s.size < MIN_LENGTH_FOR_PHONE_NUMBER_SID
+        return false if !PATTERN_FOR_PHONE_NUMBER_SID.matches?(_phone_number_sid)
+      end
+
+      unless (_price = @price).nil?
+      end
+
+      unless (_price_unit = @price_unit).nil?
       end
 
       unless (_queue_time = @queue_time).nil?
+      end
+
+      unless (_sid = @sid).nil?
+        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
+        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
+        return false if !PATTERN_FOR_SID.matches?(_sid)
+      end
+
+      unless (_start_time = @start_time).nil?
+      end
+
+      unless (_status = @status).nil?
+        return false if !_status.valid?
+      end
+
+      unless (_subresource_uris = @subresource_uris).nil?
+      end
+
+      unless (_to = @to).nil?
+      end
+
+      unless (_to_formatted = @to_formatted).nil?
       end
 
       unless (_trunk_sid = @trunk_sid).nil?
@@ -474,56 +476,7 @@ module Twilio
       unless (_uri = @uri).nil?
       end
 
-      unless (_subresource_uris = @subresource_uris).nil?
-      end
-
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
-      end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] parent_call_sid Object to be assigned
-    def parent_call_sid=(parent_call_sid : String?)
-      if parent_call_sid.nil?
-        return @parent_call_sid = nil
-      end
-      _parent_call_sid = parent_call_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("parent_call_sid", _parent_call_sid.to_s.size, MAX_LENGTH_FOR_PARENT_CALL_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("parent_call_sid", _parent_call_sid.to_s.size, MIN_LENGTH_FOR_PARENT_CALL_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("parent_call_sid", _parent_call_sid, PATTERN_FOR_PARENT_CALL_SID)
-      @parent_call_sid = _parent_call_sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -537,130 +490,6 @@ module Twilio
       OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
       OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
       @account_sid = _account_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] to Object to be assigned
-    def to=(to : String?)
-      if to.nil?
-        return @to = nil
-      end
-      _to = to.not_nil!
-      @to = _to
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] to_formatted Object to be assigned
-    def to_formatted=(to_formatted : String?)
-      if to_formatted.nil?
-        return @to_formatted = nil
-      end
-      _to_formatted = to_formatted.not_nil!
-      @to_formatted = _to_formatted
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] from Object to be assigned
-    def from=(from : String?)
-      if from.nil?
-        return @from = nil
-      end
-      _from = from.not_nil!
-      @from = _from
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] from_formatted Object to be assigned
-    def from_formatted=(from_formatted : String?)
-      if from_formatted.nil?
-        return @from_formatted = nil
-      end
-      _from_formatted = from_formatted.not_nil!
-      @from_formatted = _from_formatted
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] phone_number_sid Object to be assigned
-    def phone_number_sid=(phone_number_sid : String?)
-      if phone_number_sid.nil?
-        return @phone_number_sid = nil
-      end
-      _phone_number_sid = phone_number_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("phone_number_sid", _phone_number_sid.to_s.size, MAX_LENGTH_FOR_PHONE_NUMBER_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("phone_number_sid", _phone_number_sid.to_s.size, MIN_LENGTH_FOR_PHONE_NUMBER_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("phone_number_sid", _phone_number_sid, PATTERN_FOR_PHONE_NUMBER_SID)
-      @phone_number_sid = _phone_number_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status : Twilio::CallEnumStatus?)
-      if status.nil?
-        return @status = nil
-      end
-      _status = status.not_nil!
-      _status.validate
-      @status = _status
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] start_time Object to be assigned
-    def start_time=(start_time : Time?)
-      if start_time.nil?
-        return @start_time = nil
-      end
-      _start_time = start_time.not_nil!
-      @start_time = _start_time
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] end_time Object to be assigned
-    def end_time=(end_time : Time?)
-      if end_time.nil?
-        return @end_time = nil
-      end
-      _end_time = end_time.not_nil!
-      @end_time = _end_time
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] duration Object to be assigned
-    def duration=(duration : String?)
-      if duration.nil?
-        return @duration = nil
-      end
-      _duration = duration.not_nil!
-      @duration = _duration
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] price Object to be assigned
-    def price=(price : String?)
-      if price.nil?
-        return @price = nil
-      end
-      _price = price.not_nil!
-      @price = _price
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] price_unit Object to be assigned
-    def price_unit=(price_unit : String?)
-      if price_unit.nil?
-        return @price_unit = nil
-      end
-      _price_unit = price_unit.not_nil!
-      @price_unit = _price_unit
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] direction Object to be assigned
-    def direction=(direction : String?)
-      if direction.nil?
-        return @direction = nil
-      end
-      _direction = direction.not_nil!
-      @direction = _direction
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -684,6 +513,66 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] caller_name Object to be assigned
+    def caller_name=(caller_name : String?)
+      if caller_name.nil?
+        return @caller_name = nil
+      end
+      _caller_name = caller_name.not_nil!
+      @caller_name = _caller_name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      _date_created = date_created.not_nil!
+      @date_created = _date_created
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      _date_updated = date_updated.not_nil!
+      @date_updated = _date_updated
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] direction Object to be assigned
+    def direction=(direction : String?)
+      if direction.nil?
+        return @direction = nil
+      end
+      _direction = direction.not_nil!
+      @direction = _direction
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] duration Object to be assigned
+    def duration=(duration : String?)
+      if duration.nil?
+        return @duration = nil
+      end
+      _duration = duration.not_nil!
+      @duration = _duration
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] end_time Object to be assigned
+    def end_time=(end_time : Time?)
+      if end_time.nil?
+        return @end_time = nil
+      end
+      _end_time = end_time.not_nil!
+      @end_time = _end_time
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] forwarded_from Object to be assigned
     def forwarded_from=(forwarded_from : String?)
       if forwarded_from.nil?
@@ -691,6 +580,26 @@ module Twilio
       end
       _forwarded_from = forwarded_from.not_nil!
       @forwarded_from = _forwarded_from
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] from Object to be assigned
+    def from=(from : String?)
+      if from.nil?
+        return @from = nil
+      end
+      _from = from.not_nil!
+      @from = _from
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] from_formatted Object to be assigned
+    def from_formatted=(from_formatted : String?)
+      if from_formatted.nil?
+        return @from_formatted = nil
+      end
+      _from_formatted = from_formatted.not_nil!
+      @from_formatted = _from_formatted
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -707,13 +616,49 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] caller_name Object to be assigned
-    def caller_name=(caller_name : String?)
-      if caller_name.nil?
-        return @caller_name = nil
+    # @param [Object] parent_call_sid Object to be assigned
+    def parent_call_sid=(parent_call_sid : String?)
+      if parent_call_sid.nil?
+        return @parent_call_sid = nil
       end
-      _caller_name = caller_name.not_nil!
-      @caller_name = _caller_name
+      _parent_call_sid = parent_call_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("parent_call_sid", _parent_call_sid.to_s.size, MAX_LENGTH_FOR_PARENT_CALL_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("parent_call_sid", _parent_call_sid.to_s.size, MIN_LENGTH_FOR_PARENT_CALL_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("parent_call_sid", _parent_call_sid, PATTERN_FOR_PARENT_CALL_SID)
+      @parent_call_sid = _parent_call_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] phone_number_sid Object to be assigned
+    def phone_number_sid=(phone_number_sid : String?)
+      if phone_number_sid.nil?
+        return @phone_number_sid = nil
+      end
+      _phone_number_sid = phone_number_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("phone_number_sid", _phone_number_sid.to_s.size, MAX_LENGTH_FOR_PHONE_NUMBER_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("phone_number_sid", _phone_number_sid.to_s.size, MIN_LENGTH_FOR_PHONE_NUMBER_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("phone_number_sid", _phone_number_sid, PATTERN_FOR_PHONE_NUMBER_SID)
+      @phone_number_sid = _phone_number_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] price Object to be assigned
+    def price=(price : String?)
+      if price.nil?
+        return @price = nil
+      end
+      _price = price.not_nil!
+      @price = _price
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] price_unit Object to be assigned
+    def price_unit=(price_unit : String?)
+      if price_unit.nil?
+        return @price_unit = nil
+      end
+      _price_unit = price_unit.not_nil!
+      @price_unit = _price_unit
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -724,6 +669,70 @@ module Twilio
       end
       _queue_time = queue_time.not_nil!
       @queue_time = _queue_time
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
+    def sid=(sid : String?)
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
+      @sid = _sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] start_time Object to be assigned
+    def start_time=(start_time : Time?)
+      if start_time.nil?
+        return @start_time = nil
+      end
+      _start_time = start_time.not_nil!
+      @start_time = _start_time
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status : Twilio::CallEnumStatus?)
+      if status.nil?
+        return @status = nil
+      end
+      _status = status.not_nil!
+      _status.validate
+      @status = _status
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] subresource_uris Object to be assigned
+    def subresource_uris=(subresource_uris : Hash(String, String)?)
+      if subresource_uris.nil?
+        return @subresource_uris = nil
+      end
+      _subresource_uris = subresource_uris.not_nil!
+      @subresource_uris = _subresource_uris
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] to Object to be assigned
+    def to=(to : String?)
+      if to.nil?
+        return @to = nil
+      end
+      _to = to.not_nil!
+      @to = _to
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] to_formatted Object to be assigned
+    def to_formatted=(to_formatted : String?)
+      if to_formatted.nil?
+        return @to_formatted = nil
+      end
+      _to_formatted = to_formatted.not_nil!
+      @to_formatted = _to_formatted
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -749,20 +758,10 @@ module Twilio
       @uri = _uri
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] subresource_uris Object to be assigned
-    def subresource_uris=(subresource_uris : Hash(String, String)?)
-      if subresource_uris.nil?
-        return @subresource_uris = nil
-      end
-      _subresource_uris = subresource_uris.not_nil!
-      @subresource_uris = _subresource_uris
-    end
-
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@sid, @sid_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @parent_call_sid, @parent_call_sid_present, @account_sid, @account_sid_present, @to, @to_present, @to_formatted, @to_formatted_present, @from, @from_present, @from_formatted, @from_formatted_present, @phone_number_sid, @phone_number_sid_present, @status, @start_time, @start_time_present, @end_time, @end_time_present, @duration, @duration_present, @price, @price_present, @price_unit, @price_unit_present, @direction, @direction_present, @answered_by, @answered_by_present, @api_version, @api_version_present, @forwarded_from, @forwarded_from_present, @group_sid, @group_sid_present, @caller_name, @caller_name_present, @queue_time, @queue_time_present, @trunk_sid, @trunk_sid_present, @uri, @uri_present, @subresource_uris, @subresource_uris_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @answered_by, @answered_by_present, @api_version, @api_version_present, @caller_name, @caller_name_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @direction, @direction_present, @duration, @duration_present, @end_time, @end_time_present, @forwarded_from, @forwarded_from_present, @from, @from_present, @from_formatted, @from_formatted_present, @group_sid, @group_sid_present, @parent_call_sid, @parent_call_sid_present, @phone_number_sid, @phone_number_sid_present, @price, @price_present, @price_unit, @price_unit_present, @queue_time, @queue_time_present, @sid, @sid_present, @start_time, @start_time_present, @status, @subresource_uris, @subresource_uris_present, @to, @to_present, @to_formatted, @to_formatted_present, @trunk_sid, @trunk_sid_present, @uri, @uri_present)
   end
 end

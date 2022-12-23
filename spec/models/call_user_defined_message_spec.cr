@@ -34,14 +34,14 @@ describe Twilio::CallUserDefinedMessage do
     end
   end
 
-  describe "test attribute 'sid'" do
+  describe "test attribute 'date_created'" do
     it "should work" do
       # instance = Twilio::CallUserDefinedMessage.new
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
     end
   end
 
-  describe "test attribute 'date_created'" do
+  describe "test attribute 'sid'" do
     it "should work" do
       # instance = Twilio::CallUserDefinedMessage.new
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

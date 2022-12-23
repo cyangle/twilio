@@ -20,9 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    @[JSON::Field(key: "outgoing_caller_ids", type: Array(Twilio::OutgoingCallerId)?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter outgoing_caller_ids : Array(Twilio::OutgoingCallerId)? = nil
-
     @[JSON::Field(key: "end", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter _end : Int32? = nil
 
@@ -34,6 +31,9 @@ module Twilio
 
     @[JSON::Field(ignore: true)]
     property? next_page_uri_present : Bool = false
+
+    @[JSON::Field(key: "outgoing_caller_ids", type: Array(Twilio::OutgoingCallerId)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter outgoing_caller_ids : Array(Twilio::OutgoingCallerId)? = nil
 
     @[JSON::Field(key: "page", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter page : Int32? = nil
@@ -58,10 +58,10 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @outgoing_caller_ids : Array(Twilio::OutgoingCallerId)? = nil,
       @_end : Int32? = nil,
       @first_page_uri : String? = nil,
       @next_page_uri : String? = nil,
+      @outgoing_caller_ids : Array(Twilio::OutgoingCallerId)? = nil,
       @page : Int32? = nil,
       @page_size : Int32? = nil,
       @previous_page_uri : String? = nil,
@@ -75,14 +75,14 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_outgoing_caller_ids = @outgoing_caller_ids).nil?
-        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "outgoing_caller_ids", container: _outgoing_caller_ids)) if _outgoing_caller_ids.is_a?(Array)
-      end
       unless (__end = @_end).nil?
       end
       unless (_first_page_uri = @first_page_uri).nil?
       end
       unless (_next_page_uri = @next_page_uri).nil?
+      end
+      unless (_outgoing_caller_ids = @outgoing_caller_ids).nil?
+        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "outgoing_caller_ids", container: _outgoing_caller_ids)) if _outgoing_caller_ids.is_a?(Array)
       end
       unless (_page = @page).nil?
       end
@@ -100,10 +100,6 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_outgoing_caller_ids = @outgoing_caller_ids).nil?
-        return false if _outgoing_caller_ids.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _outgoing_caller_ids)
-      end
-
       unless (__end = @_end).nil?
       end
 
@@ -111,6 +107,10 @@ module Twilio
       end
 
       unless (_next_page_uri = @next_page_uri).nil?
+      end
+
+      unless (_outgoing_caller_ids = @outgoing_caller_ids).nil?
+        return false if _outgoing_caller_ids.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _outgoing_caller_ids)
       end
 
       unless (_page = @page).nil?
@@ -129,17 +129,6 @@ module Twilio
       end
 
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] outgoing_caller_ids Object to be assigned
-    def outgoing_caller_ids=(outgoing_caller_ids : Array(Twilio::OutgoingCallerId)?)
-      if outgoing_caller_ids.nil?
-        return @outgoing_caller_ids = nil
-      end
-      _outgoing_caller_ids = outgoing_caller_ids.not_nil!
-      OpenApi::ContainerValidator.validate(container: _outgoing_caller_ids) if _outgoing_caller_ids.is_a?(Array)
-      @outgoing_caller_ids = _outgoing_caller_ids
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -170,6 +159,17 @@ module Twilio
       end
       _next_page_uri = next_page_uri.not_nil!
       @next_page_uri = _next_page_uri
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] outgoing_caller_ids Object to be assigned
+    def outgoing_caller_ids=(outgoing_caller_ids : Array(Twilio::OutgoingCallerId)?)
+      if outgoing_caller_ids.nil?
+        return @outgoing_caller_ids = nil
+      end
+      _outgoing_caller_ids = outgoing_caller_ids.not_nil!
+      OpenApi::ContainerValidator.validate(container: _outgoing_caller_ids) if _outgoing_caller_ids.is_a?(Array)
+      @outgoing_caller_ids = _outgoing_caller_ids
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -226,6 +226,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@outgoing_caller_ids, @_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
+    def_equals_and_hash(@_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @outgoing_caller_ids, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
   end
 end

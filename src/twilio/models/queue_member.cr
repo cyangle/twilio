@@ -44,6 +44,16 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? position_present : Bool = false
 
+    # The SID of the Queue the member is in
+    @[JSON::Field(key: "queue_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: queue_sid.nil? && !queue_sid_present?)]
+    getter queue_sid : String? = nil
+    MAX_LENGTH_FOR_QUEUE_SID = 34
+    MIN_LENGTH_FOR_QUEUE_SID = 34
+    PATTERN_FOR_QUEUE_SID    = /^QU[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? queue_sid_present : Bool = false
+
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     getter uri : String? = nil
@@ -58,16 +68,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? wait_time_present : Bool = false
 
-    # The SID of the Queue the member is in
-    @[JSON::Field(key: "queue_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: queue_sid.nil? && !queue_sid_present?)]
-    getter queue_sid : String? = nil
-    MAX_LENGTH_FOR_QUEUE_SID = 34
-    MIN_LENGTH_FOR_QUEUE_SID = 34
-    PATTERN_FOR_QUEUE_SID    = /^QU[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? queue_sid_present : Bool = false
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
@@ -76,9 +76,9 @@ module Twilio
       @call_sid : String? = nil,
       @date_enqueued : Time? = nil,
       @position : Int32? = nil,
+      @queue_sid : String? = nil,
       @uri : String? = nil,
-      @wait_time : Int32? = nil,
-      @queue_sid : String? = nil
+      @wait_time : Int32? = nil
     )
     end
 
@@ -104,10 +104,6 @@ module Twilio
       end
       unless (_position = @position).nil?
       end
-      unless (_uri = @uri).nil?
-      end
-      unless (_wait_time = @wait_time).nil?
-      end
       unless (_queue_sid = @queue_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("queue_sid", _queue_sid.to_s.size, MAX_LENGTH_FOR_QUEUE_SID)
           invalid_properties.push(max_length_error)
@@ -120,6 +116,10 @@ module Twilio
         if pattern_error = OpenApi::PrimitiveValidator.pattern_error("queue_sid", _queue_sid, PATTERN_FOR_QUEUE_SID)
           invalid_properties.push(pattern_error)
         end
+      end
+      unless (_uri = @uri).nil?
+      end
+      unless (_wait_time = @wait_time).nil?
       end
       invalid_properties
     end
@@ -139,16 +139,16 @@ module Twilio
       unless (_position = @position).nil?
       end
 
-      unless (_uri = @uri).nil?
-      end
-
-      unless (_wait_time = @wait_time).nil?
-      end
-
       unless (_queue_sid = @queue_sid).nil?
         return false if _queue_sid.to_s.size > MAX_LENGTH_FOR_QUEUE_SID
         return false if _queue_sid.to_s.size < MIN_LENGTH_FOR_QUEUE_SID
         return false if !PATTERN_FOR_QUEUE_SID.matches?(_queue_sid)
+      end
+
+      unless (_uri = @uri).nil?
+      end
+
+      unless (_wait_time = @wait_time).nil?
       end
 
       true
@@ -188,6 +188,19 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] queue_sid Object to be assigned
+    def queue_sid=(queue_sid : String?)
+      if queue_sid.nil?
+        return @queue_sid = nil
+      end
+      _queue_sid = queue_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("queue_sid", _queue_sid.to_s.size, MAX_LENGTH_FOR_QUEUE_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("queue_sid", _queue_sid.to_s.size, MIN_LENGTH_FOR_QUEUE_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("queue_sid", _queue_sid, PATTERN_FOR_QUEUE_SID)
+      @queue_sid = _queue_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
     def uri=(uri : String?)
       if uri.nil?
@@ -207,23 +220,10 @@ module Twilio
       @wait_time = _wait_time
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] queue_sid Object to be assigned
-    def queue_sid=(queue_sid : String?)
-      if queue_sid.nil?
-        return @queue_sid = nil
-      end
-      _queue_sid = queue_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("queue_sid", _queue_sid.to_s.size, MAX_LENGTH_FOR_QUEUE_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("queue_sid", _queue_sid.to_s.size, MIN_LENGTH_FOR_QUEUE_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("queue_sid", _queue_sid, PATTERN_FOR_QUEUE_SID)
-      @queue_sid = _queue_sid
-    end
-
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@call_sid, @call_sid_present, @date_enqueued, @date_enqueued_present, @position, @position_present, @uri, @uri_present, @wait_time, @wait_time_present, @queue_sid, @queue_sid_present)
+    def_equals_and_hash(@call_sid, @call_sid_present, @date_enqueued, @date_enqueued_present, @position, @position_present, @queue_sid, @queue_sid_present, @uri, @uri_present, @wait_time, @wait_time_present)
   end
 end

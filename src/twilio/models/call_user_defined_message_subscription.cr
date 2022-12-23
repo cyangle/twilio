@@ -40,6 +40,13 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
 
+    # The date this User Defined Message Subscription was created.
+    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
+    getter date_created : Time? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? date_created_present : Bool = false
+
     # User Defined Message Subscription SID.
     @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
     getter sid : String? = nil
@@ -49,13 +56,6 @@ module Twilio
 
     @[JSON::Field(ignore: true)]
     property? sid_present : Bool = false
-
-    # The date this User Defined Message Subscription was created.
-    @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
-    getter date_created : Time? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? date_created_present : Bool = false
 
     # The URI of the User Defined Message Subscription Resource, relative to `https://api.twilio.com`.
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
@@ -71,8 +71,8 @@ module Twilio
       # Optional properties
       @account_sid : String? = nil,
       @call_sid : String? = nil,
-      @sid : String? = nil,
       @date_created : Time? = nil,
+      @sid : String? = nil,
       @uri : String? = nil
     )
     end
@@ -108,6 +108,8 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
+      unless (_date_created = @date_created).nil?
+      end
       unless (_sid = @sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
           invalid_properties.push(max_length_error)
@@ -120,8 +122,6 @@ module Twilio
         if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
           invalid_properties.push(pattern_error)
         end
-      end
-      unless (_date_created = @date_created).nil?
       end
       unless (_uri = @uri).nil?
       end
@@ -143,13 +143,13 @@ module Twilio
         return false if !PATTERN_FOR_CALL_SID.matches?(_call_sid)
       end
 
+      unless (_date_created = @date_created).nil?
+      end
+
       unless (_sid = @sid).nil?
         return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
         return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
         return false if !PATTERN_FOR_SID.matches?(_sid)
-      end
-
-      unless (_date_created = @date_created).nil?
       end
 
       unless (_uri = @uri).nil?
@@ -185,6 +185,16 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      _date_created = date_created.not_nil!
+      @date_created = _date_created
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] sid Object to be assigned
     def sid=(sid : String?)
       if sid.nil?
@@ -195,16 +205,6 @@ module Twilio
       OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
       OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
       @sid = _sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -221,6 +221,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @account_sid_present, @call_sid, @call_sid_present, @sid, @sid_present, @date_created, @date_created_present, @uri, @uri_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @call_sid, @call_sid_present, @date_created, @date_created_present, @sid, @sid_present, @uri, @uri_present)
   end
 end

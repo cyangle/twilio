@@ -12,23 +12,23 @@ require "time"
 require "log"
 
 module Twilio
-  class IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus
+  class HttpMethod
     include OpenApi::Validatable
     include OpenApi::Json
 
     property data : String
 
-    ERROR_MESSAGE = %{invalid value for "incoming_phone_number_toll_free_enum_emergency_address_status", must be one of ["registered", "unregistered", "pending-registration", "registration-failure", "pending-unregistration", "unregistration-failure"].}
+    ERROR_MESSAGE = %{invalid value for "http_method", must be one of ["HEAD", "GET", "POST", "PATCH", "PUT", "DELETE"].}
 
-    VALID_VALUES = String.static_array("registered", "unregistered", "pending-registration", "registration-failure", "pending-unregistration", "unregistration-failure")
+    VALID_VALUES = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
 
     delegate to_json_object_key, to: @data
 
-    def self.from_json(value : JSON::PullParser) : IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus
+    def self.from_json(value : JSON::PullParser) : HttpMethod
       new(value)
     end
 
-    def self.to_json(value : IncomingPhoneNumberTollFreeEnumEmergencyAddressStatus, json : JSON::Builder) : Nil
+    def self.to_json(value : HttpMethod, json : JSON::Builder) : Nil
       value.to_json(json)
     end
 
@@ -59,7 +59,7 @@ module Twilio
     end
 
     def validate : Nil
-      OpenApi::EnumValidator.validate("incoming_phone_number_toll_free_enum_emergency_address_status", data, VALID_VALUES, false)
+      OpenApi::EnumValidator.validate("http_method", data, VALID_VALUES, false)
     end
 
     def to_json(json : JSON::Builder) : Nil

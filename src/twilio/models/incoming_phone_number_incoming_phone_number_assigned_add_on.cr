@@ -20,16 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String? = nil
-    MAX_LENGTH_FOR_SID = 34
-    MIN_LENGTH_FOR_SID = 34
-    PATTERN_FOR_SID    = /^XE[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? sid_present : Bool = false
-
     # The SID of the Account that created the resource
     @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String? = nil
@@ -40,43 +30,12 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
-    # The SID of the Phone Number that installed this Add-on
-    @[JSON::Field(key: "resource_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: resource_sid.nil? && !resource_sid_present?)]
-    getter resource_sid : String? = nil
-    MAX_LENGTH_FOR_RESOURCE_SID = 34
-    MIN_LENGTH_FOR_RESOURCE_SID = 34
-    PATTERN_FOR_RESOURCE_SID    = /^PN[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? resource_sid_present : Bool = false
-
-    # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
-    getter friendly_name : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? friendly_name_present : Bool = false
-
-    # A short description of the Add-on functionality
-    @[JSON::Field(key: "description", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: description.nil? && !description_present?)]
-    getter description : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? description_present : Bool = false
-
     # A JSON string that represents the current configuration
     @[JSON::Field(key: "configuration", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: configuration.nil? && !configuration_present?)]
     getter configuration : Hash(String, String)? = nil
 
     @[JSON::Field(ignore: true)]
     property? configuration_present : Bool = false
-
-    # An application-defined string that uniquely identifies the resource
-    @[JSON::Field(key: "unique_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: unique_name.nil? && !unique_name_present?)]
-    getter unique_name : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? unique_name_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
     @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
@@ -92,6 +51,53 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
+    # A short description of the Add-on functionality
+    @[JSON::Field(key: "description", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: description.nil? && !description_present?)]
+    getter description : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? description_present : Bool = false
+
+    # The string that you assigned to describe the resource
+    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
+    getter friendly_name : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? friendly_name_present : Bool = false
+
+    # The SID of the Phone Number that installed this Add-on
+    @[JSON::Field(key: "resource_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: resource_sid.nil? && !resource_sid_present?)]
+    getter resource_sid : String? = nil
+    MAX_LENGTH_FOR_RESOURCE_SID = 34
+    MIN_LENGTH_FOR_RESOURCE_SID = 34
+    PATTERN_FOR_RESOURCE_SID    = /^PN[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? resource_sid_present : Bool = false
+
+    # The unique string that identifies the resource
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
+    MAX_LENGTH_FOR_SID = 34
+    MIN_LENGTH_FOR_SID = 34
+    PATTERN_FOR_SID    = /^XE[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? sid_present : Bool = false
+
+    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
+    getter subresource_uris : Hash(String, String)? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? subresource_uris_present : Bool = false
+
+    # An application-defined string that uniquely identifies the resource
+    @[JSON::Field(key: "unique_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: unique_name.nil? && !unique_name_present?)]
+    getter unique_name : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? unique_name_present : Bool = false
+
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     getter uri : String? = nil
@@ -99,29 +105,22 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
-    # Account Instance Subresources
-    @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
-    getter subresource_uris : Hash(String, String)? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? subresource_uris_present : Bool = false
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
       *,
       # Optional properties
-      @sid : String? = nil,
       @account_sid : String? = nil,
-      @resource_sid : String? = nil,
-      @friendly_name : String? = nil,
-      @description : String? = nil,
       @configuration : Hash(String, String)? = nil,
-      @unique_name : String? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
-      @uri : String? = nil,
-      @subresource_uris : Hash(String, String)? = nil
+      @description : String? = nil,
+      @friendly_name : String? = nil,
+      @resource_sid : String? = nil,
+      @sid : String? = nil,
+      @subresource_uris : Hash(String, String)? = nil,
+      @unique_name : String? = nil,
+      @uri : String? = nil
     )
     end
 
@@ -130,19 +129,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_sid = @sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
       unless (_account_sid = @account_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
           invalid_properties.push(max_length_error)
@@ -155,6 +141,16 @@ module Twilio
         if pattern_error = OpenApi::PrimitiveValidator.pattern_error("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
           invalid_properties.push(pattern_error)
         end
+      end
+      unless (_configuration = @configuration).nil?
+      end
+      unless (_date_created = @date_created).nil?
+      end
+      unless (_date_updated = @date_updated).nil?
+      end
+      unless (_description = @description).nil?
+      end
+      unless (_friendly_name = @friendly_name).nil?
       end
       unless (_resource_sid = @resource_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("resource_sid", _resource_sid.to_s.size, MAX_LENGTH_FOR_RESOURCE_SID)
@@ -169,21 +165,24 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_friendly_name = @friendly_name).nil?
+      unless (_sid = @sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
+          invalid_properties.push(pattern_error)
+        end
       end
-      unless (_description = @description).nil?
-      end
-      unless (_configuration = @configuration).nil?
+      unless (_subresource_uris = @subresource_uris).nil?
       end
       unless (_unique_name = @unique_name).nil?
       end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
       unless (_uri = @uri).nil?
-      end
-      unless (_subresource_uris = @subresource_uris).nil?
       end
       invalid_properties
     end
@@ -191,16 +190,25 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_sid = @sid).nil?
-        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
-        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
-        return false if !PATTERN_FOR_SID.matches?(_sid)
-      end
-
       unless (_account_sid = @account_sid).nil?
         return false if _account_sid.to_s.size > MAX_LENGTH_FOR_ACCOUNT_SID
         return false if _account_sid.to_s.size < MIN_LENGTH_FOR_ACCOUNT_SID
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
+      end
+
+      unless (_configuration = @configuration).nil?
+      end
+
+      unless (_date_created = @date_created).nil?
+      end
+
+      unless (_date_updated = @date_updated).nil?
+      end
+
+      unless (_description = @description).nil?
+      end
+
+      unless (_friendly_name = @friendly_name).nil?
       end
 
       unless (_resource_sid = @resource_sid).nil?
@@ -209,44 +217,22 @@ module Twilio
         return false if !PATTERN_FOR_RESOURCE_SID.matches?(_resource_sid)
       end
 
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
-      unless (_description = @description).nil?
-      end
-
-      unless (_configuration = @configuration).nil?
-      end
-
-      unless (_unique_name = @unique_name).nil?
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
-      end
-
-      unless (_uri = @uri).nil?
+      unless (_sid = @sid).nil?
+        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
+        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
+        return false if !PATTERN_FOR_SID.matches?(_sid)
       end
 
       unless (_subresource_uris = @subresource_uris).nil?
       end
 
-      true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+      unless (_unique_name = @unique_name).nil?
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      unless (_uri = @uri).nil?
+      end
+
+      true
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -263,39 +249,6 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] resource_sid Object to be assigned
-    def resource_sid=(resource_sid : String?)
-      if resource_sid.nil?
-        return @resource_sid = nil
-      end
-      _resource_sid = resource_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("resource_sid", _resource_sid.to_s.size, MAX_LENGTH_FOR_RESOURCE_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("resource_sid", _resource_sid.to_s.size, MIN_LENGTH_FOR_RESOURCE_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("resource_sid", _resource_sid, PATTERN_FOR_RESOURCE_SID)
-      @resource_sid = _resource_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] description Object to be assigned
-    def description=(description : String?)
-      if description.nil?
-        return @description = nil
-      end
-      _description = description.not_nil!
-      @description = _description
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] configuration Object to be assigned
     def configuration=(configuration : Hash(String, String)?)
       if configuration.nil?
@@ -303,16 +256,6 @@ module Twilio
       end
       _configuration = configuration.not_nil!
       @configuration = _configuration
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] unique_name Object to be assigned
-    def unique_name=(unique_name : String?)
-      if unique_name.nil?
-        return @unique_name = nil
-      end
-      _unique_name = unique_name.not_nil!
-      @unique_name = _unique_name
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -336,13 +279,49 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] uri Object to be assigned
-    def uri=(uri : String?)
-      if uri.nil?
-        return @uri = nil
+    # @param [Object] description Object to be assigned
+    def description=(description : String?)
+      if description.nil?
+        return @description = nil
       end
-      _uri = uri.not_nil!
-      @uri = _uri
+      _description = description.not_nil!
+      @description = _description
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] friendly_name Object to be assigned
+    def friendly_name=(friendly_name : String?)
+      if friendly_name.nil?
+        return @friendly_name = nil
+      end
+      _friendly_name = friendly_name.not_nil!
+      @friendly_name = _friendly_name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] resource_sid Object to be assigned
+    def resource_sid=(resource_sid : String?)
+      if resource_sid.nil?
+        return @resource_sid = nil
+      end
+      _resource_sid = resource_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("resource_sid", _resource_sid.to_s.size, MAX_LENGTH_FOR_RESOURCE_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("resource_sid", _resource_sid.to_s.size, MIN_LENGTH_FOR_RESOURCE_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("resource_sid", _resource_sid, PATTERN_FOR_RESOURCE_SID)
+      @resource_sid = _resource_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
+    def sid=(sid : String?)
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
+      @sid = _sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -355,10 +334,30 @@ module Twilio
       @subresource_uris = _subresource_uris
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] unique_name Object to be assigned
+    def unique_name=(unique_name : String?)
+      if unique_name.nil?
+        return @unique_name = nil
+      end
+      _unique_name = unique_name.not_nil!
+      @unique_name = _unique_name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uri Object to be assigned
+    def uri=(uri : String?)
+      if uri.nil?
+        return @uri = nil
+      end
+      _uri = uri.not_nil!
+      @uri = _uri
+    end
+
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@sid, @sid_present, @account_sid, @account_sid_present, @resource_sid, @resource_sid_present, @friendly_name, @friendly_name_present, @description, @description_present, @configuration, @configuration_present, @unique_name, @unique_name_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @uri, @uri_present, @subresource_uris, @subresource_uris_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @configuration, @configuration_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @description, @description_present, @friendly_name, @friendly_name_present, @resource_sid, @resource_sid_present, @sid, @sid_present, @subresource_uris, @subresource_uris_present, @unique_name, @unique_name_present, @uri, @uri_present)
   end
 end

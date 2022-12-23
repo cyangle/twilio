@@ -20,9 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    @[JSON::Field(key: "payloads", type: Array(Twilio::RecordingRecordingAddOnResultRecordingAddOnResultPayload)?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter payloads : Array(Twilio::RecordingRecordingAddOnResultRecordingAddOnResultPayload)? = nil
-
     @[JSON::Field(key: "end", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter _end : Int32? = nil
 
@@ -41,6 +38,9 @@ module Twilio
     @[JSON::Field(key: "page_size", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter page_size : Int32? = nil
 
+    @[JSON::Field(key: "payloads", type: Array(Twilio::RecordingRecordingAddOnResultRecordingAddOnResultPayload)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter payloads : Array(Twilio::RecordingRecordingAddOnResultRecordingAddOnResultPayload)? = nil
+
     @[JSON::Field(key: "previous_page_uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: previous_page_uri.nil? && !previous_page_uri_present?)]
     getter previous_page_uri : String? = nil
 
@@ -58,12 +58,12 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @payloads : Array(Twilio::RecordingRecordingAddOnResultRecordingAddOnResultPayload)? = nil,
       @_end : Int32? = nil,
       @first_page_uri : String? = nil,
       @next_page_uri : String? = nil,
       @page : Int32? = nil,
       @page_size : Int32? = nil,
+      @payloads : Array(Twilio::RecordingRecordingAddOnResultRecordingAddOnResultPayload)? = nil,
       @previous_page_uri : String? = nil,
       @start : Int32? = nil,
       @uri : String? = nil
@@ -75,9 +75,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_payloads = @payloads).nil?
-        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "payloads", container: _payloads)) if _payloads.is_a?(Array)
-      end
       unless (__end = @_end).nil?
       end
       unless (_first_page_uri = @first_page_uri).nil?
@@ -87,6 +84,9 @@ module Twilio
       unless (_page = @page).nil?
       end
       unless (_page_size = @page_size).nil?
+      end
+      unless (_payloads = @payloads).nil?
+        invalid_properties.concat(OpenApi::ContainerValidator.list_invalid_properties_for(key: "payloads", container: _payloads)) if _payloads.is_a?(Array)
       end
       unless (_previous_page_uri = @previous_page_uri).nil?
       end
@@ -100,10 +100,6 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_payloads = @payloads).nil?
-        return false if _payloads.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _payloads)
-      end
-
       unless (__end = @_end).nil?
       end
 
@@ -119,6 +115,10 @@ module Twilio
       unless (_page_size = @page_size).nil?
       end
 
+      unless (_payloads = @payloads).nil?
+        return false if _payloads.is_a?(Array) && !OpenApi::ContainerValidator.valid?(container: _payloads)
+      end
+
       unless (_previous_page_uri = @previous_page_uri).nil?
       end
 
@@ -129,17 +129,6 @@ module Twilio
       end
 
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] payloads Object to be assigned
-    def payloads=(payloads : Array(Twilio::RecordingRecordingAddOnResultRecordingAddOnResultPayload)?)
-      if payloads.nil?
-        return @payloads = nil
-      end
-      _payloads = payloads.not_nil!
-      OpenApi::ContainerValidator.validate(container: _payloads) if _payloads.is_a?(Array)
-      @payloads = _payloads
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -193,6 +182,17 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] payloads Object to be assigned
+    def payloads=(payloads : Array(Twilio::RecordingRecordingAddOnResultRecordingAddOnResultPayload)?)
+      if payloads.nil?
+        return @payloads = nil
+      end
+      _payloads = payloads.not_nil!
+      OpenApi::ContainerValidator.validate(container: _payloads) if _payloads.is_a?(Array)
+      @payloads = _payloads
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] previous_page_uri Object to be assigned
     def previous_page_uri=(previous_page_uri : String?)
       if previous_page_uri.nil?
@@ -226,6 +226,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@payloads, @_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @previous_page_uri, @previous_page_uri_present, @start, @uri)
+    def_equals_and_hash(@_end, @first_page_uri, @next_page_uri, @next_page_uri_present, @page, @page_size, @payloads, @previous_page_uri, @previous_page_uri_present, @start, @uri)
   end
 end

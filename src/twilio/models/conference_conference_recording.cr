@@ -47,6 +47,13 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
 
+    # The number of channels in the final recording file as an integer
+    @[JSON::Field(key: "channels", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: channels.nil? && !channels_present?)]
+    getter channels : Int32? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? channels_present : Bool = false
+
     # The Conference SID that identifies the conference associated with the recording
     @[JSON::Field(key: "conference_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: conference_sid.nil? && !conference_sid_present?)]
     getter conference_sid : String? = nil
@@ -71,13 +78,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
-    # The start time of the recording, given in RFC 2822 format
-    @[JSON::Field(key: "start_time", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: start_time.nil? && !start_time_present?, converter: Time::RFC2822Converter)]
-    getter start_time : Time? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? start_time_present : Bool = false
-
     # The length of the recording in seconds
     @[JSON::Field(key: "duration", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: duration.nil? && !duration_present?)]
     getter duration : String? = nil
@@ -85,15 +85,18 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? duration_present : Bool = false
 
-    # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String? = nil
-    MAX_LENGTH_FOR_SID = 34
-    MIN_LENGTH_FOR_SID = 34
-    PATTERN_FOR_SID    = /^RE[0-9a-fA-F]{32}$/
+    @[JSON::Field(key: "encryption_details", type: Twilio::EncryptionDetails?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: encryption_details.nil? && !encryption_details_present?)]
+    getter encryption_details : Twilio::EncryptionDetails? = nil
 
     @[JSON::Field(ignore: true)]
-    property? sid_present : Bool = false
+    property? encryption_details_present : Bool = false
+
+    # More information about why the recording is missing, if status is `absent`.
+    @[JSON::Field(key: "error_code", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: error_code.nil? && !error_code_present?)]
+    getter error_code : Int32? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? error_code_present : Bool = false
 
     # The one-time cost of creating the recording.
     @[JSON::Field(key: "price", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: price.nil? && !price_present?)]
@@ -109,31 +112,28 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? price_unit_present : Bool = false
 
-    @[JSON::Field(key: "status", type: Twilio::ConferenceRecordingEnumStatus?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter status : Twilio::ConferenceRecordingEnumStatus? = nil
-
-    # The number of channels in the final recording file as an integer
-    @[JSON::Field(key: "channels", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: channels.nil? && !channels_present?)]
-    getter channels : Int32? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? channels_present : Bool = false
-
-    @[JSON::Field(key: "source", type: Twilio::ConferenceRecordingEnumSource?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter source : Twilio::ConferenceRecordingEnumSource? = nil
-
-    # More information about why the recording is missing, if status is `absent`.
-    @[JSON::Field(key: "error_code", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: error_code.nil? && !error_code_present?)]
-    getter error_code : Int32? = nil
+    # The unique string that identifies the resource
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
+    MAX_LENGTH_FOR_SID = 34
+    MIN_LENGTH_FOR_SID = 34
+    PATTERN_FOR_SID    = /^RE[0-9a-fA-F]{32}$/
 
     @[JSON::Field(ignore: true)]
-    property? error_code_present : Bool = false
+    property? sid_present : Bool = false
 
-    @[JSON::Field(key: "encryption_details", type: Twilio::EncryptionDetails?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: encryption_details.nil? && !encryption_details_present?)]
-    getter encryption_details : Twilio::EncryptionDetails? = nil
+    @[JSON::Field(key: "source", type: Twilio::RecordingEnumSource?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter source : Twilio::RecordingEnumSource? = nil
+
+    # The start time of the recording, given in RFC 2822 format
+    @[JSON::Field(key: "start_time", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: start_time.nil? && !start_time_present?, converter: Time::RFC2822Converter)]
+    getter start_time : Time? = nil
 
     @[JSON::Field(ignore: true)]
-    property? encryption_details_present : Bool = false
+    property? start_time_present : Bool = false
+
+    @[JSON::Field(key: "status", type: Twilio::CallRecordingEnumStatus?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter status : Twilio::CallRecordingEnumStatus? = nil
 
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
@@ -150,19 +150,19 @@ module Twilio
       @account_sid : String? = nil,
       @api_version : String? = nil,
       @call_sid : String? = nil,
+      @channels : Int32? = nil,
       @conference_sid : String? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
-      @start_time : Time? = nil,
       @duration : String? = nil,
-      @sid : String? = nil,
+      @encryption_details : Twilio::EncryptionDetails? = nil,
+      @error_code : Int32? = nil,
       @price : String? = nil,
       @price_unit : String? = nil,
-      @status : Twilio::ConferenceRecordingEnumStatus? = nil,
-      @channels : Int32? = nil,
-      @source : Twilio::ConferenceRecordingEnumSource? = nil,
-      @error_code : Int32? = nil,
-      @encryption_details : Twilio::EncryptionDetails? = nil,
+      @sid : String? = nil,
+      @source : Twilio::RecordingEnumSource? = nil,
+      @start_time : Time? = nil,
+      @status : Twilio::CallRecordingEnumStatus? = nil,
       @uri : String? = nil
     )
     end
@@ -200,6 +200,8 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
+      unless (_channels = @channels).nil?
+      end
       unless (_conference_sid = @conference_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("conference_sid", _conference_sid.to_s.size, MAX_LENGTH_FOR_CONFERENCE_SID)
           invalid_properties.push(max_length_error)
@@ -217,9 +219,16 @@ module Twilio
       end
       unless (_date_updated = @date_updated).nil?
       end
-      unless (_start_time = @start_time).nil?
-      end
       unless (_duration = @duration).nil?
+      end
+      unless (_encryption_details = @encryption_details).nil?
+        invalid_properties.concat(_encryption_details.list_invalid_properties_for("encryption_details")) if _encryption_details.is_a?(OpenApi::Validatable)
+      end
+      unless (_error_code = @error_code).nil?
+      end
+      unless (_price = @price).nil?
+      end
+      unless (_price_unit = @price_unit).nil?
       end
       unless (_sid = @sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
@@ -234,22 +243,13 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_price = @price).nil?
-      end
-      unless (_price_unit = @price_unit).nil?
-      end
-      unless (_status = @status).nil?
-        invalid_properties.push(_status.error_message) if !_status.valid?
-      end
-      unless (_channels = @channels).nil?
-      end
       unless (_source = @source).nil?
         invalid_properties.push(_source.error_message) if !_source.valid?
       end
-      unless (_error_code = @error_code).nil?
+      unless (_start_time = @start_time).nil?
       end
-      unless (_encryption_details = @encryption_details).nil?
-        invalid_properties.concat(_encryption_details.list_invalid_properties_for("encryption_details")) if _encryption_details.is_a?(OpenApi::Validatable)
+      unless (_status = @status).nil?
+        invalid_properties.push(_status.error_message) if !_status.valid?
       end
       unless (_uri = @uri).nil?
       end
@@ -274,6 +274,9 @@ module Twilio
         return false if !PATTERN_FOR_CALL_SID.matches?(_call_sid)
       end
 
+      unless (_channels = @channels).nil?
+      end
+
       unless (_conference_sid = @conference_sid).nil?
         return false if _conference_sid.to_s.size > MAX_LENGTH_FOR_CONFERENCE_SID
         return false if _conference_sid.to_s.size < MIN_LENGTH_FOR_CONFERENCE_SID
@@ -286,16 +289,14 @@ module Twilio
       unless (_date_updated = @date_updated).nil?
       end
 
-      unless (_start_time = @start_time).nil?
-      end
-
       unless (_duration = @duration).nil?
       end
 
-      unless (_sid = @sid).nil?
-        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
-        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
-        return false if !PATTERN_FOR_SID.matches?(_sid)
+      unless (_encryption_details = @encryption_details).nil?
+        return false if _encryption_details.is_a?(OpenApi::Validatable) && !_encryption_details.valid?
+      end
+
+      unless (_error_code = @error_code).nil?
       end
 
       unless (_price = @price).nil?
@@ -304,22 +305,21 @@ module Twilio
       unless (_price_unit = @price_unit).nil?
       end
 
-      unless (_status = @status).nil?
-        return false if !_status.valid?
-      end
-
-      unless (_channels = @channels).nil?
+      unless (_sid = @sid).nil?
+        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
+        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
+        return false if !PATTERN_FOR_SID.matches?(_sid)
       end
 
       unless (_source = @source).nil?
         return false if !_source.valid?
       end
 
-      unless (_error_code = @error_code).nil?
+      unless (_start_time = @start_time).nil?
       end
 
-      unless (_encryption_details = @encryption_details).nil?
-        return false if _encryption_details.is_a?(OpenApi::Validatable) && !_encryption_details.valid?
+      unless (_status = @status).nil?
+        return false if !_status.valid?
       end
 
       unless (_uri = @uri).nil?
@@ -365,6 +365,16 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] channels Object to be assigned
+    def channels=(channels : Int32?)
+      if channels.nil?
+        return @channels = nil
+      end
+      _channels = channels.not_nil!
+      @channels = _channels
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] conference_sid Object to be assigned
     def conference_sid=(conference_sid : String?)
       if conference_sid.nil?
@@ -398,16 +408,6 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] start_time Object to be assigned
-    def start_time=(start_time : Time?)
-      if start_time.nil?
-        return @start_time = nil
-      end
-      _start_time = start_time.not_nil!
-      @start_time = _start_time
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] duration Object to be assigned
     def duration=(duration : String?)
       if duration.nil?
@@ -418,16 +418,24 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+    # @param [Object] encryption_details Object to be assigned
+    def encryption_details=(encryption_details : Twilio::EncryptionDetails?)
+      if encryption_details.nil?
+        return @encryption_details = nil
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+      _encryption_details = encryption_details.not_nil!
+      _encryption_details.validate if _encryption_details.is_a?(OpenApi::Validatable)
+      @encryption_details = _encryption_details
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] error_code Object to be assigned
+    def error_code=(error_code : Int32?)
+      if error_code.nil?
+        return @error_code = nil
+      end
+      _error_code = error_code.not_nil!
+      @error_code = _error_code
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -451,29 +459,21 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status : Twilio::ConferenceRecordingEnumStatus?)
-      if status.nil?
-        return @status = nil
+    # @param [Object] sid Object to be assigned
+    def sid=(sid : String?)
+      if sid.nil?
+        return @sid = nil
       end
-      _status = status.not_nil!
-      _status.validate
-      @status = _status
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] channels Object to be assigned
-    def channels=(channels : Int32?)
-      if channels.nil?
-        return @channels = nil
-      end
-      _channels = channels.not_nil!
-      @channels = _channels
+      _sid = sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
+      @sid = _sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] source Object to be assigned
-    def source=(source : Twilio::ConferenceRecordingEnumSource?)
+    def source=(source : Twilio::RecordingEnumSource?)
       if source.nil?
         return @source = nil
       end
@@ -483,24 +483,24 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] error_code Object to be assigned
-    def error_code=(error_code : Int32?)
-      if error_code.nil?
-        return @error_code = nil
+    # @param [Object] start_time Object to be assigned
+    def start_time=(start_time : Time?)
+      if start_time.nil?
+        return @start_time = nil
       end
-      _error_code = error_code.not_nil!
-      @error_code = _error_code
+      _start_time = start_time.not_nil!
+      @start_time = _start_time
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] encryption_details Object to be assigned
-    def encryption_details=(encryption_details : Twilio::EncryptionDetails?)
-      if encryption_details.nil?
-        return @encryption_details = nil
+    # @param [Object] status Object to be assigned
+    def status=(status : Twilio::CallRecordingEnumStatus?)
+      if status.nil?
+        return @status = nil
       end
-      _encryption_details = encryption_details.not_nil!
-      _encryption_details.validate if _encryption_details.is_a?(OpenApi::Validatable)
-      @encryption_details = _encryption_details
+      _status = status.not_nil!
+      _status.validate
+      @status = _status
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -517,6 +517,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @account_sid_present, @api_version, @api_version_present, @call_sid, @call_sid_present, @conference_sid, @conference_sid_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @start_time, @start_time_present, @duration, @duration_present, @sid, @sid_present, @price, @price_present, @price_unit, @price_unit_present, @status, @channels, @channels_present, @source, @error_code, @error_code_present, @encryption_details, @encryption_details_present, @uri, @uri_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @api_version, @api_version_present, @call_sid, @call_sid_present, @channels, @channels_present, @conference_sid, @conference_sid_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @duration, @duration_present, @encryption_details, @encryption_details_present, @error_code, @error_code_present, @price, @price_present, @price_unit, @price_unit_present, @sid, @sid_present, @source, @start_time, @start_time_present, @status, @uri, @uri_present)
   end
 end

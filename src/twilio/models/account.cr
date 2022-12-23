@@ -71,7 +71,6 @@ module Twilio
     @[JSON::Field(key: "status", type: Twilio::AccountEnumStatus?, default: nil, required: false, nullable: false, emit_null: false)]
     getter status : Twilio::AccountEnumStatus? = nil
 
-    # Account Instance Subresources
     @[JSON::Field(key: "subresource_uris", type: Hash(String, String)?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: subresource_uris.nil? && !subresource_uris_present?)]
     getter subresource_uris : Hash(String, String)? = nil
 

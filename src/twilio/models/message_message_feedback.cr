@@ -30,19 +30,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
-    # The SID of the Message resource for which the feedback was provided
-    @[JSON::Field(key: "message_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: message_sid.nil? && !message_sid_present?)]
-    getter message_sid : String? = nil
-    MAX_LENGTH_FOR_MESSAGE_SID = 34
-    MIN_LENGTH_FOR_MESSAGE_SID = 34
-    PATTERN_FOR_MESSAGE_SID    = /^(SM|MM)[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? message_sid_present : Bool = false
-
-    @[JSON::Field(key: "outcome", type: Twilio::MessageFeedbackEnumOutcome?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter outcome : Twilio::MessageFeedbackEnumOutcome? = nil
-
     # The RFC 2822 date and time in GMT that the resource was created
     @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
     getter date_created : Time? = nil
@@ -57,6 +44,19 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
+    # The SID of the Message resource for which the feedback was provided
+    @[JSON::Field(key: "message_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: message_sid.nil? && !message_sid_present?)]
+    getter message_sid : String? = nil
+    MAX_LENGTH_FOR_MESSAGE_SID = 34
+    MIN_LENGTH_FOR_MESSAGE_SID = 34
+    PATTERN_FOR_MESSAGE_SID    = /^(SM|MM)[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? message_sid_present : Bool = false
+
+    @[JSON::Field(key: "outcome", type: Twilio::MessageFeedbackEnumOutcome?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter outcome : Twilio::MessageFeedbackEnumOutcome? = nil
+
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     getter uri : String? = nil
@@ -70,10 +70,10 @@ module Twilio
       *,
       # Optional properties
       @account_sid : String? = nil,
-      @message_sid : String? = nil,
-      @outcome : Twilio::MessageFeedbackEnumOutcome? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
+      @message_sid : String? = nil,
+      @outcome : Twilio::MessageFeedbackEnumOutcome? = nil,
       @uri : String? = nil
     )
     end
@@ -96,6 +96,10 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
+      unless (_date_created = @date_created).nil?
+      end
+      unless (_date_updated = @date_updated).nil?
+      end
       unless (_message_sid = @message_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("message_sid", _message_sid.to_s.size, MAX_LENGTH_FOR_MESSAGE_SID)
           invalid_properties.push(max_length_error)
@@ -112,10 +116,6 @@ module Twilio
       unless (_outcome = @outcome).nil?
         invalid_properties.push(_outcome.error_message) if !_outcome.valid?
       end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
       unless (_uri = @uri).nil?
       end
       invalid_properties
@@ -130,6 +130,12 @@ module Twilio
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
+      unless (_date_created = @date_created).nil?
+      end
+
+      unless (_date_updated = @date_updated).nil?
+      end
+
       unless (_message_sid = @message_sid).nil?
         return false if _message_sid.to_s.size > MAX_LENGTH_FOR_MESSAGE_SID
         return false if _message_sid.to_s.size < MIN_LENGTH_FOR_MESSAGE_SID
@@ -138,12 +144,6 @@ module Twilio
 
       unless (_outcome = @outcome).nil?
         return false if !_outcome.valid?
-      end
-
-      unless (_date_created = @date_created).nil?
-      end
-
-      unless (_date_updated = @date_updated).nil?
       end
 
       unless (_uri = @uri).nil?
@@ -163,6 +163,26 @@ module Twilio
       OpenApi::PrimitiveValidator.validate_min_length("account_sid", _account_sid.to_s.size, MIN_LENGTH_FOR_ACCOUNT_SID)
       OpenApi::PrimitiveValidator.validate_pattern("account_sid", _account_sid, PATTERN_FOR_ACCOUNT_SID)
       @account_sid = _account_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_created Object to be assigned
+    def date_created=(date_created : Time?)
+      if date_created.nil?
+        return @date_created = nil
+      end
+      _date_created = date_created.not_nil!
+      @date_created = _date_created
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] date_updated Object to be assigned
+    def date_updated=(date_updated : Time?)
+      if date_updated.nil?
+        return @date_updated = nil
+      end
+      _date_updated = date_updated.not_nil!
+      @date_updated = _date_updated
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -190,26 +210,6 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] date_created Object to be assigned
-    def date_created=(date_created : Time?)
-      if date_created.nil?
-        return @date_created = nil
-      end
-      _date_created = date_created.not_nil!
-      @date_created = _date_created
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] date_updated Object to be assigned
-    def date_updated=(date_updated : Time?)
-      if date_updated.nil?
-        return @date_updated = nil
-      end
-      _date_updated = date_updated.not_nil!
-      @date_updated = _date_updated
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
     def uri=(uri : String?)
       if uri.nil?
@@ -223,6 +223,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @account_sid_present, @message_sid, @message_sid_present, @outcome, @date_created, @date_created_present, @date_updated, @date_updated_present, @uri, @uri_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @message_sid, @message_sid_present, @outcome, @uri, @uri_present)
   end
 end

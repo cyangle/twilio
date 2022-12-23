@@ -20,16 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    # A 34 character string that uniquely identifies this resource.
-    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String? = nil
-    MAX_LENGTH_FOR_SID = 34
-    MIN_LENGTH_FOR_SID = 34
-    PATTERN_FOR_SID    = /^CR[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? sid_present : Bool = false
-
     # The unique id of the Account that is responsible for this resource.
     @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String? = nil
@@ -50,13 +40,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? credential_list_sid_present : Bool = false
 
-    # The username for this credential.
-    @[JSON::Field(key: "username", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: username.nil? && !username_present?)]
-    getter username : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? username_present : Bool = false
-
     # The date that this resource was created, given as GMT in RFC 2822 format.
     @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
     getter date_created : Time? = nil
@@ -71,6 +54,16 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
+    # A 34 character string that uniquely identifies this resource.
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
+    MAX_LENGTH_FOR_SID = 34
+    MIN_LENGTH_FOR_SID = 34
+    PATTERN_FOR_SID    = /^CR[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? sid_present : Bool = false
+
     # The URI for this resource, relative to https://api.twilio.com
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     getter uri : String? = nil
@@ -78,18 +71,25 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
+    # The username for this credential.
+    @[JSON::Field(key: "username", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: username.nil? && !username_present?)]
+    getter username : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? username_present : Bool = false
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
       *,
       # Optional properties
-      @sid : String? = nil,
       @account_sid : String? = nil,
       @credential_list_sid : String? = nil,
-      @username : String? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
-      @uri : String? = nil
+      @sid : String? = nil,
+      @uri : String? = nil,
+      @username : String? = nil
     )
     end
 
@@ -98,19 +98,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_sid = @sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
       unless (_account_sid = @account_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
           invalid_properties.push(max_length_error)
@@ -137,13 +124,26 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_username = @username).nil?
-      end
       unless (_date_created = @date_created).nil?
       end
       unless (_date_updated = @date_updated).nil?
       end
+      unless (_sid = @sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
       unless (_uri = @uri).nil?
+      end
+      unless (_username = @username).nil?
       end
       invalid_properties
     end
@@ -151,12 +151,6 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_sid = @sid).nil?
-        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
-        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
-        return false if !PATTERN_FOR_SID.matches?(_sid)
-      end
-
       unless (_account_sid = @account_sid).nil?
         return false if _account_sid.to_s.size > MAX_LENGTH_FOR_ACCOUNT_SID
         return false if _account_sid.to_s.size < MIN_LENGTH_FOR_ACCOUNT_SID
@@ -169,32 +163,25 @@ module Twilio
         return false if !PATTERN_FOR_CREDENTIAL_LIST_SID.matches?(_credential_list_sid)
       end
 
-      unless (_username = @username).nil?
-      end
-
       unless (_date_created = @date_created).nil?
       end
 
       unless (_date_updated = @date_updated).nil?
       end
 
+      unless (_sid = @sid).nil?
+        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
+        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
+        return false if !PATTERN_FOR_SID.matches?(_sid)
+      end
+
       unless (_uri = @uri).nil?
       end
 
-      true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+      unless (_username = @username).nil?
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      true
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -224,16 +211,6 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] username Object to be assigned
-    def username=(username : String?)
-      if username.nil?
-        return @username = nil
-      end
-      _username = username.not_nil!
-      @username = _username
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] date_created Object to be assigned
     def date_created=(date_created : Time?)
       if date_created.nil?
@@ -254,6 +231,19 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
+    def sid=(sid : String?)
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
+      @sid = _sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
     def uri=(uri : String?)
       if uri.nil?
@@ -263,10 +253,20 @@ module Twilio
       @uri = _uri
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] username Object to be assigned
+    def username=(username : String?)
+      if username.nil?
+        return @username = nil
+      end
+      _username = username.not_nil!
+      @username = _username
+    end
+
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@sid, @sid_present, @account_sid, @account_sid_present, @credential_list_sid, @credential_list_sid_present, @username, @username_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @uri, @uri_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @credential_list_sid, @credential_list_sid_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @sid, @sid_present, @uri, @uri_present, @username, @username_present)
   end
 end

@@ -20,8 +20,8 @@ module Twilio
 
     # Optional Properties
 
-    @[JSON::Field(key: "available_phone_numbers", type: Array(Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberMachineToMachine)?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter available_phone_numbers : Array(Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberMachineToMachine)? = nil
+    @[JSON::Field(key: "available_phone_numbers", type: Array(Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberVoip)?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter available_phone_numbers : Array(Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberVoip)? = nil
 
     @[JSON::Field(key: "end", type: Int32?, default: nil, required: false, nullable: false, emit_null: false)]
     getter _end : Int32? = nil
@@ -58,7 +58,7 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @available_phone_numbers : Array(Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberMachineToMachine)? = nil,
+      @available_phone_numbers : Array(Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberVoip)? = nil,
       @_end : Int32? = nil,
       @first_page_uri : String? = nil,
       @next_page_uri : String? = nil,
@@ -133,7 +133,7 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] available_phone_numbers Object to be assigned
-    def available_phone_numbers=(available_phone_numbers : Array(Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberMachineToMachine)?)
+    def available_phone_numbers=(available_phone_numbers : Array(Twilio::AvailablePhoneNumberCountryAvailablePhoneNumberVoip)?)
       if available_phone_numbers.nil?
         return @available_phone_numbers = nil
       end

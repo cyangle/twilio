@@ -12,7 +12,6 @@ require "time"
 require "log"
 
 module Twilio
-  # Call recording encryption details
   class EncryptionDetails
     include JSON::Serializable
     include JSON::Serializable::Unmapped

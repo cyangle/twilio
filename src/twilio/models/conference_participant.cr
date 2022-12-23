@@ -40,13 +40,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? call_sid_present : Bool = false
 
-    # The label of this participant
-    @[JSON::Field(key: "label", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: label.nil? && !label_present?)]
-    getter label : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? label_present : Bool = false
-
     # The SID of the participant who is being `coached`
     @[JSON::Field(key: "call_sid_to_coach", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: call_sid_to_coach.nil? && !call_sid_to_coach_present?)]
     getter call_sid_to_coach : String? = nil
@@ -95,19 +88,26 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? end_conference_on_exit_present : Bool = false
 
-    # Whether the participant is muted
-    @[JSON::Field(key: "muted", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: muted.nil? && !muted_present?)]
-    getter muted : Bool? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? muted_present : Bool = false
-
     # Whether the participant is on hold
     @[JSON::Field(key: "hold", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: hold.nil? && !hold_present?)]
     getter hold : Bool? = nil
 
     @[JSON::Field(ignore: true)]
     property? hold_present : Bool = false
+
+    # The label of this participant
+    @[JSON::Field(key: "label", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: label.nil? && !label_present?)]
+    getter label : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? label_present : Bool = false
+
+    # Whether the participant is muted
+    @[JSON::Field(key: "muted", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: muted.nil? && !muted_present?)]
+    getter muted : Bool? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? muted_present : Bool = false
 
     # Whether the conference starts when the participant joins the conference
     @[JSON::Field(key: "start_conference_on_enter", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: start_conference_on_enter.nil? && !start_conference_on_enter_present?)]
@@ -133,15 +133,15 @@ module Twilio
       # Optional properties
       @account_sid : String? = nil,
       @call_sid : String? = nil,
-      @label : String? = nil,
       @call_sid_to_coach : String? = nil,
       @coaching : Bool? = nil,
       @conference_sid : String? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
       @end_conference_on_exit : Bool? = nil,
-      @muted : Bool? = nil,
       @hold : Bool? = nil,
+      @label : String? = nil,
+      @muted : Bool? = nil,
       @start_conference_on_enter : Bool? = nil,
       @status : Twilio::ParticipantEnumStatus? = nil,
       @uri : String? = nil
@@ -179,8 +179,6 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_label = @label).nil?
-      end
       unless (_call_sid_to_coach = @call_sid_to_coach).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("call_sid_to_coach", _call_sid_to_coach.to_s.size, MAX_LENGTH_FOR_CALL_SID_TO_COACH)
           invalid_properties.push(max_length_error)
@@ -215,9 +213,11 @@ module Twilio
       end
       unless (_end_conference_on_exit = @end_conference_on_exit).nil?
       end
-      unless (_muted = @muted).nil?
-      end
       unless (_hold = @hold).nil?
+      end
+      unless (_label = @label).nil?
+      end
+      unless (_muted = @muted).nil?
       end
       unless (_start_conference_on_enter = @start_conference_on_enter).nil?
       end
@@ -244,9 +244,6 @@ module Twilio
         return false if !PATTERN_FOR_CALL_SID.matches?(_call_sid)
       end
 
-      unless (_label = @label).nil?
-      end
-
       unless (_call_sid_to_coach = @call_sid_to_coach).nil?
         return false if _call_sid_to_coach.to_s.size > MAX_LENGTH_FOR_CALL_SID_TO_COACH
         return false if _call_sid_to_coach.to_s.size < MIN_LENGTH_FOR_CALL_SID_TO_COACH
@@ -271,10 +268,13 @@ module Twilio
       unless (_end_conference_on_exit = @end_conference_on_exit).nil?
       end
 
-      unless (_muted = @muted).nil?
+      unless (_hold = @hold).nil?
       end
 
-      unless (_hold = @hold).nil?
+      unless (_label = @label).nil?
+      end
+
+      unless (_muted = @muted).nil?
       end
 
       unless (_start_conference_on_enter = @start_conference_on_enter).nil?
@@ -314,16 +314,6 @@ module Twilio
       OpenApi::PrimitiveValidator.validate_min_length("call_sid", _call_sid.to_s.size, MIN_LENGTH_FOR_CALL_SID)
       OpenApi::PrimitiveValidator.validate_pattern("call_sid", _call_sid, PATTERN_FOR_CALL_SID)
       @call_sid = _call_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] label Object to be assigned
-    def label=(label : String?)
-      if label.nil?
-        return @label = nil
-      end
-      _label = label.not_nil!
-      @label = _label
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -393,16 +383,6 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] muted Object to be assigned
-    def muted=(muted : Bool?)
-      if muted.nil?
-        return @muted = nil
-      end
-      _muted = muted.not_nil!
-      @muted = _muted
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] hold Object to be assigned
     def hold=(hold : Bool?)
       if hold.nil?
@@ -410,6 +390,26 @@ module Twilio
       end
       _hold = hold.not_nil!
       @hold = _hold
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] label Object to be assigned
+    def label=(label : String?)
+      if label.nil?
+        return @label = nil
+      end
+      _label = label.not_nil!
+      @label = _label
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] muted Object to be assigned
+    def muted=(muted : Bool?)
+      if muted.nil?
+        return @muted = nil
+      end
+      _muted = muted.not_nil!
+      @muted = _muted
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -447,6 +447,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @account_sid_present, @call_sid, @call_sid_present, @label, @label_present, @call_sid_to_coach, @call_sid_to_coach_present, @coaching, @coaching_present, @conference_sid, @conference_sid_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @end_conference_on_exit, @end_conference_on_exit_present, @muted, @muted_present, @hold, @hold_present, @start_conference_on_enter, @start_conference_on_enter_present, @status, @uri, @uri_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @call_sid, @call_sid_present, @call_sid_to_coach, @call_sid_to_coach_present, @coaching, @coaching_present, @conference_sid, @conference_sid_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @end_conference_on_exit, @end_conference_on_exit_present, @hold, @hold_present, @label, @label_present, @muted, @muted_present, @start_conference_on_enter, @start_conference_on_enter_present, @status, @uri, @uri_present)
   end
 end

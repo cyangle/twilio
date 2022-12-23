@@ -23,14 +23,14 @@ module Twilio
     @[JSON::Field(key: "credential", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
     getter credential : String? = nil
 
-    @[JSON::Field(key: "username", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter username : String? = nil
-
     @[JSON::Field(key: "url", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
     getter url : String? = nil
 
     @[JSON::Field(key: "urls", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
     getter urls : String? = nil
+
+    @[JSON::Field(key: "username", type: String?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter username : String? = nil
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
@@ -38,9 +38,9 @@ module Twilio
       *,
       # Optional properties
       @credential : String? = nil,
-      @username : String? = nil,
       @url : String? = nil,
-      @urls : String? = nil
+      @urls : String? = nil,
+      @username : String? = nil
     )
     end
 
@@ -51,11 +51,11 @@ module Twilio
 
       unless (_credential = @credential).nil?
       end
-      unless (_username = @username).nil?
-      end
       unless (_url = @url).nil?
       end
       unless (_urls = @urls).nil?
+      end
+      unless (_username = @username).nil?
       end
       invalid_properties
     end
@@ -66,13 +66,13 @@ module Twilio
       unless (_credential = @credential).nil?
       end
 
-      unless (_username = @username).nil?
-      end
-
       unless (_url = @url).nil?
       end
 
       unless (_urls = @urls).nil?
+      end
+
+      unless (_username = @username).nil?
       end
 
       true
@@ -86,16 +86,6 @@ module Twilio
       end
       _credential = credential.not_nil!
       @credential = _credential
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] username Object to be assigned
-    def username=(username : String?)
-      if username.nil?
-        return @username = nil
-      end
-      _username = username.not_nil!
-      @username = _username
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -118,10 +108,20 @@ module Twilio
       @urls = _urls
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] username Object to be assigned
+    def username=(username : String?)
+      if username.nil?
+        return @username = nil
+      end
+      _username = username.not_nil!
+      @username = _username
+    end
+
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@credential, @username, @url, @urls)
+    def_equals_and_hash(@credential, @url, @urls, @username)
   end
 end

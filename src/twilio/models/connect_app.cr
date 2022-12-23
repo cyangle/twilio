@@ -44,11 +44,8 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? company_name_present : Bool = false
 
-    # The HTTP method we use to call deauthorize_callback_url
-    @[JSON::Field(key: "deauthorize_callback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: deauthorize_callback_method.nil? && !deauthorize_callback_method_present?)]
-    getter deauthorize_callback_method : String? = nil
-    ERROR_MESSAGE_FOR_DEAUTHORIZE_CALLBACK_METHOD = "invalid value for \"deauthorize_callback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_DEAUTHORIZE_CALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    @[JSON::Field(key: "deauthorize_callback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: deauthorize_callback_method.nil? && !deauthorize_callback_method_present?)]
+    getter deauthorize_callback_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
     property? deauthorize_callback_method_present : Bool = false
@@ -113,7 +110,7 @@ module Twilio
       @account_sid : String? = nil,
       @authorize_redirect_url : String? = nil,
       @company_name : String? = nil,
-      @deauthorize_callback_method : String? = nil,
+      @deauthorize_callback_method : Twilio::HttpMethod? = nil,
       @deauthorize_callback_url : String? = nil,
       @description : String? = nil,
       @friendly_name : String? = nil,
@@ -147,7 +144,7 @@ module Twilio
       unless (_company_name = @company_name).nil?
       end
       unless (_deauthorize_callback_method = @deauthorize_callback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_DEAUTHORIZE_CALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_deauthorize_callback_method, VALID_VALUES_FOR_DEAUTHORIZE_CALLBACK_METHOD)
+        invalid_properties.push(_deauthorize_callback_method.error_message) if !_deauthorize_callback_method.valid?
       end
       unless (_deauthorize_callback_url = @deauthorize_callback_url).nil?
       end
@@ -193,7 +190,7 @@ module Twilio
       end
 
       unless (_deauthorize_callback_method = @deauthorize_callback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_deauthorize_callback_method, VALID_VALUES_FOR_DEAUTHORIZE_CALLBACK_METHOD)
+        return false if !_deauthorize_callback_method.valid?
       end
 
       unless (_deauthorize_callback_url = @deauthorize_callback_url).nil?
@@ -258,12 +255,12 @@ module Twilio
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] deauthorize_callback_method Object to be assigned
-    def deauthorize_callback_method=(deauthorize_callback_method : String?)
+    def deauthorize_callback_method=(deauthorize_callback_method : Twilio::HttpMethod?)
       if deauthorize_callback_method.nil?
         return @deauthorize_callback_method = nil
       end
       _deauthorize_callback_method = deauthorize_callback_method.not_nil!
-      OpenApi::EnumValidator.validate("deauthorize_callback_method", _deauthorize_callback_method, VALID_VALUES_FOR_DEAUTHORIZE_CALLBACK_METHOD)
+      _deauthorize_callback_method.validate
       @deauthorize_callback_method = _deauthorize_callback_method
     end
 

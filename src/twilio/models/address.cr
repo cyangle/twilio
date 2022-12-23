@@ -58,6 +58,13 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
+    # Whether emergency calling has been enabled on this number
+    @[JSON::Field(key: "emergency_enabled", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_enabled.nil? && !emergency_enabled_present?)]
+    getter emergency_enabled : Bool? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? emergency_enabled_present : Bool = false
+
     # The string that you assigned to describe the resource
     @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
     getter friendly_name : String? = nil
@@ -103,19 +110,19 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? street_present : Bool = false
 
+    # The additional number and street address of the address
+    @[JSON::Field(key: "street_secondary", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: street_secondary.nil? && !street_secondary_present?)]
+    getter street_secondary : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? street_secondary_present : Bool = false
+
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     getter uri : String? = nil
 
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
-
-    # Whether emergency calling has been enabled on this number
-    @[JSON::Field(key: "emergency_enabled", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_enabled.nil? && !emergency_enabled_present?)]
-    getter emergency_enabled : Bool? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? emergency_enabled_present : Bool = false
 
     # Whether the address has been validated to comply with local regulation
     @[JSON::Field(key: "validated", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: validated.nil? && !validated_present?)]
@@ -131,13 +138,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? verified_present : Bool = false
 
-    # The additional number and street address of the address
-    @[JSON::Field(key: "street_secondary", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: street_secondary.nil? && !street_secondary_present?)]
-    getter street_secondary : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? street_secondary_present : Bool = false
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
@@ -148,17 +148,17 @@ module Twilio
       @customer_name : String? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
+      @emergency_enabled : Bool? = nil,
       @friendly_name : String? = nil,
       @iso_country : String? = nil,
       @postal_code : String? = nil,
       @region : String? = nil,
       @sid : String? = nil,
       @street : String? = nil,
+      @street_secondary : String? = nil,
       @uri : String? = nil,
-      @emergency_enabled : Bool? = nil,
       @validated : Bool? = nil,
-      @verified : Bool? = nil,
-      @street_secondary : String? = nil
+      @verified : Bool? = nil
     )
     end
 
@@ -188,6 +188,8 @@ module Twilio
       end
       unless (_date_updated = @date_updated).nil?
       end
+      unless (_emergency_enabled = @emergency_enabled).nil?
+      end
       unless (_friendly_name = @friendly_name).nil?
       end
       unless (_iso_country = @iso_country).nil?
@@ -211,15 +213,13 @@ module Twilio
       end
       unless (_street = @street).nil?
       end
-      unless (_uri = @uri).nil?
+      unless (_street_secondary = @street_secondary).nil?
       end
-      unless (_emergency_enabled = @emergency_enabled).nil?
+      unless (_uri = @uri).nil?
       end
       unless (_validated = @validated).nil?
       end
       unless (_verified = @verified).nil?
-      end
-      unless (_street_secondary = @street_secondary).nil?
       end
       invalid_properties
     end
@@ -245,6 +245,9 @@ module Twilio
       unless (_date_updated = @date_updated).nil?
       end
 
+      unless (_emergency_enabled = @emergency_enabled).nil?
+      end
+
       unless (_friendly_name = @friendly_name).nil?
       end
 
@@ -266,19 +269,16 @@ module Twilio
       unless (_street = @street).nil?
       end
 
-      unless (_uri = @uri).nil?
+      unless (_street_secondary = @street_secondary).nil?
       end
 
-      unless (_emergency_enabled = @emergency_enabled).nil?
+      unless (_uri = @uri).nil?
       end
 
       unless (_validated = @validated).nil?
       end
 
       unless (_verified = @verified).nil?
-      end
-
-      unless (_street_secondary = @street_secondary).nil?
       end
 
       true
@@ -335,6 +335,16 @@ module Twilio
       end
       _date_updated = date_updated.not_nil!
       @date_updated = _date_updated
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] emergency_enabled Object to be assigned
+    def emergency_enabled=(emergency_enabled : Bool?)
+      if emergency_enabled.nil?
+        return @emergency_enabled = nil
+      end
+      _emergency_enabled = emergency_enabled.not_nil!
+      @emergency_enabled = _emergency_enabled
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -401,6 +411,16 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] street_secondary Object to be assigned
+    def street_secondary=(street_secondary : String?)
+      if street_secondary.nil?
+        return @street_secondary = nil
+      end
+      _street_secondary = street_secondary.not_nil!
+      @street_secondary = _street_secondary
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
     def uri=(uri : String?)
       if uri.nil?
@@ -408,16 +428,6 @@ module Twilio
       end
       _uri = uri.not_nil!
       @uri = _uri
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] emergency_enabled Object to be assigned
-    def emergency_enabled=(emergency_enabled : Bool?)
-      if emergency_enabled.nil?
-        return @emergency_enabled = nil
-      end
-      _emergency_enabled = emergency_enabled.not_nil!
-      @emergency_enabled = _emergency_enabled
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -440,20 +450,10 @@ module Twilio
       @verified = _verified
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] street_secondary Object to be assigned
-    def street_secondary=(street_secondary : String?)
-      if street_secondary.nil?
-        return @street_secondary = nil
-      end
-      _street_secondary = street_secondary.not_nil!
-      @street_secondary = _street_secondary
-    end
-
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@account_sid, @account_sid_present, @city, @city_present, @customer_name, @customer_name_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @friendly_name, @friendly_name_present, @iso_country, @iso_country_present, @postal_code, @postal_code_present, @region, @region_present, @sid, @sid_present, @street, @street_present, @uri, @uri_present, @emergency_enabled, @emergency_enabled_present, @validated, @validated_present, @verified, @verified_present, @street_secondary, @street_secondary_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @city, @city_present, @customer_name, @customer_name_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @emergency_enabled, @emergency_enabled_present, @friendly_name, @friendly_name_present, @iso_country, @iso_country_present, @postal_code, @postal_code_present, @region, @region_present, @sid, @sid_present, @street, @street_present, @street_secondary, @street_secondary_present, @uri, @uri_present, @validated, @validated_present, @verified, @verified_present)
   end
 end

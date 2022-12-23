@@ -20,16 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    # The unique string that identifies the resource
-    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String? = nil
-    MAX_LENGTH_FOR_SID = 34
-    MIN_LENGTH_FOR_SID = 34
-    PATTERN_FOR_SID    = /^PN[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? sid_present : Bool = false
-
     # The SID of the Account that created the resource
     @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String? = nil
@@ -40,58 +30,21 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
-    # The string that you assigned to describe the resource
-    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
-    getter friendly_name : String? = nil
+    @[JSON::Field(key: "address_requirements", type: Twilio::IncomingPhoneNumberEnumAddressRequirement?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter address_requirements : Twilio::IncomingPhoneNumberEnumAddressRequirement? = nil
+
+    # The API version used to start a new TwiML session
+    @[JSON::Field(key: "api_version", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
+    getter api_version : String? = nil
 
     @[JSON::Field(ignore: true)]
-    property? friendly_name_present : Bool = false
+    property? api_version_present : Bool = false
 
-    # The phone number in E.164 format
-    @[JSON::Field(key: "phone_number", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?)]
-    getter phone_number : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? phone_number_present : Bool = false
-
-    # The URL we call when the phone number receives a call
-    @[JSON::Field(key: "voice_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?)]
-    getter voice_url : String? = nil
+    @[JSON::Field(key: "capabilities", type: Twilio::AddressDependentPhoneNumberCapabilities?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: capabilities.nil? && !capabilities_present?)]
+    getter capabilities : Twilio::AddressDependentPhoneNumberCapabilities? = nil
 
     @[JSON::Field(ignore: true)]
-    property? voice_url_present : Bool = false
-
-    # The HTTP method used with the voice_url
-    @[JSON::Field(key: "voice_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
-    getter voice_method : String? = nil
-    ERROR_MESSAGE_FOR_VOICE_METHOD = "invalid value for \"voice_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_VOICE_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
-
-    @[JSON::Field(ignore: true)]
-    property? voice_method_present : Bool = false
-
-    # The HTTP method used with voice_fallback_url
-    @[JSON::Field(key: "voice_fallback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
-    getter voice_fallback_method : String? = nil
-    ERROR_MESSAGE_FOR_VOICE_FALLBACK_METHOD = "invalid value for \"voice_fallback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_VOICE_FALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
-
-    @[JSON::Field(ignore: true)]
-    property? voice_fallback_method_present : Bool = false
-
-    # The URL we call when an error occurs in TwiML
-    @[JSON::Field(key: "voice_fallback_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?)]
-    getter voice_fallback_url : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? voice_fallback_url_present : Bool = false
-
-    # Whether to lookup the caller's name
-    @[JSON::Field(key: "voice_caller_id_lookup", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_caller_id_lookup.nil? && !voice_caller_id_lookup_present?)]
-    getter voice_caller_id_lookup : Bool? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? voice_caller_id_lookup_present : Bool = false
+    property? capabilities_present : Bool = false
 
     # The RFC 2822 date and time in GMT that the resource was created
     @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
@@ -107,69 +60,42 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
-    # The HTTP method used with sms_fallback_url
-    @[JSON::Field(key: "sms_fallback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
-    getter sms_fallback_method : String? = nil
-    ERROR_MESSAGE_FOR_SMS_FALLBACK_METHOD = "invalid value for \"sms_fallback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_SMS_FALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    # The emergency address configuration to use for emergency calling
+    @[JSON::Field(key: "emergency_address_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_address_sid.nil? && !emergency_address_sid_present?)]
+    getter emergency_address_sid : String? = nil
+    MAX_LENGTH_FOR_EMERGENCY_ADDRESS_SID = 34
+    MIN_LENGTH_FOR_EMERGENCY_ADDRESS_SID = 34
+    PATTERN_FOR_EMERGENCY_ADDRESS_SID    = /^AD[0-9a-fA-F]{32}$/
 
     @[JSON::Field(ignore: true)]
-    property? sms_fallback_method_present : Bool = false
+    property? emergency_address_sid_present : Bool = false
 
-    # The URL that we call when an error occurs while retrieving or executing the TwiML
-    @[JSON::Field(key: "sms_fallback_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_url.nil? && !sms_fallback_url_present?)]
-    getter sms_fallback_url : String? = nil
+    @[JSON::Field(key: "emergency_status", type: Twilio::IncomingPhoneNumberEnumEmergencyStatus?, default: nil, required: false, nullable: false, emit_null: false)]
+    getter emergency_status : Twilio::IncomingPhoneNumberEnumEmergencyStatus? = nil
 
-    @[JSON::Field(ignore: true)]
-    property? sms_fallback_url_present : Bool = false
-
-    # The HTTP method to use with sms_url
-    @[JSON::Field(key: "sms_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
-    getter sms_method : String? = nil
-    ERROR_MESSAGE_FOR_SMS_METHOD = "invalid value for \"sms_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_SMS_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    # The string that you assigned to describe the resource
+    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
+    getter friendly_name : String? = nil
 
     @[JSON::Field(ignore: true)]
-    property? sms_method_present : Bool = false
+    property? friendly_name_present : Bool = false
 
-    # The URL we call when the phone number receives an incoming SMS message
-    @[JSON::Field(key: "sms_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_url.nil? && !sms_url_present?)]
-    getter sms_url : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? sms_url_present : Bool = false
-
-    @[JSON::Field(key: "address_requirements", type: Twilio::DependentPhoneNumberEnumAddressRequirement?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter address_requirements : Twilio::DependentPhoneNumberEnumAddressRequirement? = nil
-
-    @[JSON::Field(key: "capabilities", type: Twilio::AddressDependentPhoneNumberCapabilities?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: capabilities.nil? && !capabilities_present?)]
-    getter capabilities : Twilio::AddressDependentPhoneNumberCapabilities? = nil
+    # The phone number in E.164 format
+    @[JSON::Field(key: "phone_number", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: phone_number.nil? && !phone_number_present?)]
+    getter phone_number : String? = nil
 
     @[JSON::Field(ignore: true)]
-    property? capabilities_present : Bool = false
+    property? phone_number_present : Bool = false
 
-    # The URL to send status information to your application
-    @[JSON::Field(key: "status_callback", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status_callback.nil? && !status_callback_present?)]
-    getter status_callback : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? status_callback_present : Bool = false
-
-    # The HTTP method we use to call status_callback
-    @[JSON::Field(key: "status_callback_method", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?)]
-    getter status_callback_method : String? = nil
-    ERROR_MESSAGE_FOR_STATUS_CALLBACK_METHOD = "invalid value for \"status_callback_method\", must be one of [HEAD, GET, POST, PATCH, PUT, DELETE]."
-    VALID_VALUES_FOR_STATUS_CALLBACK_METHOD  = String.static_array("HEAD", "GET", "POST", "PATCH", "PUT", "DELETE")
+    # The unique string that identifies the resource
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
+    MAX_LENGTH_FOR_SID = 34
+    MIN_LENGTH_FOR_SID = 34
+    PATTERN_FOR_SID    = /^PN[0-9a-fA-F]{32}$/
 
     @[JSON::Field(ignore: true)]
-    property? status_callback_method_present : Bool = false
-
-    # The API version used to start a new TwiML session
-    @[JSON::Field(key: "api_version", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: api_version.nil? && !api_version_present?)]
-    getter api_version : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? api_version_present : Bool = false
+    property? sid_present : Bool = false
 
     # The SID of the application that handles SMS messages sent to the phone number
     @[JSON::Field(key: "sms_application_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_application_sid.nil? && !sms_application_sid_present?)]
@@ -181,15 +107,44 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? sms_application_sid_present : Bool = false
 
-    # The SID of the application that handles calls to the phone number
-    @[JSON::Field(key: "voice_application_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_application_sid.nil? && !voice_application_sid_present?)]
-    getter voice_application_sid : String? = nil
-    MAX_LENGTH_FOR_VOICE_APPLICATION_SID = 34
-    MIN_LENGTH_FOR_VOICE_APPLICATION_SID = 34
-    PATTERN_FOR_VOICE_APPLICATION_SID    = /^AP[0-9a-fA-F]{32}$/
+    @[JSON::Field(key: "sms_fallback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_method.nil? && !sms_fallback_method_present?)]
+    getter sms_fallback_method : Twilio::HttpMethod? = nil
 
     @[JSON::Field(ignore: true)]
-    property? voice_application_sid_present : Bool = false
+    property? sms_fallback_method_present : Bool = false
+
+    # The URL that we call when an error occurs while retrieving or executing the TwiML
+    @[JSON::Field(key: "sms_fallback_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_fallback_url.nil? && !sms_fallback_url_present?)]
+    getter sms_fallback_url : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? sms_fallback_url_present : Bool = false
+
+    @[JSON::Field(key: "sms_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_method.nil? && !sms_method_present?)]
+    getter sms_method : Twilio::HttpMethod? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? sms_method_present : Bool = false
+
+    # The URL we call when the phone number receives an incoming SMS message
+    @[JSON::Field(key: "sms_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sms_url.nil? && !sms_url_present?)]
+    getter sms_url : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? sms_url_present : Bool = false
+
+    # The URL to send status information to your application
+    @[JSON::Field(key: "status_callback", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status_callback.nil? && !status_callback_present?)]
+    getter status_callback : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? status_callback_present : Bool = false
+
+    @[JSON::Field(key: "status_callback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: status_callback_method.nil? && !status_callback_method_present?)]
+    getter status_callback_method : Twilio::HttpMethod? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? status_callback_method_present : Bool = false
 
     # The SID of the Trunk that handles calls to the phone number
     @[JSON::Field(key: "trunk_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: trunk_sid.nil? && !trunk_sid_present?)]
@@ -201,19 +156,6 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? trunk_sid_present : Bool = false
 
-    @[JSON::Field(key: "emergency_status", type: Twilio::DependentPhoneNumberEnumEmergencyStatus?, default: nil, required: false, nullable: false, emit_null: false)]
-    getter emergency_status : Twilio::DependentPhoneNumberEnumEmergencyStatus? = nil
-
-    # The emergency address configuration to use for emergency calling
-    @[JSON::Field(key: "emergency_address_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: emergency_address_sid.nil? && !emergency_address_sid_present?)]
-    getter emergency_address_sid : String? = nil
-    MAX_LENGTH_FOR_EMERGENCY_ADDRESS_SID = 34
-    MIN_LENGTH_FOR_EMERGENCY_ADDRESS_SID = 34
-    PATTERN_FOR_EMERGENCY_ADDRESS_SID    = /^AD[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? emergency_address_sid_present : Bool = false
-
     # The URI of the resource, relative to `https://api.twilio.com`
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     getter uri : String? = nil
@@ -221,37 +163,80 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? uri_present : Bool = false
 
+    # The SID of the application that handles calls to the phone number
+    @[JSON::Field(key: "voice_application_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_application_sid.nil? && !voice_application_sid_present?)]
+    getter voice_application_sid : String? = nil
+    MAX_LENGTH_FOR_VOICE_APPLICATION_SID = 34
+    MIN_LENGTH_FOR_VOICE_APPLICATION_SID = 34
+    PATTERN_FOR_VOICE_APPLICATION_SID    = /^AP[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? voice_application_sid_present : Bool = false
+
+    # Whether to lookup the caller's name
+    @[JSON::Field(key: "voice_caller_id_lookup", type: Bool?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_caller_id_lookup.nil? && !voice_caller_id_lookup_present?)]
+    getter voice_caller_id_lookup : Bool? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? voice_caller_id_lookup_present : Bool = false
+
+    @[JSON::Field(key: "voice_fallback_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_method.nil? && !voice_fallback_method_present?)]
+    getter voice_fallback_method : Twilio::HttpMethod? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? voice_fallback_method_present : Bool = false
+
+    # The URL we call when an error occurs in TwiML
+    @[JSON::Field(key: "voice_fallback_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_fallback_url.nil? && !voice_fallback_url_present?)]
+    getter voice_fallback_url : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? voice_fallback_url_present : Bool = false
+
+    @[JSON::Field(key: "voice_method", type: Twilio::HttpMethod?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_method.nil? && !voice_method_present?)]
+    getter voice_method : Twilio::HttpMethod? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? voice_method_present : Bool = false
+
+    # The URL we call when the phone number receives a call
+    @[JSON::Field(key: "voice_url", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: voice_url.nil? && !voice_url_present?)]
+    getter voice_url : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? voice_url_present : Bool = false
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(
       *,
       # Optional properties
-      @sid : String? = nil,
       @account_sid : String? = nil,
-      @friendly_name : String? = nil,
-      @phone_number : String? = nil,
-      @voice_url : String? = nil,
-      @voice_method : String? = nil,
-      @voice_fallback_method : String? = nil,
-      @voice_fallback_url : String? = nil,
-      @voice_caller_id_lookup : Bool? = nil,
+      @address_requirements : Twilio::IncomingPhoneNumberEnumAddressRequirement? = nil,
+      @api_version : String? = nil,
+      @capabilities : Twilio::AddressDependentPhoneNumberCapabilities? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
-      @sms_fallback_method : String? = nil,
-      @sms_fallback_url : String? = nil,
-      @sms_method : String? = nil,
-      @sms_url : String? = nil,
-      @address_requirements : Twilio::DependentPhoneNumberEnumAddressRequirement? = nil,
-      @capabilities : Twilio::AddressDependentPhoneNumberCapabilities? = nil,
-      @status_callback : String? = nil,
-      @status_callback_method : String? = nil,
-      @api_version : String? = nil,
-      @sms_application_sid : String? = nil,
-      @voice_application_sid : String? = nil,
-      @trunk_sid : String? = nil,
-      @emergency_status : Twilio::DependentPhoneNumberEnumEmergencyStatus? = nil,
       @emergency_address_sid : String? = nil,
-      @uri : String? = nil
+      @emergency_status : Twilio::IncomingPhoneNumberEnumEmergencyStatus? = nil,
+      @friendly_name : String? = nil,
+      @phone_number : String? = nil,
+      @sid : String? = nil,
+      @sms_application_sid : String? = nil,
+      @sms_fallback_method : Twilio::HttpMethod? = nil,
+      @sms_fallback_url : String? = nil,
+      @sms_method : Twilio::HttpMethod? = nil,
+      @sms_url : String? = nil,
+      @status_callback : String? = nil,
+      @status_callback_method : Twilio::HttpMethod? = nil,
+      @trunk_sid : String? = nil,
+      @uri : String? = nil,
+      @voice_application_sid : String? = nil,
+      @voice_caller_id_lookup : Bool? = nil,
+      @voice_fallback_method : Twilio::HttpMethod? = nil,
+      @voice_fallback_url : String? = nil,
+      @voice_method : Twilio::HttpMethod? = nil,
+      @voice_url : String? = nil
     )
     end
 
@@ -260,19 +245,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_sid = @sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
       unless (_account_sid = @account_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
           invalid_properties.push(max_length_error)
@@ -286,90 +258,17 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_friendly_name = @friendly_name).nil?
-      end
-      unless (_phone_number = @phone_number).nil?
-      end
-      unless (_voice_url = @voice_url).nil?
-      end
-      unless (_voice_method = @voice_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_VOICE_METHOD) unless OpenApi::EnumValidator.valid?(_voice_method, VALID_VALUES_FOR_VOICE_METHOD)
-      end
-      unless (_voice_fallback_method = @voice_fallback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_VOICE_FALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_voice_fallback_method, VALID_VALUES_FOR_VOICE_FALLBACK_METHOD)
-      end
-      unless (_voice_fallback_url = @voice_fallback_url).nil?
-      end
-      unless (_voice_caller_id_lookup = @voice_caller_id_lookup).nil?
-      end
-      unless (_date_created = @date_created).nil?
-      end
-      unless (_date_updated = @date_updated).nil?
-      end
-      unless (_sms_fallback_method = @sms_fallback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_SMS_FALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_sms_fallback_method, VALID_VALUES_FOR_SMS_FALLBACK_METHOD)
-      end
-      unless (_sms_fallback_url = @sms_fallback_url).nil?
-      end
-      unless (_sms_method = @sms_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_SMS_METHOD) unless OpenApi::EnumValidator.valid?(_sms_method, VALID_VALUES_FOR_SMS_METHOD)
-      end
-      unless (_sms_url = @sms_url).nil?
-      end
       unless (_address_requirements = @address_requirements).nil?
         invalid_properties.push(_address_requirements.error_message) if !_address_requirements.valid?
+      end
+      unless (_api_version = @api_version).nil?
       end
       unless (_capabilities = @capabilities).nil?
         invalid_properties.concat(_capabilities.list_invalid_properties_for("capabilities")) if _capabilities.is_a?(OpenApi::Validatable)
       end
-      unless (_status_callback = @status_callback).nil?
+      unless (_date_created = @date_created).nil?
       end
-      unless (_status_callback_method = @status_callback_method).nil?
-        invalid_properties.push(ERROR_MESSAGE_FOR_STATUS_CALLBACK_METHOD) unless OpenApi::EnumValidator.valid?(_status_callback_method, VALID_VALUES_FOR_STATUS_CALLBACK_METHOD)
-      end
-      unless (_api_version = @api_version).nil?
-      end
-      unless (_sms_application_sid = @sms_application_sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sms_application_sid", _sms_application_sid.to_s.size, MAX_LENGTH_FOR_SMS_APPLICATION_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sms_application_sid", _sms_application_sid.to_s.size, MIN_LENGTH_FOR_SMS_APPLICATION_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sms_application_sid", _sms_application_sid, PATTERN_FOR_SMS_APPLICATION_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
-      unless (_voice_application_sid = @voice_application_sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("voice_application_sid", _voice_application_sid.to_s.size, MAX_LENGTH_FOR_VOICE_APPLICATION_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("voice_application_sid", _voice_application_sid.to_s.size, MIN_LENGTH_FOR_VOICE_APPLICATION_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("voice_application_sid", _voice_application_sid, PATTERN_FOR_VOICE_APPLICATION_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
-      unless (_trunk_sid = @trunk_sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("trunk_sid", _trunk_sid.to_s.size, MAX_LENGTH_FOR_TRUNK_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("trunk_sid", _trunk_sid.to_s.size, MIN_LENGTH_FOR_TRUNK_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("trunk_sid", _trunk_sid, PATTERN_FOR_TRUNK_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
-      unless (_emergency_status = @emergency_status).nil?
-        invalid_properties.push(_emergency_status.error_message) if !_emergency_status.valid?
+      unless (_date_updated = @date_updated).nil?
       end
       unless (_emergency_address_sid = @emergency_address_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("emergency_address_sid", _emergency_address_sid.to_s.size, MAX_LENGTH_FOR_EMERGENCY_ADDRESS_SID)
@@ -384,7 +283,93 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
+      unless (_emergency_status = @emergency_status).nil?
+        invalid_properties.push(_emergency_status.error_message) if !_emergency_status.valid?
+      end
+      unless (_friendly_name = @friendly_name).nil?
+      end
+      unless (_phone_number = @phone_number).nil?
+      end
+      unless (_sid = @sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
+      unless (_sms_application_sid = @sms_application_sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sms_application_sid", _sms_application_sid.to_s.size, MAX_LENGTH_FOR_SMS_APPLICATION_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sms_application_sid", _sms_application_sid.to_s.size, MIN_LENGTH_FOR_SMS_APPLICATION_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sms_application_sid", _sms_application_sid, PATTERN_FOR_SMS_APPLICATION_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
+      unless (_sms_fallback_method = @sms_fallback_method).nil?
+        invalid_properties.push(_sms_fallback_method.error_message) if !_sms_fallback_method.valid?
+      end
+      unless (_sms_fallback_url = @sms_fallback_url).nil?
+      end
+      unless (_sms_method = @sms_method).nil?
+        invalid_properties.push(_sms_method.error_message) if !_sms_method.valid?
+      end
+      unless (_sms_url = @sms_url).nil?
+      end
+      unless (_status_callback = @status_callback).nil?
+      end
+      unless (_status_callback_method = @status_callback_method).nil?
+        invalid_properties.push(_status_callback_method.error_message) if !_status_callback_method.valid?
+      end
+      unless (_trunk_sid = @trunk_sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("trunk_sid", _trunk_sid.to_s.size, MAX_LENGTH_FOR_TRUNK_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("trunk_sid", _trunk_sid.to_s.size, MIN_LENGTH_FOR_TRUNK_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("trunk_sid", _trunk_sid, PATTERN_FOR_TRUNK_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
       unless (_uri = @uri).nil?
+      end
+      unless (_voice_application_sid = @voice_application_sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("voice_application_sid", _voice_application_sid.to_s.size, MAX_LENGTH_FOR_VOICE_APPLICATION_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("voice_application_sid", _voice_application_sid.to_s.size, MIN_LENGTH_FOR_VOICE_APPLICATION_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("voice_application_sid", _voice_application_sid, PATTERN_FOR_VOICE_APPLICATION_SID)
+          invalid_properties.push(pattern_error)
+        end
+      end
+      unless (_voice_caller_id_lookup = @voice_caller_id_lookup).nil?
+      end
+      unless (_voice_fallback_method = @voice_fallback_method).nil?
+        invalid_properties.push(_voice_fallback_method.error_message) if !_voice_fallback_method.valid?
+      end
+      unless (_voice_fallback_url = @voice_fallback_url).nil?
+      end
+      unless (_voice_method = @voice_method).nil?
+        invalid_properties.push(_voice_method.error_message) if !_voice_method.valid?
+      end
+      unless (_voice_url = @voice_url).nil?
       end
       invalid_properties
     end
@@ -392,39 +377,21 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_sid = @sid).nil?
-        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
-        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
-        return false if !PATTERN_FOR_SID.matches?(_sid)
-      end
-
       unless (_account_sid = @account_sid).nil?
         return false if _account_sid.to_s.size > MAX_LENGTH_FOR_ACCOUNT_SID
         return false if _account_sid.to_s.size < MIN_LENGTH_FOR_ACCOUNT_SID
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_friendly_name = @friendly_name).nil?
+      unless (_address_requirements = @address_requirements).nil?
+        return false if !_address_requirements.valid?
       end
 
-      unless (_phone_number = @phone_number).nil?
+      unless (_api_version = @api_version).nil?
       end
 
-      unless (_voice_url = @voice_url).nil?
-      end
-
-      unless (_voice_method = @voice_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_voice_method, VALID_VALUES_FOR_VOICE_METHOD)
-      end
-
-      unless (_voice_fallback_method = @voice_fallback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_voice_fallback_method, VALID_VALUES_FOR_VOICE_FALLBACK_METHOD)
-      end
-
-      unless (_voice_fallback_url = @voice_fallback_url).nil?
-      end
-
-      unless (_voice_caller_id_lookup = @voice_caller_id_lookup).nil?
+      unless (_capabilities = @capabilities).nil?
+        return false if _capabilities.is_a?(OpenApi::Validatable) && !_capabilities.valid?
       end
 
       unless (_date_created = @date_created).nil?
@@ -433,36 +400,26 @@ module Twilio
       unless (_date_updated = @date_updated).nil?
       end
 
-      unless (_sms_fallback_method = @sms_fallback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_sms_fallback_method, VALID_VALUES_FOR_SMS_FALLBACK_METHOD)
+      unless (_emergency_address_sid = @emergency_address_sid).nil?
+        return false if _emergency_address_sid.to_s.size > MAX_LENGTH_FOR_EMERGENCY_ADDRESS_SID
+        return false if _emergency_address_sid.to_s.size < MIN_LENGTH_FOR_EMERGENCY_ADDRESS_SID
+        return false if !PATTERN_FOR_EMERGENCY_ADDRESS_SID.matches?(_emergency_address_sid)
       end
 
-      unless (_sms_fallback_url = @sms_fallback_url).nil?
+      unless (_emergency_status = @emergency_status).nil?
+        return false if !_emergency_status.valid?
       end
 
-      unless (_sms_method = @sms_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_sms_method, VALID_VALUES_FOR_SMS_METHOD)
+      unless (_friendly_name = @friendly_name).nil?
       end
 
-      unless (_sms_url = @sms_url).nil?
+      unless (_phone_number = @phone_number).nil?
       end
 
-      unless (_address_requirements = @address_requirements).nil?
-        return false if !_address_requirements.valid?
-      end
-
-      unless (_capabilities = @capabilities).nil?
-        return false if _capabilities.is_a?(OpenApi::Validatable) && !_capabilities.valid?
-      end
-
-      unless (_status_callback = @status_callback).nil?
-      end
-
-      unless (_status_callback_method = @status_callback_method).nil?
-        return false unless OpenApi::EnumValidator.valid?(_status_callback_method, VALID_VALUES_FOR_STATUS_CALLBACK_METHOD)
-      end
-
-      unless (_api_version = @api_version).nil?
+      unless (_sid = @sid).nil?
+        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
+        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
+        return false if !PATTERN_FOR_SID.matches?(_sid)
       end
 
       unless (_sms_application_sid = @sms_application_sid).nil?
@@ -471,10 +428,25 @@ module Twilio
         return false if !PATTERN_FOR_SMS_APPLICATION_SID.matches?(_sms_application_sid)
       end
 
-      unless (_voice_application_sid = @voice_application_sid).nil?
-        return false if _voice_application_sid.to_s.size > MAX_LENGTH_FOR_VOICE_APPLICATION_SID
-        return false if _voice_application_sid.to_s.size < MIN_LENGTH_FOR_VOICE_APPLICATION_SID
-        return false if !PATTERN_FOR_VOICE_APPLICATION_SID.matches?(_voice_application_sid)
+      unless (_sms_fallback_method = @sms_fallback_method).nil?
+        return false if !_sms_fallback_method.valid?
+      end
+
+      unless (_sms_fallback_url = @sms_fallback_url).nil?
+      end
+
+      unless (_sms_method = @sms_method).nil?
+        return false if !_sms_method.valid?
+      end
+
+      unless (_sms_url = @sms_url).nil?
+      end
+
+      unless (_status_callback = @status_callback).nil?
+      end
+
+      unless (_status_callback_method = @status_callback_method).nil?
+        return false if !_status_callback_method.valid?
       end
 
       unless (_trunk_sid = @trunk_sid).nil?
@@ -483,33 +455,33 @@ module Twilio
         return false if !PATTERN_FOR_TRUNK_SID.matches?(_trunk_sid)
       end
 
-      unless (_emergency_status = @emergency_status).nil?
-        return false if !_emergency_status.valid?
-      end
-
-      unless (_emergency_address_sid = @emergency_address_sid).nil?
-        return false if _emergency_address_sid.to_s.size > MAX_LENGTH_FOR_EMERGENCY_ADDRESS_SID
-        return false if _emergency_address_sid.to_s.size < MIN_LENGTH_FOR_EMERGENCY_ADDRESS_SID
-        return false if !PATTERN_FOR_EMERGENCY_ADDRESS_SID.matches?(_emergency_address_sid)
-      end
-
       unless (_uri = @uri).nil?
       end
 
-      true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
+      unless (_voice_application_sid = @voice_application_sid).nil?
+        return false if _voice_application_sid.to_s.size > MAX_LENGTH_FOR_VOICE_APPLICATION_SID
+        return false if _voice_application_sid.to_s.size < MIN_LENGTH_FOR_VOICE_APPLICATION_SID
+        return false if !PATTERN_FOR_VOICE_APPLICATION_SID.matches?(_voice_application_sid)
       end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
+
+      unless (_voice_caller_id_lookup = @voice_caller_id_lookup).nil?
+      end
+
+      unless (_voice_fallback_method = @voice_fallback_method).nil?
+        return false if !_voice_fallback_method.valid?
+      end
+
+      unless (_voice_fallback_url = @voice_fallback_url).nil?
+      end
+
+      unless (_voice_method = @voice_method).nil?
+        return false if !_voice_method.valid?
+      end
+
+      unless (_voice_url = @voice_url).nil?
+      end
+
+      true
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -526,75 +498,35 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
+    # @param [Object] address_requirements Object to be assigned
+    def address_requirements=(address_requirements : Twilio::IncomingPhoneNumberEnumAddressRequirement?)
+      if address_requirements.nil?
+        return @address_requirements = nil
       end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
+      _address_requirements = address_requirements.not_nil!
+      _address_requirements.validate
+      @address_requirements = _address_requirements
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] phone_number Object to be assigned
-    def phone_number=(phone_number : String?)
-      if phone_number.nil?
-        return @phone_number = nil
+    # @param [Object] api_version Object to be assigned
+    def api_version=(api_version : String?)
+      if api_version.nil?
+        return @api_version = nil
       end
-      _phone_number = phone_number.not_nil!
-      @phone_number = _phone_number
+      _api_version = api_version.not_nil!
+      @api_version = _api_version
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] voice_url Object to be assigned
-    def voice_url=(voice_url : String?)
-      if voice_url.nil?
-        return @voice_url = nil
+    # @param [Object] capabilities Object to be assigned
+    def capabilities=(capabilities : Twilio::AddressDependentPhoneNumberCapabilities?)
+      if capabilities.nil?
+        return @capabilities = nil
       end
-      _voice_url = voice_url.not_nil!
-      @voice_url = _voice_url
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] voice_method Object to be assigned
-    def voice_method=(voice_method : String?)
-      if voice_method.nil?
-        return @voice_method = nil
-      end
-      _voice_method = voice_method.not_nil!
-      OpenApi::EnumValidator.validate("voice_method", _voice_method, VALID_VALUES_FOR_VOICE_METHOD)
-      @voice_method = _voice_method
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] voice_fallback_method Object to be assigned
-    def voice_fallback_method=(voice_fallback_method : String?)
-      if voice_fallback_method.nil?
-        return @voice_fallback_method = nil
-      end
-      _voice_fallback_method = voice_fallback_method.not_nil!
-      OpenApi::EnumValidator.validate("voice_fallback_method", _voice_fallback_method, VALID_VALUES_FOR_VOICE_FALLBACK_METHOD)
-      @voice_fallback_method = _voice_fallback_method
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] voice_fallback_url Object to be assigned
-    def voice_fallback_url=(voice_fallback_url : String?)
-      if voice_fallback_url.nil?
-        return @voice_fallback_url = nil
-      end
-      _voice_fallback_url = voice_fallback_url.not_nil!
-      @voice_fallback_url = _voice_fallback_url
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] voice_caller_id_lookup Object to be assigned
-    def voice_caller_id_lookup=(voice_caller_id_lookup : Bool?)
-      if voice_caller_id_lookup.nil?
-        return @voice_caller_id_lookup = nil
-      end
-      _voice_caller_id_lookup = voice_caller_id_lookup.not_nil!
-      @voice_caller_id_lookup = _voice_caller_id_lookup
+      _capabilities = capabilities.not_nil!
+      _capabilities.validate if _capabilities.is_a?(OpenApi::Validatable)
+      @capabilities = _capabilities
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -618,98 +550,60 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sms_fallback_method Object to be assigned
-    def sms_fallback_method=(sms_fallback_method : String?)
-      if sms_fallback_method.nil?
-        return @sms_fallback_method = nil
+    # @param [Object] emergency_address_sid Object to be assigned
+    def emergency_address_sid=(emergency_address_sid : String?)
+      if emergency_address_sid.nil?
+        return @emergency_address_sid = nil
       end
-      _sms_fallback_method = sms_fallback_method.not_nil!
-      OpenApi::EnumValidator.validate("sms_fallback_method", _sms_fallback_method, VALID_VALUES_FOR_SMS_FALLBACK_METHOD)
-      @sms_fallback_method = _sms_fallback_method
+      _emergency_address_sid = emergency_address_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("emergency_address_sid", _emergency_address_sid.to_s.size, MAX_LENGTH_FOR_EMERGENCY_ADDRESS_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("emergency_address_sid", _emergency_address_sid.to_s.size, MIN_LENGTH_FOR_EMERGENCY_ADDRESS_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("emergency_address_sid", _emergency_address_sid, PATTERN_FOR_EMERGENCY_ADDRESS_SID)
+      @emergency_address_sid = _emergency_address_sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sms_fallback_url Object to be assigned
-    def sms_fallback_url=(sms_fallback_url : String?)
-      if sms_fallback_url.nil?
-        return @sms_fallback_url = nil
+    # @param [Object] emergency_status Object to be assigned
+    def emergency_status=(emergency_status : Twilio::IncomingPhoneNumberEnumEmergencyStatus?)
+      if emergency_status.nil?
+        return @emergency_status = nil
       end
-      _sms_fallback_url = sms_fallback_url.not_nil!
-      @sms_fallback_url = _sms_fallback_url
+      _emergency_status = emergency_status.not_nil!
+      _emergency_status.validate
+      @emergency_status = _emergency_status
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sms_method Object to be assigned
-    def sms_method=(sms_method : String?)
-      if sms_method.nil?
-        return @sms_method = nil
+    # @param [Object] friendly_name Object to be assigned
+    def friendly_name=(friendly_name : String?)
+      if friendly_name.nil?
+        return @friendly_name = nil
       end
-      _sms_method = sms_method.not_nil!
-      OpenApi::EnumValidator.validate("sms_method", _sms_method, VALID_VALUES_FOR_SMS_METHOD)
-      @sms_method = _sms_method
+      _friendly_name = friendly_name.not_nil!
+      @friendly_name = _friendly_name
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sms_url Object to be assigned
-    def sms_url=(sms_url : String?)
-      if sms_url.nil?
-        return @sms_url = nil
+    # @param [Object] phone_number Object to be assigned
+    def phone_number=(phone_number : String?)
+      if phone_number.nil?
+        return @phone_number = nil
       end
-      _sms_url = sms_url.not_nil!
-      @sms_url = _sms_url
+      _phone_number = phone_number.not_nil!
+      @phone_number = _phone_number
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] address_requirements Object to be assigned
-    def address_requirements=(address_requirements : Twilio::DependentPhoneNumberEnumAddressRequirement?)
-      if address_requirements.nil?
-        return @address_requirements = nil
+    # @param [Object] sid Object to be assigned
+    def sid=(sid : String?)
+      if sid.nil?
+        return @sid = nil
       end
-      _address_requirements = address_requirements.not_nil!
-      _address_requirements.validate
-      @address_requirements = _address_requirements
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] capabilities Object to be assigned
-    def capabilities=(capabilities : Twilio::AddressDependentPhoneNumberCapabilities?)
-      if capabilities.nil?
-        return @capabilities = nil
-      end
-      _capabilities = capabilities.not_nil!
-      _capabilities.validate if _capabilities.is_a?(OpenApi::Validatable)
-      @capabilities = _capabilities
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status_callback Object to be assigned
-    def status_callback=(status_callback : String?)
-      if status_callback.nil?
-        return @status_callback = nil
-      end
-      _status_callback = status_callback.not_nil!
-      @status_callback = _status_callback
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status_callback_method Object to be assigned
-    def status_callback_method=(status_callback_method : String?)
-      if status_callback_method.nil?
-        return @status_callback_method = nil
-      end
-      _status_callback_method = status_callback_method.not_nil!
-      OpenApi::EnumValidator.validate("status_callback_method", _status_callback_method, VALID_VALUES_FOR_STATUS_CALLBACK_METHOD)
-      @status_callback_method = _status_callback_method
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] api_version Object to be assigned
-    def api_version=(api_version : String?)
-      if api_version.nil?
-        return @api_version = nil
-      end
-      _api_version = api_version.not_nil!
-      @api_version = _api_version
+      _sid = sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
+      @sid = _sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -726,16 +620,66 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] voice_application_sid Object to be assigned
-    def voice_application_sid=(voice_application_sid : String?)
-      if voice_application_sid.nil?
-        return @voice_application_sid = nil
+    # @param [Object] sms_fallback_method Object to be assigned
+    def sms_fallback_method=(sms_fallback_method : Twilio::HttpMethod?)
+      if sms_fallback_method.nil?
+        return @sms_fallback_method = nil
       end
-      _voice_application_sid = voice_application_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("voice_application_sid", _voice_application_sid.to_s.size, MAX_LENGTH_FOR_VOICE_APPLICATION_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("voice_application_sid", _voice_application_sid.to_s.size, MIN_LENGTH_FOR_VOICE_APPLICATION_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("voice_application_sid", _voice_application_sid, PATTERN_FOR_VOICE_APPLICATION_SID)
-      @voice_application_sid = _voice_application_sid
+      _sms_fallback_method = sms_fallback_method.not_nil!
+      _sms_fallback_method.validate
+      @sms_fallback_method = _sms_fallback_method
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sms_fallback_url Object to be assigned
+    def sms_fallback_url=(sms_fallback_url : String?)
+      if sms_fallback_url.nil?
+        return @sms_fallback_url = nil
+      end
+      _sms_fallback_url = sms_fallback_url.not_nil!
+      @sms_fallback_url = _sms_fallback_url
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sms_method Object to be assigned
+    def sms_method=(sms_method : Twilio::HttpMethod?)
+      if sms_method.nil?
+        return @sms_method = nil
+      end
+      _sms_method = sms_method.not_nil!
+      _sms_method.validate
+      @sms_method = _sms_method
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sms_url Object to be assigned
+    def sms_url=(sms_url : String?)
+      if sms_url.nil?
+        return @sms_url = nil
+      end
+      _sms_url = sms_url.not_nil!
+      @sms_url = _sms_url
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status_callback Object to be assigned
+    def status_callback=(status_callback : String?)
+      if status_callback.nil?
+        return @status_callback = nil
+      end
+      _status_callback = status_callback.not_nil!
+      @status_callback = _status_callback
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status_callback_method Object to be assigned
+    def status_callback_method=(status_callback_method : Twilio::HttpMethod?)
+      if status_callback_method.nil?
+        return @status_callback_method = nil
+      end
+      _status_callback_method = status_callback_method.not_nil!
+      _status_callback_method.validate
+      @status_callback_method = _status_callback_method
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -752,30 +696,6 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] emergency_status Object to be assigned
-    def emergency_status=(emergency_status : Twilio::DependentPhoneNumberEnumEmergencyStatus?)
-      if emergency_status.nil?
-        return @emergency_status = nil
-      end
-      _emergency_status = emergency_status.not_nil!
-      _emergency_status.validate
-      @emergency_status = _emergency_status
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] emergency_address_sid Object to be assigned
-    def emergency_address_sid=(emergency_address_sid : String?)
-      if emergency_address_sid.nil?
-        return @emergency_address_sid = nil
-      end
-      _emergency_address_sid = emergency_address_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("emergency_address_sid", _emergency_address_sid.to_s.size, MAX_LENGTH_FOR_EMERGENCY_ADDRESS_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("emergency_address_sid", _emergency_address_sid.to_s.size, MIN_LENGTH_FOR_EMERGENCY_ADDRESS_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("emergency_address_sid", _emergency_address_sid, PATTERN_FOR_EMERGENCY_ADDRESS_SID)
-      @emergency_address_sid = _emergency_address_sid
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
     def uri=(uri : String?)
       if uri.nil?
@@ -785,10 +705,75 @@ module Twilio
       @uri = _uri
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_application_sid Object to be assigned
+    def voice_application_sid=(voice_application_sid : String?)
+      if voice_application_sid.nil?
+        return @voice_application_sid = nil
+      end
+      _voice_application_sid = voice_application_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("voice_application_sid", _voice_application_sid.to_s.size, MAX_LENGTH_FOR_VOICE_APPLICATION_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("voice_application_sid", _voice_application_sid.to_s.size, MIN_LENGTH_FOR_VOICE_APPLICATION_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("voice_application_sid", _voice_application_sid, PATTERN_FOR_VOICE_APPLICATION_SID)
+      @voice_application_sid = _voice_application_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_caller_id_lookup Object to be assigned
+    def voice_caller_id_lookup=(voice_caller_id_lookup : Bool?)
+      if voice_caller_id_lookup.nil?
+        return @voice_caller_id_lookup = nil
+      end
+      _voice_caller_id_lookup = voice_caller_id_lookup.not_nil!
+      @voice_caller_id_lookup = _voice_caller_id_lookup
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_fallback_method Object to be assigned
+    def voice_fallback_method=(voice_fallback_method : Twilio::HttpMethod?)
+      if voice_fallback_method.nil?
+        return @voice_fallback_method = nil
+      end
+      _voice_fallback_method = voice_fallback_method.not_nil!
+      _voice_fallback_method.validate
+      @voice_fallback_method = _voice_fallback_method
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_fallback_url Object to be assigned
+    def voice_fallback_url=(voice_fallback_url : String?)
+      if voice_fallback_url.nil?
+        return @voice_fallback_url = nil
+      end
+      _voice_fallback_url = voice_fallback_url.not_nil!
+      @voice_fallback_url = _voice_fallback_url
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_method Object to be assigned
+    def voice_method=(voice_method : Twilio::HttpMethod?)
+      if voice_method.nil?
+        return @voice_method = nil
+      end
+      _voice_method = voice_method.not_nil!
+      _voice_method.validate
+      @voice_method = _voice_method
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voice_url Object to be assigned
+    def voice_url=(voice_url : String?)
+      if voice_url.nil?
+        return @voice_url = nil
+      end
+      _voice_url = voice_url.not_nil!
+      @voice_url = _voice_url
+    end
+
     # Generates #hash and #== methods from all fields
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@sid, @sid_present, @account_sid, @account_sid_present, @friendly_name, @friendly_name_present, @phone_number, @phone_number_present, @voice_url, @voice_url_present, @voice_method, @voice_method_present, @voice_fallback_method, @voice_fallback_method_present, @voice_fallback_url, @voice_fallback_url_present, @voice_caller_id_lookup, @voice_caller_id_lookup_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @sms_fallback_method, @sms_fallback_method_present, @sms_fallback_url, @sms_fallback_url_present, @sms_method, @sms_method_present, @sms_url, @sms_url_present, @address_requirements, @capabilities, @capabilities_present, @status_callback, @status_callback_present, @status_callback_method, @status_callback_method_present, @api_version, @api_version_present, @sms_application_sid, @sms_application_sid_present, @voice_application_sid, @voice_application_sid_present, @trunk_sid, @trunk_sid_present, @emergency_status, @emergency_address_sid, @emergency_address_sid_present, @uri, @uri_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @address_requirements, @api_version, @api_version_present, @capabilities, @capabilities_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @emergency_address_sid, @emergency_address_sid_present, @emergency_status, @friendly_name, @friendly_name_present, @phone_number, @phone_number_present, @sid, @sid_present, @sms_application_sid, @sms_application_sid_present, @sms_fallback_method, @sms_fallback_method_present, @sms_fallback_url, @sms_fallback_url_present, @sms_method, @sms_method_present, @sms_url, @sms_url_present, @status_callback, @status_callback_present, @status_callback_method, @status_callback_method_present, @trunk_sid, @trunk_sid_present, @uri, @uri_present, @voice_application_sid, @voice_application_sid_present, @voice_caller_id_lookup, @voice_caller_id_lookup_present, @voice_fallback_method, @voice_fallback_method_present, @voice_fallback_url, @voice_fallback_url_present, @voice_method, @voice_method_present, @voice_url, @voice_url_present)
   end
 end

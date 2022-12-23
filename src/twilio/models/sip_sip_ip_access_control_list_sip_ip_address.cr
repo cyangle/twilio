@@ -20,16 +20,6 @@ module Twilio
 
     # Optional Properties
 
-    # A 34 character string that uniquely identifies this resource.
-    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
-    getter sid : String? = nil
-    MAX_LENGTH_FOR_SID = 34
-    MIN_LENGTH_FOR_SID = 34
-    PATTERN_FOR_SID    = /^IP[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? sid_present : Bool = false
-
     # The unique id of the Account that is responsible for this resource.
     @[JSON::Field(key: "account_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: account_sid.nil? && !account_sid_present?)]
     getter account_sid : String? = nil
@@ -40,36 +30,12 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? account_sid_present : Bool = false
 
-    # A human readable descriptive text for this resource, up to 255 characters long.
-    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
-    getter friendly_name : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? friendly_name_present : Bool = false
-
-    # An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
-    @[JSON::Field(key: "ip_address", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: ip_address.nil? && !ip_address_present?)]
-    getter ip_address : String? = nil
-
-    @[JSON::Field(ignore: true)]
-    property? ip_address_present : Bool = false
-
     # An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
     @[JSON::Field(key: "cidr_prefix_length", type: Int32?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: cidr_prefix_length.nil? && !cidr_prefix_length_present?)]
     getter cidr_prefix_length : Int32? = nil
 
     @[JSON::Field(ignore: true)]
     property? cidr_prefix_length_present : Bool = false
-
-    # The unique id of the IpAccessControlList resource that includes this resource.
-    @[JSON::Field(key: "ip_access_control_list_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: ip_access_control_list_sid.nil? && !ip_access_control_list_sid_present?)]
-    getter ip_access_control_list_sid : String? = nil
-    MAX_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID = 34
-    MIN_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID = 34
-    PATTERN_FOR_IP_ACCESS_CONTROL_LIST_SID    = /^AL[0-9a-fA-F]{32}$/
-
-    @[JSON::Field(ignore: true)]
-    property? ip_access_control_list_sid_present : Bool = false
 
     # The date that this resource was created, given as GMT in RFC 2822 format.
     @[JSON::Field(key: "date_created", type: Time?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: date_created.nil? && !date_created_present?, converter: Time::RFC2822Converter)]
@@ -85,6 +51,40 @@ module Twilio
     @[JSON::Field(ignore: true)]
     property? date_updated_present : Bool = false
 
+    # A human readable descriptive text for this resource, up to 255 characters long.
+    @[JSON::Field(key: "friendly_name", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: friendly_name.nil? && !friendly_name_present?)]
+    getter friendly_name : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? friendly_name_present : Bool = false
+
+    # The unique id of the IpAccessControlList resource that includes this resource.
+    @[JSON::Field(key: "ip_access_control_list_sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: ip_access_control_list_sid.nil? && !ip_access_control_list_sid_present?)]
+    getter ip_access_control_list_sid : String? = nil
+    MAX_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID = 34
+    MIN_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID = 34
+    PATTERN_FOR_IP_ACCESS_CONTROL_LIST_SID    = /^AL[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? ip_access_control_list_sid_present : Bool = false
+
+    # An IP address in dotted decimal notation from which you want to accept traffic. Any SIP requests from this IP address will be allowed by Twilio. IPv4 only supported today.
+    @[JSON::Field(key: "ip_address", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: ip_address.nil? && !ip_address_present?)]
+    getter ip_address : String? = nil
+
+    @[JSON::Field(ignore: true)]
+    property? ip_address_present : Bool = false
+
+    # A 34 character string that uniquely identifies this resource.
+    @[JSON::Field(key: "sid", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: sid.nil? && !sid_present?)]
+    getter sid : String? = nil
+    MAX_LENGTH_FOR_SID = 34
+    MIN_LENGTH_FOR_SID = 34
+    PATTERN_FOR_SID    = /^IP[0-9a-fA-F]{32}$/
+
+    @[JSON::Field(ignore: true)]
+    property? sid_present : Bool = false
+
     # The URI for this resource, relative to https://api.twilio.com
     @[JSON::Field(key: "uri", type: String?, default: nil, required: false, nullable: true, emit_null: true, presence: true, ignore_serialize: uri.nil? && !uri_present?)]
     getter uri : String? = nil
@@ -97,14 +97,14 @@ module Twilio
     def initialize(
       *,
       # Optional properties
-      @sid : String? = nil,
       @account_sid : String? = nil,
-      @friendly_name : String? = nil,
-      @ip_address : String? = nil,
       @cidr_prefix_length : Int32? = nil,
-      @ip_access_control_list_sid : String? = nil,
       @date_created : Time? = nil,
       @date_updated : Time? = nil,
+      @friendly_name : String? = nil,
+      @ip_access_control_list_sid : String? = nil,
+      @ip_address : String? = nil,
+      @sid : String? = nil,
       @uri : String? = nil
     )
     end
@@ -114,19 +114,6 @@ module Twilio
     def list_invalid_properties : Array(String)
       invalid_properties = Array(String).new
 
-      unless (_sid = @sid).nil?
-        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-          invalid_properties.push(max_length_error)
-        end
-
-        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-          invalid_properties.push(min_length_error)
-        end
-
-        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
-          invalid_properties.push(pattern_error)
-        end
-      end
       unless (_account_sid = @account_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("account_sid", _account_sid.to_s.size, MAX_LENGTH_FOR_ACCOUNT_SID)
           invalid_properties.push(max_length_error)
@@ -140,11 +127,13 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_friendly_name = @friendly_name).nil?
-      end
-      unless (_ip_address = @ip_address).nil?
-      end
       unless (_cidr_prefix_length = @cidr_prefix_length).nil?
+      end
+      unless (_date_created = @date_created).nil?
+      end
+      unless (_date_updated = @date_updated).nil?
+      end
+      unless (_friendly_name = @friendly_name).nil?
       end
       unless (_ip_access_control_list_sid = @ip_access_control_list_sid).nil?
         if max_length_error = OpenApi::PrimitiveValidator.max_length_error("ip_access_control_list_sid", _ip_access_control_list_sid.to_s.size, MAX_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID)
@@ -159,9 +148,20 @@ module Twilio
           invalid_properties.push(pattern_error)
         end
       end
-      unless (_date_created = @date_created).nil?
+      unless (_ip_address = @ip_address).nil?
       end
-      unless (_date_updated = @date_updated).nil?
+      unless (_sid = @sid).nil?
+        if max_length_error = OpenApi::PrimitiveValidator.max_length_error("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+          invalid_properties.push(max_length_error)
+        end
+
+        if min_length_error = OpenApi::PrimitiveValidator.min_length_error("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+          invalid_properties.push(min_length_error)
+        end
+
+        if pattern_error = OpenApi::PrimitiveValidator.pattern_error("sid", _sid, PATTERN_FOR_SID)
+          invalid_properties.push(pattern_error)
+        end
       end
       unless (_uri = @uri).nil?
       end
@@ -171,31 +171,13 @@ module Twilio
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid? : Bool
-      unless (_sid = @sid).nil?
-        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
-        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
-        return false if !PATTERN_FOR_SID.matches?(_sid)
-      end
-
       unless (_account_sid = @account_sid).nil?
         return false if _account_sid.to_s.size > MAX_LENGTH_FOR_ACCOUNT_SID
         return false if _account_sid.to_s.size < MIN_LENGTH_FOR_ACCOUNT_SID
         return false if !PATTERN_FOR_ACCOUNT_SID.matches?(_account_sid)
       end
 
-      unless (_friendly_name = @friendly_name).nil?
-      end
-
-      unless (_ip_address = @ip_address).nil?
-      end
-
       unless (_cidr_prefix_length = @cidr_prefix_length).nil?
-      end
-
-      unless (_ip_access_control_list_sid = @ip_access_control_list_sid).nil?
-        return false if _ip_access_control_list_sid.to_s.size > MAX_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID
-        return false if _ip_access_control_list_sid.to_s.size < MIN_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID
-        return false if !PATTERN_FOR_IP_ACCESS_CONTROL_LIST_SID.matches?(_ip_access_control_list_sid)
       end
 
       unless (_date_created = @date_created).nil?
@@ -204,23 +186,28 @@ module Twilio
       unless (_date_updated = @date_updated).nil?
       end
 
+      unless (_friendly_name = @friendly_name).nil?
+      end
+
+      unless (_ip_access_control_list_sid = @ip_access_control_list_sid).nil?
+        return false if _ip_access_control_list_sid.to_s.size > MAX_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID
+        return false if _ip_access_control_list_sid.to_s.size < MIN_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID
+        return false if !PATTERN_FOR_IP_ACCESS_CONTROL_LIST_SID.matches?(_ip_access_control_list_sid)
+      end
+
+      unless (_ip_address = @ip_address).nil?
+      end
+
+      unless (_sid = @sid).nil?
+        return false if _sid.to_s.size > MAX_LENGTH_FOR_SID
+        return false if _sid.to_s.size < MIN_LENGTH_FOR_SID
+        return false if !PATTERN_FOR_SID.matches?(_sid)
+      end
+
       unless (_uri = @uri).nil?
       end
 
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sid Object to be assigned
-    def sid=(sid : String?)
-      if sid.nil?
-        return @sid = nil
-      end
-      _sid = sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
-      @sid = _sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -237,26 +224,6 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] friendly_name Object to be assigned
-    def friendly_name=(friendly_name : String?)
-      if friendly_name.nil?
-        return @friendly_name = nil
-      end
-      _friendly_name = friendly_name.not_nil!
-      @friendly_name = _friendly_name
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] ip_address Object to be assigned
-    def ip_address=(ip_address : String?)
-      if ip_address.nil?
-        return @ip_address = nil
-      end
-      _ip_address = ip_address.not_nil!
-      @ip_address = _ip_address
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] cidr_prefix_length Object to be assigned
     def cidr_prefix_length=(cidr_prefix_length : Int32?)
       if cidr_prefix_length.nil?
@@ -264,19 +231,6 @@ module Twilio
       end
       _cidr_prefix_length = cidr_prefix_length.not_nil!
       @cidr_prefix_length = _cidr_prefix_length
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] ip_access_control_list_sid Object to be assigned
-    def ip_access_control_list_sid=(ip_access_control_list_sid : String?)
-      if ip_access_control_list_sid.nil?
-        return @ip_access_control_list_sid = nil
-      end
-      _ip_access_control_list_sid = ip_access_control_list_sid.not_nil!
-      OpenApi::PrimitiveValidator.validate_max_length("ip_access_control_list_sid", _ip_access_control_list_sid.to_s.size, MAX_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID)
-      OpenApi::PrimitiveValidator.validate_min_length("ip_access_control_list_sid", _ip_access_control_list_sid.to_s.size, MIN_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID)
-      OpenApi::PrimitiveValidator.validate_pattern("ip_access_control_list_sid", _ip_access_control_list_sid, PATTERN_FOR_IP_ACCESS_CONTROL_LIST_SID)
-      @ip_access_control_list_sid = _ip_access_control_list_sid
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -300,6 +254,52 @@ module Twilio
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] friendly_name Object to be assigned
+    def friendly_name=(friendly_name : String?)
+      if friendly_name.nil?
+        return @friendly_name = nil
+      end
+      _friendly_name = friendly_name.not_nil!
+      @friendly_name = _friendly_name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] ip_access_control_list_sid Object to be assigned
+    def ip_access_control_list_sid=(ip_access_control_list_sid : String?)
+      if ip_access_control_list_sid.nil?
+        return @ip_access_control_list_sid = nil
+      end
+      _ip_access_control_list_sid = ip_access_control_list_sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("ip_access_control_list_sid", _ip_access_control_list_sid.to_s.size, MAX_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("ip_access_control_list_sid", _ip_access_control_list_sid.to_s.size, MIN_LENGTH_FOR_IP_ACCESS_CONTROL_LIST_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("ip_access_control_list_sid", _ip_access_control_list_sid, PATTERN_FOR_IP_ACCESS_CONTROL_LIST_SID)
+      @ip_access_control_list_sid = _ip_access_control_list_sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] ip_address Object to be assigned
+    def ip_address=(ip_address : String?)
+      if ip_address.nil?
+        return @ip_address = nil
+      end
+      _ip_address = ip_address.not_nil!
+      @ip_address = _ip_address
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sid Object to be assigned
+    def sid=(sid : String?)
+      if sid.nil?
+        return @sid = nil
+      end
+      _sid = sid.not_nil!
+      OpenApi::PrimitiveValidator.validate_max_length("sid", _sid.to_s.size, MAX_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_min_length("sid", _sid.to_s.size, MIN_LENGTH_FOR_SID)
+      OpenApi::PrimitiveValidator.validate_pattern("sid", _sid, PATTERN_FOR_SID)
+      @sid = _sid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uri Object to be assigned
     def uri=(uri : String?)
       if uri.nil?
@@ -313,6 +313,6 @@ module Twilio
     # #== @return [Bool]
     # #hash calculates hash code according to all attributes.
     # #hash @return [UInt64] Hash code
-    def_equals_and_hash(@sid, @sid_present, @account_sid, @account_sid_present, @friendly_name, @friendly_name_present, @ip_address, @ip_address_present, @cidr_prefix_length, @cidr_prefix_length_present, @ip_access_control_list_sid, @ip_access_control_list_sid_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @uri, @uri_present)
+    def_equals_and_hash(@account_sid, @account_sid_present, @cidr_prefix_length, @cidr_prefix_length_present, @date_created, @date_created_present, @date_updated, @date_updated_present, @friendly_name, @friendly_name_present, @ip_access_control_list_sid, @ip_access_control_list_sid_present, @ip_address, @ip_address_present, @sid, @sid_present, @uri, @uri_present)
   end
 end
