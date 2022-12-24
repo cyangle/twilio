@@ -59,18 +59,30 @@ api = Twilio::DefaultApi.new
 
 List all phone calls
 ```crystal
-api.list_call
+page : Twilio::ListCallResponse = api.list_call
+
+# Get next page of results
+next_page : Twilio::ListCallResponse? = Twilio.next_page(page)
+
+pp page
+pp next_page
 ```
 
 List phone calls with filters
 ```crystal
-api.list_call(
+page : Twilio::ListCallResponse = api.list_call(
   to: "+12345678901",
   from: "+19876543210",
   start_time_before: 2.days.ago,
   end_time_after: 50.days.ago,
   page_size: 50
 )
+
+# Get next page of results
+next_page : Twilio::ListCallResponse? = Twilio.next_page(page)
+
+pp page
+pp next_page
 ```
 
 #### List text messages
@@ -78,17 +90,30 @@ api.list_call(
 List all messages
 ```crystal
 api.list_message
+page : Twilio::ListMessageResponse = api.list_message
+
+# Get next page of results
+next_page : Twilio::ListMessageResponse? = Twilio.next_page(page)
+
+pp page
+pp next_page
 ```
 
 List messages with filters
 ```crystal
-api.list_message(
+page : Twilio::ListMessageResponse = api.list_message(
   to: "+12345678901",
   from: "+19876543210",
   date_sent_before: 2.days.ago
   date_sent_after: 15.days.ago,
   page_size: 50
 )
+
+# Get next page of results
+next_page : Twilio::ListMessageResponse? = Twilio.next_page(page)
+
+pp page
+pp next_page
 ```
 
 #### Send text messages

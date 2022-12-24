@@ -45,4 +45,18 @@ module Twilio
   def self.configure
     yield Configuration.default
   end
+
+  def self.next_page(list_response : T, api_client : Twilio::ApiClient = Twilio::ApiClient.default) : T? forall T
+    if next_page_uri = list_response.next_page_uri
+      request : Crest::Request = api_client.build_api_request(
+        http_method: :GET,
+        path: next_page_uri,
+        auth_names: ["accountSid_authToken"]
+      )
+      body, _status_code, _headers = api_client.execute_api_request(request)
+      list_response.class.from_json(body)
+    else
+      nil
+    end
+  end
 end

@@ -8,7 +8,6 @@ src/ext/open_api/json.cr
 src/ext/open_api/validatable.cr
 src/ext/primitive.cr
 src/ext/time.cr
-src/twilio.cr
 src/twilio/api/default_api.cr
 src/twilio/api_client.cr
 src/twilio/api_error.cr
