@@ -26,3 +26,4 @@ README.md
 .gitignore
 .ameba.yml
 src/twilio.cr
+src/core.cr

@@ -5030,6 +5030,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Accounts"
         ]
       },
       "post": {
@@ -5072,6 +5075,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Accounts"
         ]
       },
       "servers": [
@@ -5085,7 +5091,10 @@
           "friendly_name",
           "status"
         ],
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Accounts"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Addresses.json": {
@@ -5202,6 +5211,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Addresses"
         ]
       },
       "post": {
@@ -5303,6 +5315,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Addresses"
         ]
       },
       "servers": [
@@ -5318,7 +5333,10 @@
           "verified"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Addresses"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Addresses/{AddressSid}/DependentPhoneNumbers.json": {
@@ -5422,6 +5440,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Addresses"
         ]
       },
       "servers": [
@@ -5436,7 +5457,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/Addresses/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Addresses"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Addresses/{Sid}.json": {
@@ -5483,6 +5507,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Addresses"
         ]
       },
       "description": "An Address instance resource represents your or your customer's physical location within a country. Around the world, some local authorities require the name and address of the user to be on file with Twilio to purchase and own a phone number.",
@@ -5536,6 +5563,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Addresses"
         ]
       },
       "post": {
@@ -5636,6 +5666,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Addresses"
         ]
       },
       "servers": [
@@ -5651,7 +5684,10 @@
           "verified"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Addresses"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Applications.json": {
@@ -5751,6 +5787,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Applications"
         ]
       },
       "post": {
@@ -5865,6 +5904,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Applications"
         ]
       },
       "servers": [
@@ -5879,7 +5921,10 @@
           "date_created"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Applications"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Applications/{Sid}.json": {
@@ -5926,6 +5971,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Applications"
         ]
       },
       "description": "An Application instance resource represents an application that you have created with Twilio. An application inside of Twilio is just a set of URLs and other configuration data that tells Twilio how to behave when one of your Twilio numbers receives a call or SMS message.",
@@ -5979,6 +6027,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Applications"
         ]
       },
       "post": {
@@ -6105,6 +6156,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Applications"
         ]
       },
       "servers": [
@@ -6119,7 +6173,10 @@
           "date_created"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Applications"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps.json": {
@@ -6211,6 +6268,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AuthorizedConnectApps"
         ]
       },
       "servers": [
@@ -6224,7 +6284,10 @@
           "connect_app_friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "AuthorizedConnectApps"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AuthorizedConnectApps/{ConnectAppSid}.json": {
@@ -6279,6 +6342,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AuthorizedConnectApps"
         ]
       },
       "servers": [
@@ -6292,7 +6358,10 @@
           "connect_app_friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "AuthorizedConnectApps"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers.json": {
@@ -6384,6 +6453,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AvailablePhoneNumbers"
         ]
       },
       "servers": [
@@ -6399,7 +6471,10 @@
           "beta"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "AvailablePhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json": {
@@ -6452,6 +6527,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AvailablePhoneNumbers"
         ]
       },
       "servers": [
@@ -6467,7 +6545,10 @@
           "beta"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "AvailablePhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Local.json": {
@@ -6714,6 +6795,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AvailablePhoneNumbers"
         ]
       },
       "servers": [
@@ -6728,7 +6812,10 @@
           "beta"
         ],
         "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "AvailablePhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/MachineToMachine.json": {
@@ -6975,6 +7062,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AvailablePhoneNumbers"
         ]
       },
       "servers": [
@@ -6989,7 +7079,10 @@
           "beta"
         ],
         "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "AvailablePhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Mobile.json": {
@@ -7236,6 +7329,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AvailablePhoneNumbers"
         ]
       },
       "servers": [
@@ -7250,7 +7346,10 @@
           "beta"
         ],
         "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "AvailablePhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/National.json": {
@@ -7497,6 +7596,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AvailablePhoneNumbers"
         ]
       },
       "servers": [
@@ -7511,7 +7613,10 @@
           "beta"
         ],
         "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "AvailablePhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/SharedCost.json": {
@@ -7758,6 +7863,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AvailablePhoneNumbers"
         ]
       },
       "servers": [
@@ -7772,7 +7880,10 @@
           "beta"
         ],
         "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "AvailablePhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/TollFree.json": {
@@ -8019,6 +8130,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AvailablePhoneNumbers"
         ]
       },
       "servers": [
@@ -8033,7 +8147,10 @@
           "beta"
         ],
         "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "AvailablePhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}/Voip.json": {
@@ -8280,6 +8397,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "AvailablePhoneNumbers"
         ]
       },
       "servers": [
@@ -8294,7 +8414,10 @@
           "beta"
         ],
         "parent": "/Accounts/{AccountSid}/AvailablePhoneNumbers/{CountryCode}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "AvailablePhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Balance.json": {
@@ -8337,6 +8460,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Balance"
         ]
       },
       "servers": [
@@ -8351,7 +8477,10 @@
           "currency"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Balance"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls.json": {
@@ -8535,6 +8664,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "post": {
@@ -8754,7 +8886,10 @@
               "application_sid"
             ]
           ]
-        }
+        },
+        "tags": [
+          "Calls"
+        ]
       },
       "servers": [
         {
@@ -8770,7 +8905,10 @@
           "start_time"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/FeedbackSummary.json": {
@@ -8851,6 +8989,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -8867,7 +9008,10 @@
         ],
         "mountName": "feedback_summaries",
         "parent": "/Accounts/{AccountSid}/Calls.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/FeedbackSummary/{Sid}.json": {
@@ -8914,6 +9058,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "description": "Call FeedbackSummary resources provide an idea of how your end user's perceive the quality of their calls and the most common issues they have encountered in the context of all your voice traffic during a specific time frame.",
@@ -8967,6 +9114,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -8983,7 +9133,10 @@
         ],
         "mountName": "feedback_summaries",
         "parent": "/Accounts/{AccountSid}/Calls.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Events.json": {
@@ -9087,6 +9240,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -9100,7 +9256,10 @@
           "response"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Feedback.json": {
@@ -9155,6 +9314,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "post": {
@@ -9228,6 +9390,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -9242,7 +9407,10 @@
           "date_created"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications.json": {
@@ -9381,6 +9549,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -9396,7 +9567,10 @@
           "message_date"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Notifications/{Sid}.json": {
@@ -9463,6 +9637,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -9478,7 +9655,10 @@
           "message_date"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Payments.json": {
@@ -9617,6 +9797,9 @@
         ],
         "x-maturity": [
           "Preview"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -9629,7 +9812,10 @@
           "sid"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Payments/{Sid}.json": {
@@ -9731,6 +9917,9 @@
         ],
         "x-maturity": [
           "Preview"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -9743,7 +9932,10 @@
           "sid"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings.json": {
@@ -9874,6 +10066,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "post": {
@@ -9965,6 +10160,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -9981,7 +10179,10 @@
           "duration"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Recordings/{Sid}.json": {
@@ -10040,6 +10241,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "description": "A Recording resource represents the recording associated with a voice call, conference, or SIP Trunk.",
@@ -10105,6 +10309,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "post": {
@@ -10190,6 +10397,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -10206,7 +10416,10 @@
           "duration"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Siprec/{Sid}.json": {
@@ -10290,6 +10503,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -10303,7 +10519,10 @@
           "name"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/Streams/{Sid}.json": {
@@ -10387,6 +10606,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -10400,7 +10622,10 @@
           "name"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessageSubscriptions.json": {
@@ -10482,6 +10707,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -10494,7 +10722,10 @@
           "sid"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessageSubscriptions/{Sid}.json": {
@@ -10553,6 +10784,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "description": "TODO: Resource-level docs",
@@ -10566,7 +10800,10 @@
           "sid"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessages.json": {
@@ -10644,6 +10881,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -10656,7 +10896,10 @@
           "sid"
         ],
         "parent": "/Accounts/{AccountSid}/Calls/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Calls/{Sid}.json": {
@@ -10703,6 +10946,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "description": "A Call is an object that represents a connection between a telephone and Twilio.",
@@ -10756,6 +11002,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "post": {
@@ -10858,6 +11107,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Calls"
         ]
       },
       "servers": [
@@ -10874,7 +11126,10 @@
           "start_time"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Calls"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences.json": {
@@ -11037,6 +11292,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "servers": [
@@ -11051,7 +11309,10 @@
           "status"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Conferences"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants.json": {
@@ -11179,6 +11440,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "post": {
@@ -11448,6 +11712,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "servers": [
@@ -11464,7 +11731,10 @@
           "hold"
         ],
         "parent": "/Accounts/{AccountSid}/Conferences/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Conferences"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Participants/{CallSid}.json": {
@@ -11520,6 +11790,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "description": "Conference participants",
@@ -11582,6 +11855,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "post": {
@@ -11706,6 +11982,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "servers": [
@@ -11722,7 +12001,10 @@
           "hold"
         ],
         "parent": "/Accounts/{AccountSid}/Conferences/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Conferences"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings.json": {
@@ -11853,6 +12135,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "servers": [
@@ -11869,7 +12154,10 @@
           "duration"
         ],
         "parent": "/Accounts/{AccountSid}/Conferences/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Conferences"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{ConferenceSid}/Recordings/{Sid}.json": {
@@ -11928,6 +12216,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "description": "Recordings of conferences",
@@ -11993,6 +12284,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "post": {
@@ -12078,6 +12372,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "servers": [
@@ -12094,7 +12391,10 @@
           "duration"
         ],
         "parent": "/Accounts/{AccountSid}/Conferences/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Conferences"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Conferences/{Sid}.json": {
@@ -12149,6 +12449,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "post": {
@@ -12223,6 +12526,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Conferences"
         ]
       },
       "servers": [
@@ -12237,7 +12543,10 @@
           "status"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Conferences"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/ConnectApps.json": {
@@ -12329,6 +12638,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "ConnectApps"
         ]
       },
       "servers": [
@@ -12342,7 +12654,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "ConnectApps"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/ConnectApps/{Sid}.json": {
@@ -12389,6 +12704,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "ConnectApps"
         ]
       },
       "description": "Twilio Connect apps",
@@ -12442,6 +12760,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "ConnectApps"
         ]
       },
       "post": {
@@ -12544,6 +12865,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "ConnectApps"
         ]
       },
       "servers": [
@@ -12557,7 +12881,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "ConnectApps"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers.json": {
@@ -12682,6 +13009,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "post": {
@@ -12862,7 +13192,10 @@
               "area_code"
             ]
           ]
-        }
+        },
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       },
       "servers": [
         {
@@ -12876,7 +13209,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Local.json": {
@@ -13001,6 +13337,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "post": {
@@ -13172,6 +13511,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "servers": [
@@ -13186,7 +13528,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/Mobile.json": {
@@ -13311,6 +13656,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "post": {
@@ -13482,6 +13830,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "servers": [
@@ -13496,7 +13847,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/TollFree.json": {
@@ -13621,6 +13975,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "post": {
@@ -13792,6 +14149,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "servers": [
@@ -13806,7 +14166,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns.json": {
@@ -13910,6 +14273,9 @@
         ],
         "x-maturity": [
           "Beta"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "post": {
@@ -13984,6 +14350,9 @@
         ],
         "x-maturity": [
           "Beta"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "servers": [
@@ -13999,7 +14368,10 @@
           "description"
         ],
         "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions.json": {
@@ -14115,6 +14487,9 @@
         ],
         "x-maturity": [
           "Beta"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "servers": [
@@ -14131,7 +14506,10 @@
           "product_name"
         ],
         "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{AssignedAddOnSid}/Extensions/{Sid}.json": {
@@ -14210,6 +14588,9 @@
         ],
         "x-maturity": [
           "Beta"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "servers": [
@@ -14226,7 +14607,10 @@
           "product_name"
         ],
         "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{ResourceSid}/AssignedAddOns/{Sid}.json": {
@@ -14285,6 +14669,9 @@
         ],
         "x-maturity": [
           "Beta"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "description": "TODO: Resource-level docs",
@@ -14350,6 +14737,9 @@
         ],
         "x-maturity": [
           "Beta"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "servers": [
@@ -14365,7 +14755,10 @@
           "description"
         ],
         "parent": "/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/IncomingPhoneNumbers/{Sid}.json": {
@@ -14412,6 +14805,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "description": "Incoming phone numbers on a Twilio account/project",
@@ -14465,6 +14861,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "post": {
@@ -14647,6 +15046,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "IncomingPhoneNumbers"
         ]
       },
       "servers": [
@@ -14661,7 +15063,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "IncomingPhoneNumbers"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Keys.json": {
@@ -14753,6 +15158,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Keys"
         ]
       },
       "post": {
@@ -14812,7 +15220,10 @@
         ],
         "x-twilio": {
           "mountName": "new_keys"
-        }
+        },
+        "tags": [
+          "Keys"
+        ]
       },
       "servers": [
         {
@@ -14826,7 +15237,10 @@
           "date_created"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Keys"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Keys/{Sid}.json": {
@@ -14873,6 +15287,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Keys"
         ]
       },
       "description": "API keys",
@@ -14926,6 +15343,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Keys"
         ]
       },
       "post": {
@@ -14994,6 +15414,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Keys"
         ]
       },
       "servers": [
@@ -15008,7 +15431,10 @@
           "date_created"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Keys"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages.json": {
@@ -15145,6 +15571,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Messages"
         ]
       },
       "post": {
@@ -15323,7 +15752,10 @@
               "media_url"
             ]
           ]
-        }
+        },
+        "tags": [
+          "Messages"
+        ]
       },
       "servers": [
         {
@@ -15340,7 +15772,10 @@
           "date_sent"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Messages"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Feedback.json": {
@@ -15412,6 +15847,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Messages"
         ]
       },
       "servers": [
@@ -15426,7 +15864,10 @@
           "date_created"
         ],
         "parent": "/Accounts/{AccountSid}/Messages/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Messages"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media.json": {
@@ -15557,6 +15998,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Messages"
         ]
       },
       "servers": [
@@ -15571,7 +16015,10 @@
           "content_type"
         ],
         "parent": "/Accounts/{AccountSid}/Messages/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Messages"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages/{MessageSid}/Media/{Sid}.json": {
@@ -15630,6 +16077,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Messages"
         ]
       },
       "description": "The Media resource represents a piece of media, such as an image, that is associated with a message.",
@@ -15695,6 +16145,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Messages"
         ]
       },
       "servers": [
@@ -15709,7 +16162,10 @@
           "content_type"
         ],
         "parent": "/Accounts/{AccountSid}/Messages/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Messages"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Messages/{Sid}.json": {
@@ -15756,6 +16212,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Messages"
         ]
       },
       "description": "A Message resource represents an inbound or outbound message.",
@@ -15809,6 +16268,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Messages"
         ]
       },
       "post": {
@@ -15882,6 +16344,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Messages"
         ]
       },
       "servers": [
@@ -15899,7 +16364,10 @@
           "date_sent"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Messages"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Notifications.json": {
@@ -16026,6 +16494,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Notifications"
         ]
       },
       "servers": [
@@ -16041,7 +16512,10 @@
           "message_date"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Notifications"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Notifications/{Sid}.json": {
@@ -16096,6 +16570,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Notifications"
         ]
       },
       "servers": [
@@ -16111,7 +16588,10 @@
           "message_date"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Notifications"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds.json": {
@@ -16220,6 +16700,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "OutgoingCallerIds"
         ]
       },
       "post": {
@@ -16303,7 +16786,10 @@
         ],
         "x-twilio": {
           "mountName": "validation_requests"
-        }
+        },
+        "tags": [
+          "OutgoingCallerIds"
+        ]
       },
       "servers": [
         {
@@ -16317,7 +16803,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "OutgoingCallerIds"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/OutgoingCallerIds/{Sid}.json": {
@@ -16364,6 +16853,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "OutgoingCallerIds"
         ]
       },
       "description": "An OutgoingCallerId resource represents a single verified number that may be used as a caller ID when making outgoing calls via the REST API and within the TwiML <Dial> verb.",
@@ -16417,6 +16909,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "OutgoingCallerIds"
         ]
       },
       "post": {
@@ -16485,6 +16980,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "OutgoingCallerIds"
         ]
       },
       "servers": [
@@ -16499,7 +16997,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "OutgoingCallerIds"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Queues.json": {
@@ -16591,6 +17092,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Queues"
         ]
       },
       "post": {
@@ -16654,6 +17158,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Queues"
         ]
       },
       "servers": [
@@ -16669,7 +17176,10 @@
           "average_wait_time"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Queues"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members.json": {
@@ -16773,6 +17283,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Queues"
         ]
       },
       "servers": [
@@ -16788,7 +17301,10 @@
           "wait_time"
         ],
         "parent": "/Accounts/{AccountSid}/Queues/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Queues"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Queues/{QueueSid}/Members/{CallSid}.json": {
@@ -16852,6 +17368,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Queues"
         ]
       },
       "post": {
@@ -16936,6 +17455,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Queues"
         ]
       },
       "servers": [
@@ -16951,7 +17473,10 @@
           "wait_time"
         ],
         "parent": "/Accounts/{AccountSid}/Queues/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Queues"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Queues/{Sid}.json": {
@@ -16998,6 +17523,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Queues"
         ]
       },
       "description": "Queues of calls",
@@ -17051,6 +17579,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Queues"
         ]
       },
       "post": {
@@ -17123,6 +17654,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Queues"
         ]
       },
       "servers": [
@@ -17138,7 +17672,10 @@
           "average_wait_time"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Queues"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings.json": {
@@ -17287,6 +17824,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "servers": [
@@ -17303,7 +17843,10 @@
           "duration"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Recordings"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions.json": {
@@ -17407,6 +17950,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "servers": [
@@ -17422,7 +17968,10 @@
           "duration"
         ],
         "parent": "/Accounts/{AccountSid}/Recordings/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Recordings"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{RecordingSid}/Transcriptions/{Sid}.json": {
@@ -17481,6 +18030,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "description": "References to text transcriptions of call recordings",
@@ -17546,6 +18098,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "servers": [
@@ -17561,7 +18116,10 @@
           "duration"
         ],
         "parent": "/Accounts/{AccountSid}/Recordings/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Recordings"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults.json": {
@@ -17665,6 +18223,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "servers": [
@@ -17680,7 +18241,10 @@
           "date_created"
         ],
         "parent": "/Accounts/{AccountSid}/Recordings/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Recordings"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads.json": {
@@ -17796,6 +18360,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "servers": [
@@ -17810,7 +18377,10 @@
           "content_type"
         ],
         "parent": "/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Recordings"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{AddOnResultSid}/Payloads/{Sid}.json": {
@@ -17881,6 +18451,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "description": "A single Add-on results' payload",
@@ -17958,6 +18531,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "servers": [
@@ -17972,7 +18548,10 @@
           "content_type"
         ],
         "parent": "/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Recordings"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{ReferenceSid}/AddOnResults/{Sid}.json": {
@@ -18031,6 +18610,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "description": "The results of an Add-on API call",
@@ -18096,6 +18678,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "servers": [
@@ -18111,7 +18696,10 @@
           "date_created"
         ],
         "parent": "/Accounts/{AccountSid}/Recordings/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Recordings"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Recordings/{Sid}.json": {
@@ -18158,6 +18746,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "description": "Recordings of phone calls",
@@ -18219,6 +18810,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Recordings"
         ]
       },
       "servers": [
@@ -18235,7 +18829,10 @@
           "duration"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Recordings"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP.json": {
@@ -18250,7 +18847,10 @@
 
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists.json": {
@@ -18342,6 +18942,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -18401,6 +19004,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -18414,7 +19020,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials.json": {
@@ -18518,6 +19127,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -18594,6 +19206,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -18608,7 +19223,10 @@
           "credential_list_sid"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{CredentialListSid}/Credentials/{Sid}.json": {
@@ -18667,6 +19285,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "Username and password information for SIP Domains",
@@ -18732,6 +19353,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -18812,6 +19436,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -18826,7 +19453,10 @@
           "credential_list_sid"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/CredentialLists/{Sid}.json": {
@@ -18873,6 +19503,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "Lists of SIP credentials",
@@ -18926,6 +19559,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -18997,6 +19633,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -19010,7 +19649,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains.json": {
@@ -19102,6 +19744,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -19215,6 +19860,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -19229,7 +19877,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth.json": {
@@ -19245,7 +19896,10 @@
 
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json": {
@@ -19261,7 +19915,10 @@
 
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings.json": {
@@ -19365,6 +20022,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -19439,6 +20099,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -19453,7 +20116,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/CredentialListMappings/{Sid}.json": {
@@ -19512,6 +20178,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "Credential lists for SIP calls",
@@ -19577,6 +20246,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -19591,7 +20263,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings.json": {
@@ -19695,6 +20370,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -19769,6 +20447,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -19783,7 +20464,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls/IpAccessControlListMappings/{Sid}.json": {
@@ -19842,6 +20526,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "IP address lists for SIP calls",
@@ -19907,6 +20594,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -19921,7 +20611,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Calls.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations.json": {
@@ -19937,7 +20630,10 @@
 
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings.json": {
@@ -20041,6 +20737,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -20115,6 +20814,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -20129,7 +20831,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations/CredentialListMappings/{Sid}.json": {
@@ -20188,6 +20893,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "Credential lists for SIP registrations",
@@ -20253,6 +20961,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -20267,7 +20978,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/Auth/Registrations.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json": {
@@ -20371,6 +21085,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -20445,6 +21162,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -20458,7 +21178,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings/{Sid}.json": {
@@ -20517,6 +21240,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "Credential lists associated with a SIP Domain",
@@ -20582,6 +21308,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -20595,7 +21324,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings.json": {
@@ -20699,6 +21431,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -20773,6 +21508,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -20786,7 +21524,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{DomainSid}/IpAccessControlListMappings/{Sid}.json": {
@@ -20845,6 +21586,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "Access control lists associated with a SIP Domain",
@@ -20910,6 +21654,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -20923,7 +21670,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/Domains/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/Domains/{Sid}.json": {
@@ -20970,6 +21720,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "Custom DNS hostnames that can accept SIP traffic",
@@ -21023,6 +21776,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -21145,6 +21901,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -21159,7 +21918,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists.json": {
@@ -21251,6 +22013,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -21310,6 +22075,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -21323,7 +22091,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses.json": {
@@ -21427,6 +22198,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -21507,6 +22281,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -21521,7 +22298,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{IpAccessControlListSid}/IpAddresses/{Sid}.json": {
@@ -21580,6 +22360,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "IP addresses that have access to a SIP Domain",
@@ -21645,6 +22428,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -21733,6 +22519,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -21747,7 +22536,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SIP/IpAccessControlLists/{Sid}.json": {
@@ -21794,6 +22586,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "description": "Access control lists of IP address resources",
@@ -21847,6 +22642,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "post": {
@@ -21918,6 +22716,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SIP"
         ]
       },
       "servers": [
@@ -21931,7 +22732,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{AccountSid}/SIP.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SIP"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes.json": {
@@ -22039,6 +22843,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SMS"
         ]
       },
       "servers": [
@@ -22053,7 +22860,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SMS"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SMS/ShortCodes/{Sid}.json": {
@@ -22108,6 +22918,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SMS"
         ]
       },
       "post": {
@@ -22196,6 +23009,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SMS"
         ]
       },
       "servers": [
@@ -22210,7 +23026,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SMS"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SigningKeys.json": {
@@ -22302,6 +23121,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SigningKeys"
         ]
       },
       "post": {
@@ -22361,7 +23183,10 @@
         ],
         "x-twilio": {
           "mountName": "new_signing_keys"
-        }
+        },
+        "tags": [
+          "SigningKeys"
+        ]
       },
       "servers": [
         {
@@ -22375,7 +23200,10 @@
           "secret"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "SigningKeys"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/SigningKeys/{Sid}.json": {
@@ -22422,6 +23250,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SigningKeys"
         ]
       },
       "description": "TODO: Resource-level docs",
@@ -22475,6 +23306,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SigningKeys"
         ]
       },
       "post": {
@@ -22543,6 +23377,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SigningKeys"
         ]
       },
       "servers": [
@@ -22556,7 +23393,10 @@
           "friendly_name"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SigningKeys"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Tokens.json": {
@@ -22615,6 +23455,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Tokens"
         ]
       },
       "servers": [
@@ -22628,7 +23471,10 @@
           "ice_servers"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Tokens"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Transcriptions.json": {
@@ -22720,6 +23566,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Transcriptions"
         ]
       },
       "servers": [
@@ -22735,7 +23584,10 @@
           "duration"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Transcriptions"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Transcriptions/{Sid}.json": {
@@ -22782,6 +23634,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Transcriptions"
         ]
       },
       "description": "Text transcriptions of call recordings",
@@ -22835,6 +23690,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Transcriptions"
         ]
       },
       "servers": [
@@ -22850,7 +23708,10 @@
           "duration"
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Transcriptions"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage.json": {
@@ -22865,7 +23726,10 @@
 
         ],
         "parent": "/Accounts/{Sid}.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records.json": {
@@ -22992,6 +23856,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -23008,7 +23875,10 @@
           "count_unit"
         ],
         "parent": "/Accounts/{AccountSid}/Usage.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/AllTime.json": {
@@ -23135,6 +24005,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -23151,7 +24024,10 @@
           "count_unit"
         ],
         "parent": "/Accounts/{AccountSid}/Usage/Records.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Daily.json": {
@@ -23278,6 +24154,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -23294,7 +24173,10 @@
           "count_unit"
         ],
         "parent": "/Accounts/{AccountSid}/Usage/Records.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/LastMonth.json": {
@@ -23421,6 +24303,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -23437,7 +24322,10 @@
           "count_unit"
         ],
         "parent": "/Accounts/{AccountSid}/Usage/Records.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Monthly.json": {
@@ -23564,6 +24452,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -23580,7 +24471,10 @@
           "count_unit"
         ],
         "parent": "/Accounts/{AccountSid}/Usage/Records.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/ThisMonth.json": {
@@ -23707,6 +24601,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -23723,7 +24620,10 @@
           "count_unit"
         ],
         "parent": "/Accounts/{AccountSid}/Usage/Records.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Today.json": {
@@ -23850,6 +24750,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -23866,7 +24769,10 @@
           "count_unit"
         ],
         "parent": "/Accounts/{AccountSid}/Usage/Records.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Yearly.json": {
@@ -23993,6 +24899,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -24009,7 +24918,10 @@
           "count_unit"
         ],
         "parent": "/Accounts/{AccountSid}/Usage/Records.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Records/Yesterday.json": {
@@ -24136,6 +25048,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -24152,7 +25067,10 @@
           "count_unit"
         ],
         "parent": "/Accounts/{AccountSid}/Usage/Records.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers.json": {
@@ -24271,6 +25189,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "post": {
@@ -24359,6 +25280,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -24374,7 +25298,10 @@
           "trigger_by"
         ],
         "parent": "/Accounts/{AccountSid}/Usage.json",
-        "pathType": "list"
+        "pathType": "list",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{AccountSid}/Usage/Triggers/{Sid}.json": {
@@ -24421,6 +25348,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "description": "Webhooks that notify you of usage thresholds",
@@ -24474,6 +25404,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "post": {
@@ -24550,6 +25483,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "Usage"
         ]
       },
       "servers": [
@@ -24565,7 +25501,10 @@
           "trigger_by"
         ],
         "parent": "/Accounts/{AccountSid}/Usage.json",
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "Usage"
+        ]
       }
     },
     "/2010-04-01/Accounts/{Sid}.json": {
@@ -24608,6 +25547,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SubAccounts"
         ]
       },
       "post": {
@@ -24669,6 +25611,9 @@
         ],
         "x-maturity": [
           "GA"
+        ],
+        "tags": [
+          "SubAccounts"
         ]
       },
       "servers": [
@@ -24682,7 +25627,10 @@
           "friendly_name",
           "status"
         ],
-        "pathType": "instance"
+        "pathType": "instance",
+        "tags": [
+          "SubAccounts"
+        ]
       }
     }
   },
@@ -24703,6 +25651,77 @@
     {
       "description": "PLEASE NOTE that this is a Preview product that is subject to change. Use it with caution. If you currently do not have developer preview access, please contact help@twilio.com.",
       "name": "Preview"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Accounts"
+    },
+    {
+      "name": "Addresses"
+    },
+    {
+      "name": "Applications"
+    },
+    {
+      "name": "AuthorizedConnectApps"
+    },
+    {
+      "name": "AvailablePhoneNumbers"
+    },
+    {
+      "name": "Balance"
+    },
+    {
+      "name": "Calls"
+    },
+    {
+      "name": "Conferences"
+    },
+    {
+      "name": "ConnectApps"
+    },
+    {
+      "name": "IncomingPhoneNumbers"
+    },
+    {
+      "name": "Keys"
+    },
+    {
+      "name": "Messages"
+    },
+    {
+      "name": "Notifications"
+    },
+    {
+      "name": "OutgoingCallerIds"
+    },
+    {
+      "name": "Queues"
+    },
+    {
+      "name": "Recordings"
+    },
+    {
+      "name": "SIP"
+    },
+    {
+      "name": "SMS"
+    },
+    {
+      "name": "SigningKeys"
+    },
+    {
+      "name": "Tokens"
+    },
+    {
+      "name": "Transcriptions"
+    },
+    {
+      "name": "Usage"
+    },
+    {
+      "name": "SubAccounts"
     }
   ]
 }

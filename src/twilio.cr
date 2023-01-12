@@ -8,55 +8,7 @@
 #
 # OpenAPI Generator version: 6.3.0-SNAPSHOT
 
-# Dependencies
-require "crest"
-require "log"
-require "json"
-require "time"
-require "uri"
+require "./core"
 
-# Project files
-require "./ext/**"
-require "./validators/**"
-require "./twilio/configuration.cr"
-require "./twilio/api_error.cr"
-require "./twilio/api_client.cr"
 require "./twilio/models/**"
 require "./twilio/api/**"
-
-module Twilio
-  Log = ::Log.for("Twilio") # => Log for Twilio source
-
-  VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
-
-  # Return the default `Configuration` object.
-  def self.configure
-    Configuration.default
-  end
-
-  # Customize default settings for the SDK using block.
-  #
-  # ```
-  # Twilio.configure do |config|
-  #   config.username = "xxx"
-  #   config.password = "xxx"
-  # end
-  # ```
-  def self.configure
-    yield Configuration.default
-  end
-
-  def self.next_page(list_response : T, api_client : Twilio::ApiClient = Twilio::ApiClient.default) : T? forall T
-    if next_page_uri = list_response.next_page_uri
-      request : Crest::Request = api_client.build_api_request(
-        http_method: :GET,
-        path: next_page_uri,
-        auth_names: ["accountSid_authToken"]
-      )
-      body, _status_code, _headers = api_client.execute_api_request(request)
-      list_response.class.from_json(body)
-    else
-      nil
-    end
-  end
-end

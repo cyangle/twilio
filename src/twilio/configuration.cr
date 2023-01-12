@@ -239,7 +239,7 @@ module Twilio
 
     def operation_server_settings
       {
-        "DefaultApi.create_account" => [
+        "AccountsApi.create_account" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -247,7 +247,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_address" => [
+        "AccountsApi.list_account" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -255,7 +255,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_application" => [
+        "AddressesApi.create_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -263,7 +263,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_call" => [
+        "AddressesApi.delete_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -271,7 +271,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_call_feedback_summary" => [
+        "AddressesApi.fetch_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -279,7 +279,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_call_recording" => [
+        "AddressesApi.list_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -287,7 +287,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_incoming_phone_number" => [
+        "AddressesApi.list_dependent_phone_number" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -295,7 +295,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_incoming_phone_number_assigned_add_on" => [
+        "AddressesApi.update_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -303,7 +303,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_incoming_phone_number_local" => [
+        "ApplicationsApi.create_application" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -311,7 +311,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_incoming_phone_number_mobile" => [
+        "ApplicationsApi.delete_application" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -319,7 +319,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_incoming_phone_number_toll_free" => [
+        "ApplicationsApi.fetch_application" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -327,7 +327,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_message" => [
+        "ApplicationsApi.list_application" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -335,7 +335,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_message_feedback" => [
+        "ApplicationsApi.update_application" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -343,7 +343,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_new_key" => [
+        "AuthorizedConnectAppsApi.fetch_authorized_connect_app" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -351,7 +351,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_new_signing_key" => [
+        "AuthorizedConnectAppsApi.list_authorized_connect_app" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -359,7 +359,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_participant" => [
+        "AvailablePhoneNumbersApi.fetch_available_phone_number_country" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -367,7 +367,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_payments" => [
+        "AvailablePhoneNumbersApi.list_available_phone_number_country" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -375,7 +375,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_queue" => [
+        "AvailablePhoneNumbersApi.list_available_phone_number_local" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -383,7 +383,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_auth_calls_credential_list_mapping" => [
+        "AvailablePhoneNumbersApi.list_available_phone_number_machine_to_machine" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -391,7 +391,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_auth_calls_ip_access_control_list_mapping" => [
+        "AvailablePhoneNumbersApi.list_available_phone_number_mobile" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -399,7 +399,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_auth_registrations_credential_list_mapping" => [
+        "AvailablePhoneNumbersApi.list_available_phone_number_national" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -407,7 +407,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_credential" => [
+        "AvailablePhoneNumbersApi.list_available_phone_number_shared_cost" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -415,7 +415,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_credential_list" => [
+        "AvailablePhoneNumbersApi.list_available_phone_number_toll_free" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -423,7 +423,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_credential_list_mapping" => [
+        "AvailablePhoneNumbersApi.list_available_phone_number_voip" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -431,7 +431,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_domain" => [
+        "BalanceApi.fetch_balance" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -439,7 +439,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_ip_access_control_list" => [
+        "CallsApi.create_call" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -447,7 +447,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_ip_access_control_list_mapping" => [
+        "CallsApi.create_call_feedback_summary" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -455,7 +455,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_sip_ip_address" => [
+        "CallsApi.create_call_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -463,7 +463,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_token" => [
+        "CallsApi.create_payments" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -471,7 +471,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_usage_trigger" => [
+        "CallsApi.create_user_defined_message" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -479,7 +479,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_user_defined_message" => [
+        "CallsApi.create_user_defined_message_subscription" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -487,7 +487,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_user_defined_message_subscription" => [
+        "CallsApi.delete_call" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -495,7 +495,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.create_validation_request" => [
+        "CallsApi.delete_call_feedback_summary" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -503,7 +503,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_address" => [
+        "CallsApi.delete_call_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -511,7 +511,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_application" => [
+        "CallsApi.delete_user_defined_message_subscription" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -519,7 +519,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_call" => [
+        "CallsApi.fetch_call" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -527,7 +527,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_call_feedback_summary" => [
+        "CallsApi.fetch_call_feedback" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -535,7 +535,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_call_recording" => [
+        "CallsApi.fetch_call_feedback_summary" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -543,7 +543,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_conference_recording" => [
+        "CallsApi.fetch_call_notification" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -551,7 +551,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_connect_app" => [
+        "CallsApi.fetch_call_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -559,7 +559,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_incoming_phone_number" => [
+        "CallsApi.list_call" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -567,7 +567,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_incoming_phone_number_assigned_add_on" => [
+        "CallsApi.list_call_event" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -575,7 +575,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_key" => [
+        "CallsApi.list_call_notification" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -583,7 +583,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_media" => [
+        "CallsApi.list_call_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -591,7 +591,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_message" => [
+        "CallsApi.update_call" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -599,7 +599,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_outgoing_caller_id" => [
+        "CallsApi.update_call_feedback" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -607,7 +607,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_participant" => [
+        "CallsApi.update_call_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -615,7 +615,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_queue" => [
+        "CallsApi.update_payments" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -623,7 +623,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_recording" => [
+        "CallsApi.update_siprec" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -631,7 +631,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_recording_add_on_result" => [
+        "CallsApi.update_stream" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -639,7 +639,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_recording_add_on_result_payload" => [
+        "ConferencesApi.create_participant" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -647,7 +647,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_recording_transcription" => [
+        "ConferencesApi.delete_conference_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -655,7 +655,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_signing_key" => [
+        "ConferencesApi.delete_participant" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -663,7 +663,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_auth_calls_credential_list_mapping" => [
+        "ConferencesApi.fetch_conference" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -671,7 +671,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_auth_calls_ip_access_control_list_mapping" => [
+        "ConferencesApi.fetch_conference_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -679,7 +679,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_auth_registrations_credential_list_mapping" => [
+        "ConferencesApi.fetch_participant" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -687,7 +687,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_credential" => [
+        "ConferencesApi.list_conference" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -695,7 +695,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_credential_list" => [
+        "ConferencesApi.list_conference_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -703,7 +703,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_credential_list_mapping" => [
+        "ConferencesApi.list_participant" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -711,7 +711,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_domain" => [
+        "ConferencesApi.update_conference" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -719,7 +719,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_ip_access_control_list" => [
+        "ConferencesApi.update_conference_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -727,7 +727,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_ip_access_control_list_mapping" => [
+        "ConferencesApi.update_participant" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -735,7 +735,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_sip_ip_address" => [
+        "ConnectAppsApi.delete_connect_app" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -743,7 +743,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_transcription" => [
+        "ConnectAppsApi.fetch_connect_app" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -751,7 +751,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_usage_trigger" => [
+        "ConnectAppsApi.list_connect_app" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -759,7 +759,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.delete_user_defined_message_subscription" => [
+        "ConnectAppsApi.update_connect_app" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -767,7 +767,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_account" => [
+        "IncomingPhoneNumbersApi.create_incoming_phone_number" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -775,7 +775,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_address" => [
+        "IncomingPhoneNumbersApi.create_incoming_phone_number_assigned_add_on" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -783,7 +783,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_application" => [
+        "IncomingPhoneNumbersApi.create_incoming_phone_number_local" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -791,7 +791,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_authorized_connect_app" => [
+        "IncomingPhoneNumbersApi.create_incoming_phone_number_mobile" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -799,7 +799,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_available_phone_number_country" => [
+        "IncomingPhoneNumbersApi.create_incoming_phone_number_toll_free" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -807,7 +807,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_balance" => [
+        "IncomingPhoneNumbersApi.delete_incoming_phone_number" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -815,7 +815,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_call" => [
+        "IncomingPhoneNumbersApi.delete_incoming_phone_number_assigned_add_on" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -823,7 +823,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_call_feedback" => [
+        "IncomingPhoneNumbersApi.fetch_incoming_phone_number" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -831,7 +831,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_call_feedback_summary" => [
+        "IncomingPhoneNumbersApi.fetch_incoming_phone_number_assigned_add_on" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -839,7 +839,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_call_notification" => [
+        "IncomingPhoneNumbersApi.fetch_incoming_phone_number_assigned_add_on_extension" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -847,7 +847,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_call_recording" => [
+        "IncomingPhoneNumbersApi.list_incoming_phone_number" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -855,7 +855,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_conference" => [
+        "IncomingPhoneNumbersApi.list_incoming_phone_number_assigned_add_on" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -863,7 +863,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_conference_recording" => [
+        "IncomingPhoneNumbersApi.list_incoming_phone_number_assigned_add_on_extension" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -871,7 +871,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_connect_app" => [
+        "IncomingPhoneNumbersApi.list_incoming_phone_number_local" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -879,7 +879,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_incoming_phone_number" => [
+        "IncomingPhoneNumbersApi.list_incoming_phone_number_mobile" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -887,7 +887,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_incoming_phone_number_assigned_add_on" => [
+        "IncomingPhoneNumbersApi.list_incoming_phone_number_toll_free" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -895,7 +895,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_incoming_phone_number_assigned_add_on_extension" => [
+        "IncomingPhoneNumbersApi.update_incoming_phone_number" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -903,7 +903,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_key" => [
+        "KeysApi.create_new_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -911,7 +911,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_media" => [
+        "KeysApi.delete_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -919,7 +919,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_member" => [
+        "KeysApi.fetch_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -927,7 +927,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_message" => [
+        "KeysApi.list_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -935,7 +935,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_notification" => [
+        "KeysApi.update_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -943,7 +943,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_outgoing_caller_id" => [
+        "MessagesApi.create_message" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -951,7 +951,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_participant" => [
+        "MessagesApi.create_message_feedback" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -959,7 +959,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_queue" => [
+        "MessagesApi.delete_media" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -967,7 +967,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_recording" => [
+        "MessagesApi.delete_message" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -975,7 +975,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_recording_add_on_result" => [
+        "MessagesApi.fetch_media" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -983,7 +983,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_recording_add_on_result_payload" => [
+        "MessagesApi.fetch_message" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -991,7 +991,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_recording_transcription" => [
+        "MessagesApi.list_media" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -999,7 +999,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_short_code" => [
+        "MessagesApi.list_message" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1007,7 +1007,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_signing_key" => [
+        "MessagesApi.update_message" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1015,7 +1015,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_auth_calls_credential_list_mapping" => [
+        "NotificationsApi.fetch_notification" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1023,7 +1023,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_auth_calls_ip_access_control_list_mapping" => [
+        "NotificationsApi.list_notification" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1031,7 +1031,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_auth_registrations_credential_list_mapping" => [
+        "OutgoingCallerIdsApi.create_validation_request" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1039,7 +1039,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_credential" => [
+        "OutgoingCallerIdsApi.delete_outgoing_caller_id" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1047,7 +1047,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_credential_list" => [
+        "OutgoingCallerIdsApi.fetch_outgoing_caller_id" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1055,7 +1055,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_credential_list_mapping" => [
+        "OutgoingCallerIdsApi.list_outgoing_caller_id" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1063,7 +1063,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_domain" => [
+        "OutgoingCallerIdsApi.update_outgoing_caller_id" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1071,7 +1071,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_ip_access_control_list" => [
+        "QueuesApi.create_queue" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1079,7 +1079,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_ip_access_control_list_mapping" => [
+        "QueuesApi.delete_queue" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1087,7 +1087,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_sip_ip_address" => [
+        "QueuesApi.fetch_member" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1095,7 +1095,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_transcription" => [
+        "QueuesApi.fetch_queue" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1103,7 +1103,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.fetch_usage_trigger" => [
+        "QueuesApi.list_member" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1111,7 +1111,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_account" => [
+        "QueuesApi.list_queue" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1119,7 +1119,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_address" => [
+        "QueuesApi.update_member" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1127,7 +1127,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_application" => [
+        "QueuesApi.update_queue" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1135,7 +1135,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_authorized_connect_app" => [
+        "RecordingsApi.delete_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1143,7 +1143,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_available_phone_number_country" => [
+        "RecordingsApi.delete_recording_add_on_result" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1151,7 +1151,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_available_phone_number_local" => [
+        "RecordingsApi.delete_recording_add_on_result_payload" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1159,7 +1159,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_available_phone_number_machine_to_machine" => [
+        "RecordingsApi.delete_recording_transcription" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1167,7 +1167,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_available_phone_number_mobile" => [
+        "RecordingsApi.fetch_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1175,7 +1175,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_available_phone_number_national" => [
+        "RecordingsApi.fetch_recording_add_on_result" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1183,7 +1183,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_available_phone_number_shared_cost" => [
+        "RecordingsApi.fetch_recording_add_on_result_payload" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1191,7 +1191,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_available_phone_number_toll_free" => [
+        "RecordingsApi.fetch_recording_transcription" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1199,7 +1199,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_available_phone_number_voip" => [
+        "RecordingsApi.list_recording" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1207,7 +1207,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_call" => [
+        "RecordingsApi.list_recording_add_on_result" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1215,7 +1215,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_call_event" => [
+        "RecordingsApi.list_recording_add_on_result_payload" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1223,7 +1223,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_call_notification" => [
+        "RecordingsApi.list_recording_transcription" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1231,7 +1231,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_call_recording" => [
+        "SIPApi.create_sip_auth_calls_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1239,7 +1239,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_conference" => [
+        "SIPApi.create_sip_auth_calls_ip_access_control_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1247,7 +1247,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_conference_recording" => [
+        "SIPApi.create_sip_auth_registrations_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1255,7 +1255,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_connect_app" => [
+        "SIPApi.create_sip_credential" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1263,7 +1263,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_dependent_phone_number" => [
+        "SIPApi.create_sip_credential_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1271,7 +1271,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_incoming_phone_number" => [
+        "SIPApi.create_sip_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1279,7 +1279,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_incoming_phone_number_assigned_add_on" => [
+        "SIPApi.create_sip_domain" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1287,7 +1287,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_incoming_phone_number_assigned_add_on_extension" => [
+        "SIPApi.create_sip_ip_access_control_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1295,7 +1295,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_incoming_phone_number_local" => [
+        "SIPApi.create_sip_ip_access_control_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1303,7 +1303,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_incoming_phone_number_mobile" => [
+        "SIPApi.create_sip_ip_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1311,7 +1311,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_incoming_phone_number_toll_free" => [
+        "SIPApi.delete_sip_auth_calls_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1319,7 +1319,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_key" => [
+        "SIPApi.delete_sip_auth_calls_ip_access_control_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1327,7 +1327,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_media" => [
+        "SIPApi.delete_sip_auth_registrations_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1335,7 +1335,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_member" => [
+        "SIPApi.delete_sip_credential" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1343,7 +1343,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_message" => [
+        "SIPApi.delete_sip_credential_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1351,7 +1351,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_notification" => [
+        "SIPApi.delete_sip_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1359,7 +1359,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_outgoing_caller_id" => [
+        "SIPApi.delete_sip_domain" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1367,7 +1367,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_participant" => [
+        "SIPApi.delete_sip_ip_access_control_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1375,7 +1375,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_queue" => [
+        "SIPApi.delete_sip_ip_access_control_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1383,7 +1383,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_recording" => [
+        "SIPApi.delete_sip_ip_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1391,7 +1391,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_recording_add_on_result" => [
+        "SIPApi.fetch_sip_auth_calls_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1399,7 +1399,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_recording_add_on_result_payload" => [
+        "SIPApi.fetch_sip_auth_calls_ip_access_control_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1407,7 +1407,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_recording_transcription" => [
+        "SIPApi.fetch_sip_auth_registrations_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1415,7 +1415,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_short_code" => [
+        "SIPApi.fetch_sip_credential" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1423,7 +1423,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_signing_key" => [
+        "SIPApi.fetch_sip_credential_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1431,7 +1431,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_auth_calls_credential_list_mapping" => [
+        "SIPApi.fetch_sip_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1439,7 +1439,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_auth_calls_ip_access_control_list_mapping" => [
+        "SIPApi.fetch_sip_domain" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1447,7 +1447,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_auth_registrations_credential_list_mapping" => [
+        "SIPApi.fetch_sip_ip_access_control_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1455,7 +1455,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_credential" => [
+        "SIPApi.fetch_sip_ip_access_control_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1463,7 +1463,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_credential_list" => [
+        "SIPApi.fetch_sip_ip_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1471,7 +1471,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_credential_list_mapping" => [
+        "SIPApi.list_sip_auth_calls_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1479,7 +1479,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_domain" => [
+        "SIPApi.list_sip_auth_calls_ip_access_control_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1487,7 +1487,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_ip_access_control_list" => [
+        "SIPApi.list_sip_auth_registrations_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1495,7 +1495,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_ip_access_control_list_mapping" => [
+        "SIPApi.list_sip_credential" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1503,7 +1503,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_sip_ip_address" => [
+        "SIPApi.list_sip_credential_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1511,7 +1511,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_transcription" => [
+        "SIPApi.list_sip_credential_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1519,7 +1519,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_record" => [
+        "SIPApi.list_sip_domain" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1527,7 +1527,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_record_all_time" => [
+        "SIPApi.list_sip_ip_access_control_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1535,7 +1535,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_record_daily" => [
+        "SIPApi.list_sip_ip_access_control_list_mapping" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1543,7 +1543,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_record_last_month" => [
+        "SIPApi.list_sip_ip_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1551,7 +1551,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_record_monthly" => [
+        "SIPApi.update_sip_credential" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1559,7 +1559,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_record_this_month" => [
+        "SIPApi.update_sip_credential_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1567,7 +1567,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_record_today" => [
+        "SIPApi.update_sip_domain" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1575,7 +1575,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_record_yearly" => [
+        "SIPApi.update_sip_ip_access_control_list" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1583,7 +1583,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_record_yesterday" => [
+        "SIPApi.update_sip_ip_address" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1591,7 +1591,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.list_usage_trigger" => [
+        "SMSApi.fetch_short_code" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1599,7 +1599,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_account" => [
+        "SMSApi.list_short_code" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1607,7 +1607,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_address" => [
+        "SMSApi.update_short_code" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1615,7 +1615,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_application" => [
+        "SigningKeysApi.create_new_signing_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1623,7 +1623,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_call" => [
+        "SigningKeysApi.delete_signing_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1631,7 +1631,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_call_feedback" => [
+        "SigningKeysApi.fetch_signing_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1639,7 +1639,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_call_recording" => [
+        "SigningKeysApi.list_signing_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1647,7 +1647,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_conference" => [
+        "SigningKeysApi.update_signing_key" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1655,7 +1655,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_conference_recording" => [
+        "SubAccountsApi.fetch_account" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1663,7 +1663,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_connect_app" => [
+        "SubAccountsApi.update_account" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1671,7 +1671,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_incoming_phone_number" => [
+        "TokensApi.create_token" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1679,7 +1679,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_key" => [
+        "TranscriptionsApi.delete_transcription" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1687,7 +1687,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_member" => [
+        "TranscriptionsApi.fetch_transcription" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1695,7 +1695,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_message" => [
+        "TranscriptionsApi.list_transcription" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1703,7 +1703,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_outgoing_caller_id" => [
+        "UsageApi.create_usage_trigger" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1711,7 +1711,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_participant" => [
+        "UsageApi.delete_usage_trigger" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1719,7 +1719,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_payments" => [
+        "UsageApi.fetch_usage_trigger" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1727,7 +1727,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_queue" => [
+        "UsageApi.list_usage_record" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1735,7 +1735,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_short_code" => [
+        "UsageApi.list_usage_record_all_time" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1743,7 +1743,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_signing_key" => [
+        "UsageApi.list_usage_record_daily" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1751,7 +1751,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_sip_credential" => [
+        "UsageApi.list_usage_record_last_month" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1759,7 +1759,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_sip_credential_list" => [
+        "UsageApi.list_usage_record_monthly" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1767,7 +1767,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_sip_domain" => [
+        "UsageApi.list_usage_record_this_month" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1775,7 +1775,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_sip_ip_access_control_list" => [
+        "UsageApi.list_usage_record_today" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1783,7 +1783,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_sip_ip_address" => [
+        "UsageApi.list_usage_record_yearly" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1791,7 +1791,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_siprec" => [
+        "UsageApi.list_usage_record_yesterday" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1799,7 +1799,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_stream" => [
+        "UsageApi.list_usage_trigger" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
@@ -1807,7 +1807,7 @@ module Twilio
         ],
       }
       {
-        "DefaultApi.update_usage_trigger" => [
+        "UsageApi.update_usage_trigger" => [
           {
             "url"         => "https://api.twilio.com",
             "description" => "No description provided",
