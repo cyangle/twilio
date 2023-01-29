@@ -44,6 +44,19 @@ module Twilio
     yield Configuration.default
   end
 
+  # Get next page of a list endpoint response
+  #
+  # ```
+  # api = Twilio::CallsApi.new
+  #
+  # page : Twilio::ListCallResponse = api.list_call
+  #
+  # # Get next page of results
+  # next_page : Twilio::ListCallResponse? = Twilio.next_page(page)
+  #
+  # pp page
+  # pp next_page
+  # ```
   def self.next_page(list_response : T, api_client : Twilio::ApiClient = Twilio::ApiClient.default) : T? forall T
     if next_page_uri = list_response.next_page_uri
       request : Crest::Request = api_client.build_api_request(
