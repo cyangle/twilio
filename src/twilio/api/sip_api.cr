@@ -35,7 +35,7 @@ module Twilio
   class SIPApi
     property api_client : ApiClient
 
-    delegate client_side_validation, debugging, to: @api_client.config
+    delegate client_side_validation?, debugging?, to: @api_client.config
     property account_sid : String
 
     def initialize(api_client = ApiClient.default)
@@ -73,7 +73,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_auth_calls_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -112,11 +112,11 @@ module Twilio
       domain_sid : String? = nil,
       credential_list_sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_auth_calls_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_AUTH_CALLS_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -206,7 +206,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_auth_calls_ip_access_control_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -245,11 +245,11 @@ module Twilio
       domain_sid : String? = nil,
       ip_access_control_list_sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_auth_calls_ip_access_control_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_AUTH_CALLS_IP_ACCESS_CONTROL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -339,7 +339,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_auth_registrations_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -378,11 +378,11 @@ module Twilio
       domain_sid : String? = nil,
       credential_list_sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_auth_registrations_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_AUTH_REGISTRATIONS_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -476,7 +476,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_credential\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -515,11 +515,11 @@ module Twilio
       password : String? = nil,
       username : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_credential ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_CREDENTIAL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -603,7 +603,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_credential_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -633,11 +633,11 @@ module Twilio
       account_sid : String? = @account_sid,
       friendly_name : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_credential_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_CREDENTIAL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -716,7 +716,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -755,11 +755,11 @@ module Twilio
       domain_sid : String? = nil,
       credential_list_sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -893,7 +893,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_domain\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -965,11 +965,11 @@ module Twilio
       voice_status_callback_url : String? = nil,
       voice_url : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_domain ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_DOMAIN_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1078,7 +1078,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_ip_access_control_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1108,11 +1108,11 @@ module Twilio
       account_sid : String? = @account_sid,
       friendly_name : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_ip_access_control_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_IP_ACCESS_CONTROL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1191,7 +1191,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_ip_access_control_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1230,11 +1230,11 @@ module Twilio
       domain_sid : String? = nil,
       ip_access_control_list_sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_ip_access_control_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_IP_ACCESS_CONTROL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1332,7 +1332,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#create_sip_ip_address\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1374,11 +1374,11 @@ module Twilio
       ip_address : String? = nil,
       cidr_prefix_length : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.create_sip_ip_address ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_SIP_IP_ADDRESS_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1467,7 +1467,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_auth_calls_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1506,11 +1506,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_auth_calls_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_AUTH_CALLS_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1595,7 +1595,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_auth_calls_ip_access_control_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1634,11 +1634,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_auth_calls_ip_access_control_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_AUTH_CALLS_IP_ACCESS_CONTROL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1723,7 +1723,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_auth_registrations_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1762,11 +1762,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_auth_registrations_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_AUTH_REGISTRATIONS_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1851,7 +1851,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_credential\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1890,11 +1890,11 @@ module Twilio
       credential_list_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_credential ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_CREDENTIAL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1975,7 +1975,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_credential_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2008,11 +2008,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_credential_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_CREDENTIAL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2091,7 +2091,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2130,11 +2130,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2215,7 +2215,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_domain\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2248,11 +2248,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_domain ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_DOMAIN_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2327,7 +2327,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_ip_access_control_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2360,11 +2360,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_ip_access_control_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_IP_ACCESS_CONTROL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2443,7 +2443,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_ip_access_control_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2482,11 +2482,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_ip_access_control_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_IP_ACCESS_CONTROL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2571,7 +2571,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#delete_sip_ip_address\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2610,11 +2610,11 @@ module Twilio
       ip_access_control_list_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.delete_sip_ip_address ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_SIP_IP_ADDRESS_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2699,7 +2699,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_auth_calls_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2738,11 +2738,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_auth_calls_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_AUTH_CALLS_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2829,7 +2829,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_auth_calls_ip_access_control_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2868,11 +2868,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_auth_calls_ip_access_control_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_AUTH_CALLS_IP_ACCESS_CONTROL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2959,7 +2959,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_auth_registrations_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2998,11 +2998,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_auth_registrations_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_AUTH_REGISTRATIONS_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3089,7 +3089,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_credential\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3128,11 +3128,11 @@ module Twilio
       credential_list_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_credential ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_CREDENTIAL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3215,7 +3215,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_credential_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3248,11 +3248,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_credential_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_CREDENTIAL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3333,7 +3333,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3372,11 +3372,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3459,7 +3459,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_domain\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3492,11 +3492,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_domain ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_DOMAIN_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3573,7 +3573,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_ip_access_control_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3606,11 +3606,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_ip_access_control_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_IP_ACCESS_CONTROL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3691,7 +3691,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_ip_access_control_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3730,11 +3730,11 @@ module Twilio
       domain_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_ip_access_control_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_IP_ACCESS_CONTROL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3821,7 +3821,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#fetch_sip_ip_address\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3860,11 +3860,11 @@ module Twilio
       ip_access_control_list_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.fetch_sip_ip_address ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_SIP_IP_ADDRESS_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3951,7 +3951,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_auth_calls_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3989,11 +3989,11 @@ module Twilio
       domain_sid : String? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_auth_calls_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_AUTH_CALLS_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -4079,7 +4079,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_auth_calls_ip_access_control_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -4117,11 +4117,11 @@ module Twilio
       domain_sid : String? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_auth_calls_ip_access_control_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_AUTH_CALLS_IP_ACCESS_CONTROL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -4207,7 +4207,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_auth_registrations_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -4245,11 +4245,11 @@ module Twilio
       domain_sid : String? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_auth_registrations_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_AUTH_REGISTRATIONS_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -4335,7 +4335,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_credential\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -4373,11 +4373,11 @@ module Twilio
       credential_list_sid : String? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_credential ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_CREDENTIAL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -4459,7 +4459,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_credential_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -4491,11 +4491,11 @@ module Twilio
       account_sid : String? = @account_sid,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_credential_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_CREDENTIAL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -4575,7 +4575,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_credential_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -4613,11 +4613,11 @@ module Twilio
       domain_sid : String? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_credential_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_CREDENTIAL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -4699,7 +4699,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_domain\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -4731,11 +4731,11 @@ module Twilio
       account_sid : String? = @account_sid,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_domain ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_DOMAIN_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -4811,7 +4811,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_ip_access_control_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -4843,11 +4843,11 @@ module Twilio
       account_sid : String? = @account_sid,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_ip_access_control_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_IP_ACCESS_CONTROL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -4927,7 +4927,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_ip_access_control_list_mapping\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -4965,11 +4965,11 @@ module Twilio
       domain_sid : String? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_ip_access_control_list_mapping ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_IP_ACCESS_CONTROL_LIST_MAPPING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -5055,7 +5055,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#list_sip_ip_address\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -5093,11 +5093,11 @@ module Twilio
       ip_access_control_list_sid : String? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.list_sip_ip_address ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_SIP_IP_ADDRESS_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -5187,7 +5187,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#update_sip_credential\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -5229,11 +5229,11 @@ module Twilio
       sid : String? = nil,
       password : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.update_sip_credential ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_SIP_CREDENTIAL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -5323,7 +5323,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#update_sip_credential_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -5359,11 +5359,11 @@ module Twilio
       sid : String? = nil,
       friendly_name : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.update_sip_credential_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_SIP_CREDENTIAL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -5496,7 +5496,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#update_sip_domain\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -5574,11 +5574,11 @@ module Twilio
       voice_status_callback_url : String? = nil,
       voice_url : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.update_sip_domain ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_SIP_DOMAIN_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -5696,7 +5696,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#update_sip_ip_access_control_list\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -5732,11 +5732,11 @@ module Twilio
       sid : String? = nil,
       friendly_name : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.update_sip_ip_access_control_list ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_SIP_IP_ACCESS_CONTROL_LIST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -5833,7 +5833,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SIPApi#update_sip_ip_address\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -5881,11 +5881,11 @@ module Twilio
       friendly_name : String? = nil,
       ip_address : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SIPApi.update_sip_ip_address ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_SIP_IP_ADDRESS_MAX_LENGTH_FOR_ACCOUNT_SID)

@@ -25,7 +25,7 @@ module Twilio
   class ConferencesApi
     property api_client : ApiClient
 
-    delegate client_side_validation, debugging, to: @api_client.config
+    delegate client_side_validation?, debugging?, to: @api_client.config
     property account_sid : String
 
     def initialize(api_client = ApiClient.default)
@@ -243,7 +243,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#create_participant\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -417,11 +417,11 @@ module Twilio
       wait_method : Twilio::HttpMethod? = nil,
       wait_url : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.create_participant ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_PARTICIPANT_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -585,7 +585,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#delete_conference_recording\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -624,11 +624,11 @@ module Twilio
       conference_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.delete_conference_recording ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_CONFERENCE_RECORDING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -713,7 +713,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#delete_participant\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -749,11 +749,11 @@ module Twilio
       conference_sid : String? = nil,
       call_sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.delete_participant ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_PARTICIPANT_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -829,7 +829,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#fetch_conference\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -862,11 +862,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.fetch_conference ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_CONFERENCE_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -947,7 +947,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#fetch_conference_recording\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -986,11 +986,11 @@ module Twilio
       conference_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.fetch_conference_recording ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_CONFERENCE_RECORDING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1077,7 +1077,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#fetch_participant\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1113,11 +1113,11 @@ module Twilio
       conference_sid : String? = nil,
       call_sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.fetch_participant ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_PARTICIPANT_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1227,7 +1227,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#list_conference\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1283,11 +1283,11 @@ module Twilio
       status : Twilio::ConferenceEnumStatus? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.list_conference ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_CONFERENCE_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1391,7 +1391,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#list_conference_recording\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1438,11 +1438,11 @@ module Twilio
       date_created_after : Time? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.list_conference_recording ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_CONFERENCE_RECORDING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1544,7 +1544,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#list_participant\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1591,11 +1591,11 @@ module Twilio
       coaching : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.list_participant ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_PARTICIPANT_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1693,7 +1693,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#update_conference\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1732,11 +1732,11 @@ module Twilio
       announce_url : String? = nil,
       status : Twilio::ConferenceEnumUpdateStatus? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.update_conference ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_CONFERENCE_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1833,7 +1833,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#update_conference_recording\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1875,11 +1875,11 @@ module Twilio
       status : Twilio::CallRecordingEnumStatus? = nil,
       pause_behavior : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.update_conference_recording ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_CONFERENCE_RECORDING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2018,7 +2018,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: ConferencesApi#update_participant\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2093,11 +2093,11 @@ module Twilio
       wait_method : Twilio::HttpMethod? = nil,
       wait_url : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: ConferencesApi.update_participant ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_PARTICIPANT_MAX_LENGTH_FOR_ACCOUNT_SID)

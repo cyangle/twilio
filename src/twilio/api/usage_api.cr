@@ -30,7 +30,7 @@ module Twilio
   class UsageApi
     property api_client : ApiClient
 
-    delegate client_side_validation, debugging, to: @api_client.config
+    delegate client_side_validation?, debugging?, to: @api_client.config
     property account_sid : String
 
     def initialize(api_client = ApiClient.default)
@@ -88,7 +88,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#create_usage_trigger\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -136,11 +136,11 @@ module Twilio
       recurring : Twilio::UsageTriggerEnumRecurring? = nil,
       trigger_by : Twilio::UsageTriggerEnumTriggerField? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.create_usage_trigger ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_USAGE_TRIGGER_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -238,7 +238,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#delete_usage_trigger\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -271,11 +271,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.delete_usage_trigger ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_USAGE_TRIGGER_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -350,7 +350,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#fetch_usage_trigger\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -383,11 +383,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.fetch_usage_trigger ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_USAGE_TRIGGER_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -480,7 +480,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_record\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -524,11 +524,11 @@ module Twilio
       include_subaccounts : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_record ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_RECORD_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -628,7 +628,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_record_all_time\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -672,11 +672,11 @@ module Twilio
       include_subaccounts : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_record_all_time ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_RECORD_ALL_TIME_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -776,7 +776,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_record_daily\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -820,11 +820,11 @@ module Twilio
       include_subaccounts : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_record_daily ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_RECORD_DAILY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -924,7 +924,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_record_last_month\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -968,11 +968,11 @@ module Twilio
       include_subaccounts : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_record_last_month ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_RECORD_LAST_MONTH_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1072,7 +1072,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_record_monthly\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1116,11 +1116,11 @@ module Twilio
       include_subaccounts : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_record_monthly ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_RECORD_MONTHLY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1220,7 +1220,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_record_this_month\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1264,11 +1264,11 @@ module Twilio
       include_subaccounts : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_record_this_month ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_RECORD_THIS_MONTH_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1368,7 +1368,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_record_today\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1412,11 +1412,11 @@ module Twilio
       include_subaccounts : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_record_today ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_RECORD_TODAY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1516,7 +1516,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_record_yearly\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1560,11 +1560,11 @@ module Twilio
       include_subaccounts : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_record_yearly ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_RECORD_YEARLY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1664,7 +1664,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_record_yesterday\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1708,11 +1708,11 @@ module Twilio
       include_subaccounts : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_record_yesterday ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_RECORD_YESTERDAY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1808,7 +1808,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#list_usage_trigger\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1849,11 +1849,11 @@ module Twilio
       usage_category : Twilio::UsageRecordEnumCategory? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.list_usage_trigger ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_USAGE_TRIGGER_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1953,7 +1953,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: UsageApi#update_usage_trigger\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1995,11 +1995,11 @@ module Twilio
       callback_url : String? = nil,
       friendly_name : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: UsageApi.update_usage_trigger ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_USAGE_TRIGGER_MAX_LENGTH_FOR_ACCOUNT_SID)

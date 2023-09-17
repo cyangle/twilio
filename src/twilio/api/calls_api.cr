@@ -40,7 +40,7 @@ module Twilio
   class CallsApi
     property api_client : ApiClient
 
-    delegate client_side_validation, debugging, to: @api_client.config
+    delegate client_side_validation?, debugging?, to: @api_client.config
     property account_sid : String
 
     def initialize(api_client = ApiClient.default)
@@ -210,7 +210,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#create_call\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -348,11 +348,11 @@ module Twilio
       twiml : String? = nil,
       url : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.create_call ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_CALL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -510,7 +510,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#create_call_feedback_summary\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -552,11 +552,11 @@ module Twilio
       status_callback : String? = nil,
       status_callback_method : Twilio::HttpMethod? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.create_call_feedback_summary ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_CALL_FEEDBACK_SUMMARY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -665,7 +665,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#create_call_recording\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -716,11 +716,11 @@ module Twilio
       recording_track : String? = nil,
       trim : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.create_call_recording ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_CALL_RECORDING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -873,7 +873,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#create_payments\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -954,11 +954,11 @@ module Twilio
       token_type : Twilio::PaymentsEnumTokenType? = nil,
       valid_card_types : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.create_payments ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_PAYMENTS_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1076,7 +1076,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#create_user_defined_message\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1115,11 +1115,11 @@ module Twilio
       content : String? = nil,
       idempotency_key : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.create_user_defined_message ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_USER_DEFINED_MESSAGE_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1213,7 +1213,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#create_user_defined_message_subscription\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1255,11 +1255,11 @@ module Twilio
       idempotency_key : String? = nil,
       method : Twilio::HttpMethod? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.create_user_defined_message_subscription ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, CREATE_USER_DEFINED_MESSAGE_SUBSCRIPTION_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1346,7 +1346,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#delete_call\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1379,11 +1379,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.delete_call ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_CALL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1458,7 +1458,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#delete_call_feedback_summary\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1491,11 +1491,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.delete_call_feedback_summary ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_CALL_FEEDBACK_SUMMARY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1574,7 +1574,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#delete_call_recording\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1613,11 +1613,11 @@ module Twilio
       call_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.delete_call_recording ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_CALL_RECORDING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1702,7 +1702,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#delete_user_defined_message_subscription\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1741,11 +1741,11 @@ module Twilio
       call_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.delete_user_defined_message_subscription ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, DELETE_USER_DEFINED_MESSAGE_SUBSCRIPTION_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1826,7 +1826,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#fetch_call\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1859,11 +1859,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.fetch_call ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_CALL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1940,7 +1940,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#fetch_call_feedback\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1973,11 +1973,11 @@ module Twilio
       account_sid : String? = @account_sid,
       call_sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.fetch_call_feedback ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_CALL_FEEDBACK_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2054,7 +2054,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#fetch_call_feedback_summary\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2087,11 +2087,11 @@ module Twilio
       account_sid : String? = @account_sid,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.fetch_call_feedback_summary ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_CALL_FEEDBACK_SUMMARY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2172,7 +2172,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#fetch_call_notification\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2211,11 +2211,11 @@ module Twilio
       call_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.fetch_call_notification ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_CALL_NOTIFICATION_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2302,7 +2302,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#fetch_call_recording\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2341,11 +2341,11 @@ module Twilio
       call_sid : String? = nil,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.fetch_call_recording ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_CALL_RECORDING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2468,7 +2468,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#list_call\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2533,11 +2533,11 @@ module Twilio
       end_time_after : Time? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.list_call ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_CALL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2637,7 +2637,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#list_call_event\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2675,11 +2675,11 @@ module Twilio
       call_sid : String? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.list_call_event ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_CALL_EVENT_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2781,7 +2781,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#list_call_notification\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2831,11 +2831,11 @@ module Twilio
       message_date_after : Time? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.list_call_notification ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_CALL_NOTIFICATION_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -2938,7 +2938,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#list_call_recording\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2985,11 +2985,11 @@ module Twilio
       date_created_after : Time? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.list_call_recording ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_CALL_RECORDING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3111,7 +3111,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#update_call\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3171,11 +3171,11 @@ module Twilio
       twiml : String? = nil,
       url : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.update_call ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_CALL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3285,7 +3285,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#update_call_feedback\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3321,11 +3321,11 @@ module Twilio
       issue : Array(CallFeedbackEnumIssues)? = nil,
       quality_score : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.update_call_feedback ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_CALL_FEEDBACK_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3413,7 +3413,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#update_call_recording\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3455,11 +3455,11 @@ module Twilio
       status : Twilio::CallRecordingEnumStatus? = nil,
       pause_behavior : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.update_call_recording ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_CALL_RECORDING_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3566,7 +3566,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#update_payments\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3617,11 +3617,11 @@ module Twilio
       capture : Twilio::PaymentsEnumCapture? = nil,
       status : Twilio::PaymentsEnumStatus? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.update_payments ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_PAYMENTS_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3728,7 +3728,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#update_siprec\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3767,11 +3767,11 @@ module Twilio
       sid : String? = nil,
       status : Twilio::SiprecEnumUpdateStatus? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.update_siprec ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_SIPREC_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -3865,7 +3865,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: CallsApi#update_stream\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -3904,11 +3904,11 @@ module Twilio
       sid : String? = nil,
       status : Twilio::SiprecEnumUpdateStatus? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: CallsApi.update_stream ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, UPDATE_STREAM_MAX_LENGTH_FOR_ACCOUNT_SID)

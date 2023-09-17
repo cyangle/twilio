@@ -18,7 +18,7 @@ module Twilio
   class AccountsApi
     property api_client : ApiClient
 
-    delegate client_side_validation, debugging, to: @api_client.config
+    delegate client_side_validation?, debugging?, to: @api_client.config
     property account_sid : String
 
     def initialize(api_client = ApiClient.default)
@@ -48,7 +48,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AccountsApi#create_account\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -71,7 +71,7 @@ module Twilio
       *,
       friendly_name : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AccountsApi.create_account ..." }
       end
 
@@ -144,7 +144,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AccountsApi#list_account\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -176,11 +176,11 @@ module Twilio
       status : Twilio::AccountEnumStatus? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AccountsApi.list_account ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         unless (_status = status).nil?
           _status.validate
         end

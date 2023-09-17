@@ -16,7 +16,7 @@ module Twilio
   class SubAccountsApi
     property api_client : ApiClient
 
-    delegate client_side_validation, debugging, to: @api_client.config
+    delegate client_side_validation?, debugging?, to: @api_client.config
     property account_sid : String
 
     def initialize(api_client = ApiClient.default)
@@ -46,7 +46,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SubAccountsApi#fetch_account\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -73,11 +73,11 @@ module Twilio
       *,
       sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SubAccountsApi.fetch_account ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"sid\" is required and cannot be null") if sid.nil?
         unless (_sid = sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("sid", sid.to_s.size, FETCH_ACCOUNT_MAX_LENGTH_FOR_SID)
@@ -152,7 +152,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: SubAccountsApi#update_account\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -185,11 +185,11 @@ module Twilio
       friendly_name : String? = nil,
       status : Twilio::AccountEnumStatus? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: SubAccountsApi.update_account ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"sid\" is required and cannot be null") if sid.nil?
         unless (_sid = sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("sid", sid.to_s.size, UPDATE_ACCOUNT_MAX_LENGTH_FOR_SID)

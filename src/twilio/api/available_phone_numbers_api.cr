@@ -24,7 +24,7 @@ module Twilio
   class AvailablePhoneNumbersApi
     property api_client : ApiClient
 
-    delegate client_side_validation, debugging, to: @api_client.config
+    delegate client_side_validation?, debugging?, to: @api_client.config
     property account_sid : String
 
     def initialize(api_client = ApiClient.default)
@@ -58,7 +58,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AvailablePhoneNumbersApi#fetch_available_phone_number_country\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -88,11 +88,11 @@ module Twilio
       account_sid : String? = @account_sid,
       country_code : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AvailablePhoneNumbersApi.fetch_available_phone_number_country ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_AVAILABLE_PHONE_NUMBER_COUNTRY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -164,7 +164,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AvailablePhoneNumbersApi#list_available_phone_number_country\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -196,11 +196,11 @@ module Twilio
       account_sid : String? = @account_sid,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AvailablePhoneNumbersApi.list_available_phone_number_country ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_AVAILABLE_PHONE_NUMBER_COUNTRY_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -352,7 +352,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AvailablePhoneNumbersApi#list_available_phone_number_local\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -441,11 +441,11 @@ module Twilio
       fax_enabled : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AvailablePhoneNumbersApi.list_available_phone_number_local ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_AVAILABLE_PHONE_NUMBER_LOCAL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -617,7 +617,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AvailablePhoneNumbersApi#list_available_phone_number_machine_to_machine\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -706,11 +706,11 @@ module Twilio
       fax_enabled : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AvailablePhoneNumbersApi.list_available_phone_number_machine_to_machine ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_AVAILABLE_PHONE_NUMBER_MACHINE_TO_MACHINE_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -882,7 +882,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AvailablePhoneNumbersApi#list_available_phone_number_mobile\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -971,11 +971,11 @@ module Twilio
       fax_enabled : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AvailablePhoneNumbersApi.list_available_phone_number_mobile ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_AVAILABLE_PHONE_NUMBER_MOBILE_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1147,7 +1147,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AvailablePhoneNumbersApi#list_available_phone_number_national\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1236,11 +1236,11 @@ module Twilio
       fax_enabled : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AvailablePhoneNumbersApi.list_available_phone_number_national ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_AVAILABLE_PHONE_NUMBER_NATIONAL_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1412,7 +1412,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AvailablePhoneNumbersApi#list_available_phone_number_shared_cost\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1501,11 +1501,11 @@ module Twilio
       fax_enabled : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AvailablePhoneNumbersApi.list_available_phone_number_shared_cost ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_AVAILABLE_PHONE_NUMBER_SHARED_COST_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1677,7 +1677,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AvailablePhoneNumbersApi#list_available_phone_number_toll_free\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -1766,11 +1766,11 @@ module Twilio
       fax_enabled : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AvailablePhoneNumbersApi.list_available_phone_number_toll_free ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_AVAILABLE_PHONE_NUMBER_TOLL_FREE_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -1942,7 +1942,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AvailablePhoneNumbersApi#list_available_phone_number_voip\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -2031,11 +2031,11 @@ module Twilio
       fax_enabled : Bool? = nil,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AvailablePhoneNumbersApi.list_available_phone_number_voip ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_AVAILABLE_PHONE_NUMBER_VOIP_MAX_LENGTH_FOR_ACCOUNT_SID)

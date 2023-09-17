@@ -40,7 +40,7 @@ module Twilio
   #   config.password = "xxx"
   # end
   # ```
-  def self.configure
+  def self.configure(&)
     yield Configuration.default
   end
 

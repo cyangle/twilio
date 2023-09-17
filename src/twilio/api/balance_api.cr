@@ -15,7 +15,7 @@ module Twilio
   class BalanceApi
     property api_client : ApiClient
 
-    delegate client_side_validation, debugging, to: @api_client.config
+    delegate client_side_validation?, debugging?, to: @api_client.config
     property account_sid : String
 
     def initialize(api_client = ApiClient.default)
@@ -45,7 +45,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: BalanceApi#fetch_balance\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -72,11 +72,11 @@ module Twilio
       *,
       account_sid : String? = @account_sid
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: BalanceApi.fetch_balance ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_BALANCE_MAX_LENGTH_FOR_ACCOUNT_SID)

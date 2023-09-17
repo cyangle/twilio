@@ -17,7 +17,7 @@ module Twilio
   class AuthorizedConnectAppsApi
     property api_client : ApiClient
 
-    delegate client_side_validation, debugging, to: @api_client.config
+    delegate client_side_validation?, debugging?, to: @api_client.config
     property account_sid : String
 
     def initialize(api_client = ApiClient.default)
@@ -51,7 +51,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AuthorizedConnectAppsApi#fetch_authorized_connect_app\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -84,11 +84,11 @@ module Twilio
       account_sid : String? = @account_sid,
       connect_app_sid : String? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AuthorizedConnectAppsApi.fetch_authorized_connect_app ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, FETCH_AUTHORIZED_CONNECT_APP_MAX_LENGTH_FOR_ACCOUNT_SID)
@@ -165,7 +165,7 @@ module Twilio
 
       body, status_code, headers = @api_client.execute_api_request(request)
 
-      if debugging
+      if debugging?
         Log.debug { "API called: AuthorizedConnectAppsApi#list_authorized_connect_app\nBody: #{body.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}" }
       end
 
@@ -197,11 +197,11 @@ module Twilio
       account_sid : String? = @account_sid,
       page_size : Int32? = nil
     ) : Crest::Request
-      if debugging
+      if debugging?
         Log.debug { "Calling API: AuthorizedConnectAppsApi.list_authorized_connect_app ..." }
       end
 
-      if client_side_validation
+      if client_side_validation?
         raise ArgumentError.new("\"account_sid\" is required and cannot be null") if account_sid.nil?
         unless (_account_sid = account_sid).nil?
           OpenApi::PrimitiveValidator.validate_max_length("account_sid", account_sid.to_s.size, LIST_AUTHORIZED_CONNECT_APP_MAX_LENGTH_FOR_ACCOUNT_SID)
