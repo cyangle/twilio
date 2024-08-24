@@ -1,5 +1,17 @@
+.github/workflows/ci.yml
 git_push.sh
 shard.yml
+spec/models/call_enum_update_status_spec.cr
+spec/models/conference_enum_update_status_spec.cr
+spec/models/message_enum_address_retention_spec.cr
+spec/models/message_enum_schedule_type_spec.cr
+spec/models/message_enum_update_status_spec.cr
+spec/models/payments_enum_bank_account_type_spec.cr
+spec/models/payments_enum_capture_spec.cr
+spec/models/payments_enum_payment_method_spec.cr
+spec/models/payments_enum_status_spec.cr
+spec/models/payments_enum_token_type_spec.cr
+spec/models/siprec_enum_update_status_spec.cr
 spec/spec_helper.cr
 spec/support/ext.cr
 spec/support/helpers.cr
@@ -57,6 +69,7 @@ src/twilio/models/call_call_notification_instance.cr
 src/twilio/models/call_call_recording.cr
 src/twilio/models/call_enum_event.cr
 src/twilio/models/call_enum_status.cr
+src/twilio/models/call_enum_update_status.cr
 src/twilio/models/call_feedback_enum_issues.cr
 src/twilio/models/call_feedback_summary_enum_status.cr
 src/twilio/models/call_payments.cr
@@ -69,6 +82,7 @@ src/twilio/models/conference.cr
 src/twilio/models/conference_conference_recording.cr
 src/twilio/models/conference_enum_reason_conference_ended.cr
 src/twilio/models/conference_enum_status.cr
+src/twilio/models/conference_enum_update_status.cr
 src/twilio/models/conference_participant.cr
 src/twilio/models/connect_app.cr
 src/twilio/models/connect_app_enum_permission.cr
@@ -146,9 +160,12 @@ src/twilio/models/list_usage_record_yearly_response.cr
 src/twilio/models/list_usage_record_yesterday_response.cr
 src/twilio/models/list_usage_trigger_response.cr
 src/twilio/models/message.cr
+src/twilio/models/message_enum_address_retention.cr
 src/twilio/models/message_enum_direction.cr
+src/twilio/models/message_enum_schedule_type.cr
 src/twilio/models/message_enum_status.cr
 src/twilio/models/message_enum_traffic_type.cr
+src/twilio/models/message_enum_update_status.cr
 src/twilio/models/message_feedback_enum_outcome.cr
 src/twilio/models/message_media.cr
 src/twilio/models/message_message_feedback.cr
@@ -157,6 +174,11 @@ src/twilio/models/notification.cr
 src/twilio/models/notification_instance.cr
 src/twilio/models/outgoing_caller_id.cr
 src/twilio/models/participant_enum_status.cr
+src/twilio/models/payments_enum_bank_account_type.cr
+src/twilio/models/payments_enum_capture.cr
+src/twilio/models/payments_enum_payment_method.cr
+src/twilio/models/payments_enum_status.cr
+src/twilio/models/payments_enum_token_type.cr
 src/twilio/models/queue.cr
 src/twilio/models/queue_member.cr
 src/twilio/models/recording.cr
@@ -178,6 +200,7 @@ src/twilio/models/sip_sip_ip_access_control_list.cr
 src/twilio/models/sip_sip_ip_access_control_list_sip_ip_address.cr
 src/twilio/models/siprec_enum_status.cr
 src/twilio/models/siprec_enum_track.cr
+src/twilio/models/siprec_enum_update_status.cr
 src/twilio/models/token.cr
 src/twilio/models/token_ice_servers_inner.cr
 src/twilio/models/transcription.cr
