@@ -18,9 +18,9 @@ require "uri"
 # Project files
 require "./ext/**"
 require "./validators/**"
-require "./twilio/configuration.cr"
-require "./twilio/api_error.cr"
-require "./twilio/api_client.cr"
+require "./twilio/configuration"
+require "./twilio/api_error"
+require "./twilio/api_client"
 
 module Twilio
   Log = ::Log.for("Twilio") # => Log for Twilio source
