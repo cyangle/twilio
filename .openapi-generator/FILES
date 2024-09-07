@@ -1,17 +1,6 @@
 .github/workflows/ci.yml
 git_push.sh
 shard.yml
-spec/models/call_enum_update_status_spec.cr
-spec/models/conference_enum_update_status_spec.cr
-spec/models/message_enum_address_retention_spec.cr
-spec/models/message_enum_schedule_type_spec.cr
-spec/models/message_enum_update_status_spec.cr
-spec/models/payments_enum_bank_account_type_spec.cr
-spec/models/payments_enum_capture_spec.cr
-spec/models/payments_enum_payment_method_spec.cr
-spec/models/payments_enum_status_spec.cr
-spec/models/payments_enum_token_type_spec.cr
-spec/models/siprec_enum_update_status_spec.cr
 spec/spec_helper.cr
 spec/support/ext.cr
 spec/support/helpers.cr
